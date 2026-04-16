@@ -219,6 +219,10 @@
 <svg fill="none" height="18" id="call-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
 <span id="call-label">Start Call</span>
 </button>
+<button id="mute-btn" onclick="toggleMute()" style="display:none;width:100%;padding:11px 20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:600;font-size:.875rem;cursor:pointer;display:none;align-items:center;justify-content:center;gap:8px;transition:background .2s,border-color .2s;">
+<svg id="mute-icon" fill="none" height="15" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="15"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+<span id="mute-label">Mute</span>
+</button>
 <div id="call-waves" style="display:none;align-items:center;gap:3px;height:24px;">
 <div style="width:3px;border-radius:2px;background:var(--primary);animation:waveBounce 1s ease-in-out infinite;animation-delay:0s;"></div>
 <div style="width:3px;border-radius:2px;background:var(--primary);animation:waveBounce 1s ease-in-out infinite;animation-delay:.12s;"></div>
@@ -232,13 +236,33 @@
             import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
             let conv = null;
             let callTimer = null;
+            let isMuted = false;
             const CALL_LIMIT = 120; // 2 minutes
             const btn = document.getElementById('call-btn');
             const label = document.getElementById('call-label');
             const icon = document.getElementById('call-icon');
             const waves = document.getElementById('call-waves');
             const status = document.getElementById('call-status');
+            const muteBtn = document.getElementById('mute-btn');
+            const muteIcon = document.getElementById('mute-icon');
+            const muteLabel = document.getElementById('mute-label');
             const TOKEN_URL = 'https://zoomy-ai.zoozoomfast.workers.dev/elevenlabs-token';
+
+            window.toggleMute = function() {
+              isMuted = !isMuted;
+              if (conv && conv.setMicMuted) conv.setMicMuted(isMuted);
+              if (isMuted) {
+                muteBtn.style.background = 'rgba(239,68,68,.18)';
+                muteBtn.style.borderColor = 'rgba(239,68,68,.4)';
+                muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" opacity=".3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2" opacity=".3"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/><line x1="1" y1="1" x2="23" y2="23" stroke="#ef4444" stroke-width="2"/>';
+                muteLabel.textContent = 'Unmute';
+              } else {
+                muteBtn.style.background = 'rgba(255,255,255,.08)';
+                muteBtn.style.borderColor = 'rgba(255,255,255,.15)';
+                muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
+                muteLabel.textContent = 'Mute';
+              }
+            };
 
             // Play one telephone ring using Web Audio API
             function playRing() {
@@ -283,12 +307,18 @@
             function resetUI(msg) {
               if (callTimer) { clearInterval(callTimer); callTimer = null; }
               conv = null;
+              isMuted = false;
               label.textContent = 'Start Call';
               btn.style.opacity = '1';
               btn.style.background = 'var(--grad-main)';
               btn.style.boxShadow = '0 0 30px rgba(99,102,241,.4)';
               icon.innerHTML = '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>';
               waves.style.display = 'none';
+              muteBtn.style.display = 'none';
+              muteLabel.textContent = 'Mute';
+              muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
+              muteBtn.style.background = 'rgba(255,255,255,.08)';
+              muteBtn.style.borderColor = 'rgba(255,255,255,.15)';
               status.textContent = msg || 'Call ended';
               status.style.color = '';
             }
@@ -323,6 +353,7 @@
                     btn.style.boxShadow = '0 0 30px rgba(239,68,68,.4)';
                     icon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
                     waves.style.display = 'flex';
+                    muteBtn.style.display = 'flex';
                     status.textContent = 'Live';
                     status.style.color = '#4ade80';
                     startCallTimer();
