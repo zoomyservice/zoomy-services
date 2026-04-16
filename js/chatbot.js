@@ -1141,9 +1141,9 @@ const FOLLOW_UP = {
   'meta-ads': (n) => {
     if (anyKw(n, ['how much','price','cost','fee','what does it cost'])) {
       return t(
-        `For Meta Ads, our pricing has two components:\n\n**1. Setup fee** (one-time) — building the campaign from scratch: structure, audiences, copy, pixel, tracking. Contact us for a quote.\n\n**2. Monthly management fee** — ongoing monitoring, optimisation, reporting. Based on your ad spend level.\n\nAd spend itself goes directly to Meta (billed to your card) — we never handle it.\n\nEmail **${BIZ.email}** for an exact quote based on your budget.`,
-        `Pour Meta Ads, notre tarification a deux composantes :\n\n**1. Frais de mise en place** (unique) — construction de la campagne.\n**2. Honoraires de gestion mensuelle** — suivi continu, optimisation, reporting.\n\nLe budget publicitaire va directement à Meta. Écrivez à **${BIZ.email}** pour un devis selon votre budget.`,
-        `Para Meta Ads, nuestro pricing tiene dos componentes:\n\n**1. Tarifa de configuración** (única) — construcción de la campaña.\n**2. Tarifa de gestión mensual** — monitorización continua, optimización, informes.\n\nEl gasto publicitario va directamente a Meta. Escribe a **${BIZ.email}** para un presupuesto según tu budget.`
+        `**Campaign pricing** has three components:\n\n**1. Setup fee** (one-time) — campaign structure, audiences, ad copy, pixel & tracking setup. Starting from **€400**.\n\n**2. Monthly management fee** — monitoring, optimisation, bid strategy, reporting. Based on ad spend level.\n\n**3. Media editing** _(optional add-on)_ — if you have raw footage or images you'd like edited into ad-ready creatives:\n• **€75 per asset** — cuts, captions, resizing, basic motion graphics\n• **€250/month** — up to 5 assets/month (best value for ongoing campaigns)\n\nAd spend goes directly to your ad account — we never touch it.\n\nEmail **${BIZ.email}** for an exact quote.`,
+        `**Tarification campagne** — trois composantes :\n\n**1. Frais de mise en place** (unique) — structure, audiences, copy, pixel, tracking. À partir de **400€**.\n\n**2. Honoraires de gestion mensuelle** — suivi, optimisation, reporting.\n\n**3. Montage médias** _(option)_ — si vous avez des vidéos ou images brutes à transformer en créatifs pub :\n• **75€ par asset** — montage, sous-titres, recadrage\n• **250€/mois** — jusqu'à 5 assets/mois\n\nÉcrivez à **${BIZ.email}** pour un devis.`,
+        `**Pricing de campaña** — tres componentes:\n\n**1. Tarifa de configuración** (única) — estructura, audiencias, copy, pixel, tracking. Desde **€400**.\n\n**2. Tarifa de gestión mensual** — monitorización, optimización, informes.\n\n**3. Edición de medios** _(opcional)_ — si tienes material en bruto para convertir en creatividades:\n• **€75 por asset** — cortes, subtítulos, redimensionado\n• **€250/mes** — hasta 5 assets/mes\n\nEscribe a **${BIZ.email}** para un presupuesto.`
       );
     }
     if (anyKw(n, ['roas','return','roi','results','performance','what results'])) {
@@ -1206,7 +1206,7 @@ const FOLLOW_UP = {
   'quote': (n) => {
     if (anyKw(n, ['campaign','meta','google','ads','advertising'])) {
       return t(
-        `For a campaign quote, email **${BIZ.email}** and include:\n• Which platform(s) — Meta, Google, TikTok, LinkedIn\n• Your monthly ad budget\n• What you're promoting\n• Your target audience\n\nWe'll come back with a scope and fixed management fee within 24 hours.`,
+        `For a campaign quote, email **${BIZ.email}** and include:\n• Which platform(s) — Meta, Google, TikTok, LinkedIn\n• Your monthly ad budget\n• What you're promoting\n• Your target audience\n• Whether you need media editing (we can edit your raw footage/images into ad creatives — €75/asset or €250/month for up to 5)\n\nWe'll come back with a scope and fixed management fee within 24 hours.`,
         `Pour un devis campagne, écrivez à **${BIZ.email}** en incluant :\n• Quelle(s) plateforme(s)\n• Votre budget publicitaire mensuel\n• Ce que vous promouvez\n• Votre audience cible`,
         `Para un presupuesto de campaña, escribe a **${BIZ.email}** e incluye:\n• Qué plataforma(s)\n• Tu presupuesto publicitario mensual\n• Qué estás promocionando\n• Tu audiencia objetivo`
       );
@@ -1406,9 +1406,15 @@ function render() {
     }, 600 + Math.random() * 500);
   }
 
+  function dismissAttn() {
+    const a = document.getElementById('zmy-attn');
+    if (a) a.remove();
+  }
+
   function openChat() {
     if (isOpen) return;
     isOpen = true;
+    dismissAttn();
     savedScrollY = window.scrollY;
     win.classList.add('open');
     bubble.innerHTML = `<svg viewBox="0 0 24 24" fill="#fff"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
@@ -1435,15 +1441,17 @@ function render() {
     input.style.height = Math.min(input.scrollHeight, 80) + 'px';
   });
 
-  // Attention bubble
+  // Attention bubble — shown once ever (persists across pages via localStorage)
   setTimeout(() => {
     if (isOpen) return;
+    if (localStorage.getItem('zmy_popup_seen')) return;
+    localStorage.setItem('zmy_popup_seen', '1');
     const attn = document.createElement('div');
     attn.id = 'zmy-attn';
     attn.textContent = t('Have a question? Ask me! 💬','Une question ? Demandez-moi ! 💬','¿Tienes una pregunta? ¡Pregúntame! 💬');
     document.body.appendChild(attn);
     attn.addEventListener('click', openChat);
-    setTimeout(() => attn.remove(), 8000);
+    setTimeout(() => { if (document.getElementById('zmy-attn')) attn.remove(); }, 8000);
   }, 2500);
 
   // Mobile viewport fix
