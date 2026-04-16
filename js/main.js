@@ -40,13 +40,15 @@ if(toggle&&links){
     const mf=document.createElement('div');
     mf.className='nav-mobile-footer';
     const curPage=window.location.pathname.split('/').pop()||'index.html';
-    mf.innerHTML='<a class="btn-nav btn-nav-full" href="contact.html">Start a Project ›</a>'
-      +'<div class="lang-switcher lang-switcher-menu">'
-      +'<button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>'
-      +'<a class="lang-btn" href="fr/'+curPage+'">FR</a>'
-      +'<a class="lang-btn" href="es/'+curPage+'">ES</a>'
-      +'</div>';
-    links.appendChild(mf);
+    const cta=document.createElement('a');
+    cta.className='btn-nav btn-nav-full';cta.href='contact.html';cta.textContent='Start a Project ›';
+    const ls=document.createElement('div');ls.className='lang-switcher lang-switcher-menu';
+    const enBtn=document.createElement('button');enBtn.className='lang-btn';enBtn.dataset.lang='en';enBtn.textContent='EN';
+    enBtn.addEventListener('click',function(){if(typeof setLang==='function')setLang('en');});
+    const frA=document.createElement('a');frA.className='lang-btn';frA.href='fr/'+curPage;frA.textContent='FR';
+    const esA=document.createElement('a');esA.className='lang-btn';esA.href='es/'+curPage;esA.textContent='ES';
+    ls.appendChild(enBtn);ls.appendChild(frA);ls.appendChild(esA);
+    mf.appendChild(cta);mf.appendChild(ls);links.appendChild(mf);
   }
   function openMenu(){toggle.classList.add('open');links.classList.add('open');overlay.classList.add('open');document.body.style.overflow='hidden';}
   function closeMenu(){toggle.classList.remove('open');links.classList.remove('open');overlay.classList.remove('open');document.body.style.overflow='';}
