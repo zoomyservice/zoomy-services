@@ -68,7 +68,7 @@
           <div>
             <div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Email Us</div>
             <div style="color:var(--text-2);font-size:.9rem;">hello@zoomy.services</div>
-            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">We reply within 24 hours on days</div>
+            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">We reply within 24 hours</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -76,7 +76,7 @@
           <div>
             <div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Response Time</div>
             <div style="color:var(--text-2);font-size:.9rem;">Within 24 hours</div>
-            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">Monday to Friday, CET timezone</div>
+            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">7 days a week, ET timezone</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -88,15 +88,69 @@
           </div>
         </div>
 
-        <div style="margin-top:2rem;padding:1.5rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;">
-          <div style="font-size:.75rem;color:var(--muted);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">What to include</div>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--primary);">&#8250;</span> What you need built</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--primary);">&#8250;</span> Your target audience</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--primary);">&#8250;</span> Timeline and deadline</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;"><span style="color:var(--primary);">&#8250;</span> Budget range (helps us scope)</li>
-          </ul>
+        <div style="margin-top:2rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;overflow:hidden;">
+          <div style="padding:1rem 1.5rem .75rem;border-bottom:1px solid rgba(99,102,241,.12);">
+            <div style="font-size:.7rem;color:rgba(255,255,255,.4);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">What to include</div>
+            <div style="display:flex;gap:.4rem;flex-wrap:wrap;" id="wi-tabs">
+              <button onclick="wiTab('campaign')" id="wi-tab-campaign" class="wi-tab wi-tab-active">Campaign</button>
+              <button onclick="wiTab('website')"  id="wi-tab-website"  class="wi-tab">Website</button>
+              <button onclick="wiTab('chatbot')"  id="wi-tab-chatbot"  class="wi-tab">Chatbot</button>
+              <button onclick="wiTab('phone')"    id="wi-tab-phone"    class="wi-tab">Phone Agent</button>
+            </div>
+          </div>
+
+          <div style="padding:1.25rem 1.5rem;">
+            <!-- Campaign -->
+            <ul id="wi-campaign" class="wi-panel" style="list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Which platform(s) — Meta, Google, TikTok, LinkedIn</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Your monthly ad budget</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> What you're promoting and your target audience</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Whether you have existing creatives or need media editing</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Any current accounts or pixels already set up</li>
+            </ul>
+            <!-- Website -->
+            <ul id="wi-website" class="wi-panel" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Type of site — informational, booking, e-commerce, landing page</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Approximate number of pages and languages needed</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Key features — booking system, payments, admin panel, etc.</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Do you have a domain and hosting, or need us to set it up</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Your deadline and budget range</li>
+            </ul>
+            <!-- Chatbot -->
+            <ul id="wi-chatbot" class="wi-panel" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> What the chatbot needs to answer — services, pricing, bookings</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Languages required (we support EN, FR, ES out of the box)</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Standalone chatbot or add-on to a new/existing website</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Whether it needs to capture leads or connect to a CRM</li>
+            </ul>
+            <!-- Phone Agent -->
+            <ul id="wi-phone" class="wi-panel" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Type of business and volume of inbound calls</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Whether you need live calendar booking during calls</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Languages callers use</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Any existing booking system or CRM to integrate with</li>
+              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Do you have an existing phone number to link, or need a new one</li>
+            </ul>
+          </div>
         </div>
+
+        <style>
+          .wi-tab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 11px;font-size:.75rem;font-family:var(--font-mono);color:rgba(255,255,255,.5);cursor:pointer;transition:all .18s;}
+          .wi-tab:hover{background:rgba(99,102,241,.15);color:#fff;border-color:rgba(99,102,241,.4);}
+          .wi-tab-active{background:rgba(99,102,241,.2)!important;color:#fff!important;border-color:rgba(99,102,241,.5)!important;}
+          .wi-item{font-size:.875rem;color:var(--text-2);display:flex;gap:8px;}
+          .wi-arrow{color:var(--primary);flex-shrink:0;}
+        </style>
+        <script>
+          function wiTab(id){
+            ['campaign','website','chatbot','phone'].forEach(function(t){
+              document.getElementById('wi-'+t).style.display='none';
+              document.getElementById('wi-tab-'+t).classList.remove('wi-tab-active');
+            });
+            document.getElementById('wi-'+id).style.display='flex';
+            document.getElementById('wi-tab-'+id).classList.add('wi-tab-active');
+          }
+        </script>
       </div>
 
       <div class="contact-form reveal-right">
