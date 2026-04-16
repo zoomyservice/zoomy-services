@@ -332,13 +332,18 @@
                 label.textContent = 'Calling...';
                 btn.style.opacity = '0.7';
                 btn.disabled = true;
-                status.textContent = 'Ringing...';
+                status.textContent = 'Requesting microphone...';
 
-                // Fetch token first, then ring while waiting feels natural
+                // Step 1: Get mic permission first — user accepts dialog before anything else happens
+                const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                micStream.getTracks().forEach(t => t.stop()); // release immediately, permission is cached
+
+                // Step 2: Fetch token (fast, while mic permission already granted)
+                status.textContent = 'Ringing...';
                 const tokenRes = await fetch(TOKEN_URL);
                 const { signedUrl } = await tokenRes.json();
 
-                // One ring before connecting (ElevenLabs will request mic on its own)
+                // Step 3: Play one ring — permission already granted so no dialog interrupts
                 await playRing();
 
                 status.textContent = 'Connecting...';
@@ -375,6 +380,15 @@
             }
           </script>
 </div>
+<div style="display:flex;align-items:center;gap:10px;margin-top:-.5rem;">
+<div style="flex:1;height:1px;background:var(--border);"></div>
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;">or call directly</span>
+<div style="flex:1;height:1px;background:var(--border);"></div>
+</div>
+<a href="tel:+19147420640" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;max-width:380px;padding:13px 20px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-family:var(--font-display);font-weight:600;font-size:.9rem;text-decoration:none;transition:background .2s,border-color .2s;" onmouseover="this.style.background='rgba(99,102,241,.1)';this.style.borderColor='rgba(99,102,241,.4)'" onmouseout="this.style.background='rgba(255,255,255,.04)';this.style.borderColor='var(--border)'">
+<svg fill="none" height="15" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
++1 (914) 742-0640
+</a>
 <p style="font-size:.78rem;color:var(--muted);text-align:center;max-width:320px;">This call is recorded for quality review. By speaking with the agent you consent to the recording of this conversation.</p>
 </div>
 </div>
