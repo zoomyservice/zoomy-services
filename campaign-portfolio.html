@@ -48,6 +48,11 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:16px;">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    </div>
     <a href="contact.html" class="btn-nav">Start a Project &#8250;</a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -227,5 +232,6 @@
   </div>
 </footer>
 <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>

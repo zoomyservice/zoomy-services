@@ -98,6 +98,11 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:16px;">
+    <div class="lang-switcher">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+    </div>
     <a href="contact.html" class="btn-nav">Start a Project &#8250;</a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -112,22 +117,22 @@
   </div>
   <div class="grid-overlay"></div>
   <div class="section-inner" style="z-index:2;text-align:center;">
-    <span class="badge badge-primary badge-dot" style="margin-bottom:1.75rem;display:inline-flex;">Available for Projects</span>
+    <span class="badge badge-primary badge-dot" style="margin-bottom:1.75rem;display:inline-flex;" data-i18n="index.hero.badge">Available for Projects</span>
     <h1 style="margin-bottom:1.5rem;">
       <span class="glitch grad-text-animated">Digital</span><br>
       Production Studio.
     </h1>
-    <p class="hero-sub" style="margin:0 auto 2.5rem;">Campaign files, custom websites, and AI chatbots — built from scratch, domain registered, hosting configured, and handed to you live.</p>
+    <p class="hero-sub" style="margin:0 auto 2.5rem;" data-i18n="index.hero.sub">Campaign files, custom websites, and AI chatbots — built from scratch, domain registered, hosting configured, and handed to you live.</p>
     <div class="hero-actions" style="justify-content:center;margin-bottom:3rem;">
       <a href="contact.html" class="btn btn-primary btn-lg">Start a Project</a>
       <a href="#our-services" class="btn btn-ghost btn-lg">Explore Services</a>
     </div>
     <div style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> Campaign Management</div>
-      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> Custom Websites</div>
-      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> AI Chatbots</div>
-      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> Domain &amp; Hosting Setup</div>
-      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> Free First Page Sample</div>
+      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> <span data-i18n="index.hero.check1">Campaign Management</span></div>
+      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> <span data-i18n="index.hero.check2">Custom Websites</span></div>
+      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> <span data-i18n="index.hero.check3">AI Chatbots</span></div>
+      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> <span data-i18n="index.hero.check4">Domain &amp; Hosting Setup</span></div>
+      <div style="display:flex;align-items:center;gap:8px;color:var(--text-2);font-size:.875rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span> <span data-i18n="index.hero.check5">Free First Page Sample</span></div>
     </div>
   </div>
 </section>
@@ -163,7 +168,7 @@
   <div class="section-inner">
     <div style="margin-bottom:1rem;">
       <div class="section-tag">Services</div>
-      <h2 class="section-title">What we build.</h2>
+      <h2 class="section-title" data-i18n="index.svc.heading">What we build.</h2>
       <p class="section-sub" style="max-width:560px;">Four distinct services. Each one scoped and priced per project.</p>
     </div>
 
@@ -354,23 +359,23 @@
     </div>
     <div class="steps-flow stagger-children">
       <div class="step-card reveal" style="position:relative;">
-        <div class="step-badge step-badge-1">01</div>
-        <h4>Briefing</h4>
+        <div class="step-badge step-badge-1" data-i18n="step1.num">01</div>
+        <h4 data-i18n="step1.title">Briefing</h4>
         <p>Tell us your goal, target audience, and deadline. We ask the right questions and confirm the full scope and price within 24 hours.</p>
       </div>
       <div class="step-card reveal reveal-delay-1" style="position:relative;">
-        <div class="step-badge step-badge-2">02</div>
-        <h4>We Build</h4>
+        <div class="step-badge step-badge-2" data-i18n="step2.num">02</div>
+        <h4 data-i18n="step2.title">We Build</h4>
         <p>We handle everything — design, code, copy, integrations. You get a direct line for any questions while we work.</p>
       </div>
       <div class="step-card reveal reveal-delay-2" style="position:relative;">
-        <div class="step-badge step-badge-3">03</div>
-        <h4>Review &amp; Revise</h4>
+        <div class="step-badge step-badge-3" data-i18n="step3.num">03</div>
+        <h4 data-i18n="step3.title">Review &amp; Revise</h4>
         <p>You receive a polished, production-ready deliverable. We handle your revision round, then it&#39;s yours.</p>
       </div>
       <div class="step-card reveal reveal-delay-3">
-        <div class="step-badge step-badge-4">04</div>
-        <h4>Live</h4>
+        <div class="step-badge step-badge-4" data-i18n="step4.num">04</div>
+        <h4 data-i18n="step4.title">Live</h4>
         <p>For websites, we handle domain setup and hosting configuration. Your product goes live and the project is complete.</p>
       </div>
     </div>
@@ -499,7 +504,7 @@
   </div>
   <div class="section-inner" style="text-align:center;z-index:2;position:relative;">
     <div class="section-tag" style="justify-content:center;">Ready?</div>
-    <h2 class="section-title">Let&#39;s build something great.</h2>
+    <h2 class="section-title" data-i18n="cta.heading">Let&#39;s build something great.</h2>
     <p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">Tell us what you need. We reply within 24 hours with a scope, timeline, and fixed price.</p>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
       <a href="contact.html" class="btn btn-primary btn-lg">Start a Project</a>
@@ -546,5 +551,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
