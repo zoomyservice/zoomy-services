@@ -1,14 +1,24 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <title>Contact — Zoomy.services</title>
-<meta name="description" content="Start your project. We reply within 24 hours with a tailored proposal."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css"/>
+<meta content="Start your project. We reply within 24 hours with a tailored proposal." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
 <style>
 .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;margin-top:3rem}
 .contact-info-item{display:flex;align-items:flex-start;gap:16px;padding:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:1rem}
@@ -23,125 +33,118 @@
 <canvas id="particle-canvas"></canvas>
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
-
 <nav>
-  <a class="nav-logo" href="index.html">Zoomy<span class="grad-text">.</span>services<span class="nav-logo-sub">Digital Production Studio</span></a>
-          <ul class="nav-links" id="navLinks">
-    <li><a href="campaign-portfolio.html">Campaigns</a></li>
-    <li><a href="website-design.html">Websites</a></li>
-    <li><a href="phone-agent.html">Phone Agents</a></li>
-    <li><a href="chatbot.html">Chatbots</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:16px;">
-    <div class="lang-switcher">
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
-    </div>
-    <a href="contact.html" class="btn-nav">Start a Project &#8250;</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-  </div>
+<a class="nav-logo" href="index.html">Zoomy<span class="grad-text">.</span>services<span class="nav-logo-sub">Digital Production Studio</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campaigns</a></li>
+<li><a data-i18n="nav.websites" href="website-design.html">Websites</a></li>
+<li><a data-i18n="nav.phone" href="phone-agent.html">Phone Agents</a></li>
+<li><a data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
+<li><a data-i18n="nav.about" href="about.html">About</a></li>
+<li><a class="active" data-i18n="nav.contact" href="contact.html">Contact</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:16px;">
+<div class="lang-switcher">
+<button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+<a class="lang-btn" href="fr/contact.html">FR</a>
+<a class="lang-btn" href="es/contact.html">ES</a>
+</div>
+<a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
+<button aria-label="Menu" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</div>
 </nav>
-
 <section class="hero" style="min-height:50vh;padding:140px 2rem 5rem;">
-  <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-3"></div></div>
-  <div class="grid-overlay"></div>
-  <div class="section-inner" style="z-index:2;">
-    <div class="section-tag" style="justify-content:center;margin-bottom:1.5rem;">Contact</div>
-    <h1 style="margin-bottom:1.5rem;">Let&#39;s build<br><span class="grad-text-animated">something great.</span></h1>
-    <p class="hero-sub" style="margin:0 auto;">Tell us about your project. We&#39;ll reply within 24 hours with a tailored proposal and timeline.</p>
-  </div>
+<div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-3"></div></div>
+<div class="grid-overlay"></div>
+<div class="section-inner" style="z-index:2;">
+<div class="section-tag" data-i18n="contact.hero.tag" style="justify-content:center;margin-bottom:1.5rem;">Contact</div>
+<h1 style="margin-bottom:1.5rem;">Let's build<br/><span class="grad-text-animated">something great.</span></h1>
+<p class="hero-sub" data-i18n="contact.hero.sub" style="margin:0 auto;">Tell us about your project. We'll reply within 24 hours with a tailored proposal and timeline.</p>
+</div>
 </section>
-
 <section class="section" style="padding-top:2rem;">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="reveal-left">
-        <div class="section-tag" style="margin-bottom:1.5rem;">Get in Touch</div>
-        <h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:#fff;margin-bottom:1rem;letter-spacing:-.02em;">We&#39;re here to help.</h2>
-        <p style="color:var(--text-2);margin-bottom:2rem;line-height:1.7;">Whether you have a detailed brief or just an idea, reach out. We ask the right questions to understand your needs and build a proposal that fits your goals and budget.</p>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">&#9993;</div>
-          <div>
-            <div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Email Us</div>
-            <div style="color:var(--text-2);font-size:.9rem;">hello@zoomy.services</div>
-            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">We reply within 24 hours</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon">&#128337;</div>
-          <div>
-            <div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Response Time</div>
-            <div style="color:var(--text-2);font-size:.9rem;">Within 24 hours</div>
-            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">7 days a week, ET timezone</div>
-          </div>
-        </div>
-        <div class="contact-info-item">
-          <div class="contact-icon">&#127758;</div>
-          <div>
-            <div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Location</div>
-            <div style="color:var(--text-2);font-size:.9rem;">New York &#8212; remote-first</div>
-            <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">Working with clients worldwide</div>
-          </div>
-        </div>
-
-        <div style="margin-top:2rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;overflow:hidden;">
-          <div style="padding:1rem 1.5rem .75rem;border-bottom:1px solid rgba(99,102,241,.12);">
-            <div style="font-size:.7rem;color:rgba(255,255,255,.4);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">What to include</div>
-            <div style="display:flex;gap:.4rem;flex-wrap:wrap;" id="wi-tabs">
-              <button onclick="wiTab('campaign')" id="wi-tab-campaign" class="wi-tab wi-tab-active">Campaign</button>
-              <button onclick="wiTab('website')"  id="wi-tab-website"  class="wi-tab">Website</button>
-              <button onclick="wiTab('chatbot')"  id="wi-tab-chatbot"  class="wi-tab">Chatbot</button>
-              <button onclick="wiTab('phone')"    id="wi-tab-phone"    class="wi-tab">Phone Agent</button>
-            </div>
-          </div>
-
-          <div style="padding:1.25rem 1.5rem;">
-            <!-- Campaign -->
-            <ul id="wi-campaign" class="wi-panel" style="list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Which platform(s) — Meta, Google, TikTok, LinkedIn</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Your monthly ad budget</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> What you're promoting and your target audience</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Whether you have existing creatives or need media editing</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Any current accounts or pixels already set up</li>
-            </ul>
-            <!-- Website -->
-            <ul id="wi-website" class="wi-panel" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Type of site — informational, booking, e-commerce, landing page</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Approximate number of pages and languages needed</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Key features — booking system, payments, admin panel, etc.</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Do you have a domain and hosting, or need us to set it up</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Your deadline and budget range</li>
-            </ul>
-            <!-- Chatbot -->
-            <ul id="wi-chatbot" class="wi-panel" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> What the chatbot needs to answer — services, pricing, bookings</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Languages required (we support EN, FR, ES out of the box)</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Standalone chatbot or add-on to a new/existing website</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Whether it needs to capture leads or connect to a CRM</li>
-            </ul>
-            <!-- Phone Agent -->
-            <ul id="wi-phone" class="wi-panel" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Type of business and volume of inbound calls</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Whether you need live calendar booking during calls</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Languages callers use</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Any existing booking system or CRM to integrate with</li>
-              <li class="wi-item"><span class="wi-arrow">&#8250;</span> Do you have an existing phone number to link, or need a new one</li>
-            </ul>
-          </div>
-        </div>
-
-        <style>
+<div class="section-inner">
+<div class="contact-grid">
+<div class="reveal-left">
+<div class="section-tag" style="margin-bottom:1.5rem;">Get in Touch</div>
+<h2 style="font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:#fff;margin-bottom:1rem;letter-spacing:-.02em;">We're here to help.</h2>
+<p style="color:var(--text-2);margin-bottom:2rem;line-height:1.7;">Whether you have a detailed brief or just an idea, reach out. We ask the right questions to understand your needs and build a proposal that fits your goals and budget.</p>
+<div class="contact-info-item">
+<div class="contact-icon">✉</div>
+<div>
+<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Email Us</div>
+<div style="color:var(--text-2);font-size:.9rem;">hello@zoomy.services</div>
+<div style="color:var(--muted);font-size:.8rem;margin-top:3px;">We reply within 24 hours</div>
+</div>
+</div>
+<div class="contact-info-item">
+<div class="contact-icon">🕑</div>
+<div>
+<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Response Time</div>
+<div style="color:var(--text-2);font-size:.9rem;">Within 24 hours</div>
+<div style="color:var(--muted);font-size:.8rem;margin-top:3px;">7 days a week, ET timezone</div>
+</div>
+</div>
+<div class="contact-info-item">
+<div class="contact-icon">🌎</div>
+<div>
+<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Location</div>
+<div style="color:var(--text-2);font-size:.9rem;">New York — remote-first</div>
+<div style="color:var(--muted);font-size:.8rem;margin-top:3px;">Working with clients worldwide</div>
+</div>
+</div>
+<div style="margin-top:2rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;overflow:hidden;">
+<div style="padding:1rem 1.5rem .75rem;border-bottom:1px solid rgba(99,102,241,.12);">
+<div style="font-size:.7rem;color:rgba(255,255,255,.4);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">What to include</div>
+<div id="wi-tabs" style="display:flex;gap:.4rem;flex-wrap:wrap;">
+<button class="wi-tab wi-tab-active" id="wi-tab-campaign" onclick="wiTab('campaign')">Campaign</button>
+<button class="wi-tab" id="wi-tab-website" onclick="wiTab('website')">Website</button>
+<button class="wi-tab" id="wi-tab-chatbot" onclick="wiTab('chatbot')">Chatbot</button>
+<button class="wi-tab" id="wi-tab-phone" onclick="wiTab('phone')">Phone Agent</button>
+</div>
+</div>
+<div style="padding:1.25rem 1.5rem;">
+<!-- Campaign -->
+<ul class="wi-panel" id="wi-campaign" style="list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+<li class="wi-item"><span class="wi-arrow">›</span> Which platform(s) — Meta, Google, TikTok, LinkedIn</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Your monthly ad budget</li>
+<li class="wi-item"><span class="wi-arrow">›</span> What you're promoting and your target audience</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Whether you have existing creatives or need media editing</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Any current accounts or pixels already set up</li>
+</ul>
+<!-- Website -->
+<ul class="wi-panel" id="wi-website" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+<li class="wi-item"><span class="wi-arrow">›</span> Type of site — informational, booking, e-commerce, landing page</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Approximate number of pages and languages needed</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Key features — booking system, payments, admin panel, etc.</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Do you have a domain and hosting, or need us to set it up</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Your deadline and budget range</li>
+</ul>
+<!-- Chatbot -->
+<ul class="wi-panel" id="wi-chatbot" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+<li class="wi-item"><span class="wi-arrow">›</span> What the chatbot needs to answer — services, pricing, bookings</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Languages required (we support EN, FR, ES out of the box)</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Standalone chatbot or add-on to a new/existing website</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Whether it needs to capture leads or connect to a CRM</li>
+</ul>
+<!-- Phone Agent -->
+<ul class="wi-panel" id="wi-phone" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
+<li class="wi-item"><span class="wi-arrow">›</span> Type of business and volume of inbound calls</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Whether you need live calendar booking during calls</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Languages callers use</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Any existing booking system or CRM to integrate with</li>
+<li class="wi-item"><span class="wi-arrow">›</span> Do you have an existing phone number to link, or need a new one</li>
+</ul>
+</div>
+</div>
+<style>
           .wi-tab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 11px;font-size:.75rem;font-family:var(--font-mono);color:rgba(255,255,255,.5);cursor:pointer;transition:all .18s;}
           .wi-tab:hover{background:rgba(99,102,241,.15);color:#fff;border-color:rgba(99,102,241,.4);}
           .wi-tab-active{background:rgba(99,102,241,.2)!important;color:#fff!important;border-color:rgba(99,102,241,.5)!important;}
           .wi-item{font-size:.875rem;color:var(--text-2);display:flex;gap:8px;}
           .wi-arrow{color:var(--primary);flex-shrink:0;}
         </style>
-        <script>
+<script>
           function wiTab(id){
             ['campaign','website','chatbot','phone'].forEach(function(t){
               document.getElementById('wi-'+t).style.display='none';
@@ -151,238 +154,223 @@
             document.getElementById('wi-tab-'+id).classList.add('wi-tab-active');
           }
         </script>
-      </div>
-
-      <div class="contact-form reveal-right">
-        <div style="margin-bottom:2rem;">
-          <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Start a Project</h3>
-          <p style="color:var(--muted);font-size:.875rem;">Fill in the form and we&#39;ll be in touch within 24 hours.</p>
-        </div>
-        <form>
-          <div class="form-row">
-            <div class="form-field">
-              <label>First Name</label>
-              <input type="text" placeholder="First name"/>
-            </div>
-            <div class="form-field">
-              <label>Last Name</label>
-              <input type="text" placeholder="Last name"/>
-            </div>
-          </div>
-          <div class="form-field">
-            <label>Email Address</label>
-            <input type="email" placeholder="your@email.com"/>
-          </div>
-          <div class="form-field">
-            <label>Company / Website</label>
-            <input type="text" placeholder="company.com (optional)"/>
-          </div>
-          <div class="form-field">
-            <label>What are you looking for?</label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.5rem;">
-              <label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
-                <input type="checkbox" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;"/> Campaign Files
+</div>
+<div class="contact-form reveal-right">
+<div style="margin-bottom:2rem;">
+<h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Start a Project</h3>
+<p style="color:var(--muted);font-size:.875rem;">Fill in the form and we'll be in touch within 24 hours.</p>
+</div>
+<form>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="contact.form.firstname">First Name</label>
+<input placeholder="First name" type="text"/>
+</div>
+<div class="form-field">
+<label data-i18n="contact.form.lastname">Last Name</label>
+<input placeholder="Last name" type="text"/>
+</div>
+</div>
+<div class="form-field">
+<label data-i18n="contact.form.email">Email Address</label>
+<input placeholder="your@email.com" type="email"/>
+</div>
+<div class="form-field">
+<label data-i18n="contact.form.company">Company / Website</label>
+<input placeholder="company.com (optional)" type="text"/>
+</div>
+<div class="form-field">
+<label data-i18n="contact.form.need">What are you looking for?</label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.5rem;">
+<label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
+<input style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox"/> Campaign Files
               </label>
-              <label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
-                <input type="checkbox" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;"/> Custom Website
+<label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
+<input style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox"/> Custom Website
               </label>
-              <label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
-                <input type="checkbox" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;"/> Landing Page
+<label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
+<input style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox"/> Landing Page
               </label>
-              <label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
-                <input type="checkbox" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;"/> AI Chatbot
+<label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
+<input style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox"/> AI Chatbot
               </label>
-              <label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
-                <input type="checkbox" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;"/> Phone AI Agent
+<label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
+<input style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox"/> Phone AI Agent
               </label>
-              <label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
-                <input type="checkbox" style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;"/> Domain &amp; Hosting
+<label style="display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--text-2);font-family:var(--font-body);text-transform:none;letter-spacing:0;cursor:pointer;">
+<input style="width:16px;height:16px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox"/> Domain &amp; Hosting
               </label>
-            </div>
-          </div>
-          <div class="form-field">
-            <label>Tell us about your project</label>
-            <textarea placeholder="Describe what you need, your audience, and any relevant details or deadlines."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message &#8250;</button>
-          <p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem;">Your email address is used solely to respond to your enquiry and for any future project correspondence.</p>
-        </form>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+<div class="form-field">
+<label data-i18n="contact.form.message">Tell us about your project</label>
+<textarea data-i18n-ph="contact.form.placeholder" placeholder="Describe what you need, your audience, and any relevant details or deadlines."></textarea>
+</div>
+<button class="btn btn-primary" style="width:100%;justify-content:center;" type="submit"><span data-i18n="contact.form.send">Send Message</span> ›</button>
+<p data-i18n="contact.form.privacy" style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem;">Your email address is used solely to respond to your enquiry and for any future project correspondence.</p>
+</form>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ── PRICING ──────────────────────────────────────────────────────────── -->
 <section class="section" style="padding-top:0;padding-bottom:5rem;">
-  <div class="section-inner">
-    <div style="text-align:center;margin-bottom:3rem;">
-      <div class="section-tag" style="justify-content:center;margin-bottom:1.25rem;">Pricing</div>
-      <h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:1rem;">Clear, fixed prices.<br><span class="grad-text-animated">No hourly billing.</span></h2>
-      <p style="color:var(--muted);max-width:520px;margin:0 auto;line-height:1.7;">Every project is scoped upfront — you know the exact price before we start. No surprises, no open-ended timesheets.</p>
-    </div>
-
-    <!-- CAMPAIGNS -->
-    <div style="margin-bottom:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1.25rem;padding-left:4px;">Campaign Management</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
-
-        <div class="card reveal-up" style="padding:1.75rem;position:relative;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Setup Fee</div>
-          <div style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">From <span style="color:#fff;">$400</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">One-time · per platform</div>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Campaign structure &amp; ad groups</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Audience &amp; targeting setup</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Ad copy for all formats</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Pixel &amp; conversion tracking</li>
-          </ul>
-        </div>
-
-        <div class="card reveal-up" style="padding:1.75rem;border-color:rgba(99,102,241,.4);">
-          <div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Monthly Management</div>
-          <div style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">Custom <span style="color:#fff;">quote</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">Based on ad spend &amp; platforms</div>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Budget pacing &amp; bid optimisation</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>A/B testing &amp; creative rotation</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Weekly performance reports</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Retargeting &amp; audience management</li>
-          </ul>
-        </div>
-
-        <div class="card reveal-up" style="padding:1.75rem;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
-            <div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Media Editing</div>
-            <span class="badge" style="font-size:.65rem;">Add-on</span>
-          </div>
-          <div style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;"><span style="color:#fff;">$75</span> / asset</div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">or <strong style="color:#fff;">$250/month</strong> · up to 5 assets</div>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Upload raw footage or images</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Cuts, captions &amp; resizing</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Format for every placement</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Ad-ready delivery</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- WEBSITES -->
-    <div style="margin-bottom:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1.25rem;padding-left:4px;">Website &amp; Web App Development</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
-        <div class="card reveal-up" style="padding:1.5rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Content page</div>
-          <div style="font-size:1.6rem;font-weight:700;color:#fff;">From <span style="color:#fff;">$200</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Standard info/service page</div>
-        </div>
-        <div class="card reveal-up" style="padding:1.5rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Complex page</div>
-          <div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$300–400</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Homepage, hero animations</div>
-        </div>
-        <div class="card reveal-up" style="padding:1.5rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Functional page</div>
-          <div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$400–600</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Booking flow, checkout</div>
-        </div>
-        <div class="card reveal-up" style="padding:1.5rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Booking system</div>
-          <div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$600</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Real-time slots, payments</div>
-        </div>
-        <div class="card reveal-up" style="padding:1.5rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Admin panel</div>
-          <div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$400</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">MFA-secured, custom CMS</div>
-        </div>
-        <div class="card reveal-up" style="padding:1.5rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Extra language</div>
-          <div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$200</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Per additional language</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AI PRODUCTS -->
-    <div style="margin-bottom:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1.25rem;padding-left:4px;">AI Products</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
-
-        <div class="card reveal-up" style="padding:1.75rem;">
-          <div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Website Chatbot</div>
-          <div style="font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">From <span style="color:#fff;">$500</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">+ $50/month hosting · or $400 as website add-on</div>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Trained on your business</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>EN / FR / ES out of the box</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Typo-tolerant, score-based matching</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Self-hosted — no third-party fees</li>
-          </ul>
-        </div>
-
-        <div class="card reveal-up" style="padding:1.75rem;border-color:rgba(99,102,241,.4);">
-          <div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">AI Phone Agent</div>
-          <div style="font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">From <span style="color:#fff;">$600</span></div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">+ usage-based monthly (ElevenLabs + 40%)</div>
-          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Answers every inbound call 24/7</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Live calendar booking</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Any language, auto-detected</li>
-            <li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Full call transcripts</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- FOOTNOTE -->
-    <div style="text-align:center;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:680px;margin:0 auto;">
-      <p style="color:var(--muted);font-size:.875rem;line-height:1.7;margin:0;">All prices are starting points. Final project price is agreed at the briefing stage — fixed, in writing, before we start. Ad spend is always billed directly by the platform to your card; we never handle it. <a href="mailto:hello@zoomy.services" style="color:var(--accent);text-decoration:none;">hello@zoomy.services</a></p>
-    </div>
-
-  </div>
+<div class="section-inner">
+<div style="text-align:center;margin-bottom:3rem;">
+<div class="section-tag" style="justify-content:center;margin-bottom:1.25rem;">Pricing</div>
+<h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:1rem;">Clear, fixed prices.<br/><span class="grad-text-animated">No hourly billing.</span></h2>
+<p style="color:var(--muted);max-width:520px;margin:0 auto;line-height:1.7;">Every project is scoped upfront — you know the exact price before we start. No surprises, no open-ended timesheets.</p>
+</div>
+<!-- CAMPAIGNS -->
+<div style="margin-bottom:2.5rem;">
+<div style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1.25rem;padding-left:4px;">Campaign Management</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+<div class="card reveal-up" style="padding:1.75rem;position:relative;">
+<div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Setup Fee</div>
+<div style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">From <span style="color:#fff;">$400</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">One-time · per platform</div>
+<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Campaign structure &amp; ad groups</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Audience &amp; targeting setup</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Ad copy for all formats</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Pixel &amp; conversion tracking</li>
+</ul>
+</div>
+<div class="card reveal-up" style="padding:1.75rem;border-color:rgba(99,102,241,.4);">
+<div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Monthly Management</div>
+<div style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">Custom <span style="color:#fff;">quote</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">Based on ad spend &amp; platforms</div>
+<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Budget pacing &amp; bid optimisation</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>A/B testing &amp; creative rotation</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Weekly performance reports</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Retargeting &amp; audience management</li>
+</ul>
+</div>
+<div class="card reveal-up" style="padding:1.75rem;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Media Editing</div>
+<span class="badge" style="font-size:.65rem;">Add-on</span>
+</div>
+<div style="font-size:2rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;"><span style="color:#fff;">$75</span> / asset</div>
+<div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">or <strong style="color:#fff;">$250/month</strong> · up to 5 assets</div>
+<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Upload raw footage or images</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Cuts, captions &amp; resizing</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Format for every placement</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Ad-ready delivery</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- WEBSITES -->
+<div style="margin-bottom:2.5rem;">
+<div style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1.25rem;padding-left:4px;">Website &amp; Web App Development</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+<div class="card reveal-up" style="padding:1.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Content page</div>
+<div style="font-size:1.6rem;font-weight:700;color:#fff;">From <span style="color:#fff;">$200</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Standard info/service page</div>
+</div>
+<div class="card reveal-up" style="padding:1.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Complex page</div>
+<div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$300–400</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Homepage, hero animations</div>
+</div>
+<div class="card reveal-up" style="padding:1.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Functional page</div>
+<div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$400–600</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Booking flow, checkout</div>
+</div>
+<div class="card reveal-up" style="padding:1.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Booking system</div>
+<div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$600</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Real-time slots, payments</div>
+</div>
+<div class="card reveal-up" style="padding:1.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Admin panel</div>
+<div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$400</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">MFA-secured, custom CMS</div>
+</div>
+<div class="card reveal-up" style="padding:1.5rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;">Extra language</div>
+<div style="font-size:1.6rem;font-weight:700;color:#fff;"><span style="color:#fff;">$200</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-top:.25rem;">Per additional language</div>
+</div>
+</div>
+</div>
+<!-- AI PRODUCTS -->
+<div style="margin-bottom:2.5rem;">
+<div style="font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);margin-bottom:1.25rem;padding-left:4px;">AI Products</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+<div class="card reveal-up" style="padding:1.75rem;">
+<div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Website Chatbot</div>
+<div style="font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">From <span style="color:#fff;">$500</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">+ $50/month hosting · or $400 as website add-on</div>
+<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Trained on your business</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>EN / FR / ES out of the box</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Typo-tolerant, score-based matching</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Self-hosted — no third-party fees</li>
+</ul>
+</div>
+<div class="card reveal-up" style="padding:1.75rem;border-color:rgba(99,102,241,.4);">
+<div style="font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.5);margin-bottom:.5rem;">AI Phone Agent</div>
+<div style="font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:-.03em;margin-bottom:.25rem;">From <span style="color:#fff;">$600</span></div>
+<div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;">+ usage-based monthly (ElevenLabs + 40%)</div>
+<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem;">
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Answers every inbound call 24/7</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Live calendar booking</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Any language, auto-detected</li>
+<li style="font-size:.875rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start;"><span style="color:#10b981;flex-shrink:0;margin-top:2px;">✓</span>Full call transcripts</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- FOOTNOTE -->
+<div style="text-align:center;padding:1.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:680px;margin:0 auto;">
+<p style="color:var(--muted);font-size:.875rem;line-height:1.7;margin:0;">All prices are starting points. Final project price is agreed at the briefing stage — fixed, in writing, before we start. Ad spend is always billed directly by the platform to your card; we never handle it. <a href="mailto:hello@zoomy.services" style="color:var(--accent);text-decoration:none;">hello@zoomy.services</a></p>
+</div>
+</div>
 </section>
-
 <footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo grad-text">Zoomy.services</div>
-        <p class="footer-tagline">Campaign management, custom websites, AI chatbots, and phone agents.</p>
-        <div class="footer-social" style="margin-top:24px;">
-          <a href="#" title="X" style="font-size:.75rem;font-family:var(--font-mono);">&#120143;</a>
-          <a href="#" title="LinkedIn" style="font-size:.75rem;font-family:var(--font-mono);">in</a>
-          <a href="#" title="Instagram" style="font-size:.75rem;font-family:var(--font-mono);">ig</a>
-        </div>
-      </div>
-      <div class="footer-col"><h4>Services</h4><ul>
-        <li><a href="campaign-portfolio.html">Campaigns</a></li>
-        <li><a href="website-design.html">Websites</a></li>
-        <li><a href="phone-agent.html">Phone Agents</a></li>
-        <li><a href="chatbot.html">AI Chatbots</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Company</h4><ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="portfolio.html">Our Work</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul>
-        <li><a href="contact.html" class="active">Start a Project</a></li>
-        <li><a href="mailto:hello@zoomy.services">hello@zoomy.services</a></li>
-      </ul>
-        <div style="margin-top:20px;"><span class="badge badge-green badge-dot">Open for Projects</span></div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&#169; 2026 Zoomy.services &#8212; All rights reserved.</span>
-      <span style="display:flex;gap:20px;"><a href="#">Privacy</a><a href="#">Terms</a></span>
-    </div>
-  </div>
+<div class="footer-inner">
+<div class="footer-grid">
+<div>
+<div class="footer-logo grad-text">Zoomy.services</div>
+<p class="footer-tagline" data-i18n="footer.tagline">Campaign management, custom websites, AI chatbots, and phone agents.</p>
+<div class="footer-social" style="margin-top:24px;">
+<a href="#" style="font-size:.75rem;font-family:var(--font-mono);" title="X">𝕏</a>
+<a href="#" style="font-size:.75rem;font-family:var(--font-mono);" title="LinkedIn">in</a>
+<a href="#" style="font-size:.75rem;font-family:var(--font-mono);" title="Instagram">ig</a>
+</div>
+</div>
+<div class="footer-col"><h4 data-i18n="footer.services">Services</h4><ul>
+<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campaigns</a></li>
+<li><a data-i18n="nav.websites" href="website-design.html">Websites</a></li>
+<li><a data-i18n="nav.phone" href="phone-agent.html">Phone Agents</a></li>
+<li><a href="chatbot.html">AI Chatbots</a></li>
+</ul></div>
+<div class="footer-col"><h4 data-i18n="footer.company">Company</h4><ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="portfolio.html">Our Work</a></li>
+<li><a href="faq.html">FAQ</a></li>
+</ul></div>
+<div class="footer-col"><h4 data-i18n="footer.contact">Contact</h4><ul>
+<li><a class="active" href="contact.html">Start a Project</a></li>
+<li><a href="mailto:hello@zoomy.services">hello@zoomy.services</a></li>
+</ul>
+<div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Open for Projects</span></div>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Zoomy.services — All rights reserved.</span>
+<span style="display:flex;gap:20px;"><a data-i18n="footer.privacy" href="#">Privacy</a><a data-i18n="footer.terms" href="#">Terms</a></span>
+</div>
+</div>
 </footer>
 <script src="js/main.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/chatbot.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
