@@ -253,7 +253,10 @@
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    function sendMessage() {
+    var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+    var history = [];
+
+    async function sendMessage() {
       var text = inputEl.value.trim();
       if (!text) return;
       if (firstInteraction) {
@@ -262,6 +265,8 @@
       }
       appendMsg(text, 'user');
       inputEl.value = '';
+      history.push({ role: 'user', content: text });
+
       // Typing indicator
       var typing = document.createElement('div');
       typing.className = 'msg msg-bot';
@@ -269,11 +274,33 @@
       typing.textContent = '…';
       messagesEl.appendChild(typing);
       messagesEl.scrollTop = messagesEl.scrollHeight;
-      setTimeout(function() {
-        typing.remove();
-        var response = window.__zmy.getResponse(text);
-        appendMsg(response, 'bot');
-      }, 280);
+
+      var delay = 600 + Math.random() * 500;
+      await new Promise(function(r) { setTimeout(r, delay); });
+
+      var response = window.__zmy.getResponse(text);
+      var isFallback = window.__zmy.isLastFallback();
+
+      if (isFallback) {
+        try {
+          var res = await fetch(AI_WORKER, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text, history: history.slice(-8) })
+          });
+          if (res.ok) {
+            var data = await res.json();
+            typing.remove();
+            appendMsg(data.reply, 'bot');
+            history.push({ role: 'assistant', content: data.reply });
+            return;
+          }
+        } catch(e) { /* fall through to local response */ }
+      }
+
+      typing.remove();
+      appendMsg(response, 'bot');
+      history.push({ role: 'assistant', content: response });
     }
 
     sendBtn.addEventListener('click', sendMessage);

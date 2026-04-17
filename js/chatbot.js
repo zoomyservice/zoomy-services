@@ -1497,7 +1497,7 @@ if (typeof module !== 'undefined') {
   module.exports = { getResponse, KB, norm, anyKw, kwMatch, expandSynonyms, fuzzy, scoreKB };
 }
 if (typeof window !== 'undefined') {
-  window.__zmy = { getResponse };
+  window.__zmy = { getResponse, isLastFallback: () => ctx.lastEntry === 'fallback' };
 }
 
 })(); /* end IIFE */
