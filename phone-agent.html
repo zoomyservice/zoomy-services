@@ -17,6 +17,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -449,18 +451,26 @@
                                : window.location.pathname.includes('/es/') ? 'es'
                                : (document.documentElement.lang || localStorage.getItem('zmy_lang') || 'en');
 
-                // Override firstMessage in target language so LLM continues in that language
+                // Override firstMessage + system prompt to enforce language
+                // "Zoomy Services" (no dot) so TTS doesn't say "Zoomy dot services"
                 const firstMessages = {
-                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy.services. Comment puis-je vous aider aujourd'hui ?",
-                  'es': "¡Hola! Soy la asistente IA de Zoomy.services. ¿En qué puedo ayudarle hoy?",
+                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy Services. Comment puis-je vous aider aujourd'hui ?",
+                  'es': "¡Hola! Soy la asistente IA de Zoomy Services. ¿En qué puedo ayudarle hoy?",
+                  'en': "Hi! I'm the AI assistant for Zoomy Services. How can I help you today?"
+                };
+                // System prompt overrides force the LLM to respond in the correct language
+                const systemPrompts = {
+                  'fr': "Tu es l'assistante IA de démonstration de Zoomy Services, une agence digitale. Tu DOIS toujours répondre en français, sans exception. Aide les appelants avec leurs questions sur les services de Zoomy Services : sites web personnalisés, chatbots IA, agents téléphoniques IA, et gestion de campagnes publicitaires (Meta, Google, TikTok). Sois concise, professionnelle et chaleureuse. Pour des devis, dirige-les vers contact@zoomy.services.",
+                  'es': "Eres la asistente IA de demostración de Zoomy Services, una agencia digital. DEBES responder siempre en español, sin excepción. Ayuda a los llamantes con preguntas sobre los servicios de Zoomy Services: sitios web personalizados, chatbots IA, agentes telefónicos IA y gestión de campañas publicitarias (Meta, Google, TikTok). Sé concisa, profesional y amable. Para presupuestos, dirígelos a contact@zoomy.services.",
                   'en': undefined
                 };
-                const langOverride = { language: pageLang };
-                if (firstMessages[pageLang]) langOverride.firstMessage = firstMessages[pageLang];
+                const agentOverride = { language: pageLang };
+                agentOverride.firstMessage = firstMessages[pageLang];
+                if (systemPrompts[pageLang]) agentOverride.prompt = { prompt: systemPrompts[pageLang] };
 
                 conv = await Conversation.startSession({
                   signedUrl,
-                  overrides: { agent: langOverride },
+                  overrides: { agent: agentOverride },
                   onConnect: () => {
                     btn.disabled = false;
                     label.textContent = 'End Call';
