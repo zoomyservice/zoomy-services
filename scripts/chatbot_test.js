@@ -529,9 +529,9 @@ const KB = [
   r:() => {
     ctx.lastEntry='phone-pricing';
     return t(
-      '**AI Phone Agent pricing:**\n\n• Standard (FAQ + availability) — from **$600**\n• With calendar booking — **$1,000–$1,500**\n• Custom integrations — **$1,500–$2,500**\n• Monthly: ElevenLabs usage + 40%, min **$60/month**\n\nEmail **contact@zoomy.services** for a quote.',
-      '**Tarification agent téléphonique :**\n\n• Standard — à partir de **600$**\n• Avec réservation calendrier — **1 000–1 500$**\n• Mensuel — coût ElevenLabs + 40%, min **60$/mois**\n\nÉcrivez à **contact@zoomy.services**.',
-      '**Precio agente telefónico:**\n\n• Estándar — desde **$600** · Con reservas — **$1.000–$1.500**\n• Mensual: coste ElevenLabs + 40%, mín **$60/mes**\n\nEscribe a **contact@zoomy.services**.'
+      '**AI Phone Agent pricing:**\n\n• Standard (FAQ + availability) — from **$600**\n• With calendar booking — **$1,000–$1,500**\n• Custom integrations — **$1,500–$2,500**\n• Monthly: usage-based · min **$60/month**\n\nEmail **contact@zoomy.services** for a quote.',
+      '**Tarification agent téléphonique :**\n\n• Standard — à partir de **600$**\n• Avec réservation calendrier — **1 000–1 500$**\n• Mensuel — coût basé sur l'usage · min **60$/mois**\n\nÉcrivez à **contact@zoomy.services**.',
+      '**Precio agente telefónico:**\n\n• Estándar — desde **$600** · Con reservas — **$1.000–$1.500**\n• Mensual: coste basado en uso · mín **$60/mes**\n\nEscribe a **contact@zoomy.services**.'
     );
   }
 },
@@ -860,7 +860,7 @@ const KB = [
     'which ai does it use','what ai','powered by'],
   r:() => { ctx.lastEntry='chatbot-api'; ctx.service='chatbot';
     return t(
-      `We offer two chatbot approaches:\n\n**Self-hosted (our default)**\n• Custom knowledge base with keyword classification\n• No external API calls\n• No ongoing API costs\n• GDPR-compliant — no data leaves your server\n• Works for businesses with well-defined FAQs and services\n\n**API-based**\n• Connects to an external AI service (e.g. OpenAI GPT, Anthropic Claude)\n• Better for open-ended conversations with no fixed answer set\n• More flexible — handles unusual questions without explicit training\n• Monthly API costs apply — we pass these through with a management margin\n\n**Which is right for you?**\nIf your visitors mostly ask the same 30–60 questions, self-hosted is more reliable, cheaper, and faster. If you need the chatbot to handle genuinely unpredictable conversations, API-based makes more sense.\n\nWe'll recommend the right approach during the brief.`,
+      `We offer two chatbot approaches:\n\n**Self-hosted (our default)**\n• Custom knowledge base with keyword classification\n• No external API calls\n• No ongoing API costs\n• GDPR-compliant — no data leaves your server\n• Works for businesses with well-defined FAQs and services\n\n**API-based**\n• Connects to an external AI service (e.g. OpenAI GPT, Anthropic Claude)\n• Better for open-ended conversations with no fixed answer set\n• More flexible — handles unusual questions without explicit training\n• Monthly API costs apply — billed at provider rate\n\n**Which is right for you?**\nIf your visitors mostly ask the same 30–60 questions, self-hosted is more reliable, cheaper, and faster. If you need the chatbot to handle genuinely unpredictable conversations, API-based makes more sense.\n\nWe'll recommend the right approach during the brief.`,
       `Nous proposons deux approches pour les chatbots :\n\n**Auto-hébergé (notre approche par défaut)**\n• Base de connaissances personnalisée avec classification par mots-clés\n• Pas d'appels API externes\n• Pas de coûts API continus\n• Conforme RGPD — aucune donnée ne quitte votre serveur\n\n**Basé sur API**\n• Se connecte à un service IA externe (ex. OpenAI GPT, Anthropic Claude)\n• Meilleur pour les conversations ouvertes sans ensemble de réponses fixe\n• Plus flexible — gère les questions inhabituelles sans entraînement explicite\n• Des coûts API mensuels s'appliquent\n\nNous recommanderons la bonne approche lors du brief.`,
       `Ofrecemos dos enfoques para chatbots:\n\n**Auto-alojado (nuestro enfoque por defecto)**\n• Base de conocimiento personalizada con clasificación por palabras clave\n• Sin llamadas API externas\n• Sin costes de API recurrentes\n• Cumple con GDPR — ningún dato sale de tu servidor\n\n**Basado en API**\n• Se conecta a un servicio de IA externo (ej. OpenAI GPT, Anthropic Claude)\n• Mejor para conversaciones abiertas sin conjunto de respuestas fijo\n• Más flexible — maneja preguntas inusuales sin entrenamiento explícito\n• Se aplican costes de API mensuales\n\nRecomendaremos el enfoque correcto durante el brief.`
     );
@@ -1195,7 +1195,7 @@ const FOLLOW_UP = {
   'chatbot': (n) => {
     if (anyKw(n, ['how much','cost','price','fee','pricing'])) {
       return t(
-        `Chatbot pricing:\n\n• **Standard** (1–2 languages, up to ~30 topics) — **$500**\n• **Complex** (multilingual, 50+ topics, booking/lead capture) — **$1,000–$1,500**\n• **Monthly hosting** (self-hosted) — **$50/month** for maintenance\n• **API-based** — pass-through cost + 50%, minimum $40/month\n\nAs an add-on to a website build, the chatbot is discounted to **$400**.\n\nEmail **${BIZ.email}** for an exact quote based on your business complexity.`,
+        `Chatbot pricing:\n\n• **Standard** (1–2 languages, up to ~30 topics) — **$500**\n• **Complex** (multilingual, 50+ topics, booking/lead capture) — **$1,000–$1,500**\n• **Monthly hosting** (self-hosted) — **$50/month** for maintenance\n• **API-based** — from $40/month\n\nAs an add-on to a website build, the chatbot is discounted to **$400**.\n\nEmail **${BIZ.email}** for an exact quote based on your business complexity.`,
         `Tarification du chatbot :\n\n• **Standard** (1–2 langues, ~30 sujets) — **500$**\n• **Complexe** (multilingue, 50+ sujets, réservation/leads) — **1 000–1 500$**\n• **Hébergement mensuel** — **50$/mois**\n• En complément d'un site : **400$**\n\nÉcrivez à **${BIZ.email}** pour un devis selon la complexité de votre entreprise.`,
         `Precios del chatbot:\n\n• **Estándar** (1–2 idiomas, ~30 temas) — **$500**\n• **Complejo** (multilingüe, 50+ temas, reservas/leads) — **$1.000–$1.500**\n• **Hosting mensual** — **$50/mes**\n• Como complemento de un sitio web: **$400**\n\nEscribe a **${BIZ.email}** para un presupuesto según la complejidad de tu negocio.`
       );
@@ -1206,7 +1206,7 @@ const FOLLOW_UP = {
   'quote': (n) => {
     if (anyKw(n, ['campaign','meta','google','ads','advertising'])) {
       return t(
-        `For a campaign quote, email **${BIZ.email}** and include:\n• Which platform(s) — Meta, Google, TikTok, LinkedIn\n• Your monthly ad budget\n• What you're promoting\n• Your target audience\n• Whether you need media editing (we can edit your raw footage/images into ad creatives — $75/asset or $250/month for up to 5)\n\nWe'll come back with a scope and fixed management fee within 24 hours.`,
+        `For a campaign quote, email **${BIZ.email}** and include:\n• Which platform(s) — Meta, Google, TikTok, LinkedIn\n• Your monthly ad budget\n• What you're promoting\n• Your target audience\n• Whether you need media editing (we can edit your raw footage/images into ad creatives — $75/asset)\n\nWe'll come back with a scope and fixed management fee within 24 hours.`,
         `Pour un devis campagne, écrivez à **${BIZ.email}** en incluant :\n• Quelle(s) plateforme(s)\n• Votre budget publicitaire mensuel\n• Ce que vous promouvez\n• Votre audience cible`,
         `Para un presupuesto de campaña, escribe a **${BIZ.email}** e incluye:\n• Qué plataforma(s)\n• Tu presupuesto publicitario mensual\n• Qué estás promocionando\n• Tu audiencia objetivo`
       );
