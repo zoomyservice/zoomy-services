@@ -550,9 +550,9 @@ const KB = [
     'trial','demo','demo site','can i see a demo','see a demo','gratuit','page gratuite','primera pagina','gratis'],
   r:() => { ctx.lastEntry='freepage';
     return t(
-      `We offer a **free first page build** — no commitment, no credit card. 🎁\n\nWe design and code the full first page of your website at zero cost. If you love it, we build the rest. If not, you keep the page.\n\nTo claim it, email **${BIZ.email}** with a brief description of your business and what you're looking for.`,
-      `Nous offrons une **première page gratuite** — sans engagement, sans carte de crédit. 🎁\n\nNous concevons et codons la première page complète de votre site à coût zéro. Si vous l'aimez, nous construisons le reste. Sinon, vous gardez la page.\n\nPour en bénéficier, écrivez à **${BIZ.email}** avec une courte description de votre activité et de ce que vous cherchez.`,
-      `Ofrecemos una **primera página gratuita** — sin compromiso, sin tarjeta de crédito. 🎁\n\nDiseñamos y programamos la primera página completa de tu sitio web a coste cero. Si te gusta, construimos el resto. Si no, te quedas con la página.\n\nPara reclamarla, escribe a **${BIZ.email}** con una breve descripción de tu negocio y lo que buscas.`
+      `We create a **free personalised sample** — designed specifically for your business. 🎁\n\nThis isn't a generic template — it's a custom design built around your brand. If you like it and want to move forward, you pay. If not, no charge, no obligation.\n\nTo get yours, email **${BIZ.email}** with a brief description of your business and what you're looking for.`,
+      `Nous créons un **échantillon personnalisé gratuit** — conçu spécifiquement pour votre activité. 🎁\n\nCe n'est pas un template générique — c'est un design sur-mesure autour de votre marque. Si vous aimez et souhaitez continuer, vous payez. Sinon, aucune obligation.\n\nPour en bénéficier, écrivez à **${BIZ.email}** avec une description de votre activité.`,
+      `Creamos una **muestra personalizada gratuita** — diseñada específicamente para tu negocio. 🎁\n\nNo es una plantilla genérica — es un diseño a medida para tu marca. Si te gusta y quieres continuar, pagas. Si no, sin cargo ni obligación.\n\nPara obtener la tuya, escribe a **${BIZ.email}** con una descripción de tu negocio.`
     );
   }
 },
