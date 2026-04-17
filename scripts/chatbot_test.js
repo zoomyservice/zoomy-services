@@ -529,7 +529,7 @@ const KB = [
   r:() => {
     ctx.lastEntry='phone-pricing';
     return t(
-      '**AI Phone Agent pricing:**\n\n• Standard (FAQ + availability) — from **$600**\n• With calendar booking — **$1,000–$1,500**\n• Custom integrations — **$1,500–$2,500**\n• Monthly: usage-based · min **$60/month**\n\nEmail **contact@zoomy.services** for a quote.',
+      '**AI Phone Agent pricing:**\n\n• Standard (FAQ + availability) — from **$600**\n• With calendar booking — **$1,000–$1,500**\n• Custom integrations — **$1,500–$1,800**\n• Monthly: usage-based · min **$60/month**\n\nEmail **contact@zoomy.services** for a quote.',
       '**Tarification agent téléphonique :**\n\n• Standard — à partir de **600$**\n• Avec réservation calendrier — **1 000–1 500$**\n• Mensuel — coût basé sur l'usage · min **60$/mois**\n\nÉcrivez à **contact@zoomy.services**.',
       '**Precio agente telefónico:**\n\n• Estándar — desde **$600** · Con reservas — **$1.000–$1.500**\n• Mensual: coste basado en uso · mín **$60/mes**\n\nEscribe a **contact@zoomy.services**.'
     );
@@ -1177,9 +1177,9 @@ const FOLLOW_UP = {
   'phoneagent': (n) => {
     if (anyKw(n, ['how much','cost','price','fee','what does it cost','pricing'])) {
       return t(
-        `AI phone agent pricing has two components:\n\n**1. Build fee** (one-time)\n• Standard (FAQ + availability) — from $600\n• With calendar booking integration — $1,000–$1,500\n• With custom CRM/webhook integrations — $1,500–$2,500\n\n**2. Monthly operational cost**\n• ElevenLabs call minutes (billed at provider rate) + our management margin\n• Estimate: $3–$8 per call depending on call length\n• We pass through the exact cost + 40%, minimum $60/month\n\nFor a business handling 100 calls/month, typical monthly cost: $80–$150.\n\nEmail **${BIZ.email}** for a specific quote.`,
+        `AI phone agent pricing has two components:\n\n**1. Build fee** (one-time)\n• Standard (FAQ + availability) — from $600\n• With calendar booking integration — $1,000–$1,500\n• With custom CRM/webhook integrations — $1,500–$1,800\n\n**2. Monthly operational cost**\n• Usage-based monthly cost (call minutes)\n• Estimate: $3–$8 per call depending on call length\n• Minimum $60/month\n\nFor a business handling 100 calls/month, typical monthly cost: $80–$150.\n\nEmail **${BIZ.email}** for a specific quote.`,
         `La tarification de l'agent téléphonique IA a deux composantes :\n\n**1. Frais de construction** (unique)\n• Standard — à partir de 600$\n• Avec intégration calendrier — 1 000–1 500$\n• Avec intégrations webhook personnalisées — 1 500–2 500$\n\n**2. Coût mensuel d'exploitation**\n• Minutes d'appel ElevenLabs + notre marge de gestion\n• Estimation : 3–8$ par appel selon la durée\n\nÉcrivez à **${BIZ.email}** pour un devis précis.`,
-        `El precio del agente telefónico IA tiene dos componentes:\n\n**1. Tarifa de construcción** (única)\n• Estándar — desde $600\n• Con integración de calendario — $1.000–$1.500\n• Con integraciones webhook personalizadas — $1.500–$2.500\n\n**2. Coste operativo mensual**\n• Minutos de llamada ElevenLabs + nuestra margen de gestión\n• Estimación: $3–$8 por llamada según duración\n\nEscribe a **${BIZ.email}** para un presupuesto específico.`
+        `El precio del agente telefónico IA tiene dos componentes:\n\n**1. Tarifa de construcción** (única)\n• Estándar — desde $600\n• Con integración de calendario — $1.000–$1.500\n• Con integraciones webhook personalizadas — $1.500–$1.800\n\n**2. Coste operativo mensual**\n• Minutos de llamada ElevenLabs + nuestra margen de gestión\n• Estimación: $3–$8 por llamada según duración\n\nEscribe a **${BIZ.email}** para un presupuesto específico.`
       );
     }
     if (anyKw(n, ['try','demo','test','hear','listen','sample','example call'])) {
