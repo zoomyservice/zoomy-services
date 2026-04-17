@@ -23,6 +23,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -221,11 +223,35 @@
 <textarea data-i18n-ph="contact.form.placeholder" name="message" placeholder="Describe what you need, your audience, and any relevant details or deadlines." required=""></textarea>
 </div>
 <button class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;" type="submit"><span data-i18n="contact.form.send" id="contact-btn-text">Send Message</span> ›</button>
-<p data-i18n="contact.form.privacy" style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem;">Your email address is used solely to respond to your enquiry and for any future project correspondence.</p>
-<div id="contact-success" style="display:none;text-align:center;padding:1.5rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:12px;margin-top:1rem;">
-<div style="font-size:1.5rem;margin-bottom:.5rem;">✓</div>
-<div style="color:#4ade80;font-weight:600;margin-bottom:.25rem;">Message sent!</div>
-<div style="color:var(--muted);font-size:.875rem;">We'll be in touch within 24 hours.</div>
+<!-- What happens next -->
+<div style="margin-top:1.5rem;padding:1.25rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:12px;">
+<div style="font-size:.7rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:1rem;">What happens next</div>
+<div style="display:flex;flex-direction:column;gap:.875rem;">
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<div style="width:22px;height:22px;border-radius:50%;background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#a5b4fc;flex-shrink:0;margin-top:1px;">1</div>
+<div><div style="font-size:.875rem;color:#fff;font-weight:600;margin-bottom:2px;">We review your message</div><div style="font-size:.8rem;color:var(--muted);line-height:1.5;">Usually within a few hours — we read every submission personally.</div></div>
+</div>
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<div style="width:22px;height:22px;border-radius:50%;background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#a5b4fc;flex-shrink:0;margin-top:1px;">2</div>
+<div><div style="font-size:.875rem;color:#fff;font-weight:600;margin-bottom:2px;">You get a tailored proposal within 24h</div><div style="font-size:.8rem;color:var(--muted);line-height:1.5;">Fixed price, full scope, clear timeline. No vague estimates.</div></div>
+</div>
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<div style="width:22px;height:22px;border-radius:50%;background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#a5b4fc;flex-shrink:0;margin-top:1px;">3</div>
+<div><div style="font-size:.875rem;color:#fff;font-weight:600;margin-bottom:2px;">We build your free homepage first</div><div style="font-size:.8rem;color:var(--muted);line-height:1.5;">Real design, real code. You approve it before anything is paid.</div></div>
+</div>
+</div>
+</div>
+<p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem;">Your email is used solely to respond to your enquiry.</p>
+<div id="contact-success" style="display:none;padding:1.75rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:12px;margin-top:1rem;">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+<div style="width:36px;height:36px;border-radius:50%;background:rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">✓</div>
+<div style="color:#4ade80;font-weight:700;font-size:1rem;">Message received — you'll hear from us within 24 hours.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:.6rem;">
+<div style="font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:#4ade80;">›</span> Check your inbox — our reply comes from contact@zoomy.services</div>
+<div style="font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:#4ade80;">›</span> We'll include a fixed price and timeline in our first reply</div>
+<div style="font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:#4ade80;">›</span> Your free homepage build starts as soon as you confirm</div>
+</div>
 </div>
 </form>
 <script>

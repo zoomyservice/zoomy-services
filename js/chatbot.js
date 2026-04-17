@@ -550,9 +550,9 @@ const KB = [
     'trial','demo','demo site','can i see a demo','see a demo','gratuit','page gratuite','primera pagina','gratis'],
   r:() => { ctx.lastEntry='freepage';
     return t(
-      `We create a **free personalised sample** — designed specifically for your business. 🎁\n\nThis isn't a generic template — it's a custom design built around your brand. If you like it and want to move forward, you pay. If not, no charge, no obligation.\n\nTo get yours, email **${BIZ.email}** with a brief description of your business and what you're looking for.`,
-      `Nous créons un **échantillon personnalisé gratuit** — conçu spécifiquement pour votre activité. 🎁\n\nCe n'est pas un template générique — c'est un design sur-mesure autour de votre marque. Si vous aimez et souhaitez continuer, vous payez. Sinon, aucune obligation.\n\nPour en bénéficier, écrivez à **${BIZ.email}** avec une description de votre activité.`,
-      `Creamos una **muestra personalizada gratuita** — diseñada específicamente para tu negocio. 🎁\n\nNo es una plantilla genérica — es un diseño a medida para tu marca. Si te gusta y quieres continuar, pagas. Si no, sin cargo ni obligación.\n\nPara obtener la tuya, escribe a **${BIZ.email}** con una descripción de tu negocio.`
+      `We build your **entire first page for free** — real design, real code, real content. 🎁\n\nNot a mockup or template. A fully built homepage, custom to your business. If you love it and want the rest built, you pay. If not, you keep the page — no charge, no obligation.\n\nTo claim yours, email **${BIZ.email}** with a brief description of your business.`,
+      `Nous construisons **toute votre première page gratuitement** — vrai design, vrai code, vrai contenu. 🎁\n\nPas une maquette ou un template — une vraie page d'accueil sur-mesure pour votre activité. Si vous aimez et voulez la suite, vous payez. Sinon, vous gardez la page — aucune obligation.\n\nPour en bénéficier, écrivez à **${BIZ.email}** avec une description de votre activité.`,
+      `Construimos **toda tu primera página de forma gratuita** — diseño real, código real, contenido real. 🎁\n\nNo es una maqueta ni plantilla — es una página de inicio completa y personalizada para tu negocio. Si te encanta y quieres el resto, pagas. Si no, te quedas la página — sin coste ni obligación.\n\nPara reclamarla, escribe a **${BIZ.email}** con una descripción de tu negocio.`
     );
   }
 },
