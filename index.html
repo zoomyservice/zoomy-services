@@ -540,6 +540,78 @@
 </div>
 </div>
 </footer>
+<script>
+// ── Homepage chatbot demo wiring ───────────────────────────────────────────
+(function() {
+  function initDemo() {
+    if (!window.__zmy) { setTimeout(initDemo, 50); return; }
+    var messagesEl = document.getElementById('chatbot-messages');
+    var inputEl    = document.getElementById('chatbot-input-field');
+    var sendBtn    = document.getElementById('chatbot-send');
+    if (!messagesEl || !inputEl || !sendBtn) return;
+
+    var firstInteraction = true;
+    var history = [];
+    var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+
+    function appendMsg(text, role) {
+      var div = document.createElement('div');
+      div.className = 'msg msg-' + role;
+      var html = text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/_(.+?)_/g, '<em>$1</em>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        .replace(/
+/g, '<br>');
+      div.innerHTML = html;
+      messagesEl.appendChild(div);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    async function sendMessage() {
+      var text = inputEl.value.trim();
+      if (!text) return;
+      if (firstInteraction) { messagesEl.innerHTML = ''; firstInteraction = false; }
+      appendMsg(text, 'user');
+      inputEl.value = '';
+      history.push({ role: 'user', content: text });
+      var typing = document.createElement('div');
+      typing.className = 'msg msg-bot';
+      typing.textContent = '…';
+      messagesEl.appendChild(typing);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      await new Promise(function(r) { setTimeout(r, 600 + Math.random() * 500); });
+      var response = window.__zmy.getResponse(text);
+      var isFallback = window.__zmy.isLastFallback();
+      if (isFallback) {
+        try {
+          var res = await fetch(AI_WORKER, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text, history: history.slice(-8) })
+          });
+          if (res.ok) {
+            var data = await res.json();
+            typing.remove();
+            appendMsg(data.reply, 'bot');
+            history.push({ role: 'assistant', content: data.reply });
+            return;
+          }
+        } catch(e) {}
+      }
+      typing.remove();
+      appendMsg(response, 'bot');
+      history.push({ role: 'assistant', content: response });
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    inputEl.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+    });
+  }
+  initDemo();
+})();
+</script>
 <script src="js/main.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/chatbot.js"></script>
