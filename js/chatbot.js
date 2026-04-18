@@ -16,7 +16,7 @@ function t(en, fr, es) {
 
 /* ── Business facts ───────────────────────────────────────────────────── */
 const BIZ = {
-  name:  'Zoomy.services',
+  name:  'Zoomy',
   email: 'contact@zoomy.services',
   url:   'zoomy.services',
   contact: 'contact@zoomy.services',
@@ -372,7 +372,7 @@ const VARIATIONS = {
     en: [
       'Hello! \u{1F44B} I\'m the Zoomy assistant. Ask me about campaigns, websites, chatbots, phone agents, or anything else we do.',
       'Hey! What can I help you with \u2014 running ads, a new website, an AI chatbot, or something else?',
-      'Hi there! I\'m here to answer anything about Zoomy.services. What are you working on?',
+      'Hi there! I\'m here to answer anything about Zoomy. What are you working on?',
       'Hello! Ready to help. What are you looking for \u2014 campaigns, a website build, or one of our AI tools?',
     ],
     fr: [
@@ -458,9 +458,9 @@ const KB = [
     'tell me what you do','what do you do','what does zoomy do','what you do for'],
   r:() => { ctx.lastEntry='tellmore';
     return t(
-      `I'm trained on everything Zoomy.services does. Ask me about:\n\n• **Campaign management** — Meta, Google, TikTok, LinkedIn\n• **Custom websites** — booking platforms, e-commerce, multilingual\n• **AI phone agents** — live call handling & booking\n• **Website chatbots** — trained on your business\n• **Process & pricing** — how we work, timelines, quotes\n\nWhat would you like to explore?`,
-      `Je suis formé sur tout ce que fait Zoomy.services. Posez-moi des questions sur :\n\n• **Gestion de campagnes** — Meta, Google, TikTok, LinkedIn\n• **Sites web sur-mesure** — plateformes de réservation, e-commerce, multilingue\n• **Agents téléphoniques IA** — gestion d'appels et réservations\n• **Chatbots web** — entraînés sur votre entreprise\n• **Processus & tarifs** — comment nous travaillons, délais, devis\n\nPar où voulez-vous commencer ?`,
-      `Estoy entrenado en todo lo que hace Zoomy.services. Pregúntame sobre:\n\n• **Gestión de campañas** — Meta, Google, TikTok, LinkedIn\n• **Sitios web personalizados** — plataformas de reservas, e-commerce, multilingüe\n• **Agentes telefónicos IA** — gestión de llamadas y reservas\n• **Chatbots web** — entrenados en tu negocio\n• **Proceso y precios** — cómo trabajamos, plazos, presupuestos\n\n¿Por dónde quieres empezar?`
+      `I'm trained on everything Zoomy does. Ask me about:\n\n• **Campaign management** — Meta, Google, TikTok, LinkedIn\n• **Custom websites** — booking platforms, e-commerce, multilingual\n• **AI phone agents** — live call handling & booking\n• **Website chatbots** — trained on your business\n• **Process & pricing** — how we work, timelines, quotes\n\nWhat would you like to explore?`,
+      `Je suis formé sur tout ce que fait Zoomy. Posez-moi des questions sur :\n\n• **Gestion de campagnes** — Meta, Google, TikTok, LinkedIn\n• **Sites web sur-mesure** — plateformes de réservation, e-commerce, multilingue\n• **Agents téléphoniques IA** — gestion d'appels et réservations\n• **Chatbots web** — entraînés sur votre entreprise\n• **Processus & tarifs** — comment nous travaillons, délais, devis\n\nPar où voulez-vous commencer ?`,
+      `Estoy entrenado en todo lo que hace Zoomy. Pregúntame sobre:\n\n• **Gestión de campañas** — Meta, Google, TikTok, LinkedIn\n• **Sitios web personalizados** — plataformas de reservas, e-commerce, multilingüe\n• **Agentes telefónicos IA** — gestión de llamadas y reservas\n• **Chatbots web** — entrenados en tu negocio\n• **Proceso y precios** — cómo trabajamos, plazos, presupuestos\n\n¿Por dónde quieres empezar?`
     );
   }
 },
@@ -923,9 +923,9 @@ const KB = [
     'a propos','qui etes vous','quienes son','sobre zoomy'],
   r:() => { ctx.lastEntry='about';
     return t(
-      `**Zoomy.services** is a small, AI-augmented digital production studio.\n\nWe create and manage **paid media campaigns**, build **custom websites** (booking platforms, e-commerce, multilingual), develop **AI website chatbots**, and build **AI phone agents**.\n\nEvery project is built from scratch — no templates, no page builders. We work on a fixed-budget model: scope agreed upfront, fixed price, no hourly surprises.\n\nWe're remote-first and work with clients internationally.\n\nContact: **${BIZ.email}**`,
-      `**Zoomy.services** est un petit studio de production digitale augmenté par l'IA.\n\nNous créons et gérons des **campagnes publicitaires**, construisons des **sites web sur-mesure**, développons des **chatbots IA** et créons des **agents téléphoniques IA**.\n\nChaque projet est construit de zéro — pas de templates. Nous travaillons en forfait fixe : périmètre convenu en amont, prix fixe.\n\nNous travaillons à distance et avec des clients internationaux.\n\nContact : **${BIZ.email}**`,
-      `**Zoomy.services** es un pequeño estudio de producción digital aumentado con IA.\n\nCreamos y gestionamos **campañas de publicidad digital**, construimos **sitios web personalizados**, desarrollamos **chatbots IA** y creamos **agentes telefónicos IA**.\n\nCada proyecto se construye desde cero — sin plantillas. Trabajamos con precio fijo: alcance acordado de antemano, precio fijo, sin sorpresas.\n\nSomos un equipo remoto y trabajamos con clientes internacionalmente.\n\nContacto: **${BIZ.email}**`
+      `**Zoomy** is a small, AI-augmented digital production studio.\n\nWe create and manage **paid media campaigns**, build **custom websites** (booking platforms, e-commerce, multilingual), develop **AI website chatbots**, and build **AI phone agents**.\n\nEvery project is built from scratch — no templates, no page builders. We work on a fixed-budget model: scope agreed upfront, fixed price, no hourly surprises.\n\nWe're remote-first and work with clients internationally.\n\nContact: **${BIZ.email}**`,
+      `**Zoomy** est un petit studio de production digitale augmenté par l'IA.\n\nNous créons et gérons des **campagnes publicitaires**, construisons des **sites web sur-mesure**, développons des **chatbots IA** et créons des **agents téléphoniques IA**.\n\nChaque projet est construit de zéro — pas de templates. Nous travaillons en forfait fixe : périmètre convenu en amont, prix fixe.\n\nNous travaillons à distance et avec des clients internationaux.\n\nContact : **${BIZ.email}**`,
+      `**Zoomy** es un pequeño estudio de producción digital aumentado con IA.\n\nCreamos y gestionamos **campañas de publicidad digital**, construimos **sitios web personalizados**, desarrollamos **chatbots IA** y creamos **agentes telefónicos IA**.\n\nCada proyecto se construye desde cero — sin plantillas. Trabajamos con precio fijo: alcance acordado de antemano, precio fijo, sin sorpresas.\n\nSomos un equipo remoto y trabajamos con clientes internacionalmente.\n\nContacto: **${BIZ.email}**`
     );
   }
 },

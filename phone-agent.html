@@ -44,8 +44,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="favicon.svg"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<title>AI Phone Agents — Zoomy.services</title>
+<title>AI Phone Agents — Zoomy</title>
 <meta content="Custom AI phone agents that answer calls, book appointments, and handle customer enquiries 24/7 in any language." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -209,7 +211,9 @@ nav{top:var(--bar-h)!important}
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 <nav>
-<a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Digital Production Studio</span></a>
+<a class="nav-logo" href="index.html" style="display:flex;align-items:center;gap:0;">
+  <img src="img/zoomy-logo.svg" alt="Zoomy" height="36" style="display:block;"/>
+</a>
 <ul class="nav-links" id="navLinks">
 <li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campaigns</a></li>
 <li><a data-i18n="nav.websites" href="website-design.html">Websites</a></li>
@@ -319,7 +323,7 @@ nav{top:var(--bar-h)!important}
 <div class="section-tag">Live Demo</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">Talk to the agent.</h2>
 <p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:1.25rem;">This is a live AI phone agent. Click the button and speak to it directly in your browser — no phone required. Ask it questions, request a booking, or just see how it handles a natural conversation.</p>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">The agent on this page is a demonstration version trained on Zoomy.services. Every agent we build is configured around your specific business — your services, your voice, your language.</p>
+<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">The agent on this page is a demonstration version trained on Zoomy. Every agent we build is configured around your specific business — your services, your voice, your language.</p>
 <div style="display:flex;flex-direction:column;gap:.75rem;">
 <div style="display:flex;align-items:flex-start;gap:12px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
@@ -575,13 +579,13 @@ nav{top:var(--bar-h)!important}
                 // Override firstMessage + language + system prompt to enforce language
                 // All three overrides are enabled on the agent (verified via API)
                 const firstMessages = {
-                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy Services. Comment puis-je vous aider aujourd'hui ?",
-                  'es': "¡Hola! Soy la asistente IA de Zoomy Services. ¿En qué puedo ayudarle hoy?",
-                  'en': "Hi there, this is Zoomy Services. I can help answer any questions about our services in any language. What can I do for you?"
+                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy. Comment puis-je vous aider aujourd'hui ?",
+                  'es': "¡Hola! Soy la asistente IA de Zoomy. ¿En qué puedo ayudarle hoy?",
+                  'en': "Hi there, this is Zoomy. I can help answer any questions about our services in any language. What can I do for you?"
                 };
                 const systemPrompts = {
-                  'fr': `# Règles de prononciation\n- "Zoomy Services" se prononce "ZOU-mi Services" — jamais "Zoomy dot services".\n- L'email se dit "hello at ZOU-mi Services".\n\n# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français, sans exception. Ne passe jamais à l'anglais.\n\n# Personnalité\nTu es l'assistante IA de Zoomy Services, une agence digitale. Chaleureuse, directe et professionnelle.\n\n# Services\n1. Campagnes publicitaires (Meta, Google, TikTok) — à partir de 400$\n2. Sites web sur mesure (HTML/CSS/JS) — à partir de 200$/page\n3. Agents téléphoniques IA — à partir de 600$\n4. Chatbots IA — à partir de 500$\n\nPour un devis : contact@zoomy.services`,
-                  'es': `# Reglas de pronunciación\n- "Zoomy Services" — nunca "Zoomy dot services".\n- El email se dice "hello at Zoomy Services".\n\n# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español, sin excepción. Nunca cambies al inglés.\n\n# Personalidad\nEres la asistente IA de Zoomy Services, una agencia digital. Cálida, directa y profesional.\n\n# Servicios\n1. Campañas publicitarias (Meta, Google, TikTok) — desde $400\n2. Sitios web personalizados (HTML/CSS/JS) — desde $200/página\n3. Agentes telefónicos IA — desde $600\n4. Chatbots IA — desde $500\n\nPara presupuestos: contact@zoomy.services`,
+                  'fr': `# Règles de prononciation\n- "Zoomy" se prononce "ZOU-mi Services" — jamais "Zoomy dot services".\n- L'email se dit "hello at ZOU-mi".\n\n# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français, sans exception. Ne passe jamais à l'anglais.\n\n# Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse, directe et professionnelle.\n\n# Services\n1. Campagnes publicitaires (Meta, Google, TikTok) — à partir de 400$\n2. Sites web sur mesure (HTML/CSS/JS) — à partir de 200$/page\n3. Agents téléphoniques IA — à partir de 600$\n4. Chatbots IA — à partir de 500$\n\nPour un devis : contact@zoomy.services`,
+                  'es': `# Reglas de pronunciación\n- "Zoomy" — nunca "Zoomy dot services".\n- El email se dice "hello at Zoomy".\n\n# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español, sin excepción. Nunca cambies al inglés.\n\n# Personalidad\nEres la asistente IA de Zoomy, una agencia digital. Cálida, directa y profesional.\n\n# Servicios\n1. Campañas publicitarias (Meta, Google, TikTok) — desde $400\n2. Sitios web personalizados (HTML/CSS/JS) — desde $200/página\n3. Agentes telefónicos IA — desde $600\n4. Chatbots IA — desde $500\n\nPara presupuestos: contact@zoomy.services`,
                   'en': undefined
                 };
                 const agentOverride = { language: pageLang };
@@ -845,7 +849,7 @@ nav{top:var(--bar-h)!important}
 <div class="footer-inner">
 <div class="footer-grid">
 <div>
-<div class="footer-logo grad-text">Zoomy</div>
+<div class="footer-logo"><img src="img/zoomy-logo.svg" alt="Zoomy" height="32" style="display:block;"/></div>
 <p class="footer-tagline" data-i18n="footer.tagline">Campaign management, custom websites, AI chatbots, and phone agents.</p>
 </div>
 <div class="footer-col"><h4 data-i18n="footer.services">Services</h4><ul>
