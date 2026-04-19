@@ -530,7 +530,7 @@ const KB = [
     ctx.lastEntry='phone-pricing';
     return t(
       '**AI Phone Agent pricing:**\n\n• Standard (FAQ + availability) — from **$600**\n• With calendar booking — **$1,000–$1,500**\n• Custom integrations — **$1,500–$1,800**\n• Monthly: from **$60/month** (usage-based)\n\nEmail **contact@zoomy.services** for a quote.',
-      '**Tarification agent téléphonique :**\n\n• Standard — à partir de **600$**\n• Avec réservation calendrier — **1 000–1 500$**\n• Mensuel — à partir de **60$/mois** (basé sur l'utilisation)\n\nÉcrivez à **contact@zoomy.services**.',
+      '**Tarification agent téléphonique :**\n\n• Standard — à partir de **600$**\n• Avec réservation calendrier — **1 000–1 500$**\n• Mensuel — à partir de **60$/mois** (basé sur l\'utilisation)\n\nÉcrivez à **contact@zoomy.services**.',
       '**Precio agente telefónico:**\n\n• Estándar — desde **$600** · Con reservas — **$1.000–$1.500**\n• Mensual: desde **$60/mes** (basado en uso)\n\nEscribe a **contact@zoomy.services**.'
     );
   }
