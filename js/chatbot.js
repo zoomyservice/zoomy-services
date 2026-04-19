@@ -20,6 +20,7 @@ const BIZ = {
   email: 'contact@zoomy.services',
   url:   'zoomy.services',
   contact: 'contact@zoomy.services',
+  phoneTokenUrl: 'https://zoomy-ai.zoozoomfast.workers.dev/elevenlabs-token',
 };
 
 /* ── Conversation memory ──────────────────────────────────────────────── */
@@ -1333,6 +1334,34 @@ function render() {
 #zmy-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;transition:transform .15s}
 #zmy-send:hover{transform:scale(1.1)}
 @media(max-width:480px){#zmy-win{right:0;bottom:0;width:100vw;border-radius:20px 20px 0 0;max-height:80vh}#zmy-bubble{bottom:16px;right:16px}}
+#zmy-phone-btn{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;padding:4px;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s}
+#zmy-phone-btn:hover{color:#4ade80;background:rgba(74,222,128,.1)}
+#zmy-phone-btn.active-call{color:#4ade80}
+#zmy-call-panel{display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;padding:2rem 1.5rem;background:#0d0d1c;min-height:280px;max-height:340px;overflow-y:auto}
+#zmy-call-panel.active{display:flex}
+#zmy-call-orb{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#312e81,#6366f1);display:flex;align-items:center;justify-content:center;font-size:2rem;position:relative;box-shadow:0 0 40px rgba(99,102,241,.45)}
+#zmy-call-orb.live{background:linear-gradient(135deg,#14532d,#16a34a);box-shadow:0 0 40px rgba(22,163,74,.4)}
+#zmy-call-ring{position:absolute;inset:-8px;border-radius:50%;border:1.5px solid rgba(99,102,241,.35);animation:zmypulse 2s ease-in-out infinite}
+#zmy-call-label{font-size:.8rem;font-weight:600;color:#cbd5e1;text-align:center}
+#zmy-call-statusline{font-family:monospace;font-size:.7rem;color:#475569;text-align:center}
+#zmy-call-statusline.live{color:#4ade80}
+#zmy-call-timer{font-family:monospace;font-size:.75rem;color:#64748b}
+#zmy-call-waves{display:none;align-items:center;gap:3px;height:22px}
+#zmy-call-waves span{display:block;width:3px;border-radius:2px;background:#6366f1;animation:zmybounce 1s ease-in-out infinite}
+#zmy-call-waves span:nth-child(2){animation-delay:.15s}
+#zmy-call-waves span:nth-child(3){animation-delay:.3s}
+#zmy-call-waves span:nth-child(4){animation-delay:.45s}
+#zmy-call-waves span:nth-child(5){animation-delay:.6s}
+#zmy-call-startbtn{padding:12px 28px;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;border-radius:24px;color:#fff;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 0 24px rgba(99,102,241,.35);transition:filter .2s,transform .2s}
+#zmy-call-startbtn:hover{filter:brightness(1.1);transform:scale(1.02)}
+#zmy-call-startbtn.ending{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 0 24px rgba(239,68,68,.35)}
+#zmy-call-controls{display:none;width:100%;gap:.6rem;flex-direction:row}
+#zmy-call-mutebtn,#zmy-call-speakerbtn{flex:1;padding:10px 10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#fff;font-size:.78rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,border-color .2s}
+#zmy-call-transcript-wrap{width:100%}
+#zmy-call-transcript-btn{width:100%;padding:9px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#64748b;font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s}
+#zmy-call-transcript-body{display:none;margin-top:.5rem;background:#0a0a18;border:1px solid rgba(99,102,241,.15);border-radius:10px;padding:.9rem 1rem;max-height:140px;overflow-y:auto;font-size:.75rem;line-height:1.6;color:#94a3b8}
+#zmy-call-back{font-size:.72rem;color:#475569;background:none;border:none;cursor:pointer;text-decoration:underline;margin-top:.2rem;transition:color .15s}
+#zmy-call-back:hover{color:#94a3b8}
 `;
 
   const styleEl = document.createElement('style');
@@ -1355,9 +1384,41 @@ function render() {
         <div id="zmy-name">${BIZ.name}</div>
         <div id="zmy-status">${t('Online — ask me anything','En ligne — posez-moi une question','En línea — pregúntame lo que sea')}</div>
       </div>
+      <button id="zmy-phone-btn" aria-label="${t('Start voice call','Appel vocal','Llamada de voz')}" title="${t('Talk to the AI agent','Parler à l\'agent IA','Hablar con el agente IA')}">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </button>
       <button id="zmy-close" aria-label="Close">✕</button>
     </div>
     <div id="zmy-msgs"></div>
+    <div id="zmy-call-panel">
+      <div id="zmy-call-orb">📞<div id="zmy-call-ring"></div></div>
+      <div id="zmy-call-label">${t('Zoomy AI Agent','Agent IA Zoomy','Agente IA Zoomy')}</div>
+      <div id="zmy-call-statusline">${t('Ready','Prêt','Listo')}</div>
+      <div id="zmy-call-waves"><span></span><span></span><span></span><span></span><span></span></div>
+      <div id="zmy-call-timer" style="display:none">0:00</div>
+      <button id="zmy-call-startbtn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span id="zmy-call-startlabel">${t('Start Call','Démarrer l\'appel','Iniciar llamada')}</span>
+      </button>
+      <div id="zmy-call-controls">
+        <button id="zmy-call-mutebtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="zmy-mute-icon"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          <span id="zmy-mute-label">${t('Mute','Muet','Silencio')}</span>
+        </button>
+        <button id="zmy-call-speakerbtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="zmy-speaker-icon"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <span id="zmy-speaker-label">${t('Speaker','Haut-parleur','Altavoz')}</span>
+        </button>
+      </div>
+      <div id="zmy-call-transcript-wrap" style="display:none">
+        <button id="zmy-call-transcript-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span id="zmy-transcript-label">${t('View Transcript','Voir la transcription','Ver transcripción')}</span>
+        </button>
+        <div id="zmy-call-transcript-body"></div>
+      </div>
+      <button id="zmy-call-back">← ${t('Back to chat','Retour au chat','Volver al chat')}</button>
+    </div>
     <div id="zmy-inp-row">
       <textarea id="zmy-input" rows="1" placeholder="${t('Ask about our services...','Posez votre question...','Pregunta sobre nuestros servicios...')}"></textarea>
       <button id="zmy-send" aria-label="Send">
@@ -1466,6 +1527,231 @@ function render() {
     input.style.height = 'auto';
     input.style.height = Math.min(input.scrollHeight, 80) + 'px';
   });
+
+  // ── Phone Agent Call Panel ────────────────────────────────────────────────
+  const phoneBtn      = document.getElementById('zmy-phone-btn');
+  const callPanel     = document.getElementById('zmy-call-panel');
+  const callOrb       = document.getElementById('zmy-call-orb');
+  const callStatus    = document.getElementById('zmy-call-statusline');
+  const callWaves     = document.getElementById('zmy-call-waves');
+  const callTimer     = document.getElementById('zmy-call-timer');
+  const callStartBtn  = document.getElementById('zmy-call-startbtn');
+  const callStartLbl  = document.getElementById('zmy-call-startlabel');
+  const callControls  = document.getElementById('zmy-call-controls');
+  const callMuteBtn   = document.getElementById('zmy-call-mutebtn');
+  const callMuteLbl   = document.getElementById('zmy-mute-label');
+  const callMuteIcon  = document.getElementById('zmy-mute-icon');
+  const callSpeakerBtn= document.getElementById('zmy-call-speakerbtn');
+  const callSpeakerLbl= document.getElementById('zmy-speaker-label');
+  const callSpeakerIc = document.getElementById('zmy-speaker-icon');
+  const transcriptWrap= document.getElementById('zmy-call-transcript-wrap');
+  const transcriptBtn = document.getElementById('zmy-call-transcript-btn');
+  const transcriptLbl = document.getElementById('zmy-transcript-label');
+  const transcriptBody= document.getElementById('zmy-call-transcript-body');
+  const callBackBtn   = document.getElementById('zmy-call-back');
+
+  let callConv = null;
+  let callTimerInterval = null;
+  let callSeconds = 0;
+  let isMuted = false;
+  let isSpeaker = false;
+  let transcriptLines = [];
+
+  function showCallPanel() {
+    msgs.style.display = 'none';
+    document.getElementById('zmy-inp-row').style.display = 'none';
+    callPanel.classList.add('active');
+    phoneBtn.classList.add('active-call');
+  }
+
+  function hideCallPanel() {
+    callPanel.classList.remove('active');
+    msgs.style.display = 'flex';
+    document.getElementById('zmy-inp-row').style.display = 'flex';
+    phoneBtn.classList.remove('active-call');
+  }
+
+  function resetCallUI(statusMsg) {
+    if (callTimerInterval) { clearInterval(callTimerInterval); callTimerInterval = null; }
+    callSeconds = 0;
+    callConv = null; isMuted = false; isSpeaker = false;
+    callOrb.className = '';
+    callOrb.style.cssText = '';
+    callWaves.style.display = 'none';
+    callTimer.style.display = 'none';
+    callTimer.textContent = '0:00';
+    callControls.style.display = 'none';
+    callStartBtn.className = '';
+    callStartBtn.disabled = false;
+    callStartLbl.textContent = t('Start Call','Démarrer l\'appel','Iniciar llamada');
+    callStartBtn.querySelector('svg').innerHTML = '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>';
+    callMuteBtn.style.cssText = '';
+    callMuteLbl.textContent = t('Mute','Muet','Silencio');
+    callMuteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
+    callSpeakerBtn.style.cssText = '';
+    callSpeakerLbl.textContent = t('Speaker','Haut-parleur','Altavoz');
+    if (statusMsg !== null) {
+      callStatus.textContent = statusMsg || t('Ready','Prêt','Listo');
+      callStatus.className = '';
+    }
+    transcriptWrap.style.display = transcriptLines.length ? 'block' : 'none';
+  }
+
+  function startCallClock() {
+    callSeconds = 0;
+    callTimer.style.display = 'block';
+    callTimerInterval = setInterval(() => {
+      callSeconds++;
+      const m = Math.floor(callSeconds / 60);
+      const s = callSeconds % 60;
+      callTimer.textContent = m + ':' + String(s).padStart(2, '0');
+    }, 1000);
+  }
+
+  async function toggleCall() {
+    if (callConv) {
+      await callConv.endSession();
+      return; // onDisconnect resets
+    }
+    try {
+      callStartBtn.disabled = true;
+      callStartLbl.textContent = t('Calling...','Appel en cours...','Llamando...');
+      callStatus.textContent = t('Requesting microphone...','Demande microphone...','Solicitando micrófono...');
+      callStatus.className = '';
+
+      const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      micStream.getTracks().forEach(t => t.stop());
+
+      callStatus.textContent = t('Ringing...','Sonnerie...','Llamando...');
+      const tokenRes = await fetch(BIZ.phoneTokenUrl);
+      const { signedUrl } = await tokenRes.json();
+
+      callStatus.textContent = t('Connecting...','Connexion...','Conectando...');
+      transcriptLines = [];
+      transcriptBody.innerHTML = '';
+      transcriptWrap.style.display = 'none';
+
+      const pageLang = lang();
+      const firstMessages = {
+        fr: "Bonjour ! Je suis l'assistante IA de Zoomy. Comment puis-je vous aider aujourd'hui ?",
+        es: "¡Hola! Soy la asistente IA de Zoomy. ¿En qué puedo ayudarle hoy?",
+        en: "Hi there, this is Zoomy. I can help answer any questions about our services. What can I do for you?"
+      };
+      const systemPrompts = {
+        fr: `# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français. # Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse et professionnelle. # Services\nCampagnes (Meta/Google/TikTok) — à partir de 400$. Sites web — à partir de 200$/page. Agents IA — à partir de 600$. Chatbots — à partir de 500$. Contact: contact@zoomy.services`,
+        es: `# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español. # Personalidad\nEres la asistente IA de Zoomy, una agencia digital. # Servicios\nCampañas desde $400. Sitios web desde $200/página. Agentes IA desde $600. Chatbots desde $500. Contacto: contact@zoomy.services`,
+        en: undefined
+      };
+      const agentOverride = { language: pageLang, firstMessage: firstMessages[pageLang] || firstMessages.en };
+      if (systemPrompts[pageLang]) agentOverride.prompt = { prompt: systemPrompts[pageLang] };
+
+      const { Conversation } = await import('https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm');
+      callConv = await Conversation.startSession({
+        signedUrl,
+        overrides: { agent: agentOverride },
+        onConnect: () => {
+          callStartBtn.disabled = false;
+          callStartBtn.classList.add('ending');
+          callStartLbl.textContent = t('End Call','Terminer l\'appel','Terminar llamada');
+          callStartBtn.querySelector('svg').innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
+          callOrb.classList.add('live');
+          callWaves.style.display = 'flex';
+          callControls.style.display = 'flex';
+          callStatus.textContent = t('Live','En direct','En vivo');
+          callStatus.classList.add('live');
+          startCallClock();
+        },
+        onMessage: (msg) => {
+          const role = (msg.source === 'ai' || msg.source === 'agent' || msg.role === 'agent') ? t('Agent','Agent','Agente') : t('You','Vous','Tú');
+          const text = msg.message || msg.text || '';
+          if (text && text.trim()) transcriptLines.push({ role, text: text.trim() });
+        },
+        onDisconnect: (details) => {
+          if (details && details.reason === 'error') {
+            const code = details.closeCode ? ` (${details.closeCode})` : '';
+            resetCallUI(null);
+            callStatus.textContent = t('Connection error','Erreur de connexion','Error de conexión') + code;
+            callStatus.style.color = '#ef4444';
+          } else {
+            if (transcriptLines.length) {
+              transcriptBody.innerHTML = transcriptLines.map(l => `<div><strong>${l.role}:</strong> ${l.text}</div>`).join('');
+              transcriptWrap.style.display = 'block';
+            }
+            resetCallUI(t('Call ended','Appel terminé','Llamada finalizada'));
+          }
+        },
+        onError: (err) => {
+          resetCallUI(null);
+          callStatus.textContent = t('Could not connect. Check mic permissions.','Impossible de se connecter. Vérifiez le microphone.','No se pudo conectar. Revise el micrófono.');
+          callStatus.style.color = '#ef4444';
+        }
+      });
+    } catch(e) {
+      resetCallUI(null);
+      callStatus.textContent = t('Could not connect. Check mic permissions.','Impossible de se connecter. Vérifiez le microphone.','No se pudo conectar. Revise el micrófono.');
+      callStatus.style.color = '#ef4444';
+    }
+  }
+
+  callMuteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    if (callConv && callConv.setMicMuted) callConv.setMicMuted(isMuted);
+    if (isMuted) {
+      callMuteBtn.style.background = 'rgba(239,68,68,.18)';
+      callMuteBtn.style.borderColor = 'rgba(239,68,68,.4)';
+      callMuteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" opacity=".3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2" opacity=".3"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/><line x1="1" y1="1" x2="23" y2="23" stroke="#ef4444" stroke-width="2.5"/>';
+      callMuteLbl.textContent = t('Unmute','Réactiver','Reanudar');
+    } else {
+      callMuteBtn.style.cssText = '';
+      callMuteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
+      callMuteLbl.textContent = t('Mute','Muet','Silencio');
+    }
+  });
+
+  callSpeakerBtn.addEventListener('click', async () => {
+    isSpeaker = !isSpeaker;
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const outputs = devices.filter(d => d.kind === 'audiooutput');
+      const spkDev = outputs.find(d => /speaker|loud/i.test(d.label));
+      const targetId = isSpeaker ? (spkDev ? spkDev.deviceId : '') : '';
+      document.querySelectorAll('audio').forEach(a => { if (typeof a.setSinkId === 'function') a.setSinkId(targetId).catch(()=>{}); });
+    } catch(e) {}
+    if (isSpeaker) {
+      callSpeakerBtn.style.background = 'rgba(74,222,128,.18)';
+      callSpeakerBtn.style.borderColor = 'rgba(74,222,128,.4)';
+      callSpeakerIc.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+      callSpeakerLbl.textContent = t('Speaker On','Haut-parleur On','Altavoz On');
+    } else {
+      callSpeakerBtn.style.cssText = '';
+      callSpeakerIc.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+      callSpeakerLbl.textContent = t('Speaker','Haut-parleur','Altavoz');
+    }
+  });
+
+  transcriptBtn.addEventListener('click', () => {
+    const open = transcriptBody.style.display !== 'none';
+    transcriptBody.style.display = open ? 'none' : 'block';
+    transcriptLbl.textContent = open
+      ? t('View Transcript','Voir la transcription','Ver transcripción')
+      : t('Hide Transcript','Masquer la transcription','Ocultar transcripción');
+  });
+
+  phoneBtn.addEventListener('click', () => {
+    if (callPanel.classList.contains('active')) {
+      if (callConv) return; // can't exit mid-call
+      hideCallPanel();
+    } else {
+      showCallPanel();
+    }
+  });
+
+  callBackBtn.addEventListener('click', () => {
+    if (callConv) return; // can't exit mid-call, must end call first
+    hideCallPanel();
+  });
+
+  callStartBtn.addEventListener('click', toggleCall);
 
   // Attention bubble — shown once ever via localStorage
   setTimeout(() => {
