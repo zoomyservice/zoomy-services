@@ -1357,6 +1357,7 @@ function render() {
 #zmy-call-startbtn.ending{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 0 24px rgba(239,68,68,.35)}
 #zmy-call-controls{display:none;width:100%;gap:.6rem;flex-direction:row}
 #zmy-call-mutebtn,#zmy-call-speakerbtn{flex:1;padding:10px 10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#fff;font-size:.78rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,border-color .2s}
+@media(min-width:481px){#zmy-call-speakerbtn{display:none!important}}
 #zmy-call-transcript-wrap{width:100%}
 #zmy-call-transcript-btn{width:100%;padding:9px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#64748b;font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s}
 #zmy-call-transcript-body{display:none;margin-top:.5rem;background:#0a0a18;border:1px solid rgba(99,102,241,.15);border-radius:10px;padding:.9rem 1rem;max-height:140px;overflow-y:auto;font-size:.75rem;line-height:1.6;color:#94a3b8}
@@ -1556,6 +1557,8 @@ function render() {
   let isMuted = false;
   let isSpeaker = false;
   let transcriptLines = [];
+  let audioObserver = null;
+  let desiredSinkId = null; // null = not active, '' or deviceId = speaker target
 
   function showCallPanel() {
     msgs.style.display = 'none';
@@ -1574,7 +1577,8 @@ function render() {
   function resetCallUI(statusMsg) {
     if (callTimerInterval) { clearInterval(callTimerInterval); callTimerInterval = null; }
     callSeconds = 0;
-    callConv = null; isMuted = false; isSpeaker = false;
+    callConv = null; isMuted = false; isSpeaker = false; desiredSinkId = null;
+    stopAudioObserver();
     callOrb.className = '';
     callOrb.style.cssText = '';
     callWaves.style.display = 'none';
@@ -1650,6 +1654,7 @@ function render() {
         signedUrl,
         overrides: { agent: agentOverride },
         onConnect: () => {
+          startAudioObserver();
           callStartBtn.disabled = false;
           callStartBtn.classList.add('ending');
           callStartLbl.textContent = t('End Call','Terminer l\'appel','Terminar llamada');
@@ -1708,15 +1713,53 @@ function render() {
     }
   });
 
+  function applyAudioSink(audioEl) {
+    if (desiredSinkId !== null && typeof audioEl.setSinkId === 'function') {
+      audioEl.setSinkId(desiredSinkId).catch(() => {});
+    }
+  }
+
+  function startAudioObserver() {
+    if (audioObserver) return;
+    // Apply to any audio elements already in the DOM
+    document.querySelectorAll('audio').forEach(applyAudioSink);
+    // Watch for audio elements the ElevenLabs SDK creates dynamically
+    audioObserver = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        m.addedNodes.forEach(node => {
+          if (node.nodeName === 'AUDIO') applyAudioSink(node);
+          if (node.querySelectorAll) node.querySelectorAll('audio').forEach(applyAudioSink);
+        });
+      });
+    });
+    audioObserver.observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  function stopAudioObserver() {
+    if (audioObserver) { audioObserver.disconnect(); audioObserver = null; }
+  }
+
   callSpeakerBtn.addEventListener('click', async () => {
+    // iOS Safari and Firefox do not support setSinkId — show a friendly fallback
+    const testAudio = document.createElement('audio');
+    if (typeof testAudio.setSinkId !== 'function') {
+      const prevText = callStatus.textContent;
+      callStatus.textContent = t('Use device speaker button','Touche haut-parleur','Botón altavoz');
+      setTimeout(() => { if (callStatus.textContent === t('Use device speaker button','Touche haut-parleur','Botón altavoz')) callStatus.textContent = prevText; }, 3000);
+      return;
+    }
+
     isSpeaker = !isSpeaker;
     try {
       const devices = await navigator.mediaDevices.enumerateDevices();
       const outputs = devices.filter(d => d.kind === 'audiooutput');
       const spkDev = outputs.find(d => /speaker|loud/i.test(d.label));
       const targetId = isSpeaker ? (spkDev ? spkDev.deviceId : '') : '';
-      document.querySelectorAll('audio').forEach(a => { if (typeof a.setSinkId === 'function') a.setSinkId(targetId).catch(()=>{}); });
+      desiredSinkId = isSpeaker ? targetId : null;
+      // Apply to all current audio elements (includes any the SDK has added)
+      document.querySelectorAll('audio').forEach(a => { if (typeof a.setSinkId === 'function') a.setSinkId(targetId).catch(() => {}); });
     } catch(e) {}
+
     if (isSpeaker) {
       callSpeakerBtn.style.background = 'rgba(74,222,128,.18)';
       callSpeakerBtn.style.borderColor = 'rgba(74,222,128,.4)';
