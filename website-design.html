@@ -43,6 +43,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -69,6 +71,14 @@
 .cap-row-item{grid-template-columns:1fr;gap:1rem}
 .feature-row{grid-template-columns:1fr}
 [style*="grid-template-columns:220px 1fr"]{grid-template-columns:1fr !important;gap:0.5rem !important}
+[style*="grid-template-columns:1fr 1fr;gap:5rem"]{grid-template-columns:1fr !important;gap:2.5rem !important}
+[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr) !important}
+[style*="grid-template-columns:repeat(2,1fr);gap:1px"]{grid-template-columns:1fr !important}
+[style*="grid-column:span 2"]{grid-column:span 1 !important}
+[style*="grid-template-columns:1fr 1fr;gap:1rem;align-items:start"]{grid-template-columns:1fr !important}
+}
+@media(max-width:600px){
+[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important}
 }
 </style>
 <style>
@@ -208,115 +218,39 @@ nav{top:var(--bar-h)!important}
 <p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:600px;">Everything is custom-coded in HTML, CSS, and JavaScript. No WordPress, no page builders, no themes. Each project is built for what it actually needs to do.</p>
 </div>
 </section>
-<!-- WHAT WE BUILD -->
-<section class="section">
-<div class="section-inner">
-<div class="section-tag">What we build</div>
-<h2 class="section-title">Types of sites.</h2>
-<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">The scope varies by project. Below is what we've built and are set up to build again.</p>
-<div class="cap-rows">
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Booking</div>
-<div class="cap-row-name">Activity &amp; Venue Sites</div>
-</div>
-<div class="cap-desc">Sites for venues, activities, experiences, and leisure businesses that need online booking. Includes real-time slot availability, booking confirmation, payment integration, and an admin panel for managing reservations. Multilingual support across up to 133 languages.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Commerce</div>
-<div class="cap-row-name">E-Commerce Stores</div>
-</div>
-<div class="cap-desc">Product catalogue sites with online payment via Stripe. Supports multiple product types, filtering, and purchase flows. Can be built with an admin panel for managing products and orders. Multilingual where required.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Hospitality</div>
-<div class="cap-row-name">Restaurants &amp; Catering</div>
-</div>
-<div class="cap-desc">Restaurant and catering sites with menus, reservation systems, gallery sections, and location information. Built for conversions — getting visitors to book a table or make an enquiry. Multilingual where required.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Service</div>
-<div class="cap-row-name">Service Business Sites</div>
-</div>
-<div class="cap-desc">Sites for businesses offering a service — consultancies, clinics, agencies, tradespeople, and similar. Typically structured around presenting services clearly, capturing leads, and facilitating contact or booking.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Conversion</div>
-<div class="cap-row-name">Landing Pages</div>
-</div>
-<div class="cap-desc">Single-page builds designed around a specific campaign or audience. Usually tied to a paid media campaign and built to convert traffic into leads or purchases. Built to the same standard as full sites — custom code, fast loading, mobile-first.</div>
-</div>
-</div>
-</div>
-</section>
-<!-- WHAT CAN BE INCLUDED -->
+<!-- ═══ INTRO — WHY IT MATTERS ═══ -->
 <section class="section" style="background:var(--bg-2);">
 <div class="section-inner">
-<div class="section-tag">Features</div>
-<h2 class="section-title">What can be included.</h2>
-<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">Not every project needs all of these. What is included is defined during the brief and scoped accordingly.</p>
-<div style="display:flex;flex-direction:column;gap:0;margin-top:2.5rem;">
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Multilingual</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Pages built in up to 133 languages — EN, FR, DE, NL, ES, and more. Includes language switchers, hreflang tags, and fallback logic for partial translations.</div>
+<div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+<div>
+<div class="section-tag">What we actually do</div>
+<h2 class="section-title" style="margin-bottom:1.5rem;">A site that earns its keep.</h2>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.9;margin-bottom:1.1rem;">Most business websites sit there and look acceptable. That's not enough. We build sites that load fast, rank in search, convert visitors into customers, and let you make changes yourself the same day they go live — no developer, no delay.</p>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.9;margin-bottom:2rem;">Everything is hand-coded from scratch. No WordPress, no templates, no platform subscription that gets more expensive as your business grows. You get a site that performs the way the business behind it actually works.</p>
+<a class="btn btn-primary" href="contact.html">Start a Project ›</a>
 </div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Booking System</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Real-time slot availability, date and group size selection, booking confirmation, and email notification. Backend powered by Supabase. Admin panel for viewing and managing reservations included.</div>
+<div style="display:flex;flex-direction:column;gap:.9rem;padding-top:.25rem;">
+<div style="padding:1.2rem 1.4rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.13);border-radius:10px;">
+<div style="font-size:.63rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;">Performance</div>
+<div style="color:#fff;font-weight:600;font-size:.92rem;margin-bottom:.3rem;">Fast on every device</div>
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.65;">No plugins, no bloat. Pages that score well in Core Web Vitals and feel instant to use.</div>
 </div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Online Payment</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Payment integration via Stripe, supporting cards, ACH, Apple Pay, and Google Pay. Can be combined with the booking system or used independently for e-commerce.</div>
+<div style="padding:1.2rem 1.4rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.13);border-radius:10px;">
+<div style="font-size:.63rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;">Independence</div>
+<div style="color:#fff;font-weight:600;font-size:.92rem;margin-bottom:.3rem;">Update it yourself, immediately</div>
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.65;">Every site includes an admin panel. Edit text, swap images, change prices — without touching a line of code.</div>
 </div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Admin Panel</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">
-  A password-protected editor that lets you update your own site — no developer needed, no code. Click any text on any page to edit it directly. Click any image to replace it, reposition the focal point, or zoom in. Every change saves to a CDN-backed content layer and goes live on your site within seconds.
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:.85rem;">
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Edit all text on every page</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Replace any image</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Reposition &amp; crop images</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Edit form labels &amp; placeholder text</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Update products &amp; prices</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Change site colours &amp; fonts</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Show/hide announcement banners</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Role-based access for your team</span></div>
+<div style="padding:1.2rem 1.4rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.13);border-radius:10px;">
+<div style="font-size:.63rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;">Ownership</div>
+<div style="color:#fff;font-weight:600;font-size:.92rem;margin-bottom:.3rem;">You own the whole thing</div>
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.65;">No platform lock-in. Cancel any subscription and your site still runs exactly as built.</div>
 </div>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">AI Chatbot</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">A chatbot trained on your business data and deployed directly on the site. Handles visitor questions, collects leads, and works in multiple languages. Full description further down this page.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">GDPR Compliance</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Cookie consent banner with category-level controls, privacy policy structure, and data handling configuration. Included as standard on all sites that collect visitor data.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">SEO Structure</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Semantic HTML, correct heading hierarchy, meta tags, Open Graph, structured data markup, and XML sitemap. Included on all sites by default.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Analytics &amp; Tracking</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">GA4 setup with event tracking and goal configuration. Meta Pixel and Google Tag Manager where the site is connected to paid campaigns. Heatmap or session recording integration on request.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Domain &amp; Hosting</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Domain registration and hosting configuration on request. If you already have both, we deploy to those. If not, we handle it as part of the project.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Animations &amp; Interactions</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Scroll animations, hover effects, parallax, and custom transitions. The level of animation is matched to what fits the project — not every site needs elaborate motion.</div>
 </div>
 </div>
 </div>
 </section>
-<!-- ADMIN PANEL SHOWCASE SECTION -->
-<section class="section" id="admin-panel" style="background:var(--bg-2);overflow:hidden;">
+<!-- ═══ ADMIN PANEL SHOWCASE ═══ -->
+<section class="section" id="admin-panel" style="overflow:hidden;">
 <div class="section-inner">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
 <div class="reveal-left">
@@ -335,52 +269,46 @@ nav{top:var(--bar-h)!important}
 </div>
 <div style="display:flex;align-items:flex-start;gap:11px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Products &amp; pricing</strong> — update product names, descriptions, sizes, and prices; add or remove products</span>
+<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Products &amp; pricing</strong> — update names, descriptions, sizes, and prices; add or remove items</span>
 </div>
 <div style="display:flex;align-items:flex-start;gap:11px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Site colours &amp; fonts</strong> — change brand colours and typography across the entire site at once</span>
+<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Site colours &amp; fonts</strong> — change brand colours and typography across the whole site at once</span>
 </div>
 <div style="display:flex;align-items:flex-start;gap:11px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Announcement banners</strong> — show a site-wide notice for sales, closures, or delays; dismiss it when it's done</span>
+<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Announcement banners</strong> — post a notice for sales, closures, or offers; dismiss it when it's done</span>
 </div>
 </div>
 <a class="btn btn-primary" href="contact.html">Include in your project ›</a>
 </div>
-<!-- Mock admin UI -->
+<!-- MOCK ADMIN UI — fictional business, generic branding -->
 <div class="reveal-right" style="background:var(--bg-1);border:1px solid var(--border-b);border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5);">
-<!-- Top bar -->
 <div style="background:#0a0a0a;border-bottom:1px solid #1e1e1e;padding:.55rem 1rem;display:flex;align-items:center;justify-content:space-between;">
-<span style="font-size:.7rem;font-weight:700;color:#c9a84c;letter-spacing:.08em;text-transform:uppercase;">🐟 Bottarga Admin — WYSIWYG Editor</span>
+<span style="font-size:.7rem;font-weight:700;color:#c9a84c;letter-spacing:.08em;text-transform:uppercase;">Lumina Studio — Admin Panel</span>
 <span style="font-size:.65rem;background:#c9a84c;color:#0a0a08;padding:2px 10px;border-radius:4px;font-weight:700;">2 unsaved</span>
 </div>
 <div style="display:flex;min-height:320px;">
-<!-- Sidebar -->
 <div style="width:130px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1e1e1e;padding:.75rem 0;">
 <div style="font-size:.55rem;color:#555;text-transform:uppercase;letter-spacing:.1em;padding:.25rem .85rem .15rem;">Pages</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#c9a84c;font-weight:600;background:rgba(201,168,76,.08);border-left:2px solid #c9a84c;">🏠 Home</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">📖 About</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">🛒 Shop</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">✉️ Contact</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#c9a84c;font-weight:600;background:rgba(201,168,76,.08);border-left:2px solid #c9a84c;">Home</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Classes</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Trainers</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Contact</div>
 <div style="margin:.5rem .6rem;border-top:1px solid #1e1e1e;"></div>
 <div style="font-size:.55rem;color:#555;text-transform:uppercase;letter-spacing:.1em;padding:.25rem .85rem .15rem;">Settings</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">📦 Products</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">🎨 Colours</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Memberships</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Colours</div>
 </div>
-<!-- Iframe mock with edit overlays -->
-<div style="flex:1;position:relative;background:#1a1009;overflow:hidden;">
-<!-- EDIT MODE badge -->
+<div style="flex:1;position:relative;background:#0f0f14;overflow:hidden;">
 <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);background:rgba(201,168,76,.96);color:#0a0a08;font-size:9px;font-weight:800;letter-spacing:1px;padding:2px 12px;border-radius:0 0 5px 5px;z-index:10;white-space:nowrap;">✏ EDIT MODE — click any text to edit</div>
-<!-- Simulated page content with hover outlines -->
 <div style="padding:2rem 1.5rem 1rem;padding-top:2.5rem;">
-<div style="font-size:.58rem;color:#c9a84c;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;border:1px dashed rgba(201,168,76,.4);padding:2px 6px;display:inline-block;">HERITAGE — HOVER TO EDIT</div>
-<div style="font-size:1.1rem;font-weight:700;color:#f5f0e8;margin-bottom:.4rem;border:1px dashed rgba(201,168,76,.5);padding:3px 6px;cursor:text;">The World's Finest Bottarga</div>
-<div style="font-size:.72rem;color:#a89070;line-height:1.6;border:1px dashed transparent;padding:3px 6px;cursor:text;">Sourced from Mediterranean mullet &amp; tuna roe, cured to perfection.</div>
-<!-- Simulated image with position indicator -->
-<div style="margin-top:.85rem;position:relative;border-radius:6px;overflow:hidden;height:90px;background:#2a1a06;border:2px solid rgba(201,168,76,.5);">
-<div style="position:absolute;inset:0;background:linear-gradient(135deg,#3d2008,#1a0a00);display:flex;align-items:center;justify-content:center;">
-<span style="font-size:.65rem;color:#c9a84c;opacity:.7;">🖼 Click image to replace or reposition</span>
+<div style="font-size:.58rem;color:#c9a84c;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;border:1px dashed rgba(201,168,76,.4);padding:2px 6px;display:inline-block;">TAGLINE — HOVER TO EDIT</div>
+<div style="font-size:1.1rem;font-weight:700;color:#f0eeff;margin-bottom:.4rem;border:1px dashed rgba(201,168,76,.5);padding:3px 6px;cursor:text;">Move. Breathe. Transform.</div>
+<div style="font-size:.72rem;color:#9090b0;line-height:1.6;border:1px dashed transparent;padding:3px 6px;cursor:text;">Studio classes for every level — downtown and online.</div>
+<div style="margin-top:.85rem;position:relative;border-radius:6px;overflow:hidden;height:90px;background:#1a1a2e;border:2px solid rgba(201,168,76,.5);">
+<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#0f0f1a);display:flex;align-items:center;justify-content:center;">
+<span style="font-size:.65rem;color:#c9a84c;opacity:.7;">Click image to replace or reposition</span>
 </div>
 <div style="position:absolute;top:50%;left:38%;width:12px;height:12px;border-radius:50%;border:1.5px solid #fff;background:rgba(201,168,76,.7);transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px rgba(0,0,0,.6);"></div>
 </div>
@@ -390,6 +318,118 @@ nav{top:var(--bar-h)!important}
 <div style="background:#0a0a0a;border-top:1px solid #1e1e1e;padding:.5rem 1rem;display:flex;justify-content:flex-end;gap:.5rem;">
 <span style="font-size:.72rem;color:#555;align-self:center;">Changes save to CDN — live in seconds</span>
 <button style="background:#c9a84c;color:#0a0a08;border:none;padding:5px 16px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:default;">Save All ↑</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ WHAT CAN BE INCLUDED ═══ -->
+<section class="section" style="background:var(--bg-2);">
+<div class="section-inner">
+<div class="section-tag">Features</div>
+<h2 class="section-title">What can be included.</h2>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:580px;margin-top:.75rem;margin-bottom:3rem;">Scoped to what the project actually needs. Not every site gets everything below — but all of it is available.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem 2rem;">
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Multilingual</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Up to 133 languages</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">EN, FR, DE, NL, ES, and more. Language switchers, hreflang tags, and fallback logic included.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Booking</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Real-time booking system</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Slot availability, group sizing, confirmation emails, and a backend panel for managing reservations.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Payments</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Online payment via Stripe</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Cards, ACH, Apple Pay, Google Pay. Works standalone or integrated with the booking system.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">AI</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Chatbot trained on your business</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Handles visitor questions, collects leads, works in multiple languages. Self-hosted, no platform fees.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">SEO</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Built to rank from day one</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Semantic HTML, correct heading structure, Open Graph, structured data markup, XML sitemap. Standard on every site.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Analytics</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">GA4, Meta Pixel, GTM</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Event tracking and goal configuration. Connected to paid campaigns where relevant. Session recording on request.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Compliance</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">GDPR-ready</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Cookie consent with category controls, privacy policy structure, and data handling configuration. Standard on all sites.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Motion</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Animations &amp; interactions</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Scroll animations, parallax, hover effects, and transitions — matched to what fits the project, not forced in.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Infrastructure</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Domain &amp; hosting</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">We handle registration and configuration if needed. If you already have both, we deploy to those.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ TYPES OF SITES ═══ -->
+<section class="section">
+<div class="section-inner">
+<div class="section-tag">What we build</div>
+<h2 class="section-title">Types of sites.</h2>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:560px;margin-top:.75rem;margin-bottom:3rem;">Every project is different. Here's what we've built and are set up to build again.</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-b);border:1px solid var(--border-b);border-radius:14px;overflow:hidden;">
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">01</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Booking</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Activity &amp; Venue Sites</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">For venues, activities, experiences, and leisure businesses. Real-time slot availability, online payment, multilingual support, and a reservation management panel.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">02</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Commerce</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">E-Commerce Stores</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Product catalogues with Stripe checkout, filtering, and order flows. Admin panel for managing products and orders. Multilingual where required.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">03</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Hospitality</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Restaurants &amp; Catering</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Menus, reservation systems, gallery sections, and location info. Built to get visitors to book a table or make an enquiry. Multilingual where required.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">04</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Service</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Service Business Sites</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">For consultancies, clinics, agencies, and similar. Structured to present services clearly, capture leads, and make it easy to get in contact or book.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;grid-column:span 2;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">05</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Conversion</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;">
+<div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Landing Pages</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Single-page builds tied to a specific campaign or audience. Built to the same standard as full sites — custom code, fast loading, mobile-first — with the sole job of converting traffic into leads or purchases.</div>
+</div>
+<div style="padding:.9rem 1.1rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.12);border-radius:8px;align-self:center;">
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.7;">Every landing page we build comes with the same performance foundations as a full site: semantic HTML, correct meta tags, fast load times, and mobile-first layout.</div>
+</div>
 </div>
 </div>
 </div>

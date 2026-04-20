@@ -19,11 +19,16 @@ html
 html
 html
 html
+html
+html
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../favicon.svg" rel="apple-touch-icon"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<title>Agents téléphoniques IA — Zoomy.services</title>
+<link href="https://zoomy.services/phone-agent.html" rel="canonical"/>
+<title>Agents téléphoniques IA — Zoomy</title>
 <meta content="Custom AI phone agents that answer calls, book appointments, and handle customer enquiries 24/7 in any language." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -297,7 +302,7 @@ nav{top:var(--bar-h)!important}
 <div class="section-tag">Démo en direct</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">Parlez à l'agent.</h2>
 <p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:1.25rem;">Il s'agit d'un agent téléphonique IA en direct. Cliquez sur le bouton et parlez-lui directement dans votre navigateur – aucun téléphone requis. Posez-lui des questions, demandez une réservation ou voyez simplement comment il gère une conversation naturelle.</p>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">L'agent sur cette page est une version de démonstration formée sur Zoomy.services. Chaque agent que nous construisons est configuré autour de votre activité spécifique : vos services, votre voix, votre langue.</p>
+<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">L'agent présent sur cette page est une version de démonstration formée sur Zoomy. Chaque agent que nous construisons est configuré autour de votre activité spécifique : vos services, votre voix, votre langue.</p>
 <div style="display:flex;flex-direction:column;gap:.75rem;">
 <div style="display:flex;align-items:flex-start;gap:12px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
@@ -553,13 +558,13 @@ nav{top:var(--bar-h)!important}
                 // Override firstMessage + language + system prompt to enforce language
                 // All three overrides are enabled on the agent (verified via API)
                 const firstMessages = {
-                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy Services. Comment puis-je vous aider aujourd'hui ?",
-                  'es': "¡Hola! Soy la asistente IA de Zoomy Services. ¿En qué puedo ayudarle hoy?",
-                  'en': "Hi there, this is Zoomy Services. I can help answer any questions about our services in any language. What can I do for you?"
+                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy. Comment puis-je vous aider aujourd'hui ?",
+                  'es': "¡Hola! Soy la asistente IA de Zoomy. ¿En qué puedo ayudarle hoy?",
+                  'en': "Hi there, this is Zoomy. I can help answer any questions about our services in any language. What can I do for you?"
                 };
                 const systemPrompts = {
-                  'fr': `# Règles de prononciation\n- "Zoomy Services" se prononce "ZOU-mi Services" — jamais "Zoomy dot services".\n- L'email se dit "hello at ZOU-mi Services".\n\n# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français, sans exception. Ne passe jamais à l'anglais.\n\n# Personnalité\nTu es l'assistante IA de Zoomy Services, une agence digitale. Chaleureuse, directe et professionnelle.\n\n# Services\n1. Campagnes publicitaires (Meta, Google, TikTok) — à partir de 400$\n2. Sites web sur mesure (HTML/CSS/JS) — à partir de 200$/page\n3. Agents téléphoniques IA — à partir de 600$\n4. Chatbots IA — à partir de 500$\n\nPour un devis : contact@zoomy.services`,
-                  'es': `# Reglas de pronunciación\n- "Zoomy Services" — nunca "Zoomy dot services".\n- El email se dice "hello at Zoomy Services".\n\n# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español, sin excepción. Nunca cambies al inglés.\n\n# Personalidad\nEres la asistente IA de Zoomy Services, una agencia digital. Cálida, directa y profesional.\n\n# Servicios\n1. Campañas publicitarias (Meta, Google, TikTok) — desde $400\n2. Sitios web personalizados (HTML/CSS/JS) — desde $200/página\n3. Agentes telefónicos IA — desde $600\n4. Chatbots IA — desde $500\n\nPara presupuestos: contact@zoomy.services`,
+                  'fr': `# Règles de prononciation\n- "Zoomy" se prononce "ZOU-mi Services" — jamais "Zoomy dot services".\n- L'email se dit "hello at ZOU-mi".\n\n# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français, sans exception. Ne passe jamais à l'anglais.\n\n# Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse, directe et professionnelle.\n\n# Services\n1. Campagnes publicitaires (Meta, Google, TikTok) — à partir de 400$\n2. Sites web sur mesure (HTML/CSS/JS) — à partir de 200$/page\n3. Agents téléphoniques IA — à partir de 600$\n4. Chatbots IA — à partir de 500$\n\nPour un devis : contact@zoomy.services`,
+                  'es': `# Reglas de pronunciación\n- "Zoomy" — nunca "Zoomy dot services".\n- El email se dice "hello at Zoomy".\n\n# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español, sin excepción. Nunca cambies al inglés.\n\n# Personalidad\nEres la asistente IA de Zoomy, una agencia digital. Cálida, directa y profesional.\n\n# Servicios\n1. Campañas publicitarias (Meta, Google, TikTok) — desde $400\n2. Sitios web personalizados (HTML/CSS/JS) — desde $200/página\n3. Agentes telefónicos IA — desde $600\n4. Chatbots IA — desde $500\n\nPara presupuestos: contact@zoomy.services`,
                   'en': undefined
                 };
                 const agentOverride = { language: pageLang };

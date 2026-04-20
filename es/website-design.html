@@ -21,6 +21,7 @@ HTML
 HTML
 HTML
 HTML
+HTML
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -47,6 +48,14 @@ HTML
 .cap-row-item{grid-template-columns:1fr;gap:1rem}
 .feature-row{grid-template-columns:1fr}
 [style*="grid-template-columns:220px 1fr"]{grid-template-columns:1fr !important;gap:0.5rem !important}
+[style*="grid-template-columns:1fr 1fr;gap:5rem"]{grid-template-columns:1fr !important;gap:2.5rem !important}
+[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr) !important}
+[style*="grid-template-columns:repeat(2,1fr);gap:1px"]{grid-template-columns:1fr !important}
+[style*="grid-column:span 2"]{grid-column:span 1 !important}
+[style*="grid-template-columns:1fr 1fr;gap:1rem;align-items:start"]{grid-template-columns:1fr !important}
+}
+@media(max-width:600px){
+[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr !important}
 }
 </style>
 <style>
@@ -186,115 +195,39 @@ nav{top:var(--bar-h)!important}
 <p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:600px;">Todo está codificado de forma personalizada en HTML, CSS y JavaScript. Sin WordPress, sin creadores de páginas, sin temas. Cada proyecto está diseñado para lo que realmente necesita hacer.</p>
 </div>
 </section>
-<!-- WHAT WE BUILD -->
-<section class="section">
-<div class="section-inner">
-<div class="section-tag">Lo que construimos</div>
-<h2 class="section-title">Tipos de sitios.</h2>
-<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">El alcance varía según el proyecto. A continuación se muestra lo que hemos creado y lo que estamos configurados para construir nuevamente.</p>
-<div class="cap-rows">
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Reserva</div>
-<div class="cap-row-name">Sitios de actividades y lugares</div>
-</div>
-<div class="cap-desc">Sitios para lugares, actividades, experiencias y negocios de ocio que necesitan reservas online. Incluye disponibilidad de espacios en tiempo real, confirmación de reserva, integración de pagos y un panel de administración para gestionar reservas. Soporte multilingüe en hasta 133 idiomas.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Comercio</div>
-<div class="cap-row-name">Tiendas de comercio electrónico</div>
-</div>
-<div class="cap-desc">Sitios de catálogo de productos con pago online vía Stripe. Admite múltiples tipos de productos, filtrado y flujos de compra. Se puede construir con un panel de administración para gestionar productos y pedidos. Multilingüe cuando sea necesario.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Hospitalidad</div>
-<div class="cap-row-name">Restaurantes y Catering</div>
-</div>
-<div class="cap-desc">Sitios de restaurantes y catering con menús, sistemas de reservas, secciones de galería e información de ubicación. Creado para conversiones: lograr que los visitantes reserven una mesa o realicen una consulta. Multilingüe cuando sea necesario.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Servicio</div>
-<div class="cap-row-name">Sitios de empresas de servicios</div>
-</div>
-<div class="cap-desc">Sitios para empresas que ofrecen un servicio: consultorías, clínicas, agencias, comerciantes y similares. Por lo general, se estructura en torno a la presentación clara de los servicios, la captura de clientes potenciales y la facilitación del contacto o la reserva.</div>
-</div>
-<div class="cap-row-item reveal">
-<div>
-<div class="cap-row-label">Conversión</div>
-<div class="cap-row-name">Páginas de destino</div>
-</div>
-<div class="cap-desc">Construcciones de una sola página diseñadas en torno a una campaña o audiencia específica. Generalmente vinculado a una campaña de medios pagos y diseñado para convertir el tráfico en clientes potenciales o compras. Creado con el mismo estándar que los sitios completos: código personalizado, carga rápida y dispositivos móviles primero.</div>
-</div>
-</div>
-</div>
-</section>
-<!-- WHAT CAN BE INCLUDED -->
+<!-- ═══ INTRO — WHY IT MATTERS ═══ -->
 <section class="section" style="background:var(--bg-2);">
 <div class="section-inner">
-<div class="section-tag">Características</div>
-<h2 class="section-title">Qué se puede incluir.</h2>
-<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">No todos los proyectos necesitan todos estos. Lo que se incluye se define durante el informe y tiene su alcance en consecuencia.</p>
-<div style="display:flex;flex-direction:column;gap:0;margin-top:2.5rem;">
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Multilingüe</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Páginas creadas en hasta 133 idiomas: EN, FR, DE, NL, ES y más. Incluye conmutadores de idiomas, etiquetas hreflang y lógica alternativa para traducciones parciales.</div>
+<div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+<div>
+<div class="section-tag">Lo que realmente hacemos</div>
+<h2 class="section-title" style="margin-bottom:1.5rem;">Un sitio que se gana la vida.</h2>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.9;margin-bottom:1.1rem;">La mayoría de los sitios web comerciales se mantienen ahí y parecen aceptables. Eso no es suficiente. Creamos sitios que se cargan rápidamente, se clasifican en las búsquedas, convierten a los visitantes en clientes y le permiten realizar cambios usted mismo el mismo día en que se publican, sin desarrolladores ni demoras.</p>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.9;margin-bottom:2rem;">Todo está codificado a mano desde cero. Sin WordPress, sin plantillas, sin suscripción a una plataforma que se vuelve más costosa a medida que crece su negocio. Obtiene un sitio que funciona de la forma en que realmente funciona el negocio detrás de él.</p>
+<a class="btn btn-primary" href="contact.html">Iniciar un proyecto ›</a>
 </div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Sistema de reservas</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Disponibilidad de espacios en tiempo real, selección de fecha y tamaño de grupo, confirmación de reserva y notificación por correo electrónico. Backend impulsado por Supabase. Panel de administración para visualización y gestión de reservas incluido.</div>
+<div style="display:flex;flex-direction:column;gap:.9rem;padding-top:.25rem;">
+<div style="padding:1.2rem 1.4rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.13);border-radius:10px;">
+<div style="font-size:.63rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;">Rendimiento</div>
+<div style="color:#fff;font-weight:600;font-size:.92rem;margin-bottom:.3rem;">Rápido en todos los dispositivos</div>
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.65;">Sin complementos, sin excesos. Páginas que obtienen una buena puntuación en Core Web Vitals y se sienten instantáneas de usar.</div>
 </div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Pago en línea</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Integración de pagos a través de Stripe, tarjetas compatibles, ACH, Apple Pay y Google Pay. Puede combinarse con el sistema de reservas o utilizarse de forma independiente para el comercio electrónico.</div>
+<div style="padding:1.2rem 1.4rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.13);border-radius:10px;">
+<div style="font-size:.63rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;">Independencia</div>
+<div style="color:#fff;font-weight:600;font-size:.92rem;margin-bottom:.3rem;">Actualízalo tú mismo, inmediatamente</div>
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.65;">Cada sitio incluye un panel de administración. Edite texto, intercambie imágenes, cambie precios, sin tocar una línea de código.</div>
 </div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Panel de administración</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">
-  Un editor protegido con contraseña que le permite actualizar su propio sitio, sin necesidad de desarrollador ni código. Haga clic en cualquier texto de cualquier página para editarlo directamente. Haga clic en cualquier imagen para reemplazarla, reposicionar el punto focal o ampliarla. Cada cambio se guarda en una capa de contenido respaldada por CDN y se activa en su sitio en cuestión de segundos.
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:.85rem;">
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Editar todo el texto en cada página</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Reemplazar cualquier imagen</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Reposicionar y recortar imágenes</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Editar etiquetas de formulario y texto de marcador de posición</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Actualizar productos y precios</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Cambiar colores y fuentes del sitio</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Mostrar/ocultar banners de anuncios</span></div>
-<div style="display:flex;align-items:center;gap:7px;"><span style="color:var(--primary);font-size:.8rem;">✓</span><span style="font-size:.82rem;color:var(--text-2);">Acceso basado en roles para su equipo</span></div>
+<div style="padding:1.2rem 1.4rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.13);border-radius:10px;">
+<div style="font-size:.63rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.5rem;">Propiedad</div>
+<div style="color:#fff;font-weight:600;font-size:.92rem;margin-bottom:.3rem;">Eres dueño de todo</div>
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.65;">Sin bloqueo de plataforma. Cancele cualquier suscripción y su sitio seguirá funcionando exactamente como está creado.</div>
 </div>
-</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Chatbot de IA</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Un chatbot capacitado en los datos de su negocio e implementado directamente en el sitio. Maneja las preguntas de los visitantes, recopila clientes potenciales y trabaja en varios idiomas. Descripción completa más abajo en esta página.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Cumplimiento del RGPD</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Banner de consentimiento de cookies con controles a nivel de categoría, estructura de política de privacidad y configuración de manejo de datos. Incluido de serie en todos los sitios que recopilan datos de visitantes.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Estructura SEO</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">HTML semántico, jerarquía de encabezados correcta, metaetiquetas, Open Graph, marcado de datos estructurados y mapa del sitio XML. Incluido en todos los sitios de forma predeterminada.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Análisis y seguimiento</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Configuración GA4 con seguimiento de eventos y configuración de objetivos. Meta Pixel y Google Tag Manager donde el sitio está conectado a campañas pagas. Integración de mapas de calor o grabación de sesiones bajo petición.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;border-bottom:1px solid var(--border-b);">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Dominio y alojamiento</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Registro de dominio y configuración de hosting bajo petición. Si ya tiene ambos, los implementamos. Si no, lo manejamos como parte del proyecto.</div>
-</div>
-<div style="display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:1.5rem 0;">
-<div style="font-family:var(--font-display);font-weight:600;color:#fff;font-size:.95rem;padding-top:2px;">Animaciones e interacciones</div>
-<div style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Animaciones de desplazamiento, efectos de desplazamiento, paralaje y transiciones personalizadas. El nivel de animación se adapta a lo que se adapta al proyecto; no todos los sitios necesitan movimientos elaborados.</div>
 </div>
 </div>
 </div>
 </section>
-<!-- ADMIN PANEL SHOWCASE SECTION -->
-<section class="section" id="admin-panel" style="background:var(--bg-2);overflow:hidden;">
+<!-- ═══ ADMIN PANEL SHOWCASE ═══ -->
+<section class="section" id="admin-panel" style="overflow:hidden;">
 <div class="section-inner">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
 <div class="reveal-left">
@@ -313,7 +246,7 @@ nav{top:var(--bar-h)!important}
 </div>
 <div style="display:flex;align-items:flex-start;gap:11px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Productos y precios</strong> — actualizar los nombres, descripciones, tamaños y precios de los productos; agregar o eliminar productos</span>
+<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Productos y precios</strong> — actualizar nombres, descripciones, tamaños y precios; agregar o eliminar elementos</span>
 </div>
 <div style="display:flex;align-items:flex-start;gap:11px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
@@ -321,44 +254,38 @@ nav{top:var(--bar-h)!important}
 </div>
 <div style="display:flex;align-items:flex-start;gap:11px;">
 <span style="color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Pancartas publicitarias</strong> — mostrar un aviso para todo el sitio sobre ventas, cierres o retrasos; deséchelo cuando esté listo</span>
+<span style="color:var(--text-2);font-size:.9rem;"><strong style="color:#fff;">Pancartas publicitarias</strong> — publicar un aviso de ventas, cierres u ofertas; deséchelo cuando esté listo</span>
 </div>
 </div>
 <a class="btn btn-primary" href="contact.html">Incluye en tu proyecto ›</a>
 </div>
-<!-- Mock admin UI -->
+<!-- MOCK ADMIN UI — fictional business, generic branding -->
 <div class="reveal-right" style="background:var(--bg-1);border:1px solid var(--border-b);border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.5);">
-<!-- Top bar -->
 <div style="background:#0a0a0a;border-bottom:1px solid #1e1e1e;padding:.55rem 1rem;display:flex;align-items:center;justify-content:space-between;">
-<span style="font-size:.7rem;font-weight:700;color:#c9a84c;letter-spacing:.08em;text-transform:uppercase;">🐟 Administrador de Bottarga - Editor WYSIWYG</span>
+<span style="font-size:.7rem;font-weight:700;color:#c9a84c;letter-spacing:.08em;text-transform:uppercase;">Lumina Studio — Panel de administración</span>
 <span style="font-size:.65rem;background:#c9a84c;color:#0a0a08;padding:2px 10px;border-radius:4px;font-weight:700;">2 no guardados</span>
 </div>
 <div style="display:flex;min-height:320px;">
-<!-- Sidebar -->
 <div style="width:130px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1e1e1e;padding:.75rem 0;">
 <div style="font-size:.55rem;color:#555;text-transform:uppercase;letter-spacing:.1em;padding:.25rem .85rem .15rem;">paginas</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#c9a84c;font-weight:600;background:rgba(201,168,76,.08);border-left:2px solid #c9a84c;">🏠 Inicio</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">📖 Acerca de</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">🛒 Tienda</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">✉️ Contacto</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#c9a84c;font-weight:600;background:rgba(201,168,76,.08);border-left:2px solid #c9a84c;">Inicio</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Clases</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Zapatillas</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Contacto</div>
 <div style="margin:.5rem .6rem;border-top:1px solid #1e1e1e;"></div>
 <div style="font-size:.55rem;color:#555;text-transform:uppercase;letter-spacing:.1em;padding:.25rem .85rem .15rem;">Configuración</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">📦 Productos</div>
-<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">🎨 Colores</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Membresías</div>
+<div style="padding:.32rem .85rem;font-size:.72rem;color:#888;">Colores</div>
 </div>
-<!-- Iframe mock with edit overlays -->
-<div style="flex:1;position:relative;background:#1a1009;overflow:hidden;">
-<!-- EDIT MODE badge -->
+<div style="flex:1;position:relative;background:#0f0f14;overflow:hidden;">
 <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);background:rgba(201,168,76,.96);color:#0a0a08;font-size:9px;font-weight:800;letter-spacing:1px;padding:2px 12px;border-radius:0 0 5px 5px;z-index:10;white-space:nowrap;">✏ MODO EDITAR: haga clic en cualquier texto para editar</div>
-<!-- Simulated page content with hover outlines -->
 <div style="padding:2rem 1.5rem 1rem;padding-top:2.5rem;">
-<div style="font-size:.58rem;color:#c9a84c;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;border:1px dashed rgba(201,168,76,.4);padding:2px 6px;display:inline-block;">PATRIMONIO — PASA PARA EDITAR</div>
-<div style="font-size:1.1rem;font-weight:700;color:#f5f0e8;margin-bottom:.4rem;border:1px dashed rgba(201,168,76,.5);padding:3px 6px;cursor:text;">La mejor Bottarga del mundo</div>
-<div style="font-size:.72rem;color:#a89070;line-height:1.6;border:1px dashed transparent;padding:3px 6px;cursor:text;">Procedente de huevas de mújol y atún del Mediterráneo, curado a la perfección.</div>
-<!-- Simulated image with position indicator -->
-<div style="margin-top:.85rem;position:relative;border-radius:6px;overflow:hidden;height:90px;background:#2a1a06;border:2px solid rgba(201,168,76,.5);">
-<div style="position:absolute;inset:0;background:linear-gradient(135deg,#3d2008,#1a0a00);display:flex;align-items:center;justify-content:center;">
-<span style="font-size:.65rem;color:#c9a84c;opacity:.7;">🖼 Haga clic en la imagen para reemplazar o reposicionar</span>
+<div style="font-size:.58rem;color:#c9a84c;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.35rem;border:1px dashed rgba(201,168,76,.4);padding:2px 6px;display:inline-block;">TAGLINE - PASA PARA EDITAR</div>
+<div style="font-size:1.1rem;font-weight:700;color:#f0eeff;margin-bottom:.4rem;border:1px dashed rgba(201,168,76,.5);padding:3px 6px;cursor:text;">Mover. Respirar. Transformar.</div>
+<div style="font-size:.72rem;color:#9090b0;line-height:1.6;border:1px dashed transparent;padding:3px 6px;cursor:text;">Clases de estudio para todos los niveles: en el centro y en línea.</div>
+<div style="margin-top:.85rem;position:relative;border-radius:6px;overflow:hidden;height:90px;background:#1a1a2e;border:2px solid rgba(201,168,76,.5);">
+<div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1a2e,#0f0f1a);display:flex;align-items:center;justify-content:center;">
+<span style="font-size:.65rem;color:#c9a84c;opacity:.7;">Haga clic en la imagen para reemplazar o reposicionar</span>
 </div>
 <div style="position:absolute;top:50%;left:38%;width:12px;height:12px;border-radius:50%;border:1.5px solid #fff;background:rgba(201,168,76,.7);transform:translate(-50%,-50%);box-shadow:0 0 0 1.5px rgba(0,0,0,.6);"></div>
 </div>
@@ -368,6 +295,118 @@ nav{top:var(--bar-h)!important}
 <div style="background:#0a0a0a;border-top:1px solid #1e1e1e;padding:.5rem 1rem;display:flex;justify-content:flex-end;gap:.5rem;">
 <span style="font-size:.72rem;color:#555;align-self:center;">Los cambios se guardan en CDN: se publican en segundos</span>
 <button style="background:#c9a84c;color:#0a0a08;border:none;padding:5px 16px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:default;">Guardar todo ↑</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ WHAT CAN BE INCLUDED ═══ -->
+<section class="section" style="background:var(--bg-2);">
+<div class="section-inner">
+<div class="section-tag">Características</div>
+<h2 class="section-title">Qué se puede incluir.</h2>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:580px;margin-top:.75rem;margin-bottom:3rem;">Acotado a lo que el proyecto realmente necesita. No todos los sitios incluyen todo lo que aparece a continuación, pero todo está disponible.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem 2rem;">
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Multilingüe</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Hasta 133 idiomas</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">EN, FR, DE, NL, ES y más. Se incluyen conmutadores de idioma, etiquetas hreflang y lógica alternativa.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Reserva</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Sistema de reservas en tiempo real</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Disponibilidad de espacios, tamaño de grupo, correos electrónicos de confirmación y un panel backend para gestionar reservas.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Pagos</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Pago en línea a través de Stripe</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Tarjetas, ACH, Apple Pay, Google Pay. Funciona de forma independiente o integrada con el sistema de reservas.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">AI</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Chatbot capacitado en tu negocio</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Maneja las preguntas de los visitantes, recopila clientes potenciales y trabaja en varios idiomas. Autohospedado, sin tarifas de plataforma.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">SEO</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Creado para posicionarse desde el primer día</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">HTML semántico, estructura de encabezado correcta, Open Graph, marcado de datos estructurados, mapa del sitio XML. Estándar en todos los sitios.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Análisis</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">GA4, Metapíxel, GTM</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Seguimiento de eventos y configuración de objetivos. Conectado a campañas pagas cuando sea relevante. Grabación de sesiones bajo petición.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Cumplimiento</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Listo para el RGPD</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Consentimiento de cookies con controles de categoría, estructura de política de privacidad y configuración de manejo de datos. Estándar en todos los sitios.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Movimiento</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Animaciones e interacciones</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Animaciones de desplazamiento, paralaje, efectos de desplazamiento y transiciones: adaptados a lo que se adapta al proyecto, no forzados.</div>
+</div>
+<div class="reveal" style="border-top:2px solid rgba(99,102,241,.3);padding-top:1.25rem;">
+<div style="font-size:.62rem;font-family:var(--font-mono);color:var(--primary);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.6rem;">Infraestructura</div>
+<div style="font-weight:700;color:#fff;font-size:.97rem;margin-bottom:.5rem;">Dominio y alojamiento</div>
+<div style="color:var(--text-2);font-size:.85rem;line-height:1.7;">Nos encargamos del registro y la configuración si es necesario. Si ya tiene ambos, los implementamos.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ TYPES OF SITES ═══ -->
+<section class="section">
+<div class="section-inner">
+<div class="section-tag">Lo que construimos</div>
+<h2 class="section-title">Tipos de sitios.</h2>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:560px;margin-top:.75rem;margin-bottom:3rem;">Cada proyecto es diferente. Esto es lo que hemos creado y lo que estamos preparados para construir de nuevo.</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border-b);border:1px solid var(--border-b);border-radius:14px;overflow:hidden;">
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">01</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Reserva</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Sitios de actividades y lugares</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Para espacios, actividades, experiencias y negocios de ocio. Disponibilidad de franjas horarias en tiempo real, pago en línea, soporte multilingüe y un panel de gestión de reservas.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">02</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Comercio</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Tiendas de comercio electrónico</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Catálogos de productos con pago, filtrado y flujos de pedidos de Stripe. Panel de administración para la gestión de productos y pedidos. Multilingüe cuando sea necesario.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">03</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Hospitalidad</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Restaurantes y Catering</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Menús, sistemas de reservas, secciones de galería e información de ubicación. Creado para que los visitantes reserven una mesa o realicen una consulta. Multilingüe cuando sea necesario.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">04</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Servicio</span>
+</div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Sitios de empresas de servicios</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Para consultorías, clínicas, agencias y similares. Estructurado para presentar los servicios con claridad, captar clientes potenciales y facilitar el contacto o la reserva.</div>
+</div>
+<div class="reveal" style="background:var(--bg-1);padding:2rem 2.25rem;grid-column:span 2;">
+<div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:1rem;">
+<span style="font-family:var(--font-mono);font-size:.65rem;color:var(--primary);opacity:.7;">05</span>
+<span style="font-size:.62rem;font-family:var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;">Conversión</span>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;">
+<div>
+<div style="font-weight:700;color:#fff;font-size:1.05rem;margin-bottom:.65rem;">Páginas de destino</div>
+<div style="color:var(--text-2);font-size:.88rem;line-height:1.75;">Construcciones de una sola página vinculadas a una campaña o audiencia específica. Creado con el mismo estándar que los sitios completos (código personalizado, carga rápida, dispositivos móviles primero) con el único objetivo de convertir el tráfico en clientes potenciales o compras.</div>
+</div>
+<div style="padding:.9rem 1.1rem;background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.12);border-radius:8px;align-self:center;">
+<div style="color:var(--text-2);font-size:.83rem;line-height:1.7;">Cada página de destino que creamos viene con las mismas bases de rendimiento que un sitio completo: HTML semántico, metaetiquetas correctas, tiempos de carga rápidos y diseño móvil primero.</div>
+</div>
 </div>
 </div>
 </div>
