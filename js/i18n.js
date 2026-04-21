@@ -5,7 +5,7 @@ const T = {
 en:{
   /* ── Nav ── */
   'nav.campaigns':'Campaigns','nav.websites':'Websites','nav.phone':'Phone Agents',
-  'nav.chatbots':'Chatbots','nav.about':'About','nav.contact':'Contact',
+  'nav.chatbots':'Chatbots','nav.creatives':'Creatives','nav.about':'About','nav.contact':'Contact',
   'nav.cta':'Start a Project',
   /* ── Footer ── */
   'footer.services':'Services','footer.company':'Company','footer.contact':'Contact',
@@ -145,7 +145,7 @@ en:{
 
 fr:{
   'nav.campaigns':'Campagnes','nav.websites':'Sites Web','nav.phone':'Agents Téléphoniques',
-  'nav.chatbots':'Chatbots','nav.about':'À propos','nav.contact':'Contact',
+  'nav.chatbots':'Chatbots','nav.creatives':'Créatifs','nav.about':'À propos','nav.contact':'Contact',
   'nav.cta':'Démarrer un projet',
   'footer.services':'Services','footer.company':'Entreprise','footer.contact':'Contact',
   'footer.tagline':'Gestion de campagnes, sites web sur-mesure, chatbots IA et agents téléphoniques.',
@@ -273,7 +273,7 @@ fr:{
 
 es:{
   'nav.campaigns':'Campañas','nav.websites':'Sitios Web','nav.phone':'Agentes Telefónicos',
-  'nav.chatbots':'Chatbots','nav.about':'Nosotros','nav.contact':'Contacto',
+  'nav.chatbots':'Chatbots','nav.creatives':'Creativos','nav.about':'Nosotros','nav.contact':'Contacto',
   'nav.cta':'Iniciar un proyecto',
   'footer.services':'Servicios','footer.company':'Empresa','footer.contact':'Contacto',
   'footer.tagline':'Gestión de campañas, sitios web personalizados, chatbots IA y agentes telefónicos.',

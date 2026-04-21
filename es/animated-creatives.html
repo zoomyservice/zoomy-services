@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+HTML
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../favicon.svg" rel="apple-touch-icon"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<link href="https://zoomy.services/animated-creatives.html" rel="canonical"/>
+<title>Creativos publicitarios animados: Zoomy</title>
+<meta content="Short animated ads made for Meta. We animate from your brief — no footage needed. Feed and story formats, $199 per video." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/style.css?v=20260416" rel="stylesheet"/>
+<style>
+.phase-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
+.phase-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.5rem 0;border-bottom:1px solid var(--border-b);align-items:start;position:relative}
+.phase-row:first-child{border-top:1px solid var(--border-b)}
+.phase-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
+.phase-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff}
+.phase-accent{display:block;width:32px;height:2px;border-radius:2px;margin-top:.75rem}
+.phase-ghost{font-family:var(--font-display);font-size:7rem;font-weight:900;line-height:1;position:absolute;right:0;top:50%;transform:translateY(-50%);pointer-events:none;user-select:none;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.06}
+.item-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-top:1rem}
+.item-list li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:var(--text-2);line-height:1.6}
+.item-list li::before{content:"\2014";color:var(--muted);flex-shrink:0;margin-top:1px}
+.stats-strip{padding:3rem 2rem;background:var(--surface);border-top:1px solid var(--border-b);border-bottom:1px solid var(--border-b)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:var(--max-w);margin:0 auto}
+.stat-block{text-align:center;padding:1.25rem 1rem}
+.stat-block-num{font-family:var(--font-display);font-size:2rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.4rem}
+.stat-block-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:var(--font-mono)}
+.format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.format-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;position:relative;overflow:hidden}
+.format-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-main)}
+.format-label{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
+.format-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.6rem}
+.format-desc{font-size:.875rem;color:var(--text-2);line-height:1.7}
+.pricing-callout{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:3rem;position:relative;overflow:hidden}
+.pricing-callout::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-main)}
+.pricing-half{padding:2.25rem 2.5rem;position:relative}
+.pricing-half:first-child{border-right:1px solid var(--border-b)}
+.pricing-half-tag{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.75rem}
+.pricing-half-price{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.25rem}
+.pricing-half-price span{font-size:1rem;font-weight:400;color:var(--muted)}
+.pricing-half-desc{font-size:.875rem;color:var(--text-2);line-height:1.65;margin-top:.75rem}
+.pricing-half-list{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:.4rem}
+.pricing-half-list li{font-size:.8rem;color:var(--text-2);display:flex;gap:8px;align-items:flex-start}
+.pricing-half-list li::before{content:"\2713";color:var(--primary);font-weight:700;flex-shrink:0}
+.ai-video-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;position:relative;overflow:hidden;margin-top:2rem}
+.ai-video-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899)}
+@media(max-width:768px){
+  .phase-row{grid-template-columns:1fr;gap:1rem}
+  .format-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .pricing-callout{grid-template-columns:1fr}
+  .pricing-half:first-child{border-right:none;border-bottom:1px solid var(--border-b)}
+  .phase-ghost{display:none}
+}
+</style>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33',{send_page_view:true});</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
+<script>document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('a[href*="contact"]').forEach(function(el){el.addEventListener('click',function(){gtag('event','cta_click',{event_category:'engagement',event_label:el.textContent.trim().substring(0,50)});clarity('event','cta_click');fbq('track','Contact');});});var scrollMilestones={25:false,50:false,75:false,90:false};window.addEventListener('scroll',function(){var scrollPct=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);Object.keys(scrollMilestones).forEach(function(m){if(!scrollMilestones[m]&&scrollPct>=parseInt(m)){scrollMilestones[m]=true;gtag('event','scroll_depth',{event_category:'engagement',event_label:m+'%',value:parseInt(m)});}});},{passive:true});});</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','972114368527990');fbq('track','PageView');</script>
+<noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
+<script>localStorage.setItem('zmy_lang','es');</script></head>
+<body>
+<div id="scroll-progress"></div>
+<canvas id="particle-canvas"></canvas>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+<nav>
+<a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Estudio de producción digital</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campañas</a></li>
+<li><a data-i18n="nav.websites" href="website-design.html">Sitios web</a></li>
+<li><a data-i18n="nav.phone" href="phone-agent.html">Agentes telefónicos</a></li>
+<li><a data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
+<li><a class="active" data-i18n="nav.creatives" href="animated-creatives.html">Creativos</a></li>
+<li><a data-i18n="nav.about" href="about.html">Acerca de</a></li>
+<li><a data-i18n="nav.pricing" href="pricing.html">Precios</a></li>
+<li><a data-i18n="nav.contact" href="contact.html">Contacto</a></li>
+</ul>
+<div style="display:flex;align-items:center;gap:16px;">
+<div class="lang-switcher">
+<a class="lang-btn" href="../animated-creatives.html">EN</a>
+<a class="lang-btn" href="../fr/animated-creatives.html">FR</a>
+<span class="lang-btn lang-active" style="opacity:1;font-weight:700;cursor:default;">ES</span>
+</div>
+<a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Iniciar un proyecto</span> ›</a>
+<button aria-label="Menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</div>
+</nav>
+<!-- HERO -->
+<section class="hero" style="min-height:55vh;padding:140px 2rem 5rem;">
+<div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
+<div class="grid-overlay"></div>
+<div class="section-inner" style="z-index:2;text-align:center;">
+<div class="section-tag" style="margin-bottom:1.5rem;">Creatividad del anuncio</div>
+<h1 style="margin-bottom:1.5rem;"><span class="glitch grad-text-animated">Creatividades publicitarias animadas.</span><br/>No se necesitan imágenes.</h1>
+<p style="color:var(--text-2);font-size:1.1rem;line-height:1.8;max-width:580px;margin:0 auto 2.5rem;">Animaciones en bucle cortas creadas para metaanuncios. Usted nos informa sobre el producto, el mensaje y la audiencia; nosotros nos encargamos de todo lo demás. Formatos de feeds e historias entregados listos para cargar.</p>
+<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+<a class="btn btn-primary btn-lg" href="contact.html">Enviar un resumen</a>
+<a class="btn btn-ghost btn-lg" href="#process">Cómo funciona ›</a>
+</div>
+</div>
+</section>
+<!-- STATS STRIP -->
+<div class="stats-strip">
+<div class="stats-row">
+<div class="stat-block"><div class="stat-block-num">$199</div><div class="stat-block-label">Por vídeo</div></div>
+<div class="stat-block"><div class="stat-block-num">15-30 años</div><div class="stat-block-label">Longitud del recorrido</div></div>
+<div class="stat-block"><div class="stat-block-num">3</div><div class="stat-block-label">Formatos entregados</div></div>
+<div class="stat-block"><div class="stat-block-num">2</div><div class="stat-block-label">Rondas de revisión</div></div>
+</div>
+</div>
+<!-- FORMATS -->
+<section class="section" style="background:var(--bg-2);">
+<div class="section-inner">
+<div class="section-tag">Lo que hacemos</div>
+<h2 class="section-title">Construido para la alimentación. Diseñado para detener el desplazamiento.</h2>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">Estos son anuncios animados cortos y en bucle, no ediciones en vivo ni presentaciones de diapositivas. Gráficos en movimiento y animación asistida por IA, diseñados específicamente para cómo las personas consumen contenido en Facebook e Instagram. Sin equipo de cámara, sin estudio, sin esperas para ver las imágenes.</p>
+<div class="format-grid">
+<div class="format-card reveal"><div class="format-label">Formato 01</div><div class="format-name">Alimentación cuadrada — 1:1</div><div class="format-desc">Feed de Facebook e Instagram. El formato predeterminado para la mayoría de los objetivos de la campaña. 1080×1080px, hasta 30 segundos.</div></div>
+<div class="format-card reveal"><div class="format-label">Formato 02</div><div class="format-name">Alimentación vertical — 4:5</div><div class="format-desc">Recorte más alto para el feed de Instagram: ocupa más espacio en la pantalla que el cuadrado. Mayor visibilidad en el scroll. 1080×1350px.</div></div>
+<div class="format-card reveal"><div class="format-label">Formato 03</div><div class="format-name">Historia y carretes - 9:16</div><div class="format-desc">Vertical de pantalla completa para ubicaciones de Historias y Reels. 1080×1920px. Requerido para campañas colocadas en historias.</div></div>
+</div>
+</div>
+</section>
+<!-- PROCESS -->
+<section class="section" id="process">
+<div class="section-inner">
+<div class="section-tag">Proceso</div>
+<h2 class="section-title">Breve para subir en tres pasos.</h2>
+<div class="phase-rows">
+<div class="phase-row reveal">
+<div><div class="phase-label">Paso</div><div class="phase-name">01<br/>Breve</div><span class="phase-accent" style="background:var(--grad-main);"></span></div>
+<div>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;margin-bottom:1rem;">Usted nos envía el producto, el mensaje que desea transmitir y cualquier activo de marca que tenga. No hay plantilla que completar: un mensaje breve es suficiente para comenzar.</p>
+<ul class="item-list"><li>Nombre del producto y qué hace</li><li>Lo único que quieres que los espectadores se lleven</li><li>Público objetivo (edad, interés, intención)</li><li>Logotipo y colores de la marca si están disponibles</li></ul>
+</div>
+<div class="phase-ghost">01</div>
+</div>
+<div class="phase-row reveal">
+<div><div class="phase-label">Paso</div><div class="phase-name">02<br/>Animamos</div><span class="phase-accent" style="background:var(--grad-main);"></span></div>
+<div>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;margin-bottom:1rem;">Producimos la animación: gráficos en movimiento, transiciones, superposiciones de texto y sonido. Los tres formatos se producen a partir del mismo informe. Usted revisa un borrador y puede solicitar hasta dos rondas de revisiones.</p>
+<ul class="item-list"><li>Gráficos en movimiento y elementos animados</li><li>Superposiciones de texto de marca y llamado a la acción</li><li>Diseño de sonido cuando corresponda</li><li>Hasta 2 rondas de revisión incluidas</li></ul>
+</div>
+<div class="phase-ghost">02</div>
+</div>
+<div class="phase-row reveal">
+<div><div class="phase-label">Paso</div><div class="phase-name">03<br/>Tú subes</div><span class="phase-accent" style="background:var(--grad-main);"></span></div>
+<div>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;margin-bottom:1rem;">Entregamos archivos MP4 terminados en los tres formatos, listos para ingresar directamente al Administrador de anuncios. Si ejecuta campañas a través de nosotros, manejamos la carga directamente.</p>
+<ul class="item-list"><li>MP4 entregado: compatible con metaespecificaciones</li><li>Los tres formatos en una única entrega</li><li>Listo para cargar directamente en el Administrador de anuncios</li><li>Nos encargamos de la carga si estás en un plan de campaña</li></ul>
+</div>
+<div class="phase-ghost">03</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PRICING -->
+<section class="section" style="background:var(--bg-2);">
+<div class="section-inner">
+<div class="section-tag">Precios</div>
+<h2 class="section-title">Un precio. Todo incluido.</h2>
+<div class="pricing-callout reveal">
+<div class="pricing-half">
+<div class="pricing-half-tag">Por vídeo</div>
+<div class="pricing-half-price">$199<span> / vídeo</span></div>
+<p class="pricing-half-desc">Un anuncio animado terminado en los tres metaformatos. Se incluyen dos rondas de revisión. Entregado como MP4, listo para cargar.</p>
+<ul class="pricing-half-list"><li>1:1 cuadrado, 4:5 vertical, 9:16 piso</li><li>Gráficos en movimiento y sonido</li><li>Colores y logotipo de la marca aplicados</li><li>Hasta 2 rondas de revisión</li><li>Entrega de MP4, compatible con Meta-spec</li></ul>
+</div>
+<div class="pricing-half">
+<div class="pricing-half-tag">Combina bien con</div>
+<div class="pricing-half-price" style="font-size:1.4rem;line-height:1.3;font-weight:600;">Campaña<br/>Gestión</div>
+<p class="pricing-half-desc">Si ejecuta Meta Ads a través de nosotros, la producción creativa se convierte en parte del mismo flujo de trabajo. Animamos, cargamos y monitoreamos el rendimiento; no es necesario que toques el Administrador de anuncios.</p>
+<a class="btn btn-ghost" href="campaign-portfolio.html" style="margin-top:1.5rem;display:inline-block;">Ver precios de campaña ›</a>
+</div>
+</div>
+</div>
+</section>
+<!-- AI VIDEO -->
+<section class="section">
+<div class="section-inner">
+<div class="section-tag">También disponible</div>
+<h2 class="section-title">Anuncios de vídeo generados por IA.</h2>
+<div class="ai-video-card reveal">
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:680px;margin-bottom:1.5rem;">Para campañas que necesitan escenas fotorrealistas, revelaciones cinematográficas de productos o imágenes de estilos de vida, utilizamos tecnología de video de IA generativa para producir clips que parecen filmados. Sin equipo de cámara, sin locación, sin equipo de postproducción. Usted describe la escena, nosotros la generamos.</p>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.75rem;">
+<div>
+<div style="font-family:var(--font-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem;">Casos de uso</div>
+<ul class="item-list" style="margin-top:0;"><li>Revelación de producto y fotografías de héroes</li><li>Escenas de estilo de vida y contexto</li><li>Clips de historias de marca</li><li>Imágenes de estilo testimonial</li></ul>
+</div>
+<div>
+<div style="font-family:var(--font-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem;">Lo que obtienes</div>
+<ul class="item-list" style="margin-top:0;"><li>Imágenes fotorrealistas generadas por IA</li><li>Formateado para ubicaciones Meta</li><li>Entregado como MP4</li><li>Precio por escena — consúltanos</li></ul>
+</div>
+</div>
+<a class="btn btn-ghost" href="contact.html">Pregunte sobre el vídeo de IA ›</a>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="section" style="position:relative;overflow:hidden;">
+<div class="aurora" style="opacity:.4;"><div class="aurora-blob aurora-blob-1"></div></div>
+<div class="section-inner" style="text-align:center;z-index:2;position:relative;">
+<div class="section-tag" style="justify-content:center;">Empezar</div>
+<h2 class="section-title">Cuéntanos qué quieres animar.</h2>
+<p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">Producto, mensaje, audiencia, colores de marca. Eso es todo lo que necesitamos para empezar.</p>
+<a class="btn btn-primary btn-lg" href="contact.html">Enviar un resumen creativo</a>
+</div>
+</section>
+<footer>
+<div class="footer-inner">
+<div class="footer-grid">
+<div>
+<div class="footer-logo grad-text">Zoomy</div>
+<p class="footer-tagline" data-i18n="footer.tagline">Gestión de campañas, sitios web personalizados, chatbots de IA y agentes telefónicos.</p>
+</div>
+<div class="footer-col"><h4 data-i18n="footer.services">Servicios</h4><ul>
+<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Gestión de campañas</a></li>
+<li><a data-i18n="nav.websites" href="website-design.html">Sitios web</a></li>
+<li><a data-i18n="nav.phone" href="phone-agent.html">Agentes telefónicos</a></li>
+<li><a href="chatbot.html">Chatbots de IA</a></li>
+<li><a class="active" href="animated-creatives.html">Creatividades animadas</a></li>
+</ul></div>
+<div class="footer-col"><h4 data-i18n="footer.company">Empresa</h4><ul>
+<li><a href="about.html">Sobre nosotros</a></li><li><a href="portfolio.html">Nuestro Trabajo</a></li><li><a href="faq.html">FAQ</a></li>
+</ul></div>
+<div class="footer-col"><h4 data-i18n="footer.contact">Contacto</h4><ul>
+<li><a href="contact.html">Iniciar un proyecto</a></li>
+<li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+</ul>
+<div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Abierto a Proyectos</span></div>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Zoomy — Todos los derechos reservados.</span>
+<span style="display:flex;gap:20px;"><a data-i18n="footer.privacy" href="#">Privacidad</a><a data-i18n="footer.terms" href="#">Términos</a></span>
+</div>
+</div>
+</footer>
+<script src="../js/main.js?v=20260416"></script>
+
+<script src="../js/chatbot.js?v=20260416"></script>
+</body>
+</html>
