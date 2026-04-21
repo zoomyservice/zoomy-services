@@ -1471,29 +1471,29 @@ function render() {
     const delay = 600 + Math.random() * 500;
     await new Promise(r => setTimeout(r, delay));
 
-    const resp = getResponse(text);
-    const isFallback = ctx.lastEntry === 'fallback';
+    // All messages go to Gemini — prices and knowledge come from the worker's PRICING object
+    try {
+      const res = await fetch(AI_WORKER, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: memory.history.slice(-8) })
+      });
+      if (res.ok) {
+        const { reply } = await res.json();
+        typing.remove();
+        addMsg(md(reply), 'bot');
+        memory.push('bot', reply, 'ai');
+        return;
+      }
+    } catch { /* fall through to offline response */ }
 
-    if (isFallback) {
-      // Try Gemini AI fallback — seamlessly replaces the default response
-      try {
-        const res = await fetch(AI_WORKER, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text, history: memory.history.slice(-8) })
-        });
-        if (res.ok) {
-          const { reply } = await res.json();
-          typing.remove();
-          addMsg(md(reply), 'bot');
-          memory.push('bot', reply, 'ai-fallback');
-          return;
-        }
-      } catch { /* fall through to local response */ }
-    }
-
+    // Offline fallback only — worker unreachable
     typing.remove();
-    addMsg(md(resp), 'bot');
+    addMsg(md(t(
+      'Something went wrong — email us at **contact@zoomy.services** and we'll reply typically within 24 hours.',
+      'Une erreur s'est produite — écrivez-nous à **contact@zoomy.services**, nous répondons généralement sous 24h.',
+      'Algo salió mal — escríbenos a **contact@zoomy.services** y respondemos normalmente en 24 horas.'
+    )), 'bot');
   }
 
   function dismissAttn() {
