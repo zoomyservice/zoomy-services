@@ -1103,7 +1103,14 @@
     "Tracking & Attribution": "Suivi et attribution",
     "for Google, TikTok, LinkedIn audit or setup": "pour l'audit ou la configuration de Google, TikTok, LinkedIn",
     "From $600": "À partir de 600 $",
-    "3 formats included": "3 formats inclus"
+    "3 formats included": "3 formats inclus",
+    "Pages with booking flows, checkout, admin panels, or any interactive logic.": "Pages avec flux de réservation, paiement, panneaux d'administration ou toute logique interactive.",
+    "Any standard page — about, services, home, contact. Custom design, built from scratch.": "N'importe quelle page standard : à propos, services, accueil, contact. Conception personnalisée, construite à partir de zéro.",
+    "Add FR, ES, or any language to your site. Includes the chatbot in that language at no extra cost.": "Ajoutez FR, ES ou n’importe quelle langue à votre site. Inclut le chatbot dans cette langue sans frais supplémentaires.",
+    "one-time": "unique",
+    "Full reservation or booking system with real-time availability logic and payments.": "Système complet de réservation ou de réservation avec logique de disponibilité et paiements en temps réel.",
+    "per page · one-time": "par page · unique",
+    "per language": "par langue"
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -2209,6 +2216,13 @@
     "Tracking & Attribution": "Seguimiento y atribución",
     "for Google, TikTok, LinkedIn audit or setup": "para auditoría o configuración de Google, TikTok, LinkedIn",
     "From $600": "Desde $600",
-    "3 formats included": "3 formatos incluidos"
+    "3 formats included": "3 formatos incluidos",
+    "Pages with booking flows, checkout, admin panels, or any interactive logic.": "Páginas con flujos de reserva, checkout, paneles de administración o cualquier lógica interactiva.",
+    "Any standard page — about, services, home, contact. Custom design, built from scratch.": "Cualquier página estándar: acerca de, servicios, inicio, contacto. Diseño personalizado, construido desde cero.",
+    "Add FR, ES, or any language to your site. Includes the chatbot in that language at no extra cost.": "Agregue FR, ES o cualquier idioma a su sitio. Incluye el chatbot en ese idioma sin coste adicional.",
+    "one-time": "una sola vez",
+    "Full reservation or booking system with real-time availability logic and payments.": "Sistema completo de reservas o reservas con lógica de disponibilidad y pagos en tiempo real.",
+    "per page · one-time": "por página · una sola vez",
+    "per language": "por idioma"
   }
 }

@@ -23,6 +23,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -229,37 +231,41 @@
 <div class="pricing-section-label" data-i18n="pricing.web.tag">Websites</div>
 <h2 class="pricing-section-heading" data-i18n="pricing.web.heading">Website pricing.</h2>
 <p class="pricing-section-sub" data-i18n="pricing.web.sub">Priced per page. Every site built from scratch in custom code — no templates, no WordPress.</p>
-<table class="web-table">
-<thead>
-<tr>
-<th>Page type</th>
-<th>Price</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-i18n="pricing.web.page">Standard page</td>
-<td class="price-cell" data-i18n="price.web.page">$199</td>
-<td data-i18n="pricing.web.page.desc">Any standard page — about, services, home, contact.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.functional">Functional page</td>
-<td class="price-cell" data-i18n="price.web.functional">$399</td>
-<td data-i18n="pricing.web.functional.desc">Pages with booking flows, checkout, or admin panels.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.booking">Booking system</td>
-<td class="price-cell" data-i18n="price.web.booking">$599</td>
-<td data-i18n="pricing.web.booking.desc">Full reservation/booking system with availability logic.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.language">Per extra language</td>
-<td class="price-cell" data-i18n="price.web.language">$199/language</td>
-<td data-i18n="pricing.web.language.desc">Includes chatbot in that language at no extra cost.</td>
-</tr>
-</tbody>
-</table>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.5rem;">
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.page">Standard page</div>
+<div class="tier-price" data-i18n="price.web.page">$199</div>
+<div class="tier-price-note">per page · one-time</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.page.desc">Any standard page — about, services, home, contact. Custom design, built from scratch.</p>
+<a class="tier-cta" href="contact.html">Get started ›</a>
+</div>
+<div class="tier-card popular">
+<div class="tier-badge" data-i18n="pricing.popular">Most Popular</div>
+<div class="tier-name" data-i18n="pricing.web.functional">Functional page</div>
+<div class="tier-price" data-i18n="price.web.functional">$399</div>
+<div class="tier-price-note">per page · one-time</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.functional.desc">Pages with booking flows, checkout, admin panels, or any interactive logic.</p>
+<a class="tier-cta" href="contact.html">Get started ›</a>
+</div>
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.booking">Booking system</div>
+<div class="tier-price" data-i18n="price.web.booking">$599</div>
+<div class="tier-price-note">one-time</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.booking.desc">Full reservation or booking system with real-time availability logic and payments.</p>
+<a class="tier-cta" href="contact.html">Get started ›</a>
+</div>
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.language">Extra language</div>
+<div class="tier-price" data-i18n="price.web.language" style="font-size:2rem;">$199</div>
+<div class="tier-price-note">per language</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.language.desc">Add FR, ES, or any language to your site. Includes the chatbot in that language at no extra cost.</p>
+<a class="tier-cta" href="contact.html">Get started ›</a>
+</div>
+</div>
 </div>
 </section>
 <!-- ══ CAMPAIGN MANAGEMENT ══ -->
@@ -402,12 +408,7 @@
 </div>
 </div>
 </footer>
-<script>
-// Nav toggle
-document.getElementById('navToggle').addEventListener('click',function(){
-  document.getElementById('navLinks').classList.toggle('open');
-});
-</script>
+<script src="js/main.js?v=20260421"></script>
 <script src="js/i18n.js?v=20260421"></script>
 <script src="js/chatbot.js?v=20260421"></script>
 </body>

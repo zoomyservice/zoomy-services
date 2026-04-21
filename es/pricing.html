@@ -11,6 +11,7 @@ HTML
 HTML
 HTML
 HTML
+HTML
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -217,37 +218,41 @@ HTML
 <div class="pricing-section-label" data-i18n="pricing.web.tag">Sitios web</div>
 <h2 class="pricing-section-heading" data-i18n="pricing.web.heading">Precios del sitio web.</h2>
 <p class="pricing-section-sub" data-i18n="pricing.web.sub">Precio por página. Cada sitio creado desde cero con código personalizado, sin plantillas, sin WordPress.</p>
-<table class="web-table">
-<thead>
-<tr>
-<th>Tipo de página</th>
-<th>Precio</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-i18n="pricing.web.page">Página estándar</td>
-<td class="price-cell" data-i18n="price.web.page">$199</td>
-<td data-i18n="pricing.web.page.desc">Cualquier página estándar: acerca de, servicios, inicio, contacto.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.functional">Página funcional</td>
-<td class="price-cell" data-i18n="price.web.functional">$399</td>
-<td data-i18n="pricing.web.functional.desc">Páginas con flujos de reserva, pago o paneles de administración.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.booking">Sistema de reservas</td>
-<td class="price-cell" data-i18n="price.web.booking">$599</td>
-<td data-i18n="pricing.web.booking.desc">Sistema completo de reservas/reservas con lógica de disponibilidad.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.language">Por idioma adicional</td>
-<td class="price-cell" data-i18n="price.web.language">$199/idioma</td>
-<td data-i18n="pricing.web.language.desc">Incluye chatbot en ese idioma sin costo adicional.</td>
-</tr>
-</tbody>
-</table>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.5rem;">
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.page">Página estándar</div>
+<div class="tier-price" data-i18n="price.web.page">$199</div>
+<div class="tier-price-note">por página · una sola vez</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.page.desc">Cualquier página estándar: acerca de, servicios, inicio, contacto. Diseño personalizado, construido desde cero.</p>
+<a class="tier-cta" href="contact.html">Empezar ›</a>
+</div>
+<div class="tier-card popular">
+<div class="tier-badge" data-i18n="pricing.popular">Más populares</div>
+<div class="tier-name" data-i18n="pricing.web.functional">Página funcional</div>
+<div class="tier-price" data-i18n="price.web.functional">$399</div>
+<div class="tier-price-note">por página · una sola vez</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.functional.desc">Páginas con flujos de reserva, checkout, paneles de administración o cualquier lógica interactiva.</p>
+<a class="tier-cta" href="contact.html">Empezar ›</a>
+</div>
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.booking">Sistema de reservas</div>
+<div class="tier-price" data-i18n="price.web.booking">$599</div>
+<div class="tier-price-note">una sola vez</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.booking.desc">Sistema completo de reservas o reservas con lógica de disponibilidad y pagos en tiempo real.</p>
+<a class="tier-cta" href="contact.html">Empezar ›</a>
+</div>
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.language">Idioma adicional</div>
+<div class="tier-price" data-i18n="price.web.language" style="font-size:2rem;">$199</div>
+<div class="tier-price-note">por idioma</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.language.desc">Agregue FR, ES o cualquier idioma a su sitio. Incluye el chatbot en ese idioma sin coste adicional.</p>
+<a class="tier-cta" href="contact.html">Empezar ›</a>
+</div>
+</div>
 </div>
 </section>
 <!-- ══ CAMPAIGN MANAGEMENT ══ -->
@@ -390,12 +395,7 @@ HTML
 </div>
 </div>
 </footer>
-<script>
-// Nav toggle
-document.getElementById('navToggle').addEventListener('click',function(){
-  document.getElementById('navLinks').classList.toggle('open');
-});
-</script>
+<script src="../js/main.js?v=20260421"></script>
 
 <script src="../js/chatbot.js?v=20260421"></script>
 </body>

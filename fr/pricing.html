@@ -10,6 +10,7 @@ html
 html
 html
 html
+html
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -216,37 +217,41 @@ html
 <div class="pricing-section-label" data-i18n="pricing.web.tag">Sites Web</div>
 <h2 class="pricing-section-heading" data-i18n="pricing.web.heading">Tarification du site Web.</h2>
 <p class="pricing-section-sub" data-i18n="pricing.web.sub">Prix ​​par page. Chaque site est construit à partir de zéro avec un code personnalisé – pas de modèles, pas de WordPress.</p>
-<table class="web-table">
-<thead>
-<tr>
-<th>Type de page</th>
-<th>Prix ​​</th>
-<th>Descriptif</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td data-i18n="pricing.web.page">Page standard</td>
-<td class="price-cell" data-i18n="price.web.page">$199</td>
-<td data-i18n="pricing.web.page.desc">N'importe quelle page standard : à propos, services, accueil, contact.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.functional">Page fonctionnelle</td>
-<td class="price-cell" data-i18n="price.web.functional">$399</td>
-<td data-i18n="pricing.web.functional.desc">Pages avec flux de réservation, paiement ou panneaux d'administration.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.booking">Système de réservation</td>
-<td class="price-cell" data-i18n="price.web.booking">$599</td>
-<td data-i18n="pricing.web.booking.desc">Système complet de réservation/réservation avec logique de disponibilité.</td>
-</tr>
-<tr>
-<td data-i18n="pricing.web.language">Par langue supplémentaire</td>
-<td class="price-cell" data-i18n="price.web.language">199 $/langue</td>
-<td data-i18n="pricing.web.language.desc">Inclut le chatbot dans cette langue sans frais supplémentaires.</td>
-</tr>
-</tbody>
-</table>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.5rem;">
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.page">Page standard</div>
+<div class="tier-price" data-i18n="price.web.page">$199</div>
+<div class="tier-price-note">par page · unique</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.page.desc">N'importe quelle page standard : à propos, services, accueil, contact. Conception personnalisée, construite à partir de zéro.</p>
+<a class="tier-cta" href="contact.html">Commencer ›</a>
+</div>
+<div class="tier-card popular">
+<div class="tier-badge" data-i18n="pricing.popular">Les plus populaires</div>
+<div class="tier-name" data-i18n="pricing.web.functional">Page fonctionnelle</div>
+<div class="tier-price" data-i18n="price.web.functional">$399</div>
+<div class="tier-price-note">par page · unique</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.functional.desc">Pages avec flux de réservation, paiement, panneaux d'administration ou toute logique interactive.</p>
+<a class="tier-cta" href="contact.html">Commencer ›</a>
+</div>
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.booking">Système de réservation</div>
+<div class="tier-price" data-i18n="price.web.booking">$599</div>
+<div class="tier-price-note">unique</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.booking.desc">Système complet de réservation ou de réservation avec logique de disponibilité et paiements en temps réel.</p>
+<a class="tier-cta" href="contact.html">Commencer ›</a>
+</div>
+<div class="tier-card">
+<div class="tier-name" data-i18n="pricing.web.language">Langue supplémentaire</div>
+<div class="tier-price" data-i18n="price.web.language" style="font-size:2rem;">$199</div>
+<div class="tier-price-note">par langue</div>
+<div class="tier-divider"></div>
+<p class="tier-desc" data-i18n="pricing.web.language.desc">Ajoutez FR, ES ou n’importe quelle langue à votre site. Inclut le chatbot dans cette langue sans frais supplémentaires.</p>
+<a class="tier-cta" href="contact.html">Commencer ›</a>
+</div>
+</div>
 </div>
 </section>
 <!-- ══ CAMPAIGN MANAGEMENT ══ -->
@@ -389,12 +394,7 @@ html
 </div>
 </div>
 </footer>
-<script>
-// Nav toggle
-document.getElementById('navToggle').addEventListener('click',function(){
-  document.getElementById('navLinks').classList.toggle('open');
-});
-</script>
+<script src="../js/main.js?v=20260421"></script>
 
 <script src="../js/chatbot.js?v=20260421"></script>
 </body>
