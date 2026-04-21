@@ -1110,7 +1110,14 @@
     "one-time": "unique",
     "Full reservation or booking system with real-time availability logic and payments.": "Système complet de réservation ou de réservation avec logique de disponibilité et paiements en temps réel.",
     "per page · one-time": "par page · unique",
-    "per language": "par langue"
+    "per language": "par langue",
+    "We'll recommend the right option, usually within 24h.": "Nous vous recommanderons la bonne option, généralement dans les 24 heures.",
+    "Not sure which fits?": "Vous ne savez pas lequel vous convient ?",
+    "$199 per video": "199 $ par vidéo",
+    "Animated and AI-generated video ads built for Meta placements. Fixed price per video — both styles, same price, delivered in all three formats.": "Annonces vidéo animées et générées par l'IA, conçues pour les emplacements Meta. Prix ​​fixe par vidéo : les deux styles, même prix, livrés dans les trois formats.",
+    "Get started — $199 ›": "Commencez — 199 $ ›",
+    "Tell us about your business →": "Parlez-nous de votre entreprise →",
+    "— same as animated": "— identique à l'animation"
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -2223,6 +2230,13 @@
     "one-time": "una sola vez",
     "Full reservation or booking system with real-time availability logic and payments.": "Sistema completo de reservas o reservas con lógica de disponibilidad y pagos en tiempo real.",
     "per page · one-time": "por página · una sola vez",
-    "per language": "por idioma"
+    "per language": "por idioma",
+    "We'll recommend the right option, usually within 24h.": "Le recomendaremos la opción correcta, normalmente en un plazo de 24 horas.",
+    "Not sure which fits?": "¿No estás seguro de cuál encaja?",
+    "$199 per video": "$199 por vídeo",
+    "Animated and AI-generated video ads built for Meta placements. Fixed price per video — both styles, same price, delivered in all three formats.": "Anuncios de video animados y generados por IA creados para ubicaciones Meta. Precio fijo por video: ambos estilos, mismo precio, entregados en los tres formatos.",
+    "Get started — $199 ›": "Empezar: $199 ›",
+    "Tell us about your business →": "Cuéntanos sobre tu negocio →",
+    "— same as animated": "- igual que animado"
   }
 }
