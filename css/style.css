@@ -12,7 +12,7 @@ button{font-family:inherit;cursor:pointer}
 .cursor-ring.hover{width:60px;height:60px;border-color:rgba(168,85,247,0.5)}
 .cursor-dot.click{width:4px;height:4px}
 .cursor-ring.click{width:24px;height:24px}
-@media(hover:none){.cursor-dot,.cursor-ring{display:none}}
+.nav-dropdown{position:relative}.nav-sub{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.4rem 0;min-width:170px;z-index:1000;box-shadow:0 16px 48px rgba(0,0,0,.55)}.nav-dropdown:hover .nav-sub{display:block}.nav-sub li{list-style:none;border-bottom:none!important}.nav-sub li a{display:block!important;padding:.55rem 1.1rem!important;font-size:.8rem!important;white-space:nowrap;color:var(--text-2)!important;font-weight:500!important}.nav-sub li a:hover{color:#fff!important;background:rgba(255,255,255,.05)}.nav-sub li a::after{display:none!important}.nav-caret{font-size:.6rem;margin-left:3px;opacity:.5}@media(hover:none){.cursor-dot,.cursor-ring{display:none}}
 #particle-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:.7}
 #loader{display:none}
 #scroll-progress{position:fixed;top:0;left:0;z-index:10001;height:2px;width:0%;background:var(--grad-main);transition:width .1s linear;box-shadow:0 0 8px var(--glow-p)}
@@ -161,7 +161,7 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 .lang-btn:hover{color:var(--text);background:rgba(255,255,255,.08)}
 .lang-btn.lang-active{background:rgba(255,255,255,.12);color:var(--white);border:1px solid rgba(255,255,255,.2)}
 /* ── Comprehensive mobile fixes ── */
-@media(max-width:768px){
+@media(max-width:768px){.nav-dropdown .nav-sub{display:block;position:static;background:transparent;border:none;box-shadow:none;padding:0 0 0 .75rem}.nav-sub li a{font-size:.95rem!important;padding:.6rem 0!important}
 /* Inline grid overrides — all 2-col grids stack */
 [style*='grid-template-columns:1fr 1fr']{grid-template-columns:1fr!important}
 [style*='grid-template-columns:200px 1fr']{grid-template-columns:1fr!important;gap:1rem!important}
