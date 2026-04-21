@@ -490,7 +490,7 @@ const KB = [
     'coordonnees','joindre','votre email','su email','contacter','contacto','escribe','correo'],
   r:() => { ctx.lastEntry='contact';
     return t(
-      `You can reach us at **${BIZ.email}** — we typically reply typically within 24 hours on days.\n\nOr fill in the contact form at **${BIZ.url}/contact.html** to describe your project and we'll come back with a tailored proposal.`,
+      `You can reach us at **${BIZ.email}** — we typically reply within 24 hours on business days.\n\nOr fill in the contact form at **${BIZ.url}/contact.html** to describe your project and we'll come back with a tailored proposal.`,
       `Vous pouvez nous contacter à **${BIZ.email}** — nous répondons dans les 24 heures les jours ouvrables.\n\nOu remplissez le formulaire sur **${BIZ.url}/contact.html** pour décrire votre projet et nous vous répondrons avec une proposition sur-mesure.`,
       `Puedes contactarnos en **${BIZ.email}** — respondemos en 24 horas en días laborables.\n\nO rellena el formulario en **${BIZ.url}/contact.html** para describir tu proyecto y te responderemos con una propuesta personalizada.`
     );
@@ -540,7 +540,7 @@ const KB = [
     'budget','devis','tarif','prix','presupuesto','cuanto','quanto','invoice','bill'],
   r:() => { ctx.lastEntry='quote';
     return t(
-      `All projects are scoped and priced individually — there's no fixed public price list.\n\nTo get a quote, email **${BIZ.email}** or use the contact form at **${BIZ.url}/contact.html**. Describe what you need and we typically typically reply typically within 24 hours with a clear scope and fixed price.\n\nNo hourly billing — everything is a fixed project fee.`,
+      `All projects are scoped and priced individually — there's no fixed public price list.\n\nTo get a quote, email **${BIZ.email}** or use the contact form at **${BIZ.url}/contact.html**. Describe what you need and we typically reply within 24 hours with a clear scope and fixed price.\n\nNo hourly billing — everything is a fixed project fee.`,
       `Tous les projets sont chiffrés individuellement — il n'y a pas de grille tarifaire publique fixe.\n\nPour obtenir un devis, écrivez à **${BIZ.email}** ou utilisez le formulaire sur **${BIZ.url}/contact.html**. Décrivez votre besoin et nous vous répondrons dans les 24 heures avec un périmètre clair et un prix fixe.\n\nPas de facturation horaire — tout est un forfait projet.`,
       `Todos los proyectos se cotizan individualmente — no hay una lista de precios pública fija.\n\nPara obtener un presupuesto, escribe a **${BIZ.email}** o usa el formulario en **${BIZ.url}/contact.html**. Describe lo que necesitas y te responderemos en 24 horas con un alcance claro y un precio fijo.\n\nSin facturación por horas — todo es un precio fijo por proyecto.`
     );
