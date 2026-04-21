@@ -490,7 +490,7 @@ const KB = [
     'coordonnees','joindre','votre email','su email','contacter','contacto','escribe','correo'],
   r:() => { ctx.lastEntry='contact';
     return t(
-      `You can reach us at **${BIZ.email}** — we reply within 24 hours on days.\n\nOr fill in the contact form at **${BIZ.url}/contact.html** to describe your project and we'll come back with a tailored proposal.`,
+      `You can reach us at **${BIZ.email}** — we typically reply typically within 24 hours on days.\n\nOr fill in the contact form at **${BIZ.url}/contact.html** to describe your project and we'll come back with a tailored proposal.`,
       `Vous pouvez nous contacter à **${BIZ.email}** — nous répondons dans les 24 heures les jours ouvrables.\n\nOu remplissez le formulaire sur **${BIZ.url}/contact.html** pour décrire votre projet et nous vous répondrons avec une proposition sur-mesure.`,
       `Puedes contactarnos en **${BIZ.email}** — respondemos en 24 horas en días laborables.\n\nO rellena el formulario en **${BIZ.url}/contact.html** para describir tu proyecto y te responderemos con una propuesta personalizada.`
     );
@@ -517,9 +517,9 @@ const KB = [
   r:() => {
     ctx.lastEntry='chatbot-pricing';
     return t(
-      '**AI Chatbot pricing** — based on your business complexity:\n\n• **Simple** (1–2 services, fixed info — café, solo consultant, local shop) — **$599** + $49/mo\n• **Standard** (multiple services/products, info varies — salon, agency, restaurant) — **$949** + $49/mo\n• **Advanced** (large catalog, complex info, many FAQ scenarios — e-commerce, hotel, clinic) — **$1,499** + $49/mo\n• **+$199 per additional language**\n\nNot sure which tier? Describe your business and we\'ll confirm within 24h. See full pricing at **zoomy.services/pricing.html**',
-      '**Tarification chatbot :**\n\n• Standard — **500$** · Complexe — **1 000–1 500$**\n• Hébergement mensuel — **50$/mois**\n• En complément de site : **400$**\n• Avec un pack langue ($200/langue) : chatbot dans cette langue **inclus**\n\nÉcrivez à **contact@zoomy.services**.',
-      '**Precio chatbot:**\n\n• Estándar — **$500** · Complejo — **$1.000–$1.500**\n• Hosting mensual — **$50/mes**\n• Como complemento de sitio: **$400**\n• Con paquete de idioma ($200/idioma): chatbot en ese idioma **incluido**\n\nEscribe a **contact@zoomy.services**.'
+      '**AI Chatbot pricing** — based on your business complexity:\n\n• **Simple** (1–2 services, fixed info — café, solo consultant, local shop) — **$599** + $49/mo\n• **Standard** (multiple services/products, info varies — salon, agency, restaurant) — **$949** + $49/mo\n• **Advanced** (large catalog, complex info, many FAQ scenarios — e-commerce, hotel, clinic) — **$1,499** + $49/mo\n• **+$199 per additional language**\n\nNot sure which tier? Describe your business and we\'ll confirm typically within 24h. See full pricing at **zoomy.services/pricing.html**',
+      '**Tarification chatbot (selon la complexité) :**\n\n• Simple — **599$** · Standard — **949$** · Avancé — **1 499$**\n• Hébergement mensuel — **49$/mois** · Langue supplémentaire — **+199$**\n\nÉcrivez à **contact@zoomy.services**.',
+      '**Precio chatbot (según complejidad):**\n\n• Simple — **$599** · Estándar — **$949** · Avanzado — **$1.499**\n• Hosting mensual — **$49/mes** · Idioma adicional — **+$199**\n\nEscribe a **contact@zoomy.services**.'
     );
   }
 },
@@ -540,7 +540,7 @@ const KB = [
     'budget','devis','tarif','prix','presupuesto','cuanto','quanto','invoice','bill'],
   r:() => { ctx.lastEntry='quote';
     return t(
-      `All projects are scoped and priced individually — there's no fixed public price list.\n\nTo get a quote, email **${BIZ.email}** or use the contact form at **${BIZ.url}/contact.html**. Describe what you need and we'll reply within 24 hours with a clear scope and fixed price.\n\nNo hourly billing — everything is a fixed project fee.`,
+      `All projects are scoped and priced individually — there's no fixed public price list.\n\nTo get a quote, email **${BIZ.email}** or use the contact form at **${BIZ.url}/contact.html**. Describe what you need and we typically typically reply typically within 24 hours with a clear scope and fixed price.\n\nNo hourly billing — everything is a fixed project fee.`,
       `Tous les projets sont chiffrés individuellement — il n'y a pas de grille tarifaire publique fixe.\n\nPour obtenir un devis, écrivez à **${BIZ.email}** ou utilisez le formulaire sur **${BIZ.url}/contact.html**. Décrivez votre besoin et nous vous répondrons dans les 24 heures avec un périmètre clair et un prix fixe.\n\nPas de facturation horaire — tout est un forfait projet.`,
       `Todos los proyectos se cotizan individualmente — no hay una lista de precios pública fija.\n\nPara obtener un presupuesto, escribe a **${BIZ.email}** o usa el formulario en **${BIZ.url}/contact.html**. Describe lo que necesitas y te responderemos en 24 horas con un alcance claro y un precio fijo.\n\nSin facturación por horas — todo es un precio fijo por proyecto.`
     );
@@ -896,7 +896,7 @@ const KB = [
     'processus','comment ca marche','como funciona','como empezamos'],
   r:() => { ctx.lastEntry='process';
     return t(
-      `Our process is straightforward:\n\n**1. Brief (Day 0)**\nYou contact us at ${BIZ.email} or via the contact form. We ask a few specific questions to understand the full scope, then confirm a fixed price within 24 hours.\n\n**2. Build**\nWe handle everything — design, code, copy, integrations. You have a direct line for questions throughout.\n\n**3. Review & Revise**\nYou receive the finished deliverable. We handle one revision round as standard.\n\n**4. Launch**\nFor websites, we configure domain and hosting (if needed). For campaigns, we set up the accounts and go live. For AI agents, we test and deploy.\n\n**Payment:** 50% upfront before we start, 50% on delivery. For projects over $3,000 we can split into three.\n\nWhat would you like to build?`,
+      `Our process is straightforward:\n\n**1. Brief (Day 0)**\nYou contact us at ${BIZ.email} or via the contact form. We ask a few specific questions to understand the full scope, then confirm a fixed price typically within 24 hours.\n\n**2. Build**\nWe handle everything — design, code, copy, integrations. You have a direct line for questions throughout.\n\n**3. Review & Revise**\nYou receive the finished deliverable. We handle one revision round as standard.\n\n**4. Launch**\nFor websites, we configure domain and hosting (if needed). For campaigns, we set up the accounts and go live. For AI agents, we test and deploy.\n\n**Payment:** 50% upfront before we start, 50% on delivery. For projects over $3,000 we can split into three.\n\nWhat would you like to build?`,
       `Notre processus est simple :\n\n**1. Brief (Jour 0)**\nVous nous contactez à ${BIZ.email}. Nous posons quelques questions précises pour comprendre le périmètre complet, puis confirmons un prix fixe dans les 24 heures.\n\n**2. Construction**\nNous gérons tout — design, code, rédaction, intégrations. Vous avez un interlocuteur direct pendant tout le projet.\n\n**3. Révision**\nVous recevez le livrable terminé. Nous gérons un tour de révision en standard.\n\n**4. Mise en ligne**\nPour les sites web, nous configurons domaine et hébergement si nécessaire.\n\n**Paiement :** 50% à l'avance avant de commencer, 50% à la livraison.\n\nQue souhaitez-vous construire ?`,
       `Nuestro proceso es sencillo:\n\n**1. Brief (Día 0)**\nNos contactas en ${BIZ.email}. Hacemos algunas preguntas específicas para entender el alcance completo, luego confirmamos un precio fijo en 24 horas.\n\n**2. Construcción**\nNos ocupamos de todo — diseño, código, contenido, integraciones.\n\n**3. Revisión**\nRecibes el entregable terminado. Gestionamos una ronda de revisión como estándar.\n\n**4. Lanzamiento**\nPara sitios web, configuramos dominio y hosting si es necesario.\n\n**Pago:** 50% por adelantado antes de empezar, 50% a la entrega.\n\n¿Qué quieres construir?`
     );
@@ -1142,9 +1142,9 @@ const FOLLOW_UP = {
   'meta-ads': (n) => {
     if (anyKw(n, ['how much','price','cost','fee','what does it cost'])) {
       return t(
-        `**Campaign pricing** has three components:\n\n**1. Setup fee** (one-time) — campaign structure, audiences, ad copy, pixel & tracking setup. Starting from **$400**.\n\n**2. Monthly management fee** — monitoring, optimisation, bid strategy, reporting. Based on ad spend level.\n\n**3. Media editing** _(optional add-on)_ — if you have raw footage or images you'd like edited into ad-ready creatives:\n• **$75 per asset** — cuts, captions, resizing, basic motion graphics\n\nAd spend goes directly to your ad account — we never touch it.\n\nEmail **${BIZ.email}** for an exact quote.`,
+        `**Campaign pricing** has three components:\n\n**1. Setup fee** (one-time) — campaign structure, audiences, ad copy, pixel & tracking setup. **$1,000** first platform · **$600** each additional.\n\n**2. Monthly management fee** — monitoring, optimisation, bid strategy, reporting. Based on ad spend level, from **$600/month**.\n\n**3. Media editing** _(optional add-on)_ — if you have raw footage or images you'd like edited into ad-ready creatives:\n• **$75 per asset** — cuts, captions, resizing, basic motion graphics\n\nAd spend goes directly to your ad account — we never touch it.\n\nEmail **${BIZ.email}** for an exact quote.`,
         `**Tarification campagne** — trois composantes :\n\n**1. Frais de mise en place** (unique) — structure, audiences, copy, pixel, tracking. À partir de **400$**.\n\n**2. Honoraires de gestion mensuelle** — suivi, optimisation, reporting.\n\n**3. Montage médias** _(option)_ — si vous avez des vidéos ou images brutes à transformer en créatifs pub :\n• **75$ par asset** — montage, sous-titres, recadrage\n• **250$/mois** — jusqu'à 5 assets/mois\n\nÉcrivez à **${BIZ.email}** pour un devis.`,
-        `**Pricing de campaña** — tres componentes:\n\n**1. Tarifa de configuración** (única) — estructura, audiencias, copy, pixel, tracking. Desde **$400**.\n\n**2. Tarifa de gestión mensual** — monitorización, optimización, informes.\n\n**3. Edición de medios** _(opcional)_ — si tienes material en bruto para convertir en creatividades:\n• **$75 por asset** — cortes, subtítulos, redimensionado\n• **$250/mes** — hasta 5 assets/mes\n\nEscribe a **${BIZ.email}** para un presupuesto.`
+        `**Pricing de campaña** — tres componentes:\n\n**1. Tarifa de configuración** (única) — estructura, audiencias, copy, pixel, tracking. **$1.000** primera plataforma · **$600** cada adicional.\n\n**2. Tarifa de gestión mensual** — monitorización, optimización, informes. Desde **$600/mes**.\n\n**3. Edición de medios** _(opcional)_ — si tienes material en bruto para convertir en creatividades:\n• **$75 por asset** — cortes, subtítulos, redimensionado\n\nEscribe a **${BIZ.email}** para un presupuesto.`
       );
     }
     if (anyKw(n, ['roas','return','roi','results','performance','what results'])) {
@@ -1196,7 +1196,7 @@ const FOLLOW_UP = {
   'chatbot': (n) => {
     if (anyKw(n, ['how much','cost','price','fee','pricing'])) {
       return t(
-        `Chatbot pricing:\n\n• **Standard** (1–2 languages, up to ~30 topics) — **$500**\n• **Complex** (multilingual, 50+ topics, booking/lead capture) — **$1,000–$1,500**\n• **Monthly hosting** (self-hosted) — **$50/month** for maintenance\n• **API-based** — from $40/month\n\nAs an add-on to a website build, the chatbot is discounted to **$400**.\n\n**Language add-on:** if you purchased an extra language for your site ($200/language), the chatbot in that language is included at no extra cost.\n\nEmail **${BIZ.email}** for an exact quote based on your business complexity.`,
+        `Chatbot pricing (based on complexity):\n\n• **Simple** (FAQ, hours, basic info, 1 language) — **$599**\n• **Standard** (+ booking/lead capture, 1–2 languages) — **$949**\n• **Advanced** (multilingual, 50+ topics, integrations) — **$1,499**\n• **Monthly hosting** — **$49/month**\n• **Extra language** — **+$199 per language**\n\nEmail **${BIZ.email}** for an exact quote based on your business complexity.`,
         `Tarification du chatbot (selon la complexité) :\n\n• **Simple** (FAQ, horaires, infos de base) — **599$**\n• **Standard** (+ réservation, formulaires, sujets étendus) — **949$**\n• **Avancé** (multilingue, intégrations, volume élevé) — **1 499$**\n• **Hébergement mensuel** — **49$/mois**\n• **Langue supplémentaire** — **+199$** par langue\n\nÉcrivez à **${BIZ.email}** pour un devis selon la complexité de votre entreprise.`,
         `Precios del chatbot (según complejidad):\n\n• **Simple** (FAQ, horarios, info básica) — **$599**\n• **Estándar** (+ reservas, formularios, temas ampliados) — **$949**\n• **Avanzado** (multilingüe, integraciones, alto volumen) — **$1.499**\n• **Hosting mensual** — **$49/mes**\n• **Idioma adicional** — **+$199** por idioma\n\nEscribe a **${BIZ.email}** para un presupuesto según la complejidad de tu negocio.`
       );
@@ -1207,14 +1207,14 @@ const FOLLOW_UP = {
   'quote': (n) => {
     if (anyKw(n, ['campaign','meta','google','ads','advertising'])) {
       return t(
-        `For a campaign quote, email **${BIZ.email}** and include:\n• Which platform(s) — Meta, Google, TikTok, LinkedIn\n• Your monthly ad budget\n• What you're promoting\n• Your target audience\n• Whether you need media editing (we can edit your raw footage/images into ad creatives — $75/asset)\n\nWe'll come back with a scope and fixed management fee within 24 hours.`,
+        `For a campaign quote, email **${BIZ.email}** and include:\n• Which platform(s) — Meta, Google, TikTok, LinkedIn\n• Your monthly ad budget\n• What you're promoting\n• Your target audience\n• Whether you need media editing (we can edit your raw footage/images into ad creatives — $75/asset)\n\nWe'll come back with a scope and fixed management fee typically within 24 hours.`,
         `Pour un devis campagne, écrivez à **${BIZ.email}** en incluant :\n• Quelle(s) plateforme(s)\n• Votre budget publicitaire mensuel\n• Ce que vous promouvez\n• Votre audience cible`,
         `Para un presupuesto de campaña, escribe a **${BIZ.email}** e incluye:\n• Qué plataforma(s)\n• Tu presupuesto publicitario mensual\n• Qué estás promocionando\n• Tu audiencia objetivo`
       );
     }
     if (anyKw(n, ['website','site','landing','page','build'])) {
       return t(
-        `For a website quote, email **${BIZ.email}** and include:\n• Type of site (booking, e-commerce, restaurant, etc.)\n• Number of pages roughly\n• Languages needed\n• Key features (booking system, payments, admin panel, chatbot)\n\nWe'll scope it and reply with a fixed price within 24 hours.`,
+        `For a website quote, email **${BIZ.email}** and include:\n• Type of site (booking, e-commerce, restaurant, etc.)\n• Number of pages roughly\n• Languages needed\n• Key features (booking system, payments, admin panel, chatbot)\n\nWe'll scope it and reply with a fixed price typically within 24 hours.`,
         `Pour un devis site web, écrivez à **${BIZ.email}** en incluant :\n• Type de site\n• Nombre de pages approximatif\n• Langues souhaitées\n• Fonctionnalités clés`,
         `Para un presupuesto de sitio web, escribe a **${BIZ.email}** e incluye:\n• Tipo de sitio\n• Número aproximado de páginas\n• Idiomas necesarios\n• Funcionalidades clave`
       );
@@ -1646,8 +1646,8 @@ function render() {
         en: "Hi there, this is Zoomy. I can help answer any questions about our services. What can I do for you?"
       };
       const systemPrompts = {
-        fr: `# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français. # Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse et professionnelle. # Services\nCampagnes (Meta/Google/TikTok) — à partir de 400$. Sites web — à partir de 199$/page. Agents téléphoniques IA — à partir de 699$. Chatbots — à partir de 599$. Contact: contact@zoomy.services`,
-        es: `# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español. # Personalidad\nEres la asistente IA de Zoomy, una agencia digital. # Servicios\nCampañas desde $400. Sitios web desde $199/página. Agentes telefónicos IA — desde $699. Chatbots desde $599. Contacto: contact@zoomy.services`,
+        fr: `# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français. # Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse et professionnelle. # Services\nCampagnes (Meta/Google/TikTok) — setup à partir de 1 000$. Sites web — à partir de 199$/page. Agents téléphoniques IA — à partir de 699$. Chatbots — à partir de 599$. Contact: contact@zoomy.services`,
+        es: `# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español. # Personalidad\nEres la asistente IA de Zoomy, una agencia digital. # Servicios\nCampañas — setup desde $1.000. Sitios web desde $199/página. Agentes telefónicos IA — desde $699. Chatbots desde $599. Contacto: contact@zoomy.services`,
         en: undefined
       };
       const agentOverride = { language: pageLang, firstMessage: firstMessages[pageLang] || firstMessages.en };

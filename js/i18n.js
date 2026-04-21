@@ -60,7 +60,7 @@ en:{
   'hiw.tag':'How It Works','hiw.heading':'Four steps. Zero friction.',
   'hiw.sub':'From first contact to a live product with hosting configured.',
   'step1.num':'01','step1.title':'Briefing',
-  'step1.desc':'Tell us your goal, target audience, and deadline. We ask the right questions and confirm the full scope and price within 24 hours.',
+  'step1.desc':'Tell us your goal, target audience, and deadline. We ask the right questions and confirm the full scope and price typically within 24 hours.',
   'step2.num':'02','step2.title':'We Build',
   'step2.desc':'We handle everything — design, code, copy, integrations. You get a direct line for any questions while we work.',
   'step3.num':'03','step3.title':'Review & Revise',
@@ -83,7 +83,7 @@ en:{
   'why3.title':'Premium Quality','why3.desc':'Animations, accessibility, SEO. Mobile-perfect on all devices. No cut corners on any project.',
   /* ── Index CTA ── */
   'cta.tag':'Ready?','cta.heading':'Let\'s build something great.',
-  'cta.sub':'Tell us what you need. We reply within 24 hours with a tailored proposal and timeline.',
+  'cta.sub':'Tell us what you need. We typically typically reply typically within 24 hours with a tailored proposal and timeline.',
   /* ── About ── */
   'about.hero.tag':'About Us','about.hero.sub':'We are a small, AI-augmented digital production studio. We create and manage campaigns, build custom websites, and develop AI tools for businesses.',
   'about.story.tag':'Our Story','about.story.heading':'Why Zoomy exists.',
@@ -98,7 +98,7 @@ en:{
   'about.v3.desc':'Fixed budgets. Clear scope. Daily updates during production. You always know exactly what you\'re getting and when it\'s coming.',
   /* ── Contact ── */
   'contact.hero.tag':'Contact',
-  'contact.hero.sub':'Tell us about your project. We\'ll reply within 24 hours with a tailored proposal and timeline.',
+  'contact.hero.sub':'Tell us about your project. We\'ll typically reply typically within 24 hours with a tailored proposal and timeline.',
   'contact.form.firstname':'First Name','contact.form.lastname':'Last Name',
   'contact.form.email':'Email Address','contact.form.company':'Company / Website (optional)',
   'contact.form.need':'What are you looking for?','contact.form.message':'Tell us about your project',
@@ -127,7 +127,7 @@ en:{
   'pricing.monthly.usage':'monthly usage',
   'pricing.language.note':'Additional language',
   'pricing.notsure':'Not sure which tier?',
-  'pricing.notsure.sub':'Describe your business in the contact form and we\'ll confirm the right tier within 24 hours.',
+  'pricing.notsure.sub':'Describe your business in the contact form and we\'ll confirm the right tier typically within 24 hours.',
   'pricing.notsure.cta':'Get a Free Assessment',
   'pricing.web.tag':'Websites','pricing.web.heading':'Website pricing.',
   'pricing.web.sub':'Priced per page. Every site built from scratch in custom code — no templates, no WordPress.',
