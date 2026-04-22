@@ -1333,7 +1333,7 @@ function render() {
 #zmy-input::placeholder{color:#64748b}
 #zmy-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;transition:transform .15s}
 #zmy-send:hover{transform:scale(1.1)}
-@media(max-width:480px){#zmy-win{right:0;bottom:0;width:100vw;border-radius:20px 20px 0 0;max-height:80vh}#zmy-bubble{bottom:16px;right:16px}}
+@media(max-width:480px){#zmy-win{right:0;bottom:0;width:100vw;border-radius:20px 20px 0 0;max-height:80vh}#zmy-bubble{bottom:16px;right:16px}#zmy-inp-row{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}}#zmy-bubble.zmy-hidden{display:none!important}
 #zmy-phone-btn{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;padding:4px;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s}
 #zmy-phone-btn:hover{color:#4ade80;background:rgba(74,222,128,.1)}
 #zmy-phone-btn.active-call{color:#4ade80}
