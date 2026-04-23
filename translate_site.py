@@ -315,5 +315,20 @@ def main():
     for lang in LANGS:
         print(f'  {lang}: {len(cache.get(lang,{}))} cached translations')
 
+    # ── Auto-deploy zoomy-ai worker so chatbot+phone agent prices stay in sync ──
+    import subprocess, sys
+    worker_dir = os.path.join(os.path.dirname(ROOT), 'zoomy-ai-worker')
+    if os.path.exists(worker_dir):
+        print('\nDeploying zoomy-ai worker (keeps chatbot & phone agent prices in sync)...')
+        result = subprocess.run(
+            ['npx', 'wrangler', 'deploy'],
+            cwd=worker_dir, capture_output=True, text=True
+        )
+        if result.returncode == 0:
+            print('  ✅ zoomy-ai worker deployed — chatbot & phone agent prices updated')
+        else:
+            print('  ⚠️  Worker deploy failed (prices may be stale) — run manually:')
+            print(f'     cd {worker_dir} && npx wrangler deploy')
+
 if __name__ == '__main__':
     main()
