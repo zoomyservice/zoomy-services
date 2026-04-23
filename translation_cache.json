@@ -1495,7 +1495,8 @@
     "/ 30s": "/ années 30",
     "per 30 seconds of footage": "par 30 secondes de séquence",
     "per 30-second block · 1–30s $200 · 31–60s $400": "par bloc de 30 secondes · 1 à 30 s 200 $ · 31 à 60 s 400 $",
-    "/ 30s block": "/ bloc 30s"
+    "/ 30s block": "/ bloc 30s",
+    "per 30 seconds": "toutes les 30 secondes"
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -2993,6 +2994,7 @@
     "/ 30s": "/ 30 años",
     "per 30 seconds of footage": "por 30 segundos de metraje",
     "per 30-second block · 1–30s $200 · 31–60s $400": "por bloque de 30 segundos · 1–30s $200 · 31–60s $400",
-    "/ 30s block": "/ bloque de los 30"
+    "/ 30s block": "/ bloque de los 30",
+    "per 30 seconds": "por 30 segundos"
   }
 }
