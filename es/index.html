@@ -44,6 +44,7 @@ HTML
 HTML
 HTML
 HTML
+HTML
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -730,7 +731,7 @@ Pruebe la demostración en vivo
       if (!text) return;
       appendMsg(text, 'user');
       inputEl.value = '';
-      history.push({ role: 'user', content: text });
+      history.push({ role: 'user', text: text });
       var typing = document.createElement('div');
       typing.className = 'msg msg-bot';
       typing.textContent = '…';
@@ -747,15 +748,13 @@ Pruebe la demostración en vivo
           var data = await res.json();
           typing.remove();
           appendMsg(data.reply, 'bot');
-          history.push({ role: 'assistant', content: data.reply });
+          history.push({ role: 'bot', text: data.reply });
           return;
         }
       } catch(e) {}
       // Gemini unavailable — fall back to KB
-      var response = window.__zmy.getResponse(text);
       typing.remove();
-      appendMsg(response, 'bot');
-      history.push({ role: 'assistant', content: response });
+      appendMsg('Something went wrong. Email <strong>contact@zoomy.services</strong> and we\'ll reply within 24 hours.', 'bot');
     }
 
     sendBtn.addEventListener('click', sendMessage);
@@ -768,7 +767,7 @@ Pruebe la demostración en vivo
 </script>
 <script src="../js/main.js?v=20260416b"></script>
 
-<script src="../js/chatbot.js?v=20260416b"></script>
+<script src="../js/chatbot.js?v=20260422a"></script>
 <script type="module">
 import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
 let hpConv = null;
