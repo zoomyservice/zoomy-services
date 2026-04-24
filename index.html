@@ -137,6 +137,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -420,11 +422,11 @@ nav{top:var(--bar-h)!important}
 <div class="section-tag">AI Phone Agent</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">Every call.<br/>Answered.</h2>
 <p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:1.25rem;">A custom AI voice agent that picks up every inbound call, speaks naturally in any language, and handles your most common requests without any human involvement.</p>
-<p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:2rem;">During a live call, the agent checks your calendar, books or cancels appointments in real time, collects caller details, and writes directly to your systems via webhook integrations. It never misses a call, never takes a day off, and represents your business consistently every time.</p>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:2rem;">It never misses a call, never takes a day off, and represents your business consistently every time. Live calendar booking and webhook integrations with your existing tools are available as optional add-ons.</p>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
 <div style="padding:1rem;background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.18);border-radius:10px;">
-<div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem;">Live calendar booking</div>
-<div style="color:var(--muted);font-size:.8rem;">Reads &amp; writes appointments in real time during the call</div>
+<div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem;">Any language</div>
+<div style="color:var(--muted);font-size:.8rem;">Detects and responds in the caller's language automatically</div>
 </div>
 <div style="padding:1rem;background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.18);border-radius:10px;">
 <div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem;">Any language</div>
@@ -541,7 +543,7 @@ Try Live Demo
 <div class="svc-title">AI Phone<br/>Agent</div>
 </div>
 <div class="svc-right">
-<p>An AI agent that answers your inbound calls, speaks naturally in any language, and handles bookings and common questions without human involvement. During the call it checks your calendar, books or cancels appointments in real time, and collects caller details.</p>
+<p>An AI agent that answers your inbound calls, speaks naturally in any language, and handles common questions without human involvement. Live calendar booking and tool integrations are available as optional add-ons depending on what your business needs.</p>
 <p>The agent is trained on the information you provide. If you have an existing website, we can work from that. If not, you supply the business details, pricing, availability rules, and any other relevant information — and we build from that.</p>
 <a class="svc-link" href="phone-agent.html" style="color:var(--primary);margin-top:1.25rem;">How it works ›</a>
 </div>
@@ -800,7 +802,6 @@ Try Live Demo
 // ── Homepage chatbot demo wiring ───────────────────────────────────────────
 (function() {
   function initDemo() {
-    if (!window.__zmy) { setTimeout(initDemo, 50); return; }
     var messagesEl = document.getElementById('chatbot-messages');
     var inputEl    = document.getElementById('chatbot-input-field');
     var sendBtn    = document.getElementById('chatbot-send');

@@ -67,6 +67,7 @@ html
 html
 html
 html
+html
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -350,11 +351,11 @@ nav{top:var(--bar-h)!important}
 <div class="section-tag">Agent téléphonique IA</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">Chaque appel.<br/>Répondu.</h2>
 <p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:1.25rem;">Un agent vocal IA personnalisé qui répond à chaque appel entrant, parle naturellement dans n'importe quelle langue et traite vos demandes les plus courantes sans aucune intervention humaine.</p>
-<p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:2rem;">Lors d'un appel en direct, l'agent vérifie votre calendrier, prend ou annule des rendez-vous en temps réel, collecte les détails de l'appelant et écrit directement sur vos systèmes via des intégrations de webhooks. Il ne manque jamais un appel, ne prend jamais un jour de congé et représente votre entreprise de manière cohérente à chaque fois.</p>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:2rem;">Il ne manque jamais un appel, ne prend jamais un jour de congé et représente votre entreprise de manière cohérente à chaque fois. La réservation de calendrier en direct et les intégrations de webhooks avec vos outils existants sont disponibles en tant que modules complémentaires facultatifs.</p>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
 <div style="padding:1rem;background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.18);border-radius:10px;">
-<div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem;">Réservation de calendrier en direct</div>
-<div style="color:var(--muted);font-size:.8rem;">Lit et écrit les rendez-vous en temps réel pendant l'appel</div>
+<div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem;">N'importe quelle langue</div>
+<div style="color:var(--muted);font-size:.8rem;">Détecte et répond automatiquement dans la langue de l'appelant</div>
 </div>
 <div style="padding:1rem;background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.18);border-radius:10px;">
 <div style="font-weight:600;color:#fff;font-size:.875rem;margin-bottom:.25rem;">N'importe quelle langue</div>
@@ -471,7 +472,7 @@ Essayez la démo en direct
 <div class="svc-title">Téléphone IA<br/>Agent</div>
 </div>
 <div class="svc-right">
-<p>Un agent IA qui répond à vos appels entrants, parle naturellement dans n'importe quelle langue et gère les réservations et les questions courantes sans implication humaine. Pendant l'appel, il vérifie votre calendrier, prend ou annule des rendez-vous en temps réel et collecte les détails de l'appelant.</p>
+<p>Un agent IA qui répond à vos appels entrants, parle naturellement dans n'importe quelle langue et traite les questions courantes sans implication humaine. La réservation de calendrier en direct et les intégrations d'outils sont disponibles en tant que modules complémentaires facultatifs en fonction des besoins de votre entreprise.</p>
 <p>L'agent est formé sur les informations que vous fournissez. Si vous avez un site Web existant, nous pouvons travailler à partir de là. Dans le cas contraire, vous fournissez les détails commerciaux, les prix, les règles de disponibilité et toute autre information pertinente – et nous construisons à partir de cela.</p>
 <a class="svc-link" href="phone-agent.html" style="color:var(--primary);margin-top:1.25rem;">Comment ça marche ›</a>
 </div>
@@ -730,7 +731,6 @@ Essayez la démo en direct
 // ── Homepage chatbot demo wiring ───────────────────────────────────────────
 (function() {
   function initDemo() {
-    if (!window.__zmy) { setTimeout(initDemo, 50); return; }
     var messagesEl = document.getElementById('chatbot-messages');
     var inputEl    = document.getElementById('chatbot-input-field');
     var sendBtn    = document.getElementById('chatbot-send');
