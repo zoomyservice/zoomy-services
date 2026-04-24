@@ -168,12 +168,37 @@ function render() {
   let isOpen = false;
   let savedScrollY = 0;
 
+  // ── Session persistence ──────────────────────────────────────────────────
+  const POPUP_STORE = 'zmy_popup_v1';
+  function savePopup() {
+    try {
+      const items = Array.from(msgs.children).map(el => ({ cls: el.className, html: el.innerHTML }));
+      sessionStorage.setItem(POPUP_STORE, JSON.stringify({ items, history: memory.history }));
+    } catch(e) {}
+  }
+  function restorePopup() {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(POPUP_STORE));
+      if (!saved || !saved.items || !saved.items.length) return false;
+      saved.items.forEach(m => {
+        const d = document.createElement('div');
+        d.className = m.cls;
+        d.innerHTML = m.html;
+        msgs.appendChild(d);
+      });
+      if (saved.history) memory.history = saved.history;
+      msgs.scrollTop = msgs.scrollHeight;
+      return true;
+    } catch(e) { return false; }
+  }
+
   function addMsg(html, role) {
     const d = document.createElement('div');
     d.className = 'zmy-msg ' + (role === 'bot' ? 'zmy-bot' : 'zmy-user');
     d.innerHTML = html;
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
+    savePopup();
     return d;
   }
 
@@ -242,7 +267,7 @@ function render() {
     win.classList.add('open');
     if(window.innerWidth<=480){bubble.classList.add('zmy-hidden');}
     bubble.innerHTML = `<svg viewBox="0 0 24 24" fill="#fff"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
-    if (msgs.children.length === 0) {
+    if (msgs.children.length === 0 && !restorePopup()) {
       addMsg(md(t(
       "Hi there! 👋 I'm the Zoomy assistant. Ask me about campaigns, websites, chatbots, phone agents, or pricing.",
       "Bonjour ! 👋 Je suis l'assistant Zoomy. Posez-moi une question sur nos campagnes, sites web, chatbots, agents téléphoniques ou tarifs.",

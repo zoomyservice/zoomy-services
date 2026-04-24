@@ -143,6 +143,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -691,9 +693,9 @@ Try Live Demo
 </div>
 </div>
 <div class="chatbot-messages" id="chatbot-messages">
-<div class="msg msg-bot">Hi! Ask me anything about our services — websites, campaigns, chatbots, pricing, or timelines.</div>
-<div class="msg msg-user">Do you set up hosting for websites?</div>
-<div class="msg msg-bot">Yes — we handle domain registration and hosting setup so you don't have to figure any of that out. You get a live URL, not just files.</div>
+<div class="msg msg-bot">Hi! Ask me anything about our services — websites, chatbots, campaigns, or phone agents.</div>
+<div class="msg msg-user">What makes your chatbot different from just adding ChatGPT to a site?</div>
+<div class="msg msg-bot">It’s trained only on your business — your real services, prices, and policies. It won’t go off-topic or make things up. And when the moment is right, it captures the visitor’s contact details directly in the conversation.</div>
 </div>
 <div class="chatbot-input">
 <input class="chatbot-input-field" id="chatbot-input-field" placeholder="Ask about our services..." type="text"/>
@@ -803,71 +805,96 @@ Try Live Demo
 </div>
 </footer>
 <script>
-// ── Homepage chatbot demo wiring ───────────────────────────────────────────
+// ── Homepage chatbot demo wiring ─────────────────────────────────────────────────────────────────────────
 (function() {
-  function initDemo() {
-    var messagesEl = document.getElementById('chatbot-messages');
-    var inputEl    = document.getElementById('chatbot-input-field');
-    var sendBtn    = document.getElementById('chatbot-send');
-    if (!messagesEl || !inputEl || !sendBtn) return;
+  var STORE = 'zmy_home_v1';
+  var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
 
-    // Pre-seed history with the visible demo conversation
-    var history = [
-      { role: 'user', text: 'Do you set up hosting for websites?' },
-      { role: 'bot', text: "Yes \u2014 we handle domain registration and hosting setup so you don\u2019t have to figure any of that out. You get a live URL, not just files." }
-    ];
-    var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+  var messagesEl = document.getElementById('chatbot-messages');
+  var inputEl    = document.getElementById('chatbot-input-field');
+  var sendBtn    = document.getElementById('chatbot-send');
+  if (!messagesEl || !inputEl || !sendBtn) return;
 
-    function appendMsg(text, role) {
-      var div = document.createElement('div');
-      div.className = 'msg msg-' + role;
-      var html = text
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/_(.+?)_/g, '<em>$1</em>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-        .replace(/\n/g, '<br>');
-      div.innerHTML = html;
-      messagesEl.appendChild(div);
+  var history = [
+    { role: 'user', text: 'What makes your chatbot different from just adding ChatGPT to a site?' },
+    { role: 'bot', text: "It’s trained only on your business — your real services, prices, and policies. It won’t go off-topic or make things up. And when the moment is right, it captures the visitor’s contact details directly in the conversation." }
+  ];
+
+  // Restore saved session if available
+  try {
+    var saved = JSON.parse(sessionStorage.getItem(STORE));
+    if (saved && saved.msgs && saved.msgs.length) {
+      messagesEl.innerHTML = '';
+      saved.msgs.forEach(function(m) {
+        var d = document.createElement('div');
+        d.className = 'msg msg-' + m.role;
+        d.innerHTML = m.html;
+        messagesEl.appendChild(d);
+      });
+      if (saved.history && saved.history.length) history = saved.history;
       messagesEl.scrollTop = messagesEl.scrollHeight;
     }
+  } catch(e) {}
 
-    async function sendMessage() {
-      var text = inputEl.value.trim();
-      if (!text) return;
-      appendMsg(text, 'user');
-      inputEl.value = '';
-      history.push({ role: 'user', text: text });
-      var typing = document.createElement('div');
-      typing.className = 'msg msg-bot';
-      typing.textContent = '…';
-      messagesEl.appendChild(typing);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-      // Always use Gemini AI — skip KB entirely for the demo widget
-      try {
-        var res = await fetch(AI_WORKER, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text, history: history.slice(-8) })
-        });
-        if (res.ok) {
-          var data = await res.json();
-          typing.remove();
-          appendMsg(data.reply, 'bot');
-          history.push({ role: 'bot', text: data.reply });
-          return;
-        }
-      } catch(e) {}
-      // Gemini unavailable — fall back to KB
-      typing.remove();
-      appendMsg('Something went wrong. Email <strong>contact@zoomy.services</strong> and we\'ll reply within 24 hours.', 'bot');
-    }
-
-    sendBtn.addEventListener('click', sendMessage);
-    inputEl.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-    });
+  function saveChat() {
+    try {
+      var msgs = [];
+      messagesEl.querySelectorAll('.msg').forEach(function(el) {
+        msgs.push({ role: el.classList.contains('msg-user') ? 'user' : 'bot', html: el.innerHTML });
+      });
+      sessionStorage.setItem(STORE, JSON.stringify({ msgs: msgs, history: history }));
+    } catch(e) {}
   }
-  initDemo();
+
+  function appendMsg(text, role) {
+    var div = document.createElement('div');
+    div.className = 'msg msg-' + role;
+    var html = text
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/_(.+?)_/g, '<em>$1</em>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+      .replace(/
+/g, '<br>');
+    div.innerHTML = html;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    saveChat();
+  }
+
+  async function sendMessage() {
+    var text = inputEl.value.trim();
+    if (!text) return;
+    appendMsg(text, 'user');
+    inputEl.value = '';
+    history.push({ role: 'user', text: text });
+    var typing = document.createElement('div');
+    typing.className = 'msg msg-bot';
+    typing.textContent = '…';
+    messagesEl.appendChild(typing);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    try {
+      var res = await fetch(AI_WORKER, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history.slice(-8) })
+      });
+      if (res.ok) {
+        var data = await res.json();
+        typing.remove();
+        appendMsg(data.reply, 'bot');
+        history.push({ role: 'bot', text: data.reply });
+        return;
+      }
+    } catch(e) {}
+    typing.remove();
+    appendMsg('Something went wrong. Email <strong>contact@zoomy.services</strong> and we'll reply within 24 hours.', 'bot');
+    saveChat();
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+  inputEl.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
 })();
 </script>
 <script src="js/main.js?v=20260416b"></script>

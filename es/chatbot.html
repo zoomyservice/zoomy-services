@@ -71,6 +71,7 @@ HTML
 HTML
 HTML
 HTML
+HTML
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -392,12 +393,43 @@ nav{top:var(--bar-h)!important}
     var attn = document.getElementById('zmy-attn');
     if (attn) attn.remove();
 
+    var STORE = 'zmy_demo_v1';
     var messagesEl = document.getElementById('chatbot-messages');
     var inputEl    = document.getElementById('chatbot-input-field');
     var sendBtn    = document.getElementById('chatbot-send');
     if (!messagesEl || !inputEl || !sendBtn) return;
 
-    function appendMsg(text, role) {
+    // Restore saved session if available
+    var history = [
+      { role: 'user', text: 'How does the chatbot work?' },
+      { role: 'bot', text: "It’s trained on a custom knowledge base built around your business. When a visitor asks a question, it matches their input against that knowledge base and responds accurately. It only knows what you’ve provided — it doesn’t improvise or make things up." }
+    ];
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(STORE));
+      if (saved && saved.msgs && saved.msgs.length) {
+        messagesEl.innerHTML = '';
+        saved.msgs.forEach(function(m) {
+          var d = document.createElement('div');
+          d.className = 'msg msg-' + m.role;
+          d.innerHTML = m.html;
+          messagesEl.appendChild(d);
+        });
+        if (saved.history && saved.history.length) history = saved.history;
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
+    } catch(e) {}
+
+    function saveChat() {
+      try {
+        var msgs = [];
+        messagesEl.querySelectorAll('.msg').forEach(function(el) {
+          msgs.push({ role: el.classList.contains('msg-user') ? 'user' : 'bot', html: el.innerHTML });
+        });
+        sessionStorage.setItem(STORE, JSON.stringify({ msgs: msgs, history: history }));
+      } catch(e) {}
+    }
+
+    function appendMsg(text, role) {function appendMsg(text, role) {
       var div = document.createElement('div');
       div.className = 'msg msg-' + role;
       // Render markdown: **bold**, _italic_, links, newlines
@@ -409,6 +441,7 @@ nav{top:var(--bar-h)!important}
       div.innerHTML = html;
       messagesEl.appendChild(div);
       messagesEl.scrollTop = messagesEl.scrollHeight;
+      saveChat();
     }
 
     var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
@@ -454,6 +487,7 @@ nav{top:var(--bar-h)!important}
       // Gemini unavailable — fall back to KB
       typing.remove();
       appendMsg('Something went wrong. Email <strong>contact@zoomy.services</strong> and we\'ll reply within 24 hours.', 'bot');
+      saveChat();
     }
 
     sendBtn.addEventListener('click', sendMessage);
@@ -465,8 +499,4 @@ nav{top:var(--bar-h)!important}
     var status = document.querySelector('.chatbot-status');
     if (status) status.textContent = 'Live — powered by Zoomy chatbot.js';
   }
-  initDemo();
-})();
-</script>
-</body>
-</html>
+  initDemo();</script></body></html>
