@@ -145,6 +145,8 @@
 
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -853,8 +855,7 @@ Try Live Demo
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/_(.+?)_/g, '<em>$1</em>')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-      .replace(/
-/g, '<br>');
+      .replace(/\n/g, '<br>');
     div.innerHTML = html;
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;

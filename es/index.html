@@ -72,6 +72,7 @@ HTML
 HTML
 HTML
 HTML
+HTML
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
@@ -780,8 +781,7 @@ Pruebe la demostración en vivo
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/_(.+?)_/g, '<em>$1</em>')
       .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-      .replace(/
-/g, '<br>');
+      .replace(/\n/g, '<br>');
     div.innerHTML = html;
     messagesEl.appendChild(div);
     messagesEl.scrollTop = messagesEl.scrollHeight;
