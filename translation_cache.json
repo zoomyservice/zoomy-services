@@ -1641,7 +1641,9 @@
     "Your agent": "Votre agent",
     "02 — Re-engagement": "02 — Réengagement",
     "✓ Referral noted — your contact will receive their discount on their next project.": "✓ Parrainage noté — votre contact bénéficiera de sa réduction sur son prochain projet.",
-    "The agent checks your calendar in real time, offers available slots naturally, collects the caller's details, and confirms the booking directly. Cancellations and reschedules are handled the same way. Not every agent needs booking capability — this is scoped during the project brief.": "L'agent vérifie votre calendrier en temps réel, propose naturellement les créneaux disponibles, collecte les coordonnées de l'appelant et confirme directement la réservation. Les annulations et les reports sont traités de la même manière. Tous les agents n’ont pas besoin d’une capacité de réservation – cela est défini lors de la description du projet."
+    "The agent checks your calendar in real time, offers available slots naturally, collects the caller's details, and confirms the booking directly. Cancellations and reschedules are handled the same way. Not every agent needs booking capability — this is scoped during the project brief.": "L'agent vérifie votre calendrier en temps réel, propose naturellement les créneaux disponibles, collecte les coordonnées de l'appelant et confirme directement la réservation. Les annulations et les reports sont traités de la même manière. Tous les agents n’ont pas besoin d’une capacité de réservation – cela est défini lors de la description du projet.",
+    "Outbound calling — same pricing as inbound": "Appels sortants — même prix que les appels entrants",
+    "Ask about outbound ›": "Renseignez-vous sur les appels sortants ›"
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -3285,6 +3287,8 @@
     "Your agent": "Su agente",
     "02 — Re-engagement": "02 — Reenganchamiento",
     "✓ Referral noted — your contact will receive their discount on their next project.": "✓ Referencia anotada: su contacto recibirá su descuento en su próximo proyecto.",
-    "The agent checks your calendar in real time, offers available slots naturally, collects the caller's details, and confirms the booking directly. Cancellations and reschedules are handled the same way. Not every agent needs booking capability — this is scoped during the project brief.": "El agente consulta tu calendario en tiempo real, ofrece las franjas horarias disponibles de forma natural, recoge los datos de la persona que llama y confirma la reserva directamente. Las cancelaciones y reprogramaciones se manejan de la misma manera. No todos los agentes necesitan capacidad de reserva; esto se aborda durante el resumen del proyecto."
+    "The agent checks your calendar in real time, offers available slots naturally, collects the caller's details, and confirms the booking directly. Cancellations and reschedules are handled the same way. Not every agent needs booking capability — this is scoped during the project brief.": "El agente consulta tu calendario en tiempo real, ofrece las franjas horarias disponibles de forma natural, recoge los datos de la persona que llama y confirma la reserva directamente. Las cancelaciones y reprogramaciones se manejan de la misma manera. No todos los agentes necesitan capacidad de reserva; esto se aborda durante el resumen del proyecto.",
+    "Outbound calling — same pricing as inbound": "Llamadas salientes: el mismo precio que las entrantes",
+    "Ask about outbound ›": "Preguntar por salidas ›"
   }
 }
