@@ -564,6 +564,7 @@
       if(r.ok){
         var hadWeb = Array.from(form.querySelectorAll('input[name="service"]:checked')).some(function(el){return WEB_SERVICES.includes(el.value);});
         form.reset();
+        window.location.href = 'thank-you.html';
         document.getElementById('contact-success').style.display='block';
         var sfp = document.getElementById('success-free-page');
         if(sfp) sfp.style.display = hadWeb ? 'flex' : 'none';
