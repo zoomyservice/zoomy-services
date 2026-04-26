@@ -78,6 +78,7 @@ html
 html
 html
 html
+html
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -233,6 +234,13 @@ html
 <div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Envoyez-nous un courriel</div>
 <div style="color:var(--text-2);font-size:.9rem;">contact@zoomy.services</div>
 <div style="color:var(--muted);font-size:.8rem;margin-top:3px;">Nous répondons généralement dans les 24 heures</div>
+</div>
+</div>
+<div class="contact-info-item">
+<div class="contact-icon">📞</div>
+<div>
+<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Appeler ou envoyer un SMS</div>
+<div style="color:var(--text-2);font-size:.9rem;"><a href="tel:+19148749028" style="color:inherit;text-decoration:none;">+1 (914) 874-9028</a></div>
 </div>
 </div>
 <div class="contact-info-item">
@@ -476,6 +484,7 @@ html
       if(r.ok){
         var hadWeb = Array.from(form.querySelectorAll('input[name="service"]:checked')).some(function(el){return WEB_SERVICES.includes(el.value);});
         form.reset();
+        window.location.href = 'thank-you.html';
         document.getElementById('contact-success').style.display='block';
         var sfp = document.getElementById('success-free-page');
         if(sfp) sfp.style.display = hadWeb ? 'flex' : 'none';
@@ -520,6 +529,7 @@ html
 <div class="footer-col"><h4 data-i18n="footer.contact">Contacter</h4><ul>
 <li><a class="active" href="contact.html">Démarrer un projet</a></li>
 <li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+<li><a href="tel:+19148749028">+1 (914) 874-9028</a></li>
 </ul>
 <div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Ouvert aux projets</span></div>
 </div>
