@@ -661,9 +661,39 @@ window.admNav=function(page,el){
   }
 };
 
+// Replace all hardcoded brand colors in an iframe document
+function zfReplaceColor(doc, oldHex, newHex) {
+  try {
+    if (!doc || !oldHex || !newHex || oldHex === newHex) return;
+    function expand(h){ h=h.replace('#',''); if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2]; return h; }
+    var oh=expand(oldHex), nh=expand(newHex);
+    var oR=parseInt(oh.slice(0,2),16),oG=parseInt(oh.slice(2,4),16),oB=parseInt(oh.slice(4,6),16);
+    var nR=parseInt(nh.slice(0,2),16),nG=parseInt(nh.slice(2,4),16),nB=parseInt(nh.slice(4,6),16);
+    var pairs=[
+      ['#'+oh,'#'+nh],
+      ['rgba('+oR+','+oG+','+oB+',','rgba('+nR+','+nG+','+nB+','],
+      ['rgb('+oR+','+oG+','+oB+')','rgb('+nR+','+nG+','+nB+')']
+    ];
+    doc.querySelectorAll('[style]').forEach(function(el){
+      var s=el.getAttribute('style'); if(!s) return;
+      var changed=false;
+      pairs.forEach(function(p){ if(s.indexOf(p[0])!==-1){s=s.split(p[0]).join(p[1]);changed=true;} });
+      if(changed) el.setAttribute('style',s);
+    });
+    doc.querySelectorAll('style').forEach(function(st){
+      var t=st.textContent; var changed=false;
+      pairs.forEach(function(p){ if(t.indexOf(p[0])!==-1){t=t.split(p[0]).join(p[1]);changed=true;} });
+      if(changed) st.textContent=t;
+    });
+    doc.documentElement.style.setProperty('--ac','#'+nh);
+    doc.documentElement.style.setProperty('--ac-dk','#'+nh);
+  } catch(e){}
+}
+
 window.applyDemoColor=function(hex){
   hex=(hex||'').trim();
   if(!/^#[0-9a-fA-F]{3,6}$/.test(hex))return;
+  var prevColor=window._zfDemoColor||'#0ea5e9';
   window._zfDemoColor=hex;
   document.querySelectorAll('.adm-swatch').forEach(function(s){
     var active=s.getAttribute('data-color')===hex;
@@ -679,8 +709,7 @@ window.applyDemoColor=function(hex){
   var iframe=document.getElementById('adm-iframe');
   try{
     if(iframe&&iframe.contentDocument&&iframe.contentDocument.documentElement){
-      iframe.contentDocument.documentElement.style.setProperty('--ac',hex);
-      iframe.contentDocument.documentElement.style.setProperty('--ac-dk',hex);
+      zfReplaceColor(iframe.contentDocument,prevColor,hex);
     }
   }catch(e){}
 };
@@ -734,8 +763,7 @@ function zfInjectEditMode(doc) {
     }
 
     if (window._zfDemoColor) {
-      doc.documentElement.style.setProperty('--ac', window._zfDemoColor);
-      doc.documentElement.style.setProperty('--ac-dk', window._zfDemoColor);
+      zfReplaceColor(doc, '#0ea5e9', window._zfDemoColor);
     }
 
     doc.designMode = 'on';
@@ -887,6 +915,7 @@ function zfInjectEditMode(doc) {
 
       function openModal(target) {
         zfTarget = target;
+        doc.designMode = 'off';
         doc.getElementById('zf-url-input').value = '';
         modal.querySelectorAll('.zf-tab-btn').forEach(function(b, i) {
           if (i === 0) { b.style.border='1px solid #0ea5e9'; b.style.background='rgba(14,165,233,.15)'; b.style.color='#38bdf8'; }
@@ -896,7 +925,7 @@ function zfInjectEditMode(doc) {
         doc.getElementById('zf-panel-position').style.display = 'none';
         modal.style.display = 'flex';
       }
-      function closeModal() { modal.style.display = 'none'; }
+      function closeModal() { modal.style.display = 'none'; doc.designMode = 'on'; }
       modal.querySelector('.zf-cancel-btn').addEventListener('click', closeModal);
       doc.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
