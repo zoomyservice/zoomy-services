@@ -49,7 +49,7 @@ function render() {
 @keyframes zmypulse{0%,100%{opacity:1}50%{opacity:.4}}
 #zmy-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;padding:4px;line-height:1;border-radius:4px}
 #zmy-close:hover{color:#fff;background:rgba(255,255,255,.1)}
-#zmy-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:260px;max-height:340px;background:#0d0d1c;scroll-behavior:smooth}
+#zmy-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:260px;max-height:340px;background:#0d0d1c;scroll-behavior:smooth}#zmy-msgs::-webkit-scrollbar{width:4px}#zmy-msgs::-webkit-scrollbar-track{background:transparent}#zmy-msgs::-webkit-scrollbar-thumb{background:rgba(99,102,241,.35);border-radius:2px}#zmy-msgs::-webkit-scrollbar-thumb:hover{background:rgba(99,102,241,.6)}
 .zmy-msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:.85rem;line-height:1.55;word-wrap:break-word}
 .zmy-msg a{color:#a5b4fc;text-decoration:underline}
 .zmy-bot{background:#111128;border:1px solid rgba(99,102,241,.18);color:#cbd5e1;align-self:flex-start;border-bottom-left-radius:4px}
@@ -60,7 +60,7 @@ function render() {
 .zmy-typing span:nth-child(3){animation-delay:.4s}
 @keyframes zmybounce{0%,80%,100%{transform:scale(.7);opacity:.5}40%{transform:scale(1);opacity:1}}
 #zmy-inp-row{padding:10px 12px;border-top:1px solid rgba(99,102,241,.15);display:flex;gap:8px;background:#08080f}
-#zmy-input{flex:1;background:#111128;border:1px solid rgba(99,102,241,.2);border-radius:20px;padding:9px 14px;font-size:16px;color:#f1f5f9;outline:none;font-family:inherit;resize:none;max-height:80px}
+#zmy-input{flex:1;background:#111128;border:1px solid rgba(99,102,241,.2);border-radius:20px;padding:9px 14px;font-size:16px;color:#f1f5f9;outline:none;font-family:inherit;resize:none;max-height:80px;overflow-y:hidden}
 #zmy-input:focus{border-color:rgba(99,102,241,.5)}
 #zmy-input::placeholder{color:#64748b}
 #zmy-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;transition:transform .15s}
