@@ -7,7 +7,7 @@
 <link href="../favicon.svg" rel="apple-touch-icon"/>
 <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <link href="https://zoomy.services/website-design.html" rel="canonical"/>
-<title>Sites Web — Zoomy</title>
+<title>Sites Web et applications — Zoomy</title>
 <meta content="Custom websites and landing pages built from scratch. Multilingual, booking systems, e-commerce, admin panels, and AI chatbots." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -75,7 +75,7 @@ nav{top:var(--bar-h)!important}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Track outbound CTA clicks (contact page links)
-      document.querySelectorAll('a[href*="contact"]').forEach(function(el) {
+      document.querySelectorAll('a.btn[href*="contact"], a.btn-nav[href*="contact"]').forEach(function(el) {
         el.addEventListener('click', function() {
           gtag('event', 'cta_click', {event_category: 'engagement', event_label: el.textContent.trim().substring(0,50)});
           clarity('event', 'cta_click');
@@ -150,7 +150,7 @@ nav{top:var(--bar-h)!important}
 <nav>
 <a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Studio de production numérique</span></a>
 <ul class="nav-links" id="navLinks">
-<li><a class="active" data-i18n="nav.websites" href="website-design.html">Sites Web</a></li>
+<li><a class="active" data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
 <li><a data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
 <li><a data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
 <li><a data-i18n="nav.creatives" href="animated-creatives.html">Créatifs</a></li>
@@ -173,12 +173,12 @@ nav{top:var(--bar-h)!important}
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div><div class="aurora-blob aurora-blob-3"></div></div>
 <div class="grid-overlay"></div>
 <div class="section-inner" style="z-index:2;">
-<div class="section-tag" style="margin-bottom:1.5rem;">Sites Web et pages de destination</div>
+<div class="section-tag" style="margin-bottom:1.5rem;">Sites Web et applications</div>
 <h1 style="text-align:left;margin-bottom:1.5rem;max-width:700px;">
 <span class="glitch grad-text-animated">Construit à partir de</span><br/>
       gratter.
     </h1>
-<p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:600px;">Tout est codé sur mesure en HTML, CSS et JavaScript. Pas de WordPress, pas de constructeur de pages, pas de thèmes. Chaque projet est construit pour ce qu'il doit réellement faire.</p>
+<p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:600px;">Tout est codé sur mesure : pas de WordPress, pas de générateur de pages, pas de modèles. Sites Web en HTML/CSS/JS. Applications dans React Native avec Expo. Chaque projet est construit pour ce qu'il doit réellement faire.</p>
 </div>
 </section>
 <!-- ═══ ADMIN PANEL SHOWCASE ═══ -->
@@ -701,6 +701,70 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 </div><!-- /section-inner -->
 </section>
+<!-- ═══ MOBILE APPS ═══ -->
+<section class="section alt" id="mobile-apps" style="background:var(--bg-2);position:relative;overflow:hidden;">
+<div class="aurora" style="opacity:.35;"><div class="aurora-blob aurora-blob-2"></div><div class="aurora-blob aurora-blob-3"></div></div>
+<div class="section-inner" style="position:relative;z-index:2;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+<div class="reveal-left">
+<div class="section-tag">Applications mobiles</div>
+<h2 class="section-title" style="margin-bottom:1.25rem;">Une vraie application.<br/>Pas seulement un site mobile.</h2>
+<p style="color:var(--text-2);font-size:1rem;line-height:1.85;max-width:520px;margin-bottom:2rem;">Nous développons des applications mobiles natives pour les entreprises, celles que vos clients utilisent réellement au quotidien. Flux de réservation, portails membres, tableaux de bord de services, flux sociaux, gestion des clients. Construit dans React Native avec Expo, il fonctionne donc à la fois sur iOS et Android à partir d'une seule base de code.</p>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:520px;margin-bottom:2.5rem;">Chaque application est conçue autour de votre logique métier spécifique, et non d'un modèle avec votre logo ajouté. Si votre entreprise a un flux de travail, une relation client ou un service à fournir, il existe une application pour cela.</p>
+<div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+<div style="display:flex;align-items:center;gap:.5rem;color:var(--text-2);font-size:.88rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Réservation et planification</div>
+<div style="display:flex;align-items:center;gap:.5rem;color:var(--text-2);font-size:.88rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Portails clients et membres</div>
+<div style="display:flex;align-items:center;gap:.5rem;color:var(--text-2);font-size:.88rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Flux sociaux et communautaires</div>
+<div style="display:flex;align-items:center;gap:.5rem;color:var(--text-2);font-size:.88rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> E-commerce et paiement</div>
+<div style="display:flex;align-items:center;gap:.5rem;color:var(--text-2);font-size:.88rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> Outils métier internes</div>
+<div style="display:flex;align-items:center;gap:.5rem;color:var(--text-2);font-size:.88rem;"><span style="color:#4ade80;font-size:1rem;">✓</span> iOS et Android, une seule version</div>
+</div>
+<a class="btn" href="contact.html" style="display:inline-flex;align-items:center;gap:.5rem;">Parlez-nous de votre application <span style="font-size:1.1em;">›</span></a>
+</div>
+<div class="reveal-right" style="position:relative;">
+<div style="background:var(--bg-1);border:1px solid var(--border-b);border-radius:24px;overflow:hidden;max-width:300px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,.7);">
+<!-- Phone mockup showing app screens -->
+<div style="background:#0a0a14;padding:1rem 1.25rem .5rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid rgba(99,102,241,.12);">
+<div style="width:8px;height:8px;border-radius:50%;background:#ff5f57;"></div>
+<div style="width:8px;height:8px;border-radius:50%;background:#fbbf24;"></div>
+<div style="width:8px;height:8px;border-radius:50%;background:#4ade80;"></div>
+<span style="font-size:.72rem;color:rgba(255,255,255,.3);margin-left:.4rem;font-family:monospace;">VotreApp.tsx</span>
+</div>
+<div style="padding:1.5rem 1.25rem;">
+<div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);border-radius:12px;padding:1rem;margin-bottom:.75rem;">
+<div style="font-size:.7rem;color:rgba(255,255,255,.4);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.08em;">Accueil</div>
+<div style="font-size:.85rem;font-weight:700;color:#fff;margin-bottom:.25rem;">Bonjour Sarah</div>
+<div style="font-size:.72rem;color:rgba(255,255,255,.45);">3 réservations cette semaine</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.75rem;">
+<div style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.15);border-radius:10px;padding:.75rem;text-align:center;">
+<div style="font-size:1.1rem;margin-bottom:.2rem;">📅</div>
+<div style="font-size:.7rem;color:rgba(255,255,255,.55);">Livre</div>
+</div>
+<div style="background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.15);border-radius:10px;padding:.75rem;text-align:center;">
+<div style="font-size:1.1rem;margin-bottom:.2rem;">💬</div>
+<div style="font-size:.7rem;color:rgba(255,255,255,.55);">Messages</div>
+</div>
+</div>
+<div style="background:rgba(99,102,241,.05);border:1px solid rgba(99,102,241,.1);border-radius:10px;padding:.75rem;">
+<div style="font-size:.7rem;color:rgba(255,255,255,.35);margin-bottom:.4rem;">Prochain rendez-vous</div>
+<div style="font-size:.8rem;font-weight:600;color:#fff;">Mardi, 14h00</div>
+<div style="font-size:.7rem;color:rgba(255,255,255,.4);margin-top:.1rem;">Yoga Flow — Studio B</div>
+</div>
+</div>
+<div style="background:#0a0a14;border-top:1px solid rgba(99,102,241,.12);padding:.75rem 1.25rem;display:flex;justify-content:space-around;">
+<div style="text-align:center;"><div style="font-size:1rem;">🏠</div><div style="font-size:.6rem;color:#6366f1;margin-top:.15rem;">Accueil</div></div>
+<div style="text-align:center;"><div style="font-size:1rem;opacity:.4;">📋</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.15rem;">Cours</div></div>
+<div style="text-align:center;"><div style="font-size:1rem;opacity:.4;">🔍</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.15rem;">Rechercher</div></div>
+<div style="text-align:center;"><div style="font-size:1rem;opacity:.4;">👤</div><div style="font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.15rem;">Profil</div></div>
+</div>
+</div>
+<div style="position:absolute;top:-20px;right:-10px;width:120px;height:120px;background:radial-gradient(circle,rgba(99,102,241,.25),transparent 70%);border-radius:50%;pointer-events:none;"></div>
+<div style="position:absolute;bottom:-20px;left:-10px;width:100px;height:100px;background:radial-gradient(circle,rgba(168,85,247,.2),transparent 70%);border-radius:50%;pointer-events:none;"></div>
+</div>
+</div>
+</div>
+</section>
 <!-- ═══ WHAT CAN BE INCLUDED ═══ -->
 <section class="section" style="background:var(--bg-2);">
 <div class="section-inner">
@@ -878,7 +942,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 <div class="footer-col"><h4 data-i18n="footer.services">Prestations</h4><ul>
 <li><a href="campaign-portfolio.html">Fichiers de campagne</a></li>
-<li><a class="active" data-i18n="nav.websites" href="website-design.html">Sites Web</a></li>
+<li><a class="active" data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
 <li><a data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
 <li><a href="chatbot.html">Chatbots IA</a></li>
 <li><a href="animated-creatives.html">Créations animées</a></li>

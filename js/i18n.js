@@ -4,7 +4,7 @@
 const T = {
 en:{
   /* ── Nav ── */
-  'nav.campaigns':'Campaigns','nav.websites':'Websites','nav.phone':'Phone Agents',
+  'nav.campaigns':'Campaigns','nav.websites':'Websites / Apps','nav.phone':'Phone Agents',
   'nav.chatbots':'Chatbots','nav.creatives':'Creatives','nav.about':'About','nav.contact':'Contact',
   'nav.cta':'Start a Project',
   /* ── Footer ── */
@@ -29,7 +29,7 @@ en:{
   's1.p1':'We create and manage paid media campaigns on Meta, Google, TikTok, and LinkedIn. That means the full setup — strategy, audience configuration, ad copy, tracking, and pixel implementation — and the ongoing management: monitoring performance, optimising spend, adjusting targeting, and reporting results.',
   's1.p2':'Campaigns run in your ad account. We handle everything else.',
   's1.link':'What\'s included',
-  's2.num':'02','s2.title':'Websites &\nLanding Pages',
+  's2.num':'02','s2.title':'Websites &\nApps',
   's2.p1':'Every site is built from scratch in custom code — no WordPress, no templates. We build multilingual booking platforms, e-commerce stores, restaurant and venue sites, service business websites, and single-page landing pages. Booking systems, online payment, admin panels, and AI chatbots can all be included depending on what the project needs.',
   's2.p2':'Domain registration and hosting setup are available as an option on any project.',
   's2.link':'What\'s included',
