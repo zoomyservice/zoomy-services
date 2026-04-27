@@ -184,7 +184,7 @@ nav{top:var(--bar-h)!important}
 <!-- ═══ ADMIN PANEL SHOWCASE ═══ -->
 <section class="section" id="admin-panel">
 <div class="section-inner">
-<div style="display:grid;grid-template-columns:360px 660px;gap:3rem;align-items:start;justify-content:center;">
+<div style="display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:start;">
 <div class="reveal-left">
 <div class="section-tag">Admin Panel</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">You control the content.<br/>No developer needed.</h2>
@@ -241,8 +241,8 @@ nav{top:var(--bar-h)!important}
 </div>
 
 <!-- CANVAS -->
-<div class="adm-canvas" style="flex:1;overflow:hidden;height:600px;position:relative;">
-<iframe id="adm-iframe" src="" style="position:absolute;top:0;left:0;width:800px;height:950px;transform:scale(0.636);transform-origin:top left;border:none;" title="Page Preview"></iframe>
+<div class="adm-canvas" style="flex:1;height:520px;overflow-y:auto;overflow-x:hidden;">
+<iframe id="adm-iframe" src="" style="width:100%;height:100%;border:none;display:block;" title="Page Preview"></iframe>
 </div>
 
 </div><!-- /admShell -->
@@ -354,12 +354,22 @@ function zfInjectEditMode(doc) {
       'button:not(.zf-cam):not(.zf-apply-btn):not(.zf-cancel-btn):not(.zf-save-pos-btn):not(.zf-tab-btn){pointer-events:none!important;}',
       'form{pointer-events:none!important;}',
       '*:not(#zf-badge):not(.zf-cam):not(.zf-tab-btn):hover{outline:1px dashed rgba(14,165,233,.35)!important;}',
-      '#zf-badge{position:fixed;top:0;left:50%;transform:translateX(-50%);background:rgba(14,165,233,.97);color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:4px 18px;border-radius:0 0 10px 10px;z-index:999999;pointer-events:none;font-family:system-ui,sans-serif;white-space:nowrap;}',
+      '#zf-badge{position:fixed;bottom:0;left:50%;transform:translateX(-50%);background:rgba(14,165,233,.97);color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 20px;border-radius:10px 10px 0 0;z-index:999999;pointer-events:none;font-family:system-ui,sans-serif;white-space:nowrap;}',
       '.zf-cam{position:absolute;z-index:99998;background:rgba(14,165,233,.88);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px;cursor:pointer;pointer-events:auto!important;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;border:none;}',
       '.zf-cam:hover{background:rgba(14,165,233,1)!important;}',
       '.zf-img-ov{position:absolute;z-index:99997;pointer-events:none;box-sizing:border-box;}'
     ].join('\n');
     doc.head.appendChild(style);
+
+    // Force desktop layout inside iframe
+    var vp = doc.querySelector('meta[name=viewport]');
+    if (!vp) { vp = doc.createElement('meta'); vp.name = 'viewport'; doc.head.appendChild(vp); }
+    vp.content = 'width=960';
+
+    // Ensure object-fit on all images so objectPosition works
+    doc.querySelectorAll('img').forEach(function(img) {
+      if (!img.style.objectFit) img.style.objectFit = 'cover';
+    });
 
     if (!doc.getElementById('zf-badge')) {
       var badge = doc.createElement('div');
@@ -483,7 +493,19 @@ function zfInjectEditMode(doc) {
 
       function loadFocalImg() {
         var fi = doc.getElementById('zf-focal-img');
-        if (fi && zfTarget && zfTarget.tagName === 'IMG') { fi.src = zfTarget.src; }
+        if (fi && zfTarget) {
+          if (zfTarget.tagName === 'IMG') {
+            fi.src = zfTarget.src;
+          } else {
+            var cs = doc.defaultView.getComputedStyle(zfTarget);
+            var bg = cs.backgroundImage || '';
+            var pS = bg.indexOf('(') + 1;
+            var pE = bg.lastIndexOf(')');
+            var bgUrl = pS > 0 && pE > pS ? bg.slice(pS, pE) : '';
+            bgUrl = bgUrl.split('"').join('').split("'").join('');
+            fi.src = bgUrl || '';
+          }
+        }
         imgPendingPos = { x: 50, y: 50 };
         var dot = doc.getElementById('zf-focal-dot');
         if (dot) { dot.style.left = '50%'; dot.style.top = '50%'; }
@@ -533,15 +555,15 @@ function zfInjectImgOverlays(doc, openModal) {
     ov.style.cssText = 'position:absolute;z-index:99997;pointer-events:none;top:'+top+'px;left:'+left+'px;width:'+img.offsetWidth+'px;height:'+img.offsetHeight+'px;';
     doc.body.appendChild(ov);
     // Camera badge pinned bottom-right of image
-    var cam = doc.createElement('button');
+    var cam = doc.createElement('div');
     cam.className = 'zf-cam';
     cam.textContent = '📷 Swap';
-    var camTop = Math.max(top, top + img.offsetHeight - 34);
-    var camLeft = Math.max(left, left + img.offsetWidth - 78);
-    cam.style.cssText = 'position:absolute;z-index:99998;top:'+camTop+'px;left:'+camLeft+'px;background:rgba(14,165,233,.88);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px;cursor:pointer;pointer-events:auto!important;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;border:none;';
+    var camTop = top + img.offsetHeight - 34;
+    var camLeft = left + img.offsetWidth - 80;
+    cam.style.cssText = 'position:absolute;z-index:99998;top:'+camTop+'px;left:'+camLeft+'px;background:rgba(14,165,233,.88);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px;cursor:pointer;pointer-events:auto;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;';
     cam.addEventListener('mouseenter', function() { cam.style.background='rgba(14,165,233,1)'; });
     cam.addEventListener('mouseleave', function() { cam.style.background='rgba(14,165,233,.88)'; });
-    cam.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); openModal(img); });
+    cam.addEventListener('mousedown', function(e) { e.preventDefault(); e.stopPropagation(); openModal(img); }, true);
     doc.body.appendChild(cam);
   });
 
