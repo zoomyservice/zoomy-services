@@ -480,7 +480,7 @@ Try Live Demo
 <!-- ═══════════ ADMIN PANEL DEMO ═══════════ -->
 <section class="section" style="overflow:hidden;padding-bottom:4rem;">
 <div class="section-inner">
-<div style="display:grid;grid-template-columns:360px minmax(0,520px);gap:3rem;align-items:start;justify-content:center;">
+<div style="display:grid;grid-template-columns:360px 660px;gap:3rem;align-items:start;justify-content:center;">
 <div class="reveal-left">
 <div class="section-tag">Admin Panel</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">You control the content.<br/>No developer needed.</h2>
@@ -517,7 +517,7 @@ Try Live Demo
 </div>
 
 <!-- BODY -->
-<div style="display:flex;min-height:820px;">
+<div style="display:flex;">
 
 <!-- SIDEBAR -->
 <div style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
@@ -534,8 +534,8 @@ Try Live Demo
 </div>
 
 <!-- CANVAS -->
-<div class="adm-canvas" style="flex:1;display:flex;flex-direction:column;overflow:hidden;height:820px;">
-<iframe id="adm-iframe" src="" style="flex:1;width:100%;border:none;min-height:0;" title="Page Preview"></iframe>
+<div class="adm-canvas" style="flex:1;overflow:hidden;height:600px;position:relative;">
+<iframe id="adm-iframe" src="" style="position:absolute;top:0;left:0;width:800px;height:950px;transform:scale(0.636);transform-origin:top left;border:none;" title="Page Preview"></iframe>
 </div>
 
 </div><!-- /admShell -->
@@ -637,25 +637,25 @@ document.getElementById('adm-iframe').addEventListener('load', function() {
 function zfInjectEditMode(doc) {
   if (!doc || !doc.body) return;
   try {
-    var old = doc.getElementById('zf-edit-style');
-    if (old) old.remove();
+    var old = doc.getElementById('zf-edit-style'); if (old) old.remove();
     var style = doc.createElement('style');
     style.id = 'zf-edit-style';
     style.textContent = [
       'a[href]{pointer-events:none!important;cursor:text!important;}',
-      'button:not(.zf-ov-btn):not(.zf-apply-btn):not(.zf-cancel-btn):not(.zf-preset-btn){pointer-events:none!important;}',
+      'button:not(.zf-cam):not(.zf-apply-btn):not(.zf-cancel-btn):not(.zf-save-pos-btn):not(.zf-tab-btn){pointer-events:none!important;}',
       'form{pointer-events:none!important;}',
-      '*:not(#zf-badge):hover{outline:1px dashed rgba(14,165,233,.35)!important;}',
+      '*:not(#zf-badge):not(.zf-cam):not(.zf-tab-btn):hover{outline:1px dashed rgba(14,165,233,.35)!important;}',
       '#zf-badge{position:fixed;top:0;left:50%;transform:translateX(-50%);background:rgba(14,165,233,.97);color:#fff;font-size:11px;font-weight:800;letter-spacing:1.5px;padding:4px 18px;border-radius:0 0 10px 10px;z-index:999999;pointer-events:none;font-family:system-ui,sans-serif;white-space:nowrap;}',
-      '.zf-img-ov{position:absolute;z-index:99998;cursor:pointer;box-sizing:border-box;}',
-      '.zf-img-ov-lbl{position:absolute;bottom:8px;right:8px;background:rgba(14,165,233,.92);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;opacity:0;transition:opacity .18s;pointer-events:none;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;}'
+      '.zf-cam{position:absolute;z-index:99998;background:rgba(14,165,233,.88);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px;cursor:pointer;pointer-events:auto!important;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;border:none;}',
+      '.zf-cam:hover{background:rgba(14,165,233,1)!important;}',
+      '.zf-img-ov{position:absolute;z-index:99997;pointer-events:none;box-sizing:border-box;}'
     ].join('\n');
     doc.head.appendChild(style);
 
     if (!doc.getElementById('zf-badge')) {
       var badge = doc.createElement('div');
       badge.id = 'zf-badge';
-      badge.textContent = '✏ EDIT MODE — click any text to edit · click 📷 image to swap';
+      badge.textContent = '✏ EDIT MODE — click any text to edit · 📷 to swap images';
       doc.body.appendChild(badge);
     }
 
@@ -665,53 +665,145 @@ function zfInjectEditMode(doc) {
       var modal = doc.createElement('div');
       modal.id = 'zf-modal';
       modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:99999;align-items:center;justify-content:center;font-family:sans-serif;';
-      modal.innerHTML =
-        '<div style="background:#111827;border:1.5px solid #0ea5e9;border-radius:16px;padding:28px 24px;width:370px;max-width:92vw;">' +
-        '<div style="font-size:1rem;font-weight:700;color:#f1f5f9;margin-bottom:5px;">📷 Swap Image</div>' +
-        '<div style="font-size:.78rem;color:#94a3b8;margin-bottom:14px;">Paste any image URL or pick a preset:</div>' +
-        '<div id="zf-presets" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;"></div>' +
-        '<div style="display:flex;gap:8px;margin-bottom:12px;">' +
-          '<input id="zf-url-input" type="text" placeholder="https://images.unsplash.com/..." style="flex:1;background:#0d0d0d;border:1px solid #374151;border-radius:8px;padding:8px 10px;color:#e2e8f0;font-size:.82rem;outline:none;" />' +
-          '<button class="zf-apply-btn" style="background:#0ea5e9;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:.82rem;font-weight:700;cursor:pointer;">Apply</button>' +
-        '</div>' +
-        '<button class="zf-cancel-btn" style="width:100%;background:transparent;border:1px solid #374151;border-radius:8px;padding:7px;color:#94a3b8;font-size:.8rem;cursor:pointer;">Cancel</button>' +
-        '</div>';
+      modal.innerHTML = [
+        '<div style="background:#111827;border:1.5px solid #0ea5e9;border-radius:16px;padding:22px;width:350px;max-width:92vw;">',
+        '<div style="font-size:.95rem;font-weight:700;color:#f1f5f9;margin-bottom:12px;">📷 Edit Image</div>',
+        '<div style="display:flex;gap:6px;margin-bottom:14px;">',
+        '<button class="zf-tab-btn zf-tab-active" data-tab="replace" style="flex:1;padding:7px;border:1px solid #0ea5e9;background:rgba(14,165,233,.15);color:#38bdf8;border-radius:8px;font-size:.76rem;font-weight:700;cursor:pointer;">Replace</button>',
+        '<button class="zf-tab-btn" data-tab="position" style="flex:1;padding:7px;border:1px solid #374151;background:transparent;color:#94a3b8;border-radius:8px;font-size:.76rem;font-weight:700;cursor:pointer;">Position &amp; Crop</button>',
+        '</div>',
+        '<div id="zf-panel-replace">',
+        '<div id="zf-dropzone" style="border:2px dashed #374151;border-radius:10px;padding:20px;text-align:center;color:#64748b;font-size:.8rem;cursor:pointer;margin-bottom:10px;transition:border-color .15s,color .15s;">',
+        '<div style="font-size:1.5rem;margin-bottom:5px;">📲</div>',
+        'Drop image here or <strong style="color:#38bdf8;">click to upload</strong>',
+        '<input type="file" id="zf-file-input" accept="image/*" style="display:none;">',
+        '</div>',
+        '<div style="text-align:center;color:#475569;font-size:.74rem;margin-bottom:8px;">or paste an image URL</div>',
+        '<div style="display:flex;gap:8px;margin-bottom:10px;">',
+        '<input id="zf-url-input" type="text" placeholder="https://..." style="flex:1;background:#0d0d0d;border:1px solid #374151;border-radius:8px;padding:8px 10px;color:#e2e8f0;font-size:.82rem;outline:none;"/>',
+        '<button class="zf-apply-btn" style="background:#0ea5e9;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:.8rem;font-weight:700;cursor:pointer;">Apply</button>',
+        '</div>',
+        '</div>',
+        '<div id="zf-panel-position" style="display:none;">',
+        '<div style="font-size:.76rem;color:#94a3b8;margin-bottom:8px;">Click or drag to set focal point (stays centred when cropped):</div>',
+        '<div id="zf-focal-wrap" style="position:relative;cursor:crosshair;border-radius:8px;overflow:hidden;background:#0d0d0d;margin-bottom:10px;height:180px;">',
+        '<img id="zf-focal-img" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;">',
+        '<div id="zf-focal-dot" style="position:absolute;width:18px;height:18px;border:2.5px solid #fff;border-radius:50%;background:rgba(14,165,233,.85);transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 0 0 3px rgba(14,165,233,.4);top:50%;left:50%;"></div>',
+        '</div>',
+        '<button class="zf-save-pos-btn" style="width:100%;background:#0ea5e9;color:#fff;border:none;border-radius:8px;padding:8px;font-size:.82rem;font-weight:700;cursor:pointer;margin-bottom:10px;">Save Position</button>',
+        '</div>',
+        '<button class="zf-cancel-btn" style="width:100%;background:transparent;border:1px solid #374151;border-radius:8px;padding:7px;color:#94a3b8;font-size:.8rem;cursor:pointer;">Cancel</button>',
+        '</div>'
+      ].join('');
       doc.body.appendChild(modal);
 
       var zfTarget = null;
-      var presets = [
-        {l:'Gym',u:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=900&auto=format&fit=crop'},
-        {l:'Yoga',u:'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=900&auto=format&fit=crop'},
-        {l:'HIIT',u:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&auto=format&fit=crop'},
-        {l:'Trainer',u:'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=900&auto=format&fit=crop'},
-        {l:'Weights',u:'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=900&auto=format&fit=crop'},
-        {l:'Pool',u:'https://images.unsplash.com/photo-1560089000-7433a4ebbd64?w=900&auto=format&fit=crop'}
-      ];
-      var presetsDiv = doc.getElementById('zf-presets');
-      presets.forEach(function(p){
-        var btn = doc.createElement('button');
-        btn.className = 'zf-preset-btn';
-        btn.textContent = p.l;
-        btn.style.cssText = 'background:#0d0d0d;border:1px solid #0ea5e9;color:#38bdf8;border-radius:20px;padding:4px 12px;font-size:.74rem;cursor:pointer;';
-        btn.addEventListener('click', function(){ doc.getElementById('zf-url-input').value = p.u; });
-        presetsDiv.appendChild(btn);
+      var imgPendingPos = { x: 50, y: 50 };
+      var focalInited = false, focalDragging = false;
+
+      // Tab switching
+      modal.querySelectorAll('.zf-tab-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          modal.querySelectorAll('.zf-tab-btn').forEach(function(b) {
+            b.style.border = '1px solid #374151'; b.style.background = 'transparent'; b.style.color = '#94a3b8';
+          });
+          btn.style.border = '1px solid #0ea5e9'; btn.style.background = 'rgba(14,165,233,.15)'; btn.style.color = '#38bdf8';
+          var tab = btn.getAttribute('data-tab');
+          doc.getElementById('zf-panel-replace').style.display = tab === 'replace' ? '' : 'none';
+          doc.getElementById('zf-panel-position').style.display = tab === 'position' ? '' : 'none';
+          if (tab === 'position') { initFocal(); loadFocalImg(); }
+        });
       });
 
-      function openModal(target){ zfTarget = target; doc.getElementById('zf-url-input').value = ''; modal.style.display = 'flex'; }
-      function closeModal(){ modal.style.display = 'none'; }
+      // File drag & drop
+      var dropzone = doc.getElementById('zf-dropzone');
+      var fileInput = doc.getElementById('zf-file-input');
+      dropzone.addEventListener('click', function() { fileInput.click(); });
+      dropzone.addEventListener('dragover', function(e) { e.preventDefault(); dropzone.style.borderColor='#0ea5e9'; dropzone.style.color='#38bdf8'; });
+      dropzone.addEventListener('dragleave', function() { dropzone.style.borderColor='#374151'; dropzone.style.color='#64748b'; });
+      dropzone.addEventListener('drop', function(e) {
+        e.preventDefault(); dropzone.style.borderColor='#374151'; dropzone.style.color='#64748b';
+        var file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) readFile(file);
+      });
+      fileInput.addEventListener('change', function() { if (fileInput.files[0]) readFile(fileInput.files[0]); });
 
-      modal.querySelector('.zf-apply-btn').addEventListener('click', function(){
-        var url = (doc.getElementById('zf-url-input').value || '').trim();
-        if (!url || !zfTarget) return;
+      function readFile(file) {
+        var reader = new FileReader();
+        reader.onload = function(ev) { applyImg(ev.target.result); };
+        reader.readAsDataURL(file);
+      }
+
+      function applyImg(src) {
+        if (!zfTarget) return;
         doc.designMode = 'off';
-        if (zfTarget.tagName === 'IMG') { zfTarget.src = url; }
-        else { zfTarget.style.backgroundImage = 'url(' + url + ')'; }
+        if (zfTarget.tagName === 'IMG') zfTarget.src = src;
+        else zfTarget.style.backgroundImage = 'url(' + src + ')';
         doc.designMode = 'on';
         closeModal();
         zfInjectImgOverlays(doc, openModal);
+      }
+
+      modal.querySelector('.zf-apply-btn').addEventListener('click', function() {
+        var url = (doc.getElementById('zf-url-input').value || '').trim();
+        if (url) applyImg(url);
       });
+
+      // Focal point
+      function initFocal() {
+        if (focalInited) return; focalInited = true;
+        var wrap = doc.getElementById('zf-focal-wrap');
+        function setPos(e) {
+          var r = wrap.getBoundingClientRect();
+          var cx = e.touches ? e.touches[0].clientX : e.clientX;
+          var cy = e.touches ? e.touches[0].clientY : e.clientY;
+          imgPendingPos = {
+            x: Math.min(100, Math.max(0, Math.round(((cx - r.left) / r.width) * 100))),
+            y: Math.min(100, Math.max(0, Math.round(((cy - r.top) / r.height) * 100)))
+          };
+          var dot = doc.getElementById('zf-focal-dot');
+          if (dot) { dot.style.left = imgPendingPos.x + '%'; dot.style.top = imgPendingPos.y + '%'; }
+        }
+        wrap.addEventListener('mousedown', function(e) { focalDragging = true; setPos(e); e.preventDefault(); });
+        wrap.addEventListener('mousemove', function(e) { if (focalDragging) setPos(e); });
+        wrap.addEventListener('mouseup', function() { focalDragging = false; });
+        wrap.addEventListener('mouseleave', function() { focalDragging = false; });
+        wrap.addEventListener('touchstart', function(e) { setPos(e); e.preventDefault(); }, { passive: false });
+        wrap.addEventListener('touchmove', function(e) { setPos(e); e.preventDefault(); }, { passive: false });
+      }
+
+      function loadFocalImg() {
+        var fi = doc.getElementById('zf-focal-img');
+        if (fi && zfTarget && zfTarget.tagName === 'IMG') { fi.src = zfTarget.src; }
+        imgPendingPos = { x: 50, y: 50 };
+        var dot = doc.getElementById('zf-focal-dot');
+        if (dot) { dot.style.left = '50%'; dot.style.top = '50%'; }
+      }
+
+      modal.querySelector('.zf-save-pos-btn').addEventListener('click', function() {
+        if (!zfTarget) return;
+        doc.designMode = 'off';
+        var pos = imgPendingPos.x + '% ' + imgPendingPos.y + '%';
+        if (zfTarget.tagName === 'IMG') zfTarget.style.objectPosition = pos;
+        else zfTarget.style.backgroundPosition = pos;
+        doc.designMode = 'on';
+        closeModal();
+      });
+
+      function openModal(target) {
+        zfTarget = target;
+        doc.getElementById('zf-url-input').value = '';
+        modal.querySelectorAll('.zf-tab-btn').forEach(function(b, i) {
+          if (i === 0) { b.style.border='1px solid #0ea5e9'; b.style.background='rgba(14,165,233,.15)'; b.style.color='#38bdf8'; }
+          else { b.style.border='1px solid #374151'; b.style.background='transparent'; b.style.color='#94a3b8'; }
+        });
+        doc.getElementById('zf-panel-replace').style.display = '';
+        doc.getElementById('zf-panel-position').style.display = 'none';
+        modal.style.display = 'flex';
+      }
+      function closeModal() { modal.style.display = 'none'; }
       modal.querySelector('.zf-cancel-btn').addEventListener('click', closeModal);
-      doc.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+      doc.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
       zfInjectImgOverlays(doc, openModal);
     }
@@ -719,48 +811,55 @@ function zfInjectEditMode(doc) {
 }
 
 function zfInjectImgOverlays(doc, openModal) {
-  doc.querySelectorAll('.zf-img-ov').forEach(function(e){ e.remove(); });
+  doc.querySelectorAll('.zf-img-ov,.zf-cam').forEach(function(e) { e.remove(); });
 
-  doc.querySelectorAll('img').forEach(function(img){
+  doc.querySelectorAll('img').forEach(function(img) {
     if (!img.offsetWidth && !img.offsetHeight) return;
     var top = 0, left = 0, node = img;
     do { top += node.offsetTop || 0; left += node.offsetLeft || 0; node = node.offsetParent; }
     while (node && node !== doc.body);
+    // Transparent overlay (pointer-events:none — text above image stays editable)
     var ov = doc.createElement('div');
-    ov.className = 'zf-img-ov zf-ov-btn';
-    ov.style.cssText = 'position:absolute;z-index:99998;cursor:pointer;top:'+top+'px;left:'+left+'px;width:'+img.offsetWidth+'px;height:'+img.offsetHeight+'px;box-sizing:border-box;';
-    var lbl = doc.createElement('div');
-    lbl.className = 'zf-img-ov-lbl';
-    lbl.textContent = '📷 Change';
-    ov.appendChild(lbl);
-    ov.addEventListener('mouseenter', function(){ ov.style.outline='2px solid rgba(14,165,233,.85)'; ov.style.background='rgba(0,0,0,.35)'; lbl.style.opacity='1'; });
-    ov.addEventListener('mouseleave', function(){ ov.style.outline=''; ov.style.background=''; lbl.style.opacity='0'; });
-    ov.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openModal(img); });
+    ov.className = 'zf-img-ov';
+    ov.style.cssText = 'position:absolute;z-index:99997;pointer-events:none;top:'+top+'px;left:'+left+'px;width:'+img.offsetWidth+'px;height:'+img.offsetHeight+'px;';
     doc.body.appendChild(ov);
+    // Camera badge pinned bottom-right of image
+    var cam = doc.createElement('button');
+    cam.className = 'zf-cam';
+    cam.textContent = '📷 Swap';
+    var camTop = Math.max(top, top + img.offsetHeight - 34);
+    var camLeft = Math.max(left, left + img.offsetWidth - 78);
+    cam.style.cssText = 'position:absolute;z-index:99998;top:'+camTop+'px;left:'+camLeft+'px;background:rgba(14,165,233,.88);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px;cursor:pointer;pointer-events:auto!important;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;border:none;';
+    cam.addEventListener('mouseenter', function() { cam.style.background='rgba(14,165,233,1)'; });
+    cam.addEventListener('mouseleave', function() { cam.style.background='rgba(14,165,233,.88)'; });
+    cam.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); openModal(img); });
+    doc.body.appendChild(cam);
   });
 
-  doc.querySelectorAll('[style*="background-image"]').forEach(function(el){
+  // Background-image sections
+  doc.querySelectorAll('[style*="background-image"]').forEach(function(el) {
     if (el.id === 'zf-modal') return;
     var cs = doc.defaultView.getComputedStyle(el);
     if (cs.position === 'static') el.style.position = 'relative';
     if (el.querySelector('.zf-bg-badge')) return;
-    var badge2 = doc.createElement('div');
-    badge2.className = 'zf-bg-badge';
-    badge2.style.cssText = 'position:absolute;top:12px;right:12px;background:rgba(14,165,233,.92);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;z-index:100;pointer-events:none;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;';
-    badge2.textContent = '📷 Click background to swap';
-    el.appendChild(badge2);
+    var b2 = doc.createElement('div');
+    b2.className = 'zf-bg-badge';
+    b2.style.cssText = 'position:absolute;top:12px;right:12px;background:rgba(14,165,233,.92);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:20px;z-index:100;pointer-events:none;font-family:sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.5);white-space:nowrap;';
+    b2.textContent = '📷 Click background to swap';
+    el.appendChild(b2);
     el.style.cursor = 'pointer';
-    el.addEventListener('click', function(e){
-      if (e.target === el || e.target === badge2) { openModal(el); }
+    el.addEventListener('click', function(e) {
+      if (e.target === el || e.target === b2) openModal(el);
     });
   });
 }
 
 // Set src AFTER listener attached — avoids race condition
-(function(){
+(function() {
   var f = document.getElementById('adm-iframe');
   if (f) f.src = '/zenflow/home.html';
 })();
+
 
 
 
