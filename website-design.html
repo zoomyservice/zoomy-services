@@ -344,9 +344,9 @@ nav{top:var(--bar-h)!important}
 </div>
 </section>
 <!-- ═══ ADMIN PANEL SHOWCASE ═══ -->
-<section class="section" id="admin-panel" style="overflow:hidden;">
+<section class="section" id="admin-panel">
 <div class="section-inner">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+<div style="display:grid;grid-template-columns:360px 1fr;gap:3rem;align-items:start;">
 <div class="reveal-left">
 <div class="section-tag">Admin Panel</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">You control the content.<br/>No developer needed.</h2>
@@ -364,8 +364,7 @@ nav{top:var(--bar-h)!important}
 </div>
 <!-- INTERACTIVE ADMIN DEMO -->
 </div><!-- /left col -->
-</div><!-- /grid -->
-
+<div>
 <!-- TRY IT LABEL -->
 <div style="display:flex;align-items:center;gap:1rem;margin-top:3rem;margin-bottom:.85rem;">
 <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(14,165,233,.06));border:1px solid rgba(14,165,233,.55);border-radius:9999px;padding:6px 18px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#38bdf8;">✏ Live demo — try it now</div>
@@ -411,6 +410,8 @@ nav{top:var(--bar-h)!important}
 </div>
 
 </div><!-- /admShell -->
+</div>
+</div><!-- /grid -->
 
 <style>
 .adm-field{outline:none;cursor:text;border-radius:4px;padding:3px 6px;border:1px dashed rgba(255,255,255,.12);transition:border-color .18s,background .18s;}
@@ -498,6 +499,61 @@ window.admNav=function(page,el){
   var iframe=document.getElementById('adm-iframe');
   if(iframe&&map[page]){iframe.src=map[page];}
 };
+
+// Inject edit mode into iframe when it loads
+document.getElementById('adm-iframe').addEventListener('load', function() {
+  try {
+    var doc = this.contentDocument;
+    if (!doc || !doc.body) return;
+
+    // 1. Disable ALL links and buttons (no navigating away)
+    var style = doc.createElement('style');
+    style.textContent = [
+      'a[href]{pointer-events:none!important;cursor:default!important;}',
+      'button:not(.zenflow-book-btn){pointer-events:none!important;}',
+      'form{pointer-events:none!important;}',
+      '*:hover{outline:1px dashed rgba(14,165,233,.25)!important;}',
+      '*:focus{outline:2px solid rgba(14,165,233,.7)!important;}'
+    ].join('');
+    doc.head.appendChild(style);
+
+    // 2. Make key text elements editable
+    var editSelectors = [
+      'h1','h2','h3','h4',
+      'p:not(nav p)',
+      'nav a',
+      '.btn','a.btn',
+      '[class*="section-label"]',
+      'li',
+      'td','th',
+      'label',
+      'span:not(.tag)',
+      'div[style*="font-weight:800"]',
+      'div[style*="font-weight:900"]',
+      'div[style*="font-weight:700"]'
+    ];
+    doc.querySelectorAll(editSelectors.join(',')).forEach(function(el) {
+      if (el.children.length === 0 || el.querySelectorAll('img').length === 0) {
+        el.contentEditable = 'true';
+        el.style.cursor = 'text';
+      }
+    });
+
+    // 3. Make hero background images replaceable — add click hint
+    doc.querySelectorAll('section[style*="background-image"], [style*="background-image"]').forEach(function(el) {
+      el.title = 'Click to change background image';
+      el.style.cursor = 'pointer';
+    });
+
+    // 4. Make img elements replaceable
+    doc.querySelectorAll('img').forEach(function(img) {
+      img.style.cursor = 'pointer';
+      img.title = 'Click to change image';
+    });
+
+  } catch(e) { /* cross-origin or not ready */ }
+});
+
 
 function applyColor(hex,save){
   var shell=document.getElementById('admShell');
@@ -684,7 +740,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <!-- ═══ INTRO — WHY IT MATTERS ═══ -->
 <section class="section" style="background:var(--bg-2);">
 <div class="section-inner">
-<div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;">
+<div class="reveal" style="display:grid;grid-template-columns:360px 1fr;gap:3rem;align-items:start;">
 <div>
 <div class="section-tag">What we actually do</div>
 <h2 class="section-title" style="margin-bottom:1.5rem;">A site that earns its keep.</h2>

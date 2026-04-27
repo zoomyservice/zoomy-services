@@ -7,180 +7,236 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:all .2s;letter-spacing:.01em}
-.btn-primary{background:var(--ac);color:#fff}.btn-primary:hover{background:var(--ac-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(14,165,233,.35)}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;border-radius:8px;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:var(--ac);color:#fff}.btn-primary:hover{background:var(--ac-dk)}
 .btn-ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.12)}.btn-ghost:hover{border-color:var(--ac);color:var(--ac)}
 .section{padding:5rem 2rem}
 .container{max-width:1100px;margin:0 auto}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
-.card:hover{transform:translateY(-5px);border-color:rgba(14,165,233,.25);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-.tag{display:inline-block;padding:.22rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 .section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-bottom:.75rem}
-h2.section-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:900;line-height:1.15;margin-bottom:1rem}
-.sub{color:var(--muted);font-size:1rem;line-height:1.75;max-width:580px}
 img{display:block;max-width:100%;object-fit:cover}
 </style></head>
 <body>
 <nav style="background:rgba(7,7,15,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
   <a href="home.html" style="font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:900;color:#0ea5e9;letter-spacing:-.02em;">⚡ ZENFLOW</a>
   <div style="display:flex;gap:1.75rem;align-items:center;">
-    <a href="home.html" style="color:#8892a4;font-size:.875rem;font-weight:400;">Home</a><a href="classes.html" style="color:#0ea5e9;font-size:.875rem;font-weight:600;">Classes</a><a href="trainers.html" style="color:#8892a4;font-size:.875rem;font-weight:400;">Trainers</a><a href="pricing.html" style="color:#8892a4;font-size:.875rem;font-weight:400;">Pricing</a><a href="contact.html" style="color:#8892a4;font-size:.875rem;font-weight:400;">Contact</a>
+    <a href="home.html" style="color:#8892a4;font-size:.875rem;">Home</a>
+    <a href="classes.html" style="color:#0ea5e9;font-size:.875rem;font-weight:600;">Classes</a>
+    <a href="trainers.html" style="color:#8892a4;font-size:.875rem;">Trainers</a>
+    <a href="pricing.html" style="color:#8892a4;font-size:.875rem;">Pricing</a>
+    <a href="contact.html" style="color:#8892a4;font-size:.875rem;">Contact</a>
     <a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.5rem 1.2rem;border-radius:8px;font-size:.83rem;font-weight:700;margin-left:.25rem;">Join Now →</a>
   </div>
 </nav>
 
 <!-- PAGE HERO -->
-<section style="padding:5rem 2rem 4rem;text-align:center;background:linear-gradient(180deg,rgba(14,165,233,.07) 0%,transparent 100%);border-bottom:1px solid var(--border);">
-  <div class="section-label">50+ Weekly Sessions</div>
-  <h1 style="font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:900;margin-bottom:.85rem;letter-spacing:-.02em;">Find Your Class</h1>
-  <p style="color:#8892a4;font-size:1.05rem;max-width:540px;margin:0 auto 2rem;line-height:1.75;">From high-intensity cardio to mindful yoga — every class is led by certified professionals in a studio designed for performance.</p>
-  <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;">
-    <button style="background:#0ea5e9;color:#fff;border:none;padding:.5rem 1.2rem;border-radius:20px;font-size:.83rem;font-weight:700;cursor:pointer;">All</button>
-    <button style="background:rgba(255,255,255,.05);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.5rem 1.2rem;border-radius:20px;font-size:.83rem;font-weight:500;cursor:pointer;">Yoga</button>
-    <button style="background:rgba(255,255,255,.05);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.5rem 1.2rem;border-radius:20px;font-size:.83rem;font-weight:500;cursor:pointer;">HIIT</button>
-    <button style="background:rgba(255,255,255,.05);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.5rem 1.2rem;border-radius:20px;font-size:.83rem;font-weight:500;cursor:pointer;">Pilates</button>
-    <button style="background:rgba(255,255,255,.05);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.5rem 1.2rem;border-radius:20px;font-size:.83rem;font-weight:500;cursor:pointer;">Cycling</button>
-    <button style="background:rgba(255,255,255,.05);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.5rem 1.2rem;border-radius:20px;font-size:.83rem;font-weight:500;cursor:pointer;">Boxing</button>
+<section style="padding:4.5rem 2rem 3.5rem;background:linear-gradient(180deg,rgba(14,165,233,.07) 0%,transparent 100%);border-bottom:1px solid rgba(255,255,255,.07);">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:2rem;">
+    <div>
+      <div class="section-label">50+ Sessions Every Week</div>
+      <h1 style="font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,5vw,3rem);font-weight:900;margin-bottom:.85rem;letter-spacing:-.02em;">Class Schedule</h1>
+      <p style="color:#8892a4;font-size:1.05rem;max-width:580px;line-height:1.75;">Every class is led by certified professionals in a studio built for performance. Filter by type, browse the week, or just show up — there's always a spot for you.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.5rem;text-align:right;">
+      <div style="font-size:.78rem;color:#8892a4;">Drop-in from</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:#0ea5e9;">$22</div>
+      <a href="pricing.html" class="btn btn-primary" style="font-size:.83rem;padding:.5rem 1.1rem;">View Plans →</a>
+    </div>
   </div>
 </section>
 
-<!-- CLASS GRID -->
-<section class="section">
+<!-- FILTER TABS + CLASS LIST -->
+<section class="section" style="padding-top:3rem;">
   <div class="container">
-    <div class="grid-3" style="gap:1.75rem;">
 
-      <div class="card">
-        <div style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80&auto=format" alt="Morning Vinyasa" style="width:100%;height:210px;">
-          <span style="position:absolute;top:12px;left:12px;" class="tag" style="background:rgba(14,165,233,.9);color:#fff;">YOGA</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.5rem;">Morning Vinyasa Flow</h3>
-          <p style="color:#8892a4;font-size:.83rem;line-height:1.65;margin-bottom:1.1rem;">Dynamic flow linking breath to movement. Builds strength, flexibility and mental clarity. All levels welcome.</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">● All Levels</span>
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">⏱ 60 min</span>
-            <span style="background:rgba(40,200,80,.1);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">12 spots left</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);">
-            <div><span style="color:#0ea5e9;font-weight:800;font-size:1.05rem;">$22</span><span style="color:#8892a4;font-size:.8rem;"> / session</span></div>
-            <a href="pricing.html" class="btn btn-primary" style="font-size:.8rem;padding:.45rem 1rem;">Book Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="border-color:rgba(14,165,233,.3);">
-        <div style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80&auto=format" alt="Total Body HIIT" style="width:100%;height:210px;">
-          <span style="position:absolute;top:12px;left:12px;background:rgba(239,68,68,.9);color:#fff;padding:.22rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;">HIIT</span>
-          <span style="position:absolute;top:12px;right:12px;background:#f59e0b;color:#0a0a0a;padding:.22rem .65rem;border-radius:20px;font-size:.68rem;font-weight:800;letter-spacing:.04em;">🔥 MOST POPULAR</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.5rem;">Total Body HIIT</h3>
-          <p style="color:#8892a4;font-size:.83rem;line-height:1.65;margin-bottom:1.1rem;">High-intensity intervals that torch calories and build lean muscle. Maximum results in minimum time.</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">● Intermediate</span>
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">⏱ 45 min</span>
-            <span style="background:rgba(239,68,68,.1);color:#f87171;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">4 spots left</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);">
-            <div><span style="color:#0ea5e9;font-weight:800;font-size:1.05rem;">$22</span><span style="color:#8892a4;font-size:.8rem;"> / session</span></div>
-            <a href="pricing.html" class="btn btn-primary" style="font-size:.8rem;padding:.45rem 1rem;">Book Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500&q=80&auto=format" alt="Reformer Pilates" style="width:100%;height:210px;">
-          <span style="position:absolute;top:12px;left:12px;background:rgba(168,85,247,.9);color:#fff;padding:.22rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;">PILATES</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.5rem;">Core Reformer Pilates</h3>
-          <p style="color:#8892a4;font-size:.83rem;line-height:1.65;margin-bottom:1.1rem;">Precision-based pilates using reformer equipment for deep core strengthening and posture correction.</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">● All Levels</span>
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">⏱ 50 min</span>
-            <span style="background:rgba(40,200,80,.1);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">8 spots left</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);">
-            <div><span style="color:#0ea5e9;font-weight:800;font-size:1.05rem;">$22</span><span style="color:#8892a4;font-size:.8rem;"> / session</span></div>
-            <a href="pricing.html" class="btn btn-primary" style="font-size:.8rem;padding:.45rem 1rem;">Book Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1523395243481-163f8f6155ab?w=500&q=80&auto=format" alt="Indoor Cycling" style="width:100%;height:210px;">
-          <span style="position:absolute;top:12px;left:12px;background:rgba(234,179,8,.9);color:#0a0a0a;padding:.22rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;">CYCLING</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.5rem;">Power Cycling</h3>
-          <p style="color:#8892a4;font-size:.83rem;line-height:1.65;margin-bottom:1.1rem;">Music-driven indoor cycling that builds cardiovascular endurance and burns up to 600 calories per session.</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">● All Levels</span>
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">⏱ 45 min</span>
-            <span style="background:rgba(40,200,80,.1);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">15 spots left</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);">
-            <div><span style="color:#0ea5e9;font-weight:800;font-size:1.05rem;">$22</span><span style="color:#8892a4;font-size:.8rem;"> / session</span></div>
-            <a href="pricing.html" class="btn btn-primary" style="font-size:.8rem;padding:.45rem 1rem;">Book Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=500&q=80&auto=format" alt="Boxing" style="width:100%;height:210px;">
-          <span style="position:absolute;top:12px;left:12px;background:rgba(239,68,68,.9);color:#fff;padding:.22rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;">BOXING</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.5rem;">Fundamentals of Boxing</h3>
-          <p style="color:#8892a4;font-size:.83rem;line-height:1.65;margin-bottom:1.1rem;">Learn proper technique, footwork, and combinations. Full-body workout that builds discipline and power.</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">● Beginner</span>
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">⏱ 60 min</span>
-            <span style="background:rgba(40,200,80,.1);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">10 spots left</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);">
-            <div><span style="color:#0ea5e9;font-weight:800;font-size:1.05rem;">$22</span><span style="color:#8892a4;font-size:.8rem;"> / session</span></div>
-            <a href="pricing.html" class="btn btn-primary" style="font-size:.8rem;padding:.45rem 1rem;">Book Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="position:relative;">
-          <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=500&q=80&auto=format" alt="Barre" style="width:100%;height:210px;">
-          <span style="position:absolute;top:12px;left:12px;background:rgba(236,72,153,.9);color:#fff;padding:.22rem .65rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;">BARRE</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.5rem;">Barre Sculpt</h3>
-          <p style="color:#8892a4;font-size:.83rem;line-height:1.65;margin-bottom:1.1rem;">Ballet-inspired workout targeting small muscle groups for long, lean muscles and improved posture.</p>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">● All Levels</span>
-            <span style="background:rgba(255,255,255,.05);color:#8892a4;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">⏱ 55 min</span>
-            <span style="background:rgba(40,200,80,.1);color:#4ade80;padding:.2rem .6rem;border-radius:4px;font-size:.75rem;">6 spots left</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);">
-            <div><span style="color:#0ea5e9;font-weight:800;font-size:1.05rem;">$22</span><span style="color:#8892a4;font-size:.8rem;"> / session</span></div>
-            <a href="pricing.html" class="btn btn-primary" style="font-size:.8rem;padding:.45rem 1rem;">Book Now</a>
-          </div>
-        </div>
-      </div>
-
+    <!-- Filter strip -->
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;">
+      <button style="background:#0ea5e9;color:#fff;border:none;padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;font-weight:700;cursor:pointer;">All Classes</button>
+      <button style="background:rgba(14,165,233,.08);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;cursor:pointer;">🧘 Yoga</button>
+      <button style="background:rgba(239,68,68,.08);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;cursor:pointer;">🔥 HIIT</button>
+      <button style="background:rgba(168,85,247,.08);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;cursor:pointer;">🌀 Pilates</button>
+      <button style="background:rgba(234,179,8,.08);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;cursor:pointer;">🚴 Cycling</button>
+      <button style="background:rgba(239,68,68,.08);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;cursor:pointer;">🥊 Boxing</button>
+      <button style="background:rgba(236,72,153,.08);color:#8892a4;border:1px solid rgba(255,255,255,.1);padding:.45rem 1.1rem;border-radius:20px;font-size:.82rem;cursor:pointer;">🩰 Barre</button>
     </div>
 
-    <!-- SCHEDULE STRIP -->
-    <div style="margin-top:4rem;background:var(--surf);border:1px solid var(--border);border-radius:16px;padding:2rem;">
-      <h3 style="font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:1.5rem;">This Week's Schedule Highlights</h3>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;">
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;"><div style="font-weight:700;font-size:.8rem;color:#0ea5e9;margin-bottom:.5rem;">MON</div><div style="font-size:.78rem;color:#8892a4;line-height:1.6;">6am Yoga<br>12pm HIIT<br>6pm Pilates</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;"><div style="font-weight:700;font-size:.8rem;color:#0ea5e9;margin-bottom:.5rem;">TUE</div><div style="font-size:.78rem;color:#8892a4;line-height:1.6;">7am Cycling<br>12pm Boxing<br>7pm Barre</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;"><div style="font-weight:700;font-size:.8rem;color:#0ea5e9;margin-bottom:.5rem;">WED</div><div style="font-size:.78rem;color:#8892a4;line-height:1.6;">6am HIIT<br>12pm Yoga<br>6pm Cycling</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;"><div style="font-weight:700;font-size:.8rem;color:#0ea5e9;margin-bottom:.5rem;">THU</div><div style="font-size:.78rem;color:#8892a4;line-height:1.6;">7am Pilates<br>12pm Barre<br>7pm HIIT</div></div><div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;"><div style="font-weight:700;font-size:.8rem;color:#0ea5e9;margin-bottom:.5rem;">FRI</div><div style="font-size:.78rem;color:#8892a4;line-height:1.6;">6am Yoga<br>12pm HIIT<br>5pm Boxing</div></div>
+    <!-- Day tabs -->
+    <div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:0;">
+      <div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:700;color:#0ea5e9;border-bottom:2px solid #0ea5e9;cursor:pointer;margin-bottom:-1px;">Mon</div><div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:400;color:#8892a4;border-bottom:none;cursor:pointer;margin-bottom:-1px;">Tue</div><div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:400;color:#8892a4;border-bottom:none;cursor:pointer;margin-bottom:-1px;">Wed</div><div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:400;color:#8892a4;border-bottom:none;cursor:pointer;margin-bottom:-1px;">Thu</div><div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:400;color:#8892a4;border-bottom:none;cursor:pointer;margin-bottom:-1px;">Fri</div><div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:400;color:#8892a4;border-bottom:none;cursor:pointer;margin-bottom:-1px;">Sat</div><div style="padding:.6rem 1.25rem;font-size:.82rem;font-weight:400;color:#8892a4;border-bottom:none;cursor:pointer;margin-bottom:-1px;">Sun</div>
+    </div>
+
+    <!-- Column headers -->
+    <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;padding:.6rem 1.25rem;background:rgba(255,255,255,.02);border-bottom:1px solid rgba(255,255,255,.07);">
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">Time</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">Class</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">Category</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">Duration</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">Level</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;">Spots</div>
+      <div></div>
+    </div>
+
+    <!-- Class rows -->
+    <div style="background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;">
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">5:30 AM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Early Bird Vinyasa</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Sofia Chen</div>
+  </div>
+  <div><span style="background:#0ea5e91a;color:#0ea5e9;border:1px solid #0ea5e933;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Yoga</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 60 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● All levels</div>
+  <div style="font-size:.82rem;color:#4ade80;">12 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">7:00 AM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Total Body HIIT</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Marcus Williams</div>
+  </div>
+  <div><span style="background:#ef44441a;color:#ef4444;border:1px solid #ef444433;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">HIIT</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 45 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● Intermediate</div>
+  <div style="font-size:.82rem;color:#fb923c;">4 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">9:00 AM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Core Reformer Pilates</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Aria Martinez</div>
+  </div>
+  <div><span style="background:#a855f71a;color:#a855f7;border:1px solid #a855f733;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Pilates</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 50 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● All levels</div>
+  <div style="font-size:.82rem;color:#4ade80;">8 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">10:30 AM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Power Cycling</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Marcus Williams</div>
+  </div>
+  <div><span style="background:#eab3081a;color:#eab308;border:1px solid #eab30833;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Cycling</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 45 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● All levels</div>
+  <div style="font-size:.82rem;color:#4ade80;">15 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">12:00 PM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Midday Flow Yoga</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Sofia Chen</div>
+  </div>
+  <div><span style="background:#0ea5e91a;color:#0ea5e9;border:1px solid #0ea5e933;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Yoga</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 60 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● Beginner</div>
+  <div style="font-size:.82rem;color:#4ade80;">10 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">1:15 PM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Express HIIT</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Marcus Williams</div>
+  </div>
+  <div><span style="background:#ef44441a;color:#ef4444;border:1px solid #ef444433;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">HIIT</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 30 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● Intermediate</div>
+  <div style="font-size:.82rem;color:#4ade80;">6 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">4:00 PM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Barre Sculpt</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Aria Martinez</div>
+  </div>
+  <div><span style="background:#ec48991a;color:#ec4899;border:1px solid #ec489933;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Barre</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 55 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● All levels</div>
+  <div style="font-size:.82rem;color:#4ade80;">9 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">5:30 PM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Boxing Fundamentals</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Marcus Williams</div>
+  </div>
+  <div><span style="background:#ef44441a;color:#ef4444;border:1px solid #ef444433;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Boxing</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 60 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● Beginner</div>
+  <div style="font-size:.82rem;color:#f87171;">Full</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">6:30 PM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Restorative Yoga</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Sofia Chen</div>
+  </div>
+  <div><span style="background:#0ea5e91a;color:#0ea5e9;border:1px solid #0ea5e933;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">Yoga</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 75 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● All levels</div>
+  <div style="font-size:.82rem;color:#4ade80;">14 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+      <div style="display:grid;grid-template-columns:90px 1fr 130px 80px 80px 100px 110px;align-items:center;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.05);transition:background .15s;" onmouseover="this.style.background='rgba(255,255,255,.02)'" onmouseout="this.style.background=''">
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem;color:#e8e8f4;">8:00 PM</div>
+  <div>
+    <div style="font-weight:600;font-size:.92rem;margin-bottom:.2rem;">Evening HIIT</div>
+    <div style="color:#8892a4;font-size:.78rem;">with Marcus Williams</div>
+  </div>
+  <div><span style="background:#ef44441a;color:#ef4444;border:1px solid #ef444433;padding:.22rem .7rem;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;">HIIT</span></div>
+  <div style="color:#8892a4;font-size:.82rem;">⏱ 45 min</div>
+  <div style="color:#8892a4;font-size:.82rem;">● Advanced</div>
+  <div style="font-size:.82rem;color:#4ade80;">7 left</div>
+  <div><a href="pricing.html" style="background:#0ea5e9;color:#fff;padding:.38rem .9rem;border-radius:7px;font-size:.78rem;font-weight:700;display:inline-block;">Book</a></div>
+</div>
+    </div>
+
+    <!-- CATEGORY LEGEND + STATS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+        <div style="font-weight:700;font-size:.85rem;margin-bottom:1rem;color:#e8e8f4;">Class Categories</div>
+        <div style="display:flex;flex-direction:column;gap:.6rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;"><span style="background:#0ea5e91a;color:#0ea5e9;border:1px solid #0ea5e933;padding:.2rem .65rem;border-radius:12px;font-size:.72rem;font-weight:700;">YOGA</span><span style="color:#8892a4;font-size:.84rem;">Mindful movement, breathwork, all levels</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><span style="background:#ef44441a;color:#f87171;border:1px solid #ef444433;padding:.2rem .65rem;border-radius:12px;font-size:.72rem;font-weight:700;">HIIT</span><span style="color:#8892a4;font-size:.84rem;">High intensity, calorie torch, max results</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><span style="background:#a855f71a;color:#c084fc;border:1px solid #a855f733;padding:.2rem .65rem;border-radius:12px;font-size:.72rem;font-weight:700;">PILATES</span><span style="color:#8892a4;font-size:.84rem;">Core strength, posture, reformer-based</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><span style="background:#eab3081a;color:#fbbf24;border:1px solid #eab30833;padding:.2rem .65rem;border-radius:12px;font-size:.72rem;font-weight:700;">CYCLING</span><span style="color:#8892a4;font-size:.84rem;">Cardio, endurance, music-driven</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><span style="background:#ec4899 1a;color:#f472b6;border:1px solid #ec489933;padding:.2rem .65rem;border-radius:12px;font-size:.72rem;font-weight:700;">BARRE</span><span style="color:#8892a4;font-size:.84rem;">Ballet-inspired, sculpt, lean muscle</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;"><span style="background:#ef44441a;color:#fca5a5;border:1px solid #ef444433;padding:.2rem .65rem;border-radius:12px;font-size:.72rem;font-weight:700;">BOXING</span><span style="color:#8892a4;font-size:.84rem;">Technique, discipline, full-body power</span></div>
+        </div>
       </div>
-      <div style="text-align:center;margin-top:1.5rem;"><a href="contact.html" style="color:#0ea5e9;font-size:.87rem;font-weight:600;">View full schedule → contact us</a></div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+        <div style="font-weight:700;font-size:.85rem;margin-bottom:1rem;color:#e8e8f4;">This Week at a Glance</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:var(--surf);border-radius:8px;padding:1rem;text-align:center;"><div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#0ea5e9;">52</div><div style="color:#8892a4;font-size:.78rem;">Sessions</div></div>
+          <div style="background:var(--surf);border-radius:8px;padding:1rem;text-align:center;"><div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#0ea5e9;">7</div><div style="color:#8892a4;font-size:.78rem;">Class types</div></div>
+          <div style="background:var(--surf);border-radius:8px;padding:1rem;text-align:center;"><div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#0ea5e9;">8</div><div style="color:#8892a4;font-size:.78rem;">Trainers</div></div>
+          <div style="background:var(--surf);border-radius:8px;padding:1rem;text-align:center;"><div style="font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#0ea5e9;">5:30</div><div style="color:#8892a4;font-size:.78rem;">First class AM</div></div>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+          <div style="font-size:.82rem;color:#8892a4;margin-bottom:.5rem;">Class availability this week</div>
+          <div style="background:rgba(255,255,255,.05);border-radius:4px;height:8px;overflow:hidden;">
+            <div style="width:68%;height:100%;background:linear-gradient(90deg,#0ea5e9,#38bdf8);border-radius:4px;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:.3rem;font-size:.72rem;color:#555;"><span>68% booked</span><span>32% available</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIVATE TRAINING CTA -->
+    <div style="margin-top:2rem;background:linear-gradient(135deg,rgba(14,165,233,.1) 0%,rgba(14,165,233,.04) 100%);border:1px solid rgba(14,165,233,.2);border-radius:14px;padding:1.75rem 2rem;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:.4rem;">Want one-on-one coaching?</div>
+        <div style="color:#8892a4;font-size:.88rem;">Private sessions with any trainer — tailored to your goals. 20% off for Annual members.</div>
+      </div>
+      <a href="trainers.html" class="btn btn-primary" style="white-space:nowrap;">Meet Our Trainers →</a>
     </div>
   </div>
 </section>
@@ -189,17 +245,12 @@ img{display:block;max-width:100%;object-fit:cover}
   <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.07);">
     <div>
       <div style="font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:900;color:#0ea5e9;margin-bottom:.9rem;">⚡ ZENFLOW</div>
-      <p style="color:#8892a4;font-size:.85rem;line-height:1.8;max-width:280px;margin-bottom:1.25rem;">Premium fitness studio dedicated to transforming lives through expert coaching, community, and science-backed programming.</p>
-      <div style="display:flex;gap:.6rem;">
-        <a href="#" style="background:rgba(255,255,255,.05);color:#8892a4;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;border:1px solid rgba(255,255,255,.07);">𝕏</a>
-        <a href="#" style="background:rgba(255,255,255,.05);color:#8892a4;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;border:1px solid rgba(255,255,255,.07);">📸</a>
-        <a href="#" style="background:rgba(255,255,255,.05);color:#8892a4;width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;border:1px solid rgba(255,255,255,.07);">▶</a>
-      </div>
+      <p style="color:#8892a4;font-size:.85rem;line-height:1.8;max-width:280px;">Premium fitness studio dedicated to transforming lives through expert coaching and science-backed programming.</p>
     </div>
     <div>
       <div style="font-weight:700;margin-bottom:.9rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#e8e8f4;">Studio</div>
       <div style="display:flex;flex-direction:column;gap:.55rem;">
-        <a href="home.html" style="color:#8892a4;font-size:.85rem;transition:color .15s">Home</a>
+        <a href="home.html" style="color:#8892a4;font-size:.85rem;">Home</a>
         <a href="classes.html" style="color:#8892a4;font-size:.85rem;">Classes</a>
         <a href="trainers.html" style="color:#8892a4;font-size:.85rem;">Trainers</a>
         <a href="pricing.html" style="color:#8892a4;font-size:.85rem;">Pricing</a>
@@ -217,17 +268,17 @@ img{display:block;max-width:100%;object-fit:cover}
     <div>
       <div style="font-weight:700;margin-bottom:.9rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#e8e8f4;">Contact</div>
       <div style="display:flex;flex-direction:column;gap:.8rem;color:#8892a4;font-size:.84rem;">
-        <div>📍 241 Fitness Avenue<br><span style="color:#e8e8f4;">New York, NY 10001</span></div>
-        <div>📞 <a href="tel:+12125550198" style="color:#0ea5e9;">(212) 555-0198</a></div>
-        <div>✉️ <a href="mailto:hello@zenflow.studio" style="color:#0ea5e9;">hello@zenflow.studio</a></div>
+        <div>📍 241 Fitness Avenue, NY 10001</div>
+        <div>📞 (212) 555-0198</div>
+        <div>✉️ hello@zenflow.studio</div>
       </div>
     </div>
   </div>
-  <div style="max-width:1100px;margin:1.5rem auto 0;display:flex;justify-content:space-between;align-items:center;">
-    <span style="color:#8892a4;font-size:.8rem;">© 2026 Zenflow Fitness Studio. All rights reserved.</span>
+  <div style="max-width:1100px;margin:1.5rem auto 0;display:flex;justify-content:space-between;">
+    <span style="color:#8892a4;font-size:.8rem;">© 2026 Zenflow Fitness Studio.</span>
     <div style="display:flex;gap:1.5rem;">
-      <a href="#" style="color:#8892a4;font-size:.8rem;">Privacy Policy</a>
-      <a href="#" style="color:#8892a4;font-size:.8rem;">Terms of Service</a>
+      <a href="#" style="color:#8892a4;font-size:.8rem;">Privacy</a>
+      <a href="#" style="color:#8892a4;font-size:.8rem;">Terms</a>
     </div>
   </div>
 </footer>
