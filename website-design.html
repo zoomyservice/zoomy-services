@@ -148,8 +148,17 @@ nav{top:var(--bar-h)!important}
     n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '972114368527990');
-    fbq('track', 'PageView');
+    (function(){
+    var _ud={};
+    var _fbc=document.cookie.match(/_fbc=([^;]+)/);
+    var _fbp=document.cookie.match(/_fbp=([^;]+)/);
+    try{var _p=new URLSearchParams(window.location.search);var _cl=_p.get('fbclid');
+    if(_cl&&!_fbc){var _fc='fb.1.'+Date.now()+'.'+_cl;document.cookie='_fbc='+_fc+';path=/;max-age=7776000;SameSite=Lax';_ud.fbc=_fc;}
+    else if(_fbc){_ud.fbc=_fbc[1];}
+    if(_fbp){_ud.fbp=_fbp[1];}}catch(e){}
+    fbq('init','972114368527990',_ud);
+    fbq('track','PageView');
+  })();
     fbq('track', 'ViewContent', {content_name: document.title});
   </script>
 <noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
@@ -239,10 +248,19 @@ nav{top:var(--bar-h)!important}
 <button onclick="admPublish()" onmouseout="this.style.filter=''" onmouseover="this.style.filter='brightness(1.15)'" style="background:var(--ac);color:#0a0a08;border:none;padding:5px 18px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;letter-spacing:.03em;">Publish ↑</button>
 </div>
 </div>
+<!-- MOBILE PAGE TABS (visible on mobile only) -->
+<div id="admMobileTabs" style="display:none;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;background:#0d0d0d;border-bottom:1px solid #1c1c1c;padding:.55rem .7rem;gap:.4rem;">
+<div class="adm-mtab adm-mtab-active" data-page="home" onclick="admNavMobile('home',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.45);color:#38bdf8;transition:all .18s;">🏠 Home</div>
+<div class="adm-mtab" data-page="classes" onclick="admNavMobile('classes',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🧘 Classes</div>
+<div class="adm-mtab" data-page="trainers" onclick="admNavMobile('trainers',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">💪 Trainers</div>
+<div class="adm-mtab" data-page="pricing" onclick="admNavMobile('pricing',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">💳 Pricing</div>
+<div class="adm-mtab" data-page="contact" onclick="admNavMobile('contact',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">📍 Contact</div>
+<div class="adm-mtab" data-page="colours" onclick="admNavMobile('colours',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🎨 Colours</div>
+</div>
 <!-- BODY -->
 <div style="display:flex;">
 <!-- SIDEBAR -->
-<div style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
+<div id="admSidebar" style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
 <div style="font-size:.5rem;color:#888;text-transform:uppercase;letter-spacing:.14em;padding:.2rem 1rem .25rem;font-family:monospace;">Pages</div>
 <div class="adm-nav-item active-nav" onclick="admNav('home',this)" style="padding:.4rem 1rem;font-size:.74rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🏠</span>Home</div>
 <div class="adm-nav-item" onclick="admNav('classes',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🧘</span>Classes</div>
@@ -291,12 +309,16 @@ nav{top:var(--bar-h)!important}
 @keyframes admFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){
   #admin-demo-wrap{grid-template-columns:1fr!important;}
-  #admin-demo-wrap>div:last-child{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1rem;}
-  #admShell{min-width:580px;}
+  #admin-demo-wrap>div:last-child{margin-top:1rem;}
+  #admShell{min-width:0!important;width:100%!important;}
+  #admMobileTabs{display:flex!important;}
+  #admSidebar{display:none!important;}
+  .adm-canvas{height:400px!important;}
   .section-title{font-size:clamp(1.6rem,6vw,2.2rem)!important;}
   #mobile-apps .reveal-right{display:flex;justify-content:center;}
   #phoneScreen{height:430px;}
   #mobile-apps>div{padding:3rem 1rem;}
+  #admMobileTabs::-webkit-scrollbar{display:none;}
 }
 </style>
 <script>
@@ -365,11 +387,31 @@ window.admPublish=function(){
   saveAll();
 };
 
+window.admNavMobile=function(page,el){
+  // Update mobile tabs
+  document.querySelectorAll('.adm-mtab').forEach(function(t){
+    t.style.background='rgba(255,255,255,.04)';t.style.color='rgba(255,255,255,.45)';t.style.borderColor='rgba(255,255,255,.09)';t.classList.remove('adm-mtab-active');
+  });
+  if(el){el.style.background='rgba(14,165,233,.14)';el.style.color='#38bdf8';el.style.borderColor='rgba(14,165,233,.45)';el.classList.add('adm-mtab-active');}
+  // Also sync sidebar nav items
+  document.querySelectorAll('.adm-nav-item').forEach(function(i){i.style.background='';i.style.color='#555';i.classList.remove('active-nav');});
+  var sideItem=document.querySelector('.adm-nav-item[onclick*=\''+page+'\']');
+  if(sideItem){sideItem.style.background='rgba(14,165,233,.12)';sideItem.style.color='var(--ac)';sideItem.classList.add('active-nav');}
+  // Navigate
+  var iframe=document.getElementById('adm-iframe');
+  var colPanel=document.getElementById('adm-colour-panel');
+  if(page==='colours'){if(colPanel)colPanel.style.display='block';}
+  else{if(colPanel)colPanel.style.display='none';var map={home:'/zenflow/home.html',classes:'/zenflow/classes.html',trainers:'/zenflow/trainers.html',pricing:'/zenflow/pricing.html',contact:'/zenflow/contact.html'};if(iframe&&map[page])iframe.src=map[page];}
+};
 window.admNav=function(page,el){
   document.querySelectorAll('.adm-nav-item').forEach(function(i){
     i.style.background='';i.style.color='#555';i.classList.remove('active-nav');
   });
   if(el){el.style.background='rgba(14,165,233,.12)';el.style.color='var(--ac)';el.classList.add('active-nav');}
+  // Sync mobile tabs
+  document.querySelectorAll('.adm-mtab').forEach(function(t){t.style.background='rgba(255,255,255,.04)';t.style.color='rgba(255,255,255,.45)';t.style.borderColor='rgba(255,255,255,.09)';t.classList.remove('adm-mtab-active');});
+  var mTab=document.querySelector('.adm-mtab[data-page="'+page+'"]');
+  if(mTab){mTab.style.background='rgba(14,165,233,.14)';mTab.style.color='#38bdf8';mTab.style.borderColor='rgba(14,165,233,.45)';mTab.classList.add('adm-mtab-active');}
   var iframe=document.getElementById('adm-iframe');
   var colPanel=document.getElementById('adm-colour-panel');
   if(page==='colours'){
