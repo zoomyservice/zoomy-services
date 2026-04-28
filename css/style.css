@@ -388,3 +388,302 @@ html[data-theme="light"] [style*="border:1px solid rgba(255,255,255"]{border-col
 /* Phone agent + chatbot widgets had heavy dark styling */
 html[data-theme="light"] [class*="chatbot-mock"],
 html[data-theme="light"] [class*="phone-card"]{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}
+
+
+/* ════════════════════════════════════════════════════════════════════
+   LIGHT MODE v4 — QUIET LUXURY (final override)
+   Cream paper + warm dark brown only. No purple, no rust, no chroma.
+   Wins over all earlier light-theme rules via specificity + !important.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* — Variable redefinition (overrides the v3 rust block above) — */
+html[data-theme="light"]{
+  --bg:#F2EBD7;
+  --bg-2:#EAE0C2;
+  --bg-3:#E0D5B5;
+  --surface:#F8F2DD;
+  --card:#FBF5E2;
+  --card-hover:#F5EED4;
+  --border:rgba(58,46,29,.18);
+  --border-b:rgba(58,46,29,.10);
+  /* Text — warm dark brown (replaces navy) */
+  --text:#2A2218;
+  --text-2:#5C4B3D;
+  --muted:#8B7A65;
+  /* Primary brand — warm cocoa (used sparingly on hover only) */
+  --primary:#4A3B2D;
+  --primary-dk:#2A2218;
+  --secondary:#8B7A65;
+  --accent:#4A3B2D;
+  /* Status colors — muted, low-saturation only */
+  --pink:#8B4A52;
+  --green:#4A6B4F;
+  --amber:#8B7140;
+  /* Glows — barely-there warm tones */
+  --glow-p:rgba(74,59,45,.06);
+  --glow-s:rgba(139,122,101,.06);
+  --glow-a:rgba(74,59,45,.05);
+  /* Brand gradient — solid warm brown (no color shifts visible) */
+  --grad-main:linear-gradient(135deg,#2A2218 0%,#4A3B2D 100%);
+  --grad-glow:linear-gradient(135deg,rgba(74,59,45,.03) 0%,rgba(139,122,101,.03) 100%);
+  --grad-card:linear-gradient(135deg,rgba(74,59,45,.02) 0%,rgba(139,122,101,.02) 100%);
+  color-scheme:light;
+}
+
+/* — Kill the colored backgrounds entirely in light mode — */
+html[data-theme="light"] .aurora,
+html[data-theme="light"] .aurora-blob,
+html[data-theme="light"] .aurora-blob-1,
+html[data-theme="light"] .aurora-blob-2,
+html[data-theme="light"] .aurora-blob-3,
+html[data-theme="light"] #particle-canvas,
+html[data-theme="light"] .grid-overlay,
+html[data-theme="light"] .sample-glow,
+html[data-theme="light"] .sample-glow2{display:none!important}
+
+/* — Body radial-gradient bg → flat cream — */
+html[data-theme="light"] body{background:var(--bg)!important;background-image:none!important}
+
+/* — Logo: solid dark brown, no gradient text — */
+html[data-theme="light"] .nav-logo{
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  -webkit-text-fill-color:var(--text)!important;
+  color:var(--text)!important;
+}
+html[data-theme="light"] .nav-logo-sub{color:var(--muted)!important;-webkit-text-fill-color:var(--muted)!important}
+
+/* — Scroll progress: solid dark instead of purple gradient — */
+html[data-theme="light"] #scroll-progress{background:var(--text)!important;box-shadow:none!important}
+
+/* — Buttons: light/ghost style across the board — */
+html[data-theme="light"] .btn-primary,
+html[data-theme="light"] .btn-nav{
+  background:transparent!important;
+  color:var(--text)!important;
+  border:1.5px solid var(--text)!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+html[data-theme="light"] .btn-primary:hover,
+html[data-theme="light"] .btn-nav:hover{
+  background:var(--text)!important;
+  color:var(--bg)!important;
+  border-color:var(--text)!important;
+  transform:translateY(-1px)!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+html[data-theme="light"] .btn-ghost{
+  background:transparent!important;
+  color:var(--text)!important;
+  border:1.5px solid var(--border)!important;
+}
+html[data-theme="light"] .btn-ghost:hover{
+  background:var(--text)!important;
+  color:var(--bg)!important;
+  border-color:var(--text)!important;
+}
+
+/* — Nav link underline: dark brown not purple gradient — */
+html[data-theme="light"] .nav-links a::after{background:var(--text)!important}
+html[data-theme="light"] .nav-links a:hover{color:var(--text)!important}
+html[data-theme="light"] .nav-links a.active{color:var(--text)!important}
+
+/* — Section-tag: subtle cream chip with dark text — */
+html[data-theme="light"] .section-tag{
+  background:var(--bg-2)!important;
+  border-color:var(--border)!important;
+  color:var(--text-2)!important;
+}
+html[data-theme="light"] .section-tag::before{color:var(--muted)!important;opacity:.6!important}
+
+/* — Badges → subtle cream chip — */
+html[data-theme="light"] .badge,
+html[data-theme="light"] .badge-primary,
+html[data-theme="light"] .badge-accent{
+  background:var(--bg-2)!important;
+  border-color:var(--border)!important;
+  color:var(--text-2)!important;
+}
+
+/* — Icon boxes (used in services/features) — subtle cream — */
+html[data-theme="light"] .icon-box{
+  background:var(--bg-2)!important;
+  border-color:var(--border)!important;
+  color:var(--text)!important;
+}
+
+/* — Cards — clean cream surface, hairline border, no glow — */
+html[data-theme="light"] .card,
+html[data-theme="light"] .step-card,
+html[data-theme="light"] .chatbot-feat,
+html[data-theme="light"] .feat-card,
+html[data-theme="light"] .why-card,
+html[data-theme="light"] .case-card,
+html[data-theme="light"] .pillar-card,
+html[data-theme="light"] .tier-card{
+  background:var(--card)!important;
+  border:1px solid var(--border)!important;
+  box-shadow:0 1px 2px rgba(58,46,29,.04)!important;
+}
+html[data-theme="light"] .card:hover,
+html[data-theme="light"] .step-card:hover,
+html[data-theme="light"] .chatbot-feat:hover{
+  border-color:var(--text)!important;
+  box-shadow:0 4px 16px rgba(58,46,29,.06)!important;
+  transform:translateY(-2px)!important;
+}
+
+/* — Step badges (numbered circles) — cream with dark border instead of glow — */
+html[data-theme="light"] .step-badge,
+html[data-theme="light"] .step-badge-1,
+html[data-theme="light"] .step-badge-2,
+html[data-theme="light"] .step-badge-3,
+html[data-theme="light"] .step-badge-4{
+  background:var(--text)!important;
+  color:var(--bg)!important;
+  box-shadow:none!important;
+  background-image:none!important;
+}
+
+/* — Sample banner — soft cream tint, no glow blobs (already hidden above) — */
+html[data-theme="light"] .sample-banner{
+  background:var(--bg-2)!important;
+  border:1px solid var(--border)!important;
+  background-image:none!important;
+}
+html[data-theme="light"] .sample-tag{
+  background:var(--text)!important;
+  color:var(--bg)!important;
+  border:1px solid var(--text)!important;
+  background-image:none!important;
+}
+
+/* — Free top bar — keep dark for contrast (it's a 44px utility bar) — */
+html[data-theme="light"] #free-bar{
+  background:linear-gradient(90deg,#1a1a1a,#2a241d,#1a1a1a)!important;
+  color:#fff!important;
+}
+html[data-theme="light"] #free-bar .bar-text{color:rgba(255,255,255,.9)!important}
+
+/* — Footer — soft cream-2 with dark text — */
+html[data-theme="light"] footer{
+  background:var(--bg-2)!important;
+  border-top:1px solid var(--border)!important;
+  color:var(--text-2)!important;
+}
+html[data-theme="light"] footer h4,
+html[data-theme="light"] footer .footer-col h4{color:var(--text)!important}
+html[data-theme="light"] footer a{color:var(--text-2)!important}
+html[data-theme="light"] footer a:hover{color:var(--text)!important}
+
+/* — Form fields — cream with dark border — */
+html[data-theme="light"] .form-field input,
+html[data-theme="light"] .form-field textarea,
+html[data-theme="light"] .form-field select,
+html[data-theme="light"] input[type="text"],
+html[data-theme="light"] input[type="email"],
+html[data-theme="light"] input[type="tel"],
+html[data-theme="light"] textarea{
+  background:var(--card)!important;
+  border:1px solid var(--border)!important;
+  color:var(--text)!important;
+}
+html[data-theme="light"] .form-field input:focus,
+html[data-theme="light"] .form-field textarea:focus{
+  border-color:var(--text)!important;
+  box-shadow:0 0 0 3px rgba(58,46,29,.08)!important;
+}
+
+/* — Chatbot mock styling — cream with dark borders — */
+html[data-theme="light"] .chatbot-mock,
+html[data-theme="light"] [class*="chatbot-shell"],
+html[data-theme="light"] [class*="phone-card"]{
+  background:var(--card)!important;
+  border:1px solid var(--border)!important;
+  color:var(--text)!important;
+}
+html[data-theme="light"] .msg-bot{
+  background:var(--bg-2)!important;
+  border:1px solid var(--border)!important;
+  color:var(--text)!important;
+}
+html[data-theme="light"] .msg-user{
+  background:var(--text)!important;
+  background-image:none!important;
+  color:var(--bg)!important;
+}
+html[data-theme="light"] .chatbot-send{
+  background:var(--text)!important;
+  background-image:none!important;
+  color:var(--bg)!important;
+}
+
+/* — Marquee — cream with subtle muted items — */
+html[data-theme="light"] .marquee{
+  background:var(--bg-2)!important;
+  border-top-color:var(--border)!important;
+  border-bottom-color:var(--border)!important;
+}
+html[data-theme="light"] .marquee-item{color:var(--muted)!important}
+html[data-theme="light"] .marquee-dot{background:var(--text)!important;opacity:.5!important}
+
+/* — Lang switcher — — */
+html[data-theme="light"] .lang-btn{color:var(--muted)!important}
+html[data-theme="light"] .lang-btn:hover,
+html[data-theme="light"] .lang-btn.lang-active{
+  background:var(--bg-2)!important;
+  color:var(--text)!important;
+  border-color:var(--border)!important;
+}
+
+/* — Mobile drawer — cream — */
+@media(max-width:768px){
+  html[data-theme="light"] .nav-links{
+    background:var(--card)!important;
+    box-shadow:-8px 0 32px rgba(58,46,29,.10)!important;
+  }
+  html[data-theme="light"] .nav-links li{border-bottom-color:var(--border)!important}
+  html[data-theme="light"] .nav-links li a{color:var(--text-2)!important}
+  html[data-theme="light"] .nav-links li a:hover,
+  html[data-theme="light"] .nav-links li a.active{color:var(--text)!important}
+  html[data-theme="light"] .nav-mobile-footer{border-top-color:var(--border)!important}
+}
+
+/* — Catch-all: any inline gradient with purple/cyan/rust → flatten to cream — */
+html[data-theme="light"] [style*="linear-gradient(135deg,#6366f1"],
+html[data-theme="light"] [style*="linear-gradient(135deg,#a855f7"],
+html[data-theme="light"] [style*="linear-gradient(135deg, #6366f1"],
+html[data-theme="light"] [style*="linear-gradient(135deg, #a855f7"],
+html[data-theme="light"] [style*="background:linear-gradient(135deg,rgba(99,102,241"],
+html[data-theme="light"] [style*="background:linear-gradient(135deg,rgba(178,58,26"]{
+  background:var(--bg-2)!important;
+  background-image:none!important;
+  color:var(--text)!important;
+}
+
+/* — Catch-all: any solid purple background → cream-2 — */
+html[data-theme="light"] [style*="background:#6366f1"],
+html[data-theme="light"] [style*="background: #6366f1"],
+html[data-theme="light"] [style*="background:#a855f7"],
+html[data-theme="light"] [style*="background: #a855f7"],
+html[data-theme="light"] [style*="background:#06b6d4"]{
+  background:var(--text)!important;
+  color:var(--bg)!important;
+}
+
+/* — Inline color:#6366f1 or #a855f7 (purple text) → dark brown — */
+html[data-theme="light"] [style*="color:#6366f1"],
+html[data-theme="light"] [style*="color: #6366f1"],
+html[data-theme="light"] [style*="color:#a855f7"],
+html[data-theme="light"] [style*="color: #a855f7"],
+html[data-theme="light"] [style*="color:#06b6d4"]{color:var(--text)!important}
+
+/* — Reset any rust/oxblood I added in v3 that's still showing — */
+html[data-theme="light"] [style*="color:#B23A1A"],
+html[data-theme="light"] [style*="color:#872C13"],
+html[data-theme="light"] [style*="color:#B07C2C"]{color:var(--text)!important}
+html[data-theme="light"] [style*="background:#B23A1A"],
+html[data-theme="light"] [style*="background:#B07C2C"]{background:var(--text)!important;color:var(--bg)!important}
