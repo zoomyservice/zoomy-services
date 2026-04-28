@@ -161,7 +161,7 @@ nav{top:var(--bar-h)!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
 </style>
 <script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
-<script>(function(){try{var t=localStorage.getItem('zmy_theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+<script>(function(){try{var t=localStorage.getItem('zmy_theme');if(t==='dark')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
 <script>localStorage.setItem('zmy_lang','fr');</script></head>
 <body>
 <div id="free-bar">
