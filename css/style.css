@@ -2537,3 +2537,89 @@ html[data-theme="light"] #free-bar .bar-dismiss:hover{color:var(--bg)!important}
   .svc-row{padding:1.5rem 0!important}
   .svc-link{font-size:.82rem!important; padding-top:.4rem; align-self:flex-start}
 }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   v18 — desktop hero check-row: 3-column, balanced second row
+   Overrides the v13 2-col grid above 768px.
+   ════════════════════════════════════════════════════════════════════ */
+
+@media(min-width:769px){
+  .hero .section-inner > div:last-of-type{
+    display:grid!important;
+    grid-template-columns:repeat(3, max-content)!important;
+    gap:.7rem 2.2rem!important;
+    flex-wrap:initial!important;
+    width:max-content;
+    max-width:100%;
+  }
+
+  /* Row 1: items 1, 2, 3 — auto-place across the 3 columns */
+  /* Row 2: item 4 in column 1, item 5 spans columns 2 and 3 */
+  .hero .section-inner > div:last-of-type > div:nth-child(5){
+    grid-column:2 / -1!important;
+    grid-row:auto!important;
+  }
+  /* Items 1-4 use auto placement (default fills row 1 cols 1-3, row 2 col 1) */
+  .hero .section-inner > div:last-of-type > div:nth-child(1),
+  .hero .section-inner > div:last-of-type > div:nth-child(2),
+  .hero .section-inner > div:last-of-type > div:nth-child(3),
+  .hero .section-inner > div:last-of-type > div:nth-child(4){
+    grid-column:auto!important;
+  }
+
+  /* Each item: clean inline flex with the ✓ + label */
+  .hero .section-inner > div:last-of-type > div{
+    display:inline-flex!important;
+    align-items:center!important;
+    gap:.55rem!important;
+    white-space:nowrap;
+    font-size:.88rem;
+  }
+
+  /* Light mode: keep grid left-anchored under the left-aligned hero text */
+  html[data-theme="light"] .hero .section-inner > div:last-of-type{
+    justify-content:flex-start!important;
+    margin-left:0!important;
+    margin-right:auto!important;
+  }
+  /* Dark mode: hero is centered, so center the grid */
+  html:not([data-theme="light"]) .hero .section-inner > div:last-of-type{
+    justify-content:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   v18 — fix invisible text in admin-panel intro on cream
+   The 'Try it — click any image' label and feature pills used inline
+   color:#cbd5e1 / #e2e8f0 — light gray on cream = invisible.
+   Force them to var(--text-2) in light mode. RESTORE light grays
+   inside the admin shell (#admShell stays dark-themed).
+   ════════════════════════════════════════════════════════════════════ */
+
+html[data-theme="light"] [style*="color:#cbd5e1"],
+html[data-theme="light"] [style*="color: #cbd5e1"],
+html[data-theme="light"] [style*="color:#e2e8f0"],
+html[data-theme="light"] [style*="color: #e2e8f0"],
+html[data-theme="light"] [style*="color:#94a3b8"],
+html[data-theme="light"] [style*="color: #94a3b8"]{
+  color:var(--text-2)!important;
+}
+/* Cyan brand-accent pill ('Live demo — try it now') — make readable on cream */
+html[data-theme="light"] [style*="color:#38bdf8"],
+html[data-theme="light"] [style*="color: #38bdf8"]{
+  color:var(--primary, #4A3B2D)!important;
+}
+
+/* But INSIDE #admShell (the demo's own dark frame, which stays dark even
+   in light mode), restore the original light gray text colors */
+html[data-theme="light"] #admShell [style*="color:#cbd5e1"],
+html[data-theme="light"] #admShell [style*="color:#e2e8f0"],
+html[data-theme="light"] #admShell [style*="color:#94a3b8"]{
+  color:#cbd5e1!important;
+}
+html[data-theme="light"] #admShell [style*="color:#38bdf8"]{
+  color:#38bdf8!important;
+}
