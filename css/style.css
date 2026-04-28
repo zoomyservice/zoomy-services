@@ -227,42 +227,46 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] .theme-toggle:hover{color:var(--text);background:rgba(99,102,241,.08)}
 @media(max-width:768px){.theme-toggle{width:34px;height:34px}.theme-toggle svg{width:15px;height:15px}}
 
-/* ── Light theme variable overrides — warm cream palette ────────── */
+/* ── Light theme — warm cream + oxblood/amber/ink (no purple) ────── */
 [data-theme="light"]{
   --bg:#F2EBD7;          /* warm cream / parchment */
   --bg-2:#EAE0C2;        /* deeper cream for sections */
   --surface:#F8F2DD;     /* light cream surface for nav */
-  --card:#FAF4E0;        /* card cream — slightly lighter than bg */
+  --card:#FAF4E0;        /* card cream */
   --card-hover:#F5EED4;
-  --border:rgba(99,102,241,.20);
-  --border-b:rgba(26,26,46,.10);
-  --primary:#4f46e5;
-  --primary-dk:#3730a3;
-  --secondary:#0891b2;
-  --accent:#7e22ce;
-  --pink:#db2777;
-  --green:#047857;
-  --amber:#b45309;
-  --glow-p:rgba(99,102,241,.14);
-  --glow-s:rgba(6,182,212,.12);
-  --glow-a:rgba(168,85,247,.12);
+  --border:rgba(178,58,26,.22);
+  --border-b:rgba(26,26,46,.12);
+  --primary:#B23A1A;     /* deep rust / oxblood — replaces indigo */
+  --primary-dk:#872C13;  /* hover/pressed */
+  --secondary:#1a1a2e;   /* deep navy ink — secondary brand color */
+  --accent:#B07C2C;      /* warm amber/gold — replaces purple */
+  --pink:#A23344;        /* deep rosy red — replaces hot pink */
+  --green:#1F5C3F;       /* deep forest */
+  --amber:#B07C2C;
+  --glow-p:rgba(178,58,26,.18);
+  --glow-s:rgba(26,26,46,.16);
+  --glow-a:rgba(176,124,44,.18);
   --text:#1a1a2e;        /* deep navy ink — high contrast on cream */
   --text-2:#3d3d5c;
   --muted:#6b6b85;
+  /* Logo + brand gradient flips to rust → amber → ink (no purple) */
+  --grad-main:linear-gradient(135deg,#B23A1A 0%,#B07C2C 50%,#1a1a2e 100%);
+  --grad-glow:linear-gradient(135deg,rgba(178,58,26,.10) 0%,rgba(176,124,44,.10) 100%);
+  --grad-card:linear-gradient(135deg,rgba(178,58,26,.06) 0%,rgba(176,124,44,.04) 100%);
   /* keep --white as #fff so white-on-gradient buttons stay readable */
-  --grad-glow:linear-gradient(135deg,rgba(99,102,241,.10) 0%,rgba(168,85,247,.10) 100%);
-  --grad-card:linear-gradient(135deg,rgba(99,102,241,.06) 0%,rgba(6,182,212,.06) 100%);
+  --grad-glow:linear-gradient(135deg,rgba(178,58,26,.10) 0%,rgba(176,124,44,.10) 100%);
+  --grad-card:linear-gradient(135deg,rgba(178,58,26,.06) 0%,rgba(26,26,46,.06) 100%);
   color-scheme:light;
 }
 
 /* Body-level adjustments */
-[data-theme="light"] body{background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(99,102,241,.06) 0%,transparent 70%)}
+[data-theme="light"] body{background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(178,58,26,.06) 0%,transparent 70%)}
 
 /* Nav: scrolled state on light bg should be light, not dark */
 [data-theme="light"] nav.scrolled{background:rgba(255,255,255,.94);border-bottom-color:rgba(15,23,42,.08);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%)}
 [data-theme="light"] .nav-toggle span{background:var(--text)}
 [data-theme="light"] .nav-sub{background:#fff;border-color:rgba(15,23,42,.08);box-shadow:0 16px 48px rgba(15,23,42,.10)}
-[data-theme="light"] .nav-sub li a:hover{color:var(--text)!important;background:rgba(99,102,241,.06)}
+[data-theme="light"] .nav-sub li a:hover{color:var(--text)!important;background:rgba(178,58,26,.06)}
 
 /* Mobile menu drawer color */
 @media(max-width:768px){
@@ -276,18 +280,18 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] .aurora-blob{opacity:.16}
 
 /* Grid overlay — softer on light */
-[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(99,102,241,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.05) 1px,transparent 1px)}
+[data-theme="light"] .grid-overlay{background-image:linear-gradient(rgba(178,58,26,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(178,58,26,.05) 1px,transparent 1px)}
 
 /* Particle canvas — reduce opacity on light */
 [data-theme="light"] #particle-canvas{opacity:.18;mix-blend-mode:multiply}
 
 /* Cards — different shadow pattern on light */
 [data-theme="light"] .card{box-shadow:0 1px 3px rgba(15,23,42,.04),0 0 0 1px rgba(15,23,42,.04)}
-[data-theme="light"] .card:hover{box-shadow:0 12px 32px rgba(99,102,241,.10),0 0 0 1px rgba(99,102,241,.20);border-color:rgba(99,102,241,.30)}
+[data-theme="light"] .card:hover{box-shadow:0 12px 32px rgba(178,58,26,.10),0 0 0 1px rgba(178,58,26,.20);border-color:rgba(178,58,26,.30)}
 
 /* Buttons — ghost button color on light */
 [data-theme="light"] .btn-ghost{color:var(--text);border-color:rgba(15,23,42,.18)}
-[data-theme="light"] .btn-ghost:hover{color:var(--text);border-color:rgba(99,102,241,.50);background:rgba(99,102,241,.06)}
+[data-theme="light"] .btn-ghost:hover{color:var(--text);border-color:rgba(178,58,26,.50);background:rgba(178,58,26,.06)}
 
 /* Element-level white text overrides — these targets sit on the page background, not on a colored element */
 [data-theme="light"] .nav-links a:hover,
@@ -323,10 +327,10 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] code{background:#0f172a;color:#e2e8f0;border-color:rgba(15,23,42,.20)}
 
 /* Section tags (the `// SERVICES` mono labels) — give them more contrast */
-[data-theme="light"] .section-tag{background:rgba(99,102,241,.08);border-color:rgba(99,102,241,.22);color:var(--primary-dk)}
+[data-theme="light"] .section-tag{background:rgba(178,58,26,.08);border-color:rgba(178,58,26,.22);color:var(--primary-dk)}
 
 /* Badges */
-[data-theme="light"] .badge-primary{background:rgba(99,102,241,.10);color:var(--primary-dk);border-color:rgba(99,102,241,.30)}
+[data-theme="light"] .badge-primary{background:rgba(178,58,26,.10);color:var(--primary-dk);border-color:rgba(178,58,26,.30)}
 
 /* Marquee bar on light bg */
 [data-theme="light"] .marquee{background:var(--bg-2);border-top-color:var(--border-b);border-bottom-color:var(--border-b)}
@@ -334,10 +338,10 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] .marquee-dot{background:var(--primary);opacity:.7}
 
 /* Sample banner light styling */
-[data-theme="light"] .sample-banner{background:linear-gradient(135deg,rgba(99,102,241,.06) 0%,rgba(168,85,247,.06) 50%,rgba(6,182,212,.04) 100%);border-color:rgba(99,102,241,.22)}
+[data-theme="light"] .sample-banner{background:linear-gradient(135deg,rgba(178,58,26,.06) 0%,rgba(176,124,44,.06) 50%,rgba(26,26,46,.04) 100%);border-color:rgba(178,58,26,.22)}
 
 /* Lang switcher active-state on light */
-[data-theme="light"] .lang-btn.lang-active{background:rgba(99,102,241,.10);color:var(--primary-dk);border:1px solid rgba(99,102,241,.30)}
+[data-theme="light"] .lang-btn.lang-active{background:rgba(178,58,26,.10);color:var(--primary-dk);border:1px solid rgba(178,58,26,.30)}
 
 /* Inline `style="color:#fff"` elements on the page background can't be CSS-overridden. Common case: the free-bar `Claim free page` link uses inline styles. That sits on dark bg either way (free bar is dark in both themes), so it's correct. */
 
@@ -345,3 +349,42 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 @media(prefers-reduced-motion:reduce){
   [data-theme="light"] *,[data-theme="light"] *::before,[data-theme="light"] *::after{transition:none!important;animation:none!important}
 }
+
+
+/* ── Extra light-mode overrides (v3) — beat per-page <style> blocks ── */
+html[data-theme="light"] .nav-logo{filter:none}
+html[data-theme="light"] .section-tag{background:rgba(178,58,26,.08);border-color:rgba(178,58,26,.22);color:var(--primary-dk)}
+html[data-theme="light"] .badge-primary{background:rgba(178,58,26,.10);color:var(--primary-dk);border-color:rgba(178,58,26,.30)}
+html[data-theme="light"] .badge-accent{background:rgba(176,124,44,.12);color:var(--accent);border-color:rgba(176,124,44,.32)}
+html[data-theme="light"] .icon-box{background:rgba(178,58,26,.10);border-color:rgba(178,58,26,.24);color:var(--primary)}
+html[data-theme="light"] .form-field input,html[data-theme="light"] .form-field textarea,html[data-theme="light"] .form-field select{background:var(--card);border-color:var(--border-b);color:var(--text)}
+html[data-theme="light"] .form-field input:focus,html[data-theme="light"] .form-field textarea:focus,html[data-theme="light"] .form-field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(178,58,26,.15)}
+html[data-theme="light"] .msg-bot{background:var(--card);border-color:rgba(178,58,26,.18);color:var(--text)}
+
+/* Inline-style attribute overrides for elements still hardcoded */
+html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="msg-user"]):not([class*="chatbot-send"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]):not([style*="background:#111"]):not([style*="background:#02"]){color:var(--text)!important}
+html[data-theme="light"] [style*="color: #fff"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:#0d0d1c"]):not([style*="background:#111"]){color:var(--text)!important}
+html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:rgb"]):not([style*="background:#"]){color:var(--text-2)!important}
+html[data-theme="light"] [style*="color: rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]){color:var(--text-2)!important}
+
+/* Inline dark backgrounds → cream */
+html[data-theme="light"] [style*="background:#0d0d1c"],
+html[data-theme="light"] [style*="background:#111128"],
+html[data-theme="light"] [style*="background:#020208"],
+html[data-theme="light"] [style*="background:#08080f"],
+html[data-theme="light"] [style*="background:#161634"]{background:var(--card)!important;color:var(--text)!important}
+
+/* Footer */
+html[data-theme="light"] footer{background:var(--bg-2);color:var(--text-2)}
+html[data-theme="light"] footer h4,html[data-theme="light"] footer .footer-col h4{color:var(--text)!important}
+html[data-theme="light"] footer a{color:var(--text-2)}
+html[data-theme="light"] footer a:hover{color:var(--primary)}
+
+/* Borders inside dark sections — flip to cream-friendly */
+html[data-theme="light"] [style*="border-top:1px solid rgba(255,255,255"],
+html[data-theme="light"] [style*="border-bottom:1px solid rgba(255,255,255"],
+html[data-theme="light"] [style*="border:1px solid rgba(255,255,255"]{border-color:var(--border-b)!important}
+
+/* Phone agent + chatbot widgets had heavy dark styling */
+html[data-theme="light"] [class*="chatbot-mock"],
+html[data-theme="light"] [class*="phone-card"]{background:var(--card)!important;border-color:var(--border)!important;color:var(--text)!important}

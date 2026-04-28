@@ -89,9 +89,11 @@ nav{top:var(--bar-h)!important}
 html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="chatbot-send"]):not([class*="msg-user"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]){color:var(--text)!important}
 html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:rgb"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]){color:var(--text-2)!important}
 html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
-</style>
+
+<style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .format-name{color:var(--text)!important}html[data-theme="light"] .phase-name{color:var(--text)!important}html[data-theme="light"] .pricing-half-price{color:var(--text)!important}</style>
+
 <script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
-<script>(function(){try{var t=localStorage.getItem('zmy_theme');if(t==='dark')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+<script>(function(){document.documentElement.setAttribute('data-theme','light');try{  var t=sessionStorage.getItem('zmy_theme');  if(t==='dark')document.documentElement.removeAttribute('data-theme');  localStorage.removeItem('zmy_theme');}catch(e){}})();</script>
 <script>localStorage.setItem('zmy_lang','es');</script></head>
 <body>
 <div id="free-bar">
