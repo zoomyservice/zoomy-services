@@ -2086,3 +2086,148 @@ html[data-theme="light"] .hs-phone-card::before{
 html[data-theme="light"] .hs-phone-wave span{
   background:#5BB665!important;
 }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   v14 — phone card lighten + mobile hamburger + general mobile pass
+   ════════════════════════════════════════════════════════════════════ */
+
+/* — 1. Phone card: lighten from var(--text) to var(--primary) — */
+html[data-theme="light"] .hs-phone-card{
+  background:var(--primary)!important;     /* #4A3B2D warm cocoa */
+  background-image:none!important;
+  color:var(--bg)!important;
+  border:none!important;
+  box-shadow:0 14px 36px -12px rgba(74,59,45,.32)!important;
+}
+html[data-theme="light"] .hs-phone-card *{color:var(--bg)}
+html[data-theme="light"] .hs-phone-num{color:var(--bg)!important;-webkit-text-fill-color:var(--bg)!important}
+html[data-theme="light"] .hs-phone-label{color:rgba(242,235,215,.72)!important}
+html[data-theme="light"] .hs-phone-icon{
+  background:rgba(242,235,215,.12)!important;
+  border:1px solid rgba(242,235,215,.22)!important;
+  color:var(--bg)!important;
+}
+html[data-theme="light"] .hs-phone-card::before{
+  background:#5BB665!important;
+  border:2px solid var(--primary)!important;
+}
+
+/* — 2. Mobile hamburger fixes — */
+
+/* Nav toggle button: ensure it's above the drawer + overlay so it can be clicked */
+.nav-toggle{
+  z-index:10001!important;
+  position:relative;
+}
+
+/* Drawer top offset accounting for free bar */
+@media(max-width:768px){
+  /* When free bar is visible, drawer top = bar-h(44) + nav(56-68) */
+  #navLinks{
+    top:calc(56px + var(--bar-h, 44px))!important;
+    height:calc(100vh - 56px - var(--bar-h, 44px))!important;
+    z-index:10000!important;
+  }
+  .bar-off #navLinks{top:56px!important;height:calc(100vh - 56px)!important}
+
+  /* Make sure nav itself sits above content */
+  nav{z-index:10001!important;height:56px!important}
+
+  /* Overlay backdrop — semi-transparent with proper z-index */
+  .nav-overlay{
+    position:fixed;inset:0;
+    background:rgba(0,0,0,.4);
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+    opacity:0;pointer-events:none;
+    transition:opacity var(--transition);
+    z-index:9998;
+  }
+  .nav-overlay.open{opacity:1;pointer-events:auto}
+  html[data-theme="light"] .nav-overlay{
+    background:rgba(58,46,29,.32);
+  }
+
+  /* Floating chatbot bubble — push down when nav is open */
+  .nav-links.open ~ #zmy-bubble,
+  body:has(.nav-links.open) #zmy-bubble{display:none!important}
+
+  /* Tap targets */
+  .nav-toggle{min-width:44px;min-height:44px}
+  .nav-links li a{min-height:44px;display:flex!important;align-items:center}
+
+  /* Theme toggle visible on mobile too */
+  .theme-toggle{display:inline-flex!important}
+
+  /* Lang switcher in nav top-bar (when collapsed) — show small */
+  .lang-switcher{display:flex!important;gap:.15rem!important}
+  .lang-btn{font-size:.68rem!important;padding:3px 6px!important}
+}
+
+/* — 3. Mobile general pass — */
+@media(max-width:1023px){
+  /* Hero proper mobile sizing — already in v10/v12 but reinforce */
+  html[data-theme="light"] .hero h1{font-size:clamp(2.2rem, 7vw, 3.4rem)!important}
+  html[data-theme="light"] .hero-sub{font-size:1rem!important}
+
+  /* Hero stage hidden — already in v12 — reinforce */
+  html[data-theme="light"] .hero-stage{display:none!important}
+
+  /* Reduce section padding */
+  .section{padding:4rem 1.25rem!important}
+  /* Hero needs more top padding for free bar + nav */
+  .hero{padding-top:6rem!important}
+}
+
+@media(max-width:640px){
+  /* Hero buttons stack vertically */
+  .hero-actions{flex-direction:column!important;align-items:stretch!important;width:100%}
+  .hero-actions .btn{width:100%;justify-content:center}
+
+  /* Section title sizes */
+  .section-title{font-size:clamp(1.7rem, 6vw, 2.4rem)!important}
+
+  /* Free bar text already shrinks via .bar-full/.bar-short toggle */
+}
+
+/* — Drawer open — body lock — */
+@media(max-width:768px){
+  body:has(.nav-links.open){overflow:hidden!important}
+}
+
+/* — Mobile menu items in light mode use the cream drawer — */
+@media(max-width:768px){
+  html[data-theme="light"] .nav-links{
+    background:var(--card)!important;
+    color:var(--text)!important;
+    box-shadow:-8px 0 32px rgba(58,46,29,.20)!important;
+  }
+  html[data-theme="light"] .nav-links li{
+    border-bottom:1px solid var(--border)!important;
+  }
+  html[data-theme="light"] .nav-links li a{
+    color:var(--text-2)!important;
+  }
+  html[data-theme="light"] .nav-links li a:hover,
+  html[data-theme="light"] .nav-links li a.active{
+    color:var(--text)!important;
+  }
+  html[data-theme="light"] .nav-toggle span{background:var(--text)!important}
+  html[data-theme="light"] .nav-mobile-footer{
+    border-top-color:var(--border)!important;
+  }
+  html[data-theme="light"] .nav-mobile-footer .btn-nav{
+    background:var(--primary)!important;
+    color:var(--bg)!important;
+    border-color:var(--primary)!important;
+  }
+  html[data-theme="light"] .nav-mobile-footer .lang-btn{
+    color:var(--text-2)!important;
+  }
+  html[data-theme="light"] .nav-mobile-footer .lang-btn:hover,
+  html[data-theme="light"] .nav-mobile-footer .lang-btn.lang-active{
+    background:var(--bg-2)!important;
+    color:var(--text)!important;
+  }
+}
