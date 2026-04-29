@@ -263,7 +263,14 @@ def translate_file(html_file, lang, lc, out_dir):
 
     # Write
     os.makedirs(out_dir, exist_ok=True)
-    out = '<!DOCTYPE html>\n' + re.sub(r'^(?:html\n)+', '', str(soup), flags=re.IGNORECASE)
+    _raw = str(soup)
+    # Strip any leading <!DOCTYPE html> declarations (case-insensitive)
+    # plus the stray 'html' lines BeautifulSoup sometimes injects, then
+    # prepend exactly one fresh DOCTYPE. Prevents duplicate accumulation
+    # across repeated runs of this script.
+    _raw = re.sub(r'^(?:\s*<!doctype html>\s*\n?)+', '', _raw, flags=re.IGNORECASE)
+    _raw = re.sub(r'^(?:html\n)+', '', _raw, flags=re.IGNORECASE)
+    out = '<!DOCTYPE html>\n' + _raw
     with open(os.path.join(out_dir, filename),'w',encoding='utf-8') as f:
         f.write(out)
 
@@ -275,7 +282,14 @@ def update_root_pages(html_files):
             content = f.read()
         soup = BeautifulSoup(content,'html.parser')
         update_switcher_root(soup, filename)
-        out = '<!DOCTYPE html>\n' + re.sub(r'^(?:html\n)+', '', str(soup), flags=re.IGNORECASE)
+        _raw = str(soup)
+        # Strip any leading <!DOCTYPE html> declarations (case-insensitive)
+        # plus the stray 'html' lines BeautifulSoup sometimes injects, then
+        # prepend exactly one fresh DOCTYPE. Prevents duplicate accumulation
+        # across repeated runs of this script.
+        _raw = re.sub(r'^(?:\s*<!doctype html>\s*\n?)+', '', _raw, flags=re.IGNORECASE)
+        _raw = re.sub(r'^(?:html\n)+', '', _raw, flags=re.IGNORECASE)
+        out = '<!DOCTYPE html>\n' + _raw
         with open(path,'w',encoding='utf-8') as f:
             f.write(out)
 

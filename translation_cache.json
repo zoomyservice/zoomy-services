@@ -2025,7 +2025,13 @@
     "'Zoomy'": "'Zoom'",
     "<p>": "<p>",
     "class": "classe",
-    "createApp": "créer une application"
+    "createApp": "créer une application",
+    "Always shipping. Updated in real time.": "Toujours expédié. Mis à jour en temps réel.",
+    "Languages Shipped": "Langues expédiées",
+    "Website Builds": "Créations de sites Web",
+    "// Output Console": "// Console de sortie",
+    "Campaign Launches": "Lancements de campagne",
+    "LIVE": "EN DIRECT"
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -4053,6 +4059,12 @@
     "'Zoomy'": "'Zoom'",
     "<p>": "<p>",
     "class": "clase",
-    "createApp": "crear aplicación"
+    "createApp": "crear aplicación",
+    "Always shipping. Updated in real time.": "Envíos siempre. Actualizado en tiempo real.",
+    "Languages Shipped": "Idiomas enviados",
+    "Website Builds": "Construcciones de sitios web",
+    "// Output Console": "// Consola de salida",
+    "Campaign Launches": "Lanzamientos de campaña",
+    "LIVE": "VIVIR"
   }
 }

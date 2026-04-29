@@ -145,15 +145,84 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <button aria-label="Menú" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
-<section class="hero" style="min-height:60vh;padding:140px 2rem 6rem;">
+<section class="hero about-hero" style="padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
 <div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;">
-<div class="section-tag" data-i18n="about.hero.tag" style="justify-content:center;margin-bottom:1.5rem;">Sobre nosotros</div>
+<div class="section-inner about-hero-grid" style="z-index:2;">
+<div class="about-hero-text">
+<div class="section-tag" data-i18n="about.hero.tag">Sobre nosotros</div>
 <h1 style="margin-bottom:1.5rem;">Equipo en crecimiento.<br/><span class="grad-text-animated">Gran producción.</span></h1>
-<p class="hero-sub" data-i18n="about.hero.sub" style="margin:0 auto;">Somos un estudio de producción digital en crecimiento, mejorado por IA. Creamos y gestionamos campañas, creamos sitios web personalizados y desarrollamos herramientas de inteligencia artificial para empresas.</p>
+<p class="hero-sub" data-i18n="about.hero.sub">Somos un estudio de producción digital en crecimiento, mejorado por IA. Creamos y gestionamos campañas, creamos sitios web personalizados y desarrollamos herramientas de inteligencia artificial para empresas.</p>
+</div>
+<div aria-hidden="true" class="about-hero-visual">
+<div class="oc-card">
+<div class="oc-head">
+<span class="oc-dot"></span>
+<span class="oc-label">// Consola de salida</span>
+<span class="oc-status">VIVIR</span>
+</div>
+<div class="oc-row">
+<div class="oc-name">Construcciones de sitios web</div>
+<div class="oc-bar"><span class="oc-fill" style="--w:88%;--d:.0s;"></span></div>
+<div class="oc-num" data-target="42">0</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">Lanzamientos de campaña</div>
+<div class="oc-bar"><span class="oc-fill" style="--w:74%;--d:.18s;"></span></div>
+<div class="oc-num" data-target="68">0</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">Agentes telefónicos</div>
+<div class="oc-bar"><span class="oc-fill" style="--w:62%;--d:.36s;"></span></div>
+<div class="oc-num" data-target="14">0</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">Chatbots de IA</div>
+<div class="oc-bar"><span class="oc-fill" style="--w:80%;--d:.54s;"></span></div>
+<div class="oc-num" data-target="23">0</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">Idiomas enviados</div>
+<div class="oc-bar"><span class="oc-fill" style="--w:96%;--d:.72s;"></span></div>
+<div class="oc-num" data-target="133">0</div>
+</div>
+<div class="oc-foot">
+<span class="oc-pulse"></span>
+<span class="oc-foot-text">Envíos siempre. Actualizado en tiempo real.</span>
+</div>
+</div>
+</div>
 </div>
 </section>
+<script>
+(function(){
+  var nums = document.querySelectorAll('.about-hero-visual .oc-num');
+  if(!nums.length) return;
+  var started = false;
+  function run(){
+    if(started) return; started = true;
+    nums.forEach(function(el, i){
+      var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      var dur = 1400 + i*180, t0 = null;
+      function step(t){
+        if(!t0) t0 = t;
+        var p = Math.min(1, (t - t0) / dur);
+        // ease-out cubic
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target).toLocaleString();
+        if(p < 1) requestAnimationFrame(step);
+      }
+      setTimeout(function(){ requestAnimationFrame(step); }, i*120);
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ run(); io.disconnect(); }});
+    }, {threshold:.4});
+    io.observe(document.querySelector('.about-hero-visual'));
+  } else { run(); }
+})();
+</script>
 <section class="section">
 <div class="section-inner">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
