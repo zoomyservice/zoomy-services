@@ -13,7 +13,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
 <style>html,body{background:#020208}html[data-theme="light"],html[data-theme="light"] body{background:var(--bg)}nav{background:rgba(2,2,8,.96)}html[data-theme="light"] nav{background:rgba(247,241,229,.96)}</style>
-<link href="../css/style.css?v=20260416" rel="stylesheet"/>
+<link href="../css/style.css?v=20260429a" rel="stylesheet"/>
 <style>
 .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
 .value-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem}
@@ -171,6 +171,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
   var LINES = 28, POINTS = 96;
   var phase = 0;
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rafId = 0, running = false;
 
   function getStroke(){
     var theme = document.documentElement.getAttribute('data-theme');
@@ -179,8 +180,20 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 
   function resize(){
     var rect = canvas.getBoundingClientRect();
-    W = Math.max(1, Math.round(rect.width));
-    H = Math.max(1, Math.round(rect.height));
+    // If layout hasn't resolved yet, fall back to the parent.ah-art element.
+    var w = rect.width, h = rect.height;
+    if(!w || !h){
+      var parent = canvas.parentElement;
+      if(parent){
+        var pr = parent.getBoundingClientRect();
+        w = pr.width; h = pr.height;
+      }
+    }
+    // Final fallback so the canvas always has a non-zero dimension
+    if(!w || w < 50) w = 480;
+    if(!h || h < 50) h = 480;
+    W = Math.round(w);
+    H = Math.round(h);
     canvas.width = W * DPR;
     canvas.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -198,8 +211,8 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
       ctx.beginPath();
       for(var i = 0; i <= POINTS; i++){
         var x = (i / POINTS) * W;
-        var nx = (i / POINTS - 0.5) * 2;          // -1..1
-        var mask = Math.exp(-nx * nx * 2.6);       // bell-curve fade at edges
+        var nx = (i / POINTS - 0.5) * 2;
+        var mask = Math.exp(-nx * nx * 2.6);
         var rowPhase = r * 0.55 + phase;
         var amp = ampBase * mask;
         var y = y0
@@ -209,7 +222,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
         if(i === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
-      // Fade lines toward the top and bottom of the stack
       var rowMask = Math.sin((r / (LINES - 1)) * Math.PI);
       ctx.strokeStyle = stroke;
       ctx.globalAlpha = 0.10 + rowMask * 0.62;
@@ -221,42 +233,59 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
     ctx.globalAlpha = 1;
   }
 
-  var rafId = 0;
   function loop(){
+    if(!running) return;
     phase += 0.011;
     draw();
     rafId = requestAnimationFrame(loop);
   }
 
-  function start(){
-    cancelAnimationFrame(rafId);
-    resize();
-    if(prefersReduced){
-      draw();
-      return;
-    }
-    loop();
+  function startAnim(){
+    if(running) return;
+    running = true;
+    if(prefersReduced){ draw(); return; }
+    rafId = requestAnimationFrame(loop);
   }
 
-  // Pause when offscreen to save CPU
-  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        if(!prefersReduced) loop();
-      } else {
-        cancelAnimationFrame(rafId);
-      }
-    });
-  }, {threshold: 0.05}) : null;
+  function stopAnim(){
+    running = false;
+    cancelAnimationFrame(rafId);
+  }
 
-  start();
-  if(io) io.observe(canvas);
-  window.addEventListener('resize', function(){ resize(); if(prefersReduced) draw(); });
+  function init(){
+    resize();
+    draw(); // paint at least one frame immediately
+    startAnim();
+  }
+
+  // Run init three times: now, on window load, and 250ms after — so even if
+  // first paint had no layout, a later pass picks up the real dimensions.
+  init();
+  if(document.readyState !== "complete"){
+    window.addEventListener("load", function(){ resize(); draw(); }, {once:true});
+  }
+  setTimeout(function(){ resize(); draw(); }, 250);
+
+  // Pause when offscreen
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) startAnim();
+        else stopAnim();
+      });
+    }, {threshold: 0.05});
+    io.observe(canvas);
+  }
+
+  window.addEventListener("resize", function(){
+    resize();
+    if(prefersReduced) draw();
+  });
 
   // Re-render on theme toggle
   var mo = new MutationObserver(function(muts){
     muts.forEach(function(m){
-      if(m.type === 'attributes' && m.attributeName === 'data-theme'){
+      if(m.type === "attributes" && m.attributeName === "data-theme"){
         if(prefersReduced) draw();
       }
     });
