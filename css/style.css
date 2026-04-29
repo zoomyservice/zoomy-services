@@ -3986,3 +3986,75 @@ html[data-theme="light"] .ah-node-seed{
 html[data-theme="light"] .ah-node-seed{
   filter: drop-shadow(0 0 14px rgba(176,124,44,.40));
 }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   v34 — About hero studio still-life
+   Replaces the growing-network animation. Static SVG illustration.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Neutralize the v32/v33 network animations in case any old rules linger */
+.ah-edge, .ah-node{ animation:none !important; opacity:1 !important; stroke-dashoffset:0 !important; transform:none !important; }
+
+/* Tags + rules */
+.ah-svg .ah-tag-l, .ah-svg .ah-tag-r{
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: .22em;
+  fill: rgba(74,59,45,.55);
+}
+html[data-theme="light"] .ah-svg .ah-tag-l,
+html[data-theme="light"] .ah-svg .ah-tag-r{ fill: rgba(74,59,45,.55); }
+.ah-svg .ah-rule{ stroke: rgba(74,59,45,.18); stroke-width:1; }
+.ah-svg .ah-rule-soft{ stroke: rgba(74,59,45,.12); stroke-width:1; }
+
+/* Desk surface */
+.ah-svg .ah-desk{ fill: #dcd2bb; }
+.ah-svg .ah-shadow{ fill: rgba(0,0,0,.10); }
+
+/* Laptop */
+.ah-svg .ah-laptop-base{ fill: #3a2f24; }
+.ah-svg .ah-laptop-back{ fill: #2A2218; }
+.ah-svg .ah-screen{ fill: #1a1612; }
+.ah-svg .ah-tl-1{ fill: #d35d4d; opacity:.85; }
+.ah-svg .ah-tl-2{ fill: #d39a3a; opacity:.85; }
+.ah-svg .ah-tl-3{ fill: #5d9a4d; opacity:.85; }
+.ah-svg .ah-screen-rule{ stroke: rgba(255,255,255,.07); stroke-width:1; }
+.ah-svg .ah-code-amber{ stroke: #B07C2C; stroke-width:2.6; stroke-linecap:round; opacity:.92; }
+.ah-svg .ah-code-dim  { stroke: #9c8a73; stroke-width:2; stroke-linecap:round; opacity:.55; }
+
+/* Coffee */
+.ah-svg .ah-cup-rim { fill: #3a2f24; }
+.ah-svg .ah-cup-body{ fill: #5C4B3D; }
+.ah-svg .ah-coffee  { fill: #1a1612; }
+.ah-svg .ah-handle  { fill:none; stroke: #5C4B3D; stroke-width:3; stroke-linecap:round; }
+.ah-svg .ah-steam   { fill:none; stroke: #9c8a73; stroke-width:1.5; stroke-linecap:round; }
+.ah-svg .ah-steam-a { opacity:.55; }
+.ah-svg .ah-steam-b { opacity:.40; }
+
+/* Notebook */
+.ah-svg .ah-notebook      { fill: #B07C2C; }
+.ah-svg .ah-notebook-edge { fill:none; stroke: #5C4B3D; stroke-width:1.2; }
+.ah-svg .ah-notebook-line { stroke: rgba(74,59,45,.40); stroke-width:1; }
+.ah-svg .ah-notebook-spine{ stroke: #5C4B3D; stroke-width:2; }
+
+/* Pen */
+.ah-svg .ah-pen    { stroke: #2A2218; stroke-width:3; stroke-linecap:round; fill:none; }
+.ah-svg .ah-pen-tip{ fill: #B07C2C; }
+
+/* Plant */
+.ah-svg .ah-pot   { fill: #6b563f; }
+.ah-svg .ah-leaves{ stroke: #6b8a4d; stroke-width:2.5; stroke-linecap:round; opacity:.9; }
+
+/* Dark theme tweaks: the dark page already has the right contrast for the
+   illustration since the laptop/screen are dark. Just lift the desk + tags
+   to read on the dark card. */
+html:not([data-theme="light"]) .ah-svg .ah-desk{ fill: rgba(255,255,255,.05); }
+html:not([data-theme="light"]) .ah-svg .ah-rule{ stroke: rgba(255,255,255,.18); }
+html:not([data-theme="light"]) .ah-svg .ah-rule-soft{ stroke: rgba(255,255,255,.10); }
+html:not([data-theme="light"]) .ah-svg .ah-tag-l,
+html:not([data-theme="light"]) .ah-svg .ah-tag-r{ fill: rgba(255,255,255,.55); }
+html:not([data-theme="light"]) .ah-svg .ah-cup-body{ fill: #8d7a6a; }
+html:not([data-theme="light"]) .ah-svg .ah-cup-rim{ fill: #5d4d3f; }
+html:not([data-theme="light"]) .ah-svg .ah-pen{ stroke:#dfd6c4; }
+html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,255,.30); }
