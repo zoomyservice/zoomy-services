@@ -2978,3 +2978,159 @@ body.zmy-nav-open{
   }
   /* admShell stays dark in both themes — preserved earlier — */
 }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   v22 — comprehensive audit fixes
+   ════════════════════════════════════════════════════════════════════ */
+
+/* — 1. Phone-agent call button: lighten + readable text — */
+html[data-theme="light"] #call-btn,
+html[data-theme="light"] #hp-call-btn,
+html[data-theme="light"] button[onclick*="ToggleCall"],
+html[data-theme="light"] button[onclick*="toggleCall"]{
+  background:var(--primary, #4A3B2D)!important;
+  background-image:none!important;
+  color:var(--bg, #F2EBD7)!important;
+  box-shadow:0 4px 14px rgba(74,59,45,.25)!important;
+  filter:none!important;
+}
+html[data-theme="light"] #call-btn *,
+html[data-theme="light"] #hp-call-btn *{
+  color:var(--bg, #F2EBD7)!important;
+}
+html[data-theme="light"] #call-btn:hover,
+html[data-theme="light"] #hp-call-btn:hover{
+  background:var(--text, #2A2218)!important;
+  filter:none!important;
+}
+/* Also fix in dark mode (the box-shadow rgba purple was causing a halo) */
+#call-btn{ box-shadow:0 4px 18px rgba(99,102,241,.28)!important; }
+
+/* — 2. White-on-cream h2/h3/h4 with inline color:#fff → var(--text) — */
+html[data-theme="light"] h2[style*="color:#fff"],
+html[data-theme="light"] h3[style*="color:#fff"],
+html[data-theme="light"] h4[style*="color:#fff"],
+html[data-theme="light"] h5[style*="color:#fff"]{
+  color:var(--text)!important;
+}
+/* Same for color:var(--white) inline */
+html[data-theme="light"] h2[style*="color:var(--white)"],
+html[data-theme="light"] h3[style*="color:var(--white)"],
+html[data-theme="light"] h4[style*="color:var(--white)"]{
+  color:var(--text)!important;
+}
+/* Specific 'Want us to manage it too?' on campaign-portfolio */
+html[data-theme="light"] h2[style*="font-family:var(--font-display)"][style*="color:#fff"]{
+  color:var(--text)!important;
+}
+
+/* — 3. Hero glitch positioning fixes — */
+/* The .glitch::before/::after with text-shadow can drift outside parent
+   if h1 doesn't constrain. Force overflow visible on h1 wrapper, but
+   prevent horizontal overflow on the hero containers. */
+.hero h1, .hero h2{
+  position:relative;
+  overflow:visible;
+}
+.hero{ overflow:hidden; }
+/* Hero .glitch in light mode — keep the warm-tone shadows from v8 inside the bounding box */
+html[data-theme="light"] .glitch::before{
+  text-shadow:-1px 0 #B07C2C!important;
+}
+html[data-theme="light"] .glitch::after{
+  text-shadow:1px 0 #5C4B3D!important;
+}
+
+/* — 4. Animated-creatives page: fix overflow + 2-words-per-row issue — */
+@media(max-width:900px){
+  /* Animation demo wrapper — single column, full width */
+  body[class*="creatives"] .section .section-inner > div[style*="grid-template-columns"],
+  /* Generic catch for any 2-col grids on the creatives page */
+  body main section .section-inner div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+    gap:2rem!important;
+  }
+  /* Stats / counter blocks — full width with sane padding */
+  div[style*="display:grid"][style*="grid-template-columns:repeat(4"],
+  div[style*="display:grid"][style*="grid-template-columns:repeat(3"]{
+    grid-template-columns:1fr 1fr!important;
+    gap:1rem!important;
+  }
+}
+
+/* — 5. About + contact hero header spacing — */
+section.hero[style*="min-height:60vh"],
+section.hero[style*="min-height:50vh"]{
+  min-height:auto!important;
+  padding:120px 2rem 4rem!important;
+}
+@media(max-width:768px){
+  section.hero[style*="min-height:60vh"],
+  section.hero[style*="min-height:50vh"]{
+    padding:100px 1.25rem 3rem!important;
+  }
+  section.hero h1{
+    font-size:clamp(2rem, 8vw, 3rem)!important;
+    line-height:1.1!important;
+    word-break:break-word;
+  }
+}
+
+/* — 6. 'Want us to manage' box not cut off on mobile — */
+@media(max-width:768px){
+  /* Any pricing-style banner or info card with inline padding 2rem+ */
+  div[style*="padding:2rem"][style*="border-radius"],
+  div[style*="padding:2.5rem"][style*="border-radius"],
+  div[style*="padding:3rem"][style*="border-radius"]{
+    padding:1.5rem 1.25rem!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    max-width:100%!important;
+    box-sizing:border-box!important;
+  }
+}
+
+/* — 7. Chatbot.html mobile demo visibility — */
+@media(max-width:900px){
+  .chatbot-mock,
+  #demo.chatbot-mock,
+  #demo[class*="chatbot"]{
+    display:flex!important;
+    flex-direction:column!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:1.5rem 0!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+  /* Whatever 2-col grid wraps the chatbot demo: stack */
+  div[style*="grid-template-columns:1fr 1fr"]:has(.chatbot-mock),
+  div[style*="grid-template-columns:1fr 1fr"]:has(#demo){
+    grid-template-columns:1fr!important;
+    gap:1.5rem!important;
+  }
+}
+
+/* — 8. Phone-agent 'Your phone.' overflow fix — */
+.hero h1{
+  word-break:break-word;
+  overflow-wrap:break-word;
+  max-width:100%;
+}
+@media(max-width:768px){
+  .hero h1{
+    font-size:clamp(2rem, 8vw, 3.4rem)!important;
+    line-height:1.05!important;
+  }
+}
+/* Specifically constrain the 'Any language' big-grad-text on phone-agent */
+.hero div[style*="font-size:2.6rem"][style*="grad-main"]{
+  font-size:clamp(1.8rem, 5vw, 2.6rem)!important;
+  word-break:break-word;
+}
+
+/* — 9. Catch-all: white inline-style headers on cream — */
+html[data-theme="light"] [style*="color:#fff"]:is(h1, h2, h3, h4, h5, h6){
+  color:var(--text)!important;
+}
