@@ -3825,3 +3825,43 @@ html[data-theme="light"] .ah-art{
   height:100% !important;
   display:block;
 }
+
+
+/* ════════════════════════════════════════════════════════════════════
+   v30 — About hero visual: inline SVG (canvas replacement)
+   ════════════════════════════════════════════════════════════════════ */
+
+.ah-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  overflow:visible;
+}
+
+.ah-wave{
+  fill:none;
+  stroke:rgba(255,255,255,0.92);
+  stroke-width:1.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:var(--op, 0.6);
+  transform-origin:center;
+  transform-box:fill-box;
+  will-change:transform;
+  animation:ahWaveDrift 9s ease-in-out infinite;
+  animation-delay:calc(var(--i, 0) * -0.32s);
+}
+html[data-theme="light"] .ah-wave{
+  stroke:rgba(74,59,45,0.78);
+}
+
+@keyframes ahWaveDrift{
+  0%, 100% { transform:translateY(-6px) scaleY(1); }
+  50%      { transform:translateY( 6px) scaleY(1.03); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ah-wave{ animation:none !important; }
+}
