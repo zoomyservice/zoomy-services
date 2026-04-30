@@ -375,7 +375,17 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
             let isSpeaker = false;
             let transcriptLines = [];
             const CALL_LIMIT = 120; // per-call max duration
-            const DAILY_LIMIT_SECS = 1200; // 20 minutes per IP per day
+            
+            // Clear legacy daily-call counters from previous rate-limit version
+            try {
+              Object.keys(localStorage).forEach(function(k){
+                if (/^(zmy_)?(hp_)?call(s)?_(used|count|secs|day)/i.test(k) ||
+                    /^(zmy_|hp_)?daily_(usage|limit|seconds)/i.test(k)) {
+                  localStorage.removeItem(k);
+                }
+              });
+            } catch(e){}
+            
             const btn = document.getElementById('call-btn');
             const label = document.getElementById('call-label');
             const icon = document.getElementById('call-icon');

@@ -1352,7 +1352,7 @@ let hpIsMuted = false;
 let hpIsSpeaker = false;
 let hpTranscriptLines = [];
 const HP_CALL_LIMIT = 300; // per-call max duration
-const HP_DAILY_LIMIT_SECS = 1200; // 20 minutes per IP per day
+
 const hpBtn        = document.getElementById('hp-call-btn');
 const hpLabel      = document.getElementById('hp-call-label');
 const hpIcon       = document.getElementById('hp-call-icon');
@@ -1511,7 +1511,7 @@ window.hpToggleCall = async function() {
       const err = await tokenRes.json().catch(() => ({}));
       hpBtn.disabled = false;
       hpResetUI(null);
-      hpStatus.textContent = err.reason === 'ip_daily' ? 'Daily limit reached (20 min/day).' : 'Could not connect. Try again.';
+      hpStatus.textContent = 'Could not connect. Try again.';
       hpStatus.style.color = '#f59e0b';
       return;
     }
