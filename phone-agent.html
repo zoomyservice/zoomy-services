@@ -559,6 +559,14 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                 // Step 2: Fetch token (fast, while mic permission already granted)
                 status.textContent = 'Ringing...';
                 const tokenRes = await fetch(TOKEN_URL);
+                if (!tokenRes.ok) {
+                  const errData = await tokenRes.json();
+                  const errMsg = errData.message || 'Could not get token';
+                  status.textContent = errMsg;
+                  status.style.color = '#ef4444';
+                  btn.disabled = false;
+                  return;
+                }
                 const { signedUrl } = await tokenRes.json();
 
                 // Step 3: Play one ring — permission already granted so no dialog interrupts
