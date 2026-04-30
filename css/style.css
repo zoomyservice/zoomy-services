@@ -4129,15 +4129,3 @@ html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,2
     font-size: .82rem !important;
   }
 }
-
-/* ════ contact hero: form-on-right layout ════ */
-.contact-hero{ overflow:hidden; }
-.contact-hero-grid{ max-width:1200px; margin:0 auto; }
-.contact-hero-grid .cg-form{ margin:0 !important; }
-@media(max-width:980px){
-  .contact-hero-grid{
-    display:flex !important;
-    flex-direction:column !important;
-    gap:2rem !important;
-  }
-}
