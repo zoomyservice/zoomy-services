@@ -2270,6 +2270,41 @@ html[data-theme="light"] #free-bar .bar-dismiss{
 }
 html[data-theme="light"] #free-bar .bar-dismiss:hover{color:var(--bg)!important}
 
+/* — Free-bar legibility (overrides inline rgba(255,255,255,.85) text) — */
+#free-bar .bar-full,
+#free-bar .bar-short{
+  color:#F2EBD7!important;
+  font-size:.92rem!important;
+  font-weight:500!important;
+  letter-spacing:.005em;
+}
+#free-bar a[href*="contact"]{
+  color:#F2EBD7!important;
+  background:rgba(242,235,215,.22)!important;
+  border:1px solid rgba(242,235,215,.55)!important;
+  font-weight:700!important;
+  font-size:.85rem!important;
+  padding:5px 14px!important;
+}
+#free-bar a[href*="contact"]:hover{
+  background:rgba(242,235,215,.40)!important;
+  border-color:#F2EBD7!important;
+}
+@media(max-width:768px){
+  #free-bar .bar-full,
+  #free-bar .bar-short{
+    font-size:.82rem!important;
+    line-height:1.25!important;
+  }
+  #free-bar a[href*="contact"]{
+    font-size:.78rem!important;
+    padding:4px 11px!important;
+  }
+}
+@media(max-width:600px){
+  #free-bar .bar-short{ font-size:.85rem!important; font-weight:600!important; }
+}
+
 /* — 2. Hamburger always visible on mobile (regardless of language page) — */
 @media(max-width:1100px){
   .nav-toggle,
@@ -4060,3 +4095,37 @@ html:not([data-theme="light"]) .ah-svg .ah-cup-body{ fill: #8d7a6a; }
 html:not([data-theme="light"]) .ah-svg .ah-cup-rim{ fill: #5d4d3f; }
 html:not([data-theme="light"]) .ah-svg .ah-pen{ stroke:#dfd6c4; }
 html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,255,.30); }
+
+/* v24: Free-bar text legibility fix
+   - Override inline white-at-85% with full cream (0xF5F1EB)
+   - Bump font size: .92rem desktop / .82–.85rem mobile
+   - Strengthen CTA pill: border + filled background
+*/
+#free-bar .bar-text,
+#free-bar .bar-text *{
+  color: #f5f1eb !important;
+  font-size: .92rem;
+}
+
+#free-bar .bar-cta{
+  background: rgba(245,241,235,.15);
+  border: 1.2px solid rgba(245,241,235,.35);
+  padding: .35rem .75rem;
+  border-radius: .28rem;
+  transition: all .2s ease;
+}
+
+#free-bar .bar-cta:hover{
+  background: rgba(245,241,235,.25);
+  border-color: rgba(245,241,235,.50);
+}
+
+@media (max-width: 640px){
+  #free-bar .bar-text,
+  #free-bar .bar-text *{
+    font-size: .82rem;
+  }
+  #free-bar .bar-short{
+    font-size: .82rem !important;
+  }
+}
