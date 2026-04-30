@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<link href="css/style.css?v=20260416b" rel="stylesheet"/>
+<link href="css/style.css?v=20260429a" rel="stylesheet"/>
 <style>
 /* ── Services as clean text rows ── */
 .services-list{margin-top:3rem}
@@ -1351,7 +1351,8 @@ let hpCallTimer = null;
 let hpIsMuted = false;
 let hpIsSpeaker = false;
 let hpTranscriptLines = [];
-const HP_CALL_LIMIT = 300; // 5 minutes per IP per day
+const HP_CALL_LIMIT = 300; // per-call max duration
+const HP_DAILY_LIMIT_SECS = 1200; // 20 minutes per IP per day
 const hpBtn        = document.getElementById('hp-call-btn');
 const hpLabel      = document.getElementById('hp-call-label');
 const hpIcon       = document.getElementById('hp-call-icon');
@@ -1510,7 +1511,7 @@ window.hpToggleCall = async function() {
       const err = await tokenRes.json().catch(() => ({}));
       hpBtn.disabled = false;
       hpResetUI(null);
-      hpStatus.textContent = err.reason === 'ip_daily' ? 'Daily limit reached (5 min/day).' : 'Could not connect. Try again.';
+      hpStatus.textContent = err.reason === 'ip_daily' ? 'Daily limit reached (20 min/day).' : 'Could not connect. Try again.';
       hpStatus.style.color = '#f59e0b';
       return;
     }
