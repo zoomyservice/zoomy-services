@@ -4129,3 +4129,29 @@ html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,2
     font-size: .82rem !important;
   }
 }
+
+/* ── on-page chatbot demo: scrollbar + word wrap to match popup widget ── */
+.chatbot-messages::-webkit-scrollbar{ width:4px; }
+.chatbot-messages::-webkit-scrollbar-track{ background:transparent; }
+.chatbot-messages::-webkit-scrollbar-thumb{ background:rgba(99,102,241,.35); border-radius:2px; }
+.chatbot-messages::-webkit-scrollbar-thumb:hover{ background:rgba(99,102,241,.6); }
+.chatbot-messages{ scrollbar-width:thin; scrollbar-color:rgba(99,102,241,.35) transparent; }
+.chatbot-messages .msg{
+  max-width:88%;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+  hyphens:auto;
+}
+
+/* ── phone-agent transcript: matching scrollbar + wrap ── */
+#transcript-body::-webkit-scrollbar{ width:4px; }
+#transcript-body::-webkit-scrollbar-track{ background:transparent; }
+#transcript-body::-webkit-scrollbar-thumb{ background:rgba(99,102,241,.35); border-radius:2px; }
+#transcript-body::-webkit-scrollbar-thumb:hover{ background:rgba(99,102,241,.6); }
+#transcript-body{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(99,102,241,.35) transparent;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+}
+#transcript-body > *{ word-break:break-word; overflow-wrap:anywhere; max-width:100%; box-sizing:border-box; }
