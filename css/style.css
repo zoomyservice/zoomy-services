@@ -1624,7 +1624,7 @@ html[data-theme="light"] .hs-chat-avatar{width:20px; height:20px}
 /* Mobile (under 1024px) — hide entire stage, recenter is automatic */
 @media(max-width:1023px){
   html[data-theme="light"] .hero-stage{display:none!important}
-  html[data-theme="light"] .hero{padding:6rem 1.5rem 4rem!important;min-height:auto!important}
+  html[data-theme="light"] .hero{padding:calc(var(--bar-h, 44px) + 72px) 1.5rem 4rem!important;min-height:auto!important}
   html[data-theme="light"] .hero h1{font-size:clamp(2.2rem, 7vw, 3.4rem)!important}
 }
 
@@ -1764,7 +1764,7 @@ html[data-theme="light"] .hs-chat-avatar{width:24px; height:24px}
 @media(max-width:1023px){
   html[data-theme="light"] .hero-stage{display:none!important}
   html[data-theme="light"] .hero{
-    padding:6rem 1.5rem 4rem!important;
+    padding:calc(var(--bar-h, 44px) + 72px) 1.5rem 4rem!important;
     min-height:auto!important;
   }
   html[data-theme="light"] .hero h1{
@@ -1957,7 +1957,7 @@ html[data-theme="light"] .hs-chat-avatar{width:24px; height:24px}
     align-items:center!important;
     justify-content:center!important;
     text-align:center!important;
-    padding:6rem 1.5rem 4rem!important;
+    padding:calc(var(--bar-h, 44px) + 72px) 1.5rem 4rem!important;
     min-height:auto!important;
   }
   html[data-theme="light"] .hero .section-inner{
@@ -2176,8 +2176,10 @@ html[data-theme="light"] .hs-phone-card::before{
 
   /* Reduce section padding */
   .section{padding:4rem 1.25rem!important}
-  /* Hero needs more top padding for free bar + nav */
-  .hero{padding-top:6rem!important}
+  /* Hero needs more top padding for free bar + nav.
+     Free-bar height: 44px, nav height: 56px → 100px total when bar visible.
+     Use calc() so it auto-adapts when the user dismisses the bar (--bar-h:0). */
+  .hero{padding-top:calc(var(--bar-h, 44px) + 72px)!important}
 }
 
 @media(max-width:640px){
