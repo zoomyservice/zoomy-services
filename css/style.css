@@ -1171,28 +1171,31 @@ html[data-theme="light"] #hp-call-btn:hover{
   filter:none!important;
 }
 
-/* — Floating chatbot bubble + header — lighter warm cocoa instead of darkest brown — */
+/* — Floating chatbot — purple gradient header/bubble (matches on-page demo)
+   + black send button + black user message (matches on-page demo) — */
 html[data-theme="light"] #zmy-bubble{
-  background:var(--primary)!important;
-  background-image:none!important;
-  box-shadow:0 4px 16px rgba(74,59,45,.22)!important;
+  background:linear-gradient(135deg,#6366f1,#a855f7,#06b6d4)!important;
+  box-shadow:0 4px 24px rgba(99,102,241,.5)!important;
 }
 html[data-theme="light"] #zmy-bubble:hover{
-  background:var(--text)!important;
-  box-shadow:0 8px 24px rgba(74,59,45,.30)!important;
+  background:linear-gradient(135deg,#6366f1,#a855f7,#06b6d4)!important;
+  box-shadow:0 8px 32px rgba(99,102,241,.6)!important;
 }
 html[data-theme="light"] #zmy-head{
-  background:var(--primary)!important;
-  background-image:none!important;
-  border-bottom:1px solid var(--primary)!important;
+  background:linear-gradient(135deg,#6366f1,#a855f7)!important;
+  border-bottom:none!important;
 }
+/* User message bubble: solid black (matches .msg-user on the on-page demo) */
 html[data-theme="light"] .zmy-user{
-  background:var(--primary)!important;
+  background:var(--text)!important;
   background-image:none!important;
+  color:var(--bg)!important;
 }
+/* Send button: solid black (matches .chatbot-send on the on-page demo) */
 html[data-theme="light"] #zmy-send{
-  background:var(--primary)!important;
+  background:var(--text)!important;
   background-image:none!important;
+  color:var(--bg)!important;
 }
 
 /* — Hero mockup composition: avoid the small phone card overlapping — */
