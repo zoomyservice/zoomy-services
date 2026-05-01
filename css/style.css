@@ -4342,10 +4342,10 @@ html body .hero .section-inner > .agent-grid{
 html body .hero .section-inner > .chatbot-detail-grid{ gap:4rem!important; }
 html body .hero .section-inner > .agent-grid{ gap:10rem!important; }
 
-/* Undo v24's white-space:nowrap on column children — do NOT override display
-   (right columns use inline display:flex for centering) */
+/* Undo v24's white-space:nowrap + inline-flex on column children */
 html body .hero .section-inner > .chatbot-detail-grid > div,
 html body .hero .section-inner > .agent-grid > div{
+  display:block!important;
   white-space:normal!important;
   word-break:break-word!important;
   overflow-wrap:break-word!important;
