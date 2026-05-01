@@ -436,6 +436,7 @@
             // Shared AudioContext — created once, kept alive so ElevenLabs inherits
             // a warm audio pipeline (avoids glitchy/high-pitched first utterance)
             let sharedAudioCtx = null;
+            const _NativeAudioContext = window.AudioContext || window.webkitAudioContext;
 
             function playRing() {
               return new Promise(resolve => {
@@ -496,6 +497,9 @@
               conv = null;
               // Close AudioContext so next call starts with a fresh pipeline (prevents pitch drift)
               if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
+              // Restore AudioContext to native — undo the singleton patch from toggleCall
+              window.AudioContext = window.webkitAudioContext = _NativeAudioContext;
+              window.preflightStream = null;
               isMuted = false;
               isSpeaker = false;
               label.textContent = 'Start Call';
@@ -549,34 +553,46 @@
                 btn.disabled = true;
                 status.textContent = 'Requesting microphone...';
 
-                // Step 1: Create & resume AudioContext synchronously in the gesture handler.
-                // iOS Safari REQUIRES AudioContext to be warm BEFORE getUserMedia — if there
-                // is a state mismatch (context suspended, or context created after GUM),
-                // WebKit silently returns a muted/dead stream with no error thrown.
+                // ── iOS Safari "Hail Mary" Audio Fix ──────────────────────────────────
+                // Root cause: SDK creates its OWN AudioContext after an async gap, then
+                // calls createMediaStreamSource(stream) cross-context — iOS silently mutes it.
+                // Fix: (a) singleton-patch window.AudioContext so SDK reuses our warm context,
+                //      (b) anchor the mic to the destination at near-zero gain so iOS hardware
+                //          stays "Active" throughout the SDK's async setup.
+
+                // Step 1: Create AudioContext at hardware sample rate & resume immediately.
+                const _OrigAudioContext = window.AudioContext || window.webkitAudioContext;
                 if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} }
-                sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                sharedAudioCtx = new _OrigAudioContext({ sampleRate: 44100 });
                 await sharedAudioCtx.resume();
 
-                // Step 2: Silent audio trick — play a zero-amplitude buffer immediately after
-                // resume() to fully unlock the iOS audio pipeline for both input AND output.
-                // Without this, the AudioWorklet input path may stay dormant.
-                try {
-                  const unlockBuf = sharedAudioCtx.createBuffer(1, Math.ceil(sharedAudioCtx.sampleRate * 0.1), sharedAudioCtx.sampleRate);
-                  const unlockSrc = sharedAudioCtx.createBufferSource();
-                  unlockSrc.buffer = unlockBuf;
-                  unlockSrc.connect(sharedAudioCtx.destination);
-                  unlockSrc.start();
-                } catch(_) {}
+                // Step 2: Singleton-patch window.AudioContext so the ElevenLabs SDK reuses
+                // our already-warm context instead of creating a new "cold" one.
+                window.AudioContext = window.webkitAudioContext = function(opts) {
+                  if (sharedAudioCtx && sharedAudioCtx.state !== 'closed') return sharedAudioCtx;
+                  return new _OrigAudioContext(opts);
+                };
 
-                // Step 3: Acquire mic ONCE — AudioContext is already warm so iOS grants properly.
-                // Use simple constraints only — voiceIsolation:true conflicts with established
-                // streams on iOS Safari and can cause the track to be silently muted.
+                // Step 3: getUserMedia while still in gesture handler, simple constraints.
                 micStream = await navigator.mediaDevices.getUserMedia({ audio: {
                   echoCancellation: true,
                   noiseSuppression: true,
                   autoGainControl: true
                 }});
                 window.preflightStream = micStream;
+
+                // Step 4: Anchor mic → gain (inaudible) → destination.
+                // Connecting the stream to the destination forces iOS to keep the hardware
+                // mic "Active" — without this, iOS auto-mutes during SDK's async WS setup.
+                try {
+                  const anchorSrc = sharedAudioCtx.createMediaStreamSource(micStream);
+                  const anchorGain = sharedAudioCtx.createGain();
+                  anchorGain.gain.value = 0.00001;
+                  anchorSrc.connect(anchorGain);
+                  anchorGain.connect(sharedAudioCtx.destination);
+                } catch(_) {}
+
+                // Step 5: Intercept SDK's getUserMedia — return our live pre-flight stream.
                 navigator.mediaDevices.getUserMedia = async (constraints) => {
                   if (constraints && constraints.audio && window.preflightStream && window.preflightStream.active) {
                     return window.preflightStream;

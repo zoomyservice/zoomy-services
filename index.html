@@ -1428,6 +1428,7 @@ window.hpToggleTranscript = function() {
 };
 
 let hpSharedAudioCtx = null;
+const _NativeAudioContext = window.AudioContext || window.webkitAudioContext;
 
 function hpPlayRing() {
   return new Promise(resolve => {
@@ -1480,6 +1481,8 @@ function hpResetUI(msg) {
   if (hpCallTimer) { clearInterval(hpCallTimer); hpCallTimer = null; }
   hpConv = null; hpIsMuted = false; hpIsSpeaker = false;
   if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
+  window.AudioContext = window.webkitAudioContext = _NativeAudioContext;
+  window.hpPreflightStream = null;
   hpLabel.textContent = 'Start Call';
   hpBtn.style.opacity = '1';
   hpBtn.style.background = 'var(--grad-main)';
@@ -1516,28 +1519,36 @@ window.hpToggleCall = async function() {
     hpBtn.disabled = true;
     hpStatus.textContent = 'Requesting microphone...';
 
-    // Step 1: Create & resume AudioContext synchronously in the gesture handler.
-    // iOS Safari REQUIRES AudioContext to be warm BEFORE getUserMedia is called.
+    // ── iOS Safari "Hail Mary" Audio Fix ──────────────────────────────────────
+    // Step 1: Create AudioContext at hardware rate & resume immediately.
     if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} }
-    hpSharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    hpSharedAudioCtx = new _NativeAudioContext({ sampleRate: 44100 });
     await hpSharedAudioCtx.resume();
 
-    // Step 2: Silent audio trick — unlocks iOS audio pipeline for both input AND output.
-    try {
-      const unlockBuf = hpSharedAudioCtx.createBuffer(1, Math.ceil(hpSharedAudioCtx.sampleRate * 0.1), hpSharedAudioCtx.sampleRate);
-      const unlockSrc = hpSharedAudioCtx.createBufferSource();
-      unlockSrc.buffer = unlockBuf;
-      unlockSrc.connect(hpSharedAudioCtx.destination);
-      unlockSrc.start();
-    } catch(_) {}
+    // Step 2: Singleton-patch window.AudioContext so SDK reuses our warm context.
+    window.AudioContext = window.webkitAudioContext = function(opts) {
+      if (hpSharedAudioCtx && hpSharedAudioCtx.state !== 'closed') return hpSharedAudioCtx;
+      return new _NativeAudioContext(opts);
+    };
 
-    // Step 3: getUserMedia with simple constraints — no voiceIsolation (conflicts on iOS).
+    // Step 3: getUserMedia while still in gesture handler.
     micStream = await navigator.mediaDevices.getUserMedia({ audio: {
       echoCancellation: true,
       noiseSuppression: true,
       autoGainControl: true
     }});
     window.hpPreflightStream = micStream;
+
+    // Step 4: Anchor mic → inaudible gain → destination to keep iOS hardware Active.
+    try {
+      const anchorSrc = hpSharedAudioCtx.createMediaStreamSource(micStream);
+      const anchorGain = hpSharedAudioCtx.createGain();
+      anchorGain.gain.value = 0.00001;
+      anchorSrc.connect(anchorGain);
+      anchorGain.connect(hpSharedAudioCtx.destination);
+    } catch(_) {}
+
+    // Step 5: Intercept SDK's getUserMedia — return our live pre-flight stream.
     navigator.mediaDevices.getUserMedia = async (constraints) => {
       if (constraints && constraints.audio && window.hpPreflightStream && window.hpPreflightStream.active) {
         return window.hpPreflightStream;
