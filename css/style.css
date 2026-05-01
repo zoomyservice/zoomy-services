@@ -3136,10 +3136,23 @@ section.hero[style*="min-height:50vh"]{
     display:flex!important;
     flex-direction:column!important;
     width:100%!important;
-    max-width:100%!important;
-    margin:1.5rem 0!important;
+    /* HARD viewport cap — protects against parent grids/flex containers
+       that have blown out wider than the viewport for any reason. */
+    max-width:min(100%, calc(100vw - 32px))!important;
+    margin:1.5rem auto!important;
     visibility:visible!important;
     opacity:1!important;
+    box-sizing:border-box!important;
+    min-width:0!important;
+  }
+  /* Force every ancestor of the chatbot mock to stop blowing out wider than the viewport */
+  .chatbot-detail-grid,
+  .agent-grid,
+  .chatbot-detail-grid > *,
+  .agent-grid > *{
+    max-width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
   }
   /* Whatever 2-col grid wraps the chatbot demo: stack */
   div[style*="grid-template-columns:1fr 1fr"]:has(.chatbot-mock),
