@@ -312,8 +312,9 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] h2,
 [data-theme="light"] h3{color:var(--text)}
 
-/* Free bar on light (was very dark) */
-[data-theme="light"] #free-bar{background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff}
+/* Free bar — solid black both modes */
+#free-bar{background:#000!important;}
+[data-theme="light"] #free-bar{background:#000!important;color:#fff!important;}
 [data-theme="light"] #free-bar .bar-text{color:rgba(255,255,255,.85)}
 
 /* Footer gets a subtle warm tint on light */
@@ -457,20 +458,20 @@ html[data-theme="light"] .nav-logo-sub{color:var(--muted)!important;-webkit-text
 /* — Scroll progress: solid dark instead of purple gradient — */
 html[data-theme="light"] #scroll-progress{background:var(--text)!important;box-shadow:none!important}
 
-/* — Buttons: light/ghost style across the board — */
+/* — Buttons: black on light mode — */
 html[data-theme="light"] .btn-primary,
 html[data-theme="light"] .btn-nav{
-  background:transparent!important;
-  color:var(--text)!important;
-  border:1.5px solid var(--text)!important;
+  background:#000!important;
+  color:#fff!important;
+  border:1.5px solid #000!important;
   box-shadow:none!important;
   filter:none!important;
 }
 html[data-theme="light"] .btn-primary:hover,
 html[data-theme="light"] .btn-nav:hover{
-  background:var(--text)!important;
-  color:var(--bg)!important;
-  border-color:var(--text)!important;
+  background:#222!important;
+  color:#fff!important;
+  border-color:#222!important;
   transform:translateY(-1px)!important;
   box-shadow:none!important;
   filter:none!important;
@@ -3076,6 +3077,11 @@ html[data-theme="light"] h3[style*="color:var(--white)"],
 html[data-theme="light"] h4[style*="color:var(--white)"]{
   color:var(--text)!important;
 }
+/* CSS-class white text — section titles, hero h1, footer headings */
+html[data-theme="light"] .section-title{color:var(--text)!important;}
+html[data-theme="light"] .hero h1{color:var(--text)!important;}
+html[data-theme="light"] .footer-col h4{color:var(--text)!important;}
+html[data-theme="light"] .hero-sub{color:var(--text-2)!important;}
 /* Specific 'Want us to manage it too?' on campaign-portfolio */
 html[data-theme="light"] h2[style*="font-family:var(--font-display)"][style*="color:#fff"]{
   color:var(--text)!important;
