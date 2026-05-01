@@ -601,7 +601,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                   if (preMicStream) { preMicStream.getTracks().forEach(t => t.stop()); preMicStream = null; }
                   return;
                 }
-                const { signedUrl } = await tokenRes.json();
+                const { conversationToken } = await tokenRes.json();
 
                 // Step 2: Play ring
                 await playRing();
@@ -634,9 +634,9 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                 // Override firstMessage + language + system prompt to enforce language
                 // All three overrides are enabled on the agent (verified via API)
                 const firstMessages = {
-                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy. Comment puis-je vous aider aujourd'hui ?",
-                  'es': "¡Hola! Soy la asistente IA de Zoomy. ¿En qué puedo ayudarle hoy?",
-                  'en': "Hi there, this is Zoomy. I can help answer any questions about our services in any language. What can I do for you?"
+                  'fr': "Bonjour ! Vous êtes en contact avec Zoomy. Comment puis-je vous aider aujourd'hui ?",
+                  'es': "¡Buenos días! Ha contactado con Zoomy. ¿En qué puedo ayudarle hoy?",
+                  'en': "Hello! You've reached Zoomy. How can I help you today?"
                 };
                 const systemPrompts = {
                   'fr': `# Règles de prononciation\n- "Zoomy" se prononce "ZOU-mi Services" — jamais "Zoomy dot services".\n- L'email se dit "hello at ZOU-mi".\n\n# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français, sans exception. Ne passe jamais à l'anglais.\n\n# Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse, directe et professionnelle.\n\n# Services\n1. Campagnes publicitaires (Meta, Google, TikTok) — à partir de 400$\n2. Sites web sur mesure (HTML/CSS/JS) — à partir de 199$/page\n3. Agents téléphoniques IA — à partir de 699$\n4. Chatbots IA — à partir de 599$\n\nPour un devis : contact@zoomy.services`,
@@ -648,7 +648,10 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                 if (systemPrompts[pageLang]) agentOverride.prompt = { prompt: systemPrompts[pageLang] };
 
                 conv = await Conversation.startSession({
-                  signedUrl,
+                  conversationToken,
+                  // iOS-specific delay inside startSession — gives LiveKit time to
+                  // warm up its audio pipeline before the first TTS packet arrives.
+                  connectionDelay: { default: 0, ios: 500, android: 2000 },
                   overrides: { agent: agentOverride },
                   onConnect: () => {
                     isMuted = false;
@@ -1101,7 +1104,7 @@ roiCalc();
 </footer>
 <script src="js/main.js?v=20260416"></script>
 <script src="js/i18n.js?v=20260416"></script>
-<script src="js/chatbot.js?v=20260501a"></script>
+<script src="js/chatbot.js?v=20260501b"></script>
 <script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>
