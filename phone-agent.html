@@ -541,22 +541,29 @@
                 return; // onDisconnect fires resetUI
               }
               let micStream = null;
+              const _origGUM = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
               try {
                 label.textContent = 'Calling...';
                 btn.style.opacity = '0.7';
                 btn.disabled = true;
                 status.textContent = 'Requesting microphone...';
 
-                // Step 1: Get mic permission — keep stream ALIVE through setup
-                // iOS: stopping tracks then re-acquiring outside the gesture window fails silently
+                // Step 1: Acquire mic ONCE in the gesture handler and keep it alive.
+                // iOS WebKit bug: calling getUserMedia() a second time for the same media type
+                // automatically mutes the new track with no way to unmute it programmatically.
+                // Fix: intercept the SDK's internal getUserMedia and return OUR live stream.
                 micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                navigator.mediaDevices.getUserMedia = async (constraints) => {
+                  if (constraints && constraints.audio && micStream) return micStream;
+                  return _origGUM(constraints);
+                };
 
                 // Step 2: Fetch token while mic is held open (orange dot stays on)
                 status.textContent = 'Ringing...';
                 const tokenRes = await fetch(TOKEN_URL);
                 const { signedUrl } = await tokenRes.json();
 
-                // Step 3: Play ring — mic still live so iOS sees continuous activity
+                // Step 3: Play ring — mic still live, iOS sees uninterrupted activity
                 await playRing();
 
                 status.textContent = 'Connecting...';
@@ -585,8 +592,8 @@
                   signedUrl,
                   overrides: { agent: agentOverride },
                   onConnect: () => {
-                    // SDK has its own stream now — release our pre-flight stream
-                    if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
+                    // Restore getUserMedia now that SDK is connected and using our stream
+                    navigator.mediaDevices.getUserMedia = _origGUM;
                     btn.disabled = false;
                     label.textContent = 'End Call';
                     btn.style.opacity = '1';
@@ -626,6 +633,7 @@
                   }
                 });
               } catch(e) {
+                navigator.mediaDevices.getUserMedia = _origGUM;
                 if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
                 btn.disabled = false;
                 resetUI(null);

@@ -1509,14 +1509,20 @@ function hpResetUI(msg) {
 window.hpToggleCall = async function() {
   if (hpConv) { await hpConv.endSession(); return; }
   let micStream = null;
+  const _origGUM = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
   try {
     hpLabel.textContent = 'Calling...';
     hpBtn.style.opacity = '0.7';
     hpBtn.disabled = true;
     hpStatus.textContent = 'Requesting microphone...';
-    // Keep stream alive through setup — iOS needs continuous mic activity
-    // so the SDK's internal getUserMedia succeeds in the same gesture context
+    // Acquire mic ONCE — iOS WebKit bug: second getUserMedia call for same media type
+    // auto-mutes the new track with no way to unmute. Intercept SDK's internal call
+    // and hand it our live stream to prevent this.
     micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    navigator.mediaDevices.getUserMedia = async (constraints) => {
+      if (constraints && constraints.audio && micStream) return micStream;
+      return _origGUM(constraints);
+    };
     hpStatus.textContent = 'Ringing...';
     const tokenRes = await fetch(HP_TOKEN_URL);
     if (!tokenRes.ok) {
@@ -1576,7 +1582,7 @@ Contacto: zoomy.services/contact`,
       signedUrl,
       overrides: { agent: agentOverride },
       onConnect: () => {
-        if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
+        navigator.mediaDevices.getUserMedia = _origGUM;
         hpBtn.disabled = false;
         hpLabel.textContent = 'End Call';
         hpBtn.style.opacity = '1';
@@ -1613,6 +1619,7 @@ Contacto: zoomy.services/contact`,
       }
     });
   } catch(e) {
+    navigator.mediaDevices.getUserMedia = _origGUM;
     if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
     hpBtn.disabled = false;
     hpResetUI(null);
