@@ -4226,3 +4226,86 @@ html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,2
   overflow-wrap:anywhere;
 }
 #transcript-body > *{ word-break:break-word; overflow-wrap:anywhere; max-width:100%; box-sizing:border-box; }
+
+/* ══════════════════════════════════════════════════════════════════
+   FINAL OVERRIDES — always appended last so these always win
+   Do not add version blocks after this section.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ── Free-bar: always pure black, both themes ── */
+#free-bar,
+html[data-theme="light"] #free-bar{
+  background:#000!important;
+  background-image:none!important;
+  color:#fff!important;
+  border-bottom:none!important;
+}
+html[data-theme="light"] #free-bar .bar-text,
+html[data-theme="light"] #free-bar .bar-text *,
+#free-bar .bar-text,
+#free-bar .bar-text *{
+  color:rgba(255,255,255,.88)!important;
+}
+html[data-theme="light"] #free-bar .bar-cta{
+  color:#fff!important;
+  background:rgba(255,255,255,.12)!important;
+  border:1px solid rgba(255,255,255,.35)!important;
+}
+html[data-theme="light"] #free-bar .bar-cta:hover{
+  background:rgba(255,255,255,.22)!important;
+  border-color:rgba(255,255,255,.55)!important;
+}
+html[data-theme="light"] #free-bar .bar-dismiss{
+  color:rgba(255,255,255,.5)!important;
+}
+html[data-theme="light"] #free-bar .bar-dismiss:hover{
+  color:#fff!important;
+}
+
+/* ── "Start a Project" (btn-nav) + all primary CTAs: black in light mode ── */
+html[data-theme="light"] .btn-nav,
+html[data-theme="light"] .btn-primary{
+  background:#111!important;
+  background-image:none!important;
+  color:#fff!important;
+  border:1.5px solid #111!important;
+  box-shadow:none!important;
+}
+html[data-theme="light"] .btn-nav:hover,
+html[data-theme="light"] .btn-primary:hover{
+  background:#333!important;
+  border-color:#333!important;
+  color:#fff!important;
+  filter:none!important;
+  transform:translateY(-1px);
+}
+
+/* ── White text invisible on light background: force readable color ── */
+html[data-theme="light"] .section-title{color:var(--text)!important;}
+html[data-theme="light"] .hero h1{color:var(--text)!important;}
+html[data-theme="light"] .hero-sub{color:var(--text-2)!important;}
+html[data-theme="light"] .footer-col h4{color:var(--text)!important;}
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] h5{
+  color:var(--text)!important;
+}
+html[data-theme="light"] p,
+html[data-theme="light"] li,
+html[data-theme="light"] .hero-sub,
+html[data-theme="light"] .section-sub{
+  color:var(--text-2)!important;
+}
+/* Exceptions: keep white text inside explicitly dark containers */
+html[data-theme="light"] #free-bar h1,
+html[data-theme="light"] #free-bar h2,
+html[data-theme="light"] #free-bar h3,
+html[data-theme="light"] #free-bar h4,
+html[data-theme="light"] #free-bar p,
+html[data-theme="light"] #free-bar li,
+html[data-theme="light"] .btn-nav *,
+html[data-theme="light"] .btn-primary *{
+  color:#fff!important;
+}
