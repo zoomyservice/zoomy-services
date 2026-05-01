@@ -724,15 +724,17 @@ html[data-theme="light"] .terminal [style*="color:#fff"],
 html[data-theme="light"] .terminal-body [style*="color:#fff"]{color:#e2e8f0!important}
 
 /* — FLOATING CHATBOT BUBBLE & WINDOW (injected by js/chatbot.js) — */
-/* Bubble: keep the purple gradient in BOTH themes — matches the on-page demo. */
+/* Bubble: solid black in BOTH themes (light override lives further down too) */
 html[data-theme="light"] #zmy-bubble{
-  background:linear-gradient(135deg,#6366f1,#a855f7,#06b6d4)!important;
-  box-shadow:0 4px 24px rgba(99,102,241,.5)!important;
+  background:var(--text)!important;
+  background-image:none!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.25)!important;
 }
 html[data-theme="light"] #zmy-bubble:hover{
-  box-shadow:0 8px 32px rgba(99,102,241,.6)!important;
+  background:var(--text)!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.35)!important;
 }
-html[data-theme="light"] #zmy-bubble svg{fill:#fff!important}
+html[data-theme="light"] #zmy-bubble svg{fill:var(--bg)!important}
 /* Attention bubble (the speech-bubble teaser) */
 html[data-theme="light"] #zmy-attn{
   background:var(--card)!important;
@@ -1171,15 +1173,27 @@ html[data-theme="light"] #hp-call-btn:hover{
   filter:none!important;
 }
 
-/* — Floating chatbot — purple gradient header/bubble (matches on-page demo)
-   + black send button + black user message (matches on-page demo) — */
+/* — Floating chatbot — purple gradient header (matches on-page demo)
+   + BLACK floating bubble + black send + black user message — */
 html[data-theme="light"] #zmy-bubble{
-  background:linear-gradient(135deg,#6366f1,#a855f7,#06b6d4)!important;
-  box-shadow:0 4px 24px rgba(99,102,241,.5)!important;
+  background:var(--text)!important;
+  background-image:none!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.25)!important;
 }
 html[data-theme="light"] #zmy-bubble:hover{
-  background:linear-gradient(135deg,#6366f1,#a855f7,#06b6d4)!important;
-  box-shadow:0 8px 32px rgba(99,102,241,.6)!important;
+  background:var(--text)!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.35)!important;
+}
+html[data-theme="light"] #zmy-bubble svg{fill:var(--bg)!important}
+/* Dark theme: also black so the bubble matches across both themes */
+#zmy-bubble{
+  background:#0d0d1c!important;
+  background-image:none!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.5)!important;
+}
+#zmy-bubble:hover{
+  background:#0d0d1c!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.6)!important;
 }
 html[data-theme="light"] #zmy-head{
   background:linear-gradient(135deg,#6366f1,#a855f7)!important;
