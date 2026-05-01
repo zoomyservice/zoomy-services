@@ -234,39 +234,39 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
   --surface:#F8F2DD;     /* light cream surface for nav */
   --card:#FAF4E0;        /* card cream */
   --card-hover:#F5EED4;
-  --border:rgba(178,58,26,.22);
+  --border:rgba(0,0,0,.18);
   --border-b:rgba(26,26,46,.12);
-  --primary:#B23A1A;     /* deep rust / oxblood — replaces indigo */
-  --primary-dk:#872C13;  /* hover/pressed */
+  --primary:#1a1a1a;     /* deep rust / oxblood — replaces indigo */
+  --primary-dk:#111111;  /* hover/pressed */
   --secondary:#1a1a2e;   /* deep navy ink — secondary brand color */
-  --accent:#B07C2C;      /* warm amber/gold — replaces purple */
+  --accent:#333333;      /* warm amber/gold — replaces purple */
   --pink:#A23344;        /* deep rosy red — replaces hot pink */
   --green:#1F5C3F;       /* deep forest */
-  --amber:#B07C2C;
-  --glow-p:rgba(178,58,26,.18);
+  --amber:#333333;
+  --glow-p:rgba(0,0,0,.12);
   --glow-s:rgba(26,26,46,.16);
   --glow-a:rgba(176,124,44,.18);
   --text:#1a1a2e;        /* deep navy ink — high contrast on cream */
   --text-2:#3d3d5c;
   --muted:#6b6b85;
   /* Logo + brand gradient flips to rust → amber → ink (no purple) */
-  --grad-main:linear-gradient(135deg,#B23A1A 0%,#B07C2C 50%,#1a1a2e 100%);
-  --grad-glow:linear-gradient(135deg,rgba(178,58,26,.10) 0%,rgba(176,124,44,.10) 100%);
-  --grad-card:linear-gradient(135deg,rgba(178,58,26,.06) 0%,rgba(176,124,44,.04) 100%);
+  --grad-main:linear-gradient(135deg,#111 0%,#333 50%,#555 100%);
+  --grad-glow:linear-gradient(135deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.08) 100%);
+  --grad-card:linear-gradient(135deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.04) 100%);
   /* keep --white as #fff so white-on-gradient buttons stay readable */
-  --grad-glow:linear-gradient(135deg,rgba(178,58,26,.10) 0%,rgba(176,124,44,.10) 100%);
-  --grad-card:linear-gradient(135deg,rgba(178,58,26,.06) 0%,rgba(26,26,46,.06) 100%);
+  --grad-glow:linear-gradient(135deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.08) 100%);
+  --grad-card:linear-gradient(135deg,rgba(0,0,0,.06) 0%,rgba(26,26,46,.06) 100%);
   color-scheme:light;
 }
 
 /* Body-level adjustments */
-[data-theme="light"] body{background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(178,58,26,.06) 0%,transparent 70%)}
+[data-theme="light"] body{background-image:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(0,0,0,.06) 0%,transparent 70%)}
 
 /* Nav: scrolled state on light bg should be light, not dark */
 [data-theme="light"] nav.scrolled{background:rgba(255,255,255,.94);border-bottom-color:rgba(15,23,42,.08);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%)}
 [data-theme="light"] .nav-toggle span{background:var(--text)}
 [data-theme="light"] .nav-sub{background:#fff;border-color:rgba(15,23,42,.08);box-shadow:0 16px 48px rgba(15,23,42,.10)}
-[data-theme="light"] .nav-sub li a:hover{color:var(--text)!important;background:rgba(178,58,26,.06)}
+[data-theme="light"] .nav-sub li a:hover{color:var(--text)!important;background:rgba(0,0,0,.06)}
 
 /* Mobile menu drawer color */
 @media(max-width:768px){
@@ -287,11 +287,11 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 
 /* Cards — different shadow pattern on light */
 [data-theme="light"] .card{box-shadow:0 1px 3px rgba(15,23,42,.04),0 0 0 1px rgba(15,23,42,.04)}
-[data-theme="light"] .card:hover{box-shadow:0 12px 32px rgba(178,58,26,.10),0 0 0 1px rgba(178,58,26,.20);border-color:rgba(178,58,26,.30)}
+[data-theme="light"] .card:hover{box-shadow:0 12px 32px rgba(0,0,0,.10),0 0 0 1px rgba(0,0,0,.16);border-color:rgba(0,0,0,.22)}
 
 /* Buttons — ghost button color on light */
 [data-theme="light"] .btn-ghost{color:var(--text);border-color:rgba(15,23,42,.18)}
-[data-theme="light"] .btn-ghost:hover{color:var(--text);border-color:rgba(178,58,26,.50);background:rgba(178,58,26,.06)}
+[data-theme="light"] .btn-ghost:hover{color:var(--text);border-color:rgba(0,0,0,.35);background:rgba(0,0,0,.06)}
 
 /* Element-level white text overrides — these targets sit on the page background, not on a colored element */
 [data-theme="light"] .nav-links a:hover,
@@ -328,10 +328,10 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] code{background:#0f172a;color:#e2e8f0;border-color:rgba(15,23,42,.20)}
 
 /* Section tags (the `// SERVICES` mono labels) — give them more contrast */
-[data-theme="light"] .section-tag{background:rgba(178,58,26,.08);border-color:rgba(178,58,26,.22);color:var(--primary-dk)}
+[data-theme="light"] .section-tag{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.18);color:var(--primary-dk)}
 
 /* Badges */
-[data-theme="light"] .badge-primary{background:rgba(178,58,26,.10);color:var(--primary-dk);border-color:rgba(178,58,26,.30)}
+[data-theme="light"] .badge-primary{background:rgba(0,0,0,.10);color:var(--primary-dk);border-color:rgba(0,0,0,.22)}
 
 /* Marquee bar on light bg */
 [data-theme="light"] .marquee{background:var(--bg-2);border-top-color:var(--border-b);border-bottom-color:var(--border-b)}
@@ -339,10 +339,10 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 [data-theme="light"] .marquee-dot{background:var(--primary);opacity:.7}
 
 /* Sample banner light styling */
-[data-theme="light"] .sample-banner{background:linear-gradient(135deg,rgba(178,58,26,.06) 0%,rgba(176,124,44,.06) 50%,rgba(26,26,46,.04) 100%);border-color:rgba(178,58,26,.22)}
+[data-theme="light"] .sample-banner{background:linear-gradient(135deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.06) 50%,rgba(26,26,46,.04) 100%);border-color:rgba(0,0,0,.18)}
 
 /* Lang switcher active-state on light */
-[data-theme="light"] .lang-btn.lang-active{background:rgba(178,58,26,.10);color:var(--primary-dk);border:1px solid rgba(178,58,26,.30)}
+[data-theme="light"] .lang-btn.lang-active{background:rgba(0,0,0,.10);color:var(--primary-dk);border:1px solid rgba(0,0,0,.22)}
 
 /* Inline `style="color:#fff"` elements on the page background can't be CSS-overridden. Common case: the free-bar `Claim free page` link uses inline styles. That sits on dark bg either way (free bar is dark in both themes), so it's correct. */
 
@@ -354,13 +354,13 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 
 /* ── Extra light-mode overrides (v3) — beat per-page <style> blocks ── */
 html[data-theme="light"] .nav-logo{filter:none}
-html[data-theme="light"] .section-tag{background:rgba(178,58,26,.08);border-color:rgba(178,58,26,.22);color:var(--primary-dk)}
-html[data-theme="light"] .badge-primary{background:rgba(178,58,26,.10);color:var(--primary-dk);border-color:rgba(178,58,26,.30)}
-html[data-theme="light"] .badge-accent{background:rgba(176,124,44,.12);color:var(--accent);border-color:rgba(176,124,44,.32)}
-html[data-theme="light"] .icon-box{background:rgba(178,58,26,.10);border-color:rgba(178,58,26,.24);color:var(--primary)}
+html[data-theme="light"] .section-tag{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.18);color:var(--primary-dk)}
+html[data-theme="light"] .badge-primary{background:rgba(0,0,0,.10);color:var(--primary-dk);border-color:rgba(0,0,0,.22)}
+html[data-theme="light"] .badge-accent{background:rgba(0,0,0,.10);color:var(--accent);border-color:rgba(0,0,0,.20)}
+html[data-theme="light"] .icon-box{background:rgba(0,0,0,.10);border-color:rgba(0,0,0,.20);color:var(--primary)}
 html[data-theme="light"] .form-field input,html[data-theme="light"] .form-field textarea,html[data-theme="light"] .form-field select{background:var(--card);border-color:var(--border-b);color:var(--text)}
-html[data-theme="light"] .form-field input:focus,html[data-theme="light"] .form-field textarea:focus,html[data-theme="light"] .form-field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(178,58,26,.15)}
-html[data-theme="light"] .msg-bot{background:var(--card);border-color:rgba(178,58,26,.18);color:var(--text)}
+html[data-theme="light"] .form-field input:focus,html[data-theme="light"] .form-field textarea:focus,html[data-theme="light"] .form-field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,0,0,.12)}
+html[data-theme="light"] .msg-bot{background:var(--card);border-color:rgba(0,0,0,.15);color:var(--text)}
 
 /* Inline-style attribute overrides for elements still hardcoded */
 html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="msg-user"]):not([class*="chatbot-send"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]):not([style*="background:#111"]):not([style*="background:#02"]){color:var(--text)!important}
@@ -408,14 +408,14 @@ html[data-theme="light"]{
   --border:rgba(58,46,29,.18);
   --border-b:rgba(58,46,29,.10);
   /* Text — warm dark brown (replaces navy) */
-  --text:#2A2218;
+  --text:#111111;
   --text-2:#5C4B3D;
   --muted:#8B7A65;
   /* Primary brand — warm cocoa (used sparingly on hover only) */
-  --primary:#4A3B2D;
-  --primary-dk:#2A2218;
+  --primary:#1a1a1a;
+  --primary-dk:#111111;
   --secondary:#8B7A65;
-  --accent:#4A3B2D;
+  --accent:#1a1a1a;
   /* Status colors — muted, low-saturation only */
   --pink:#8B4A52;
   --green:#4A6B4F;
@@ -425,7 +425,7 @@ html[data-theme="light"]{
   --glow-s:rgba(139,122,101,.06);
   --glow-a:rgba(74,59,45,.05);
   /* Brand gradient — solid warm brown (no color shifts visible) */
-  --grad-main:linear-gradient(135deg,#2A2218 0%,#4A3B2D 100%);
+  --grad-main:linear-gradient(135deg,#111 0%,#2a2a2a 100%);
   --grad-glow:linear-gradient(135deg,rgba(74,59,45,.03) 0%,rgba(139,122,101,.03) 100%);
   --grad-card:linear-gradient(135deg,rgba(74,59,45,.02) 0%,rgba(139,122,101,.02) 100%);
   color-scheme:light;
@@ -687,11 +687,11 @@ html[data-theme="light"] [style*="color: #a855f7"],
 html[data-theme="light"] [style*="color:#06b6d4"]{color:var(--text)!important}
 
 /* — Reset any rust/oxblood I added in v3 that's still showing — */
-html[data-theme="light"] [style*="color:#B23A1A"],
-html[data-theme="light"] [style*="color:#872C13"],
-html[data-theme="light"] [style*="color:#B07C2C"]{color:var(--text)!important}
-html[data-theme="light"] [style*="background:#B23A1A"],
-html[data-theme="light"] [style*="background:#B07C2C"]{background:var(--text)!important;color:var(--bg)!important}
+html[data-theme="light"] [style*="color:#1a1a1a"],
+html[data-theme="light"] [style*="color:#111111"],
+html[data-theme="light"] [style*="color:#333333"]{color:var(--text)!important}
+html[data-theme="light"] [style*="background:#1a1a1a"],
+html[data-theme="light"] [style*="background:#333333"]{background:var(--text)!important;color:var(--bg)!important}
 
 
 /* ════════════════════════════════════════════════════════════════════
@@ -1135,7 +1135,7 @@ html[data-theme="light"] .hero .section-inner > div:last-of-type{
 }
 
 /* — Lighten dark buttons across the site in light mode — */
-/* var(--primary) = #4A3B2D (warm cocoa) — softer than var(--text) #2A2218 */
+/* var(--primary) = #1a1a1a (warm cocoa) — softer than var(--text) #111111 */
 html[data-theme="light"] .btn-primary{
   background:var(--primary)!important;
   background-image:none!important;
@@ -1321,7 +1321,7 @@ html[data-theme="light"] .glitch::after{
   pointer-events:none;
 }
 html[data-theme="light"] .glitch::before{
-  text-shadow:-2px 0 #B07C2C;  /* warm amber */
+  text-shadow:-2px 0 #333333;  /* warm amber */
   clip-path:inset(40% 0 50% 0);
   animation:glitch1 3.5s infinite!important;
   opacity:.65;
@@ -1333,7 +1333,7 @@ html[data-theme="light"] .glitch::after{
   opacity:.65;
 }
 @media(max-width:768px){
-  html[data-theme="light"] .glitch::before{text-shadow:-1px 0 #B07C2C; opacity:.45}
+  html[data-theme="light"] .glitch::before{text-shadow:-1px 0 #333333; opacity:.45}
   html[data-theme="light"] .glitch::after{text-shadow:1px 0 #5C4B3D; opacity:.45}
 }
 
@@ -2114,7 +2114,7 @@ html[data-theme="light"] .hs-phone-wave span{
 
 /* — 1. Phone card: lighten from var(--text) to var(--primary) — */
 html[data-theme="light"] .hs-phone-card{
-  background:var(--primary)!important;     /* #4A3B2D warm cocoa */
+  background:var(--primary)!important;     /* #1a1a1a warm cocoa */
   background-image:none!important;
   color:var(--bg)!important;
   border:none!important;
@@ -2667,7 +2667,7 @@ html[data-theme="light"] [style*="color: #94a3b8"]{
 /* Cyan brand-accent pill ('Live demo — try it now') — make readable on cream */
 html[data-theme="light"] [style*="color:#38bdf8"],
 html[data-theme="light"] [style*="color: #38bdf8"]{
-  color:var(--primary, #4A3B2D)!important;
+  color:var(--primary, #1a1a1a)!important;
 }
 
 /* But INSIDE #admShell (the demo's own dark frame, which stays dark even
@@ -2807,11 +2807,11 @@ html[data-theme="light"] .wd-code-card{
 html[data-theme="light"] .wd-phone-arrow{
   background:var(--bg-2, #EAE0C2);
   border:1px solid var(--border, rgba(58,46,29,.18));
-  color:var(--text, #2A2218);
+  color:var(--text, #111111);
 }
 html[data-theme="light"] .wd-phone-arrow:hover{
-  background:var(--primary, #4A3B2D);
-  border-color:var(--primary, #4A3B2D);
+  background:var(--primary, #1a1a1a);
+  border-color:var(--primary, #1a1a1a);
   color:var(--bg, #F2EBD7);
 }
 /* Hide arrows on mobile (touch-swipe takes over there) */
@@ -3046,7 +3046,7 @@ html[data-theme="light"] #call-btn,
 html[data-theme="light"] #hp-call-btn,
 html[data-theme="light"] button[onclick*="ToggleCall"],
 html[data-theme="light"] button[onclick*="toggleCall"]{
-  background:var(--primary, #4A3B2D)!important;
+  background:var(--primary, #1a1a1a)!important;
   background-image:none!important;
   color:var(--bg, #F2EBD7)!important;
   box-shadow:0 4px 14px rgba(74,59,45,.25)!important;
@@ -3058,7 +3058,7 @@ html[data-theme="light"] #hp-call-btn *{
 }
 html[data-theme="light"] #call-btn:hover,
 html[data-theme="light"] #hp-call-btn:hover{
-  background:var(--text, #2A2218)!important;
+  background:var(--text, #111111)!important;
   filter:none!important;
 }
 /* Also fix in dark mode (the box-shadow rgba purple was causing a halo) */
@@ -3098,7 +3098,7 @@ html[data-theme="light"] h2[style*="font-family:var(--font-display)"][style*="co
 .hero{ overflow:hidden; }
 /* Hero .glitch in light mode — keep the warm-tone shadows from v8 inside the bounding box */
 html[data-theme="light"] .glitch::before{
-  text-shadow:-1px 0 #B07C2C!important;
+  text-shadow:-1px 0 #333333!important;
 }
 html[data-theme="light"] .glitch::after{
   text-shadow:1px 0 #5C4B3D!important;
@@ -3546,7 +3546,7 @@ html[data-theme="light"] .oc-bar{
   position:relative;
 }
 html[data-theme="light"] .oc-fill{
-  background:linear-gradient(90deg, var(--primary, #4A3B2D), var(--accent, #B07C2C));
+  background:linear-gradient(90deg, var(--primary, #1a1a1a), var(--accent, #333333));
 }
 .oc-fill::after{
   content:"";
@@ -3588,7 +3588,7 @@ html[data-theme="light"] .oc-num{ color:var(--text); }
   background:var(--primary, #6366f1);
   animation:ocPulseQuiet 2.4s ease-in-out infinite;
 }
-html[data-theme="light"] .oc-pulse{ background:var(--accent, #B07C2C); }
+html[data-theme="light"] .oc-pulse{ background:var(--accent, #333333); }
 @keyframes ocPulseQuiet{
   0%,100%{ opacity:.45; transform:scale(1); }
   50%   { opacity:1;   transform:scale(1.3); }
@@ -3632,7 +3632,7 @@ html[data-theme="light"] .oc-pulse{ background:var(--accent, #B07C2C); }
 }
 html[data-theme="light"] .ts-card{
   background:
-    radial-gradient(800px 320px at 100% 0%, rgba(176,124,44,.10), transparent 65%),
+    radial-gradient(800px 320px at 100% 0%, rgba(0,0,0,.08), transparent 65%),
     linear-gradient(180deg, var(--bg-2, #efe8d4), var(--bg, #F2EBD7));
   box-shadow:0 14px 50px rgba(74,59,45,.10);
   border-color:rgba(74,59,45,.16);
@@ -3753,7 +3753,7 @@ html[data-theme="light"] .ts-meta-top{ color:rgba(74,59,45,.5); }
   transition:transform .65s cubic-bezier(.2,.9,.25,1),
              opacity .25s ease;
 }
-html[data-theme="light"] .ts-rule{ color:var(--primary, #B07C2C); }
+html[data-theme="light"] .ts-rule{ color:var(--primary, #333333); }
 
 /* active row: bloom */
 .ts-row.is-active{ opacity:1; padding:.95rem 0; }
@@ -3761,7 +3761,7 @@ html[data-theme="light"] .ts-rule{ color:var(--primary, #B07C2C); }
   color:var(--primary, #6366f1);
   font-size:.85rem;
 }
-html[data-theme="light"] .ts-row.is-active .ts-num{ color:var(--primary, #B07C2C); }
+html[data-theme="light"] .ts-row.is-active .ts-num{ color:var(--primary, #333333); }
 .ts-row.is-active .ts-name{
   font-size:clamp(2.1rem, 5.4vw, 3.2rem);
   font-weight:800;
@@ -3773,7 +3773,7 @@ html[data-theme="light"] .ts-row.is-active .ts-num{ color:var(--primary, #B07C2C
 }
 html[data-theme="light"] .ts-row.is-active .ts-name{
   color:var(--text);
-  background:linear-gradient(180deg, var(--text) 0%, var(--text) 60%, var(--primary, #4A3B2D) 105%);
+  background:linear-gradient(180deg, var(--text) 0%, var(--text) 60%, var(--primary, #1a1a1a) 105%);
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -3989,7 +3989,7 @@ html[data-theme="light"] .ah-node{
   filter: drop-shadow(0 0 6px rgba(99,102,241,.45));
 }
 html[data-theme="light"] .ah-node-seed{
-  fill:var(--primary, #B07C2C);
+  fill:var(--primary, #333333);
   filter: drop-shadow(0 0 8px rgba(176,124,44,.35));
 }
 
@@ -4091,13 +4091,13 @@ html[data-theme="light"] .ah-svg .ah-tag-r{ fill: rgba(74,59,45,.55); }
 
 /* Laptop */
 .ah-svg .ah-laptop-base{ fill: #3a2f24; }
-.ah-svg .ah-laptop-back{ fill: #2A2218; }
+.ah-svg .ah-laptop-back{ fill: #111111; }
 .ah-svg .ah-screen{ fill: #1a1612; }
 .ah-svg .ah-tl-1{ fill: #d35d4d; opacity:.85; }
 .ah-svg .ah-tl-2{ fill: #d39a3a; opacity:.85; }
 .ah-svg .ah-tl-3{ fill: #5d9a4d; opacity:.85; }
 .ah-svg .ah-screen-rule{ stroke: rgba(255,255,255,.07); stroke-width:1; }
-.ah-svg .ah-code-amber{ stroke: #B07C2C; stroke-width:2.6; stroke-linecap:round; opacity:.92; }
+.ah-svg .ah-code-amber{ stroke: #333333; stroke-width:2.6; stroke-linecap:round; opacity:.92; }
 .ah-svg .ah-code-dim  { stroke: #9c8a73; stroke-width:2; stroke-linecap:round; opacity:.55; }
 
 /* Coffee */
@@ -4110,14 +4110,14 @@ html[data-theme="light"] .ah-svg .ah-tag-r{ fill: rgba(74,59,45,.55); }
 .ah-svg .ah-steam-b { opacity:.40; }
 
 /* Notebook */
-.ah-svg .ah-notebook      { fill: #B07C2C; }
+.ah-svg .ah-notebook      { fill: #333333; }
 .ah-svg .ah-notebook-edge { fill:none; stroke: #5C4B3D; stroke-width:1.2; }
 .ah-svg .ah-notebook-line { stroke: rgba(74,59,45,.40); stroke-width:1; }
 .ah-svg .ah-notebook-spine{ stroke: #5C4B3D; stroke-width:2; }
 
 /* Pen */
-.ah-svg .ah-pen    { stroke: #2A2218; stroke-width:3; stroke-linecap:round; fill:none; }
-.ah-svg .ah-pen-tip{ fill: #B07C2C; }
+.ah-svg .ah-pen    { stroke: #111111; stroke-width:3; stroke-linecap:round; fill:none; }
+.ah-svg .ah-pen-tip{ fill: #333333; }
 
 /* Plant */
 .ah-svg .ah-pot   { fill: #6b563f; }
