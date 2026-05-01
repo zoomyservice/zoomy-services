@@ -4319,52 +4319,41 @@ html[data-theme="light"] .sample-tag{
   color:var(--text)!important;
 }
 
-/* ── Fix hero grid overflow on chatbot + phone-agent pages ──
-   CSS grid tracks default to min-width:auto, letting content blow
-   past the column boundary. min-width:0 on children fixes this. */
-.chatbot-detail-grid > *,
-.agent-grid > *{
-  min-width:0;
-  overflow-wrap:break-word;
-  word-break:break-word;
-}
-.chatbot-detail-grid,
-.agent-grid{
-  overflow:hidden;
-}
-
 /* ══════════════════════════════════════════════════════════════════
-   Hero grid overflow fix — chatbot.html + phone-agent.html
-   ROOT CAUSE:
-   1. v8 sets display:flex!important on .hero .section-inner > div:last-of-type
-      which is the grid container on these pages — breaks the 2-col layout.
-   2. v10 sets max-width:none!important on .hero h1 — at ~90px font size
-      "on your business." renders ~1000px wide and overflows the viewport.
+   HERO GRID FIX — chatbot.html + phone-agent.html
+   ROOT CAUSE: v24 targets html .hero .section-inner > div:last-of-type
+   (specificity 0-3-2) and forces display:flex + white-space:nowrap on
+   children, which is correct for the homepage checklist but breaks the
+   2-col grid on chatbot/phone-agent pages.
+   FIX: html body prefix gives us 0-3-2 too; cascade order (later = wins)
+   breaks the tie in our favour since this block is at the end of the file.
    ══════════════════════════════════════════════════════════════════ */
 
-/* 1 — Force grid display back on these specific containers */
-html[data-theme="light"] .chatbot-detail-grid,
-html[data-theme="light"] .agent-grid{
+/* Restore grid layout — beats v24 by cascade order at equal specificity */
+html body .hero .section-inner > .chatbot-detail-grid,
+html body .hero .section-inner > .agent-grid{
   display:grid!important;
   grid-template-columns:1fr 1fr!important;
   gap:4rem!important;
   align-items:start!important;
+  flex-direction:unset!important;
+  white-space:normal!important;
 }
 
-/* 2 — Restore a sane max-width on the hero h1 so it can't overflow */
-html[data-theme="light"] .hero h1{
-  max-width:600px!important;
+/* Undo v24's white-space:nowrap + inline-flex on column children */
+html body .hero .section-inner > .chatbot-detail-grid > div,
+html body .hero .section-inner > .agent-grid > div{
+  display:block!important;
+  white-space:normal!important;
   word-break:break-word!important;
   overflow-wrap:break-word!important;
+  min-width:0!important;
 }
 
-/* 3 — On mobile, allow h1 to fill its column */
-@media(max-width:1023px){
-  html[data-theme="light"] .hero h1{
-    max-width:100%!important;
-  }
-  html[data-theme="light"] .chatbot-detail-grid,
-  html[data-theme="light"] .agent-grid{
+/* Mobile: single column */
+@media(max-width:900px){
+  html body .hero .section-inner > .chatbot-detail-grid,
+  html body .hero .section-inner > .agent-grid{
     grid-template-columns:1fr!important;
     gap:2rem!important;
   }
