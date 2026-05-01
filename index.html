@@ -1402,62 +1402,14 @@ document.addEventListener('DOMContentLoaded',function(){
 
   
     var CB_PRESETS = {
-      restaurant: {
-        name: 'The Golden Fork', type: 'Restaurant & Bar',
-        tagline: 'Modern European cuisine, craft cocktails, and weekend brunch',
-        services: ['Dine-in reservations', 'Private event hosting', 'Weekend brunch', 'Takeout orders', 'Catering'],
-        pricing: 'Starters $10–$18, Mains $24–$48, Weekend brunch $16–$28. Groups over 8 require a deposit.',
-        location: 'Downtown city center', contact: 'reservations@goldenfork.com | (555) 204-1199', languages: ['en', 'fr']
-      },
-      gym: {
-        name: 'Peak Performance Fitness', type: 'Gym & Fitness Studio',
-        tagline: 'Results-driven training for all levels',
-        services: ['Gym access', 'Personal training', 'Group classes', 'Nutrition coaching', 'Sauna & recovery zone'],
-        pricing: 'Basic $49/mo, Unlimited classes $79/mo, PT included $129/mo. Annual saves 20%. Day pass $15.',
-        location: 'Multiple locations', contact: 'info@peakfitness.com | (555) 318-7744', languages: ['en']
-      },
-      salon: {
-        name: 'Luxe Beauty Studio', type: 'Beauty Salon & Spa',
-        tagline: 'Where you leave looking and feeling your best',
-        services: ['Haircuts & styling', 'Balayage & color', 'Lash extensions', 'Facials & skincare', 'Manicure & pedicure'],
-        pricing: 'Haircuts from $55, Balayage from $180, Lash set from $120, Facials from $85. Deposit required.',
-        location: 'Uptown', contact: 'book@luxebeauty.com | (555) 772-3300', languages: ['en']
-      },
-      dental: {
-        name: 'Bright Smile Dental', type: 'Dental Clinic',
-        tagline: 'Comfortable, modern dentistry for the whole family',
-        services: ['Cleanings & checkups', 'Teeth whitening', 'Invisalign', 'Implants', 'Emergency care', "Children's dentistry"],
-        pricing: 'Cleaning from $120 (most insurance covered), Whitening $350, Implants from $2,200.',
-        location: 'Medical plaza', contact: 'appointments@brightsmile.com | (555) 499-8800', languages: ['en', 'es']
-      },
-      legal: {
-        name: 'Harrington & Associates', type: 'Law Firm',
-        tagline: 'Experienced legal counsel for individuals and businesses',
-        services: ['Personal injury (no win no fee)', 'Business law & contracts', 'Real estate law', 'Family law', 'Estate planning'],
-        pricing: 'Free 30-min consultation. Contingency for injury cases. Business law from $250/hr.',
-        location: 'Financial district', contact: 'intake@harringtonlaw.com | (555) 601-2200', languages: ['en']
-      },
-      realestate: {
-        name: 'Crestview Realty', type: 'Real Estate Agency',
-        tagline: 'Helping you find — or sell — your perfect property',
-        services: ['Residential buying & selling', 'Rental management', 'Commercial real estate', 'Free home valuations'],
-        pricing: 'Seller commission 5% (includes buyer agent). Buyers: free. Property management 8%/mo.',
-        location: 'Metro area', contact: 'hello@crestviewrealty.com | (555) 830-4400', languages: ['en']
-      },
-      store: {
-        name: 'Nomad Supply Co.', type: 'Online Outdoor & Lifestyle Store',
-        tagline: 'Gear built for people who live outside',
-        services: ['Outdoor apparel', 'Camping & hiking gear', 'Monthly subscription box', '60-day free returns', 'Loyalty rewards'],
-        pricing: 'Apparel $35–$180, Gear $20–$400. Free shipping over $75. Subscription box $49/mo.',
-        location: 'Ships worldwide', contact: 'support@nomadsupply.com | (555) 100-3355', languages: ['en']
-      },
-      auto: {
-        name: 'ProTech Auto Repair', type: 'Auto Repair Shop',
-        tagline: 'Honest repairs, fair prices, done right the first time',
-        services: ['Oil changes & tune-ups', 'Brake service', 'Transmission repair', 'Diagnostics', 'Tire service', 'AC repair'],
-        pricing: 'Oil change from $49, Brakes from $120/axle, Diagnostics $75 (waived with repair). Free estimates.',
-        location: 'East side', contact: 'service@protechauto.com | (555) 288-5500', languages: ['en']
-      },
+      restaurant:{name:'The Golden Fork',type:'Restaurant & Bar',tagline:'Modern European cuisine with seasonal ingredients, craft cocktails, and weekend brunch',services:['Dine-in lunch & dinner','Weekend brunch (Sat–Sun 10am–3pm)','Private dining & event buyouts','Takeout orders','Corporate catering'],hours:'Mon–Thu 11:30am–10pm, Fri–Sat 11:30am–11pm, Sun 10am–3pm (brunch only)',pricing:'Starters $10–18, Mains $24–48, Weekend brunch $16–28, Cocktails $13–18',dietary:'We accommodate vegetarian, vegan, and gluten-free guests with dedicated menu options. We are not a kosher-certified or halal-certified kitchen, but our team can walk through ingredients for guests with specific needs. Allergens including nuts are flagged on the menu.',reservations:'Book online, call during hours, or walk in — we hold tables for walk-ins nightly.',location:'Downtown city center, 5 min from the central metro station'},
+      gym:{name:'Peak Performance Fitness',type:'Gym & Fitness Studio',tagline:'Results-driven training for all levels — from first-timers to competitive athletes',services:['Full gym floor access','1-on-1 personal training','Group fitness classes (HIIT, yoga, spin)','Nutrition coaching','Sauna & cold plunge recovery'],hours:'Mon–Fri 5:30am–11pm, Sat–Sun 7am–9pm',pricing:'Basic $49/mo (gym only), Unlimited $79/mo (gym + all classes), PT from $129/mo. Day pass $15.',trial:'Free 3-day trial pass — no credit card required. Sign up at the front desk or online.',cancellation:'Month-to-month; cancel with 15 days notice. No long-term contracts unless on annual plan.',facilities:'3 floors: cardio, free weights, group class studio. Locker rooms with showers and secure storage.',location:'Multiple city locations — main branch in the financial district'},
+      salon:{name:'Luxe Beauty Studio',type:'Beauty Salon & Spa',tagline:'Where great hair, flawless skin, and total relaxation come together',services:['Haircuts & blow-dry styling','Balayage, highlights & color','Lash lifts & extensions','Facials & skin treatments','Manicure, pedicure & nail art'],hours:'Tue–Sat 9am–7pm, Sun 10am–5pm. Closed Mondays.',pricing:'Haircuts from $55, Balayage from $180, Lash extensions from $120, Facials from $85, Manicure from $35.',booking:'All appointments online or by phone. Book 1–2 weeks ahead for color. Same-day slots available for cuts.',cancellation:'Please cancel or reschedule 24h in advance to avoid a 50% late-cancellation fee.',products:'We use and retail Kerastase and Olaplex. Cruelty-free and vegan options available on request.',location:'Uptown, free parking in the building lot'},
+      dental:{name:'Bright Smile Dental',type:'Dental Clinic',tagline:'Comfortable, modern dentistry for the whole family — gentle care from the first visit',services:['Routine cleanings & checkups','Teeth whitening','Invisalign clear aligners','Dental implants','Emergency same-day care','Pediatric dentistry'],hours:'Mon–Thu 8am–6pm, Fri 8am–3pm, Sat 9am–2pm (select dates)',pricing:'Cleaning from $120, Whitening $350, Invisalign consultation free, Implants from $2,200, Emergency visit from $100 (waived if proceeding with treatment).',insurance:'We accept most major dental insurance plans and bill directly. 0% financing through CareCredit available.',anxiety:'We specialize in anxious patients. Nitrous oxide available, team trained to work at your pace.',location:'Inside the Westside Medical Plaza, validated parking available'},
+      legal:{name:'Harrington & Associates',type:'Law Firm',tagline:'Straightforward legal guidance for individuals, families, and growing businesses',services:['Personal injury claims','Business contracts & formation','Real estate transactions','Family law & divorce','Estate planning & wills'],hours:'Mon–Fri 9am–6pm. Evening consultations available by appointment.',pricing:'Free 30-minute initial consultation for most cases. Personal injury on contingency (no win, no fee). Business law from $250/hr. Flat-fee packages for wills and real estate closings.',process:'After your free consult we outline options and fees in writing before any engagement. No surprise billing.',location:'Financial district, 12th floor — elevator accessible, parking validated'},
+      realestate:{name:'Crestview Realty',type:'Real Estate Agency',tagline:'Helping you buy, sell, or rent with confidence — local experts, honest advice',services:['Residential buying & selling','Rental property management','Commercial real estate','Free home valuations','Investor portfolio consulting'],hours:'Mon–Sat 9am–7pm, Sun by appointment',pricing:'Seller commission 5% (split with buyer agent). Rental management 8%/mo of collected rent. Home valuation always free.',process:'Buyers: free strategy call, pre-approval guidance, property tours. Sellers: listed within 5 days, professional photos included.',contract:'Listing agreements 90 days. Buyer representation agreements are flexible.',location:'Full metro area with local offices in three neighborhoods'},
+      store:{name:'Nomad Supply Co.',type:'Online Outdoor & Lifestyle Store',tagline:'Gear tested in the field, not just in marketing photos — built for people who actually go outside',services:['Outdoor apparel & footwear','Camping & hiking gear','Monthly subscription box','Gift cards'],hours:'Customer support Mon–Fri 9am–6pm EST. Orders ship 24/7.',pricing:'Apparel $35–$180, Gear $20–$400, Subscription box $49/mo. Free standard shipping on orders over $75.',returns:'60-day returns on unworn/unused items. If it breaks under normal field use, contact us — we stand behind our gear.',shipping:'Standard (3–5 days) free over $75, Express (1–2 days) $12. International shipping to 30+ countries.',loyalty:'Earn 1 point per $1 spent. 100 points = $5 off. Points never expire.',location:'Ships from Portland, OR — online only, no retail locations'},
+      auto:{name:'ProTech Auto Repair',type:'Auto Repair Shop',tagline:'Honest repairs, fair prices, done right the first time — no upselling',services:['Oil changes & fluid services','Brake inspection & replacement','Transmission service & repair','Full diagnostics','Tire rotation & balancing','AC & heating repair'],hours:'Mon–Fri 7:30am–6pm, Sat 8am–3pm',pricing:'Oil change from $49, Brake pads from $120/axle, Diagnostics $75 (waived with repair), Tire rotation $25.',warranty:'All repairs include 12-month / 12,000-mile warranty on parts and labor.',process:'We show you what we find before doing any work — photos included. No repair starts without your approval.',location:'East side, 2 min off the highway. Free shuttle within 3 miles.'},
     };
 
     window.cbTailorPreset = async function(type) {
@@ -1546,7 +1498,7 @@ sendBtn.addEventListener('click', sendMessage);
 </script>
 <script src="js/main.js?v=20260416b"></script>
 <script src="js/i18n.js?v=20260416b"></script>
-<script src="js/chatbot.js?v=20260501c"></script>
+<script src="js/chatbot.js?v=20260501d"></script>
 <script type="module">
 import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
 
