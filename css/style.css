@@ -4360,3 +4360,85 @@ html body .hero .section-inner > .agent-grid > div{
     gap:2rem!important;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   v25 — global inline-grid mobile collapser
+   Catches ALL inline style grids with fixed-px columns or multi-col
+   layouts that have no class-level mobile override. Attribute
+   selectors are specific enough to not clobber anything else.
+   ════════════════════════════════════════════════════════════════════ */
+
+@media(max-width:768px){
+
+  /* ── Fixed-px left column grids (200px, 260px, 320px, 360px, 460px) ── */
+  [style*="grid-template-columns:200px"],
+  [style*="grid-template-columns:260px"],
+  [style*="grid-template-columns:320px"],
+  [style*="grid-template-columns:360px"],
+  [style*="grid-template-columns:460px"]{
+    grid-template-columns:1fr!important;
+    gap:1.5rem!important;
+  }
+
+  /* ── Two-column text grids with large gaps ── */
+  [style*="grid-template-columns:1fr 1fr;gap:4rem"],
+  [style*="grid-template-columns:1fr 1fr;gap:5rem"],
+  [style*="grid-template-columns:1fr 1fr;gap:3.5rem"],
+  [style*="grid-template-columns:1fr 1fr;gap:3rem"]{
+    grid-template-columns:1fr!important;
+    gap:2rem!important;
+  }
+
+  /* ── Repeat-3 and repeat-4 grids ── */
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns:repeat(3, 1fr)"]{
+    grid-template-columns:1fr!important;
+    gap:1rem!important;
+  }
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(4, 1fr)"]{
+    grid-template-columns:repeat(2,1fr)!important;
+    gap:1rem!important;
+  }
+
+  /* ── Generic: any inline grid gets min-width:0 on children to prevent blowout ── */
+  [style*="display:grid"] > *{
+    min-width:0;
+    max-width:100%;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+
+  /* ── Long-word safety net on all text elements ── */
+  p, li, span, td, th, label, figcaption{
+    overflow-wrap:break-word;
+    word-break:break-word;
+    max-width:100%;
+  }
+
+  /* ── Images and media always fit ── */
+  img, video, iframe, embed, object, svg{
+    max-width:100%!important;
+    height:auto;
+  }
+
+  /* ── Code blocks don't push the page ── */
+  pre, code{
+    max-width:100%;
+    overflow-x:auto;
+    white-space:pre-wrap;
+    word-break:break-all;
+  }
+}
+
+/* Extra-small (≤480px): even tighter */
+@media(max-width:480px){
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns:repeat(4, 1fr)"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns:repeat(2, 1fr)"],
+  [style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr!important;
+    gap:1rem!important;
+  }
+}
