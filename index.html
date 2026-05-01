@@ -1409,7 +1409,7 @@ document.addEventListener('DOMContentLoaded',function(){
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: '__INTRO__', history: [], business: tailoredBiz })
         });
-        var introText = "Hi! I've learned about your business. Ask me anything — how this chatbot would work for you, what it would say to your visitors, or how it handles common questions.";
+        var introText = "Hi! I’ve learned about your business. Ask me anything — how this chatbot would work for you, what it would say to your visitors, or how it handles common questions.";
         if (introRes.ok) {
           var introData = await introRes.json();
           if (introData.reply) introText = introData.reply;
@@ -1427,7 +1427,7 @@ document.addEventListener('DOMContentLoaded',function(){
     } catch(e) {}
 
     loadDiv.remove();
-    appendMsg("Couldn’t reach that URL. Try another or email <strong>contact@zoomy.services</strong>.", 'bot');
+    appendMsg("Couldn’t reach that URL. The site may block automated access — try a different URL, or just ask me questions about your business directly.", 'bot');
     if (urlEl) urlEl.disabled = false;
     if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Analyze →'; }
   };

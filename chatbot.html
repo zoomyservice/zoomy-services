@@ -492,7 +492,9 @@
       } catch(e) {}
 
       loadDiv.remove();
-      appendMsg("Couldn’t reach that URL. Try another or email <strong>contact@zoomy.services</strong>.", 'bot');
+      var errMsg = "Couldn’t reach that URL. The site may block automated access — try a different URL, or just ask me questions about your business directly.";
+      appendMsg(errMsg, 'bot');
+
       if (urlEl) urlEl.disabled = false;
       if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Analyze →'; }
     };
