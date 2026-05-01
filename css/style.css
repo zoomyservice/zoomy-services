@@ -4227,3 +4227,57 @@ html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,2
   overflow-wrap:anywhere;
 }
 #transcript-body > *{ word-break:break-word; overflow-wrap:anywhere; max-width:100%; box-sizing:border-box; }
+
+/* ══════════════════════════════════════════════════════════════════
+   Light mode white-text fix — catch inline color:#fff on all
+   text-bearing elements that aren't inside an intentionally dark container.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Broad catch: any element with inline color:#fff */
+html[data-theme="light"] [style*="color:#fff"],
+html[data-theme="light"] [style*="color: #fff"],
+html[data-theme="light"] [style*="color:#ffffff"],
+html[data-theme="light"] [style*="color:var(--white)"]{
+  color:var(--text)!important;
+}
+
+/* Inline rgba white — common subtitle/muted text pattern */
+html[data-theme="light"] [style*="color:rgba(255,255,255,.85)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255, .85)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.9)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.7)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.6)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.5)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.45)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.4)"]{
+  color:var(--text-2)!important;
+}
+html[data-theme="light"] [style*="color:rgba(255,255,255,.3)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.35)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.25)"],
+html[data-theme="light"] [style*="color:rgba(255,255,255,.2)"]{
+  color:var(--muted)!important;
+}
+
+/* CSS-class white text */
+html[data-theme="light"] .section-title{ color:var(--text)!important; }
+html[data-theme="light"] .hero h1{ color:var(--text)!important; }
+html[data-theme="light"] .hero-sub{ color:var(--text-2)!important; }
+html[data-theme="light"] .section-sub{ color:var(--text-2)!important; }
+html[data-theme="light"] .footer-col h4{ color:var(--text)!important; }
+
+/* ── Exceptions: keep white inside intentionally dark containers ── */
+html[data-theme="light"] #admShell [style*="color:#fff"],
+html[data-theme="light"] #admShell [style*="color:rgba(255,255,255"],
+html[data-theme="light"] .terminal [style*="color:#fff"],
+html[data-theme="light"] .terminal-body [style*="color:#fff"],
+html[data-theme="light"] #free-bar [style*="color:#fff"],
+html[data-theme="light"] #free-bar [style*="color:rgba(255,255,255"],
+html[data-theme="light"] .chatbot-mock [style*="color:#fff"],
+html[data-theme="light"] .chatbot-mock [style*="color:rgba(255,255,255"],
+html[data-theme="light"] .phone-mockup [style*="color:#fff"],
+html[data-theme="light"] .phone-mockup [style*="color:rgba(255,255,255"],
+html[data-theme="light"] .btn-nav [style*="color:#fff"],
+html[data-theme="light"] .btn-primary [style*="color:#fff"]{
+  color:inherit!important;
+}
