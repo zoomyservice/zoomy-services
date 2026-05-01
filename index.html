@@ -1153,7 +1153,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <a class="btn btn-primary" href="contact.html">Add to Your Project ›</a>
 </div>
 </div>
-<div class="reveal-right" style="display:flex;justify-content:flex-end;">
+<div class="reveal-right" style="display:flex;flex-direction:column;align-items:flex-end;">
 <div class="chatbot-mock" style="width:100%;max-width:400px;">
 <div class="chatbot-header">
 <div class="chatbot-avatar">🤖</div>
@@ -1173,12 +1173,17 @@ document.addEventListener('DOMContentLoaded',function(){
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
 </div>
+</div>
 <div class="cb-tailor">
-<p class="cb-tailor-label">✦ Tailor to your business</p>
+<h4 class="cb-tailor-title">See it work for your business</h4>
+<p class="cb-tailor-desc">Paste your website URL — the chatbot will scan your site, learn your services and pricing, and answer questions exactly as it would for your visitors.</p>
 <div class="cb-tailor-row">
 <input class="cb-tailor-url" id="cb-tailor-url" type="url" placeholder="yourbusiness.com" onkeydown="if(event.key==='Enter')cbTailor()"/>
-<button class="cb-tailor-btn" id="cb-tailor-btn" onclick="cbTailor()">Analyze →</button>
+<button class="cb-tailor-btn" id="cb-tailor-btn" onclick="cbTailor()">Try it →</button>
 </div>
+<div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
+<span>Showing results for <strong id="cb-tailor-biz-name"></strong></span>
+<a class="cb-tailor-reset-link" href="#" onclick="cbTailorReset();return false;">↺ Try a different site</a>
 </div>
 </div>
 </div>
@@ -1298,13 +1303,25 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var history = [
     { role: 'user', text: 'What makes your chatbot different from just adding ChatGPT to a site?' },
-    { role: 'bot', text: "It’s trained only on your business — your real services, prices, and policies. It won’t go off-topic or make things up. And when the moment is right, it captures the visitor’s contact details directly in the conversation." }
+    { role: 'bot', text: "It's trained only on your business — your real services, prices, and policies. It won't go off-topic or make things up. And when the moment is right, it captures the visitor's contact details directly in the conversation." }
+  ];
+
+  var ORIG_MSGS    = messagesEl.innerHTML;
+  var ORIG_STATUS  = 'Online — try it out';
+  var ORIG_HISTORY = history.slice();
+
+  var ANALYZE_STEPS = [
+    'Scanning your website…',
+    'Reading your services…',
+    'Extracting pricing info…',
+    'Personalizing your chatbot…',
+    'Almost ready…',
   ];
 
   // Restore saved session if available
   try {
     var saved = JSON.parse(sessionStorage.getItem(STORE));
-    if (saved && saved.msgs && saved.msgs.length) {
+    if (saved && saved.msgs && saved.msgs.length && !saved.tailored) {
       messagesEl.innerHTML = '';
       saved.msgs.forEach(function(m) {
         var d = document.createElement('div');
@@ -1371,13 +1388,14 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     } catch(e) {}
     typing.remove();
-    appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we’ll reply within 24 hours.", 'bot');
+    appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we'll reply within 24 hours.", 'bot');
     saveChat();
   }
 
   window.cbTailor = async function() {
-    var urlEl = document.getElementById('cb-tailor-url');
-    var btnEl = document.getElementById('cb-tailor-btn');
+    var urlEl   = document.getElementById('cb-tailor-url');
+    var btnEl   = document.getElementById('cb-tailor-btn');
+    var resetEl = document.getElementById('cb-tailor-reset');
     var url = urlEl ? urlEl.value.trim() : '';
     if (!url) return;
     if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
@@ -1385,13 +1403,19 @@ document.addEventListener('DOMContentLoaded',function(){
     if (urlEl) urlEl.disabled = true;
     if (btnEl) { btnEl.disabled = true; btnEl.textContent = 'Analyzing…'; }
 
-    messagesEl.innerHTML = '';
     history = [];
-    var loadDiv = document.createElement('div');
-    loadDiv.className = 'msg msg-bot';
-    loadDiv.innerHTML = '<span class="msg-typing"><span></span><span></span><span></span></span>';
-    messagesEl.appendChild(loadDiv);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    messagesEl.innerHTML =
+      '<div class="cb-analyzing">' +
+      '<div class="cb-spinner"></div>' +
+      '<p class="cb-analyze-status" id="cb-analyze-status">' + ANALYZE_STEPS[0] + '</p>' +
+      '</div>';
+
+    var stepIdx = 0;
+    var stepTimer = setInterval(function() {
+      stepIdx = Math.min(stepIdx + 1, ANALYZE_STEPS.length - 1);
+      var el = document.getElementById('cb-analyze-status');
+      if (el) el.textContent = ANALYZE_STEPS[stepIdx];
+    }, 2200);
 
     try {
       var res = await fetch(SCRAPE_WORKER, {
@@ -1402,34 +1426,63 @@ document.addEventListener('DOMContentLoaded',function(){
       if (res.ok) {
         var data = await res.json();
         tailoredBiz = data.business || data;
-        loadDiv.innerHTML = '<span class="msg-typing"><span></span><span></span><span></span></span>';
+
+        var statusEl = document.getElementById('cb-analyze-status');
+        if (statusEl) statusEl.textContent = 'Personalizing your chatbot…';
 
         var introRes = await fetch(DEMO_WORKER, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: '__INTRO__', history: [], business: tailoredBiz })
         });
-        var introText = "Hi! I’ve learned about your business. Ask me anything — how this chatbot would work for you, what it would say to your visitors, or how it handles common questions.";
+        var introText = "Hi! I've learned about your business. Ask me anything — how this chatbot would work for you, what it would say to your visitors, or how it handles common questions.";
         if (introRes.ok) {
           var introData = await introRes.json();
           if (introData.reply) introText = introData.reply;
         }
-        loadDiv.remove();
+
+        clearInterval(stepTimer);
+        messagesEl.innerHTML = '';
         appendMsg(introText, 'bot');
         history.push({ role: 'bot', text: introText });
 
-        var status = document.querySelector('.chatbot-status');
-        if (status && tailoredBiz && tailoredBiz.name) status.textContent = 'Tailored to ' + tailoredBiz.name;
-        if (btnEl) { btnEl.textContent = '✓ Tailored'; btnEl.style.opacity = '.6'; btnEl.disabled = true; }
-        if (urlEl) urlEl.disabled = false;
+        var bizName = (tailoredBiz && tailoredBiz.name) ? tailoredBiz.name : '';
+        var statusBar = document.querySelector('.chatbot-status');
+        if (statusBar) statusBar.textContent = bizName ? 'Tailored to ' + bizName : 'Tailored to your business';
+
+        if (resetEl) {
+          var nameEl = document.getElementById('cb-tailor-biz-name');
+          if (nameEl) nameEl.textContent = bizName || 'your site';
+          resetEl.style.display = 'flex';
+        }
+        if (btnEl) btnEl.style.display = 'none';
+        if (urlEl) urlEl.style.display = 'none';
         return;
       }
     } catch(e) {}
 
-    loadDiv.remove();
-    appendMsg("Couldn’t reach that URL. The site may block automated access — try a different URL, or just ask me questions about your business directly.", 'bot');
-    if (urlEl) urlEl.disabled = false;
-    if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Analyze →'; }
+    clearInterval(stepTimer);
+    messagesEl.innerHTML = '';
+    appendMsg("Couldn't read that site. Try a different URL, or just ask me questions about your business directly.", 'bot');
+    if (urlEl) { urlEl.disabled = false; }
+    if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Try it →'; }
+  };
+
+  window.cbTailorReset = function() {
+    tailoredBiz = null;
+    history = ORIG_HISTORY.slice();
+    messagesEl.innerHTML = ORIG_MSGS;
+
+    var urlEl   = document.getElementById('cb-tailor-url');
+    var btnEl   = document.getElementById('cb-tailor-btn');
+    var resetEl = document.getElementById('cb-tailor-reset');
+    var statusBar = document.querySelector('.chatbot-status');
+
+    if (urlEl)    { urlEl.value = ''; urlEl.disabled = false; urlEl.style.display = ''; }
+    if (btnEl)    { btnEl.textContent = 'Try it →'; btnEl.disabled = false; btnEl.style.opacity = '1'; btnEl.style.display = ''; }
+    if (resetEl)  resetEl.style.display = 'none';
+    if (statusBar) statusBar.textContent = ORIG_STATUS;
+    try { sessionStorage.removeItem(STORE); } catch(e) {}
   };
 
   sendBtn.addEventListener('click', sendMessage);
