@@ -4318,3 +4318,17 @@ html[data-theme="light"] .wi-tab-active,
 html[data-theme="light"] .sample-tag{
   color:var(--text)!important;
 }
+
+/* ── Fix hero grid overflow on chatbot + phone-agent pages ──
+   CSS grid tracks default to min-width:auto, letting content blow
+   past the column boundary. min-width:0 on children fixes this. */
+.chatbot-detail-grid > *,
+.agent-grid > *{
+  min-width:0;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+.chatbot-detail-grid,
+.agent-grid{
+  overflow:hidden;
+}
