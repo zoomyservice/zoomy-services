@@ -4167,8 +4167,8 @@ html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,2
   word-break:break-all;
   overflow-wrap:anywhere;
 }
-/* Parent mock + section: belt-and-braces no-horizontal-overflow */
-.chatbot-mock{ max-width:100%; box-sizing:border-box; overflow:hidden; }
+/* (Do NOT override .chatbot-mock max-width here — base CSS sets max-width:380px,
+   and the @media(max-width:900px) block already handles mobile sizing.) */
 
 /* ── phone-agent transcript: matching scrollbar + wrap ── */
 #transcript-body::-webkit-scrollbar{ width:4px; }
