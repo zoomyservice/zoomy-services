@@ -430,10 +430,7 @@ function render() {
       const { Conversation } = await import('https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.4.0/+esm');
       callConv = await Conversation.startSession({
         signedUrl,
-        overrides: {
-          agent: agentOverride,
-          tts: { stability: 0.65, similarityBoost: 0.80 },
-        },
+        overrides: { agent: agentOverride },
         onConnect: () => {
           try { micStream.getTracks().forEach(t => t.stop()); } catch(e) {}
           startAudioObserver();
