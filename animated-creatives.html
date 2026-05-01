@@ -91,7 +91,7 @@ html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):
 html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
 
 <style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .format-name{color:var(--text)!important}html[data-theme="light"] .phase-name{color:var(--text)!important}html[data-theme="light"] .pricing-half-price{color:var(--text)!important}</style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
+<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
 <script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
 </head>
 <body>
@@ -340,7 +340,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </footer>
 <script src="js/main.js?v=20260416"></script>
 <script src="js/i18n.js?v=20260416"></script>
-<script src="js/chatbot.js?v=20260501d"></script>
+<script src="js/chatbot.js?v=20260501e"></script>
 <script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>

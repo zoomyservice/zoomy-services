@@ -390,11 +390,7 @@ html[data-theme="light"] #zmy-presets{background:#f5f3ff;border-top-color:rgba(9
   // (phone-agent.html has #call-btn, index.html has #hp-call-btn)
   // Showing the chatbot widget alongside the page's own call UI creates a confusing double-UI
   // Only hide popup on phone-agent page (has its own full-screen call UI)
-  const hasOwnCallDemo = !!(document.getElementById('call-btn'));
-  if (hasOwnCallDemo) {
-    bubble.style.setProperty('display', 'none', 'important');
-    return; // nothing else to wire up on this page
-  }
+  // Popup chatbot shows on all pages
   const phoneBtn      = document.getElementById('zmy-phone-btn');
   const callPanel     = document.getElementById('zmy-call-panel');
   const callOrb       = document.getElementById('zmy-call-orb');

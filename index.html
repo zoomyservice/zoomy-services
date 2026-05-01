@@ -101,7 +101,7 @@ nav{top:var(--bar-h)!important}
 .bar-off #free-bar{display:none!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
 </style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
+<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
 <!-- ═══ ANALYTICS & TRACKING ═══ -->
 <!-- Google Analytics 4 -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
@@ -1498,7 +1498,7 @@ sendBtn.addEventListener('click', sendMessage);
 </script>
 <script src="js/main.js?v=20260416b"></script>
 <script src="js/i18n.js?v=20260416b"></script>
-<script src="js/chatbot.js?v=20260501d"></script>
+<script src="js/chatbot.js?v=20260501e"></script>
 <script type="module">
 import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
 

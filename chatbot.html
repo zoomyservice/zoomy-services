@@ -30,7 +30,7 @@
 .bar-off #free-bar{display:none!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
 </style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
+<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
 <!-- ═══ ANALYTICS & TRACKING ═══ -->
 <!-- Google Analytics 4 -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
@@ -340,7 +340,7 @@
 </footer>
 <script src="js/main.js?v=20260416b"></script>
 <script src="js/i18n.js?v=20260416b"></script>
-<script src="js/chatbot.js?v=20260501d"></script>
+<script src="js/chatbot.js?v=20260501e"></script>
 <script>
 // ── Business type preset event delegation ──────────────────────────────────
 (function() {
@@ -359,8 +359,7 @@
 // ── Zoomy demo widget wiring ───────────────────────────────────────────────────────────────────────────
 (function() {
   function initDemo() {
-    // Remove the floating chat bubble on this page
-    ['zmy-bubble','zmy-win','zmy-attn'].forEach(function(id){var el=document.getElementById(id);if(el)el.remove();});
+    // Floating popup chatbot coexists with the embedded demo on this page
 
     var STORE = 'zmy_demo_v1';
     var messagesEl = document.getElementById('chatbot-messages');
