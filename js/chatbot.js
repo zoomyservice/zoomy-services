@@ -21,6 +21,18 @@ const BIZ = {
 
 /* ── Conversation history (AI only — no KB) ── */
 const memory = { history: [] };
+const DEMO_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/demo-chat';
+const CB_PRESETS = {
+  restaurant:{name:'The Golden Fork',type:'Restaurant & Bar',tagline:'Modern European cuisine, craft cocktails, and weekend brunch',services:['Dine-in reservations','Private event hosting','Weekend brunch','Takeout orders','Catering'],pricing:'Starters $10–18, Mains $24–48, Brunch $16–28',location:'Downtown',contact:'reservations@goldenfork.com'},
+  gym:{name:'Peak Performance Fitness',type:'Gym & Fitness Studio',tagline:'Results-driven training for all levels',services:['Gym access','Personal training','Group classes','Nutrition coaching','Sauna & recovery'],pricing:'Basic $49/mo, Unlimited $79/mo, PT $129/mo. Day pass $15',location:'Multiple locations',contact:'info@peakfitness.com'},
+  salon:{name:'Luxe Beauty Studio',type:'Beauty Salon & Spa',tagline:'Where you leave looking and feeling your best',services:['Haircuts & styling','Balayage & color','Lash extensions','Facials','Manicure & pedicure'],pricing:'Haircuts from $55, Balayage from $180, Lashes from $120, Facials from $85',location:'Uptown',contact:'book@luxebeauty.com'},
+  dental:{name:'Bright Smile Dental',type:'Dental Clinic',tagline:'Comfortable modern dentistry for the whole family',services:['Cleanings & checkups','Teeth whitening','Invisalign','Implants','Emergency care'],pricing:'Cleaning from $120, Whitening $350, Implants from $2,200',location:'Medical plaza',contact:'appointments@brightsmile.com'},
+  legal:{name:'Harrington & Associates',type:'Law Firm',tagline:'Experienced legal counsel for individuals and businesses',services:['Personal injury','Business law','Real estate law','Family law','Estate planning'],pricing:'Free 30-min consult. Contingency for injury. Business law from $250/hr',location:'Financial district',contact:'intake@harringtonlaw.com'},
+  realestate:{name:'Crestview Realty',type:'Real Estate Agency',tagline:'Helping you find — or sell — your perfect property',services:['Residential buying & selling','Rental management','Commercial real estate','Free home valuations'],pricing:'Seller commission 5%. Property management 8%/mo',location:'Metro area',contact:'hello@crestviewrealty.com'},
+  store:{name:'Nomad Supply Co.',type:'Online Outdoor & Lifestyle Store',tagline:'Gear built for people who live outside',services:['Outdoor apparel','Camping & hiking gear','Subscription box','60-day returns','Loyalty rewards'],pricing:'Apparel $35–$180, Gear $20–$400. Free shipping over $75. Subscription $49/mo',location:'Ships worldwide',contact:'support@nomadsupply.com'},
+  auto:{name:'ProTech Auto Repair',type:'Auto Repair Shop',tagline:'Honest repairs, fair prices, done right the first time',services:['Oil changes','Brake service','Transmission repair','Diagnostics','Tire service','AC repair'],pricing:'Oil change from $49, Brakes from $120/axle, Diagnostics $75 (waived w/ repair)',location:'East side',contact:'service@protechauto.com'},
+};
+let popupTailoredBiz = null;
 
 function md(text) {
   return text
@@ -95,6 +107,16 @@ function render() {
 #zmy-call-transcript-body{display:none;margin-top:.5rem;background:#0a0a18;border:1px solid rgba(99,102,241,.15);border-radius:10px;padding:.9rem 1rem;max-height:140px;overflow-y:auto;font-size:.75rem;line-height:1.6;color:#94a3b8}
 #zmy-call-back{font-size:.72rem;color:#475569;background:none;border:none;cursor:pointer;text-decoration:underline;margin-top:.2rem;transition:color .15s}
 #zmy-call-back:hover{color:#94a3b8}
+#zmy-presets{padding:8px 14px 12px;background:#0d0d1c;border-top:1px solid rgba(99,102,241,.12);flex-shrink:0}
+#zmy-presets-lbl{font-size:.7rem;color:#64748b;margin-bottom:7px}
+#zmy-presets-grid{display:flex;flex-wrap:wrap;gap:5px}
+.zmy-pb{background:#111128;border:1px solid rgba(99,102,241,.2);border-radius:7px;padding:.3rem .6rem;font-size:.74rem;color:#94a3b8;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap;line-height:1.5}
+.zmy-pb:hover{border-color:rgba(99,102,241,.5);color:#a5b4fc;background:rgba(99,102,241,.12);transform:translateY(-1px)}
+.zmy-pb.zmy-pb-on{border-color:#6366f1;background:rgba(99,102,241,.2);color:#a5b4fc;font-weight:700}
+#zmy-demo-bar{display:none;padding:5px 14px;background:#0a0a18;border-top:1px solid rgba(99,102,241,.12);align-items:center;justify-content:space-between;font-size:.72rem;flex-shrink:0}
+#zmy-demo-bar.on{display:flex}
+#zmy-demo-biz{color:#94a3b8}
+#zmy-demo-reset{color:#6366f1;background:none;border:none;cursor:pointer;font-family:inherit;font-size:.72rem;padding:0;text-decoration:underline}
 `;
 
   const styleEl = document.createElement('style');
@@ -152,6 +174,23 @@ function render() {
       </div>
       <button id="zmy-call-back">← ${t('Back to chat','Retour au chat','Volver al chat')}</button>
     </div>
+    <div id="zmy-presets" style="display:none">
+      <div id="zmy-presets-lbl">Try it as a business type:</div>
+      <div id="zmy-presets-grid">
+        <button class="zmy-pb" data-biz="restaurant">🍽️ Restaurant</button>
+        <button class="zmy-pb" data-biz="gym">💪 Gym</button>
+        <button class="zmy-pb" data-biz="salon">💇 Beauty Salon</button>
+        <button class="zmy-pb" data-biz="dental">🦷 Dental Clinic</button>
+        <button class="zmy-pb" data-biz="legal">⚖️ Law Firm</button>
+        <button class="zmy-pb" data-biz="realestate">🏡 Real Estate</button>
+        <button class="zmy-pb" data-biz="store">🛒 Online Store</button>
+        <button class="zmy-pb" data-biz="auto">🚗 Auto Shop</button>
+      </div>
+    </div>
+    <div id="zmy-demo-bar">
+      <span id="zmy-demo-biz">Demo mode</span>
+      <button id="zmy-demo-reset">↺ Back to Zoomy</button>
+    </div>
     <div id="zmy-inp-row">
       <textarea id="zmy-input" rows="1" placeholder="${t('Ask about our services...','Posez votre question...','Pregunta sobre nuestros servicios...')}"></textarea>
       <button id="zmy-send" aria-label="Send">
@@ -165,6 +204,11 @@ function render() {
 
   const msgs = document.getElementById('zmy-msgs');
   const input = document.getElementById('zmy-input');
+  const presetsEl   = document.getElementById('zmy-presets');
+  const presetsGrid = document.getElementById('zmy-presets-grid');
+  const demoBar     = document.getElementById('zmy-demo-bar');
+  const demoBizEl   = document.getElementById('zmy-demo-biz');
+  const demoResetBtn= document.getElementById('zmy-demo-reset');
   let isOpen = false;
   let savedScrollY = 0;
 
@@ -173,7 +217,7 @@ function render() {
   function savePopup() {
     try {
       const items = Array.from(msgs.children).map(el => ({ cls: el.className, html: el.innerHTML }));
-      sessionStorage.setItem(POPUP_STORE, JSON.stringify({ items, history: memory.history }));
+      sessionStorage.setItem(POPUP_STORE, JSON.stringify({ items, history: memory.history, tailoredBiz: popupTailoredBiz }));
     } catch(e) {}
   }
   function restorePopup() {
@@ -187,6 +231,13 @@ function render() {
         msgs.appendChild(d);
       });
       if (saved.history) memory.history = saved.history;
+      if (saved.tailoredBiz) {
+        popupTailoredBiz = saved.tailoredBiz;
+        demoBizEl.textContent = saved.tailoredBiz.name;
+        demoBar.classList.add('on');
+        document.getElementById('zmy-name').textContent = saved.tailoredBiz.name;
+        document.getElementById('zmy-status').textContent = saved.tailoredBiz.type;
+      }
       msgs.scrollTop = msgs.scrollHeight;
       return true;
     } catch(e) { return false; }
@@ -231,10 +282,14 @@ function render() {
 
     // All messages go to Gemini — prices and knowledge come from the worker's PRICING object
     try {
-      const res = await fetch(AI_WORKER, {
+      const endpoint = popupTailoredBiz ? DEMO_WORKER : AI_WORKER;
+      const reqBody = popupTailoredBiz
+        ? JSON.stringify({ message: text, history: memory.history.slice(-8), business: popupTailoredBiz })
+        : JSON.stringify({ message: text, history: memory.history.slice(-8) });
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: memory.history.slice(-8) })
+        body: reqBody
       });
       if (res.ok) {
         const { reply } = await res.json();
@@ -273,6 +328,7 @@ function render() {
       "Bonjour ! 👋 Je suis l'assistant Zoomy. Posez-moi une question sur nos campagnes, sites web, chatbots, agents téléphoniques ou tarifs.",
       "¡Hola! 👋 Soy el asistente de Zoomy. Pregúntame sobre campañas, sitios web, chatbots, agentes telefónicos o precios."
     )), 'bot');
+      presetsEl.style.display = 'block';
     }
     setTimeout(() => input.focus(), 300);
   }
@@ -571,6 +627,62 @@ function render() {
   });
 
   callStartBtn.addEventListener('click', toggleCall);
+
+
+  // ── Business type preset buttons ────────────────────────────────────────────
+  presetsGrid.addEventListener('click', async function(e) {
+    const btn = e.target.closest('.zmy-pb');
+    if (!btn) return;
+    const type = btn.dataset.biz;
+    const preset = CB_PRESETS[type];
+    if (!preset) return;
+    presetsGrid.querySelectorAll('.zmy-pb').forEach(b => { b.classList.remove('zmy-pb-on'); b.disabled = true; });
+    btn.classList.add('zmy-pb-on');
+    presetsEl.style.display = 'none';
+    msgs.innerHTML = '';
+    memory.history = [];
+    popupTailoredBiz = preset;
+    const typing = showTyping();
+    try {
+      const res = await fetch(DEMO_WORKER, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: '__INTRO__', history: [], business: preset })
+      });
+      let intro = `Hi! I'm the assistant for ${preset.name}. How can I help you today?`;
+      if (res.ok) { const d = await res.json(); if (d.reply) intro = d.reply; }
+      typing.remove();
+      addMsg(md(intro), 'bot');
+      memory.history.push({ role: 'bot', text: intro });
+      demoBizEl.textContent = preset.name;
+      demoBar.classList.add('on');
+      document.getElementById('zmy-name').textContent = preset.name;
+      document.getElementById('zmy-status').textContent = preset.type;
+      savePopup();
+    } catch(err) {
+      typing.remove();
+      addMsg(md('Something went wrong — try again.'), 'bot');
+      presetsEl.style.display = 'block';
+      popupTailoredBiz = null;
+    }
+    presetsGrid.querySelectorAll('.zmy-pb').forEach(b => { b.disabled = false; });
+  });
+
+  demoResetBtn.addEventListener('click', function() {
+    popupTailoredBiz = null;
+    memory.history = [];
+    msgs.innerHTML = '';
+    demoBar.classList.remove('on');
+    presetsGrid.querySelectorAll('.zmy-pb').forEach(b => b.classList.remove('zmy-pb-on'));
+    document.getElementById('zmy-name').textContent = BIZ.name;
+    document.getElementById('zmy-status').textContent = t('Online — ask me anything','En ligne — posez-moi une question','En línea — pregúntame');
+    addMsg(md(t(
+      "Hi there! 👋 I'm the Zoomy assistant. Ask me about campaigns, websites, chatbots, phone agents, or pricing.",
+      "Bonjour ! 👋 Je suis l'assistant Zoomy. Posez-moi une question sur nos services.",
+      "¡Hola! 👋 Soy el asistente de Zoomy. Pregúntame sobre nuestros servicios."
+    )), 'bot');
+    presetsEl.style.display = 'block';
+    try { sessionStorage.removeItem(POPUP_STORE); } catch(e) {}
+  });
 
   // Attention bubble — shown once ever via localStorage
   setTimeout(() => {

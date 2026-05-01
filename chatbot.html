@@ -197,18 +197,18 @@
 <h4 class="cb-tailor-title">Try it for your type of business</h4>
 <p class="cb-tailor-desc">Pick a business type and watch the chatbot become its AI assistant — answering real questions about pricing, bookings, and services.</p>
 <div class="cb-type-grid" id="cb-type-grid">
-<button class="cb-type-btn" onclick="cbTailorPreset('restaurant')">🍽️ Restaurant</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('gym')">💪 Gym</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('salon')">💇 Beauty Salon</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('dental')">🦷 Dental Clinic</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('legal')">⚖️ Law Firm</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('realestate')">🏡 Real Estate</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('store')">🛍️ Online Store</button>
-<button class="cb-type-btn" onclick="cbTailorPreset('auto')">🚗 Auto Shop</button>
+<button class="cb-type-btn" data-biz="restaurant">🍽️ Restaurant</button>
+<button class="cb-type-btn" data-biz="gym">💪 Gym</button>
+<button class="cb-type-btn" data-biz="salon">💇 Beauty Salon</button>
+<button class="cb-type-btn" data-biz="dental">🦷 Dental Clinic</button>
+<button class="cb-type-btn" data-biz="legal">⚖️ Law Firm</button>
+<button class="cb-type-btn" data-biz="realestate">🏡 Real Estate</button>
+<button class="cb-type-btn" data-biz="store">🛍️ Online Store</button>
+<button class="cb-type-btn" data-biz="auto">🚗 Auto Shop</button>
 </div>
 <div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
 <span>Now showing: <strong id="cb-tailor-biz-name"></strong></span>
-<a class="cb-tailor-reset-link" href="#" onclick="cbTailorReset();return false;">↺ Try another type</a>
+<a class="cb-tailor-reset-link" href="#" data-action="cb-reset">↺ Try another type</a>
 </div>
 </div>
 </div>
@@ -340,16 +340,27 @@
 </footer>
 <script src="js/main.js?v=20260416b"></script>
 <script src="js/i18n.js?v=20260416b"></script>
-<script src="js/chatbot.js?v=20260430e"></script>
+<script src="js/chatbot.js?v=20260501a"></script>
+<script>
+// ── Business type preset event delegation ──────────────────────────────────
+(function() {
+  document.getElementById('cb-type-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-biz]');
+    if (btn && typeof window.cbTailorPreset === 'function') window.cbTailorPreset(btn.dataset.biz);
+  });
+  var resetLink = document.querySelector('[data-action="cb-reset"]');
+  if (resetLink) resetLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (typeof window.cbTailorReset === 'function') window.cbTailorReset();
+  });
+})();
+</script>
 <script>
 // ── Zoomy demo widget wiring ───────────────────────────────────────────────────────────────────────────
 (function() {
   function initDemo() {
     // Remove the floating chat bubble on this page
-    var root = document.getElementById('zmy-root');
-    if (root) root.remove();
-    var attn = document.getElementById('zmy-attn');
-    if (attn) attn.remove();
+    ['zmy-bubble','zmy-win','zmy-attn'].forEach(function(id){var el=document.getElementById(id);if(el)el.remove();});
 
     var STORE = 'zmy_demo_v1';
     var messagesEl = document.getElementById('chatbot-messages');
