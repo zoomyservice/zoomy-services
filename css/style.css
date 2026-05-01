@@ -4130,18 +4130,45 @@ html:not([data-theme="light"]) .ah-svg .ah-notebook-line{ stroke: rgba(255,255,2
   }
 }
 
-/* ── on-page chatbot demo: scrollbar + word wrap to match popup widget ── */
+/* ── on-page chatbot demo: scrollbar + word wrap + bubble containment ── */
 .chatbot-messages::-webkit-scrollbar{ width:4px; }
 .chatbot-messages::-webkit-scrollbar-track{ background:transparent; }
 .chatbot-messages::-webkit-scrollbar-thumb{ background:rgba(99,102,241,.35); border-radius:2px; }
 .chatbot-messages::-webkit-scrollbar-thumb:hover{ background:rgba(99,102,241,.6); }
-.chatbot-messages{ scrollbar-width:thin; scrollbar-color:rgba(99,102,241,.35) transparent; }
-.chatbot-messages .msg{
-  max-width:88%;
+.chatbot-messages{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(99,102,241,.35) transparent;
+  overflow-x:hidden!important;          /* never let bubbles push the chat sideways */
+  box-sizing:border-box!important;
+  min-width:0!important;                /* allow shrink in grid/flex parents */
+}
+/* Bubbles: shrink to content, hard-cap at 85%, kill long-word overflow */
+.chatbot-messages .msg,
+.chatbot-messages .msg.msg-bot,
+.chatbot-messages .msg.msg-user{
+  max-width:85%!important;
+  width:fit-content!important;          /* grow to content, stop at max-width */
+  box-sizing:border-box!important;
+  word-break:break-word!important;
+  overflow-wrap:anywhere!important;     /* break unbreakable strings (URLs, codes) */
+  hyphens:auto;
+  min-width:0;
+}
+/* Inline children inherit the same wrap rules so <a>/<strong>/<code> can't overflow */
+.chatbot-messages .msg *{
+  max-width:100%;
   word-break:break-word;
   overflow-wrap:anywhere;
-  hyphens:auto;
 }
+.chatbot-messages .msg a,
+.chatbot-messages .msg code{
+  display:inline-block;
+  max-width:100%;
+  word-break:break-all;
+  overflow-wrap:anywhere;
+}
+/* Parent mock + section: belt-and-braces no-horizontal-overflow */
+.chatbot-mock{ max-width:100%; box-sizing:border-box; overflow:hidden; }
 
 /* ── phone-agent transcript: matching scrollbar + wrap ── */
 #transcript-body::-webkit-scrollbar{ width:4px; }
