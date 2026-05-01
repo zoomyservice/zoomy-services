@@ -51,7 +51,7 @@ function render() {
 #zmy-bubble svg{width:26px;height:26px;fill:#fff;pointer-events:none}
 #zmy-attn{position:fixed;bottom:90px;right:24px;z-index:9998;background:#fff;color:#0f172a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;padding:10px 14px;border-radius:12px 12px 4px 12px;box-shadow:0 4px 20px rgba(0,0,0,.15);max-width:200px;line-height:1.4;animation:zmyfade .4s ease}
 @keyframes zmyfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-#zmy-win{position:fixed;bottom:90px;right:24px;z-index:9998;width:360px;max-width:calc(100vw - 32px);border-radius:20px;background:#08080f;border:1px solid rgba(99,102,241,.2);box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+#zmy-win{position:fixed;bottom:90px;right:24px;z-index:9998;width:360px;max-width:calc(100vw - 32px);border-radius:20px;background:#08080f;border:1px solid rgba(99,102,241,.2);box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column;overflow:clip;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 #zmy-win.open{display:flex}
 #zmy-head{background:linear-gradient(135deg,#6366f1,#a855f7);padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10;flex-shrink:0}
 #zmy-avatar{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
@@ -61,7 +61,7 @@ function render() {
 @keyframes zmypulse{0%,100%{opacity:1}50%{opacity:.4}}
 #zmy-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;padding:4px;line-height:1;border-radius:4px}
 #zmy-close:hover{color:#fff;background:rgba(255,255,255,.1)}
-#zmy-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:260px;max-height:340px;background:#0d0d1c;scroll-behavior:smooth}#zmy-msgs::-webkit-scrollbar{width:4px}#zmy-msgs::-webkit-scrollbar-track{background:transparent}#zmy-msgs::-webkit-scrollbar-thumb{background:rgba(99,102,241,.35);border-radius:2px}#zmy-msgs::-webkit-scrollbar-thumb:hover{background:rgba(99,102,241,.6)}
+#zmy-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:0;max-height:340px;background:#0d0d1c;scroll-behavior:smooth}#zmy-msgs::-webkit-scrollbar{width:4px}#zmy-msgs::-webkit-scrollbar-track{background:transparent}#zmy-msgs::-webkit-scrollbar-thumb{background:rgba(99,102,241,.35);border-radius:2px}#zmy-msgs::-webkit-scrollbar-thumb:hover{background:rgba(99,102,241,.6)}
 .zmy-msg{max-width:86%;padding:10px 14px;border-radius:14px;font-size:.85rem;line-height:1.55;word-wrap:break-word}
 .zmy-msg a{color:#a5b4fc;text-decoration:underline}
 .zmy-bot{background:#111128;border:1px solid rgba(99,102,241,.18);color:#cbd5e1;align-self:flex-start;border-bottom-left-radius:4px}
@@ -77,7 +77,7 @@ function render() {
 #zmy-input::placeholder{color:#64748b}
 #zmy-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;transition:transform .15s}
 #zmy-send:hover{transform:scale(1.1)}
-@media(max-width:480px){#zmy-win{right:0;bottom:0;width:100vw;border-radius:20px 20px 0 0;max-height:80vh}#zmy-bubble{bottom:16px;right:16px}#zmy-inp-row{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}}#zmy-bubble.zmy-hidden{display:none!important}
+@media(max-width:480px){#zmy-win{right:0;bottom:0;width:100vw;border-radius:20px 20px 0 0;max-height:85dvh;max-height:85vh}#zmy-bubble{bottom:16px;right:16px}#zmy-inp-row{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}#zmy-msgs{max-height:none;flex:1}}#zmy-bubble.zmy-hidden{display:none!important}
 #zmy-phone-btn{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;padding:4px;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s}
 #zmy-phone-btn:hover{color:#4ade80;background:rgba(74,222,128,.1)}
 #zmy-phone-btn.active-call{color:#4ade80}
@@ -353,7 +353,15 @@ html[data-theme="light"] #zmy-presets{background:#f5f3ff;border-top-color:rgba(9
     dismissAttn();
     savedScrollY = window.scrollY;
     win.classList.add('open');
-    if(window.innerWidth<=480){bubble.classList.add('zmy-hidden');}
+    if(window.innerWidth<=480){
+      bubble.classList.add('zmy-hidden');
+      // Lock body scroll on mobile — prevents iOS from scrolling the page
+      // and dragging the fixed chat window off screen
+      document.body.style.position='fixed';
+      document.body.style.top=`-${savedScrollY}px`;
+      document.body.style.width='100%';
+      document.body.style.overflowY='scroll';
+    }
     bubble.innerHTML = `<svg viewBox="0 0 24 24" fill="#fff"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
     if (msgs.children.length === 0 && !restorePopup()) {
       addMsg(md(t(
@@ -370,6 +378,14 @@ html[data-theme="light"] #zmy-presets{background:#f5f3ff;border-top-color:rgba(9
     isOpen = false;
     win.classList.remove('open');
     bubble.classList.remove('zmy-hidden');
+    // Restore body scroll (iOS scroll lock cleanup)
+    if(document.body.style.position==='fixed'){
+      document.body.style.position='';
+      document.body.style.top='';
+      document.body.style.width='';
+      document.body.style.overflowY='';
+      window.scrollTo(0,savedScrollY);
+    }
     bubble.innerHTML = `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
   }
 
