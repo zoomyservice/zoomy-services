@@ -4338,6 +4338,9 @@ html body .hero .section-inner > .agent-grid{
   flex-direction:unset!important;
   white-space:normal!important;
 }
+/* Per-page gap overrides — beats v24's gap:.55rem!important (same specificity, later cascade) */
+html body .hero .section-inner > .chatbot-detail-grid{ gap:4rem!important; }
+html body .hero .section-inner > .agent-grid{ gap:10rem!important; }
 
 /* Undo v24's white-space:nowrap + inline-flex on column children */
 html body .hero .section-inner > .chatbot-detail-grid > div,
