@@ -1546,7 +1546,9 @@ window.hpToggleCall = async function() {
       const err = await tokenRes.json().catch(() => ({}));
       hpBtn.disabled = false;
       hpResetUI(null);
-      hpStatus.textContent = 'Could not connect. Try again.';
+      hpStatus.textContent = tokenRes.status === 429
+        ? 'Daily demo limit reached. Try again tomorrow.'
+        : 'Could not connect. Try again.';
       hpStatus.style.color = '#f59e0b';
       return;
     }
