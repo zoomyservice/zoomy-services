@@ -436,15 +436,13 @@
             // Shared AudioContext — created once, kept alive so ElevenLabs inherits
             // a warm audio pipeline (avoids glitchy/high-pitched first utterance)
             let sharedAudioCtx = null;
-            const _NativeAudioContext = window.AudioContext || window.webkitAudioContext;
 
             function playRing() {
               return new Promise(resolve => {
                 try {
-                  // Reuse the already-warm AudioContext created & resumed in toggleCall().
-                  // Never close and recreate here — that would destroy the "warm pipeline"
-                  // that iOS needs to be in place before getUserMedia is called.
-                  if (!sharedAudioCtx) sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                  // Close any previous context — stacked contexts cause pitch drift across calls
+                  if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
+                  sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
                   const ctx = sharedAudioCtx;
                   const t = ctx.currentTime;
                   // UK/EU ring: two bursts of dual-tone (440Hz + 480Hz), 0.4s each
@@ -497,9 +495,6 @@
               conv = null;
               // Close AudioContext so next call starts with a fresh pipeline (prevents pitch drift)
               if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
-              // Restore AudioContext to native — undo the singleton patch from toggleCall
-              window.AudioContext = window.webkitAudioContext = _NativeAudioContext;
-              window.preflightStream = null;
               isMuted = false;
               isSpeaker = false;
               label.textContent = 'Start Call';
@@ -546,66 +541,22 @@
                 return; // onDisconnect fires resetUI
               }
               let micStream = null;
-              const _origGUM = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
               try {
                 label.textContent = 'Calling...';
                 btn.style.opacity = '0.7';
                 btn.disabled = true;
                 status.textContent = 'Requesting microphone...';
 
-                // ── iOS Safari "Hail Mary" Audio Fix ──────────────────────────────────
-                // Root cause: SDK creates its OWN AudioContext after an async gap, then
-                // calls createMediaStreamSource(stream) cross-context — iOS silently mutes it.
-                // Fix: (a) singleton-patch window.AudioContext so SDK reuses our warm context,
-                //      (b) anchor the mic to the destination at near-zero gain so iOS hardware
-                //          stays "Active" throughout the SDK's async setup.
-
-                // Step 1: Create AudioContext at hardware sample rate & resume immediately.
-                const _OrigAudioContext = window.AudioContext || window.webkitAudioContext;
-                if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} }
-                sharedAudioCtx = new _OrigAudioContext({ sampleRate: 44100 });
-                await sharedAudioCtx.resume();
-
-                // Step 2: Singleton-patch window.AudioContext so the ElevenLabs SDK reuses
-                // our already-warm context instead of creating a new "cold" one.
-                window.AudioContext = window.webkitAudioContext = function(opts) {
-                  if (sharedAudioCtx && sharedAudioCtx.state !== 'closed') return sharedAudioCtx;
-                  return new _OrigAudioContext(opts);
-                };
-
-                // Step 3: getUserMedia while still in gesture handler, simple constraints.
-                micStream = await navigator.mediaDevices.getUserMedia({ audio: {
-                  echoCancellation: true,
-                  noiseSuppression: true,
-                  autoGainControl: true
-                }});
-                window.preflightStream = micStream;
-
-                // Step 4: Anchor mic → gain (inaudible) → destination.
-                // Connecting the stream to the destination forces iOS to keep the hardware
-                // mic "Active" — without this, iOS auto-mutes during SDK's async WS setup.
-                try {
-                  const anchorSrc = sharedAudioCtx.createMediaStreamSource(micStream);
-                  const anchorGain = sharedAudioCtx.createGain();
-                  anchorGain.gain.value = 0.00001;
-                  anchorSrc.connect(anchorGain);
-                  anchorGain.connect(sharedAudioCtx.destination);
-                } catch(_) {}
-
-                // Step 5: Intercept SDK's getUserMedia — return our live pre-flight stream.
-                navigator.mediaDevices.getUserMedia = async (constraints) => {
-                  if (constraints && constraints.audio && window.preflightStream && window.preflightStream.active) {
-                    return window.preflightStream;
-                  }
-                  return _origGUM(constraints);
-                };
+                // Step 1: Get mic permission — keep stream ALIVE through setup
+                // iOS: stopping tracks then re-acquiring outside the gesture window fails silently
+                micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
                 // Step 2: Fetch token while mic is held open (orange dot stays on)
                 status.textContent = 'Ringing...';
                 const tokenRes = await fetch(TOKEN_URL);
                 const { signedUrl } = await tokenRes.json();
 
-                // Step 3: Play ring — mic still live, iOS sees uninterrupted activity
+                // Step 3: Play ring — mic still live so iOS sees continuous activity
                 await playRing();
 
                 status.textContent = 'Connecting...';
@@ -634,9 +585,8 @@
                   signedUrl,
                   overrides: { agent: agentOverride },
                   onConnect: () => {
-                    // Restore getUserMedia — SDK is now using our stream, no need to intercept
-                    navigator.mediaDevices.getUserMedia = _origGUM;
-                    window.preflightStream = null;
+                    // SDK has its own stream now — release our pre-flight stream
+                    if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
                     btn.disabled = false;
                     label.textContent = 'End Call';
                     btn.style.opacity = '1';
@@ -676,8 +626,6 @@
                   }
                 });
               } catch(e) {
-                navigator.mediaDevices.getUserMedia = _origGUM;
-                window.preflightStream = null;
                 if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
                 btn.disabled = false;
                 resetUI(null);
