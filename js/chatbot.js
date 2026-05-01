@@ -426,10 +426,13 @@ function render() {
       const agentOverride = { language: pageLang, firstMessage: firstMessages[pageLang] || firstMessages.en };
       if (systemPrompts[pageLang]) agentOverride.prompt = { prompt: systemPrompts[pageLang] };
 
-      const { Conversation } = await import('https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm');
+      const { Conversation } = await import('https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.4.0/+esm');
       callConv = await Conversation.startSession({
         signedUrl,
-        overrides: { agent: agentOverride },
+        overrides: {
+          agent: agentOverride,
+          tts: { stability: 0.65, similarityBoost: 0.80 },
+        },
         onConnect: () => {
           startAudioObserver();
           callStartBtn.disabled = false;
