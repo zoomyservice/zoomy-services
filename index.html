@@ -540,7 +540,7 @@ Try Live Demo
 <!-- ═══════════ ADMIN PANEL DEMO ═══════════ -->
 <section class="section" style="overflow:hidden;padding-bottom:4rem;">
 <div class="section-inner">
-<div style="display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:start;">
+<div id="adm-section-grid" style="display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:start;">
 <div class="reveal-left">
 <div class="section-tag">Admin Panel</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">You control the content.<br/>No developer needed.</h2>
@@ -632,10 +632,12 @@ Try Live Demo
 .adm-nav-item.active-nav{color:var(--ac) !important;background:rgba(255,255,255,.04);border-left:2px solid var(--ac);padding-left:calc(1rem - 2px);}
 @keyframes admFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){
-  #admShell{min-width:0!important;width:100%!important;overflow-x:hidden!important;}
+  #adm-section-grid{grid-template-columns:1fr!important;}
+  #adm-section-grid>div:first-child{display:none;}
+  #admShell{min-width:0!important;width:100%!important;overflow-x:hidden!important;touch-action:pan-y;overscroll-behavior-x:none;}
   #admMobileTabs{display:flex!important;}
   #admSidebar{display:none!important;}
-  .adm-canvas{height:400px!important;overflow-x:hidden!important;}
+  .adm-canvas{height:400px!important;overflow-x:hidden!important;overscroll-behavior-x:none;}
   #admShell .adm-topbar{flex-wrap:wrap;gap:.4rem;padding:.5rem .75rem!important;}
   #admShell .adm-topbar-brand{font-size:.6rem!important;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .adm-canvas *{max-width:100%;box-sizing:border-box;}
