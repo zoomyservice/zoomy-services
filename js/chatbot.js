@@ -328,6 +328,9 @@ function render() {
       "Bonjour ! 👋 Je suis l'assistant Zoomy. Posez-moi une question sur nos campagnes, sites web, chatbots, agents téléphoniques ou tarifs.",
       "¡Hola! 👋 Soy el asistente de Zoomy. Pregúntame sobre campañas, sitios web, chatbots, agentes telefónicos o precios."
     )), 'bot');
+    }
+    // Always show presets when not in demo mode
+    if (!popupTailoredBiz) {
       presetsEl.style.display = 'block';
     }
     setTimeout(() => input.focus(), 300);
@@ -338,6 +341,7 @@ function render() {
     win.classList.remove('open');
     bubble.classList.remove('zmy-hidden');
     bubble.innerHTML = `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
+    presetsEl.style.display = 'none';
   }
 
   bubble.addEventListener('click', () => isOpen ? closeChat() : openChat());
@@ -358,7 +362,8 @@ function render() {
   // Hide the entire chatbot bubble on pages with their own dedicated call demo
   // (phone-agent.html has #call-btn, index.html has #hp-call-btn)
   // Showing the chatbot widget alongside the page's own call UI creates a confusing double-UI
-  const hasOwnCallDemo = !!(document.getElementById('call-btn') || document.getElementById('hp-call-btn'));
+  // Only hide popup on phone-agent page (has its own full-screen call UI)
+  const hasOwnCallDemo = !!(document.getElementById('call-btn'));
   if (hasOwnCallDemo) {
     bubble.style.setProperty('display', 'none', 'important');
     return; // nothing else to wire up on this page
