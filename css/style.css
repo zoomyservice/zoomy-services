@@ -3340,8 +3340,8 @@ html[data-theme="light"] [style*="color:#fff"]:is(h1, h2, h3, h4, h5, h6){
   display:grid;
   grid-template-columns:1fr 1fr;
   grid-template-areas:
-    "tips form"
-    "info form";
+    "info form"
+    "tips form";
   gap:2.5rem 4rem;
   align-items:start;
 }
@@ -3354,9 +3354,9 @@ html[data-theme="light"] [style*="color:#fff"]:is(h1, h2, h3, h4, h5, h6){
     flex-direction:column!important;
     gap:2rem!important;
   }
-  .cg-tips{order:1!important;}
+  .cg-info{order:1!important;}
   .cg-form{order:2!important;}
-  .cg-info{order:3!important;}
+  .cg-tips{order:3!important;}
 }
 
 
