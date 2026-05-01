@@ -4280,32 +4280,4 @@ html[data-theme="light"] .btn-primary:hover{
   transform:translateY(-1px);
 }
 
-/* ── White text invisible on light background: force readable color ── */
-html[data-theme="light"] .section-title{color:var(--text)!important;}
-html[data-theme="light"] .hero h1{color:var(--text)!important;}
-html[data-theme="light"] .hero-sub{color:var(--text-2)!important;}
-html[data-theme="light"] .footer-col h4{color:var(--text)!important;}
-html[data-theme="light"] h1,
-html[data-theme="light"] h2,
-html[data-theme="light"] h3,
-html[data-theme="light"] h4,
-html[data-theme="light"] h5{
-  color:var(--text)!important;
-}
-html[data-theme="light"] p,
-html[data-theme="light"] li,
-html[data-theme="light"] .hero-sub,
-html[data-theme="light"] .section-sub{
-  color:var(--text-2)!important;
-}
-/* Exceptions: keep white text inside explicitly dark containers */
-html[data-theme="light"] #free-bar h1,
-html[data-theme="light"] #free-bar h2,
-html[data-theme="light"] #free-bar h3,
-html[data-theme="light"] #free-bar h4,
-html[data-theme="light"] #free-bar p,
-html[data-theme="light"] #free-bar li,
-html[data-theme="light"] .btn-nav *,
-html[data-theme="light"] .btn-primary *{
-  color:#fff!important;
-}
+
