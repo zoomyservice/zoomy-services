@@ -2956,13 +2956,13 @@ body.zmy-nav-open{
     overflow-x:hidden!important;
     border-radius:14px!important;
   }
-  #admShell > div:nth-child(2){
-    /* The inner BODY div that uses display:flex */
+  /* nth-child(3) = the BODY flex div (child 1=topbar, child 2=admMobileTabs, child 3=body) */
+  #admShell > div:nth-child(3){
     flex-direction:column!important;
   }
 
-  /* — 3. Sidebar (was 148px column) → horizontal pill bar — */
-  #admShell > div:nth-child(2) > div:first-child{
+  /* — 3. Sidebar (was 148px column) → horizontal pill bar at 768–900px — */
+  #admShell > div:nth-child(3) > div:first-child{
     width:100%!important;
     flex-shrink:1!important;
     border-right:none!important;
@@ -2977,12 +2977,12 @@ body.zmy-nav-open{
     gap:.35rem!important;
     white-space:nowrap;
   }
-  #admShell > div:nth-child(2) > div:first-child::-webkit-scrollbar{display:none}
+  #admShell > div:nth-child(3) > div:first-child::-webkit-scrollbar{display:none}
 
-  /* Hide the section labels (Pages, Settings) and the divider on mobile */
-  #admShell > div:nth-child(2) > div:first-child > div:first-child,  /* "Pages" label */
-  #admShell > div:nth-child(2) > div:first-child > div[style*="text-transform:uppercase"],
-  #admShell > div:nth-child(2) > div:first-child > div[style*="border-top"]{
+  /* Hide the section labels (Pages, Settings) and the divider */
+  #admShell > div:nth-child(3) > div:first-child > div:first-child,
+  #admShell > div:nth-child(3) > div:first-child > div[style*="text-transform:uppercase"],
+  #admShell > div:nth-child(3) > div:first-child > div[style*="border-top"]{
     display:none!important;
   }
 
@@ -4445,5 +4445,94 @@ html body .hero .section-inner > .agent-grid > div{
   [style*="grid-template-columns:1fr 1fr"],
   [style*="grid-template-columns:1fr auto"]{
     gap:1.25rem!important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   v29 — Admin nav dark text fix + hero check items mobile wrapping
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Admin panel nav colors: lock via CSS class (immune to light-mode overrides)
+   Light mode's [style*="color:rgba(255,255,255,.45)"] and similar rules
+   in both style.css AND per-page inline <style> blocks override inline tab
+   colors to dark var(--text-2), making them invisible on the dark #admShell
+   background. CSS class rules with ID specificity beat [style*=...] selectors. ── */
+
+/* Mobile tabs (#admMobileTabs) */
+#admShell .adm-mtab{
+  color:rgba(255,255,255,.65)!important;
+}
+#admShell .adm-mtab.adm-mtab-active{
+  color:#38bdf8!important;
+}
+/* Sidebar nav items (become horizontal pills on mobile) */
+#admShell .adm-nav-item{
+  color:rgba(255,255,255,.7)!important;
+}
+#admShell .adm-nav-item.active-nav{
+  color:var(--ac,#38bdf8)!important;
+}
+/* Also restore rgba-white text inside admShell that light-mode attribute rules darken */
+html[data-theme="light"] #admShell [style*="color:rgba(255,255,255,.45)"],
+html[data-theme="light"] #admShell [style*="color:rgba(255,255,255, .45)"],
+html[data-theme="light"] #admShell [style*="color:rgba(255,255,255,.5)"],
+html[data-theme="light"] #admShell [style*="color:rgba(255,255,255,.4)"]{
+  color:rgba(255,255,255,.65)!important;
+}
+html[data-theme="light"] #admShell [style*="color:#999"],
+html[data-theme="light"] #admShell [style*="color: #999"]{
+  color:rgba(255,255,255,.65)!important;
+}
+
+/* ── 2. Hero check items: restore wrapping on mobile
+   v28's non-media-queried rule sets white-space:nowrap + width:max-content
+   at all viewport sizes. The mobile override (added in v28) had lower
+   specificity. Adding 'body' to the selector chain bumps specificity by 1
+   (0,3,4 > 0,3,3), ensuring mobile wrapping wins. ── */
+@media(max-width:768px){
+  html body .hero .section-inner > div:last-of-type{
+    width:100%!important;
+    flex-wrap:wrap!important;
+    justify-content:center!important;
+  }
+  html body .hero .section-inner > div:last-of-type > div{
+    white-space:normal!important;
+    word-break:break-word!important;
+    overflow-wrap:break-word!important;
+  }
+}
+
+/* ── 3. Site-wide text wrapping: left-align paragraph text on mobile
+   Centered text in fixed-width containers appears cut off on both sides.
+   Left-aligning lets text start at x=0 and only overflow right (which is
+   then caught by the existing overflow-x:hidden rules). ── */
+@media(max-width:768px){
+  .section-sub,
+  .section p,
+  section p,
+  .section-inner p,
+  [style*="text-align:center"] > p,
+  [style*="text-align: center"] > p{
+    text-align:left!important;
+  }
+  /* Exception: hero keeps center alignment (intentional) */
+  .hero p,
+  .hero .hero-sub,
+  .hero .section-inner > p{
+    text-align:center!important;
+  }
+  /* Exception: contact CTA sections keep center */
+  section:last-of-type p,
+  .section:last-of-type p{
+    text-align:center!important;
+  }
+  /* Section titles stay left too */
+  .section-title,
+  .section-sub{
+    text-align:left!important;
+  }
+  /* Flex containers with centered text: allow wrap */
+  [style*="display:flex"][style*="justify-content:center"]{
+    flex-wrap:wrap!important;
   }
 }
