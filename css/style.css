@@ -562,9 +562,10 @@ html[data-theme="light"] .sample-tag{
   background-image:none!important;
 }
 
-/* — Free top bar — keep dark for contrast (it's a 44px utility bar) — */
+/* — Free top bar — always black — */
 html[data-theme="light"] #free-bar{
-  background:linear-gradient(90deg,#1a1a1a,#2a241d,#1a1a1a)!important;
+  background:#000!important;
+  background-image:none!important;
   color:#fff!important;
 }
 html[data-theme="light"] #free-bar .bar-text{color:rgba(255,255,255,.9)!important}
@@ -2259,12 +2260,12 @@ html[data-theme="light"] .hs-phone-card::before{
    v15 — comprehensive mobile polish
    ════════════════════════════════════════════════════════════════════ */
 
-/* — 1. Free bar: harmonize with cream + cocoa palette — */
+/* — 1. Free bar: always black — */
 html[data-theme="light"] #free-bar{
-  background:var(--primary)!important;     /* warm cocoa */
-  background-image:linear-gradient(90deg, var(--primary), var(--text), var(--primary))!important;
-  color:var(--bg)!important;
-  border-bottom:1px solid var(--text)!important;
+  background:#000!important;
+  background-image:none!important;
+  color:#fff!important;
+  border-bottom:none!important;
 }
 html[data-theme="light"] #free-bar .bar-text,
 html[data-theme="light"] #free-bar .bar-text *{
