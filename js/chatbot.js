@@ -117,6 +117,24 @@ function render() {
 #zmy-demo-bar.on{display:flex}
 #zmy-demo-biz{color:#94a3b8}
 #zmy-demo-reset{color:#6366f1;background:none;border:none;cursor:pointer;font-family:inherit;font-size:.72rem;padding:0;text-decoration:underline}
+.zmy-presets-msg{max-width:100%!important;width:100%;box-sizing:border-box;padding:10px 12px!important}
+.zmy-pb-intro{font-size:.72rem;color:#64748b;margin-bottom:7px}
+.zmy-pb-grid{display:flex;flex-wrap:wrap;gap:5px}
+html[data-theme="light"] #zmy-win{background:#fff;border-color:rgba(99,102,241,.2)}
+html[data-theme="light"] #zmy-msgs{background:#f8f9fc}
+html[data-theme="light"] .zmy-bot{background:#eef0f8;border-color:rgba(99,102,241,.15);color:#1e293b}
+html[data-theme="light"] .zmy-msg a{color:#6366f1}
+html[data-theme="light"] .zmy-typing span{background:#6366f1}
+html[data-theme="light"] #zmy-inp-row{background:#fff;border-top-color:rgba(99,102,241,.15)}
+html[data-theme="light"] #zmy-input{background:#eef0f8;border-color:rgba(99,102,241,.2);color:#0f172a}
+html[data-theme="light"] #zmy-input::placeholder{color:#94a3b8}
+html[data-theme="light"] .zmy-pb{background:#fff;border-color:rgba(99,102,241,.28);color:#475569}
+html[data-theme="light"] .zmy-pb:hover{background:rgba(99,102,241,.07);border-color:rgba(99,102,241,.45);color:#6366f1}
+html[data-theme="light"] .zmy-pb.zmy-pb-on{background:rgba(99,102,241,.1);border-color:#6366f1;color:#6366f1}
+html[data-theme="light"] #zmy-demo-bar{background:#f5f3ff;border-top-color:rgba(99,102,241,.15)}
+html[data-theme="light"] #zmy-demo-biz{color:#475569}
+html[data-theme="light"] #zmy-demo-reset{color:#6366f1}
+html[data-theme="light"] #zmy-presets{background:#f5f3ff;border-top-color:rgba(99,102,241,.15)}
 `;
 
   const styleEl = document.createElement('style');
@@ -264,6 +282,19 @@ function render() {
 
   const AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
 
+  function showPresetsMsg() {
+    const icons = {restaurant:'🍽️',gym:'💪',salon:'💇',dental:'🦷',legal:'⚖️',realestate:'🏡',store:'🛒',auto:'🚗'};
+    const labels = {restaurant:'Restaurant',gym:'Gym',salon:'Beauty Salon',dental:'Dental Clinic',legal:'Law Firm',realestate:'Real Estate',store:'Online Store',auto:'Auto Shop'};
+    const d = document.createElement('div');
+    d.className = 'zmy-msg zmy-bot zmy-presets-msg';
+    d.innerHTML = '<div class="zmy-pb-intro">Try it as a business type:</div><div class="zmy-pb-grid">' +
+      Object.keys(CB_PRESETS).map(k => '<button class="zmy-pb" data-biz="' + k + '">' + (icons[k]||'') + ' ' + labels[k] + '</button>').join('') +
+      '</div>';
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+    savePopup();
+  }
+
   let sending = false;
   async function send() {
     if (sending) return;
@@ -328,10 +359,7 @@ function render() {
       "Bonjour ! 👋 Je suis l'assistant Zoomy. Posez-moi une question sur nos campagnes, sites web, chatbots, agents téléphoniques ou tarifs.",
       "¡Hola! 👋 Soy el asistente de Zoomy. Pregúntame sobre campañas, sitios web, chatbots, agentes telefónicos o precios."
     )), 'bot');
-    }
-    // Always show presets when not in demo mode
-    if (!popupTailoredBiz) {
-      presetsEl.style.display = 'block';
+      if (!popupTailoredBiz) showPresetsMsg();
     }
     setTimeout(() => input.focus(), 300);
   }
@@ -341,7 +369,6 @@ function render() {
     win.classList.remove('open');
     bubble.classList.remove('zmy-hidden');
     bubble.innerHTML = `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
-    presetsEl.style.display = 'none';
   }
 
   bubble.addEventListener('click', () => isOpen ? closeChat() : openChat());
@@ -635,13 +662,13 @@ function render() {
 
 
   // ── Business type preset buttons ────────────────────────────────────────────
-  presetsGrid.addEventListener('click', async function(e) {
+  msgs.addEventListener('click', async function(e) {
     const btn = e.target.closest('.zmy-pb');
     if (!btn) return;
     const type = btn.dataset.biz;
     const preset = CB_PRESETS[type];
     if (!preset) return;
-    presetsGrid.querySelectorAll('.zmy-pb').forEach(b => { b.classList.remove('zmy-pb-on'); b.disabled = true; });
+    msgs.querySelectorAll('.zmy-pb').forEach(b => { b.classList.remove('zmy-pb-on'); b.disabled = true; });
     btn.classList.add('zmy-pb-on');
     presetsEl.style.display = 'none';
     msgs.innerHTML = '';
@@ -666,10 +693,9 @@ function render() {
     } catch(err) {
       typing.remove();
       addMsg(md('Something went wrong — try again.'), 'bot');
-      presetsEl.style.display = 'block';
       popupTailoredBiz = null;
     }
-    presetsGrid.querySelectorAll('.zmy-pb').forEach(b => { b.disabled = false; });
+    msgs.querySelectorAll('.zmy-pb').forEach(b => { b.disabled = false; });
   });
 
   demoResetBtn.addEventListener('click', function() {
@@ -677,7 +703,7 @@ function render() {
     memory.history = [];
     msgs.innerHTML = '';
     demoBar.classList.remove('on');
-    presetsGrid.querySelectorAll('.zmy-pb').forEach(b => b.classList.remove('zmy-pb-on'));
+    msgs.querySelectorAll('.zmy-pb').forEach(b => b.classList.remove('zmy-pb-on'));
     document.getElementById('zmy-name').textContent = BIZ.name;
     document.getElementById('zmy-status').textContent = t('Online — ask me anything','En ligne — posez-moi une question','En línea — pregúntame');
     addMsg(md(t(
@@ -685,7 +711,7 @@ function render() {
       "Bonjour ! 👋 Je suis l'assistant Zoomy. Posez-moi une question sur nos services.",
       "¡Hola! 👋 Soy el asistente de Zoomy. Pregúntame sobre nuestros servicios."
     )), 'bot');
-    presetsEl.style.display = 'block';
+    showPresetsMsg();
     try { sessionStorage.removeItem(POPUP_STORE); } catch(e) {}
   });
 
