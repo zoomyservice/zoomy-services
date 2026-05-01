@@ -4536,3 +4536,39 @@ html[data-theme="light"] #admShell [style*="color: #999"]{
     flex-wrap:wrap!important;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   v30 — Live chatbot preview widget (.cb-live-wrap) fixes
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Keep dark chat header text white regardless of page theme */
+html[data-theme="light"] .cb-live-wrap [style*="color:#fff"],
+html[data-theme="light"] .cb-live-wrap [style*="color:rgba(255,255,255"]{
+  color:inherit!important;
+}
+
+/* Chat bubble sizing overrides (shared by chatbot.html + index.html) */
+.cb-analyze-btn-style{
+  padding:.85rem 1.5rem!important;
+  white-space:nowrap!important;
+  font-size:.9rem!important;
+  border-radius:var(--radius-md)!important;
+}
+.cb-send-btn-style{
+  padding:.45rem .9rem!important;
+  font-size:.8rem!important;
+  border-radius:8px!important;
+  flex-shrink:0;
+}
+
+/* Mobile: stack URL input and button vertically */
+@media(max-width:540px){
+  #cb-step-url > div,
+  #hp-cb-step-url > div{
+    flex-direction:column;
+  }
+  .cb-analyze-btn-style{
+    width:100%!important;
+    justify-content:center;
+  }
+}

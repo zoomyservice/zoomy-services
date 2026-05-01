@@ -1178,6 +1178,144 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 </div>
 </section>
+<!-- ═══════════ LIVE CHATBOT PREVIEW (homepage) ═══════════ -->
+<section class="section cb-live-wrap" style="background:var(--bg-soft,var(--bg-2));">
+<div class="section-inner">
+<div style="text-align:center;margin-bottom:2.5rem;">
+  <div class="section-tag">Try It Live</div>
+  <h2 class="section-title">See your chatbot before you order it.</h2>
+  <p class="section-sub" style="margin:0 auto;">Paste your website URL. We'll read it, extract your business info, and build a live demo chatbot — right now.</p>
+</div>
+<div id="hp-cb-step-url" style="max-width:640px;margin:0 auto 2rem;">
+  <div style="display:flex;gap:.6rem;align-items:stretch;">
+    <input id="hp-cb-url-input" type="url" placeholder="https://yourbusiness.com" autocomplete="off" style="flex:1;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);padding:.85rem 1.1rem;color:var(--text);font-size:.95rem;outline:none;transition:border-color .2s;min-width:0;"/>
+    <button id="hp-cb-analyze-btn" onclick="hpCbAnalyze()" class="btn btn-primary cb-analyze-btn-style">Analyze →</button>
+  </div>
+  <p id="hp-cb-url-error" style="display:none;font-size:.78rem;color:#ef4444;margin-top:.5rem;"></p>
+  <p style="font-size:.73rem;color:var(--muted);margin-top:.6rem;text-align:center;">Works on any public website. We don't store your URL or site content.</p>
+</div>
+<div id="hp-cb-step-loading" style="display:none;text-align:center;padding:2rem 0;">
+  <div style="display:inline-flex;flex-direction:column;align-items:center;gap:1rem;">
+    <div style="width:40px;height:40px;border:3px solid rgba(99,102,241,.2);border-top-color:var(--primary);border-radius:50%;animation:cbSpin .8s linear infinite;"></div>
+    <p id="hp-cb-loading-msg" style="font-size:.85rem;color:var(--text-2);">Fetching your site...</p>
+  </div>
+</div>
+<div id="hp-cb-step-result" style="display:none;">
+  <div id="hp-cb-biz-card" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+    <div style="width:44px;height:44px;border-radius:10px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🏢</div>
+    <div style="flex:1;min-width:0;">
+      <div id="hp-cb-biz-name" style="font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.2rem;"></div>
+      <div id="hp-cb-biz-meta" style="font-size:.78rem;color:var(--text-2);"></div>
+    </div>
+    <button onclick="hpCbReset()" style="background:none;border:1px solid var(--border);border-radius:var(--radius-full);padding:.3rem .8rem;font-size:.72rem;color:var(--muted);cursor:pointer;">Try another ›</button>
+  </div>
+  <div style="max-width:640px;margin:0 auto;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);">
+      <div style="background:#0d0d0d;border-bottom:1px solid var(--border);padding:.75rem 1rem;display:flex;align-items:center;gap:.65rem;">
+        <div style="width:10px;height:10px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div>
+        <span style="font-size:.78rem;font-weight:600;color:#fff;">Live Demo</span>
+        <span id="hp-cb-chat-biz-label" style="font-size:.72rem;color:rgba(255,255,255,.5);"></span>
+      </div>
+      <div id="hp-cb-messages" style="height:320px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.75rem;background:var(--bg-2);"></div>
+      <div style="border-top:1px solid var(--border);padding:.75rem 1rem;display:flex;gap:.5rem;background:var(--card);">
+        <input id="hp-cb-chat-input" type="text" placeholder="Ask something about this business…" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:.88rem;min-width:0;" onkeydown="if(event.key==='Enter')hpCbSend()"/>
+        <button onclick="hpCbSend()" class="btn btn-primary cb-send-btn-style">Send</button>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.18);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;">
+      <p style="font-size:.9rem;color:var(--text);font-weight:600;margin-bottom:.5rem;">This is your chatbot. Want it live on your site?</p>
+      <p style="font-size:.78rem;color:var(--text-2);margin-bottom:1rem;">We build it fully — knowledge base, multilingual support, deployment included.</p>
+      <a class="btn btn-primary" href="contact.html" style="font-size:.85rem;">Get it live for $599 ›</a>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  var WORKER='https://zoomy-ai.zoozoomfast.workers.dev';
+  var hpBiz=null,hpHist=[],hpSending=false;
+  window.hpCbAnalyze=async function(){
+    var inp=document.getElementById('hp-cb-url-input');
+    var errEl=document.getElementById('hp-cb-url-error');
+    var btn=document.getElementById('hp-cb-analyze-btn');
+    var url=(inp.value||'').trim();
+    errEl.style.display='none';
+    if(!url){errEl.textContent='Please enter a URL.';errEl.style.display='block';return;}
+    if(!/^https?:\/\//i.test(url)){url='https://'+url;inp.value=url;}
+    btn.disabled=true;btn.style.opacity='.5';
+    document.getElementById('hp-cb-step-url').style.display='none';
+    var loadEl=document.getElementById('hp-cb-step-loading');
+    loadEl.style.display='block';
+    var msgs=['Fetching your site…','Reading the content…','Building your chatbot…'];
+    var mi=0;
+    var loadInt=setInterval(function(){document.getElementById('hp-cb-loading-msg').textContent=msgs[Math.min(++mi,msgs.length-1)];},2200);
+    try{
+      var res=await fetch(WORKER+'/scrape',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url})});
+      var data=await res.json();
+      clearInterval(loadInt);
+      if(!res.ok||!data.business)throw new Error(data.message||'Could not read that page.');
+      hpBiz=data.business;hpHist=[];
+      document.getElementById('hp-cb-biz-name').textContent=hpBiz.name||'Your Business';
+      var meta=[hpBiz.type,hpBiz.location].filter(Boolean).join(' · ');
+      document.getElementById('hp-cb-biz-meta').textContent=meta||'Business detected';
+      document.getElementById('hp-cb-chat-biz-label').textContent='— '+(hpBiz.name||'Your Business');
+      loadEl.style.display='none';
+      document.getElementById('hp-cb-step-result').style.display='block';
+      var msgsEl=document.getElementById('hp-cb-messages');
+      msgsEl.innerHTML='';
+      var svc=Array.isArray(hpBiz.services)&&hpBiz.services.length?hpBiz.services.slice(0,3).join(', '):'your services';
+      hpAppendMsg('Hi! I\'m the chatbot for '+(hpBiz.name||'your business')+'. I can answer questions about '+svc+'. What would you like to know?','bot');
+    }catch(e){
+      clearInterval(loadInt);loadEl.style.display='none';
+      document.getElementById('hp-cb-step-url').style.display='block';
+      errEl.textContent=e.message||'Could not analyze that page. Make sure it\'s a public website.';
+      errEl.style.display='block';btn.disabled=false;btn.style.opacity='1';
+    }
+  };
+  window.hpCbSend=async function(){
+    if(hpSending||!hpBiz)return;
+    var inp=document.getElementById('hp-cb-chat-input');
+    var msg=inp.value.trim();if(!msg)return;
+    inp.value='';hpSending=true;
+    hpAppendMsg(msg,'user');hpHist.push({role:'user',text:msg});
+    var typingId='hp-cb-typing-'+Date.now();
+    var msgsEl=document.getElementById('hp-cb-messages');
+    var typingEl=document.createElement('div');
+    typingEl.id=typingId;typingEl.className='cb-msg cb-msg-bot';
+    typingEl.innerHTML='<div class="cb-avatar">🤖</div><div class="cb-bubble cb-bubble-bot cb-typing"><span></span><span></span><span></span></div>';
+    msgsEl.appendChild(typingEl);msgsEl.scrollTop=msgsEl.scrollHeight;
+    try{
+      var res=await fetch(WORKER+'/demo-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,history:hpHist.slice(-6),business:hpBiz})});
+      var data=await res.json();
+      var reply=data.reply||'Sorry, I couldn\'t process that. Please try again.';
+      typingEl.remove();hpAppendMsg(reply,'bot');hpHist.push({role:'bot',text:reply});
+    }catch{typingEl.remove();hpAppendMsg('Something went wrong. Please try again.','bot');}
+    hpSending=false;
+  };
+  window.hpCbReset=function(){
+    hpBiz=null;hpHist=[];
+    document.getElementById('hp-cb-step-result').style.display='none';
+    document.getElementById('hp-cb-step-url').style.display='block';
+    document.getElementById('hp-cb-url-input').value='';
+    document.getElementById('hp-cb-url-error').style.display='none';
+    var btn=document.getElementById('hp-cb-analyze-btn');
+    btn.disabled=false;btn.style.opacity='1';
+  };
+  function hpAppendMsg(text,role){
+    var msgsEl=document.getElementById('hp-cb-messages');
+    var div=document.createElement('div');
+    div.className='cb-msg cb-msg-'+role;
+    if(role==='bot'){
+      div.innerHTML='<div class="cb-avatar">🤖</div><div class="cb-bubble cb-bubble-bot">'+hpEscape(text)+'</div>';
+    }else{
+      div.innerHTML='<div class="cb-bubble cb-bubble-user">'+hpEscape(text)+'</div>';
+    }
+    msgsEl.appendChild(div);msgsEl.scrollTop=msgsEl.scrollHeight;
+  }
+  function hpEscape(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');}
+})();
+</script>
 <!-- ═══════════ WHY ZOOMY ═══════════ -->
 <section class="section" style="background:var(--bg-2);">
 <div class="section-inner">
