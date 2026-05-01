@@ -522,103 +522,37 @@
               }
             }
 
-            // ── DEBUG PANEL ──────────────────────────────────────────────
-            const _dbgPanel = (() => {
-              let el = null;
-              return {
-                show() {
-                  if (el) return;
-                  el = document.createElement('div');
-                  el.id = 'zmy-debug';
-                  el.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#0a0a0a;color:#0f0;font-family:monospace;font-size:11px;padding:8px 10px;z-index:99999;max-height:45vh;overflow-y:auto;border-top:2px solid #0f0;line-height:1.5;';
-                  const close = document.createElement('button');
-                  close.textContent = '✕ close';
-                  close.style.cssText = 'float:right;background:none;border:1px solid #0f0;color:#0f0;cursor:pointer;padding:1px 5px;font-size:10px;';
-                  close.onclick = () => el.remove();
-                  el.appendChild(close);
-                  document.body.appendChild(el);
-                },
-                log(msg, color) {
-                  this.show();
-                  const d = document.createElement('div');
-                  d.style.color = color || '#0f0';
-                  d.textContent = '[' + new Date().toISOString().slice(11,23) + '] ' + msg;
-                  el.appendChild(d);
-                  el.scrollTop = el.scrollHeight;
-                },
-                err(label, e) {
-                  const msg = (e && (e.message || e.name || String(e))) || 'unknown';
-                  const stack = (e && e.stack) ? '\n' + e.stack : '';
-                  this.log('❌ ' + label + ': ' + msg + stack, '#f44');
-                  // Also show in status bar
-                  status.textContent = '⚠ ' + label + ': ' + msg;
-                  status.style.color = '#ef4444';
-                }
-              };
-            })();
-
             window.toggleCall = async function() {
               if (conv) {
                 await conv.endSession();
                 return; // onDisconnect fires resetUI
               }
-              _dbgPanel.log('── toggleCall started ──', '#ff0');
               try {
                 label.textContent = 'Calling...';
                 btn.style.opacity = '0.7';
                 btn.disabled = true;
                 status.textContent = 'Requesting microphone...';
-                _dbgPanel.log('UA: ' + navigator.userAgent, '#888');
 
                 // Step 1: Get mic permission first — user accepts dialog before anything else happens
-                _dbgPanel.log('Step 1: getUserMedia...');
-                let micStream;
-                try {
-                  micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                  _dbgPanel.log('✓ getUserMedia OK — tracks: ' + micStream.getAudioTracks().length + ', state: ' + (micStream.getAudioTracks()[0] && micStream.getAudioTracks()[0].readyState), '#0f0');
-                  micStream.getTracks().forEach(t => t.stop());
-                } catch(micErr) {
-                  _dbgPanel.err('getUserMedia FAILED', micErr);
-                  btn.disabled = false;
-                  resetUI(null);
-                  return;
-                }
+                const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                micStream.getTracks().forEach(t => t.stop()); // release immediately, permission is cached
 
                 // Step 2: Fetch token (fast, while mic permission already granted)
                 status.textContent = 'Ringing...';
-                _dbgPanel.log('Step 2: fetching token from ' + TOKEN_URL + '...');
-                let signedUrl;
-                try {
-                  const tokenRes = await fetch(TOKEN_URL);
-                  _dbgPanel.log('  HTTP ' + tokenRes.status);
-                  const tokenData = await tokenRes.json();
-                  _dbgPanel.log('  keys: ' + Object.keys(tokenData).join(', '));
-                  signedUrl = tokenData.signedUrl;
-                  if (!signedUrl) throw new Error('no signedUrl in response: ' + JSON.stringify(tokenData));
-                  _dbgPanel.log('✓ token OK — url starts: ' + signedUrl.slice(0,60), '#0f0');
-                } catch(tokErr) {
-                  _dbgPanel.err('Token fetch FAILED', tokErr);
-                  btn.disabled = false;
-                  resetUI(null);
-                  return;
-                }
+                const tokenRes = await fetch(TOKEN_URL);
+                const { signedUrl } = await tokenRes.json();
 
                 // Step 3: Play one ring — permission already granted so no dialog interrupts
-                _dbgPanel.log('Step 3: playRing...');
                 await playRing();
-                _dbgPanel.log('✓ ring done', '#0f0');
 
                 status.textContent = 'Connecting...';
 
                 transcriptLines = [];
                 // Detect page language from URL path or current page lang attribute
-                // (document.documentElement.lang is set by i18n.js to whatever language is shown)
                 const pageLang = window.location.pathname.includes('/fr/') ? 'fr'
                                : window.location.pathname.includes('/es/') ? 'es'
                                : (document.documentElement.lang || localStorage.getItem('zmy_lang') || 'en');
 
-                // Override firstMessage + language + system prompt to enforce language
-                // All three overrides are enabled on the agent (verified via API)
                 const firstMessages = {
                   'fr': "Bonjour ! Je suis l'assistante IA de Zoomy. Comment puis-je vous aider aujourd'hui ?",
                   'es': "¡Hola! Soy la asistente IA de Zoomy. ¿En qué puedo ayudarle hoy?",
@@ -633,12 +567,10 @@
                 agentOverride.firstMessage = firstMessages[pageLang] || firstMessages['en'];
                 if (systemPrompts[pageLang]) agentOverride.prompt = { prompt: systemPrompts[pageLang] };
 
-                _dbgPanel.log('Step 4: startSession (lang=' + pageLang + ', url=' + signedUrl.slice(0,50) + '...)');
                 conv = await Conversation.startSession({
                   signedUrl,
                   overrides: { agent: agentOverride },
                   onConnect: () => {
-                    _dbgPanel.log('✓ onConnect fired — LIVE', '#0f0');
                     btn.disabled = false;
                     label.textContent = 'End Call';
                     btn.style.opacity = '1';
@@ -669,30 +601,18 @@
                     }
                   },
                   onError: (err) => {
-                    _dbgPanel.log('onError fired: ' + JSON.stringify({
-                      message: err && err.message,
-                      name: err && err.name,
-                      closeCode: err && err.closeCode,
-                      closeReason: err && err.closeReason,
-                      type: err && err.type,
-                      full: String(err)
-                    }), '#f44');
                     btn.disabled = false;
                     resetUI(null);
                     const msg = err.closeReason || err.message || 'Could not connect';
                     const code = err.closeCode ? ` [${err.closeCode}]` : '';
-                    status.textContent = 'onError: ' + msg + code;
+                    status.textContent = 'Error: ' + msg + code;
                     status.style.color = '#ef4444';
                   }
                 });
-                _dbgPanel.log('✓ startSession resolved (conv created)', '#0f0');
               } catch(e) {
                 btn.disabled = false;
                 resetUI(null);
-                _dbgPanel.err('startSession THREW', e);
-                // Show real error — NOT the generic message
-                const realMsg = (e && (e.message || e.name || String(e))) || 'unknown error';
-                status.textContent = 'Error: ' + realMsg;
+                status.textContent = 'Could not connect. Check microphone permissions.';
                 status.style.color = '#ef4444';
               }
             }
