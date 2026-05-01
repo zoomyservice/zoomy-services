@@ -343,7 +343,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 <!-- ═══════════ PHONE AGENT FEATURE + SERVICES (reorder on mobile) ═══════════ -->
 <div class="sections-reorder">
-<section class="section" id="phone-agent-section" style="background:var(--bg-2);position:relative;overflow:hidden;">
+<section class="section" id="phone-agent-section" style="background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
 <div class="aurora" style="opacity:.4;">
 <div class="aurora-blob aurora-blob-1" style="background:radial-gradient(circle,#6366f1,transparent);animation-duration:16s;"></div>
 <div class="aurora-blob aurora-blob-2" style="animation-duration:20s;"></div>
@@ -1089,7 +1089,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 </section>
 <!-- ═══════════ AI CHATBOT SHOWCASE ═══════════ -->
-<section class="section" style="position:relative;overflow:hidden;">
+<section class="section" style="position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
 <div class="aurora" style="opacity:.5;">
 <div class="aurora-blob aurora-blob-2" style="animation-duration:15s;"></div>
 <div class="aurora-blob aurora-blob-3" style="animation-duration:22s;"></div>
@@ -1141,9 +1141,9 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="msg msg-user">What makes your chatbot different from just adding ChatGPT to a site?</div>
 <div class="msg msg-bot">It’s trained only on your business — your real services, prices, and policies. It won’t go off-topic or make things up. And when the moment is right, it captures the visitor’s contact details directly in the conversation.</div>
 </div>
-<div class="chatbot-input">
-<input class="chatbot-input-field" id="chatbot-input-field" placeholder="Ask about our services..." type="text"/>
-<button class="chatbot-send" id="chatbot-send">
+<div class="chatbot-input" style="pointer-events:none;opacity:.55;">
+<input class="chatbot-input-field" disabled placeholder="Live on your site — try it on the chatbot page" type="text" style="cursor:default;"/>
+<button class="chatbot-send" disabled style="cursor:default;">
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
 </div>
