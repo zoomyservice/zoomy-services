@@ -1432,6 +1432,7 @@ let hpSharedAudioCtx = null;
 function hpPlayRing() {
   return new Promise(resolve => {
     try {
+      if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
       hpSharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const ctx = hpSharedAudioCtx;
       const t = ctx.currentTime;
@@ -1478,6 +1479,7 @@ function hpStartCallTimer() {
 function hpResetUI(msg) {
   if (hpCallTimer) { clearInterval(hpCallTimer); hpCallTimer = null; }
   hpConv = null; hpIsMuted = false; hpIsSpeaker = false;
+  if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
   hpLabel.textContent = 'Start Call';
   hpBtn.style.opacity = '1';
   hpBtn.style.background = 'var(--grad-main)';

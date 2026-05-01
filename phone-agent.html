@@ -29,7 +29,7 @@
 .use-case p{font-size:.875rem;color:var(--text-2);line-height:1.65}
 .voice-demo{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;max-width:460px;width:100%}
 .voice-header{background:linear-gradient(135deg,#312e81,#6366f1);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:14px}
-.voice-orb{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;position:relative}
+.voice-orb{width:44px;height:44px;border-radius:50%;background:var(--border);border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;position:relative}
 .voice-orb::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(99,102,241,.4);animation:orbPulse 2s ease-in-out infinite}
 @keyframes orbPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.12)}}
 .voice-name{font-family:var(--f-display);font-weight:700;font-size:.95rem;color:#fff}
@@ -66,7 +66,7 @@
 }
 </style>
 <style>
-#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:var(--bg-dark,#0D0D0B);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:var(--bg-dark,#0D0D0B);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid var(--card)}
 .bar-off #free-bar{display:none!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
 </style>
@@ -322,11 +322,11 @@
 </button>
 <!-- Mute + Speaker row (shown during call) -->
 <div id="active-controls" style="display:none;width:100%;gap:.6rem;flex-direction:row;">
-<button id="mute-btn" onclick="toggleMute()" style="flex:1;padding:11px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:#fff;font-family:var(--f-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
+<button id="mute-btn" onclick="toggleMute()" style="flex:1;padding:11px 12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-family:var(--f-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
 <svg fill="none" height="14" id="mute-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="23"></line><line x1="8" x2="16" y1="23" y2="23"></line></svg>
 <span id="mute-label">Mute</span>
 </button>
-<button id="speaker-btn" onclick="toggleSpeaker()" style="flex:1;padding:11px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:#fff;font-family:var(--f-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
+<button id="speaker-btn" onclick="toggleSpeaker()" style="flex:1;padding:11px 12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-family:var(--f-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
 <svg fill="none" height="14" id="speaker-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
 <span id="speaker-label">Speaker</span>
 </button>
@@ -381,8 +381,8 @@
                 muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" opacity=".3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2" opacity=".3"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/><line x1="1" y1="1" x2="23" y2="23" stroke="#ef4444" stroke-width="2.5"/>';
                 muteLabel.textContent = 'Unmute';
               } else {
-                muteBtn.style.background = 'rgba(255,255,255,.08)';
-                muteBtn.style.borderColor = 'rgba(255,255,255,.15)';
+                muteBtn.style.background = 'var(--card)';
+                muteBtn.style.borderColor = 'var(--border)';
                 muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
                 muteLabel.textContent = 'Mute';
               }
@@ -419,8 +419,8 @@
               } else {
                 // Restore to system default (earpiece if no headphones)
                 document.querySelectorAll('audio').forEach(a => setSink(a, 'default'));
-                speakerBtn.style.background = 'rgba(255,255,255,.08)';
-                speakerBtn.style.borderColor = 'rgba(255,255,255,.15)';
+                speakerBtn.style.background = 'var(--card)';
+                speakerBtn.style.borderColor = 'var(--border)';
                 speakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
                 speakerLabel.textContent = 'Speaker';
               }
@@ -440,6 +440,8 @@
             function playRing() {
               return new Promise(resolve => {
                 try {
+                  // Close any previous context — stacked contexts cause pitch drift across calls
+                  if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
                   sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
                   const ctx = sharedAudioCtx;
                   const t = ctx.currentTime;
@@ -491,6 +493,8 @@
             function resetUI(msg) {
               if (callTimer) { clearInterval(callTimer); callTimer = null; }
               conv = null;
+              // Close AudioContext so next call starts with a fresh pipeline (prevents pitch drift)
+              if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
               isMuted = false;
               isSpeaker = false;
               label.textContent = 'Start Call';
@@ -503,13 +507,13 @@
               // Reset mute button
               muteLabel.textContent = 'Mute';
               muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
-              muteBtn.style.background = 'rgba(255,255,255,.08)';
-              muteBtn.style.borderColor = 'rgba(255,255,255,.15)';
+              muteBtn.style.background = 'var(--card)';
+              muteBtn.style.borderColor = 'var(--border)';
               // Reset speaker button
               speakerLabel.textContent = 'Speaker';
               speakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-              speakerBtn.style.background = 'rgba(255,255,255,.08)';
-              speakerBtn.style.borderColor = 'rgba(255,255,255,.15)';
+              speakerBtn.style.background = 'var(--card)';
+              speakerBtn.style.borderColor = 'var(--border)';
               status.textContent = msg || 'Call ended';
               status.style.color = '';
               // Show transcript if we captured anything
