@@ -1173,6 +1173,13 @@ document.addEventListener('DOMContentLoaded',function(){
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
 </div>
+<div class="cb-tailor">
+<p class="cb-tailor-label">✦ Tailor to your business</p>
+<div class="cb-tailor-row">
+<input class="cb-tailor-url" id="cb-tailor-url" type="url" placeholder="yourbusiness.com" onkeydown="if(event.key==='Enter')cbTailor()"/>
+<button class="cb-tailor-btn" id="cb-tailor-btn" onclick="cbTailor()">Analyze →</button>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1279,7 +1286,10 @@ document.addEventListener('DOMContentLoaded',function(){
 // ── Homepage chatbot demo wiring ─────────────────────────────────────────────────────────────────────────
 (function() {
   var STORE = 'zmy_home_v1';
-  var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+  var AI_WORKER     = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+  var DEMO_WORKER   = 'https://zoomy-ai.zoozoomfast.workers.dev/demo-chat';
+  var SCRAPE_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/scrape';
+  var tailoredBiz   = null;
 
   var messagesEl = document.getElementById('chatbot-messages');
   var inputEl    = document.getElementById('chatbot-input-field');
@@ -1343,10 +1353,14 @@ document.addEventListener('DOMContentLoaded',function(){
     messagesEl.appendChild(typing);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     try {
-      var res = await fetch(AI_WORKER, {
+      var endpoint = tailoredBiz ? DEMO_WORKER : AI_WORKER;
+      var body = tailoredBiz
+        ? JSON.stringify({ message: text, history: history.slice(-8), business: tailoredBiz })
+        : JSON.stringify({ message: text, history: history.slice(-8) });
+      var res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: history.slice(-8) })
+        body: body
       });
       if (res.ok) {
         var data = await res.json();
@@ -1357,9 +1371,66 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     } catch(e) {}
     typing.remove();
-    appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we\u2019ll reply within 24 hours.", 'bot');
+    appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we’ll reply within 24 hours.", 'bot');
     saveChat();
   }
+
+  window.cbTailor = async function() {
+    var urlEl = document.getElementById('cb-tailor-url');
+    var btnEl = document.getElementById('cb-tailor-btn');
+    var url = urlEl ? urlEl.value.trim() : '';
+    if (!url) return;
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+    if (urlEl) urlEl.disabled = true;
+    if (btnEl) { btnEl.disabled = true; btnEl.textContent = 'Analyzing…'; }
+
+    messagesEl.innerHTML = '';
+    history = [];
+    var loadDiv = document.createElement('div');
+    loadDiv.className = 'msg msg-bot';
+    loadDiv.innerHTML = '<span class="msg-typing"><span></span><span></span><span></span></span>';
+    messagesEl.appendChild(loadDiv);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      var res = await fetch(SCRAPE_WORKER, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: url })
+      });
+      if (res.ok) {
+        var data = await res.json();
+        tailoredBiz = data.business || data;
+        loadDiv.innerHTML = '<span class="msg-typing"><span></span><span></span><span></span></span>';
+
+        var introRes = await fetch(DEMO_WORKER, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: '__INTRO__', history: [], business: tailoredBiz })
+        });
+        var introText = "Hi! I've learned about your business. Ask me anything — how this chatbot would work for you, what it would say to your visitors, or how it handles common questions.";
+        if (introRes.ok) {
+          var introData = await introRes.json();
+          if (introData.reply) introText = introData.reply;
+        }
+        loadDiv.remove();
+        appendMsg(introText, 'bot');
+        history.push({ role: 'bot', text: introText });
+
+        var status = document.querySelector('.chatbot-status');
+        if (status && tailoredBiz && tailoredBiz.name) status.textContent = 'Tailored to ' + tailoredBiz.name;
+        if (btnEl) { btnEl.textContent = '✓ Tailored'; btnEl.style.opacity = '.6'; btnEl.disabled = true; }
+        if (urlEl) urlEl.disabled = false;
+        return;
+      }
+    } catch(e) {}
+
+    loadDiv.remove();
+    appendMsg("Couldn’t reach that URL. Try another or email <strong>contact@zoomy.services</strong>.", 'bot');
+    if (urlEl) urlEl.disabled = false;
+    if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Analyze →'; }
+  };
 
   sendBtn.addEventListener('click', sendMessage);
   inputEl.addEventListener('keydown', function(e) {
