@@ -1346,6 +1346,14 @@ document.addEventListener('DOMContentLoaded',function(){
 <script src="js/chatbot.js?v=20260430e"></script>
 <script type="module">
 import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
+
+// iOS Safari fix: patch permissions.query so SDK doesn't crash on mic permission check
+(function patchPermissions() {
+  if (!navigator.permissions || !navigator.permissions.query) return;
+  const _orig = navigator.permissions.query.bind(navigator.permissions);
+  navigator.permissions.query = (desc) =>
+    _orig(desc).catch(() => ({ state: 'prompt', onchange: null }));
+})();
 let hpConv = null;
 let hpCallTimer = null;
 let hpIsMuted = false;
@@ -1498,13 +1506,15 @@ function hpResetUI(msg) {
 
 window.hpToggleCall = async function() {
   if (hpConv) { await hpConv.endSession(); return; }
+  let micStream = null;
   try {
     hpLabel.textContent = 'Calling...';
     hpBtn.style.opacity = '0.7';
     hpBtn.disabled = true;
     hpStatus.textContent = 'Requesting microphone...';
-    const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    micStream.getTracks().forEach(t => t.stop());
+    // Keep stream alive through setup — iOS needs continuous mic activity
+    // so the SDK's internal getUserMedia succeeds in the same gesture context
+    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
     hpStatus.textContent = 'Ringing...';
     const tokenRes = await fetch(HP_TOKEN_URL);
     if (!tokenRes.ok) {
@@ -1564,6 +1574,7 @@ Contacto: zoomy.services/contact`,
       signedUrl,
       overrides: { agent: agentOverride },
       onConnect: () => {
+        if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
         hpBtn.disabled = false;
         hpLabel.textContent = 'End Call';
         hpBtn.style.opacity = '1';
@@ -1600,6 +1611,7 @@ Contacto: zoomy.services/contact`,
       }
     });
   } catch(e) {
+    if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
     hpBtn.disabled = false;
     hpResetUI(null);
     hpStatus.textContent = 'Could not connect. Check microphone permissions.';
