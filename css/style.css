@@ -3135,34 +3135,27 @@ section.hero[style*="min-height:50vh"]{
   #demo[class*="chatbot"]{
     display:flex!important;
     flex-direction:column!important;
+    /* Keep base max-width:380px from the .chatbot-mock rule — DO NOT override.
+       width:100% lets the mock shrink on viewports < 380px naturally.
+       margin:auto centers the mock when it's narrower than its column. */
     width:100%!important;
-    /* HARD viewport cap — protects against parent grids/flex containers
-       that have blown out wider than the viewport for any reason. */
-    max-width:min(100%, calc(100vw - 32px))!important;
     margin:1.5rem auto!important;
     visibility:visible!important;
     opacity:1!important;
     box-sizing:border-box!important;
     min-width:0!important;
   }
-  /* Force every ancestor of the chatbot mock to stop blowing out wider than the viewport.
-     The hero on chatbot.html is a flex column that shrink-to-fits its content, which lets
-     the grid/section-inner expand past the viewport when a child has wide intrinsic content.
-     Hard-cap each ancestor to 100vw so the mock can never end up positioned off-screen. */
-  .hero .section-inner,
-  .section .section-inner,
+  /* Allow chatbot-detail-grid columns to shrink below content size — prevents the
+     grid from expanding past the viewport when chatbot-mock content has wide intrinsic size. */
   .chatbot-detail-grid,
-  .agent-grid,
+  .agent-grid{
+    min-width:0!important;
+  }
   .chatbot-detail-grid > *,
   .agent-grid > *{
-    max-width:calc(100vw - 32px)!important;
-    width:100%!important;
     min-width:0!important;
-    box-sizing:border-box!important;
-    overflow:hidden!important;
+    max-width:100%!important;
   }
-  /* Also force the hero itself to not overflow */
-  .hero{ overflow:hidden!important; max-width:100vw!important; }
   /* Whatever 2-col grid wraps the chatbot demo: stack */
   div[style*="grid-template-columns:1fr 1fr"]:has(.chatbot-mock),
   div[style*="grid-template-columns:1fr 1fr"]:has(#demo){
