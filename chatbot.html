@@ -11,33 +11,24 @@
 <meta content="Custom AI chatbots trained on your business. Deployed on your website. Multilingual, lead capture, AI-powered, no SaaS subscriptions or platform fees." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<link href="css/style.css?v=20260430q" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="css/style.css?v=20260430r" rel="stylesheet"/>
 <style>
 .chatbot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .detail-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
-.detail-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.25rem 0;border-bottom:1px solid var(--border-b);align-items:start}
-.detail-row:first-child{border-top:1px solid var(--border-b)}
+.detail-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.25rem 0;border-bottom:1px solid var(--border);align-items:start}
+.detail-row:first-child{border-top:1px solid var(--border)}
 .detail-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
 .detail-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff}
 .detail-desc{color:var(--text-2);font-size:.9rem;line-height:1.75}
 @media(max-width:900px){.chatbot-detail-grid{grid-template-columns:1fr}.detail-row{grid-template-columns:1fr;gap:1rem}}
+.hero .chatbot-mock{display:block!important}
 </style>
 <style>
-:root{--bar-h:44px}html,body{background:#020208}html[data-theme="light"],html[data-theme="light"] body{background:var(--bg)}nav{background:rgba(2,2,8,.96)}html[data-theme="light"] nav{background:rgba(247,241,229,.96)}
-nav{top:var(--bar-h)!important}
-#navLinks{top:calc(56px + var(--bar-h))!important}
-.bar-off{--bar-h:0px!important}
-#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:linear-gradient(90deg,#0f0e1a,#1e1b4b,#2d2a5e);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:var(--bg-dark,#0D0D0B);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid rgba(255,255,255,.08)}
 .bar-off #free-bar{display:none!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
-
-/* ZMY_LIGHT_MODE_OVERRIDES */
-html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="chatbot-send"]):not([class*="msg-user"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]){color:var(--text)!important}
-html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:rgb"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]){color:var(--text-2)!important}
-html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
-
-<style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .detail-name{color:var(--text)!important}</style>
+</style>
 <script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
 <!-- ═══ ANALYTICS & TRACKING ═══ -->
 <!-- Google Analytics 4 -->
@@ -130,7 +121,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
   </script>
 <noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- ═══ END META PIXEL ═══ -->
-<script>(function(){document.documentElement.setAttribute('data-theme','light');try{  var t=sessionStorage.getItem('zmy_theme');  if(t==='dark')document.documentElement.removeAttribute('data-theme');  localStorage.removeItem('zmy_theme');}catch(e){}})();</script>
 </head>
 <body>
 <!-- ═══ FREE PAGE ANNOUNCEMENT BAR ═══ -->
@@ -145,7 +135,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 <nav>
-<a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Digital Production Studio</span></a>
+<a class="nav-logo logo-turq" href="index.html">Zoomy<span class="nav-logo-sub">Digital Production Studio</span></a>
 <ul class="nav-links" id="navLinks">
 <li><a data-i18n="nav.websites" href="website-design.html">Websites / Apps</a></li>
 <li><a class="active" data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
@@ -162,18 +152,12 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <a class="lang-btn" href="fr/chatbot.html">FR</a>
 <a class="lang-btn" href="es/chatbot.html">ES</a>
 </div>
-<button aria-label="Toggle light/dark theme" class="theme-toggle" id="themeToggle" onclick="toggleTheme()" type="button"><svg aria-hidden="true" class="icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg aria-hidden="true" class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" onclick="toggleTheme()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
 <button aria-label="Menu" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
-<section class="hero" style="min-height:55vh;padding:140px 2rem 5rem;">
-<div class="aurora">
-<div class="aurora-blob aurora-blob-1"></div>
-<div class="aurora-blob aurora-blob-2"></div>
-<div class="aurora-blob aurora-blob-3"></div>
-</div>
-<div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;">
+<section class="hero" style="min-height:55vh">
+<div class="section-inner">
 <div class="chatbot-detail-grid">
 <div>
 <div class="section-tag" style="margin-bottom:1.5rem;">AI Chatbot</div>
@@ -293,9 +277,9 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </section>
 <section class="section" style="position:relative;overflow:hidden;">
-<div class="aurora" style="opacity:.4;"><div class="aurora-blob aurora-blob-1"></div></div>
+<div class="aurora" style="opacity:.4;"></div>
 <div class="section-inner" style="text-align:center;z-index:2;position:relative;">
-<div class="section-tag" style="justify-content:center;">Get Started</div>
+<div class="section-tag" >Get Started</div>
 <h2 class="section-title">Tell us about your business.</h2>
 <p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">The more detail you share, the better we can scope the chatbot and give you an accurate quote.</p>
 <a class="btn btn-primary btn-lg" href="contact.html">Start a Chatbot Brief</a>
@@ -305,7 +289,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="footer-inner">
 <div class="footer-grid">
 <div>
-<div class="footer-logo grad-text">Zoomy</div>
+<div class="footer-logo footer-logo">Zoomy</div>
 <p class="footer-tagline" data-i18n="footer.tagline">Campaign management, custom websites, AI chatbots, and phone agents.</p>
 </div>
 <div class="footer-col"><h4 data-i18n="footer.services">Services</h4><ul>
@@ -340,9 +324,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 // ── Zoomy demo widget wiring ───────────────────────────────────────────────────────────────────────────
 (function() {
   function initDemo() {
-    // Clear demo session on every page load (on-page demo always starts fresh)
-    try { sessionStorage.removeItem('zmy_demo_v1'); } catch(e) {}
-    
     // Remove the floating chat bubble on this page
     var root = document.getElementById('zmy-root');
     if (root) root.remove();
@@ -453,6 +434,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
   initDemo();
 })();
 </script>
-<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
+<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')=='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>
