@@ -77,7 +77,7 @@ function render() {
 #zmy-input::placeholder{color:#64748b}
 #zmy-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;transition:transform .15s}
 #zmy-send:hover{transform:scale(1.1)}
-@media(max-width:480px){#zmy-win{right:0;bottom:0;width:100vw;border-radius:20px 20px 0 0;max-height:85dvh;max-height:85vh}#zmy-bubble{bottom:16px;right:16px}#zmy-inp-row{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}#zmy-msgs{max-height:none;flex:1}}#zmy-bubble.zmy-hidden{display:none!important}
+@media(max-width:480px){#zmy-win{position:fixed!important;right:0!important;bottom:0!important;left:0!important;width:100vw!important;height:85vh;height:85dvh;max-height:none!important;border-radius:20px 20px 0 0;overflow:hidden!important}#zmy-bubble{bottom:16px;right:16px}#zmy-inp-row{padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));flex-shrink:0}#zmy-msgs{max-height:none!important;flex:1!important;min-height:0!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch}}#zmy-bubble.zmy-hidden{display:none!important}
 #zmy-phone-btn{background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;padding:4px;border-radius:4px;display:flex;align-items:center;transition:color .15s,background .15s}
 #zmy-phone-btn:hover{color:#4ade80;background:rgba(74,222,128,.1)}
 #zmy-phone-btn.active-call{color:#4ade80}
@@ -388,6 +388,12 @@ html[data-theme="light"] #zmy-presets{background:#f5f3ff;border-top-color:rgba(9
     }
     bubble.innerHTML = `<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>`;
   }
+
+  // Prevent iOS elastic scroll from dragging the chat window off-screen
+  win.addEventListener('touchmove', (e) => {
+    // Allow scrolling inside #zmy-msgs but block it everywhere else on the window
+    if (!msgs.contains(e.target)) e.preventDefault();
+  }, { passive: false });
 
   bubble.addEventListener('click', () => isOpen ? closeChat() : openChat());
   document.getElementById('zmy-close').addEventListener('click', closeChat);
