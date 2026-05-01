@@ -4281,3 +4281,40 @@ html[data-theme="light"] .btn-nav [style*="color:#fff"],
 html[data-theme="light"] .btn-primary [style*="color:#fff"]{
   color:inherit!important;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   Light mode: override page-level <style> classes that set color:#fff
+   These are CSS class rules in each page's own <style> block —
+   the [style*="color:#fff"] selector above doesn't catch these.
+   ═════════════════════════════════════════════���════════════════════ */
+html[data-theme="light"] .detail-name,
+html[data-theme="light"] .detail-label,
+html[data-theme="light"] .cap-label,
+html[data-theme="light"] .cap-row-name,
+html[data-theme="light"] .cap-row-title,
+html[data-theme="light"] .chatbot-feat-title,
+html[data-theme="light"] .chatbot-name,
+html[data-theme="light"] .faq-q,
+html[data-theme="light"] .faq-item summary,
+html[data-theme="light"] .format-name,
+html[data-theme="light"] .g-title,
+html[data-theme="light"] .integration-name,
+html[data-theme="light"] .overview-title,
+html[data-theme="light"] .pf-card h2,
+html[data-theme="light"] .phase-name,
+html[data-theme="light"] .plat-card-name,
+html[data-theme="light"] .process-step-label,
+html[data-theme="light"] .ps-heading,
+html[data-theme="light"] .service-card-title,
+html[data-theme="light"] .step-card h4,
+html[data-theme="light"] .svc-title,
+html[data-theme="light"] .use-case h4,
+html[data-theme="light"] .voice-name,
+html[data-theme="light"] .ap-text strong,
+html[data-theme="light"] .pricing-half-price,
+html[data-theme="light"] .tc-price,
+html[data-theme="light"] .tc-badge,
+html[data-theme="light"] .wi-tab-active,
+html[data-theme="light"] .sample-tag{
+  color:var(--text)!important;
+}
