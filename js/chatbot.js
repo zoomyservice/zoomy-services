@@ -296,7 +296,13 @@ function render() {
   });
 
   // ── Phone Agent Call Panel ────────────────────────────────────────────────
+  // Hide the floating phone button on pages that have their own dedicated call demo
+  // (phone-agent.html has #call-btn, index.html has #hp-call-btn)
+  // — prevents users from accidentally using the wrong call UI on those pages
   const phoneBtn      = document.getElementById('zmy-phone-btn');
+  if (phoneBtn && (document.getElementById('call-btn') || document.getElementById('hp-call-btn'))) {
+    phoneBtn.style.display = 'none';
+  }
   const callPanel     = document.getElementById('zmy-call-panel');
   const callOrb       = document.getElementById('zmy-call-orb');
   const callStatus    = document.getElementById('zmy-call-statusline');
