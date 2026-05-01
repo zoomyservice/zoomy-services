@@ -400,8 +400,9 @@ function render() {
       callStatus.textContent = t('Requesting microphone...','Demande microphone...','Solicitando micrófono...');
       callStatus.className = '';
 
+      // Keep stream alive until ElevenLabs connects — stopping then re-acquiring
+      // causes a brief device lock on some browsers that silences the mic
       const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      micStream.getTracks().forEach(t => t.stop());
 
       callStatus.textContent = t('Ringing...','Sonnerie...','Llamando...');
       const tokenRes = await fetch(BIZ.phoneTokenUrl);
@@ -434,6 +435,7 @@ function render() {
           tts: { stability: 0.65, similarityBoost: 0.80 },
         },
         onConnect: () => {
+          try { micStream.getTracks().forEach(t => t.stop()); } catch(e) {}
           startAudioObserver();
           callStartBtn.disabled = false;
           callStartBtn.classList.add('ending');
