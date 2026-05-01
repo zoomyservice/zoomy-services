@@ -1174,16 +1174,22 @@ document.addEventListener('DOMContentLoaded',function(){
 </button>
 </div>
 </div>
-<div class="cb-tailor">
-<h4 class="cb-tailor-title">See it work for your business</h4>
-<p class="cb-tailor-desc">Paste your website URL — the chatbot will scan your site, learn your services and pricing, and answer questions exactly as it would for your visitors.</p>
-<div class="cb-tailor-row">
-<input class="cb-tailor-url" id="cb-tailor-url" type="url" placeholder="yourbusiness.com" onkeydown="if(event.key==='Enter')cbTailor()"/>
-<button class="cb-tailor-btn" id="cb-tailor-btn" onclick="cbTailor()">Try it →</button>
+<div class="cb-tailor" style="width:100%;max-width:400px;" id="cb-tailor-wrap">
+<h4 class="cb-tailor-title">Try it for your type of business</h4>
+<p class="cb-tailor-desc">Pick a business type and watch the chatbot become its AI assistant — answering real questions about pricing, bookings, and services.</p>
+<div class="cb-type-grid" id="cb-type-grid">
+<button class="cb-type-btn" onclick="cbTailorPreset('restaurant')">🍽️ Restaurant</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('gym')">💪 Gym</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('salon')">💇 Beauty Salon</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('dental')">🦷 Dental Clinic</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('legal')">⚖️ Law Firm</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('realestate')">🏡 Real Estate</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('store')">🛍️ Online Store</button>
+<button class="cb-type-btn" onclick="cbTailorPreset('auto')">🚗 Auto Shop</button>
 </div>
 <div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
-<span>Showing results for <strong id="cb-tailor-biz-name"></strong></span>
-<a class="cb-tailor-reset-link" href="#" onclick="cbTailorReset();return false;">↺ Try a different site</a>
+<span>Now showing: <strong id="cb-tailor-biz-name"></strong></span>
+<a class="cb-tailor-reset-link" href="#" onclick="cbTailorReset();return false;">↺ Try another type</a>
 </div>
 </div>
 </div>
@@ -1392,100 +1398,133 @@ document.addEventListener('DOMContentLoaded',function(){
     saveChat();
   }
 
-  window.cbTailor = async function() {
-    var urlEl   = document.getElementById('cb-tailor-url');
-    var btnEl   = document.getElementById('cb-tailor-btn');
-    var resetEl = document.getElementById('cb-tailor-reset');
-    var url = urlEl ? urlEl.value.trim() : '';
-    if (!url) return;
-    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
 
-    if (urlEl) urlEl.disabled = true;
-    if (btnEl) { btnEl.disabled = true; btnEl.textContent = 'Analyzing…'; }
 
-    history = [];
-    messagesEl.innerHTML =
-      '<div class="cb-analyzing">' +
-      '<div class="cb-spinner"></div>' +
-      '<p class="cb-analyze-status" id="cb-analyze-status">' + ANALYZE_STEPS[0] + '</p>' +
-      '</div>';
+  
+    var CB_PRESETS = {
+      restaurant: {
+        name: 'The Golden Fork', type: 'Restaurant & Bar',
+        tagline: 'Modern European cuisine, craft cocktails, and weekend brunch',
+        services: ['Dine-in reservations', 'Private event hosting', 'Weekend brunch', 'Takeout orders', 'Catering'],
+        pricing: 'Starters $10–$18, Mains $24–$48, Weekend brunch $16–$28. Groups over 8 require a deposit.',
+        location: 'Downtown city center', contact: 'reservations@goldenfork.com | (555) 204-1199', languages: ['en', 'fr']
+      },
+      gym: {
+        name: 'Peak Performance Fitness', type: 'Gym & Fitness Studio',
+        tagline: 'Results-driven training for all levels',
+        services: ['Gym access', 'Personal training', 'Group classes', 'Nutrition coaching', 'Sauna & recovery zone'],
+        pricing: 'Basic $49/mo, Unlimited classes $79/mo, PT included $129/mo. Annual saves 20%. Day pass $15.',
+        location: 'Multiple locations', contact: 'info@peakfitness.com | (555) 318-7744', languages: ['en']
+      },
+      salon: {
+        name: 'Luxe Beauty Studio', type: 'Beauty Salon & Spa',
+        tagline: 'Where you leave looking and feeling your best',
+        services: ['Haircuts & styling', 'Balayage & color', 'Lash extensions', 'Facials & skincare', 'Manicure & pedicure'],
+        pricing: 'Haircuts from $55, Balayage from $180, Lash set from $120, Facials from $85. Deposit required.',
+        location: 'Uptown', contact: 'book@luxebeauty.com | (555) 772-3300', languages: ['en']
+      },
+      dental: {
+        name: 'Bright Smile Dental', type: 'Dental Clinic',
+        tagline: 'Comfortable, modern dentistry for the whole family',
+        services: ['Cleanings & checkups', 'Teeth whitening', 'Invisalign', 'Implants', 'Emergency care', 'Children's dentistry'],
+        pricing: 'Cleaning from $120 (most insurance covered), Whitening $350, Implants from $2,200.',
+        location: 'Medical plaza', contact: 'appointments@brightsmile.com | (555) 499-8800', languages: ['en', 'es']
+      },
+      legal: {
+        name: 'Harrington & Associates', type: 'Law Firm',
+        tagline: 'Experienced legal counsel for individuals and businesses',
+        services: ['Personal injury (no win no fee)', 'Business law & contracts', 'Real estate law', 'Family law', 'Estate planning'],
+        pricing: 'Free 30-min consultation. Contingency for injury cases. Business law from $250/hr.',
+        location: 'Financial district', contact: 'intake@harringtonlaw.com | (555) 601-2200', languages: ['en']
+      },
+      realestate: {
+        name: 'Crestview Realty', type: 'Real Estate Agency',
+        tagline: 'Helping you find — or sell — your perfect property',
+        services: ['Residential buying & selling', 'Rental management', 'Commercial real estate', 'Free home valuations'],
+        pricing: 'Seller commission 5% (includes buyer agent). Buyers: free. Property management 8%/mo.',
+        location: 'Metro area', contact: 'hello@crestviewrealty.com | (555) 830-4400', languages: ['en']
+      },
+      store: {
+        name: 'Nomad Supply Co.', type: 'Online Outdoor & Lifestyle Store',
+        tagline: 'Gear built for people who live outside',
+        services: ['Outdoor apparel', 'Camping & hiking gear', 'Monthly subscription box', '60-day free returns', 'Loyalty rewards'],
+        pricing: 'Apparel $35–$180, Gear $20–$400. Free shipping over $75. Subscription box $49/mo.',
+        location: 'Ships worldwide', contact: 'support@nomadsupply.com | (555) 100-3355', languages: ['en']
+      },
+      auto: {
+        name: 'ProTech Auto Repair', type: 'Auto Repair Shop',
+        tagline: 'Honest repairs, fair prices, done right the first time',
+        services: ['Oil changes & tune-ups', 'Brake service', 'Transmission repair', 'Diagnostics', 'Tire service', 'AC repair'],
+        pricing: 'Oil change from $49, Brakes from $120/axle, Diagnostics $75 (waived with repair). Free estimates.',
+        location: 'East side', contact: 'service@protechauto.com | (555) 288-5500', languages: ['en']
+      },
+    };
 
-    var stepIdx = 0;
-    var stepTimer = setInterval(function() {
-      stepIdx = Math.min(stepIdx + 1, ANALYZE_STEPS.length - 1);
-      var el = document.getElementById('cb-analyze-status');
-      if (el) el.textContent = ANALYZE_STEPS[stepIdx];
-    }, 2200);
+    window.cbTailorPreset = async function(type) {
+      var preset = CB_PRESETS[type];
+      if (!preset) return;
 
-    try {
-      var res = await fetch(SCRAPE_WORKER, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: url })
+      document.querySelectorAll('.cb-type-btn').forEach(function(b) {
+        b.classList.remove('active');
+        b.disabled = true;
       });
-      if (res.ok) {
-        var data = await res.json();
-        tailoredBiz = data.business || data;
+      var clicked = document.querySelector('.cb-type-btn[onclick*="\'' + type + '\'"]');
+      if (clicked) clicked.classList.add('active');
 
-        var statusEl = document.getElementById('cb-analyze-status');
-        if (statusEl) statusEl.textContent = 'Personalizing your chatbot…';
+      tailoredBiz = preset;
+      history = [];
 
+      messagesEl.innerHTML =
+        '<div class="cb-analyzing">' +
+        '<div class="cb-spinner"></div>' +
+        '<p class="cb-analyze-status">Setting up ' + preset.name + '\u2026</p>' +
+        '</div>';
+
+      try {
         var introRes = await fetch(DEMO_WORKER, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: '__INTRO__', history: [], business: tailoredBiz })
+          body: JSON.stringify({ message: '__INTRO__', history: [], business: preset })
         });
-        var introText = "Hi! I've learned about your business. Ask me anything — how this chatbot would work for you, what it would say to your visitors, or how it handles common questions.";
+        var introText = 'Hi! I\'m the AI assistant for ' + preset.name + '. How can I help you today?';
         if (introRes.ok) {
-          var introData = await introRes.json();
-          if (introData.reply) introText = introData.reply;
+          var d = await introRes.json();
+          if (d.reply) introText = d.reply;
         }
-
-        clearInterval(stepTimer);
         messagesEl.innerHTML = '';
         appendMsg(introText, 'bot');
         history.push({ role: 'bot', text: introText });
 
-        var bizName = (tailoredBiz && tailoredBiz.name) ? tailoredBiz.name : '';
         var statusBar = document.querySelector('.chatbot-status');
-        if (statusBar) statusBar.textContent = bizName ? 'Tailored to ' + bizName : 'Tailored to your business';
+        if (statusBar) statusBar.textContent = preset.type + ' demo';
 
+        var resetEl = document.getElementById('cb-tailor-reset');
         if (resetEl) {
           var nameEl = document.getElementById('cb-tailor-biz-name');
-          if (nameEl) nameEl.textContent = bizName || 'your site';
+          if (nameEl) nameEl.textContent = preset.name;
           resetEl.style.display = 'flex';
         }
-        if (btnEl) btnEl.style.display = 'none';
-        if (urlEl) urlEl.style.display = 'none';
-        return;
+        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.disabled = false; });
+      } catch(e) {
+        messagesEl.innerHTML = '';
+        appendMsg('Something went wrong — try again.', 'bot');
+        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
       }
-    } catch(e) {}
+    };
 
-    clearInterval(stepTimer);
-    messagesEl.innerHTML = '';
-    appendMsg("Couldn't read that site. Try a different URL, or just ask me questions about your business directly.", 'bot');
-    if (urlEl) { urlEl.disabled = false; }
-    if (btnEl) { btnEl.disabled = false; btnEl.textContent = 'Try it →'; }
-  };
+    window.cbTailorReset = function() {
+      tailoredBiz = null;
+      history = ORIG_HISTORY.slice();
+      messagesEl.innerHTML = ORIG_MSGS;
+      document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
+      var resetEl = document.getElementById('cb-tailor-reset');
+      if (resetEl) resetEl.style.display = 'none';
+      var statusBar = document.querySelector('.chatbot-status');
+      if (statusBar) statusBar.textContent = ORIG_STATUS;
+      try { sessionStorage.removeItem(STORE); } catch(e) {}
+    };
 
-  window.cbTailorReset = function() {
-    tailoredBiz = null;
-    history = ORIG_HISTORY.slice();
-    messagesEl.innerHTML = ORIG_MSGS;
-
-    var urlEl   = document.getElementById('cb-tailor-url');
-    var btnEl   = document.getElementById('cb-tailor-btn');
-    var resetEl = document.getElementById('cb-tailor-reset');
-    var statusBar = document.querySelector('.chatbot-status');
-
-    if (urlEl)    { urlEl.value = ''; urlEl.disabled = false; urlEl.style.display = ''; }
-    if (btnEl)    { btnEl.textContent = 'Try it →'; btnEl.disabled = false; btnEl.style.opacity = '1'; btnEl.style.display = ''; }
-    if (resetEl)  resetEl.style.display = 'none';
-    if (statusBar) statusBar.textContent = ORIG_STATUS;
-    try { sessionStorage.removeItem(STORE); } catch(e) {}
-  };
-
-  sendBtn.addEventListener('click', sendMessage);
+sendBtn.addEventListener('click', sendMessage);
   inputEl.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   });
