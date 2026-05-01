@@ -561,18 +561,28 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                 await conv.endSession();
                 return; // onDisconnect fires resetUI
               }
-              // *** CRITICAL: Create/resume AudioContext HERE, synchronously, while
-              // we're still inside the direct click handler. On iOS Safari and many
-              // mobile browsers, AudioContext creation only works in a live user-gesture
-              // context. After getUserMedia()'s permission dialog appears, the gesture
-              // context expires — so creating AudioContext after that call will start it
-              // in "suspended" state, causing the ring to be silent on first call and
-              // potentially causing ElevenLabs mic capture issues.
+              // *** CRITICAL: Create/resume AudioContext synchronously in gesture handler.
               if (!sharedAudioCtx) {
                 try { sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
               }
               if (sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
                 sharedAudioCtx.resume().catch(() => {});
+              }
+              // *** CRITICAL FOR IOS MIC: getUserMedia MUST be called before any fetch().
+              // iOS Safari ties getUserMedia permission to a live user-gesture context.
+              // A single network request (fetch) is enough to expire that context, causing
+              // the SDK's later getUserMedia call to return a silent dead stream — no error,
+              // just no audio. By acquiring the mic HERE as the very first await, we:
+              //   (a) trigger the permission dialog while the gesture is still live
+              //   (b) cache the permission so the SDK's call succeeds unconditionally
+              // We stop our stream before the SDK starts so there is no hardware contention.
+              let preMicStream = null;
+              try {
+                preMicStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+              } catch(e) {
+                status.textContent = 'Microphone access denied — please allow mic and try again.';
+                status.style.color = '#ef4444';
+                return;
               }
               try {
                 label.textContent = 'Calling...';
@@ -588,6 +598,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                   status.textContent = errMsg;
                   status.style.color = '#ef4444';
                   btn.disabled = false;
+                  if (preMicStream) { preMicStream.getTracks().forEach(t => t.stop()); preMicStream = null; }
                   return;
                 }
                 const { signedUrl } = await tokenRes.json();
@@ -595,14 +606,21 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                 // Step 2: Play ring
                 await playRing();
 
-                // Step 3: Close our AudioContext BEFORE the SDK starts.
-                // The SDK creates its own AudioContext for mic processing. On iOS/mobile,
-                // having two active AudioContexts causes the SDK's mic capture to get a
-                // silent stream. Close ours first so the SDK gets clean hardware access.
+                // Step 3: Release ALL our audio handles before the SDK starts.
+                // Stop our pre-acquired mic stream so the SDK gets exclusive mic access.
+                if (preMicStream) {
+                  preMicStream.getTracks().forEach(t => t.stop());
+                  preMicStream = null;
+                }
+                // Close our AudioContext so the SDK can create its own cleanly.
                 if (sharedAudioCtx) {
                   try { await sharedAudioCtx.close(); } catch(e) {}
                   sharedAudioCtx = null;
                 }
+                // 400ms pause: (a) lets audio hardware fully release before SDK acquires,
+                // (b) lets the SDK's audio output pipeline warm up before the first TTS
+                // packet arrives — prevents the opening "Hi" from being clipped.
+                await new Promise(r => setTimeout(r, 400));
 
                 status.textContent = 'Connecting...';
 
@@ -673,6 +691,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                   }
                 });
               } catch(e) {
+                if (preMicStream) { preMicStream.getTracks().forEach(t => t.stop()); preMicStream = null; }
                 btn.disabled = false;
                 resetUI(null);
                 status.textContent = 'Could not connect. Check microphone permissions.';
@@ -1082,7 +1101,7 @@ roiCalc();
 </footer>
 <script src="js/main.js?v=20260416"></script>
 <script src="js/i18n.js?v=20260416"></script>
-<script src="js/chatbot.js?v=20260430e"></script>
+<script src="js/chatbot.js?v=20260501a"></script>
 <script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>
