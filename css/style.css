@@ -4334,6 +4334,7 @@ html body .hero .section-inner > .chatbot-detail-grid,
 html body .hero .section-inner > .agent-grid{
   display:grid!important;
   grid-template-columns:1fr 1fr!important;
+  gap:4rem!important;
   align-items:start!important;
   flex-direction:unset!important;
   white-space:normal!important;
