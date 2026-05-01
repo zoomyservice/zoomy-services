@@ -564,7 +564,7 @@ Try Live Demo
 </div>
 <div id="admShell" style="--ac:#0ea5e9;background:#0a0a0a;border:1px solid #222;border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8);">
 <!-- TOP BAR -->
-<div style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
+<div class="adm-topbar" style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
 <div style="display:flex;align-items:center;gap:.85rem;">
 <div style="display:flex;gap:5px;"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div><div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div><div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div></div>
 <span class="adm-topbar-brand" style="font-size:.72rem;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;font-family:monospace;">Lumina Studio — Admin</span>
@@ -574,10 +574,17 @@ Try Live Demo
 <button onclick="admPublish()" onmouseout="this.style.filter=''" onmouseover="this.style.filter='brightness(1.15)'" style="background:var(--ac);color:#0a0a08;border:none;padding:5px 18px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;letter-spacing:.03em;">Publish ↑</button>
 </div>
 </div>
+<!-- MOBILE PAGE TABS (visible on mobile only) -->
+<div id="admMobileTabs" style="display:none;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;background:#0d0d0d;border-bottom:1px solid #1c1c1c;padding:.55rem .7rem;gap:.4rem;">
+<div class="adm-mtab adm-mtab-active" data-page="home" onclick="admNavMobile('home',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.45);color:#38bdf8;transition:all .18s;">🏠 Home</div>
+<div class="adm-mtab" data-page="classes" onclick="admNavMobile('classes',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🧘 Classes</div>
+<div class="adm-mtab" data-page="contact" onclick="admNavMobile('contact',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">📍 Contact</div>
+<div class="adm-mtab" data-page="colours" onclick="admNavMobile('colours',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🎨 Colours</div>
+</div>
 <!-- BODY -->
 <div style="display:flex;">
 <!-- SIDEBAR -->
-<div style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
+<div id="admSidebar" style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
 <div style="font-size:.5rem;color:#888;text-transform:uppercase;letter-spacing:.14em;padding:.2rem 1rem .25rem;font-family:monospace;">Pages</div>
 <div class="adm-nav-item active-nav" onclick="admNav('home',this)" style="padding:.4rem 1rem;font-size:.74rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🏠</span>Home</div>
 <div class="adm-nav-item" onclick="admNav('classes',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🧘</span>Classes</div>
@@ -625,20 +632,14 @@ Try Live Demo
 .adm-nav-item.active-nav{color:var(--ac) !important;background:rgba(255,255,255,.04);border-left:2px solid var(--ac);padding-left:calc(1rem - 2px);}
 @keyframes admFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){
-  #admShell .adm-canvas{height:380px;overflow-x:hidden!important;}
-  #admShell{overflow-x:hidden!important;}
-  #admShell>div:last-child{flex-direction:column;}
-  #admShell>div:last-child>div:first-child{width:100%;flex-direction:row;overflow-x:auto;padding:.4rem 0;border-right:none;border-bottom:1px solid #1a1a1a;flex-shrink:0;}
-  #admShell>div:last-child>div:first-child .adm-nav-item{white-space:nowrap;padding:.35rem .8rem;font-size:.68rem;}
-  #admShell>div:last-child>div:first-child [style*="font-size:.5rem"]{display:none;}
-  #admShell>div:last-child>div:first-child [style*="border-top"]{display:none;}
-  /* Hide Trainers and Pricing nav items on mobile */
-  #admShell [onclick*="admNav('trainers"]{display:none!important;}
-  #admShell [onclick*="admNav('pricing"]{display:none!important;}
-  /* Ensure canvas content doesn't force horizontal scroll */
+  #admShell{min-width:0!important;width:100%!important;overflow-x:hidden!important;}
+  #admMobileTabs{display:flex!important;}
+  #admSidebar{display:none!important;}
+  .adm-canvas{height:400px!important;overflow-x:hidden!important;}
+  #admShell .adm-topbar{flex-wrap:wrap;gap:.4rem;padding:.5rem .75rem!important;}
+  #admShell .adm-topbar-brand{font-size:.6rem!important;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .adm-canvas *{max-width:100%;box-sizing:border-box;}
-  /* Top bar: truncate brand name on narrow screens */
-  #admShell .adm-topbar-brand{display:none;}
+  #adm-colour-panel input[type="text"]{min-width:0;width:100%!important;}
 }
 </style>
 <script>
@@ -721,6 +722,20 @@ window.admNav=function(page,el){
     var map={home:'/zenflow/home.html',classes:'/zenflow/classes.html',trainers:'/zenflow/trainers.html',pricing:'/zenflow/pricing.html',contact:'/zenflow/contact.html'};
     if(iframe&&map[page])iframe.src=map[page];
   }
+};
+
+window.admNavMobile=function(page,el){
+  document.querySelectorAll('.adm-mtab').forEach(function(t){
+    t.style.background='rgba(255,255,255,.04)';t.style.color='rgba(255,255,255,.45)';t.style.borderColor='rgba(255,255,255,.09)';t.classList.remove('adm-mtab-active');
+  });
+  if(el){el.style.background='rgba(14,165,233,.14)';el.style.color='#38bdf8';el.style.borderColor='rgba(14,165,233,.45)';el.classList.add('adm-mtab-active');}
+  document.querySelectorAll('.adm-nav-item').forEach(function(i){i.style.background='';i.style.color='#555';i.classList.remove('active-nav');});
+  var sideItem=document.querySelector('.adm-nav-item[onclick*=\''+page+'\']');
+  if(sideItem){sideItem.style.background='rgba(14,165,233,.12)';sideItem.style.color='var(--ac)';sideItem.classList.add('active-nav');}
+  var iframe=document.getElementById('adm-iframe');
+  var colPanel=document.getElementById('adm-colour-panel');
+  if(page==='colours'){if(colPanel)colPanel.style.display='block';}
+  else{if(colPanel)colPanel.style.display='none';var map={home:'/zenflow/home.html',classes:'/zenflow/classes.html',contact:'/zenflow/contact.html'};if(iframe&&map[page])iframe.src=map[page];}
 };
 
 // Replace all hardcoded brand colors in an iframe document
