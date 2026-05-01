@@ -658,40 +658,30 @@ html[data-theme="light"] #zmy-presets{background:#f5f3ff;border-top-color:rgba(9
 
 
   // ── Business type preset buttons ────────────────────────────────────────────
-  msgs.addEventListener('click', async function(e) {
+  function buildIntro(preset) {
+    const tag = preset.tagline ? ` ${preset.tagline}.` : '';
+    return `Hi! Welcome to **${preset.name}**! 👋${tag} What can I help you with today?`;
+  }
+
+  msgs.addEventListener('click', function(e) {
     const btn = e.target.closest('.zmy-pb');
     if (!btn) return;
     const type = btn.dataset.biz;
     const preset = CB_PRESETS[type];
     if (!preset) return;
-    msgs.querySelectorAll('.zmy-pb').forEach(b => { b.classList.remove('zmy-pb-on'); b.disabled = true; });
-    btn.classList.add('zmy-pb-on');
     presetsEl.style.display = 'none';
     msgs.innerHTML = '';
     memory.history = [];
     popupTailoredBiz = preset;
-    const typing = showTyping();
-    try {
-      const res = await fetch(DEMO_WORKER, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: '__INTRO__', history: [], business: preset })
-      });
-      let intro = `Hi! I'm the assistant for ${preset.name}. How can I help you today?`;
-      if (res.ok) { const d = await res.json(); if (d.reply) intro = d.reply; }
-      typing.remove();
-      addMsg(md(intro), 'bot');
-      memory.history.push({ role: 'bot', text: intro });
-      demoBizEl.textContent = preset.name;
-      demoBar.classList.add('on');
-      document.getElementById('zmy-name').textContent = preset.name;
-      document.getElementById('zmy-status').textContent = preset.type;
-      savePopup();
-    } catch(err) {
-      typing.remove();
-      addMsg(md('Something went wrong — try again.'), 'bot');
-      popupTailoredBiz = null;
-    }
-    msgs.querySelectorAll('.zmy-pb').forEach(b => { b.disabled = false; });
+    // Show intro instantly — no network request, no timing issues
+    const intro = buildIntro(preset);
+    addMsg(md(intro), 'bot');
+    memory.history.push({ role: 'bot', text: intro });
+    demoBizEl.textContent = preset.name;
+    demoBar.classList.add('on');
+    document.getElementById('zmy-name').textContent = preset.name;
+    document.getElementById('zmy-status').textContent = preset.type;
+    savePopup();
   });
 
   demoResetBtn.addEventListener('click', function() {
