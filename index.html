@@ -1432,8 +1432,8 @@ let hpSharedAudioCtx = null;
 function hpPlayRing() {
   return new Promise(resolve => {
     try {
-      if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
-      hpSharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      // Reuse the already-warm AudioContext created & resumed in hpToggleCall().
+      if (!hpSharedAudioCtx) hpSharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const ctx = hpSharedAudioCtx;
       const t = ctx.currentTime;
       [[t, t+0.4],[t+0.65, t+1.05]].forEach(([s, e]) => {
@@ -1515,12 +1515,33 @@ window.hpToggleCall = async function() {
     hpBtn.style.opacity = '0.7';
     hpBtn.disabled = true;
     hpStatus.textContent = 'Requesting microphone...';
-    // Acquire mic ONCE — iOS WebKit bug: second getUserMedia call for same media type
-    // auto-mutes the new track with no way to unmute. Intercept SDK's internal call
-    // and hand it our live stream to prevent this.
-    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // Step 1: Create & resume AudioContext synchronously in the gesture handler.
+    // iOS Safari REQUIRES AudioContext to be warm BEFORE getUserMedia is called.
+    if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} }
+    hpSharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    await hpSharedAudioCtx.resume();
+
+    // Step 2: Silent audio trick — unlocks iOS audio pipeline for both input AND output.
+    try {
+      const unlockBuf = hpSharedAudioCtx.createBuffer(1, Math.ceil(hpSharedAudioCtx.sampleRate * 0.1), hpSharedAudioCtx.sampleRate);
+      const unlockSrc = hpSharedAudioCtx.createBufferSource();
+      unlockSrc.buffer = unlockBuf;
+      unlockSrc.connect(hpSharedAudioCtx.destination);
+      unlockSrc.start();
+    } catch(_) {}
+
+    // Step 3: getUserMedia with simple constraints — no voiceIsolation (conflicts on iOS).
+    micStream = await navigator.mediaDevices.getUserMedia({ audio: {
+      echoCancellation: true,
+      noiseSuppression: true,
+      autoGainControl: true
+    }});
+    window.hpPreflightStream = micStream;
     navigator.mediaDevices.getUserMedia = async (constraints) => {
-      if (constraints && constraints.audio && micStream) return micStream;
+      if (constraints && constraints.audio && window.hpPreflightStream && window.hpPreflightStream.active) {
+        return window.hpPreflightStream;
+      }
       return _origGUM(constraints);
     };
     hpStatus.textContent = 'Ringing...';
@@ -1583,6 +1604,7 @@ Contacto: zoomy.services/contact`,
       overrides: { agent: agentOverride },
       onConnect: () => {
         navigator.mediaDevices.getUserMedia = _origGUM;
+        window.hpPreflightStream = null;
         hpBtn.disabled = false;
         hpLabel.textContent = 'End Call';
         hpBtn.style.opacity = '1';
@@ -1620,6 +1642,7 @@ Contacto: zoomy.services/contact`,
     });
   } catch(e) {
     navigator.mediaDevices.getUserMedia = _origGUM;
+    window.hpPreflightStream = null;
     if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
     hpBtn.disabled = false;
     hpResetUI(null);

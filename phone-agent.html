@@ -440,9 +440,10 @@
             function playRing() {
               return new Promise(resolve => {
                 try {
-                  // Close any previous context — stacked contexts cause pitch drift across calls
-                  if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
-                  sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                  // Reuse the already-warm AudioContext created & resumed in toggleCall().
+                  // Never close and recreate here — that would destroy the "warm pipeline"
+                  // that iOS needs to be in place before getUserMedia is called.
+                  if (!sharedAudioCtx) sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
                   const ctx = sharedAudioCtx;
                   const t = ctx.currentTime;
                   // UK/EU ring: two bursts of dual-tone (440Hz + 480Hz), 0.4s each
@@ -548,13 +549,38 @@
                 btn.disabled = true;
                 status.textContent = 'Requesting microphone...';
 
-                // Step 1: Acquire mic ONCE in the gesture handler and keep it alive.
-                // iOS WebKit bug: calling getUserMedia() a second time for the same media type
-                // automatically mutes the new track with no way to unmute it programmatically.
-                // Fix: intercept the SDK's internal getUserMedia and return OUR live stream.
-                micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                // Step 1: Create & resume AudioContext synchronously in the gesture handler.
+                // iOS Safari REQUIRES AudioContext to be warm BEFORE getUserMedia — if there
+                // is a state mismatch (context suspended, or context created after GUM),
+                // WebKit silently returns a muted/dead stream with no error thrown.
+                if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} }
+                sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                await sharedAudioCtx.resume();
+
+                // Step 2: Silent audio trick — play a zero-amplitude buffer immediately after
+                // resume() to fully unlock the iOS audio pipeline for both input AND output.
+                // Without this, the AudioWorklet input path may stay dormant.
+                try {
+                  const unlockBuf = sharedAudioCtx.createBuffer(1, Math.ceil(sharedAudioCtx.sampleRate * 0.1), sharedAudioCtx.sampleRate);
+                  const unlockSrc = sharedAudioCtx.createBufferSource();
+                  unlockSrc.buffer = unlockBuf;
+                  unlockSrc.connect(sharedAudioCtx.destination);
+                  unlockSrc.start();
+                } catch(_) {}
+
+                // Step 3: Acquire mic ONCE — AudioContext is already warm so iOS grants properly.
+                // Use simple constraints only — voiceIsolation:true conflicts with established
+                // streams on iOS Safari and can cause the track to be silently muted.
+                micStream = await navigator.mediaDevices.getUserMedia({ audio: {
+                  echoCancellation: true,
+                  noiseSuppression: true,
+                  autoGainControl: true
+                }});
+                window.preflightStream = micStream;
                 navigator.mediaDevices.getUserMedia = async (constraints) => {
-                  if (constraints && constraints.audio && micStream) return micStream;
+                  if (constraints && constraints.audio && window.preflightStream && window.preflightStream.active) {
+                    return window.preflightStream;
+                  }
                   return _origGUM(constraints);
                 };
 
@@ -592,8 +618,9 @@
                   signedUrl,
                   overrides: { agent: agentOverride },
                   onConnect: () => {
-                    // Restore getUserMedia now that SDK is connected and using our stream
+                    // Restore getUserMedia — SDK is now using our stream, no need to intercept
                     navigator.mediaDevices.getUserMedia = _origGUM;
+                    window.preflightStream = null;
                     btn.disabled = false;
                     label.textContent = 'End Call';
                     btn.style.opacity = '1';
@@ -634,6 +661,7 @@
                 });
               } catch(e) {
                 navigator.mediaDevices.getUserMedia = _origGUM;
+                window.preflightStream = null;
                 if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
                 btn.disabled = false;
                 resetUI(null);
