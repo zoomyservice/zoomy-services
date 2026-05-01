@@ -742,7 +742,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </div><!-- /section-inner -->
 </section>
 <!-- ═══ MOBILE APPS ═══ -->
-<section class="section alt" id="mobile-apps" style="background:var(--bg-2);position:relative;overflow:hidden;">
+<section class="section alt" id="mobile-apps" style="background:var(--bg-2);position:relative;overflow:hidden;border-bottom:1px solid var(--border);">
 <div class="aurora" style="opacity:.35;"><div class="aurora-blob aurora-blob-2"></div><div class="aurora-blob aurora-blob-3"></div></div>
 <div class="section-inner" style="position:relative;z-index:2;">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
@@ -1199,7 +1199,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 </section>
 <!-- CHATBOT SECTION -->
-<section class="section" id="chatbot" style="position:relative;overflow:hidden;padding-bottom:3rem;">
+<section class="section" id="chatbot" style="position:relative;overflow:hidden;padding-bottom:3rem;border-bottom:1px solid var(--border);">
 <div class="aurora" style="opacity:.4;"><div class="aurora-blob aurora-blob-2"></div></div>
 <div class="section-inner" style="position:relative;z-index:2;">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
@@ -1243,9 +1243,9 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="msg msg-user">Do you use WordPress?</div>
 <div class="msg msg-bot">No. Every site we build is custom-coded from scratch in HTML, CSS, and JavaScript. No WordPress, no page builders, no themes. We work this way because it gives us full control over performance, layout, and functionality.</div>
 </div>
-<div class="chatbot-input">
-<input class="chatbot-input-field" id="chatbot-input-field" placeholder="Ask about our services..." type="text"/>
-<button class="chatbot-send" id="chatbot-send">
+<div class="chatbot-input" style="pointer-events:none;opacity:.5;">
+<input class="chatbot-input-field" disabled placeholder="Try the live demo on the chatbot page →" type="text" style="cursor:default;"/>
+<button class="chatbot-send" disabled style="cursor:default;">
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
 </div>
