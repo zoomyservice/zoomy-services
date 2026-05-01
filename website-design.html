@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<link href="css/style.css?v=20260430n" rel="stylesheet"/>
+<link href="css/style.css?v=20260430o" rel="stylesheet"/>
 <style>
 .cap-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
 .cap-row-item{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.25rem 0;border-bottom:1px solid var(--border-b);align-items:start}
@@ -1243,9 +1243,9 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="msg msg-user">Do you use WordPress?</div>
 <div class="msg msg-bot">No. Every site we build is custom-coded from scratch in HTML, CSS, and JavaScript. No WordPress, no page builders, no themes. We work this way because it gives us full control over performance, layout, and functionality.</div>
 </div>
-<div class="chatbot-input" style="pointer-events:none;opacity:.5;">
-<input class="chatbot-input-field" disabled placeholder="Try the live demo on the chatbot page →" type="text" style="cursor:default;"/>
-<button class="chatbot-send" disabled style="cursor:default;">
+<div class="chatbot-input">
+<input class="chatbot-input-field" id="chatbot-input-field" placeholder="Ask about our services..." type="text"/>
+<button class="chatbot-send" id="chatbot-send">
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
 </div>
@@ -1370,6 +1370,48 @@ document.addEventListener('DOMContentLoaded',function(){
 <script src="js/main.js?v=20260416"></script>
 <script src="js/i18n.js?v=20260416"></script>
 <script src="js/chatbot.js?v=20260422a"></script>
+<script>
+(function initEmbeddedChatbot(){
+  var messagesEl = document.getElementById('chatbot-messages');
+  var inputEl    = document.getElementById('chatbot-input-field');
+  var sendBtn    = document.getElementById('chatbot-send');
+  if (!messagesEl || !inputEl || !sendBtn) return;
+  var history = [
+    { role: 'user', text: 'Do you use WordPress?' },
+    { role: 'bot', text: "No. Every site we build is custom-coded from scratch in HTML, CSS, and JavaScript. No WordPress, no page builders, no themes. We work this way because it gives us full control over performance, layout, and functionality." }
+  ];
+  var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+  function appendMsg(text, role) {
+    var div = document.createElement('div');
+    div.className = 'msg msg-' + role;
+    div.innerHTML = text.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+  async function sendMessage() {
+    var text = inputEl.value.trim();
+    if (!text) return;
+    appendMsg(text, 'user');
+    inputEl.value = '';
+    history.push({ role: 'user', text: text });
+    var typing = document.createElement('div');
+    typing.className = 'msg msg-bot'; typing.textContent = '…';
+    messagesEl.appendChild(typing);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    await new Promise(function(r){ setTimeout(r, 700 + Math.random()*400); });
+    try {
+      var res = await fetch(AI_WORKER, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ message: text, history: history.slice(-8) }) });
+      if (res.ok) { var d = await res.json(); typing.remove(); appendMsg(d.reply,'bot'); history.push({role:'bot',text:d.reply}); return; }
+    } catch(e) {}
+    typing.remove();
+    appendMsg("Something went wrong — reach us at <strong>zoomy.services/contact</strong>", 'bot');
+  }
+  sendBtn.addEventListener('click', sendMessage);
+  inputEl.addEventListener('keydown', function(e){ if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();} });
+  var status = messagesEl.closest('.chatbot-mock') && messagesEl.closest('.chatbot-mock').querySelector('.chatbot-status');
+  if (status) status.textContent = 'Live — powered by Zoomy AI';
+})();
+</script>
 <script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>
