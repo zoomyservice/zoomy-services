@@ -213,10 +213,10 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <!-- ADMIN SHELL -->
 <div id="admShell" style="--ac:#0ea5e9;background:#0a0a0a;border:1px solid #222;border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8);">
 <!-- TOP BAR -->
-<div style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
+<div class="adm-topbar" style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
 <div style="display:flex;align-items:center;gap:.85rem;">
 <div style="display:flex;gap:5px;"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div><div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div><div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div></div>
-<span style="font-size:.72rem;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;font-family:monospace;">Lumina Studio — Admin</span>
+<span class="adm-topbar-brand" style="font-size:.72rem;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;font-family:monospace;">Lumina Studio — Admin</span>
 </div>
 <div style="display:flex;align-items:center;gap:.75rem;">
 <span id="admBadge" style="font-size:.65rem;background:var(--ac);color:#0a0a08;padding:2px 10px;border-radius:4px;font-weight:700;display:none;font-family:monospace;"></span>
@@ -227,8 +227,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div id="admMobileTabs" style="display:none;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;background:#0d0d0d;border-bottom:1px solid #1c1c1c;padding:.55rem .7rem;gap:.4rem;">
 <div class="adm-mtab adm-mtab-active" data-page="home" onclick="admNavMobile('home',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.45);color:#38bdf8;transition:all .18s;">🏠 Home</div>
 <div class="adm-mtab" data-page="classes" onclick="admNavMobile('classes',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🧘 Classes</div>
-<div class="adm-mtab" data-page="trainers" onclick="admNavMobile('trainers',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">💪 Trainers</div>
-<div class="adm-mtab" data-page="pricing" onclick="admNavMobile('pricing',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">💳 Pricing</div>
+
 <div class="adm-mtab" data-page="contact" onclick="admNavMobile('contact',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">📍 Contact</div>
 <div class="adm-mtab" data-page="colours" onclick="admNavMobile('colours',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🎨 Colours</div>
 </div>
@@ -285,15 +284,24 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 @media(max-width:768px){
   #admin-demo-wrap{grid-template-columns:1fr!important;}
   #admin-demo-wrap>div:last-child{margin-top:1rem;}
-  #admShell{min-width:0!important;width:100%!important;}
+  #admShell{min-width:0!important;width:100%!important;overflow-x:hidden!important;}
   #admMobileTabs{display:flex!important;}
   #admSidebar{display:none!important;}
-  .adm-canvas{height:400px!important;}
+  .adm-canvas{height:400px!important;overflow-x:hidden!important;}
   .section-title{font-size:clamp(1.6rem,6vw,2.2rem)!important;}
   #mobile-apps .reveal-right{display:flex;justify-content:center;}
   #phoneScreen{height:430px;}
   #mobile-apps>div{padding:3rem 1rem;}
   #admMobileTabs::-webkit-scrollbar{display:none;}
+  /* Prevent top bar from overflowing on small screens */
+  #admShell .adm-topbar{flex-wrap:wrap;gap:.4rem;padding:.5rem .75rem!important;}
+  #admShell .adm-topbar-brand{font-size:.6rem!important;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  /* Colour panel swatches — wrap tightly */
+  #adm-swatches{gap:.35rem!important;}
+  #adm-colour-panel{padding:.85rem!important;}
+  /* Ensure all canvas children don't force width */
+  .adm-canvas *{max-width:100%;box-sizing:border-box;}
+  #adm-colour-panel input[type="text"]{min-width:0;width:100%!important;}
 }
 </style>
 <script>
