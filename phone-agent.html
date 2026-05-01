@@ -471,7 +471,10 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
             function playRing() {
               return new Promise(resolve => {
                 try {
-                  sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                  // Reuse the pre-warmed context created synchronously in toggleCall
+                  if (!sharedAudioCtx) {
+                    sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                  }
                   const ctx = sharedAudioCtx;
                   const t = ctx.currentTime;
                   // UK/EU ring: two bursts of dual-tone (440Hz + 480Hz), 0.4s each
@@ -558,6 +561,19 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                 await conv.endSession();
                 return; // onDisconnect fires resetUI
               }
+              // *** CRITICAL: Create/resume AudioContext HERE, synchronously, while
+              // we're still inside the direct click handler. On iOS Safari and many
+              // mobile browsers, AudioContext creation only works in a live user-gesture
+              // context. After getUserMedia()'s permission dialog appears, the gesture
+              // context expires — so creating AudioContext after that call will start it
+              // in "suspended" state, causing the ring to be silent on first call and
+              // potentially causing ElevenLabs mic capture issues.
+              if (!sharedAudioCtx) {
+                try { sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {}
+              }
+              if (sharedAudioCtx && sharedAudioCtx.state === 'suspended') {
+                sharedAudioCtx.resume().catch(() => {});
+              }
               try {
                 label.textContent = 'Calling...';
                 btn.style.opacity = '0.7';
@@ -613,6 +629,9 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
                   signedUrl,
                   overrides: { agent: agentOverride },
                   onConnect: () => {
+                    // Ensure mic is unmuted on every fresh connection
+                    isMuted = false;
+                    try { if (conv && conv.setMicMuted) conv.setMicMuted(false); } catch(e) {}
                     btn.disabled = false;
                     label.textContent = 'End Call';
                     btn.style.opacity = '1';
@@ -1061,7 +1080,7 @@ roiCalc();
 </footer>
 <script src="js/main.js?v=20260416"></script>
 <script src="js/i18n.js?v=20260416"></script>
-<script src="js/chatbot.js?v=20260422b"></script>
+<script src="js/chatbot.js?v=20260430a"></script>
 <script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>

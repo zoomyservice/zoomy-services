@@ -300,8 +300,13 @@ function render() {
   // (phone-agent.html has #call-btn, index.html has #hp-call-btn)
   // — prevents users from accidentally using the wrong call UI on those pages
   const phoneBtn      = document.getElementById('zmy-phone-btn');
-  if (phoneBtn && (document.getElementById('call-btn') || document.getElementById('hp-call-btn'))) {
-    phoneBtn.style.display = 'none';
+  const hasOwnCallDemo = !!(document.getElementById('call-btn') || document.getElementById('hp-call-btn'));
+  if (phoneBtn && hasOwnCallDemo) {
+    // Hide phone button completely — page has its own dedicated call demo
+    phoneBtn.style.setProperty('display', 'none', 'important');
+    phoneBtn.style.setProperty('visibility', 'hidden', 'important');
+    phoneBtn.setAttribute('aria-hidden', 'true');
+    phoneBtn.disabled = true;
   }
   const callPanel     = document.getElementById('zmy-call-panel');
   const callOrb       = document.getElementById('zmy-call-orb');
