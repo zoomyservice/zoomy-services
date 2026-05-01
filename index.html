@@ -587,13 +587,13 @@ Try Live Demo
 <div id="admSidebar" style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
 <div style="font-size:.5rem;color:#888;text-transform:uppercase;letter-spacing:.14em;padding:.2rem 1rem .25rem;font-family:monospace;">Pages</div>
 <div class="adm-nav-item active-nav" onclick="admNav('home',this)" style="padding:.4rem 1rem;font-size:.74rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🏠</span>Home</div>
-<div class="adm-nav-item" onclick="admNav('classes',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🧘</span>Classes</div>
-<div class="adm-nav-item" onclick="admNav('trainers',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💪</span>Trainers</div>
-<div class="adm-nav-item" onclick="admNav('pricing',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💳</span>Pricing</div>
-<div class="adm-nav-item" onclick="admNav('contact',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>📍</span>Contact</div>
+<div class="adm-nav-item" onclick="admNav('classes',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🧘</span>Classes</div>
+<div class="adm-nav-item" onclick="admNav('trainers',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💪</span>Trainers</div>
+<div class="adm-nav-item" onclick="admNav('pricing',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💳</span>Pricing</div>
+<div class="adm-nav-item" onclick="admNav('contact',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>📍</span>Contact</div>
 <div style="margin:.6rem .8rem;border-top:1px solid #1a1a1a;"></div>
 <div style="font-size:.5rem;color:#888;text-transform:uppercase;letter-spacing:.14em;padding:.2rem 1rem .25rem;font-family:monospace;">Settings</div>
-<div class="adm-nav-item" onclick="admNav('colours',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🎨</span>Colours</div>
+<div class="adm-nav-item" onclick="admNav('colours',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🎨</span>Colours</div>
 </div>
 <!-- CANVAS -->
 <div class="adm-canvas" style="flex:1;height:520px;overflow-y:auto;overflow-x:hidden;position:relative;">
@@ -637,7 +637,7 @@ Try Live Demo
   #admShell{min-width:0!important;width:100%!important;overflow-x:hidden!important;touch-action:pan-y;overscroll-behavior-x:none;}
   #admMobileTabs{display:flex!important;}
   #admSidebar{display:none!important;}
-  .adm-canvas{height:400px!important;overflow-x:hidden!important;overscroll-behavior-x:none;}
+  .adm-canvas{height:400px!important;overflow-x:clip!important;overscroll-behavior-x:none;}
   #admShell .adm-topbar{flex-wrap:wrap;gap:.4rem;padding:.5rem .75rem!important;}
   #admShell .adm-topbar-brand{font-size:.6rem!important;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   .adm-canvas *{max-width:100%;box-sizing:border-box;}
@@ -712,7 +712,7 @@ window.admPublish=function(){
 
 window.admNav=function(page,el){
   document.querySelectorAll('.adm-nav-item').forEach(function(i){
-    i.style.background='';i.style.color='#555';i.classList.remove('active-nav');
+    i.style.background='';i.style.color='#999';i.classList.remove('active-nav');
   });
   if(el){el.style.background='rgba(14,165,233,.12)';el.style.color='var(--ac)';el.classList.add('active-nav');}
   var iframe=document.getElementById('adm-iframe');
@@ -731,7 +731,7 @@ window.admNavMobile=function(page,el){
     t.style.background='rgba(255,255,255,.04)';t.style.color='rgba(255,255,255,.45)';t.style.borderColor='rgba(255,255,255,.09)';t.classList.remove('adm-mtab-active');
   });
   if(el){el.style.background='rgba(14,165,233,.14)';el.style.color='#38bdf8';el.style.borderColor='rgba(14,165,233,.45)';el.classList.add('adm-mtab-active');}
-  document.querySelectorAll('.adm-nav-item').forEach(function(i){i.style.background='';i.style.color='#555';i.classList.remove('active-nav');});
+  document.querySelectorAll('.adm-nav-item').forEach(function(i){i.style.background='';i.style.color='#999';i.classList.remove('active-nav');});
   var sideItem=document.querySelector('.adm-nav-item[onclick*=\''+page+'\']');
   if(sideItem){sideItem.style.background='rgba(14,165,233,.12)';sideItem.style.color='var(--ac)';sideItem.classList.add('active-nav');}
   var iframe=document.getElementById('adm-iframe');
@@ -820,6 +820,7 @@ function zfInjectEditMode(doc) {
     var style = doc.createElement('style');
     style.id = 'zf-edit-style';
     style.textContent = [
+      'html,body{overflow-x:hidden!important;max-width:100%!important;}',
       'a[href]{pointer-events:none!important;cursor:text!important;}',
       'button:not(.zf-cam):not(.zf-apply-btn):not(.zf-cancel-btn):not(.zf-save-pos-btn):not(.zf-tab-btn){pointer-events:none!important;}',
       'form{pointer-events:none!important;}',
