@@ -206,8 +206,9 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <style>
 .cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,280px);gap:2rem;align-items:center;box-sizing:border-box;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
-/* Target this page's hero directly — no cascade fighting */
-.cp-hero .section-inner{width:min(1060px,calc(100vw - 4rem))!important;max-width:none!important;margin:0 auto!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important;}
+/* Specificity (0,3,1) beats global (0,2,1) rule that pushes content right */
+html[data-theme="light"] .cp-hero .section-inner,
+html[data-theme="dark"] .cp-hero .section-inner{width:min(1060px,calc(100vw - 4rem))!important;max-width:none!important;margin:0!important;padding-left:2rem!important;padding-right:2rem!important;box-sizing:border-box!important;}
 /* Keep text left-aligned */
 .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
 .cp-hero-grid p{text-align:left!important;}
