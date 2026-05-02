@@ -129,48 +129,35 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </nav>
 <!-- HERO -->
 <style>
-.ac-hero-grid{display:grid;grid-template-columns:1fr 400px;gap:3.5rem;align-items:center;}
+.ac-hero-grid{display:grid;grid-template-columns:1fr 340px;gap:3.5rem;align-items:center;}
 @media(max-width:900px){.ac-hero-grid{grid-template-columns:1fr;}.ac-hero-visual{display:none;}}
-/* ── Ad creative composition ── */
-.ac-composition{position:relative;width:100%;height:340px;}
-/* Three format cards stacked */
-.ac-card{position:absolute;border-radius:14px;background:#0d0d22;border:1px solid rgba(99,102,241,.3);overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.6);}
-/* 9:16 vertical — back left */
-.ac-card-v{width:120px;height:210px;top:20px;left:10px;transform:rotate(-4deg);z-index:1;opacity:.75;}
-/* 1:1 square — back right */
-.ac-card-sq{width:160px;height:160px;top:50px;right:5px;transform:rotate(5deg);z-index:1;opacity:.7;}
-/* 4:5 portrait — front center (hero card) */
-.ac-card-main{width:195px;height:243px;top:30px;left:50%;transform:translateX(-50%);z-index:3;border-color:rgba(99,102,241,.55);box-shadow:0 24px 64px rgba(0,0,0,.7),0 0 0 1px rgba(99,102,241,.2),0 0 40px rgba(99,102,241,.15);}
-.ac-card-bg{position:absolute;inset:0;}
-.ac-card-main .ac-card-bg{background:linear-gradient(150deg,#150826 0%,#0d0d1e 45%,#001433 100%);}
-.ac-card-v .ac-card-bg{background:linear-gradient(150deg,#0d1a33 0%,#0d0d22 100%);}
-.ac-card-sq .ac-card-bg{background:linear-gradient(150deg,#1a0533 0%,#0d0d22 100%);}
-/* Blobs */
-.ac-blob{position:absolute;border-radius:50%;filter:blur(24px);pointer-events:none;}
-.ac-blob-a{width:100px;height:100px;background:rgba(99,102,241,.55);top:-20px;left:-20px;animation:acBf 5s ease-in-out infinite;}
-.ac-blob-b{width:80px;height:80px;background:rgba(168,85,247,.5);bottom:-15px;right:-15px;animation:acBf 7s ease-in-out infinite .8s;}
-.ac-blob-c{width:60px;height:60px;background:rgba(236,72,153,.35);top:45%;left:35%;animation:acBf 6s ease-in-out infinite 1.6s;}
-@keyframes acBf{0%,100%{transform:scale(1);}50%{transform:scale(1.15) translate(6px,-8px);}}
-/* Product image block */
-.ac-img-block{position:relative;z-index:2;margin:1rem 1rem .75rem;height:90px;border-radius:8px;background:linear-gradient(135deg,rgba(99,102,241,.35),rgba(168,85,247,.3));overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.ac-img-block::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,13,30,.8));}
-.ac-img-shine{position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);animation:acShine 3.5s ease-in-out infinite 1s;}
-@keyframes acShine{0%,100%{left:-60%;}50%{left:130%;}}
-.ac-img-label{position:relative;z-index:1;font-family:var(--font-display);font-size:.6rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;}
-/* Content */
-.ac-content{position:relative;z-index:2;padding:0 1rem 1rem;}
-.ac-badge{font-size:.52rem;font-family:var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:#a5b4fc;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.35);border-radius:20px;padding:2px 8px;display:inline-block;margin-bottom:.55rem;animation:acFU .5s ease both .3s;opacity:0;}
-.ac-ad-title{font-family:var(--font-display);font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:.4rem;animation:acFU .5s ease both .5s;opacity:0;}
-.ac-ad-sub{font-size:.65rem;color:rgba(255,255,255,.5);margin-bottom:.75rem;animation:acFU .5s ease both .7s;opacity:0;}
-.ac-ad-cta{display:inline-flex;align-items:center;background:linear-gradient(135deg,#6366f1,#a855f7);border:none;border-radius:20px;color:#fff;font-family:var(--font-display);font-size:.65rem;font-weight:700;padding:5px 14px;cursor:default;animation:acFU .5s ease both .9s,acPulse 2.5s ease-in-out 1.5s infinite;opacity:0;}
-@keyframes acFU{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
-@keyframes acPulse{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.5);}50%{box-shadow:0 0 0 6px rgba(99,102,241,0);}}
-/* Format pills below composition */
-.ac-formats{display:flex;gap:.5rem;justify-content:center;margin-top:.85rem;}
+/* ── Device morphing ── */
+.ac-device-wrap{display:flex;flex-direction:column;align-items:center;gap:1.25rem;padding:2.5rem 0;}
+.dv{
+  background:linear-gradient(145deg,#1a1a2e,#0d0d1e);
+  border:2px solid rgba(99,102,241,.4);
+  box-shadow:0 0 48px rgba(99,102,241,.18),0 24px 64px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.06);
+  transition:width .9s cubic-bezier(.4,0,.2,1),height .9s cubic-bezier(.4,0,.2,1),border-radius .9s cubic-bezier(.4,0,.2,1);
+  position:relative;overflow:hidden;
+}
+.dv.state-phone{width:90px;height:182px;border-radius:22px;}
+.dv.state-tablet{width:158px;height:198px;border-radius:14px;}
+.dv.state-laptop{width:258px;height:158px;border-radius:10px 10px 4px 4px;}
+.dv-screen{position:absolute;inset:6px;border-radius:inherit;background:linear-gradient(135deg,#0a0a1a,#0d0d2e);overflow:hidden;}
+.dv-ba{position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(99,102,241,.5);filter:blur(26px);top:-22px;left:-22px;animation:dvBf 4s ease-in-out infinite;}
+.dv-bb{position:absolute;width:70px;height:70px;border-radius:50%;background:rgba(168,85,247,.45);filter:blur(20px);bottom:-18px;right:-18px;animation:dvBf 6s ease-in-out infinite .8s;}
+@keyframes dvBf{0%,100%{transform:scale(1);}50%{transform:scale(1.25) translate(4px,-6px);}}
+.dv-home{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:22px;height:3px;border-radius:2px;background:rgba(255,255,255,.22);transition:opacity .5s ease;}
+.dv.state-tablet .dv-home,.dv.state-laptop .dv-home{opacity:0;}
+/* Laptop base/keyboard bar */
+.dv-base{width:300px;height:9px;background:linear-gradient(180deg,#1e1e3a,#141428);border-radius:0 0 8px 8px;border:2px solid rgba(99,102,241,.25);border-top:none;transition:width .9s cubic-bezier(.4,0,.2,1),opacity .5s ease;opacity:0;pointer-events:none;}
+.dv-base.visible{opacity:1;}
+/* Ratio pill */
+.ac-ratio{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.13em;color:#a5b4fc;background:rgba(99,102,241,.14);border:1px solid rgba(99,102,241,.32);border-radius:20px;padding:3px 14px;transition:opacity .3s;}
+/* Format pills */
+.ac-formats{display:flex;gap:.5rem;justify-content:center;}
 .ac-fmt-pill{font-size:.6rem;font-family:var(--font-mono);letter-spacing:.1em;padding:3px 10px;border-radius:20px;border:1px solid rgba(99,102,241,.2);color:var(--muted);transition:all .3s;}
 .ac-fmt-pill.active{border-color:rgba(99,102,241,.6);color:#a5b4fc;background:rgba(99,102,241,.12);}
-/* Label on side cards */
-.ac-side-label{position:absolute;bottom:8px;width:100%;text-align:center;font-family:var(--font-mono);font-size:.5rem;color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;z-index:2;}
 </style>
 <section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
@@ -178,7 +165,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="section-inner ac-hero-grid" style="z-index:2;">
 <div>
 <div class="section-tag" style="margin-bottom:1.5rem;">Création publicitaire</div>
-<h1 style="margin-bottom:1.5rem;text-align:left;"><span class="glitch grad-text-animated" data-text="Animated ad creatives.">Créations publicitaires animées.</span><br/>Aucune séquence nécessaire.</h1>
+<h1 style="margin-bottom:1.5rem;text-align:left;"><span class="glitch grad-text-animated" data-text="Animated">Animé</span> créations publicitaires.<br/>Aucune séquence nécessaire.</h1>
 <p style="color:var(--text-2);font-size:1.1rem;line-height:1.8;max-width:520px;margin:0 0 2.5rem;">Graphiques animés personnalisés conçus pour Google Ads, les flux sociaux et les emplacements d'affichage. Vous nous informez du produit, du message et du public – nous nous occupons de tout le reste. Les trois formats sont livrés prêts à être téléchargés.</p>
 <div style="display:flex;gap:1rem;flex-wrap:wrap;">
 <a class="btn btn-primary btn-lg" href="contact.html">Envoyer un bref</a>
@@ -186,41 +173,21 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </div>
 <div aria-hidden="true" class="ac-hero-visual">
-<div class="ac-composition">
-<!-- 9:16 back-left -->
-<div class="ac-card ac-card-v">
-<div class="ac-card-bg"></div>
-<div class="ac-blob ac-blob-a"></div>
-<div class="ac-side-label">9:16</div>
+<div class="ac-device-wrap">
+<div class="dv state-phone" id="acDv">
+<div class="dv-screen">
+<div class="dv-ba"></div>
+<div class="dv-bb"></div>
 </div>
-<!-- 1:1 back-right -->
-<div class="ac-card ac-card-sq">
-<div class="ac-card-bg"></div>
-<div class="ac-blob ac-blob-b" style="background:rgba(236,72,153,.4);"></div>
-<div class="ac-side-label">1:1</div>
+<div class="dv-home"></div>
 </div>
-<!-- 4:5 hero card front -->
-<div class="ac-card ac-card-main">
-<div class="ac-card-bg"></div>
-<div class="ac-blob ac-blob-a"></div>
-<div class="ac-blob ac-blob-b"></div>
-<div class="ac-blob ac-blob-c"></div>
-<div class="ac-img-block">
-<div class="ac-img-shine"></div>
-<div class="ac-img-label">Visuel du produit</div>
-</div>
-<div class="ac-content">
-<div class="ac-badge">Nouvelle goutte</div>
-<div class="ac-ad-title">Fait à<br/>ressortir.</div>
-<div class="ac-ad-sub">Graphiques animés, aucune séquence nécessaire</div>
-<button class="ac-ad-cta">Commencer →</button>
-</div>
-</div>
-</div>
+<div class="dv-base" id="acBase"></div>
+<div class="ac-ratio" id="acRatio">9:16</div>
 <div class="ac-formats">
-<div class="ac-fmt-pill">9:16</div>
-<div class="ac-fmt-pill active">4:5</div>
-<div class="ac-fmt-pill">1:1</div>
+<div class="ac-fmt-pill active" id="acPill0">9:16</div>
+<div class="ac-fmt-pill" id="acPill1">4:5</div>
+<div class="ac-fmt-pill" id="acPill2">16:9</div>
+</div>
 </div>
 </div>
 </div>
@@ -231,6 +198,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="stat-block"><div class="stat-block-num">N'importe quelle longueur</div><div class="stat-block-label">Durée d'exécution animée</div></div>
 <div class="stat-block"><div class="stat-block-num">3</div><div class="stat-block-label">Formats livrés</div></div>
 <div class="stat-block"><div class="stat-block-num">2</div><div class="stat-block-label">Cycles de révision</div></div>
+<div class="stat-block"><div class="stat-block-num">5 à 7 jours</div><div class="stat-block-label">Revirement typique</div></div>
 </div>
 </div>
 <!-- SHOWCASE -->
@@ -424,14 +392,26 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </footer>
 <script>
 (function(){
-  var pills = document.querySelectorAll('.ac-fmt-pill');
-  var i = 0;
-  if(!pills.length) return;
-  setInterval(function(){
-    pills.forEach(function(p){ p.classList.remove('active'); });
-    i = (i + 1) % pills.length;
-    pills[i].classList.add('active');
-  }, 1800);
+  var dv=document.getElementById('acDv');
+  var base=document.getElementById('acBase');
+  var ratio=document.getElementById('acRatio');
+  var pills=[document.getElementById('acPill0'),document.getElementById('acPill1'),document.getElementById('acPill2')];
+  if(!dv) return;
+  var states=[
+    {cls:'state-phone',ratio:'9:16',pill:0},
+    {cls:'state-tablet',ratio:'4:5',pill:1},
+    {cls:'state-laptop',ratio:'16:9',pill:2}
+  ];
+  var cur=0;
+  function apply(idx){
+    var s=states[idx];
+    dv.classList.remove('state-phone','state-tablet','state-laptop');
+    dv.classList.add(s.cls);
+    if(base) base.classList.toggle('visible',s.cls==='state-laptop');
+    if(ratio) ratio.textContent=s.ratio;
+    pills.forEach(function(p,i){ if(p) p.classList.toggle('active',i===s.pill); });
+  }
+  setInterval(function(){ cur=(cur+1)%states.length; apply(cur); },3000);
 })();
 </script>
 <script src="../js/main.js?v=20260416"></script>
