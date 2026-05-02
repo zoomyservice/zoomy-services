@@ -2100,7 +2100,14 @@
     "👇 Click any": "👇 Cliquez sur n'importe quel",
     "Sponsored": "Sponsorisé",
     "💪 Gym": "💪 Salle de sport",
-    "🏡 Real Estate": "🏡 Immobilier"
+    "🏡 Real Estate": "🏡 Immobilier",
+    "The chatbot is fully custom-built and runs on your own infrastructure — not a third-party platform like Intercom or Drift. Conversations are logged to your own secure storage and never shared with third parties.": "Le chatbot est entièrement personnalisé et fonctionne sur votre propre infrastructure, et non sur une plateforme tierce comme Intercom ou Drift. Les conversations sont enregistrées sur votre propre stockage sécurisé et ne sont jamais partagées avec des tiers.",
+    "Data stays on your own infrastructure": "Les données restent sur votre propre infrastructure",
+    "Trained on your services, prices, hours, and policies. Handles questions and collects leads in 100+ languages.": "Formé sur vos services, prix, horaires et politiques. Gère les questions et collecte des pistes dans plus de 100 langues.",
+    "Self-hosted on your infrastructure": "Auto-hébergé sur votre infrastructure",
+    "Custom-built AI chatbot — trained on your business": "Chatbot IA sur mesure — formé pour votre entreprise",
+    "Never. Every site we build is custom-coded from scratch — HTML, CSS, JavaScript. No WordPress, no Webflow, no templates. This gives us full control over performance, animations, and mobile experience.": "Jamais. Chaque site que nous construisons est codé sur mesure à partir de zéro : HTML, CSS, JavaScript. Pas de WordPress, pas de Webflow, pas de modèles. Cela nous donne un contrôle total sur les performances, les animations et l'expérience mobile.",
+    "The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.": "Le chatbot fonctionne sur votre propre infrastructure, et non sur une plateforme tierce comme Intercom ou Drift. Pas de frais par siège, pas de dépendance vis-à-vis d'un fournisseur. Vous êtes entièrement propriétaire de l’installation une fois qu’elle est construite."
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -4203,6 +4210,13 @@
     "👇 Click any": "👇 Haga clic en cualquiera",
     "Sponsored": "Patrocinado",
     "💪 Gym": "💪 Gimnasio",
-    "🏡 Real Estate": "🏡 Bienes Raíces"
+    "🏡 Real Estate": "🏡 Bienes Raíces",
+    "The chatbot is fully custom-built and runs on your own infrastructure — not a third-party platform like Intercom or Drift. Conversations are logged to your own secure storage and never shared with third parties.": "El chatbot está totalmente personalizado y se ejecuta en su propia infraestructura, no en una plataforma de terceros como Intercom o Drift. Las conversaciones se registran en su propio almacenamiento seguro y nunca se comparten con terceros.",
+    "Data stays on your own infrastructure": "Los datos permanecen en su propia infraestructura",
+    "Trained on your services, prices, hours, and policies. Handles questions and collects leads in 100+ languages.": "Capacitados sobre sus servicios, precios, horarios y políticas. Maneja preguntas y recopila clientes potenciales en más de 100 idiomas.",
+    "Self-hosted on your infrastructure": "Autohospedado en su infraestructura",
+    "Custom-built AI chatbot — trained on your business": "Chatbot de IA personalizado: capacitado para su negocio",
+    "Never. Every site we build is custom-coded from scratch — HTML, CSS, JavaScript. No WordPress, no Webflow, no templates. This gives us full control over performance, animations, and mobile experience.": "Nunca. Cada sitio que construimos está codificado de forma personalizada desde cero: HTML, CSS, JavaScript. Sin WordPress, sin Webflow, sin plantillas. Esto nos brinda control total sobre el rendimiento, las animaciones y la experiencia móvil.",
+    "The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.": "El chatbot se ejecuta en su propia infraestructura, no en una plataforma de terceros como Intercom o Drift. Sin tarifas por puesto ni dependencia de proveedores. Usted es dueño absoluto de la configuración una vez que está construida."
   }
 }
