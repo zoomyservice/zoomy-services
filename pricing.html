@@ -22,8 +22,32 @@
 .trust-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;font-size:.8rem;color:var(--text-2);}
 .trust-chip span{font-size:.9rem;}
 /* ── Pricing hero two-column grid ── */
-.pricing-hero-grid{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;}
-@media(max-width:960px){.pricing-hero-grid{grid-template-columns:1fr;}.pricing-hero-grid>div:last-child{display:none;}}
+.pricing-hero-grid{display:grid;grid-template-columns:1fr 400px;gap:4rem;align-items:center;width:100%;}
+@media(max-width:960px){.pricing-hero-grid{grid-template-columns:1fr;}.ph-visual-col{display:none;}}
+/* ── Scope card animation ── */
+@keyframes floatCard{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateX(12px);}to{opacity:1;transform:translateX(0);}}
+@keyframes checkPop{from{opacity:0;transform:scale(0);}to{opacity:1;transform:scale(1);}}
+.scope-card{background:rgba(13,13,28,.92);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:1.75rem 2rem;position:relative;overflow:hidden;animation:floatCard 5s ease-in-out infinite;box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.1);}
+.scope-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#10b981);}
+.sc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.sc-title{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.sc-badge{display:flex;align-items:center;gap:5px;font-size:.62rem;font-family:var(--font-mono);color:#10b981;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:20px;padding:3px 10px;}
+.sc-dot{width:6px;height:6px;border-radius:50%;background:#10b981;animation:orbPulse 2s ease-in-out infinite;}
+.sc-row{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.06);gap:1rem;}
+.sc-row:last-of-type{border-bottom:none;}
+.sc-check{width:18px;height:18px;border-radius:50%;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.35);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#10b981;flex-shrink:0;animation:checkPop .4s ease both;}
+.sc-name{font-size:.83rem;color:var(--text-2);flex:1;}
+.sc-price{font-family:var(--font-mono);font-size:.83rem;color:#fff;font-weight:700;white-space:nowrap;}
+.sc-row:nth-child(2){animation:fadeSlideIn .5s .1s ease both;}
+.sc-row:nth-child(3){animation:fadeSlideIn .5s .3s ease both;}
+.sc-row:nth-child(4){animation:fadeSlideIn .5s .5s ease both;}
+.sc-row:nth-child(5){animation:fadeSlideIn .5s .7s ease both;}
+.sc-sep{height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.4),transparent);margin:1rem 0;}
+.sc-total{display:flex;align-items:center;justify-content:space-between;}
+.sc-total-label{font-size:.78rem;color:var(--muted);font-family:var(--font-mono);}
+.sc-total-val{font-family:var(--font-display);font-size:1.6rem;font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sc-locked{margin-top:1.1rem;display:flex;align-items:center;justify-content:center;gap:.4rem;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:.5rem;font-size:.68rem;font-family:var(--font-mono);color:#6ee7b7;}
 /* ── Pricing ticker visual ── */
 .price-ticker{background:rgba(13,13,28,.9);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:1.75rem;width:100%;max-width:360px;box-shadow:0 24px 64px rgba(0,0,0,.5);overflow:hidden;position:relative;}
 .price-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#10b981);}
@@ -160,18 +184,58 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </nav>
 <!-- ══ HERO ══ -->
-<section class="hero" style="min-height:55vh;padding:140px 2rem 5rem;border-bottom:1px solid var(--border);overflow:hidden;">
+<section class="hero" style="min-height:65vh;padding:140px 2rem 5rem;border-bottom:1px solid var(--border);overflow:hidden;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-3"></div></div>
 <div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;width:100%;box-sizing:border-box;text-align:center;">
-<div class="section-tag" style="justify-content:center;margin-bottom:1.5rem;">Pricing</div>
-<h1 style="font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem;">Every price. <span class="grad-text-animated">Upfront. Transparent.</span></h1>
-<p class="hero-sub" style="margin:0 auto 2rem;max-width:560px;">No hourly billing. No open-ended retainers. Every project is scoped and priced in writing before work begins — and the price doesn't move unless the scope does.</p>
-<div class="trust-bar" style="display:flex;flex-wrap:wrap;justify-content:center;gap:.65rem;max-width:680px;margin:0 auto;">
+<div class="section-inner" style="z-index:2;width:100%;box-sizing:border-box;">
+<div class="pricing-hero-grid">
+<!-- LEFT: text -->
+<div>
+<div class="section-tag" style="margin-bottom:1.5rem;">Pricing</div>
+<h1 style="font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem;text-align:left;">Every price.<br/><span class="grad-text-animated">Upfront. Transparent.</span></h1>
+<p class="hero-sub" style="margin:0 0 1.75rem;max-width:480px;font-size:1rem;line-height:1.8;text-align:left;">No hourly billing. No open-ended retainers. Every project is scoped and priced in writing before work begins — and the price doesn't move unless the scope does.</p>
+<div class="trust-bar" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:0;width:auto;">
 <div class="trust-chip"><span>✓</span> No hidden fees</div>
 <div class="trust-chip"><span>✓</span> Scope confirmed upfront</div>
 <div class="trust-chip"><span>✓</span> Response within 24 hours</div>
 <div class="trust-chip"><span>✓</span> Ad spend goes direct to platform</div>
+</div>
+</div>
+<!-- RIGHT: animated scope card -->
+<div class="ph-visual-col" aria-hidden="true">
+<div class="scope-card">
+<div class="sc-head">
+<div class="sc-title">// Project Scope</div>
+<div class="sc-badge"><div class="sc-dot"></div>Price Locked</div>
+</div>
+<div class="sc-row">
+<div class="sc-check">✓</div>
+<div class="sc-name">Website — 3 pages</div>
+<div class="sc-price">$597</div>
+</div>
+<div class="sc-row">
+<div class="sc-check">✓</div>
+<div class="sc-name">AI Chatbot — Standard</div>
+<div class="sc-price">$599</div>
+</div>
+<div class="sc-row">
+<div class="sc-check">✓</div>
+<div class="sc-name">Google Ads Campaign</div>
+<div class="sc-price">$999</div>
+</div>
+<div class="sc-row">
+<div class="sc-check">✓</div>
+<div class="sc-name">Chatbot hosting / mo</div>
+<div class="sc-price">$49</div>
+</div>
+<div class="sc-sep"></div>
+<div class="sc-total">
+<div class="sc-total-label">Total — one-time</div>
+<div class="sc-total-val">$2,195</div>
+</div>
+<div class="sc-locked">🔒 Quoted in writing · approved before work starts</div>
+</div>
+</div>
 </div>
 </div>
 </section>
