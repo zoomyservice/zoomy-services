@@ -22,62 +22,28 @@
 .trust-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;font-size:.8rem;color:var(--text-2);}
 .trust-chip span{font-size:.9rem;}
 /* ── Pricing hero two-column grid ── */
-.ph-grid{display:grid;grid-template-columns:1fr 360px;gap:4rem;align-items:center;text-align:left;}
-.ph-text{display:flex;flex-direction:column;align-items:flex-start;}
-.ph-visual{display:flex;justify-content:center;align-items:center;}
-.ph-card{position:relative;width:300px;background:rgba(13,13,28,.85);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:1.75rem;overflow:hidden;}
-.ph-blob{position:absolute;border-radius:50%;filter:blur(38px);pointer-events:none;}
-.ph-blob-1{width:150px;height:150px;background:rgba(99,102,241,.25);top:-30px;right:-30px;animation:phBlobA 6s ease-in-out infinite;}
-.ph-blob-2{width:110px;height:110px;background:rgba(168,85,247,.2);bottom:-20px;left:-20px;animation:phBlobB 8s ease-in-out infinite;}
-@keyframes phBlobA{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
-@keyframes phBlobB{0%,100%{transform:scale(1);}50%{transform:scale(1.2) translate(8px,-6px);}}
-.ph-hdr{display:flex;align-items:center;gap:.7rem;margin-bottom:1.35rem;position:relative;z-index:1;}
-.ph-hdr-icon{font-size:1.3rem;}
-.ph-hdr-title{font-family:var(--font-display);font-size:.9rem;font-weight:700;color:#fff;}
-.ph-items{display:flex;flex-direction:column;gap:.8rem;position:relative;z-index:1;}
-.ph-item{display:flex;align-items:center;gap:.7rem;opacity:0;animation:phFadeIn .45s ease forwards;}
-.ph-item:nth-child(1){animation-delay:.35s;}
-.ph-item:nth-child(2){animation-delay:.65s;}
-.ph-item:nth-child(3){animation-delay:.95s;}
-.ph-item:nth-child(4){animation-delay:1.25s;}
-@keyframes phFadeIn{from{opacity:0;transform:translateX(-6px);}to{opacity:1;transform:translateX(0);}}
-.ph-ck{width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,.18);border:1px solid rgba(16,185,129,.45);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:#10b981;flex-shrink:0;}
-.ph-it{font-size:.83rem;color:var(--text-2);}
-.ph-div{height:1px;background:rgba(255,255,255,.08);margin:1.1rem 0;position:relative;z-index:1;}
-.ph-foot{display:flex;align-items:center;gap:.55rem;position:relative;z-index:1;}
-.ph-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 7px rgba(16,185,129,.6);animation:phDotP 2s ease-in-out infinite;}
-@keyframes phDotP{0%,100%{opacity:1;}50%{opacity:.35;}}
-.ph-foot-txt{font-size:.75rem;color:var(--muted);font-family:var(--font-mono);}
-@media(max-width:900px){.ph-visual{display:none;}.ph-grid{grid-template-columns:1fr;text-align:center;}.ph-text{align-items:center;}.trust-bar{justify-items:center;}}
-/* ── Override v11 global centering so two-column layout works ── */
-html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner{max-width:1200px!important;padding-left:2rem!important;padding-right:2rem!important;}
-html[data-theme="light"] .ph-grid h1{text-align:left!important;max-width:none!important;font-size:clamp(2.4rem,6vw,4.2rem)!important;margin:0 0 1.25rem!important;}
-html[data-theme="light"] .ph-grid .hero-sub{text-align:left!important;margin:0 0 1.75rem!important;max-width:480px!important;}
-/* ── Quote card visual ── */
-.ph-quote{position:relative;background:#0d0d1e;border:1px solid rgba(99,102,241,.28);border-radius:16px;padding:1.5rem 1.75rem;box-shadow:0 24px 64px rgba(0,0,0,.5);overflow:hidden;width:100%;}
-.ph-quote::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#10b981);}
-.ph-q-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
-.ph-q-title{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
-.ph-q-status{display:flex;align-items:center;gap:5px;font-size:.65rem;font-family:var(--font-mono);color:#10b981;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:20px;padding:3px 10px;}
-.ph-q-dot{width:6px;height:6px;border-radius:50%;background:#10b981;animation:phQDot 2s ease-in-out infinite;}
-@keyframes phQDot{0%,100%{opacity:1;}50%{opacity:.3;}}
-.ph-q-lines{display:flex;flex-direction:column;gap:0;margin-bottom:1rem;}
-.ph-q-line{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.05);opacity:0;animation:phQLin .4s ease forwards;}
-.ph-q-line:nth-child(1){animation-delay:.3s;}
-.ph-q-line:nth-child(2){animation-delay:.55s;}
-.ph-q-line:nth-child(3){animation-delay:.8s;}
-.ph-q-line:nth-child(4){animation-delay:1.05s;}
-@keyframes phQLin{from{opacity:0;transform:translateX(-6px);}to{opacity:1;transform:translateX(0);}}
-.ph-q-item{display:flex;align-items:center;gap:.6rem;}
-.ph-q-ck{width:16px;height:16px;border-radius:50%;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#10b981;flex-shrink:0;}
-.ph-q-name{font-size:.82rem;color:var(--text-2);}
-.ph-q-price{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:#fff;}
-.ph-q-sep{height:1px;background:linear-gradient(90deg,rgba(99,102,241,.4),rgba(168,85,247,.3));margin:.6rem 0;}
-.ph-q-total{display:flex;align-items:center;justify-content:space-between;padding:.4rem 0;}
-.ph-q-total-label{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
-.ph-q-total-val{font-family:var(--font-display);font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.ph-q-locked{margin-top:.85rem;display:flex;align-items:center;justify-content:center;gap:.5rem;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:.55rem;font-size:.72rem;font-family:var(--font-mono);color:#6ee7b7;animation:phQBadge .5s ease 1.4s both;}
-@keyframes phQBadge{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+.pricing-hero-grid{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:center;}
+@media(max-width:960px){.pricing-hero-grid{grid-template-columns:1fr;}.pricing-hero-grid>div:last-child{display:none;}}
+/* ── Pricing ticker visual ── */
+.price-ticker{background:rgba(13,13,28,.9);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:1.75rem;width:100%;max-width:360px;box-shadow:0 24px 64px rgba(0,0,0,.5);overflow:hidden;position:relative;}
+.price-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#10b981);}
+.pt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
+.pt-title{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.pt-live{display:flex;align-items:center;gap:5px;font-size:.65rem;font-family:var(--font-mono);color:#10b981;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:20px;padding:3px 10px;}
+.pt-pulse{width:6px;height:6px;border-radius:50%;background:#10b981;animation:ptPulse 2s ease-in-out infinite;}
+@keyframes ptPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.pt-stage{min-height:120px;display:flex;align-items:center;margin-bottom:1.25rem;}
+.pt-item{width:100%;animation:ptIn .35s ease;}
+@keyframes ptIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.pt-cat{display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--primary);margin-bottom:.65rem;}
+.pt-cat-icon{font-size:1rem;}
+.pt-price{font-family:var(--font-display);font-size:2.8rem;font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:.25rem;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.pt-svcname{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:.2rem;}
+.pt-note{font-size:.74rem;color:var(--muted);font-family:var(--font-mono);}
+.pt-dots{display:flex;gap:.45rem;justify-content:center;margin-bottom:1.1rem;}
+.pt-dot-btn{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;transition:background .2s,transform .2s;padding:0;}
+.pt-dot-btn.active{background:var(--primary);transform:scale(1.5);}
+.pt-locked{display:flex;align-items:center;justify-content:center;gap:.45rem;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:.55rem;font-size:.7rem;font-family:var(--font-mono);color:#6ee7b7;}
 .trust-chip span{font-size:.9rem;}
 .jump-wrap{padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,.07);}
 .jump-nav{display:flex;gap:.4rem;max-width:var(--max-w);margin:0 auto;overflow-x:auto;scrollbar-width:none;justify-content:center;}
@@ -194,54 +160,33 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </nav>
 <!-- ══ HERO ══ -->
-<section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
+<section class="hero" style="min-height:65vh;padding:140px 2rem 5rem;border-bottom:1px solid var(--border);">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-3"></div></div>
 <div class="grid-overlay"></div>
 <div class="section-inner" style="z-index:2;">
-<div class="ph-grid">
+<div class="pricing-hero-grid">
 <!-- LEFT: text -->
-<div class="ph-text">
-<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.28);border-radius:999px;padding:6px 18px;font-size:.72rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.15em;color:var(--primary);margin-bottom:1.5rem;">// Pricing</div>
-<h1 style="font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem;">Every price.<br/><span class="grad-text-animated">Upfront. Transparent.</span></h1>
+<div>
+<div class="section-tag">// Pricing</div>
+<h1 style="font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem;text-align:left;">Every price.<br/><span class="grad-text-animated">Upfront. Transparent.</span></h1>
 <p class="hero-sub" style="margin:0 0 1.75rem;max-width:480px;font-size:1.05rem;line-height:1.8;">No hourly billing. No open-ended retainers. Every project is scoped and priced in writing before work begins — and the price doesn't move unless the scope does.</p>
 <div class="trust-bar">
 <div class="trust-chip"><span>✓</span> No hidden fees</div>
 <div class="trust-chip"><span>✓</span> Scope confirmed upfront</div>
-<div class="trust-chip"><span>✓</span> Typical response within 24 hours</div>
-<div class="trust-chip"><span>✓</span> Ad spend goes direct to your platform</div>
+<div class="trust-chip"><span>✓</span> Response within 24 hours</div>
+<div class="trust-chip"><span>✓</span> Ad spend goes direct to platform</div>
 </div>
 </div>
-<!-- RIGHT: animated guarantee card -->
-<div aria-hidden="true" class="ph-visual">
-<div class="ph-quote">
-<div class="ph-q-head">
-<div class="ph-q-title">// Project Quote</div>
-<div class="ph-q-status"><div class="ph-q-dot"></div>Price Locked</div>
+<!-- RIGHT: animated price ticker -->
+<div aria-hidden="true" style="display:flex;justify-content:center;">
+<div class="price-ticker">
+<div class="pt-header">
+<div class="pt-title">// Service Pricing</div>
+<div class="pt-live"><div class="pt-pulse"></div>Live rates</div>
 </div>
-<div class="ph-q-lines">
-<div class="ph-q-line">
-<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">AI Chatbot — Standard</div></div>
-<div class="ph-q-price">$949</div>
-</div>
-<div class="ph-q-line">
-<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Website — 3 pages</div></div>
-<div class="ph-q-price">$597</div>
-</div>
-<div class="ph-q-line">
-<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Campaign Setup</div></div>
-<div class="ph-q-price">$999</div>
-</div>
-<div class="ph-q-line">
-<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Chatbot Hosting / mo</div></div>
-<div class="ph-q-price">$49</div>
-</div>
-</div>
-<div class="ph-q-sep"></div>
-<div class="ph-q-total">
-<div class="ph-q-total-label">Total — one-time</div>
-<div class="ph-q-total-val">$2,545</div>
-</div>
-<div class="ph-q-locked">🔒  Quoted in writing · approved before work starts</div>
+<div class="pt-stage" id="ptStage"></div>
+<div class="pt-dots" id="ptDots"></div>
+<div class="pt-locked">🔒 Quoted in writing · approved before work starts</div>
 </div>
 </div>
 </div>
@@ -255,7 +200,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <a class="jump-pill" href="#chatbot">🤖 AI Chatbot</a>
 <a class="jump-pill" href="#phone">📞 Phone Agent</a>
 <a class="jump-pill" href="#creatives">🎬 Creatives</a>
-<a class="jump-pill" href="#tracking">📊 Tracking</a>
 <a class="jump-pill" href="#campaigns">📢 Campaigns</a>
 <a class="jump-pill" href="#faq">❓ FAQ</a>
 </div>
@@ -743,5 +687,47 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <script src="js/i18n.js?v=20260421"></script>
 <script src="js/chatbot.js?v=20260501e"></script>
 <script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
+<script>
+(function(){
+  var svcs=[
+    {cat:'Mobile App',icon:'📱',name:'Standard screen',price:'$99',note:'per screen · one-time'},
+    {cat:'Website',icon:'🌐',name:'Standard page',price:'$199',note:'per page · one-time'},
+    {cat:'AI Chatbot',icon:'🤖',name:'Simple tier',price:'$599',note:'setup + $49/mo hosting'},
+    {cat:'Phone Agent',icon:'📞',name:'Simple tier',price:'$699',note:'setup + monthly usage'},
+    {cat:'Video Ad',icon:'🎬',name:'30-second spot',price:'$300',note:'per 30s block · one-time'},
+    {cat:'Campaign',icon:'📢',name:'Full campaign build',price:'$999',note:'one-time · 5–7 days delivery'},
+  ];
+  var stage=document.getElementById('ptStage');
+  var dotsEl=document.getElementById('ptDots');
+  if(!stage||!dotsEl)return;
+  var cur=0,timer=null;
+  // build dots
+  svcs.forEach(function(_,i){
+    var b=document.createElement('button');
+    b.className='pt-dot-btn';
+    b.setAttribute('aria-label','Service '+(i+1));
+    b.onclick=function(){show(i);restart();};
+    dotsEl.appendChild(b);
+  });
+  function dots(){
+    dotsEl.querySelectorAll('.pt-dot-btn').forEach(function(b,i){
+      b.classList.toggle('active',i===cur);
+    });
+  }
+  function show(idx){
+    cur=idx;
+    var s=svcs[idx];
+    stage.innerHTML='<div class="pt-item" style="animation:ptIn .45s ease both;">'+
+      '<div class="pt-cat">'+s.icon+' '+s.cat+'</div>'+
+      '<div class="pt-svcname">'+s.name+'</div>'+
+      '<div class="pt-price">'+s.price+'</div>'+
+      '<div class="pt-note">'+s.note+'</div>'+
+    '</div>';
+    dots();
+  }
+  function restart(){clearInterval(timer);timer=setInterval(function(){show((cur+1)%svcs.length);},2800);}
+  show(0);restart();
+})();
+</script>
 </body>
 </html>
