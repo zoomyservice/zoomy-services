@@ -206,38 +206,37 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <style>
 .cp-hero-grid{display:grid;grid-template-columns:1fr 440px;gap:3.5rem;align-items:center;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
-/* Dashboard card */
-.cp-dash{background:#0b0b1c;border:1px solid rgba(99,102,241,.35);border-radius:18px;padding:1.5rem;box-shadow:0 0 60px rgba(99,102,241,.14),0 30px 80px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.05);position:relative;overflow:hidden;}
-.cp-dash::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899);}
-.cp-dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;}
-.cp-dash-title{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
-.cp-status-badge{display:flex;align-items:center;gap:5px;font-size:.65rem;font-family:var(--font-mono);color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);border-radius:20px;padding:3px 9px;}
-.cp-status-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:cpDotPulse 1.8s ease-in-out infinite;}
-@keyframes cpDotPulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-/* Metrics row — 4 cards */
-.cp-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin-bottom:1rem;}
-.cp-metric{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:.7rem .75rem;}
-.cp-metric-val{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.25rem;}
-.cp-metric-val .cp-up{font-size:.6rem;color:#4ade80;margin-left:3px;}
-.cp-metric-val .cp-dn{font-size:.6rem;color:#f87171;margin-left:3px;}
-.cp-metric-label{font-size:.56rem;font-family:var(--font-mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-/* Bar chart */
-.cp-chart{display:flex;align-items:flex-end;gap:4px;height:80px;margin-bottom:1rem;background:rgba(255,255,255,.02);border-radius:8px;padding:.6rem .6rem 0;position:relative;}
-.cp-chart-line{position:absolute;left:.6rem;right:.6rem;height:1px;background:rgba(255,255,255,.05);}
-.cp-chart-line:nth-child(1){bottom:33%;}
-.cp-chart-line:nth-child(2){bottom:66%;}
-.cp-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(to top,#6366f1,#a855f7);opacity:.75;transform-origin:bottom;animation:cpBarGrow .8s ease both;}
-.cp-bar.cp-bar-hi{background:linear-gradient(to top,#a855f7,#ec4899);opacity:.9;}
-@keyframes cpBarGrow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
-/* Keywords */
-.cp-keywords{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem;}
-.cp-kw{font-size:.62rem;font-family:var(--font-mono);color:#a5b4fc;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.22);border-radius:20px;padding:3px 9px;animation:cpKwFade .4s ease both;}
-@keyframes cpKwFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
-/* Progress bar */
-.cp-progress-label{display:flex;justify-content:space-between;font-size:.6rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.3rem;}
-.cp-progress-track{background:rgba(255,255,255,.07);border-radius:4px;height:5px;overflow:hidden;}
-.cp-progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#a855f7);border-radius:4px;animation:cpFillGrow 1.2s ease .4s both;}
-@keyframes cpFillGrow{from{width:0;}to{width:73%;}}
+/* ── Google SERP mockup ── */
+.cps-card{background:#0b0b1c;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:1.5rem;box-shadow:0 0 60px rgba(99,102,241,.12),0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;}
+.cps-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853);}
+.cps-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.8rem;display:inline-block;}
+.cps-lb{color:#4285F4;}.cps-lr{color:#EA4335;}.cps-lo{color:#FBBC05;}.cps-lg{color:#34A853;}.cps-lr2{color:#EA4335;}.cps-le{color:#4285F4;}
+.cps-searchbar{display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:.6rem 1.1rem;margin-bottom:.85rem;}
+.cps-si{opacity:.3;flex-shrink:0;}
+.cps-search-text{font-family:var(--font-mono);font-size:.82rem;color:rgba(255,255,255,.88);flex:1;min-height:1.1em;}
+.cps-cursor{display:inline-block;width:2px;height:.85em;background:#a5b4fc;margin-left:1px;animation:cpsCursor .85s step-end infinite;vertical-align:text-bottom;}
+@keyframes cpsCursor{0%,100%{opacity:1;}50%{opacity:0;}}
+.cps-rc{font-size:.6rem;color:rgba(255,255,255,.2);font-family:var(--font-mono);margin-bottom:.8rem;letter-spacing:.03em;}
+/* Sponsored ad block */
+.cps-ad{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:.9rem 1rem;margin-bottom:.7rem;position:relative;overflow:hidden;}
+.cps-ad::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.04),transparent 60%);pointer-events:none;}
+.cps-sponsored{font-size:.58rem;font-family:var(--font-mono);color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.22);border-radius:4px;padding:1px 7px;display:inline-block;margin-bottom:.45rem;letter-spacing:.06em;}
+.cps-ad-url{font-size:.65rem;color:rgba(255,255,255,.35);margin-bottom:.32rem;}
+.cps-ad-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:#a5b4fc;line-height:1.3;margin-bottom:.38rem;min-height:2.6em;transition:color .3s;}
+.cps-ad-desc{font-size:.7rem;color:rgba(255,255,255,.48);line-height:1.65;min-height:2.9em;}
+/* Click ripple */
+.cps-ring{position:absolute;right:1rem;top:50%;transform:translateY(-50%) scale(0);width:28px;height:28px;border-radius:50%;background:rgba(99,102,241,.5);opacity:0;}
+@keyframes cpsRingAnim{0%{transform:translateY(-50%) scale(0);opacity:.85;}100%{transform:translateY(-50%) scale(3.2);opacity:0;}}
+/* Organic results (ghost) */
+.cps-organic{padding:.5rem 0;border-top:1px solid rgba(255,255,255,.05);}
+.cps-org-url{font-size:.6rem;color:rgba(255,255,255,.2);margin-bottom:.18rem;}
+.cps-org-title{font-size:.78rem;color:rgba(255,255,255,.28);margin-bottom:.12rem;}
+.cps-org-desc{font-size:.64rem;color:rgba(255,255,255,.16);line-height:1.5;}
+/* Conversion toast */
+.cps-toast{position:absolute;bottom:1rem;right:1rem;display:flex;align-items:center;gap:.5rem;background:#061310;border:1px solid rgba(74,222,128,.32);border-radius:10px;padding:.5rem .9rem;font-size:.72rem;font-family:var(--font-mono);color:#4ade80;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s;pointer-events:none;}
+.cps-toast.show{opacity:1;transform:translateY(0);}
+.cps-tdot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:cpsDotPulse 1.5s ease-in-out infinite;flex-shrink:0;}
+@keyframes cpsDotPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 </style>
 <section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
@@ -255,52 +254,31 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </div>
 <div aria-hidden="true" class="cp-hero-visual">
-<div class="cp-dash">
-<div class="cp-dash-header">
-<div class="cp-dash-title">Google Ads: campaña activa</div>
-<div class="cp-status-badge"><span class="cp-status-dot"></span>En vivo</div>
+<div class="cps-card">
+<div class="cps-logo"><span class="cps-lb">G</span><span class="cps-lr">o</span><span class="cps-lo">o</span><span class="cps-lg">g</span><span class="cps-lr2">l</span><span class="cps-le">e</span></div>
+<div class="cps-searchbar">
+<svg class="cps-si" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+<span class="cps-search-text" id="cpsText"><span class="cps-cursor"></span></span>
 </div>
-<div class="cp-metrics">
-<div class="cp-metric">
-<div class="cp-metric-val" id="cpClicks">2,840<span class="cp-up">↑</span></div>
-<div class="cp-metric-label">Clics</div>
+<div class="cps-rc">Alrededor de 2.340.000 resultados (0,38 segundos)</div>
+<div class="cps-ad">
+<div class="cps-sponsored">Patrocinado</div>
+<div class="cps-ad-url" id="cpsUrl">zoomy-client.com › tienda › correr</div>
+<div class="cps-ad-title" id="cpsTitle">Las mejores zapatillas para correr: envío gratis hoy</div>
+<div class="cps-ad-desc" id="cpsDesc">Compre más de 200 estilos de las mejores marcas. Entrega gratuita al día siguiente en pedidos superiores a $50. Calificado con 4,9★ por más de 12.000 corredores.</div>
+<div class="cps-ring" id="cpsRing"></div>
 </div>
-<div class="cp-metric">
-<div class="cp-metric-val">4.7%<span class="cp-up">↑</span></div>
-<div class="cp-metric-label">CTR</div>
+<div class="cps-organic">
+<div class="cps-org-url">competidor-store.com › zapatos › correr</div>
+<div class="cps-org-title">Zapatillas para correr: compre la gama completa en línea</div>
+<div class="cps-org-desc">Gran selección de calzado de carretera, trail y track de primeras marcas...</div>
 </div>
-<div class="cp-metric">
-<div class="cp-metric-val">$1.24<span class="cp-dn">↓</span></div>
-<div class="cp-metric-label">CPC medio</div>
+<div class="cps-organic">
+<div class="cps-org-url">review-site.com ›mejores-zapatillas-para-correr-2025</div>
+<div class="cps-org-title">Las mejores zapatillas para correr de 2025: reseñas de expertos</div>
+<div class="cps-org-desc">Probamos más de 40 pares para que usted no tenga que hacerlo. Nuestras mejores opciones para cada presupuesto...</div>
 </div>
-<div class="cp-metric">
-<div class="cp-metric-val">38<span class="cp-up">↑</span></div>
-<div class="cp-metric-label">Conversiones</div>
-</div>
-</div>
-<div class="cp-chart">
-<div class="cp-chart-line"></div>
-<div class="cp-chart-line"></div>
-<div class="cp-bar" style="height:48%;animation-delay:.08s;"></div>
-<div class="cp-bar" style="height:62%;animation-delay:.15s;"></div>
-<div class="cp-bar" style="height:38%;animation-delay:.22s;"></div>
-<div class="cp-bar cp-bar-hi" style="height:76%;animation-delay:.29s;"></div>
-<div class="cp-bar" style="height:55%;animation-delay:.36s;"></div>
-<div class="cp-bar cp-bar-hi" style="height:88%;animation-delay:.43s;"></div>
-<div class="cp-bar" style="height:68%;animation-delay:.5s;"></div>
-<div class="cp-bar cp-bar-hi" style="height:94%;animation-delay:.57s;"></div>
-<div class="cp-bar" style="height:72%;animation-delay:.64s;"></div>
-<div class="cp-bar" style="height:80%;animation-delay:.71s;"></div>
-</div>
-<div class="cp-keywords">
-<span class="cp-kw" style="animation-delay:.3s;">mejores zapatillas para correr</span>
-<span class="cp-kw" style="animation-delay:.45s;">comprar zapatillas online</span>
-<span class="cp-kw" style="animation-delay:.6s;">venta de calzado deportivo</span>
-<span class="cp-kw" style="animation-delay:.75s;">calzado con descuento</span>
-<span class="cp-kw" style="animation-delay:.9s;">equipo para correr cerca de mí</span>
-</div>
-<div class="cp-progress-label"><span>Presupuesto utilizado</span><span>73%</span></div>
-<div class="cp-progress-track"><div class="cp-progress-fill"></div></div>
+<div class="cps-toast" id="cpsToast"><div class="cps-tdot"></div>1 conversión · $89.00</div>
 </div>
 </div>
 </div>
@@ -317,8 +295,8 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="stat-block-label">Entrega de campaña</div>
 </div>
 <div class="stat-block reveal reveal-delay-2">
-<div class="stat-block-num">3+</div>
-<div class="stat-block-label">Variantes de anuncios por grupo</div>
+<div class="stat-block-num">$0</div>
+<div class="stat-block-label">Comisión de agencia</div>
 </div>
 <div class="stat-block reveal reveal-delay-3">
 <div class="stat-block-num">2 rondas</div>
@@ -534,6 +512,56 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </div>
 </footer>
+<script>
+(function(){
+  var textEl=document.getElementById('cpsText');
+  var titleEl=document.getElementById('cpsTitle');
+  var descEl=document.getElementById('cpsDesc');
+  var urlEl=document.getElementById('cpsUrl');
+  var toast=document.getElementById('cpsToast');
+  var ring=document.getElementById('cpsRing');
+  if(!textEl) return;
+  var cursor='<span class="cps-cursor"></span>';
+  var queries=[
+    {q:'best running shoes online',url:'zoomy-client.com › shop › running',title:'Best Running Shoes — Free Shipping Today',desc:'Shop 200+ styles from top brands. Free next-day delivery on orders over $50. Rated 4.9★ by 12,000+ runners.',conv:'1 conversion · $89.00'},
+    {q:'affordable web design agency',url:'zoomy.services › websites',title:'Custom Websites from $597 — Built & Launched',desc:'Preview before you pay. Cart, checkout & chatbot included. No templates — every site built from scratch.',conv:'1 lead · contact form'},
+    {q:'buy wireless earbuds near me',url:'zoomy-client.com › audio › earbuds',title:'Top-Rated Wireless Earbuds — Up to 40% Off',desc:'ANC · 32hr battery · waterproof. 60+ models compared. Same-day shipping on orders before 3pm.',conv:'1 conversion · $129.00'}
+  ];
+  var cur=0;
+  function runCycle(){
+    var q=queries[cur];
+    var i=0;
+    textEl.innerHTML=cursor;
+    var typer=setInterval(function(){
+      if(i<q.q.length){textEl.innerHTML=q.q.slice(0,i+1)+cursor;i++;}
+      else{
+        clearInterval(typer);
+        setTimeout(function(){
+          if(ring){ring.style.animation='none';void ring.offsetWidth;ring.style.animation='cpsRingAnim .55s ease forwards';}
+          titleEl.textContent=q.title;
+          descEl.textContent=q.desc;
+          urlEl.textContent=q.url;
+          if(toast) toast.querySelector('.cps-tdot').nextSibling.textContent=' '+q.conv;
+          setTimeout(function(){
+            toast.classList.add('show');
+            setTimeout(function(){
+              toast.classList.remove('show');
+              setTimeout(function(){
+                var txt=q.q;
+                var eraser=setInterval(function(){
+                  if(txt.length>0){txt=txt.slice(0,-1);textEl.innerHTML=txt+cursor;}
+                  else{clearInterval(eraser);cur=(cur+1)%queries.length;setTimeout(runCycle,500);}
+                },30);
+              },500);
+            },1800);
+          },500);
+        },900);
+      }
+    },75);
+  }
+  setTimeout(runCycle,1000);
+})();
+</script>
 <script src="../js/main.js?v=20260421"></script>
 
 <script src="../js/chatbot.js?v=20260501e"></script>
