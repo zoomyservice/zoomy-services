@@ -2107,7 +2107,22 @@
     "Self-hosted on your infrastructure": "Auto-hébergé sur votre infrastructure",
     "Custom-built AI chatbot — trained on your business": "Chatbot IA sur mesure — formé pour votre entreprise",
     "Never. Every site we build is custom-coded from scratch — HTML, CSS, JavaScript. No WordPress, no Webflow, no templates. This gives us full control over performance, animations, and mobile experience.": "Jamais. Chaque site que nous construisons est codé sur mesure à partir de zéro : HTML, CSS, JavaScript. Pas de WordPress, pas de Webflow, pas de modèles. Cela nous donne un contrôle total sur les performances, les animations et l'expérience mobile.",
-    "The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.": "Le chatbot fonctionne sur votre propre infrastructure, et non sur une plateforme tierce comme Intercom ou Drift. Pas de frais par siège, pas de dépendance vis-à-vis d'un fournisseur. Vous êtes entièrement propriétaire de l’installation une fois qu’elle est construite."
+    "The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.": "Le chatbot fonctionne sur votre propre infrastructure, et non sur une plateforme tierce comme Intercom ou Drift. Pas de frais par siège, pas de dépendance vis-à-vis d'un fournisseur. Vous êtes entièrement propriétaire de l’installation une fois qu’elle est construite.",
+    "Summer Sale": "Soldes d'été",
+    "buy sneakers online": "acheter des baskets en ligne",
+    "50% Off": "50 % de réduction",
+    "Up to": "Jusqu'à",
+    "discount footwear": "chaussures à prix réduits",
+    "Clicks": "Clics",
+    "sports shoes sale": "vente de chaussures de sport",
+    "Limited time — shop the collection": "Durée limitée — magasinez la collection",
+    "CTR": "CTR",
+    "Avg CPC": "CPC moyen",
+    "Shop Now →": "Achetez maintenant →",
+    "best running shoes": "meilleures chaussures de course",
+    "Budget used": "Budget utilisé",
+    "Google Ads — Active Campaign": "Google Ads – Campagne active",
+    "running gear near me": "train de roulement à proximité"
   },
   "es": {
     "Do you work with clients outside the US?": "¿Trabaja con clientes fuera de EE. UU.?",
@@ -4217,6 +4232,21 @@
     "Self-hosted on your infrastructure": "Autohospedado en su infraestructura",
     "Custom-built AI chatbot — trained on your business": "Chatbot de IA personalizado: capacitado para su negocio",
     "Never. Every site we build is custom-coded from scratch — HTML, CSS, JavaScript. No WordPress, no Webflow, no templates. This gives us full control over performance, animations, and mobile experience.": "Nunca. Cada sitio que construimos está codificado de forma personalizada desde cero: HTML, CSS, JavaScript. Sin WordPress, sin Webflow, sin plantillas. Esto nos brinda control total sobre el rendimiento, las animaciones y la experiencia móvil.",
-    "The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.": "El chatbot se ejecuta en su propia infraestructura, no en una plataforma de terceros como Intercom o Drift. Sin tarifas por puesto ni dependencia de proveedores. Usted es dueño absoluto de la configuración una vez que está construida."
+    "The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.": "El chatbot se ejecuta en su propia infraestructura, no en una plataforma de terceros como Intercom o Drift. Sin tarifas por puesto ni dependencia de proveedores. Usted es dueño absoluto de la configuración una vez que está construida.",
+    "Summer Sale": "Oferta de verano",
+    "buy sneakers online": "comprar zapatillas online",
+    "50% Off": "50% de descuento",
+    "Up to": "Hasta",
+    "discount footwear": "calzado con descuento",
+    "Clicks": "Clics",
+    "sports shoes sale": "venta de calzado deportivo",
+    "Limited time — shop the collection": "Por tiempo limitado: compre la colección",
+    "CTR": "CTR",
+    "Avg CPC": "CPC medio",
+    "Shop Now →": "Comprar ahora →",
+    "best running shoes": "mejores zapatillas para correr",
+    "Budget used": "Presupuesto utilizado",
+    "Google Ads — Active Campaign": "Google Ads: campaña activa",
+    "running gear near me": "equipo para correr cerca de mí"
   }
 }
