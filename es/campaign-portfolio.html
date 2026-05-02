@@ -204,10 +204,10 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </nav>
 <!-- ═══ HERO ═══ -->
 <style>
-.cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,320px);gap:2rem;align-items:center;box-sizing:border-box;}
+.cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,280px);gap:2rem;align-items:center;box-sizing:border-box;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
-/* Override global hero rule — exact same selector so source order (page > stylesheet) decides */
-html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner{width:min(1100px,calc(100vw - 4rem))!important;max-width:none!important;margin:0 auto!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important;}
+/* Target this page's hero directly — no cascade fighting */
+.cp-hero .section-inner{width:min(1060px,calc(100vw - 4rem))!important;max-width:none!important;margin:0 auto!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important;}
 /* Keep text left-aligned */
 .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
 .cp-hero-grid p{text-align:left!important;}
@@ -242,7 +242,7 @@ html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner{width:min(1
 .cps-toast.show{opacity:1;transform:translateY(0);}
 .cps-tdot{width:7px;height:7px;border-radius:50%;background:#34a853;flex-shrink:0;}
 </style>
-<section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
+<section class="hero cp-hero" style="min-height:auto;padding:140px 2rem 5rem;overflow:hidden;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
 <div class="grid-overlay"></div>
 <div class="section-inner cp-hero-grid" style="z-index:2;">
