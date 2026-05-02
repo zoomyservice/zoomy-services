@@ -1353,7 +1353,7 @@ html[data-theme="light"] .hero{
 
 /* The hero "page-edge → 1280px-center" container math:
    Padding aligns with the same edge whether viewport is 1280px or 1920px. */
-html[data-theme="light"] .hero .section-inner{
+html[data-theme="light"] .hero:has(.hero-stage) .section-inner{
   width:auto!important;
   max-width:none!important;
   margin:0!important;
@@ -1361,7 +1361,6 @@ html[data-theme="light"] .hero .section-inner{
   padding-right:0!important;
   text-align:left!important;
   position:relative; z-index:2;
-  /* Constrain the readable text area to the left half */
 }
 
 /* Text content children sit in left half — max ~580px for readable line length */
@@ -1853,8 +1852,8 @@ html[data-theme="light"] .hero{
   overflow:hidden;
 }
 
-/* Text content — left half, anchored to 1280px container edge */
-html[data-theme="light"] .hero .section-inner{
+/* Text content — left half, anchored to 1280px container edge (homepage only) */
+html[data-theme="light"] .hero:has(.hero-stage) .section-inner{
   width:auto!important;
   max-width:none!important;
   margin:0!important;
