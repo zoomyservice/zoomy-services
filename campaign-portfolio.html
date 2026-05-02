@@ -204,11 +204,16 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </nav>
 <!-- ═══ HERO ═══ -->
 <style>
-.cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,320px);gap:2rem;align-items:center;width:min(1100px,calc(100vw - 4rem));margin:0 auto;box-sizing:border-box;}
+.cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,320px);gap:2rem;align-items:center;box-sizing:border-box;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
-/* Keep text left-aligned in light mode */
-html[data-theme="light"] .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
-html[data-theme="light"] .cp-hero-grid p{text-align:left!important;}
+/* Override global hero rule — page style block loads after style.css so !important here wins */
+html[data-theme="light"] .hero .section-inner,
+html[data-theme="dark"] .hero .section-inner,
+.hero .section-inner{width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important;}
+.hero{align-items:stretch!important;}
+/* Keep text left-aligned */
+.cp-hero-grid h1{text-align:left!important;max-width:none!important;}
+.cp-hero-grid p{text-align:left!important;}
 /* ── Browser window mockup ── */
 .cp-hero-visual{overflow:hidden;min-width:0;}
 .cps-browser{border-radius:14px;overflow:hidden;box-shadow:0 0 50px rgba(99,102,241,.14),0 28px 72px rgba(0,0,0,.7);width:100%;}
@@ -240,10 +245,10 @@ html[data-theme="light"] .cp-hero-grid p{text-align:left!important;}
 .cps-toast.show{opacity:1;transform:translateY(0);}
 .cps-tdot{width:7px;height:7px;border-radius:50%;background:#34a853;flex-shrink:0;}
 </style>
-<section class="hero" style="min-height:auto;padding:140px 2rem 5rem;align-items:flex-start;">
+<section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
 <div class="grid-overlay"></div>
-<div class="section-inner cp-hero-grid" style="z-index:2;width:100%;max-width:none;margin:0;padding:0;box-sizing:border-box;">
+<div class="section-inner cp-hero-grid" style="z-index:2;">
 <div>
 <div class="section-tag" style="margin-bottom:1.5rem;">Campaign Production</div>
 <h1 style="margin-bottom:1.5rem;text-align:left;">
