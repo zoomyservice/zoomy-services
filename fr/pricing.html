@@ -49,6 +49,35 @@
 @keyframes phDotP{0%,100%{opacity:1;}50%{opacity:.35;}}
 .ph-foot-txt{font-size:.75rem;color:var(--muted);font-family:var(--font-mono);}
 @media(max-width:900px){.ph-visual{display:none;}.ph-grid{grid-template-columns:1fr;text-align:center;}.ph-text{align-items:center;}.trust-bar{justify-items:center;}}
+/* ── Override v11 global centering so two-column layout works ── */
+html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner{max-width:1200px!important;padding-left:2rem!important;padding-right:2rem!important;}
+html[data-theme="light"] .ph-grid h1{text-align:left!important;max-width:none!important;font-size:clamp(2.4rem,6vw,4.2rem)!important;margin:0 0 1.25rem!important;}
+html[data-theme="light"] .ph-grid .hero-sub{text-align:left!important;margin:0 0 1.75rem!important;max-width:480px!important;}
+/* ── Quote card visual ── */
+.ph-quote{position:relative;background:#0d0d1e;border:1px solid rgba(99,102,241,.28);border-radius:16px;padding:1.5rem 1.75rem;box-shadow:0 24px 64px rgba(0,0,0,.5);overflow:hidden;width:100%;}
+.ph-quote::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#10b981);}
+.ph-q-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.ph-q-title{font-family:var(--font-mono);font-size:.62rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.ph-q-status{display:flex;align-items:center;gap:5px;font-size:.65rem;font-family:var(--font-mono);color:#10b981;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);border-radius:20px;padding:3px 10px;}
+.ph-q-dot{width:6px;height:6px;border-radius:50%;background:#10b981;animation:phQDot 2s ease-in-out infinite;}
+@keyframes phQDot{0%,100%{opacity:1;}50%{opacity:.3;}}
+.ph-q-lines{display:flex;flex-direction:column;gap:0;margin-bottom:1rem;}
+.ph-q-line{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.05);opacity:0;animation:phQLin .4s ease forwards;}
+.ph-q-line:nth-child(1){animation-delay:.3s;}
+.ph-q-line:nth-child(2){animation-delay:.55s;}
+.ph-q-line:nth-child(3){animation-delay:.8s;}
+.ph-q-line:nth-child(4){animation-delay:1.05s;}
+@keyframes phQLin{from{opacity:0;transform:translateX(-6px);}to{opacity:1;transform:translateX(0);}}
+.ph-q-item{display:flex;align-items:center;gap:.6rem;}
+.ph-q-ck{width:16px;height:16px;border-radius:50%;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.4);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#10b981;flex-shrink:0;}
+.ph-q-name{font-size:.82rem;color:var(--text-2);}
+.ph-q-price{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:#fff;}
+.ph-q-sep{height:1px;background:linear-gradient(90deg,rgba(99,102,241,.4),rgba(168,85,247,.3));margin:.6rem 0;}
+.ph-q-total{display:flex;align-items:center;justify-content:space-between;padding:.4rem 0;}
+.ph-q-total-label{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;}
+.ph-q-total-val{font-family:var(--font-display);font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ph-q-locked{margin-top:.85rem;display:flex;align-items:center;justify-content:center;gap:.5rem;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:.55rem;font-size:.72rem;font-family:var(--font-mono);color:#6ee7b7;animation:phQBadge .5s ease 1.4s both;}
+@keyframes phQBadge{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
 .trust-chip span{font-size:.9rem;}
 .jump-wrap{padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,.07);}
 .jump-nav{display:flex;gap:.4rem;max-width:var(--max-w);margin:0 auto;overflow-x:auto;scrollbar-width:none;justify-content:center;}
@@ -184,24 +213,35 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 <!-- RIGHT: animated guarantee card -->
 <div aria-hidden="true" class="ph-visual">
-<div class="ph-card">
-<div class="ph-blob ph-blob-1"></div>
-<div class="ph-blob ph-blob-2"></div>
-<div class="ph-hdr">
-<div class="ph-hdr-icon">🔒</div>
-<div class="ph-hdr-title">Garantie de prix fixe</div>
+<div class="ph-quote">
+<div class="ph-q-head">
+<div class="ph-q-title">// Devis de projet</div>
+<div class="ph-q-status"><div class="ph-q-dot"></div>Prix ​​verrouillé</div>
 </div>
-<div class="ph-items">
-<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Prix ​​indiqué par écrit</div></div>
-<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Approuvé avant le début des travaux</div></div>
-<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Portée verrouillée au prix convenu</div></div>
-<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Aucune surprise sur la facture – jamais</div></div>
+<div class="ph-q-lines">
+<div class="ph-q-line">
+<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Chatbot IA – Standard</div></div>
+<div class="ph-q-price">$949</div>
 </div>
-<div class="ph-div"></div>
-<div class="ph-foot">
-<div class="ph-dot"></div>
-<div class="ph-foot-txt">Le prix ne bouge jamais à moins que la portée ne le fasse</div>
+<div class="ph-q-line">
+<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Site Web — 3 pages</div></div>
+<div class="ph-q-price">$597</div>
 </div>
+<div class="ph-q-line">
+<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Configuration de la campagne</div></div>
+<div class="ph-q-price">$999</div>
+</div>
+<div class="ph-q-line">
+<div class="ph-q-item"><div class="ph-q-ck">✓</div><div class="ph-q-name">Hébergement Chatbot / mois</div></div>
+<div class="ph-q-price">$49</div>
+</div>
+</div>
+<div class="ph-q-sep"></div>
+<div class="ph-q-total">
+<div class="ph-q-total-label">Total — ponctuel</div>
+<div class="ph-q-total-val">$2,545</div>
+</div>
+<div class="ph-q-locked">🔒  Cité par écrit · approuvé avant le début des travaux</div>
 </div>
 </div>
 </div>

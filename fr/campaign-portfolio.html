@@ -215,14 +215,19 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 .cp-status-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:cpDotPulse 1.8s ease-in-out infinite;}
 @keyframes cpDotPulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 /* Metrics row */
-.cp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.1rem;}
-.cp-metric{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.7rem .65rem;}
-.cp-metric-val{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.2rem;}
-.cp-metric-val .cp-up{font-size:.6rem;color:#4ade80;margin-left:2px;}
-.cp-metric-label{font-size:.58rem;font-family:var(--font-mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+.cp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem;}
+.cp-metric{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.65rem .6rem;}
+.cp-metric-val{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.2rem;}
+.cp-metric-val .cp-up{font-size:.58rem;color:#4ade80;margin-left:2px;}
+.cp-metric-val .cp-dn{font-size:.58rem;color:#f87171;margin-left:2px;}
+.cp-metric-label{font-size:.56rem;font-family:var(--font-mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
 /* Bar chart */
-.cp-chart{display:flex;align-items:flex-end;gap:4px;height:56px;margin-bottom:1.1rem;background:rgba(255,255,255,.02);border-radius:8px;padding:.5rem .6rem 0;}
-.cp-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(to top,#6366f1,#a855f7);opacity:.7;transform-origin:bottom;animation:cpBarGrow .8s ease both;}
+.cp-chart{display:flex;align-items:flex-end;gap:4px;height:80px;margin-bottom:1rem;background:rgba(255,255,255,.02);border-radius:8px;padding:.6rem .6rem 0;position:relative;}
+.cp-chart-line{position:absolute;left:.6rem;right:.6rem;height:1px;background:rgba(255,255,255,.05);}
+.cp-chart-line:nth-child(1){bottom:33%;}
+.cp-chart-line:nth-child(2){bottom:66%;}
+.cp-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(to top,#6366f1,#a855f7);opacity:.75;transform-origin:bottom;animation:cpBarGrow .8s ease both;}
+.cp-bar.cp-bar-hi{background:linear-gradient(to top,#a855f7,#ec4899);opacity:.85;}
 @keyframes cpBarGrow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
 /* Keywords */
 .cp-keywords{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem;}
@@ -265,20 +270,23 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="cp-metric-label">CTR</div>
 </div>
 <div class="cp-metric">
-<div class="cp-metric-val">$1.24</div>
+<div class="cp-metric-val">$1.24<span class="cp-dn">↓</span></div>
 <div class="cp-metric-label">CPC moyen</div>
 </div>
 </div>
 <div class="cp-chart">
-<div class="cp-bar" style="height:52%;animation-delay:.1s;"></div>
-<div class="cp-bar" style="height:68%;animation-delay:.18s;"></div>
-<div class="cp-bar" style="height:44%;animation-delay:.26s;"></div>
-<div class="cp-bar" style="height:80%;animation-delay:.34s;"></div>
-<div class="cp-bar" style="height:62%;animation-delay:.42s;"></div>
-<div class="cp-bar" style="height:91%;animation-delay:.5s;"></div>
-<div class="cp-bar" style="height:74%;animation-delay:.58s;"></div>
-<div class="cp-bar" style="height:85%;animation-delay:.66s;"></div>
-<div class="cp-bar" style="height:70%;animation-delay:.74s;"></div>
+<div class="cp-chart-line"></div>
+<div class="cp-chart-line"></div>
+<div class="cp-bar" style="height:48%;animation-delay:.08s;"></div>
+<div class="cp-bar" style="height:62%;animation-delay:.15s;"></div>
+<div class="cp-bar" style="height:38%;animation-delay:.22s;"></div>
+<div class="cp-bar cp-bar-hi" style="height:76%;animation-delay:.29s;"></div>
+<div class="cp-bar" style="height:55%;animation-delay:.36s;"></div>
+<div class="cp-bar cp-bar-hi" style="height:88%;animation-delay:.43s;"></div>
+<div class="cp-bar" style="height:68%;animation-delay:.5s;"></div>
+<div class="cp-bar cp-bar-hi" style="height:94%;animation-delay:.57s;"></div>
+<div class="cp-bar" style="height:72%;animation-delay:.64s;"></div>
+<div class="cp-bar" style="height:80%;animation-delay:.71s;"></div>
 </div>
 <div class="cp-keywords">
 <span class="cp-kw" style="animation-delay:.3s;">meilleures chaussures de course</span>
