@@ -206,11 +206,8 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <style>
 .cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,320px);gap:2rem;align-items:center;box-sizing:border-box;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
-/* Override global hero rule — page style block loads after style.css so !important here wins */
-html[data-theme="light"] .hero .section-inner,
-html[data-theme="dark"] .hero .section-inner,
-.hero .section-inner{width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important;}
-.hero{align-items:stretch!important;}
+/* Override global hero rule — exact same selector so source order (page > stylesheet) decides */
+html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner{width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important;}
 /* Keep text left-aligned */
 .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
 .cp-hero-grid p{text-align:left!important;}
