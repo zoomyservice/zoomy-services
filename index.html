@@ -85,6 +85,31 @@
 .cap-strip{grid-template-columns:1fr}
 }
 
+/* ── Mobile: fix inline grids that have no responsive override ── */
+@media(max-width:768px){
+#phone-agent-section .section-inner>div[style*="grid-template-columns:1fr 1fr"],
+#phone-agent-section .section-inner>div[style*="grid-template-columns: 1fr 1fr"]{
+  grid-template-columns:1fr!important;gap:2.5rem!important;
+}
+#phone-agent-section div[style*="grid-template-columns:repeat(3,1fr)"],
+#phone-agent-section div[style*="grid-template-columns: repeat(3,1fr)"]{
+  grid-template-columns:1fr!important;
+}
+}
+@media(max-width:768px){
+div[style*="grid-template-columns:1fr 1fr"][style*="gap:2rem"],
+div[style*="grid-template-columns:1fr 1fr"][style*="gap:3rem"],
+div[style*="grid-template-columns:1fr 1fr"][style*="gap:5rem"]{
+  grid-template-columns:1fr!important;gap:2rem!important;
+}
+div[style*="grid-column:span 2"] div[style*="grid-template-columns:1fr 1fr"]{
+  grid-template-columns:1fr!important;
+}
+div[style*="grid-column:span 2"]{
+  grid-column:span 1!important;
+}
+}
+
 /* custom dark scrollbar for admin canvas */
 #admShell .adm-canvas::-webkit-scrollbar{width:6px;}
 #admShell .adm-canvas::-webkit-scrollbar-track{background:#0a0a0a;}
