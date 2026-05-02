@@ -206,6 +206,11 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <style>
 .cp-hero-grid{display:grid;grid-template-columns:1fr 440px;gap:3.5rem;align-items:center;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
+/* Override global v11 max-width cap so the two-column grid fits */
+html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner,
+.hero .section-inner{max-width:1200px!important;padding-left:2rem!important;padding-right:2rem!important;}
+html[data-theme="light"] .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
+html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
 /* ── Google SERP mockup ── */
 .cps-card{background:#0b0b1c;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:1.5rem;box-shadow:0 0 60px rgba(99,102,241,.12),0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;}
 .cps-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853);}
