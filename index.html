@@ -87,26 +87,31 @@
 
 /* ── Mobile: fix inline grids that have no responsive override ── */
 @media(max-width:768px){
-#phone-agent-section .section-inner>div[style*="grid-template-columns:1fr 1fr"],
-#phone-agent-section .section-inner>div[style*="grid-template-columns: 1fr 1fr"]{
+/* Phone agent section: collapse 2-col text+visual → single column */
+#phone-agent-section .section-inner>div[style*="grid-template-columns"]{
   grid-template-columns:1fr!important;gap:2.5rem!important;
 }
-#phone-agent-section div[style*="grid-template-columns:repeat(3,1fr)"],
-#phone-agent-section div[style*="grid-template-columns: repeat(3,1fr)"]{
+/* Phone agent: 3-col feature icons → single column */
+#phone-agent-section div[style*="repeat(3,1fr)"]{
+  grid-template-columns:1fr!important;
+}
+/* "Why Zoomy" terminal+text → single column */
+div[style*="grid-template-columns:1fr 1fr"][style*="gap:3rem"]{
   grid-template-columns:1fr!important;
 }
 }
-@media(max-width:768px){
-div[style*="grid-template-columns:1fr 1fr"][style*="gap:2rem"],
-div[style*="grid-template-columns:1fr 1fr"][style*="gap:3rem"],
-div[style*="grid-template-columns:1fr 1fr"][style*="gap:5rem"]{
-  grid-template-columns:1fr!important;gap:2rem!important;
-}
-div[style*="grid-column:span 2"] div[style*="grid-template-columns:1fr 1fr"]{
+@media(max-width:520px){
+/* "What we build": outer 2-col service card grid → single column */
+#our-services div[style*="repeat(2,1fr)"]{
   grid-template-columns:1fr!important;
 }
-div[style*="grid-column:span 2"]{
+/* Google Ads full-width card: remove span-2 (irrelevant in 1-col grid) */
+#our-services div[style*="grid-column:span 2"]{
   grid-column:span 1!important;
+}
+/* Inner 1fr/1fr grid inside Google Ads card → single column */
+#our-services div[style*="grid-template-columns:1fr 1fr"]{
+  grid-template-columns:1fr!important;
 }
 }
 
