@@ -18,10 +18,37 @@
 .ps-tag::before{content:"//";opacity:.4;}
 .ps-heading{font-family:var(--font-display);font-size:clamp(1.65rem,3vw,2.3rem);font-weight:700;color:#fff;margin-bottom:.75rem;letter-spacing:-.025em;line-height:1.2;}
 .ps-sub{color:var(--text-2);font-size:.96rem;max-width:580px;line-height:1.75;margin-bottom:2.75rem;}
-.trust-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:2.5rem;}
-.trust-chip{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 14px;font-size:.8rem;color:var(--text-2);text-align:center;}
-@media(max-width:860px){.trust-bar{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:500px){.trust-bar{grid-template-columns:1fr;}}
+.trust-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;margin-top:2rem;width:100%;}
+.trust-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 16px;font-size:.8rem;color:var(--text-2);}
+.trust-chip span{font-size:.9rem;}
+/* ── Pricing hero two-column grid ── */
+.ph-grid{display:grid;grid-template-columns:1fr 360px;gap:4rem;align-items:center;text-align:left;}
+.ph-text{display:flex;flex-direction:column;align-items:flex-start;}
+.ph-visual{display:flex;justify-content:center;align-items:center;}
+.ph-card{position:relative;width:300px;background:rgba(13,13,28,.85);border:1px solid rgba(99,102,241,.3);border-radius:20px;padding:1.75rem;overflow:hidden;}
+.ph-blob{position:absolute;border-radius:50%;filter:blur(38px);pointer-events:none;}
+.ph-blob-1{width:150px;height:150px;background:rgba(99,102,241,.25);top:-30px;right:-30px;animation:phBlobA 6s ease-in-out infinite;}
+.ph-blob-2{width:110px;height:110px;background:rgba(168,85,247,.2);bottom:-20px;left:-20px;animation:phBlobB 8s ease-in-out infinite;}
+@keyframes phBlobA{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
+@keyframes phBlobB{0%,100%{transform:scale(1);}50%{transform:scale(1.2) translate(8px,-6px);}}
+.ph-hdr{display:flex;align-items:center;gap:.7rem;margin-bottom:1.35rem;position:relative;z-index:1;}
+.ph-hdr-icon{font-size:1.3rem;}
+.ph-hdr-title{font-family:var(--font-display);font-size:.9rem;font-weight:700;color:#fff;}
+.ph-items{display:flex;flex-direction:column;gap:.8rem;position:relative;z-index:1;}
+.ph-item{display:flex;align-items:center;gap:.7rem;opacity:0;animation:phFadeIn .45s ease forwards;}
+.ph-item:nth-child(1){animation-delay:.35s;}
+.ph-item:nth-child(2){animation-delay:.65s;}
+.ph-item:nth-child(3){animation-delay:.95s;}
+.ph-item:nth-child(4){animation-delay:1.25s;}
+@keyframes phFadeIn{from{opacity:0;transform:translateX(-6px);}to{opacity:1;transform:translateX(0);}}
+.ph-ck{width:20px;height:20px;border-radius:50%;background:rgba(16,185,129,.18);border:1px solid rgba(16,185,129,.45);display:flex;align-items:center;justify-content:center;font-size:.68rem;color:#10b981;flex-shrink:0;}
+.ph-it{font-size:.83rem;color:var(--text-2);}
+.ph-div{height:1px;background:rgba(255,255,255,.08);margin:1.1rem 0;position:relative;z-index:1;}
+.ph-foot{display:flex;align-items:center;gap:.55rem;position:relative;z-index:1;}
+.ph-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 7px rgba(16,185,129,.6);animation:phDotP 2s ease-in-out infinite;}
+@keyframes phDotP{0%,100%{opacity:1;}50%{opacity:.35;}}
+.ph-foot-txt{font-size:.75rem;color:var(--muted);font-family:var(--font-mono);}
+@media(max-width:900px){.ph-visual{display:none;}.ph-grid{grid-template-columns:1fr;text-align:center;}.ph-text{align-items:center;}.trust-bar{justify-items:center;}}
 .trust-chip span{font-size:.9rem;}
 .jump-wrap{padding:1rem 2rem;border-bottom:1px solid rgba(255,255,255,.07);}
 .jump-nav{display:flex;gap:.4rem;max-width:var(--max-w);margin:0 auto;overflow-x:auto;scrollbar-width:none;justify-content:center;}
@@ -138,18 +165,45 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </nav>
 <!-- ══ HERO ══ -->
-<section class="hero" style="min-height:55vh;padding:140px 2rem 5rem;">
+<section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-3"></div></div>
 <div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;text-align:center;">
+<div class="section-inner" style="z-index:2;">
+<div class="ph-grid">
+<!-- LEFT: text -->
+<div class="ph-text">
 <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.28);border-radius:999px;padding:6px 18px;font-size:.72rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.15em;color:var(--primary);margin-bottom:1.5rem;">// Tarifs</div>
 <h1 style="font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:-.04em;line-height:1.05;margin-bottom:1.25rem;">À chaque prix.<br/><span class="grad-text-animated">Dès le départ. Transparent.</span></h1>
-<p class="hero-sub" style="margin:0 auto;max-width:560px;font-size:1.05rem;line-height:1.8;">Pas de facturation horaire. Pas de mandat à durée indéterminée. Chaque projet est défini et tarifé par écrit avant le début des travaux – et le prix ne change pas à moins que la portée ne change.</p>
+<p class="hero-sub" style="margin:0 0 1.75rem;max-width:480px;font-size:1.05rem;line-height:1.8;">Pas de facturation horaire. Pas de mandat à durée indéterminée. Chaque projet est défini et tarifé par écrit avant le début des travaux – et le prix ne change pas à moins que la portée ne change.</p>
 <div class="trust-bar">
 <div class="trust-chip"><span>✓</span> Pas de frais cachés</div>
 <div class="trust-chip"><span>✓</span> Portée confirmée d'emblée</div>
 <div class="trust-chip"><span>✓</span> Réponse typique dans les 24 heures</div>
 <div class="trust-chip"><span>✓</span> Les dépenses publicitaires vont directement à votre plate-forme</div>
+</div>
+</div>
+<!-- RIGHT: animated guarantee card -->
+<div aria-hidden="true" class="ph-visual">
+<div class="ph-card">
+<div class="ph-blob ph-blob-1"></div>
+<div class="ph-blob ph-blob-2"></div>
+<div class="ph-hdr">
+<div class="ph-hdr-icon">🔒</div>
+<div class="ph-hdr-title">Garantie de prix fixe</div>
+</div>
+<div class="ph-items">
+<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Prix ​​indiqué par écrit</div></div>
+<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Approuvé avant le début des travaux</div></div>
+<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Portée verrouillée au prix convenu</div></div>
+<div class="ph-item"><div class="ph-ck">✓</div><div class="ph-it">Aucune surprise sur la facture – jamais</div></div>
+</div>
+<div class="ph-div"></div>
+<div class="ph-foot">
+<div class="ph-dot"></div>
+<div class="ph-foot-txt">Le prix ne bouge jamais à moins que la portée ne le fasse</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
