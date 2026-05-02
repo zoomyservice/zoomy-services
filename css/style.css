@@ -4565,3 +4565,21 @@ html[data-theme="light"] .cb-type-btn.active{background:rgba(178,58,26,.1);borde
 .msg-typing span:nth-child(2){animation-delay:.18s;}
 .msg-typing span:nth-child(3){animation-delay:.36s;}
 @keyframes msgDot{0%,80%,100%{transform:scale(.55);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+/* ════════════════════════════════════════════════════════════════════
+   HERO v12 — compact height for all pages except the homepage
+   v11 gives .hero min-height:820–1000px (needed for the index.html
+   mockup-stage below text). Every other page has no stage, so that
+   giant empty space looks broken. Scope the tall hero to index only
+   by checking for .hero-stage inside it via :has().
+   ════════════════════════════════════════════════════════════════════ */
+html[data-theme="light"] .hero:not(:has(.hero-stage)){
+  min-height:auto!important;
+  padding:clamp(5rem,10vh,7rem) 2rem clamp(3rem,5vh,4rem)!important;
+  justify-content:center!important;
+}
+@media(max-width:1023px){
+  html[data-theme="light"] .hero:not(:has(.hero-stage)){
+    padding:calc(var(--bar-h,44px) + 72px) 1.5rem 3.5rem!important;
+  }
+}
