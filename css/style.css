@@ -4314,11 +4314,13 @@ html[data-theme="light"] .voice-name,
 html[data-theme="light"] .ap-text strong,
 html[data-theme="light"] .pricing-half-price,
 html[data-theme="light"] .tc-price,
-html[data-theme="light"] .tc-badge,
 html[data-theme="light"] .wi-tab-active,
 html[data-theme="light"] .sample-tag{
   color:var(--text)!important;
 }
+/* tc-badge: keep white text on cocoa background (handled at v7 block above) */
+html[data-theme="light"] .tc-badge,
+html[data-theme="light"] .tc-badge *{color:var(--bg)!important;}
 
 /* ══════════════════════════════════════════════════════════════════
    HERO GRID FIX — chatbot.html + phone-agent.html
