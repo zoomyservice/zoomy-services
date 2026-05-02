@@ -203,18 +203,93 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </nav>
 <!-- ═══ HERO ═══ -->
-<section class="hero" style="min-height:58vh;padding:140px 2rem 5rem;">
+<style>
+.cp-hero-grid{display:grid;grid-template-columns:1fr 400px;gap:3.5rem;align-items:center;}
+@media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
+/* Dashboard card */
+.cp-dash{background:#0d0d1e;border:1px solid rgba(99,102,241,.28);border-radius:16px;padding:1.5rem;box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 0 1px rgba(99,102,241,.08);position:relative;overflow:hidden;}
+.cp-dash::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6366f1,#a855f7,#ec4899);}
+.cp-dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;}
+.cp-dash-title{font-family:var(--font-mono);font-size:.6rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;}
+.cp-status-badge{display:flex;align-items:center;gap:5px;font-size:.65rem;font-family:var(--font-mono);color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);border-radius:20px;padding:3px 9px;}
+.cp-status-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:cpDotPulse 1.8s ease-in-out infinite;}
+@keyframes cpDotPulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+/* Metrics row */
+.cp-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.1rem;}
+.cp-metric{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.7rem .65rem;}
+.cp-metric-val{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#fff;line-height:1;margin-bottom:.2rem;}
+.cp-metric-val .cp-up{font-size:.6rem;color:#4ade80;margin-left:2px;}
+.cp-metric-label{font-size:.58rem;font-family:var(--font-mono);color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
+/* Bar chart */
+.cp-chart{display:flex;align-items:flex-end;gap:4px;height:56px;margin-bottom:1.1rem;background:rgba(255,255,255,.02);border-radius:8px;padding:.5rem .6rem 0;}
+.cp-bar{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(to top,#6366f1,#a855f7);opacity:.7;transform-origin:bottom;animation:cpBarGrow .8s ease both;}
+@keyframes cpBarGrow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+/* Keywords */
+.cp-keywords{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem;}
+.cp-kw{font-size:.62rem;font-family:var(--font-mono);color:#a5b4fc;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.2);border-radius:20px;padding:3px 9px;animation:cpKwFade .4s ease both;}
+@keyframes cpKwFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+/* Progress bar */
+.cp-progress-label{display:flex;justify-content:space-between;font-size:.6rem;font-family:var(--font-mono);color:var(--muted);margin-bottom:.3rem;}
+.cp-progress-track{background:rgba(255,255,255,.07);border-radius:4px;height:4px;overflow:hidden;}
+.cp-progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#a855f7);border-radius:4px;animation:cpFillGrow 1.2s ease .4s both;}
+@keyframes cpFillGrow{from{width:0;}to{width:73%;}}
+</style>
+<section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
 <div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;text-align:center;">
+<div class="section-inner cp-hero-grid" style="z-index:2;">
+<div>
 <div class="section-tag" style="margin-bottom:1.5rem;">Campaign Production</div>
-<h1 style="margin-bottom:1.5rem;">
+<h1 style="margin-bottom:1.5rem;text-align:left;">
 <span class="glitch grad-text-animated">Built for campaigns.</span><br/>Ready to launch.
 </h1>
-<p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:580px;margin:0 auto 2.5rem;">We build everything your Google Ads campaign needs — keyword strategy, ad group structure, copy, and creatives. Delivered as a complete file package. Light ongoing management available if you need it.</p>
-<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+<p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:520px;margin:0 0 2.5rem;">We build everything your Google Ads campaign needs — keyword strategy, ad group structure, copy, and creatives. Delivered as a complete file package. Light ongoing management available if you need it.</p>
+<div style="display:flex;gap:1rem;flex-wrap:wrap;">
 <a class="btn btn-primary" href="contact.html">Start a Campaign Brief ›</a>
 <a class="btn btn-ghost" href="#what-we-build">See what we build ↓</a>
+</div>
+</div>
+<div class="cp-hero-visual" aria-hidden="true">
+<div class="cp-dash">
+<div class="cp-dash-header">
+<div class="cp-dash-title">Google Ads — Active Campaign</div>
+<div class="cp-status-badge"><span class="cp-status-dot"></span>Live</div>
+</div>
+<div class="cp-metrics">
+<div class="cp-metric">
+<div class="cp-metric-val">2,840<span class="cp-up">↑</span></div>
+<div class="cp-metric-label">Clicks</div>
+</div>
+<div class="cp-metric">
+<div class="cp-metric-val">4.7%</div>
+<div class="cp-metric-label">CTR</div>
+</div>
+<div class="cp-metric">
+<div class="cp-metric-val">$1.24</div>
+<div class="cp-metric-label">Avg CPC</div>
+</div>
+</div>
+<div class="cp-chart">
+<div class="cp-bar" style="height:52%;animation-delay:.1s;"></div>
+<div class="cp-bar" style="height:68%;animation-delay:.18s;"></div>
+<div class="cp-bar" style="height:44%;animation-delay:.26s;"></div>
+<div class="cp-bar" style="height:80%;animation-delay:.34s;"></div>
+<div class="cp-bar" style="height:62%;animation-delay:.42s;"></div>
+<div class="cp-bar" style="height:91%;animation-delay:.5s;"></div>
+<div class="cp-bar" style="height:74%;animation-delay:.58s;"></div>
+<div class="cp-bar" style="height:85%;animation-delay:.66s;"></div>
+<div class="cp-bar" style="height:70%;animation-delay:.74s;"></div>
+</div>
+<div class="cp-keywords">
+<span class="cp-kw" style="animation-delay:.3s;">best running shoes</span>
+<span class="cp-kw" style="animation-delay:.45s;">buy sneakers online</span>
+<span class="cp-kw" style="animation-delay:.6s;">sports shoes sale</span>
+<span class="cp-kw" style="animation-delay:.75s;">discount footwear</span>
+<span class="cp-kw" style="animation-delay:.9s;">running gear near me</span>
+</div>
+<div class="cp-progress-label"><span>Budget used</span><span>73%</span></div>
+<div class="cp-progress-track"><div class="cp-progress-fill"></div></div>
+</div>
 </div>
 </div>
 </section>
