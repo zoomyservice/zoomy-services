@@ -387,20 +387,15 @@ Essayez la démo en direct
 <h3 style="font-family:var(--font-display);color:#fff;font-size:1.2rem;margin-bottom:.75rem;">Agent téléphonique Zoomy</h3>
 <p style="color:var(--text-2);font-size:.875rem;line-height:1.6;margin-bottom:.6rem;">Cliquez ci-dessous pour démarrer une conversation vocale en direct. Votre micro vous sera demandé.</p>
 <p style="color:var(--primary);font-size:.75rem;line-height:1.5;margin-bottom:2rem;font-family:var(--font-mono);">// Une fois votre appel terminé, consultez votre transcription complète ci-dessous ↓</p>
-<style>@media(max-width:768px){#hp-speaker-btn{display:none!important}}</style>
 <div id="hp-call-ui" style="display:flex;flex-direction:column;align-items:center;gap:.85rem;width:100%;">
 <button id="hp-call-btn" onclick="hpToggleCall()" style="width:100%;padding:14px 28px;background:var(--grad-main);border:none;border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 30px rgba(99,102,241,.4);transition:filter .2s,transform .2s;">
 <svg fill="none" height="18" id="hp-call-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
 <span id="hp-call-label">Démarrer l'appel</span>
 </button>
 <div id="hp-active-controls" style="display:none;width:100%;gap:.6rem;flex-direction:row;">
-<button id="hp-mute-btn" onclick="hpToggleMute()" style="flex:1;padding:11px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
+<button id="hp-mute-btn" onclick="hpToggleMute()" style="width:100%;padding:11px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
 <svg fill="none" height="14" id="hp-mute-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="23"></line><line x1="8" x2="16" y1="23" y2="23"></line></svg>
 <span id="hp-mute-label">Muet</span>
-</button>
-<button id="hp-speaker-btn" onclick="hpToggleSpeaker()" style="flex:1;padding:11px 12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
-<svg fill="none" height="14" id="hp-speaker-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"></path><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-<span id="hp-speaker-label">Président</span>
 </button>
 </div>
 <div id="hp-call-waves" style="display:none;align-items:center;gap:3px;height:24px;">
@@ -1512,7 +1507,6 @@ import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.
 let hpConv = null;
 let hpCallTimer = null;
 let hpIsMuted = false;
-let hpIsSpeaker = false;
 let hpTranscriptLines = [];
 const HP_CALL_LIMIT = 300; // per-call max duration
 
@@ -1525,9 +1519,6 @@ const hpActiveCtrls = document.getElementById('hp-active-controls');
 const hpMuteBtn    = document.getElementById('hp-mute-btn');
 const hpMuteIcon   = document.getElementById('hp-mute-icon');
 const hpMuteLabel  = document.getElementById('hp-mute-label');
-const hpSpeakerBtn = document.getElementById('hp-speaker-btn');
-const hpSpeakerIcon = document.getElementById('hp-speaker-icon');
-const hpSpeakerLabel = document.getElementById('hp-speaker-label');
 const hpTranscriptWrap = document.getElementById('hp-transcript-wrap');
 const hpTranscriptBody = document.getElementById('hp-transcript-body');
 const HP_TOKEN_URL = 'https://zoomy-ai.zoozoomfast.workers.dev/elevenlabs-token?source=homepage';
@@ -1545,48 +1536,6 @@ window.hpToggleMute = function() {
     hpMuteBtn.style.borderColor = 'rgba(255,255,255,.15)';
     hpMuteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
     hpMuteLabel.textContent = 'Mute';
-  }
-};
-
-window.hpToggleSpeaker = async function() {
-  hpIsSpeaker = !hpIsSpeaker;
-
-  const setSinkToDevice = async (targetId) => {
-    try {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const speakers = devices.filter(d => d.kind === 'audiooutput');
-      const pick = speakers.find(d => d.deviceId !== 'default' && d.deviceId !== '') || { deviceId: '' };
-      const id = targetId === 'speaker' ? pick.deviceId : 'default';
-      document.querySelectorAll('audio').forEach(a => {
-        if (typeof a.setSinkId === 'function') a.setSinkId(id).catch(() => {});
-      });
-      return id;
-    } catch (_) { return null; }
-  };
-
-  if (window._zmySpeakerObs) { window._zmySpeakerObs.disconnect(); window._zmySpeakerObs = null; }
-  if (hpIsSpeaker) {
-    const id = await setSinkToDevice('speaker');
-    window._zmySpeakerObs = new MutationObserver(muts => {
-      muts.forEach(m => m.addedNodes.forEach(n => {
-        if (!n || n.nodeType !== 1) return;
-        if (n.tagName === 'AUDIO' && typeof n.setSinkId === 'function') n.setSinkId(id || '').catch(() => {});
-        if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => {
-          if (typeof a.setSinkId === 'function') a.setSinkId(id || '').catch(() => {});
-        });
-      }));
-    });
-    window._zmySpeakerObs.observe(document.documentElement, { childList: true, subtree: true });
-    hpSpeakerBtn.style.background = 'rgba(74,222,128,.18)';
-    hpSpeakerBtn.style.borderColor = 'rgba(74,222,128,.4)';
-    hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-    hpSpeakerLabel.textContent = 'Speaker On';
-  } else {
-    await setSinkToDevice('default');
-    hpSpeakerBtn.style.background = 'rgba(255,255,255,.08)';
-    hpSpeakerBtn.style.borderColor = 'rgba(255,255,255,.15)';
-    hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-    hpSpeakerLabel.textContent = 'Speaker';
   }
 };
 
@@ -1647,7 +1596,7 @@ function hpStartCallTimer() {
 
 function hpResetUI(msg) {
   if (hpCallTimer) { clearInterval(hpCallTimer); hpCallTimer = null; }
-  hpConv = null; hpIsMuted = false; hpIsSpeaker = false;
+  hpConv = null; hpIsMuted = false;
   if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
   hpLabel.textContent = 'Start Call';
   hpBtn.style.opacity = '1';
@@ -1660,10 +1609,6 @@ function hpResetUI(msg) {
   hpMuteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
   hpMuteBtn.style.background = 'rgba(255,255,255,.08)';
   hpMuteBtn.style.borderColor = 'rgba(255,255,255,.15)';
-  hpSpeakerLabel.textContent = 'Speaker';
-  hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-  hpSpeakerBtn.style.background = 'rgba(255,255,255,.08)';
-  hpSpeakerBtn.style.borderColor = 'rgba(255,255,255,.15)';
   hpStatus.textContent = msg || 'Call ended';
   hpStatus.style.color = '';
   if (hpTranscriptLines.length > 0) {
