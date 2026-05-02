@@ -387,7 +387,7 @@ Try Live Demo
 <h3 style="font-family:var(--font-display);color:#fff;font-size:1.2rem;margin-bottom:.75rem;">Zoomy Phone Agent</h3>
 <p style="color:var(--text-2);font-size:.875rem;line-height:1.6;margin-bottom:.6rem;">Click below to start a live voice conversation. Your microphone will be requested.</p>
 <p style="color:var(--primary);font-size:.75rem;line-height:1.5;margin-bottom:2rem;font-family:var(--font-mono);">// After your call ends — view your full transcript below ↓</p>
-<style>@media(min-width:769px){#hp-speaker-btn{display:none!important}}</style>
+<style>@media(max-width:768px){#hp-speaker-btn{display:none!important}}</style>
 <div id="hp-call-ui" style="display:flex;flex-direction:column;align-items:center;gap:.85rem;width:100%;">
 <button id="hp-call-btn" onclick="hpToggleCall()" style="width:100%;padding:14px 28px;background:var(--grad-main);border:none;border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 30px rgba(99,102,241,.4);transition:filter .2s,transform .2s;">
 <svg fill="none" height="18" id="hp-call-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
@@ -1174,7 +1174,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </button>
 </div>
 </div>
-<div class="cb-tailor" style="width:100%;max-width:400px;" id="cb-tailor-wrap">
+<div class="cb-tailor" id="cb-tailor-wrap" style="width:100%;max-width:400px;">
 <h4 class="cb-tailor-title">Try it for your type of business</h4>
 <p class="cb-tailor-desc">Pick a business type and watch the chatbot become its AI assistant — answering real questions about pricing, bookings, and services.</p>
 <div class="cb-type-grid" id="cb-type-grid">
@@ -1189,7 +1189,7 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 <div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
 <span>Now showing: <strong id="cb-tailor-biz-name"></strong></span>
-<a class="cb-tailor-reset-link" href="#" data-action="cb-reset">↺ Try another type</a>
+<a class="cb-tailor-reset-link" data-action="cb-reset" href="#">↺ Try another type</a>
 </div>
 </div>
 </div>
@@ -1550,25 +1550,39 @@ window.hpToggleMute = function() {
 
 window.hpToggleSpeaker = async function() {
   hpIsSpeaker = !hpIsSpeaker;
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const setSink = (el, id) => { if (typeof el.setSinkId === 'function') el.setSinkId(id).catch(() => {}); };
+
+  const setSinkToDevice = async (targetId) => {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const speakers = devices.filter(d => d.kind === 'audiooutput');
+      const pick = speakers.find(d => d.deviceId !== 'default' && d.deviceId !== '') || { deviceId: '' };
+      const id = targetId === 'speaker' ? pick.deviceId : 'default';
+      document.querySelectorAll('audio').forEach(a => {
+        if (typeof a.setSinkId === 'function') a.setSinkId(id).catch(() => {});
+      });
+      return id;
+    } catch (_) { return null; }
+  };
+
   if (window._zmySpeakerObs) { window._zmySpeakerObs.disconnect(); window._zmySpeakerObs = null; }
   if (hpIsSpeaker) {
-    document.querySelectorAll('audio').forEach(a => setSink(a, ''));
+    const id = await setSinkToDevice('speaker');
     window._zmySpeakerObs = new MutationObserver(muts => {
       muts.forEach(m => m.addedNodes.forEach(n => {
         if (!n || n.nodeType !== 1) return;
-        if (n.tagName === 'AUDIO') setSink(n, '');
-        if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => setSink(a, ''));
+        if (n.tagName === 'AUDIO' && typeof n.setSinkId === 'function') n.setSinkId(id || '').catch(() => {});
+        if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => {
+          if (typeof a.setSinkId === 'function') a.setSinkId(id || '').catch(() => {});
+        });
       }));
     });
     window._zmySpeakerObs.observe(document.documentElement, { childList: true, subtree: true });
     hpSpeakerBtn.style.background = 'rgba(74,222,128,.18)';
     hpSpeakerBtn.style.borderColor = 'rgba(74,222,128,.4)';
     hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-    hpSpeakerLabel.textContent = isIOS ? 'Speaker (raise vol)' : 'Speaker On';
+    hpSpeakerLabel.textContent = 'Speaker On';
   } else {
-    document.querySelectorAll('audio').forEach(a => setSink(a, 'default'));
+    await setSinkToDevice('default');
     hpSpeakerBtn.style.background = 'rgba(255,255,255,.08)';
     hpSpeakerBtn.style.borderColor = 'rgba(255,255,255,.15)';
     hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';

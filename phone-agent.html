@@ -11,7 +11,7 @@
 <meta content="Custom AI phone agents that answer calls, book appointments, and handle customer enquiries 24/7 in any language." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="css/style.css?v=20260427b" rel="stylesheet"/>
 <style>
 .agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
@@ -201,7 +201,7 @@
 <a class="lang-btn" href="fr/phone-agent.html">FR</a>
 <a class="lang-btn" href="es/phone-agent.html">ES</a>
 </div>
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" onclick="toggleTheme()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
+<button aria-label="Toggle dark mode" class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg fill="none" height="16" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
 <button aria-label="Menu" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
@@ -241,7 +241,7 @@
 <p style="color:var(--text-2);font-size:.875rem;line-height:1.6;margin-bottom:2rem;">Click below to start a live voice conversation with the demo agent. Your microphone will be requested.</p>
 <p style="color:var(--accent);font-size:.75rem;line-height:1.5;margin-bottom:2rem;font-family:var(--f-mono);">// After your call ends — view your full transcript below ↓</p>
 <style>
-@media(min-width:769px){#speaker-btn{display:none!important}}
+@media(max-width:768px){#speaker-btn{display:none!important}}
 </style>
 <div id="call-ui" style="display:flex;flex-direction:column;align-items:center;gap:.85rem;width:100%;">
 <button id="call-btn" onclick="toggleCall()" style="width:100%;padding:14px 28px;background:var(--grad-main);border:none;border-radius:var(--radius-full);color:#fff;font-family:var(--f-display);font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 30px rgba(99,102,241,.4);transition:filter .2s,transform .2s;">
@@ -318,35 +318,44 @@
 
             window.toggleSpeaker = async function() {
               isSpeaker = !isSpeaker;
-              const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-              // Helper: set audio sink on an element
-              const setSink = (el, id) => {
-                if (typeof el.setSinkId === 'function') el.setSinkId(id).catch(() => {});
+              // Helper: set audio sink on an element, try to enumerate a real device first
+              const setSinkToDevice = async (targetId) => {
+                try {
+                  const devices = await navigator.mediaDevices.enumerateDevices();
+                  const speakers = devices.filter(d => d.kind === 'audiooutput');
+                  // Pick first non-default device if available, else fall back to ''
+                  const pick = speakers.find(d => d.deviceId !== 'default' && d.deviceId !== '') || { deviceId: '' };
+                  const id = targetId === 'speaker' ? pick.deviceId : 'default';
+                  document.querySelectorAll('audio').forEach(a => {
+                    if (typeof a.setSinkId === 'function') a.setSinkId(id).catch(() => {});
+                  });
+                  return id;
+                } catch (_) { return null; }
               };
 
               // Disconnect any previous observer
               if (window._zmySpeakerObs) { window._zmySpeakerObs.disconnect(); window._zmySpeakerObs = null; }
 
               if (isSpeaker) {
-                // '' = default output device = loudspeaker on mobile (no headphones)
-                document.querySelectorAll('audio').forEach(a => setSink(a, ''));
+                const id = await setSinkToDevice('speaker');
                 // Watch for audio elements ElevenLabs creates dynamically
                 window._zmySpeakerObs = new MutationObserver(muts => {
                   muts.forEach(m => m.addedNodes.forEach(n => {
                     if (!n || n.nodeType !== 1) return;
-                    if (n.tagName === 'AUDIO') setSink(n, '');
-                    if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => setSink(a, ''));
+                    if (n.tagName === 'AUDIO' && typeof n.setSinkId === 'function') n.setSinkId(id || '').catch(() => {});
+                    if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => {
+                      if (typeof a.setSinkId === 'function') a.setSinkId(id || '').catch(() => {});
+                    });
                   }));
                 });
                 window._zmySpeakerObs.observe(document.documentElement, { childList: true, subtree: true });
                 speakerBtn.style.background = 'rgba(74,222,128,.18)';
                 speakerBtn.style.borderColor = 'rgba(74,222,128,.4)';
                 speakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-                speakerLabel.textContent = isIOS ? 'Speaker (raise vol)' : 'Speaker On';
+                speakerLabel.textContent = 'Speaker On';
               } else {
-                // Restore to system default (earpiece if no headphones)
-                document.querySelectorAll('audio').forEach(a => setSink(a, 'default'));
+                await setSinkToDevice('default');
                 speakerBtn.style.background = 'var(--card)';
                 speakerBtn.style.borderColor = 'var(--border)';
                 speakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
@@ -994,7 +1003,7 @@ roiCalc();
 <div class="aurora" style="opacity:.5;">
 </div>
 <div class="section-inner" style="text-align:center;z-index:2;position:relative;">
-<div class="section-tag" >Get Started</div>
+<div class="section-tag">Get Started</div>
 <h2 class="section-title">Every call answered.<br/>Every time.</h2>
 <p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">Tell us about your business and how you currently handle inbound calls. We'll scope a solution and come back with a proposal.</p>
 <a class="btn btn-primary btn-lg" href="contact.html">Request a Phone Agent</a>

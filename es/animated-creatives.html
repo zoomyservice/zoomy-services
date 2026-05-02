@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<link href="../css/style.css?v=20260430l" rel="stylesheet"/>
+<link href="../css/style.css?v=20260430o" rel="stylesheet"/>
 <style>
 .phase-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
 .phase-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.5rem 0;border-bottom:1px solid var(--border-b);align-items:start;position:relative}
@@ -91,7 +91,7 @@ html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):
 html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
 
 <style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .format-name{color:var(--text)!important}html[data-theme="light"] .phase-name{color:var(--text)!important}html[data-theme="light"] .pricing-half-price{color:var(--text)!important}</style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
+<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
 <script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
 <script>localStorage.setItem('zmy_lang','es');</script></head>
 <body>
@@ -134,7 +134,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="section-inner" style="z-index:2;text-align:center;">
 <div class="section-tag" style="margin-bottom:1.5rem;">Creatividad del anuncio</div>
 <h1 style="margin-bottom:1.5rem;"><span class="glitch grad-text-animated" data-text="Animated ad creatives.">Creatividades publicitarias animadas.</span><br/>No se necesitan imágenes.</h1>
-<p style="color:var(--text-2);font-size:1.1rem;line-height:1.8;max-width:580px;margin:0 auto 2.5rem;">Animaciones en bucle breves creadas para Google Ads, feeds sociales y ubicaciones de visualización. Usted nos informa sobre el producto, el mensaje y la audiencia; nosotros nos encargamos de todo lo demás. Los tres formatos se entregan listos para cargar.</p>
+<p style="color:var(--text-2);font-size:1.1rem;line-height:1.8;max-width:580px;margin:0 auto 2.5rem;">Gráficos en movimiento personalizados creados para Google Ads, feeds sociales y ubicaciones de visualización. Usted nos informa sobre el producto, el mensaje y la audiencia; nosotros nos encargamos de todo lo demás. Los tres formatos se entregan listos para cargar.</p>
 <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
 <a class="btn btn-primary btn-lg" href="contact.html">Enviar un resumen</a>
 <a class="btn btn-ghost btn-lg" href="#process">Cómo funciona ›</a>
@@ -144,7 +144,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <!-- STATS STRIP -->
 <div class="stats-strip">
 <div class="stats-row">
-<div class="stat-block"><div class="stat-block-num">$300</div><div class="stat-block-label">Por vídeo animado</div></div>
 <div class="stat-block"><div class="stat-block-num">Cualquier longitud</div><div class="stat-block-label">Tiempo de ejecución animado</div></div>
 <div class="stat-block"><div class="stat-block-num">3</div><div class="stat-block-label">Formatos entregados</div></div>
 <div class="stat-block"><div class="stat-block-num">2</div><div class="stat-block-label">Rondas de revisión</div></div>
@@ -164,28 +163,37 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <li>Sin imágenes, no se necesita equipo de cámara</li>
 <li>Cualquier longitud: tú eliges la longitud</li>
 <li>Subtítulos disponibles bajo petición</li>
-<li>$300 por 30 segundos, los tres formatos incluidos</li>
 </ul>
 </div>
 <div class="reveal">
-<div style="background:#1a1a2e;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;font-family:system-ui,sans-serif;box-shadow:0 24px 64px rgba(0,0,0,.6);">
-<div style="display:flex;align-items:center;gap:10px;padding:12px 14px;">
-<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;color:#fff;flex-shrink:0;">Z</div>
-<div><div style="font-size:.82rem;font-weight:600;color:#fff;line-height:1.2;">Zoomy</div><div style="font-size:.68rem;color:rgba(255,255,255,.4);margin-top:1px;">Patrocinado · META</div></div>
-<div style="margin-left:auto;color:rgba(255,255,255,.3);font-size:1.1rem;letter-spacing:.1em;">⋯</div>
+<!-- Instagram-style post mockup -->
+<div style="background:#fff;border:1px solid #dbdbdb;border-radius:12px;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;box-shadow:0 4px 24px rgba(0,0,0,.12);max-width:380px;margin:0 auto;">
+<!-- Header -->
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;">
+<div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);padding:2px;flex-shrink:0;">
+<div style="width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;color:#fff;">Z</div>
 </div>
-<div style="padding:0 14px 10px;font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.5;">Chatbot de IA para su negocio: responde preguntas, programa citas y trabaja las 24 horas, los 7 días de la semana. <span style="color:var(--primary);">zoomy.services</span></div>
+<div style="flex:1;">
+<div style="font-size:.82rem;font-weight:600;color:#262626;line-height:1.2;">zoomy.services</div>
+<div style="font-size:.7rem;color:#8e8e8e;">Patrocinado</div>
+</div>
+<div style="color:#262626;font-size:1.2rem;font-weight:700;letter-spacing:.08em;padding:4px;">···</div>
+</div>
+<!-- Video -->
 <video aria-label="Ejemplo de creatividad de anuncio animado" autoplay="" loop="" muted="" playsinline="" style="width:100%;display:block;aspect-ratio:1/1;object-fit:cover;">
 <source src="../video/chatbot_ad.mp4" type="video/mp4"/>
 </video>
-<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-top:1px solid rgba(255,255,255,.08);">
-<div><div style="font-size:.67rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.07em;">zoomy.services</div><div style="font-size:.8rem;font-weight:600;color:#fff;margin-top:2px;">Chatbot de IA para su sitio web</div></div>
-<div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:7px 14px;font-size:.75rem;font-weight:600;color:#fff;white-space:nowrap;">Más información</div>
+<!-- Actions -->
+<div style="padding:10px 12px 4px;">
+<div style="display:flex;align-items:center;gap:14px;margin-bottom:8px;">
+<svg fill="none" height="24" stroke="#262626" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+<svg fill="none" height="24" stroke="#262626" stroke-width="1.8" viewbox="0 0 24 24" width="24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+<svg fill="none" height="24" stroke="#262626" stroke-width="1.8" viewbox="0 0 24 24" width="24"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+<svg fill="none" height="24" stroke="#262626" stroke-width="1.8" style="margin-left:auto;" viewbox="0 0 24 24" width="24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
 </div>
-<div style="padding:8px 14px;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:1.5rem;">
-<span style="font-size:.73rem;color:rgba(255,255,255,.28);">👍 Me gusta</span>
-<span style="font-size:.73rem;color:rgba(255,255,255,.28);">💬 Comentar</span>
-<span style="font-size:.73rem;color:rgba(255,255,255,.28);">→ Compartir</span>
+<div style="font-size:.82rem;font-weight:600;color:#262626;margin-bottom:4px;">1,247 me gusta</div>
+<div style="font-size:.82rem;color:#262626;"><span style="font-weight:600;">zoomy.services</span> Chatbot de IA para su negocio: responde preguntas, programa citas y trabaja las 24 horas, los 7 días de la semana.</div>
+<div style="font-size:.78rem;color:#8e8e8e;margin-top:6px;margin-bottom:8px;">Ver los 43 comentarios</div>
 </div>
 </div>
 </div>
@@ -197,7 +205,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="section-inner">
 <div class="section-tag">Lo que hacemos</div>
 <h2 class="section-title">Construido para la alimentación. Diseñado para detener el desplazamiento.</h2>
-<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">Estos son anuncios animados cortos y en bucle, no ediciones en vivo ni presentaciones de diapositivas. Gráficos en movimiento y animación asistida por IA, diseñados para la forma en que las personas consumen contenido en Google Ads, feeds sociales y ubicaciones de visualización. Sin equipo de cámara, sin estudio, sin esperas para ver las imágenes.</p>
+<p style="color:var(--text-2);font-size:.95rem;line-height:1.8;max-width:600px;margin-top:.75rem;">Estos son anuncios completamente animados, no ediciones en vivo ni presentaciones de diapositivas. Gráficos en movimiento y animación asistida por IA, diseñados para la forma en que las personas consumen contenido en Google Ads, feeds sociales y ubicaciones de visualización. Sin equipo de cámara, sin estudio, sin esperas para ver las imágenes.</p>
 <div class="format-grid">
 <div class="format-card reveal"><div class="format-label">Formato 01</div><div class="format-name">Alimentación cuadrada — 1:1</div><div class="format-desc">Feed de Facebook e Instagram. El formato predeterminado para la mayoría de los objetivos de la campaña. 1080×1080px, hasta 30 segundos.</div></div>
 <div class="format-card reveal"><div class="format-label">Formato 02</div><div class="format-name">Alimentación vertical — 4:5</div><div class="format-desc">Recorte más alto para el feed de Instagram: ocupa más espacio en la pantalla que el cuadrado. Mayor visibilidad en el scroll. 1080×1350px.</div></div>

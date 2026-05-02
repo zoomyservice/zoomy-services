@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
 <meta charset="utf-8"/>
 <link href="../favicon.png" rel="icon" sizes="64x64" type="image/png"/>
 <link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
@@ -11,13 +12,13 @@
 <meta content="Custom AI chatbots trained on your business. Deployed on your website. Multilingual, lead capture, AI-powered, no SaaS subscriptions or platform fees." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<link href="../css/style.css?v=20260430l" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/style.css?v=20260430o" rel="stylesheet"/>
 <style>
 .chatbot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .detail-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
-.detail-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.25rem 0;border-bottom:1px solid var(--border-b);align-items:start}
-.detail-row:first-child{border-top:1px solid var(--border-b)}
+.detail-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.25rem 0;border-bottom:1px solid var(--border);align-items:start}
+.detail-row:first-child{border-top:1px solid var(--border)}
 .detail-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
 .detail-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff}
 .detail-desc{color:var(--text-2);font-size:.9rem;line-height:1.75}
@@ -25,21 +26,11 @@
 .hero .chatbot-mock{display:block!important}
 </style>
 <style>
-:root{--bar-h:44px}html,body{background:#020208}html[data-theme="light"],html[data-theme="light"] body{background:var(--bg)}nav{background:rgba(2,2,8,.96)}html[data-theme="light"] nav{background:rgba(247,241,229,.96)}
-nav{top:var(--bar-h)!important}
-#navLinks{top:calc(56px + var(--bar-h))!important}
-.bar-off{--bar-h:0px!important}
-#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:#000;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid rgba(255,255,255,.08)}
+#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:var(--bg-dark,#0D0D0B);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid rgba(255,255,255,.08)}
 .bar-off #free-bar{display:none!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
-
-/* ZMY_LIGHT_MODE_OVERRIDES */
-html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="chatbot-send"]):not([class*="msg-user"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]){color:var(--text)!important}
-html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:rgb"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]){color:var(--text-2)!important}
-html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
-
-<style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .detail-name{color:var(--text)!important}</style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
+</style>
+<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
 <!-- ═══ ANALYTICS & TRACKING ═══ -->
 <!-- Google Analytics 4 -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
@@ -131,7 +122,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
   </script>
 <noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- ═══ END META PIXEL ═══ -->
-<script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
 <script>localStorage.setItem('zmy_lang','fr');</script></head>
 <body>
 <!-- ═══ FREE PAGE ANNOUNCEMENT BAR ═══ -->
@@ -146,7 +136,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 <nav>
-<a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Studio de production numérique</span></a>
+<a class="nav-logo logo-turq" href="index.html">Zoomy<span class="nav-logo-sub">Studio de production numérique</span></a>
 <ul class="nav-links" id="navLinks">
 <li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
 <li><a class="active" data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
@@ -163,18 +153,12 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <span class="lang-btn lang-active" style="opacity:1;font-weight:700;cursor:default;">FR</span>
 <a class="lang-btn" href="../es/chatbot.html">ES</a>
 </div>
-<button aria-label="Basculer le thème clair/sombre" class="theme-toggle" id="themeToggle" onclick="toggleTheme()" type="button"><svg aria-hidden="true" class="icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg aria-hidden="true" class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Démarrer un projet</span> ›</a>
+<button aria-label="Activer le mode sombre" class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg fill="none" height="16" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Démarrer un projet</span> ›</a>
 <button aria-label="Menus" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
-<section class="hero" style="min-height:55vh;padding:140px 2rem 5rem;">
-<div class="aurora">
-<div class="aurora-blob aurora-blob-1"></div>
-<div class="aurora-blob aurora-blob-2"></div>
-<div class="aurora-blob aurora-blob-3"></div>
-</div>
-<div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;">
+<section class="hero" style="min-height:55vh;border-bottom:1px solid var(--border);">
+<div class="section-inner">
 <div class="chatbot-detail-grid">
 <div>
 <div class="section-tag" style="margin-bottom:1.5rem;">Chatbot IA</div>
@@ -188,8 +172,8 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <a class="btn btn-ghost" href="#demo">Essayez la démo ›</a>
 </div>
 </div>
-<div style="display:flex;justify-content:flex-end;align-items:center;">
-<div class="chatbot-mock" id="demo">
+<div style="display:flex;flex-direction:column;align-items:flex-end;">
+<div class="chatbot-mock" id="demo" style="width:100%;max-width:400px;">
 <div class="chatbot-header">
 <div class="chatbot-avatar">🤖</div>
 <div>
@@ -207,6 +191,24 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <button class="chatbot-send" id="chatbot-send">
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
+</div>
+</div>
+<div class="cb-tailor" id="cb-tailor-wrap" style="width:100%;max-width:400px;">
+<h4 class="cb-tailor-title">Essayez-le pour votre type d'entreprise</h4>
+<p class="cb-tailor-desc">Choisissez un type d'entreprise et regardez le chatbot devenir son assistant IA, répondant à de vraies questions sur les prix, les réservations et les services.</p>
+<div class="cb-type-grid" id="cb-type-grid">
+<button class="cb-type-btn" data-biz="restaurant">🍽️Restaurant</button>
+<button class="cb-type-btn" data-biz="gym">💪 Salle de sport</button>
+<button class="cb-type-btn" data-biz="salon">💇 Salon de beauté</button>
+<button class="cb-type-btn" data-biz="dental">🦷 Clinique Dentaire</button>
+<button class="cb-type-btn" data-biz="legal">⚖️ Cabinet d'avocats</button>
+<button class="cb-type-btn" data-biz="realestate">🏡 Immobilier</button>
+<button class="cb-type-btn" data-biz="store">🛍️ Boutique en ligne</button>
+<button class="cb-type-btn" data-biz="auto">🚗 Boutique automobile</button>
+</div>
+<div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
+<span>Affichage actuel : <strong id="cb-tailor-biz-name"></strong></span>
+<a class="cb-tailor-reset-link" data-action="cb-reset" href="#">↺ Essayez un autre type</a>
 </div>
 </div>
 </div>
@@ -294,9 +296,9 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </div>
 </section>
 <section class="section" style="position:relative;overflow:hidden;">
-<div class="aurora" style="opacity:.4;"><div class="aurora-blob aurora-blob-1"></div></div>
+<div class="aurora" style="opacity:.4;"></div>
 <div class="section-inner" style="text-align:center;z-index:2;position:relative;">
-<div class="section-tag" style="justify-content:center;">Commencez</div>
+<div class="section-tag">Commencez</div>
 <h2 class="section-title">Parlez-nous de votre entreprise.</h2>
 <p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">Plus vous partagez de détails, mieux nous pouvons évaluer le chatbot et vous fournir un devis précis.</p>
 <a class="btn btn-primary btn-lg" href="contact.html">Démarrer un brief Chatbot</a>
@@ -306,7 +308,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 <div class="footer-inner">
 <div class="footer-grid">
 <div>
-<div class="footer-logo grad-text">Zoomy</div>
+<div class="footer-logo footer-logo">Zoomy</div>
 <p class="footer-tagline" data-i18n="footer.tagline">Gestion de campagnes, sites Web personnalisés, chatbots IA et agents téléphoniques.</p>
 </div>
 <div class="footer-col"><h4 data-i18n="footer.services">Prestations</h4><ul>
@@ -338,17 +340,24 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 
 <script src="../js/chatbot.js?v=20260501e"></script>
 <script>
+// ── Business type preset event delegation ──────────────────────────────────
+(function() {
+  document.getElementById('cb-type-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-biz]');
+    if (btn && typeof window.cbTailorPreset === 'function') window.cbTailorPreset(btn.dataset.biz);
+  });
+  var resetLink = document.querySelector('[data-action="cb-reset"]');
+  if (resetLink) resetLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (typeof window.cbTailorReset === 'function') window.cbTailorReset();
+  });
+})();
+</script>
+<script>
 // ── Zoomy demo widget wiring ───────────────────────────────────────────────────────────────────────────
 (function() {
   function initDemo() {
-    // Clear demo session on every page load (on-page demo always starts fresh)
-    try { sessionStorage.removeItem('zmy_demo_v1'); } catch(e) {}
-    
-    // Remove the floating chat bubble on this page
-    var root = document.getElementById('zmy-root');
-    if (root) root.remove();
-    var attn = document.getElementById('zmy-attn');
-    if (attn) attn.remove();
+    // Floating popup chatbot coexists with the embedded demo on this page
 
     var STORE = 'zmy_demo_v1';
     var messagesEl = document.getElementById('chatbot-messages');
@@ -402,7 +411,23 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
       saveChat();
     }
 
-    var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+    var AI_WORKER     = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+    var DEMO_WORKER   = 'https://zoomy-ai.zoozoomfast.workers.dev/demo-chat';
+    var SCRAPE_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/scrape';
+    var tailoredBiz   = null;
+
+    // Snapshot original state for reset
+    var ORIG_MSGS   = messagesEl.innerHTML;
+    var ORIG_STATUS = document.querySelector('.chatbot-status') ? document.querySelector('.chatbot-status').textContent : 'Live demo — try it';
+    var ORIG_HISTORY = history.slice();
+
+    var ANALYZE_STEPS = [
+      'Scanning your website…',
+      'Reading your services…',
+      'Extracting pricing info…',
+      'Personalizing your chatbot…',
+      'Almost ready…',
+    ];
 
     async function sendMessage() {
       var text = inputEl.value.trim();
@@ -425,10 +450,14 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
       await new Promise(function(r) { setTimeout(r, delay); });
 
       try {
-        var res = await fetch(AI_WORKER, {
+        var endpoint = tailoredBiz ? DEMO_WORKER : AI_WORKER;
+        var body = tailoredBiz
+          ? JSON.stringify({ message: text, history: history.slice(-8), business: tailoredBiz })
+          : JSON.stringify({ message: text, history: history.slice(-8) });
+        var res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: text, history: history.slice(-8) })
+          body: body
         });
         if (res.ok) {
           var data = await res.json();
@@ -439,11 +468,89 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
         }
       } catch(e) {}
       typing.remove();
-      appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we’ll reply within 24 hours.", 'bot');
+      appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we'll reply within 24 hours.", 'bot');
       saveChat();
     }
 
-    sendBtn.addEventListener('click', sendMessage);
+
+
+    
+    var CB_PRESETS = {
+      restaurant:{name:'The Golden Fork',type:'Restaurant & Bar',tagline:'Modern European cuisine with seasonal ingredients, craft cocktails, and weekend brunch',services:['Dine-in lunch & dinner','Weekend brunch (Sat–Sun 10am–3pm)','Private dining & event buyouts','Takeout orders','Corporate catering'],hours:'Mon–Thu 11:30am–10pm, Fri–Sat 11:30am–11pm, Sun 10am–3pm (brunch only)',pricing:'Starters $10–18, Mains $24–48, Weekend brunch $16–28, Cocktails $13–18',dietary:'We accommodate vegetarian, vegan, and gluten-free guests with dedicated menu options. We are not a kosher-certified or halal-certified kitchen, but our team can walk through ingredients for guests with specific needs. Allergens including nuts are flagged on the menu.',reservations:'Book online, call during hours, or walk in — we hold tables for walk-ins nightly.',location:'Downtown city center, 5 min from the central metro station'},
+      gym:{name:'Peak Performance Fitness',type:'Gym & Fitness Studio',tagline:'Results-driven training for all levels — from first-timers to competitive athletes',services:['Full gym floor access','1-on-1 personal training','Group fitness classes (HIIT, yoga, spin)','Nutrition coaching','Sauna & cold plunge recovery'],hours:'Mon–Fri 5:30am–11pm, Sat–Sun 7am–9pm',pricing:'Basic $49/mo (gym only), Unlimited $79/mo (gym + all classes), PT from $129/mo. Day pass $15.',trial:'Free 3-day trial pass — no credit card required. Sign up at the front desk or online.',cancellation:'Month-to-month; cancel with 15 days notice. No long-term contracts unless on annual plan.',facilities:'3 floors: cardio, free weights, group class studio. Locker rooms with showers and secure storage.',location:'Multiple city locations — main branch in the financial district'},
+      salon:{name:'Luxe Beauty Studio',type:'Beauty Salon & Spa',tagline:'Where great hair, flawless skin, and total relaxation come together',services:['Haircuts & blow-dry styling','Balayage, highlights & color','Lash lifts & extensions','Facials & skin treatments','Manicure, pedicure & nail art'],hours:'Tue–Sat 9am–7pm, Sun 10am–5pm. Closed Mondays.',pricing:'Haircuts from $55, Balayage from $180, Lash extensions from $120, Facials from $85, Manicure from $35.',booking:'All appointments online or by phone. Book 1–2 weeks ahead for color. Same-day slots available for cuts.',cancellation:'Please cancel or reschedule 24h in advance to avoid a 50% late-cancellation fee.',products:'We use and retail Kerastase and Olaplex. Cruelty-free and vegan options available on request.',location:'Uptown, free parking in the building lot'},
+      dental:{name:'Bright Smile Dental',type:'Dental Clinic',tagline:'Comfortable, modern dentistry for the whole family — gentle care from the first visit',services:['Routine cleanings & checkups','Teeth whitening','Invisalign clear aligners','Dental implants','Emergency same-day care','Pediatric dentistry'],hours:'Mon–Thu 8am–6pm, Fri 8am–3pm, Sat 9am–2pm (select dates)',pricing:'Cleaning from $120, Whitening $350, Invisalign consultation free, Implants from $2,200, Emergency visit from $100 (waived if proceeding with treatment).',insurance:'We accept most major dental insurance plans and bill directly. 0% financing through CareCredit available.',anxiety:'We specialize in anxious patients. Nitrous oxide available, team trained to work at your pace.',location:'Inside the Westside Medical Plaza, validated parking available'},
+      legal:{name:'Harrington & Associates',type:'Law Firm',tagline:'Straightforward legal guidance for individuals, families, and growing businesses',services:['Personal injury claims','Business contracts & formation','Real estate transactions','Family law & divorce','Estate planning & wills'],hours:'Mon–Fri 9am–6pm. Evening consultations available by appointment.',pricing:'Free 30-minute initial consultation for most cases. Personal injury on contingency (no win, no fee). Business law from $250/hr. Flat-fee packages for wills and real estate closings.',process:'After your free consult we outline options and fees in writing before any engagement. No surprise billing.',location:'Financial district, 12th floor — elevator accessible, parking validated'},
+      realestate:{name:'Crestview Realty',type:'Real Estate Agency',tagline:'Helping you buy, sell, or rent with confidence — local experts, honest advice',services:['Residential buying & selling','Rental property management','Commercial real estate','Free home valuations','Investor portfolio consulting'],hours:'Mon–Sat 9am–7pm, Sun by appointment',pricing:'Seller commission 5% (split with buyer agent). Rental management 8%/mo of collected rent. Home valuation always free.',process:'Buyers: free strategy call, pre-approval guidance, property tours. Sellers: listed within 5 days, professional photos included.',contract:'Listing agreements 90 days. Buyer representation agreements are flexible.',location:'Full metro area with local offices in three neighborhoods'},
+      store:{name:'Nomad Supply Co.',type:'Online Outdoor & Lifestyle Store',tagline:'Gear tested in the field, not just in marketing photos — built for people who actually go outside',services:['Outdoor apparel & footwear','Camping & hiking gear','Monthly subscription box','Gift cards'],hours:'Customer support Mon–Fri 9am–6pm EST. Orders ship 24/7.',pricing:'Apparel $35–$180, Gear $20–$400, Subscription box $49/mo. Free standard shipping on orders over $75.',returns:'60-day returns on unworn/unused items. If it breaks under normal field use, contact us — we stand behind our gear.',shipping:'Standard (3–5 days) free over $75, Express (1–2 days) $12. International shipping to 30+ countries.',loyalty:'Earn 1 point per $1 spent. 100 points = $5 off. Points never expire.',location:'Ships from Portland, OR — online only, no retail locations'},
+      auto:{name:'ProTech Auto Repair',type:'Auto Repair Shop',tagline:'Honest repairs, fair prices, done right the first time — no upselling',services:['Oil changes & fluid services','Brake inspection & replacement','Transmission service & repair','Full diagnostics','Tire rotation & balancing','AC & heating repair'],hours:'Mon–Fri 7:30am–6pm, Sat 8am–3pm',pricing:'Oil change from $49, Brake pads from $120/axle, Diagnostics $75 (waived with repair), Tire rotation $25.',warranty:'All repairs include 12-month / 12,000-mile warranty on parts and labor.',process:'We show you what we find before doing any work — photos included. No repair starts without your approval.',location:'East side, 2 min off the highway. Free shuttle within 3 miles.'},
+    };
+
+    window.cbTailorPreset = async function(type) {
+      var preset = CB_PRESETS[type];
+      if (!preset) return;
+
+      document.querySelectorAll('.cb-type-btn').forEach(function(b) {
+        b.classList.remove('active');
+        b.disabled = true;
+      });
+      var clicked = document.querySelector('.cb-type-btn[onclick*="\'' + type + '\'"]');
+      if (clicked) clicked.classList.add('active');
+
+      tailoredBiz = preset;
+      history = [];
+
+      messagesEl.innerHTML =
+        '<div class="cb-analyzing">' +
+        '<div class="cb-spinner"></div>' +
+        '<p class="cb-analyze-status">Setting up ' + preset.name + '\u2026</p>' +
+        '</div>';
+
+      try {
+        var introRes = await fetch(DEMO_WORKER, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: '__INTRO__', history: [], business: preset })
+        });
+        var introText = 'Hi! I\'m the AI assistant for ' + preset.name + '. How can I help you today?';
+        if (introRes.ok) {
+          var d = await introRes.json();
+          if (d.reply) introText = d.reply;
+        }
+        messagesEl.innerHTML = '';
+        appendMsg(introText, 'bot');
+        history.push({ role: 'bot', text: introText });
+
+        var statusBar = document.querySelector('.chatbot-status');
+        if (statusBar) statusBar.textContent = preset.type + ' demo';
+
+        var resetEl = document.getElementById('cb-tailor-reset');
+        if (resetEl) {
+          var nameEl = document.getElementById('cb-tailor-biz-name');
+          if (nameEl) nameEl.textContent = preset.name;
+          resetEl.style.display = 'flex';
+        }
+        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.disabled = false; });
+      } catch(e) {
+        messagesEl.innerHTML = '';
+        appendMsg('Something went wrong — try again.', 'bot');
+        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
+      }
+    };
+
+    window.cbTailorReset = function() {
+      tailoredBiz = null;
+      history = ORIG_HISTORY.slice();
+      messagesEl.innerHTML = ORIG_MSGS;
+      document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
+      var resetEl = document.getElementById('cb-tailor-reset');
+      if (resetEl) resetEl.style.display = 'none';
+      var statusBar = document.querySelector('.chatbot-status');
+      if (statusBar) statusBar.textContent = ORIG_STATUS;
+      try { sessionStorage.removeItem(STORE); } catch(e) {}
+    };
+
+sendBtn.addEventListener('click', sendMessage);
     inputEl.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
     });
@@ -454,6 +561,6 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
   initDemo();
 })();
 </script>
-<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
+<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')=='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
 </body>
 </html>

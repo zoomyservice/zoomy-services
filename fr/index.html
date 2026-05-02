@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<link href="../css/style.css?v=20260430l" rel="stylesheet"/>
+<link href="../css/style.css?v=20260430o" rel="stylesheet"/>
 <style>
 /* ── Services as clean text rows ── */
 .services-list{margin-top:3rem}
@@ -101,7 +101,7 @@ nav{top:var(--bar-h)!important}
 .bar-off #free-bar{display:none!important}
 @media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
 </style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');}})();</script>
+<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
 <!-- ═══ ANALYTICS & TRACKING ═══ -->
 <!-- Google Analytics 4 -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
@@ -387,7 +387,7 @@ Essayez la démo en direct
 <h3 style="font-family:var(--font-display);color:#fff;font-size:1.2rem;margin-bottom:.75rem;">Agent téléphonique Zoomy</h3>
 <p style="color:var(--text-2);font-size:.875rem;line-height:1.6;margin-bottom:.6rem;">Cliquez ci-dessous pour démarrer une conversation vocale en direct. Votre micro vous sera demandé.</p>
 <p style="color:var(--primary);font-size:.75rem;line-height:1.5;margin-bottom:2rem;font-family:var(--font-mono);">// Une fois votre appel terminé, consultez votre transcription complète ci-dessous ↓</p>
-<style>@media(min-width:769px){#hp-speaker-btn{display:none!important}}</style>
+<style>@media(max-width:768px){#hp-speaker-btn{display:none!important}}</style>
 <div id="hp-call-ui" style="display:flex;flex-direction:column;align-items:center;gap:.85rem;width:100%;">
 <button id="hp-call-btn" onclick="hpToggleCall()" style="width:100%;padding:14px 28px;background:var(--grad-main);border:none;border-radius:var(--radius-full);color:#fff;font-family:var(--font-display);font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 30px rgba(99,102,241,.4);transition:filter .2s,transform .2s;">
 <svg fill="none" height="18" id="hp-call-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
@@ -540,7 +540,7 @@ Essayez la démo en direct
 <!-- ═══════════ ADMIN PANEL DEMO ═══════════ -->
 <section class="section" style="overflow:hidden;padding-bottom:4rem;">
 <div class="section-inner">
-<div style="display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:start;">
+<div id="adm-section-grid" style="display:grid;grid-template-columns:320px 1fr;gap:2.5rem;align-items:start;">
 <div class="reveal-left">
 <div class="section-tag">Panneau d'administration</div>
 <h2 class="section-title" style="margin-bottom:1.25rem;">Vous contrôlez le contenu.<br/>Aucun développeur n'est nécessaire.</h2>
@@ -558,35 +558,42 @@ Essayez la démo en direct
 <!-- INTERACTIVE ADMIN DEMO -->
 <div>
 <!-- TRY IT LABEL -->
-<div style="display:flex;align-items:center;gap:1rem;margin-top:3rem;margin-bottom:.85rem;">
-<div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(14,165,233,.06));border:1px solid rgba(14,165,233,.55);border-radius:9999px;padding:6px 18px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#38bdf8;">✏ Démo en direct — essayez-la maintenant</div>
-<span style="font-size:.8rem;color:#cbd5e1;">👇 Essayez-le — cliquez sur n'importe lequel <strong>image</strong> pour l'échanger, cliquez sur n'importe quel <strong>texte</strong> pour l'éditer en direct</span>
+<div style="display:flex;align-items:center;gap:.65rem;margin-top:3rem;margin-bottom:.85rem;flex-wrap:wrap;">
+<div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(14,165,233,.18),rgba(14,165,233,.06));border:1px solid rgba(14,165,233,.55);border-radius:9999px;padding:6px 18px;font-family:var(--font-mono);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:#38bdf8;flex-shrink:0;">✏ Démo en direct — essayez-la maintenant</div>
+<span style="font-size:.8rem;color:#cbd5e1;">👇 Cliquez sur n'importe quel <strong>image</strong> pour l'échanger, n'importe quel <strong>texte</strong> pour l'éditer en direct</span>
 </div>
 <div id="admShell" style="--ac:#0ea5e9;background:#0a0a0a;border:1px solid #222;border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8);">
 <!-- TOP BAR -->
-<div style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
+<div class="adm-topbar" style="background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:.6rem 1.25rem;display:flex;align-items:center;justify-content:space-between;">
 <div style="display:flex;align-items:center;gap:.85rem;">
 <div style="display:flex;gap:5px;"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f57"></div><div style="width:10px;height:10px;border-radius:50%;background:#febc2e"></div><div style="width:10px;height:10px;border-radius:50%;background:#28c840"></div></div>
-<span style="font-size:.72rem;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;font-family:monospace;">Lumina Studio — Administrateur</span>
+<span class="adm-topbar-brand" style="font-size:.72rem;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;font-family:monospace;">Lumina Studio — Administrateur</span>
 </div>
 <div style="display:flex;align-items:center;gap:.75rem;">
 <span id="admBadge" style="font-size:.65rem;background:var(--ac);color:#0a0a08;padding:2px 10px;border-radius:4px;font-weight:700;display:none;font-family:monospace;"></span>
 <button onclick="admPublish()" onmouseout="this.style.filter=''" onmouseover="this.style.filter='brightness(1.15)'" style="background:var(--ac);color:#0a0a08;border:none;padding:5px 18px;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;letter-spacing:.03em;">Publier ↑</button>
 </div>
 </div>
+<!-- MOBILE PAGE TABS (visible on mobile only) -->
+<div id="admMobileTabs" style="display:none;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;background:#0d0d0d;border-bottom:1px solid #1c1c1c;padding:.55rem .7rem;gap:.4rem;">
+<div class="adm-mtab adm-mtab-active" data-page="home" onclick="admNavMobile('home',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(14,165,233,.14);border:1px solid rgba(14,165,233,.45);color:#38bdf8;transition:all .18s;">🏠 Accueil</div>
+<div class="adm-mtab" data-page="classes" onclick="admNavMobile('classes',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🧘 Cours</div>
+<div class="adm-mtab" data-page="contact" onclick="admNavMobile('contact',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">📍Contacter</div>
+<div class="adm-mtab" data-page="colours" onclick="admNavMobile('colours',this)" style="flex-shrink:0;display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;white-space:nowrap;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.45);transition:all .18s;">🎨 Couleurs</div>
+</div>
 <!-- BODY -->
 <div style="display:flex;">
 <!-- SIDEBAR -->
-<div style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
+<div id="admSidebar" style="width:148px;flex-shrink:0;background:#0b0b0b;border-right:1px solid #1a1a1a;padding:.9rem 0;display:flex;flex-direction:column;">
 <div style="font-size:.5rem;color:#888;text-transform:uppercase;letter-spacing:.14em;padding:.2rem 1rem .25rem;font-family:monospace;">Pages</div>
-<div class="adm-nav-item active-nav" onclick="admNav('home',this)" style="padding:.4rem 1rem;font-size:.74rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🏠</span>Accueil</div>
-<div class="adm-nav-item" onclick="admNav('classes',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🧘</span>Cours</div>
-<div class="adm-nav-item" onclick="admNav('trainers',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💪</span>Formateurs</div>
-<div class="adm-nav-item" onclick="admNav('pricing',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💳</span>Tarifs</div>
-<div class="adm-nav-item" onclick="admNav('contact',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>📍</span>Contacter</div>
+<div class="adm-nav-item active-nav" onclick="admNav('home',this)" style="padding:.4rem 1rem;font-size:.74rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;color:var(--ac);background:rgba(14,165,233,.12);"><span>🏠</span>Accueil</div>
+<div class="adm-nav-item" onclick="admNav('classes',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🧘</span>Cours</div>
+<div class="adm-nav-item" onclick="admNav('trainers',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💪</span>Formateurs</div>
+<div class="adm-nav-item" onclick="admNav('pricing',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>💳</span>Tarifs</div>
+<div class="adm-nav-item" onclick="admNav('contact',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>📍</span>Contacter</div>
 <div style="margin:.6rem .8rem;border-top:1px solid #1a1a1a;"></div>
 <div style="font-size:.5rem;color:#888;text-transform:uppercase;letter-spacing:.14em;padding:.2rem 1rem .25rem;font-family:monospace;">Paramètres</div>
-<div class="adm-nav-item" onclick="admNav('colours',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#555'" onmouseover="this.style.color='#aaa'" style="padding:.4rem 1rem;font-size:.74rem;color:#555;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🎨</span>Couleurs</div>
+<div class="adm-nav-item" onclick="admNav('colours',this)" onmouseout="if(!this.classList.contains('active-nav'))this.style.color='#999'" onmouseover="this.style.color='#ccc'" style="padding:.4rem 1rem;font-size:.74rem;color:#999;cursor:pointer;display:flex;align-items:center;gap:.5rem;transition:background .15s;"><span>🎨</span>Couleurs</div>
 </div>
 <!-- CANVAS -->
 <div class="adm-canvas" style="flex:1;height:520px;overflow-y:auto;overflow-x:hidden;position:relative;">
@@ -625,12 +632,16 @@ Essayez la démo en direct
 .adm-nav-item.active-nav{color:var(--ac) !important;background:rgba(255,255,255,.04);border-left:2px solid var(--ac);padding-left:calc(1rem - 2px);}
 @keyframes admFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:768px){
-  #admShell .adm-canvas{height:380px;}
-  #admShell>div:last-child{flex-direction:column;}
-  #admShell>div:last-child>div:first-child{width:100%;flex-direction:row;overflow-x:auto;padding:.4rem 0;border-right:none;border-bottom:1px solid #1a1a1a;flex-shrink:0;}
-  #admShell>div:last-child>div:first-child .adm-nav-item{white-space:nowrap;padding:.35rem .8rem;font-size:.68rem;}
-  #admShell>div:last-child>div:first-child [style*="font-size:.5rem"]{display:none;}
-  #admShell>div:last-child>div:first-child [style*="border-top"]{display:none;}
+  #adm-section-grid{grid-template-columns:1fr!important;}
+  #adm-section-grid>div:first-child{display:none;}
+  #admShell{min-width:0!important;width:100%!important;overflow-x:hidden!important;touch-action:pan-y;overscroll-behavior-x:none;}
+  #admMobileTabs{display:flex!important;}
+  #admSidebar{display:none!important;}
+  .adm-canvas{height:400px!important;overflow-x:clip!important;overscroll-behavior-x:none;}
+  #admShell .adm-topbar{flex-wrap:wrap;gap:.4rem;padding:.5rem .75rem!important;}
+  #admShell .adm-topbar-brand{font-size:.6rem!important;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .adm-canvas *{max-width:100%;box-sizing:border-box;}
+  #adm-colour-panel input[type="text"]{min-width:0;width:100%!important;}
 }
 </style>
 <script>
@@ -701,7 +712,7 @@ window.admPublish=function(){
 
 window.admNav=function(page,el){
   document.querySelectorAll('.adm-nav-item').forEach(function(i){
-    i.style.background='';i.style.color='#555';i.classList.remove('active-nav');
+    i.style.background='';i.style.color='#999';i.classList.remove('active-nav');
   });
   if(el){el.style.background='rgba(14,165,233,.12)';el.style.color='var(--ac)';el.classList.add('active-nav');}
   var iframe=document.getElementById('adm-iframe');
@@ -713,6 +724,20 @@ window.admNav=function(page,el){
     var map={home:'/zenflow/home.html',classes:'/zenflow/classes.html',trainers:'/zenflow/trainers.html',pricing:'/zenflow/pricing.html',contact:'/zenflow/contact.html'};
     if(iframe&&map[page])iframe.src=map[page];
   }
+};
+
+window.admNavMobile=function(page,el){
+  document.querySelectorAll('.adm-mtab').forEach(function(t){
+    t.style.background='rgba(255,255,255,.04)';t.style.color='rgba(255,255,255,.45)';t.style.borderColor='rgba(255,255,255,.09)';t.classList.remove('adm-mtab-active');
+  });
+  if(el){el.style.background='rgba(14,165,233,.14)';el.style.color='#38bdf8';el.style.borderColor='rgba(14,165,233,.45)';el.classList.add('adm-mtab-active');}
+  document.querySelectorAll('.adm-nav-item').forEach(function(i){i.style.background='';i.style.color='#999';i.classList.remove('active-nav');});
+  var sideItem=document.querySelector('.adm-nav-item[onclick*=\''+page+'\']');
+  if(sideItem){sideItem.style.background='rgba(14,165,233,.12)';sideItem.style.color='var(--ac)';sideItem.classList.add('active-nav');}
+  var iframe=document.getElementById('adm-iframe');
+  var colPanel=document.getElementById('adm-colour-panel');
+  if(page==='colours'){if(colPanel)colPanel.style.display='block';}
+  else{if(colPanel)colPanel.style.display='none';var map={home:'/zenflow/home.html',classes:'/zenflow/classes.html',contact:'/zenflow/contact.html'};if(iframe&&map[page])iframe.src=map[page];}
 };
 
 // Replace all hardcoded brand colors in an iframe document
@@ -795,6 +820,7 @@ function zfInjectEditMode(doc) {
     var style = doc.createElement('style');
     style.id = 'zf-edit-style';
     style.textContent = [
+      'html,body{overflow-x:hidden!important;max-width:100%!important;}',
       'a[href]{pointer-events:none!important;cursor:text!important;}',
       'button:not(.zf-cam):not(.zf-apply-btn):not(.zf-cancel-btn):not(.zf-save-pos-btn):not(.zf-tab-btn){pointer-events:none!important;}',
       'form{pointer-events:none!important;}',
@@ -1127,7 +1153,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <a class="btn btn-primary" href="contact.html">Ajoutez à votre projet ›</a>
 </div>
 </div>
-<div class="reveal-right" style="display:flex;justify-content:flex-end;">
+<div class="reveal-right" style="display:flex;flex-direction:column;align-items:flex-end;">
 <div class="chatbot-mock" style="width:100%;max-width:400px;">
 <div class="chatbot-header">
 <div class="chatbot-avatar">🤖</div>
@@ -1146,6 +1172,24 @@ document.addEventListener('DOMContentLoaded',function(){
 <button class="chatbot-send" id="chatbot-send">
 <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
 </button>
+</div>
+</div>
+<div class="cb-tailor" id="cb-tailor-wrap" style="width:100%;max-width:400px;">
+<h4 class="cb-tailor-title">Essayez-le pour votre type d'entreprise</h4>
+<p class="cb-tailor-desc">Choisissez un type d'entreprise et regardez le chatbot devenir son assistant IA, répondant à de vraies questions sur les prix, les réservations et les services.</p>
+<div class="cb-type-grid" id="cb-type-grid">
+<button class="cb-type-btn" data-biz="restaurant">🍽️Restaurant</button>
+<button class="cb-type-btn" data-biz="gym">💪 Salle de sport</button>
+<button class="cb-type-btn" data-biz="salon">💇 Salon de beauté</button>
+<button class="cb-type-btn" data-biz="dental">🦷 Clinique Dentaire</button>
+<button class="cb-type-btn" data-biz="legal">⚖️ Cabinet d'avocats</button>
+<button class="cb-type-btn" data-biz="realestate">🏡 Immobilier</button>
+<button class="cb-type-btn" data-biz="store">🛍️ Boutique en ligne</button>
+<button class="cb-type-btn" data-biz="auto">🚗 Boutique automobile</button>
+</div>
+<div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
+<span>Affichage actuel : <strong id="cb-tailor-biz-name"></strong></span>
+<a class="cb-tailor-reset-link" data-action="cb-reset" href="#">↺ Essayez un autre type</a>
 </div>
 </div>
 </div>
@@ -1253,7 +1297,10 @@ document.addEventListener('DOMContentLoaded',function(){
 // ── Homepage chatbot demo wiring ─────────────────────────────────────────────────────────────────────────
 (function() {
   var STORE = 'zmy_home_v1';
-  var AI_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+  var AI_WORKER     = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
+  var DEMO_WORKER   = 'https://zoomy-ai.zoozoomfast.workers.dev/demo-chat';
+  var SCRAPE_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/scrape';
+  var tailoredBiz   = null;
 
   var messagesEl = document.getElementById('chatbot-messages');
   var inputEl    = document.getElementById('chatbot-input-field');
@@ -1262,13 +1309,25 @@ document.addEventListener('DOMContentLoaded',function(){
 
   var history = [
     { role: 'user', text: 'What makes your chatbot different from just adding ChatGPT to a site?' },
-    { role: 'bot', text: "It’s trained only on your business — your real services, prices, and policies. It won’t go off-topic or make things up. And when the moment is right, it captures the visitor’s contact details directly in the conversation." }
+    { role: 'bot', text: "It's trained only on your business — your real services, prices, and policies. It won't go off-topic or make things up. And when the moment is right, it captures the visitor's contact details directly in the conversation." }
+  ];
+
+  var ORIG_MSGS    = messagesEl.innerHTML;
+  var ORIG_STATUS  = 'Online — try it out';
+  var ORIG_HISTORY = history.slice();
+
+  var ANALYZE_STEPS = [
+    'Scanning your website…',
+    'Reading your services…',
+    'Extracting pricing info…',
+    'Personalizing your chatbot…',
+    'Almost ready…',
   ];
 
   // Restore saved session if available
   try {
     var saved = JSON.parse(sessionStorage.getItem(STORE));
-    if (saved && saved.msgs && saved.msgs.length) {
+    if (saved && saved.msgs && saved.msgs.length && !saved.tailored) {
       messagesEl.innerHTML = '';
       saved.msgs.forEach(function(m) {
         var d = document.createElement('div');
@@ -1317,10 +1376,14 @@ document.addEventListener('DOMContentLoaded',function(){
     messagesEl.appendChild(typing);
     messagesEl.scrollTop = messagesEl.scrollHeight;
     try {
-      var res = await fetch(AI_WORKER, {
+      var endpoint = tailoredBiz ? DEMO_WORKER : AI_WORKER;
+      var body = tailoredBiz
+        ? JSON.stringify({ message: text, history: history.slice(-8), business: tailoredBiz })
+        : JSON.stringify({ message: text, history: history.slice(-8) });
+      var res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: history.slice(-8) })
+        body: body
       });
       if (res.ok) {
         var data = await res.json();
@@ -1331,13 +1394,105 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     } catch(e) {}
     typing.remove();
-    appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we\u2019ll reply within 24 hours.", 'bot');
+    appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we'll reply within 24 hours.", 'bot');
     saveChat();
   }
 
-  sendBtn.addEventListener('click', sendMessage);
+
+
+  
+    var CB_PRESETS = {
+      restaurant:{name:'The Golden Fork',type:'Restaurant & Bar',tagline:'Modern European cuisine with seasonal ingredients, craft cocktails, and weekend brunch',services:['Dine-in lunch & dinner','Weekend brunch (Sat–Sun 10am–3pm)','Private dining & event buyouts','Takeout orders','Corporate catering'],hours:'Mon–Thu 11:30am–10pm, Fri–Sat 11:30am–11pm, Sun 10am–3pm (brunch only)',pricing:'Starters $10–18, Mains $24–48, Weekend brunch $16–28, Cocktails $13–18',dietary:'We accommodate vegetarian, vegan, and gluten-free guests with dedicated menu options. We are not a kosher-certified or halal-certified kitchen, but our team can walk through ingredients for guests with specific needs. Allergens including nuts are flagged on the menu.',reservations:'Book online, call during hours, or walk in — we hold tables for walk-ins nightly.',location:'Downtown city center, 5 min from the central metro station'},
+      gym:{name:'Peak Performance Fitness',type:'Gym & Fitness Studio',tagline:'Results-driven training for all levels — from first-timers to competitive athletes',services:['Full gym floor access','1-on-1 personal training','Group fitness classes (HIIT, yoga, spin)','Nutrition coaching','Sauna & cold plunge recovery'],hours:'Mon–Fri 5:30am–11pm, Sat–Sun 7am–9pm',pricing:'Basic $49/mo (gym only), Unlimited $79/mo (gym + all classes), PT from $129/mo. Day pass $15.',trial:'Free 3-day trial pass — no credit card required. Sign up at the front desk or online.',cancellation:'Month-to-month; cancel with 15 days notice. No long-term contracts unless on annual plan.',facilities:'3 floors: cardio, free weights, group class studio. Locker rooms with showers and secure storage.',location:'Multiple city locations — main branch in the financial district'},
+      salon:{name:'Luxe Beauty Studio',type:'Beauty Salon & Spa',tagline:'Where great hair, flawless skin, and total relaxation come together',services:['Haircuts & blow-dry styling','Balayage, highlights & color','Lash lifts & extensions','Facials & skin treatments','Manicure, pedicure & nail art'],hours:'Tue–Sat 9am–7pm, Sun 10am–5pm. Closed Mondays.',pricing:'Haircuts from $55, Balayage from $180, Lash extensions from $120, Facials from $85, Manicure from $35.',booking:'All appointments online or by phone. Book 1–2 weeks ahead for color. Same-day slots available for cuts.',cancellation:'Please cancel or reschedule 24h in advance to avoid a 50% late-cancellation fee.',products:'We use and retail Kerastase and Olaplex. Cruelty-free and vegan options available on request.',location:'Uptown, free parking in the building lot'},
+      dental:{name:'Bright Smile Dental',type:'Dental Clinic',tagline:'Comfortable, modern dentistry for the whole family — gentle care from the first visit',services:['Routine cleanings & checkups','Teeth whitening','Invisalign clear aligners','Dental implants','Emergency same-day care','Pediatric dentistry'],hours:'Mon–Thu 8am–6pm, Fri 8am–3pm, Sat 9am–2pm (select dates)',pricing:'Cleaning from $120, Whitening $350, Invisalign consultation free, Implants from $2,200, Emergency visit from $100 (waived if proceeding with treatment).',insurance:'We accept most major dental insurance plans and bill directly. 0% financing through CareCredit available.',anxiety:'We specialize in anxious patients. Nitrous oxide available, team trained to work at your pace.',location:'Inside the Westside Medical Plaza, validated parking available'},
+      legal:{name:'Harrington & Associates',type:'Law Firm',tagline:'Straightforward legal guidance for individuals, families, and growing businesses',services:['Personal injury claims','Business contracts & formation','Real estate transactions','Family law & divorce','Estate planning & wills'],hours:'Mon–Fri 9am–6pm. Evening consultations available by appointment.',pricing:'Free 30-minute initial consultation for most cases. Personal injury on contingency (no win, no fee). Business law from $250/hr. Flat-fee packages for wills and real estate closings.',process:'After your free consult we outline options and fees in writing before any engagement. No surprise billing.',location:'Financial district, 12th floor — elevator accessible, parking validated'},
+      realestate:{name:'Crestview Realty',type:'Real Estate Agency',tagline:'Helping you buy, sell, or rent with confidence — local experts, honest advice',services:['Residential buying & selling','Rental property management','Commercial real estate','Free home valuations','Investor portfolio consulting'],hours:'Mon–Sat 9am–7pm, Sun by appointment',pricing:'Seller commission 5% (split with buyer agent). Rental management 8%/mo of collected rent. Home valuation always free.',process:'Buyers: free strategy call, pre-approval guidance, property tours. Sellers: listed within 5 days, professional photos included.',contract:'Listing agreements 90 days. Buyer representation agreements are flexible.',location:'Full metro area with local offices in three neighborhoods'},
+      store:{name:'Nomad Supply Co.',type:'Online Outdoor & Lifestyle Store',tagline:'Gear tested in the field, not just in marketing photos — built for people who actually go outside',services:['Outdoor apparel & footwear','Camping & hiking gear','Monthly subscription box','Gift cards'],hours:'Customer support Mon–Fri 9am–6pm EST. Orders ship 24/7.',pricing:'Apparel $35–$180, Gear $20–$400, Subscription box $49/mo. Free standard shipping on orders over $75.',returns:'60-day returns on unworn/unused items. If it breaks under normal field use, contact us — we stand behind our gear.',shipping:'Standard (3–5 days) free over $75, Express (1–2 days) $12. International shipping to 30+ countries.',loyalty:'Earn 1 point per $1 spent. 100 points = $5 off. Points never expire.',location:'Ships from Portland, OR — online only, no retail locations'},
+      auto:{name:'ProTech Auto Repair',type:'Auto Repair Shop',tagline:'Honest repairs, fair prices, done right the first time — no upselling',services:['Oil changes & fluid services','Brake inspection & replacement','Transmission service & repair','Full diagnostics','Tire rotation & balancing','AC & heating repair'],hours:'Mon–Fri 7:30am–6pm, Sat 8am–3pm',pricing:'Oil change from $49, Brake pads from $120/axle, Diagnostics $75 (waived with repair), Tire rotation $25.',warranty:'All repairs include 12-month / 12,000-mile warranty on parts and labor.',process:'We show you what we find before doing any work — photos included. No repair starts without your approval.',location:'East side, 2 min off the highway. Free shuttle within 3 miles.'},
+    };
+
+    window.cbTailorPreset = async function(type) {
+      var preset = CB_PRESETS[type];
+      if (!preset) return;
+
+      document.querySelectorAll('.cb-type-btn').forEach(function(b) {
+        b.classList.remove('active');
+        b.disabled = true;
+      });
+      var clicked = document.querySelector('.cb-type-btn[onclick*="\'' + type + '\'"]');
+      if (clicked) clicked.classList.add('active');
+
+      tailoredBiz = preset;
+      history = [];
+
+      messagesEl.innerHTML =
+        '<div class="cb-analyzing">' +
+        '<div class="cb-spinner"></div>' +
+        '<p class="cb-analyze-status">Setting up ' + preset.name + '\u2026</p>' +
+        '</div>';
+
+      try {
+        var introRes = await fetch(DEMO_WORKER, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: '__INTRO__', history: [], business: preset })
+        });
+        var introText = 'Hi! I\'m the AI assistant for ' + preset.name + '. How can I help you today?';
+        if (introRes.ok) {
+          var d = await introRes.json();
+          if (d.reply) introText = d.reply;
+        }
+        messagesEl.innerHTML = '';
+        appendMsg(introText, 'bot');
+        history.push({ role: 'bot', text: introText });
+
+        var statusBar = document.querySelector('.chatbot-status');
+        if (statusBar) statusBar.textContent = preset.type + ' demo';
+
+        var resetEl = document.getElementById('cb-tailor-reset');
+        if (resetEl) {
+          var nameEl = document.getElementById('cb-tailor-biz-name');
+          if (nameEl) nameEl.textContent = preset.name;
+          resetEl.style.display = 'flex';
+        }
+        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.disabled = false; });
+      } catch(e) {
+        messagesEl.innerHTML = '';
+        appendMsg('Something went wrong — try again.', 'bot');
+        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
+      }
+    };
+
+    window.cbTailorReset = function() {
+      tailoredBiz = null;
+      history = ORIG_HISTORY.slice();
+      messagesEl.innerHTML = ORIG_MSGS;
+      document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
+      var resetEl = document.getElementById('cb-tailor-reset');
+      if (resetEl) resetEl.style.display = 'none';
+      var statusBar = document.querySelector('.chatbot-status');
+      if (statusBar) statusBar.textContent = ORIG_STATUS;
+      try { sessionStorage.removeItem(STORE); } catch(e) {}
+    };
+
+sendBtn.addEventListener('click', sendMessage);
   inputEl.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+})();
+</script>
+<script>
+// ── Business type preset event delegation ──────────────────────────────────
+(function() {
+  document.getElementById('cb-type-grid').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-biz]');
+    if (btn && typeof window.cbTailorPreset === 'function') window.cbTailorPreset(btn.dataset.biz);
+  });
+  var resetLink = document.querySelector('[data-action="cb-reset"]');
+  if (resetLink) resetLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    if (typeof window.cbTailorReset === 'function') window.cbTailorReset();
   });
 })();
 </script>
@@ -1346,6 +1501,14 @@ document.addEventListener('DOMContentLoaded',function(){
 <script src="../js/chatbot.js?v=20260501e"></script>
 <script type="module">
 import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
+
+// iOS Safari fix: patch permissions.query so SDK doesn't crash on mic permission check
+(function patchPermissions() {
+  if (!navigator.permissions || !navigator.permissions.query) return;
+  const _orig = navigator.permissions.query.bind(navigator.permissions);
+  navigator.permissions.query = (desc) =>
+    _orig(desc).catch(() => ({ state: 'prompt', onchange: null }));
+})();
 let hpConv = null;
 let hpCallTimer = null;
 let hpIsMuted = false;
@@ -1387,25 +1550,39 @@ window.hpToggleMute = function() {
 
 window.hpToggleSpeaker = async function() {
   hpIsSpeaker = !hpIsSpeaker;
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  const setSink = (el, id) => { if (typeof el.setSinkId === 'function') el.setSinkId(id).catch(() => {}); };
+
+  const setSinkToDevice = async (targetId) => {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const speakers = devices.filter(d => d.kind === 'audiooutput');
+      const pick = speakers.find(d => d.deviceId !== 'default' && d.deviceId !== '') || { deviceId: '' };
+      const id = targetId === 'speaker' ? pick.deviceId : 'default';
+      document.querySelectorAll('audio').forEach(a => {
+        if (typeof a.setSinkId === 'function') a.setSinkId(id).catch(() => {});
+      });
+      return id;
+    } catch (_) { return null; }
+  };
+
   if (window._zmySpeakerObs) { window._zmySpeakerObs.disconnect(); window._zmySpeakerObs = null; }
   if (hpIsSpeaker) {
-    document.querySelectorAll('audio').forEach(a => setSink(a, ''));
+    const id = await setSinkToDevice('speaker');
     window._zmySpeakerObs = new MutationObserver(muts => {
       muts.forEach(m => m.addedNodes.forEach(n => {
         if (!n || n.nodeType !== 1) return;
-        if (n.tagName === 'AUDIO') setSink(n, '');
-        if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => setSink(a, ''));
+        if (n.tagName === 'AUDIO' && typeof n.setSinkId === 'function') n.setSinkId(id || '').catch(() => {});
+        if (n.querySelectorAll) n.querySelectorAll('audio').forEach(a => {
+          if (typeof a.setSinkId === 'function') a.setSinkId(id || '').catch(() => {});
+        });
       }));
     });
     window._zmySpeakerObs.observe(document.documentElement, { childList: true, subtree: true });
     hpSpeakerBtn.style.background = 'rgba(74,222,128,.18)';
     hpSpeakerBtn.style.borderColor = 'rgba(74,222,128,.4)';
     hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
-    hpSpeakerLabel.textContent = isIOS ? 'Speaker (raise vol)' : 'Speaker On';
+    hpSpeakerLabel.textContent = 'Speaker On';
   } else {
-    document.querySelectorAll('audio').forEach(a => setSink(a, 'default'));
+    await setSinkToDevice('default');
     hpSpeakerBtn.style.background = 'rgba(255,255,255,.08)';
     hpSpeakerBtn.style.borderColor = 'rgba(255,255,255,.15)';
     hpSpeakerIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" opacity=".4"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
@@ -1424,6 +1601,7 @@ let hpSharedAudioCtx = null;
 function hpPlayRing() {
   return new Promise(resolve => {
     try {
+      if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
       hpSharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const ctx = hpSharedAudioCtx;
       const t = ctx.currentTime;
@@ -1470,6 +1648,7 @@ function hpStartCallTimer() {
 function hpResetUI(msg) {
   if (hpCallTimer) { clearInterval(hpCallTimer); hpCallTimer = null; }
   hpConv = null; hpIsMuted = false; hpIsSpeaker = false;
+  if (hpSharedAudioCtx) { try { hpSharedAudioCtx.close(); } catch(_) {} hpSharedAudioCtx = null; }
   hpLabel.textContent = 'Start Call';
   hpBtn.style.opacity = '1';
   hpBtn.style.background = 'var(--grad-main)';
@@ -1498,20 +1677,24 @@ function hpResetUI(msg) {
 
 window.hpToggleCall = async function() {
   if (hpConv) { await hpConv.endSession(); return; }
+  let micStream = null;
   try {
     hpLabel.textContent = 'Calling...';
     hpBtn.style.opacity = '0.7';
     hpBtn.disabled = true;
     hpStatus.textContent = 'Requesting microphone...';
-    const micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    micStream.getTracks().forEach(t => t.stop());
+    // Keep stream alive through setup — iOS needs continuous mic activity
+    // so the SDK's internal getUserMedia succeeds in the same gesture context
+    micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
     hpStatus.textContent = 'Ringing...';
     const tokenRes = await fetch(HP_TOKEN_URL);
     if (!tokenRes.ok) {
       const err = await tokenRes.json().catch(() => ({}));
       hpBtn.disabled = false;
       hpResetUI(null);
-      hpStatus.textContent = 'Could not connect. Try again.';
+      hpStatus.textContent = tokenRes.status === 429
+        ? 'Daily demo limit reached. Try again tomorrow.'
+        : 'Could not connect. Try again.';
       hpStatus.style.color = '#f59e0b';
       return;
     }
@@ -1564,6 +1747,7 @@ Contacto: zoomy.services/contact`,
       signedUrl,
       overrides: { agent: agentOverride },
       onConnect: () => {
+        if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
         hpBtn.disabled = false;
         hpLabel.textContent = 'End Call';
         hpBtn.style.opacity = '1';
@@ -1600,6 +1784,7 @@ Contacto: zoomy.services/contact`,
       }
     });
   } catch(e) {
+    if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
     hpBtn.disabled = false;
     hpResetUI(null);
     hpStatus.textContent = 'Could not connect. Check microphone permissions.';

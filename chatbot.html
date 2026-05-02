@@ -12,7 +12,7 @@
 <meta content="Custom AI chatbots trained on your business. Deployed on your website. Multilingual, lead capture, AI-powered, no SaaS subscriptions or platform fees." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="css/style.css?v=20260430o" rel="stylesheet"/>
 <style>
 .chatbot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
@@ -153,7 +153,7 @@
 <a class="lang-btn" href="fr/chatbot.html">FR</a>
 <a class="lang-btn" href="es/chatbot.html">ES</a>
 </div>
-<button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" onclick="toggleTheme()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
+<button aria-label="Toggle dark mode" class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg fill="none" height="16" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
 <button aria-label="Menu" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </div>
 </nav>
@@ -193,7 +193,7 @@
 </button>
 </div>
 </div>
-<div class="cb-tailor" style="width:100%;max-width:400px;" id="cb-tailor-wrap">
+<div class="cb-tailor" id="cb-tailor-wrap" style="width:100%;max-width:400px;">
 <h4 class="cb-tailor-title">Try it for your type of business</h4>
 <p class="cb-tailor-desc">Pick a business type and watch the chatbot become its AI assistant — answering real questions about pricing, bookings, and services.</p>
 <div class="cb-type-grid" id="cb-type-grid">
@@ -208,7 +208,7 @@
 </div>
 <div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
 <span>Now showing: <strong id="cb-tailor-biz-name"></strong></span>
-<a class="cb-tailor-reset-link" href="#" data-action="cb-reset">↺ Try another type</a>
+<a class="cb-tailor-reset-link" data-action="cb-reset" href="#">↺ Try another type</a>
 </div>
 </div>
 </div>
@@ -295,12 +295,10 @@
 </div>
 </div>
 </section>
-
-
 <section class="section" style="position:relative;overflow:hidden;">
 <div class="aurora" style="opacity:.4;"></div>
 <div class="section-inner" style="text-align:center;z-index:2;position:relative;">
-<div class="section-tag" >Get Started</div>
+<div class="section-tag">Get Started</div>
 <h2 class="section-title">Tell us about your business.</h2>
 <p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">The more detail you share, the better we can scope the chatbot and give you an accurate quote.</p>
 <a class="btn btn-primary btn-lg" href="contact.html">Start a Chatbot Brief</a>
