@@ -211,37 +211,40 @@ html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner,
 .hero .section-inner{max-width:1200px!important;padding-left:2rem!important;padding-right:2rem!important;}
 html[data-theme="light"] .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
 html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
-/* ── Google SERP mockup ── */
-.cps-card{background:#0b0b1c;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:1.5rem;box-shadow:0 0 60px rgba(99,102,241,.12),0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;}
-.cps-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853);}
-.cps-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.8rem;display:inline-block;}
-.cps-lb{color:#4285F4;}.cps-lr{color:#EA4335;}.cps-lo{color:#FBBC05;}.cps-lg{color:#34A853;}.cps-lr2{color:#EA4335;}.cps-le{color:#4285F4;}
-.cps-searchbar{display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:.6rem 1.1rem;margin-bottom:.85rem;}
-.cps-si{opacity:.3;flex-shrink:0;}
-.cps-search-text{font-family:var(--font-mono);font-size:.82rem;color:rgba(255,255,255,.88);flex:1;min-height:1.1em;}
-.cps-cursor{display:inline-block;width:2px;height:.85em;background:#a5b4fc;margin-left:1px;animation:cpsCursor .85s step-end infinite;vertical-align:text-bottom;}
+/* ── Browser window mockup ── */
+.cps-browser{border-radius:14px;overflow:hidden;box-shadow:0 0 50px rgba(99,102,241,.14),0 28px 72px rgba(0,0,0,.7);}
+/* Chrome bar */
+.cps-chrome{background:#28283f;padding:.55rem 1rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid rgba(255,255,255,.07);}
+.cps-dots{display:flex;gap:6px;flex-shrink:0;}
+.cps-dot{width:11px;height:11px;border-radius:50%;}
+.cps-dot-r{background:#ff5f57;}.cps-dot-y{background:#febc2e;}.cps-dot-g{background:#28c840;}
+.cps-urlbar{flex:1;background:rgba(255,255,255,.08);border-radius:20px;padding:3px 12px;font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.45);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* Google page — white like the real thing */
+.cps-page{background:#fff;padding:1.1rem 1.25rem 1.1rem;position:relative;}
+.cps-glogo{font-family:Georgia,serif;font-size:1.75rem;font-weight:400;margin-bottom:.75rem;display:inline-block;letter-spacing:-.01em;}
+.cps-glb{color:#4285F4;}.cps-glr{color:#EA4335;}.cps-glo{color:#FBBC05;}.cps-glg{color:#34A853;}.cps-glr2{color:#EA4335;}.cps-gle{color:#4285F4;}
+.cps-gsbar{display:flex;align-items:center;gap:.5rem;background:#fff;border:1px solid #dfe1e5;border-radius:24px;padding:.42rem .9rem;margin-bottom:.6rem;box-shadow:0 1px 6px rgba(32,33,36,.12);}
+.cps-gsi{color:#9aa0a6;flex-shrink:0;}
+.cps-gstext{font-family:Arial,sans-serif;font-size:.82rem;color:#202124;flex:1;min-height:1em;}
+.cps-gcursor{display:inline-block;width:1.5px;height:.9em;background:#4285F4;margin-left:1px;animation:cpsCursor .85s step-end infinite;vertical-align:text-bottom;}
 @keyframes cpsCursor{0%,100%{opacity:1;}50%{opacity:0;}}
-.cps-rc{font-size:.6rem;color:rgba(255,255,255,.2);font-family:var(--font-mono);margin-bottom:.8rem;letter-spacing:.03em;}
-/* Sponsored ad block */
-.cps-ad{background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.25);border-radius:12px;padding:.9rem 1rem;margin-bottom:.7rem;position:relative;overflow:hidden;}
-.cps-ad::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.04),transparent 60%);pointer-events:none;}
-.cps-sponsored{font-size:.58rem;font-family:var(--font-mono);color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.22);border-radius:4px;padding:1px 7px;display:inline-block;margin-bottom:.45rem;letter-spacing:.06em;}
-.cps-ad-url{font-size:.65rem;color:rgba(255,255,255,.35);margin-bottom:.32rem;}
-.cps-ad-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:#a5b4fc;line-height:1.3;margin-bottom:.38rem;min-height:2.6em;transition:color .3s;}
-.cps-ad-desc{font-size:.7rem;color:rgba(255,255,255,.48);line-height:1.65;min-height:2.9em;}
-/* Click ripple */
-.cps-ring{position:absolute;right:1rem;top:50%;transform:translateY(-50%) scale(0);width:28px;height:28px;border-radius:50%;background:rgba(99,102,241,.5);opacity:0;}
-@keyframes cpsRingAnim{0%{transform:translateY(-50%) scale(0);opacity:.85;}100%{transform:translateY(-50%) scale(3.2);opacity:0;}}
-/* Organic results (ghost) */
-.cps-organic{padding:.5rem 0;border-top:1px solid rgba(255,255,255,.05);}
-.cps-org-url{font-size:.6rem;color:rgba(255,255,255,.2);margin-bottom:.18rem;}
-.cps-org-title{font-size:.78rem;color:rgba(255,255,255,.28);margin-bottom:.12rem;}
-.cps-org-desc{font-size:.64rem;color:rgba(255,255,255,.16);line-height:1.5;}
+.cps-grc{font-size:.65rem;color:#70757a;margin-bottom:.55rem;}
+/* Ad */
+.cps-gad{padding:.65rem 0;border-bottom:1px solid #ebebeb;margin-bottom:.3rem;}
+.cps-gspons{font-size:.65rem;color:#70757a;letter-spacing:.01em;margin-bottom:.22rem;}
+.cps-gtitle{font-size:.95rem;color:#1a0dab;line-height:1.4;margin-bottom:.2rem;min-height:2.6em;font-family:Arial,sans-serif;text-decoration:underline;cursor:default;}
+.cps-gurl{font-size:.7rem;color:#1e8e3e;margin-bottom:.22rem;}
+.cps-gdesc{font-size:.76rem;color:#4d5156;line-height:1.58;min-height:2.7em;font-family:Arial,sans-serif;}
+/* Organic */
+.cps-gorg{padding:.45rem 0;border-bottom:1px solid #ebebeb;}
+.cps-gorg:last-of-type{border-bottom:none;}
+.cps-gor-url{font-size:.62rem;color:#202124;margin-bottom:.16rem;}
+.cps-gor-title{font-size:.85rem;color:#1a0dab;margin-bottom:.1rem;font-family:Arial,sans-serif;}
+.cps-gor-desc{font-size:.73rem;color:#4d5156;line-height:1.5;font-family:Arial,sans-serif;}
 /* Conversion toast */
-.cps-toast{position:absolute;bottom:1rem;right:1rem;display:flex;align-items:center;gap:.5rem;background:#061310;border:1px solid rgba(74,222,128,.32);border-radius:10px;padding:.5rem .9rem;font-size:.72rem;font-family:var(--font-mono);color:#4ade80;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s;pointer-events:none;}
+.cps-toast{position:absolute;bottom:.85rem;right:.85rem;display:flex;align-items:center;gap:.45rem;background:#e6f4ea;border:1px solid #34a853;border-radius:8px;padding:.42rem .8rem;font-size:.7rem;font-family:Arial,sans-serif;color:#1e6e34;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;pointer-events:none;z-index:5;}
 .cps-toast.show{opacity:1;transform:translateY(0);}
-.cps-tdot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:cpsDotPulse 1.5s ease-in-out infinite;flex-shrink:0;}
-@keyframes cpsDotPulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.cps-tdot{width:7px;height:7px;border-radius:50%;background:#34a853;flex-shrink:0;}
 </style>
 <section class="hero" style="min-height:auto;padding:140px 2rem 5rem;">
 <div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
@@ -259,31 +262,36 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
 </div>
 </div>
 <div aria-hidden="true" class="cp-hero-visual">
-<div class="cps-card">
-<div class="cps-logo"><span class="cps-lb">G</span><span class="cps-lr">o</span><span class="cps-lo">o</span><span class="cps-lg">g</span><span class="cps-lr2">l</span><span class="cps-le">e</span></div>
-<div class="cps-searchbar">
-<svg class="cps-si" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-<span class="cps-search-text" id="cpsText"><span class="cps-cursor"></span></span>
+<div class="cps-browser">
+<div class="cps-chrome">
+<div class="cps-dots"><div class="cps-dot cps-dot-r"></div><div class="cps-dot cps-dot-y"></div><div class="cps-dot cps-dot-g"></div></div>
+<div class="cps-urlbar" id="cpsUrlBar">google.com/search?q=best+running+shoes+online</div>
 </div>
-<div class="cps-rc">Environ 2 340 000 résultats (0,38 seconde)</div>
-<div class="cps-ad">
-<div class="cps-sponsored">Sponsorisé</div>
-<div class="cps-ad-url" id="cpsUrl">zoomy-client.com › boutique › course à pied</div>
-<div class="cps-ad-title" id="cpsTitle">Meilleures chaussures de course – Livraison gratuite aujourd'hui</div>
-<div class="cps-ad-desc" id="cpsDesc">Achetez plus de 200 styles de grandes marques. Livraison gratuite le lendemain pour les commandes de plus de 50 $. Noté 4,9★ par plus de 12 000 coureurs.</div>
-<div class="cps-ring" id="cpsRing"></div>
+<div class="cps-page">
+<div class="cps-glogo"><span class="cps-glb">G</span><span class="cps-glr">o</span><span class="cps-glo">o</span><span class="cps-glg">g</span><span class="cps-glr2">l</span><span class="cps-gle">e</span></div>
+<div class="cps-gsbar">
+<svg class="cps-gsi" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="15"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+<span class="cps-gstext" id="cpsText"><span class="cps-gcursor"></span></span>
 </div>
-<div class="cps-organic">
-<div class="cps-org-url">concurrent-store.com › chaussures › course à pied</div>
-<div class="cps-org-title">Chaussures de course — Achetez la gamme complète en ligne</div>
-<div class="cps-org-desc">Vaste sélection de chaussures de route, de trail et de piste de grandes marques...</div>
+<div class="cps-grc">Environ 2 340 000 000 de résultats (0,38 seconde)</div>
+<div class="cps-gad">
+<div class="cps-gspons">Sponsorisé</div>
+<div class="cps-gtitle" id="cpsTitle">Meilleures chaussures de course — Livraison gratuite aujourd'hui | Meilleures marques</div>
+<div class="cps-gurl" id="cpsUrl">https://zoomy-client.com › shoes › running</div>
+<div class="cps-gdesc" id="cpsDesc">Achetez plus de 200 styles de grandes marques. Livraison gratuite le lendemain pour les commandes de plus de 50 $. Noté 4,9★ par plus de 12 000 coureurs. Commande avant 15h, expédition aujourd'hui.</div>
 </div>
-<div class="cps-organic">
-<div class="cps-org-url">review-site.com ›meilleures-chaussures-de-course-2025</div>
-<div class="cps-org-title">Meilleures chaussures de course 2025 — Avis d'experts</div>
-<div class="cps-org-desc">Nous avons testé plus de 40 paires pour que vous n'ayez pas à le faire. Nos meilleurs choix pour tous les budgets...</div>
+<div class="cps-gorg">
+<div class="cps-gor-url">concurrent-store.com ›chaussures de course</div>
+<div class="cps-gor-title">Chaussures de course — Achetez la gamme complète en ligne</div>
+<div class="cps-gor-desc">Vaste sélection de chaussures de route, de trail et de piste de grandes marques. Retours gratuits sur toutes les commandes.</div>
 </div>
-<div class="cps-toast" id="cpsToast"><div class="cps-tdot"></div>1 conversion · 89,00 $</div>
+<div class="cps-gorg">
+<div class="cps-gor-url">review-site.com ›meilleures-chaussures-de-course-2025</div>
+<div class="cps-gor-title">Meilleures chaussures de course 2025 – Avis et choix d’experts</div>
+<div class="cps-gor-desc">Nous avons testé plus de 40 paires pour que vous n'ayez pas à le faire. Meilleurs choix pour la route, le trail et tous les budgets.</div>
+</div>
+<div class="cps-toast" id="cpsToast"><div class="cps-tdot"></div><span id="cpsConvText">1 conversion · 89,00 $</span></div>
+</div>
 </div>
 </div>
 </div>
@@ -523,30 +531,35 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
   var titleEl=document.getElementById('cpsTitle');
   var descEl=document.getElementById('cpsDesc');
   var urlEl=document.getElementById('cpsUrl');
+  var urlBar=document.getElementById('cpsUrlBar');
+  var convText=document.getElementById('cpsConvText');
   var toast=document.getElementById('cpsToast');
-  var ring=document.getElementById('cpsRing');
   if(!textEl) return;
-  var cursor='<span class="cps-cursor"></span>';
+  var cursor='<span class="cps-gcursor"></span>';
   var queries=[
-    {q:'best running shoes online',url:'zoomy-client.com › shop › running',title:'Best Running Shoes — Free Shipping Today',desc:'Shop 200+ styles from top brands. Free next-day delivery on orders over $50. Rated 4.9★ by 12,000+ runners.',conv:'1 conversion · $89.00'},
-    {q:'affordable web design agency',url:'zoomy.services › websites',title:'Custom Websites from $597 — Built & Launched',desc:'Preview before you pay. Cart, checkout & chatbot included. No templates — every site built from scratch.',conv:'1 lead · contact form'},
-    {q:'buy wireless earbuds near me',url:'zoomy-client.com › audio › earbuds',title:'Top-Rated Wireless Earbuds — Up to 40% Off',desc:'ANC · 32hr battery · waterproof. 60+ models compared. Same-day shipping on orders before 3pm.',conv:'1 conversion · $129.00'}
+    {q:'best running shoes online',slug:'best+running+shoes+online',adUrl:'https://zoomy-client.com › shoes › running',title:'Best Running Shoes — Free Shipping Today | Top Brands',desc:'Shop 200+ styles from top brands. Free next-day delivery on orders over $50. Rated 4.9★ by over 12,000 runners. Order by 3pm, ships today.',conv:'1 conversion · $89.00'},
+    {q:'affordable web design agency',slug:'affordable+web+design+agency',adUrl:'https://zoomy.services › websites',title:'Custom Websites from $597 — Built & Launched For You',desc:'Preview before you pay. Cart, checkout & chatbot included. No templates — every page built from scratch and delivered ready to publish.',conv:'1 lead captured'},
+    {q:'buy wireless earbuds online',slug:'buy+wireless+earbuds+online',adUrl:'https://zoomy-client.com › audio › earbuds',title:'Top-Rated Wireless Earbuds — Up to 40% Off Today',desc:'ANC · 32hr battery · waterproof. Compare 60+ models. Same-day shipping on orders placed before 3pm. Free returns within 30 days.',conv:'1 conversion · $129.00'}
   ];
   var cur=0;
   function runCycle(){
     var q=queries[cur];
     var i=0;
     textEl.innerHTML=cursor;
+    if(urlBar) urlBar.textContent='google.com/search?q=';
     var typer=setInterval(function(){
-      if(i<q.q.length){textEl.innerHTML=q.q.slice(0,i+1)+cursor;i++;}
-      else{
+      if(i<q.q.length){
+        textEl.innerHTML=q.q.slice(0,i+1)+cursor;
+        if(urlBar) urlBar.textContent='google.com/search?q='+q.slug.slice(0,i+1);
+        i++;
+      } else {
         clearInterval(typer);
         setTimeout(function(){
-          if(ring){ring.style.animation='none';void ring.offsetWidth;ring.style.animation='cpsRingAnim .55s ease forwards';}
           titleEl.textContent=q.title;
           descEl.textContent=q.desc;
-          urlEl.textContent=q.url;
-          if(toast) toast.querySelector('.cps-tdot').nextSibling.textContent=' '+q.conv;
+          urlEl.textContent=q.adUrl;
+          if(urlBar) urlBar.textContent='google.com/search?q='+q.slug;
+          if(convText) convText.textContent=q.conv;
           setTimeout(function(){
             toast.classList.add('show');
             setTimeout(function(){
@@ -556,15 +569,15 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
                 var eraser=setInterval(function(){
                   if(txt.length>0){txt=txt.slice(0,-1);textEl.innerHTML=txt+cursor;}
                   else{clearInterval(eraser);cur=(cur+1)%queries.length;setTimeout(runCycle,500);}
-                },30);
+                },28);
               },500);
-            },1800);
+            },2000);
           },500);
-        },900);
+        },700);
       }
-    },75);
+    },72);
   }
-  setTimeout(runCycle,1000);
+  setTimeout(runCycle,900);
 })();
 </script>
 <script src="../js/main.js?v=20260421"></script>
