@@ -674,9 +674,17 @@
 </div>
 </div>
 <div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:var(--radius-md);padding:1rem;margin-bottom:1.5rem;">
-<div style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem;">Phone agent cost</div>
-<div style="font-family:var(--f-display);font-size:1.2rem;font-weight:700;color:var(--accent);">$699</div>
-<div style="font-size:.72rem;color:var(--muted);margin-top:.25rem;">(one-time purchase)</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;">
+<div>
+<div style="font-size:.75rem;color:var(--muted);margin-bottom:.2rem;">Setup (one-time)</div>
+<div style="font-family:var(--f-display);font-size:1.1rem;font-weight:700;color:var(--accent);">$699</div>
+</div>
+<div style="text-align:right;">
+<div style="font-size:.75rem;color:var(--muted);margin-bottom:.2rem;">Monthly hosting</div>
+<div style="font-family:var(--f-display);font-size:1.1rem;font-weight:700;color:var(--accent);">$59/mo</div>
+</div>
+</div>
+<div style="font-size:.72rem;color:var(--muted);text-align:center;padding-top:.5rem;border-top:1px solid rgba(99,102,241,.15);">Year 1 total: $1,407</div>
 </div>
 <div style="text-align:center;">
 <div style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem;">Net annual recovery</div>
@@ -737,7 +745,7 @@ function roiCalc() {
   const weeklyLost  = calls * rate * val;
   const monthlyLost = weeklyLost * 4.33;
   const yearlyLost  = weeklyLost * 52;
-  const agentCost   = 699;
+  const agentCost   = 699 + (59 * 12); // $1,407 year 1 (setup + hosting)
   const netRecovery = yearlyLost - agentCost;
   const fmt = n => Math.round(n).toLocaleString();
   document.getElementById('roi-week').textContent  = fmt(weeklyLost);
