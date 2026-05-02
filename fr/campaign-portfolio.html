@@ -204,7 +204,7 @@ html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] 
 </nav>
 <!-- ═══ HERO ═══ -->
 <style>
-.cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,420px);gap:3rem;align-items:center;}
+.cp-hero-grid{display:grid;grid-template-columns:1fr minmax(0,360px);gap:2.5rem;align-items:center;}
 @media(max-width:900px){.cp-hero-grid{grid-template-columns:1fr;}.cp-hero-visual{display:none;}}
 /* Override global v11 max-width cap so the two-column grid fits */
 html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner,
@@ -215,28 +215,28 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
 .cp-hero-visual{overflow:hidden;min-width:0;}
 .cps-browser{border-radius:14px;overflow:hidden;box-shadow:0 0 50px rgba(99,102,241,.14),0 28px 72px rgba(0,0,0,.7);width:100%;}
 /* Google page — white like the real thing */
-.cps-page{background:#fff;padding:1.1rem 1.25rem 1.1rem;position:relative;}
-.cps-glogo{font-family:Georgia,serif;font-size:1.75rem;font-weight:400;margin-bottom:.75rem;display:inline-block;letter-spacing:-.01em;}
+.cps-page{background:#fff;padding:1rem 1rem 1rem;position:relative;overflow:hidden;word-break:break-word;}
+.cps-glogo{font-family:Georgia,serif;font-size:1.5rem;font-weight:400;margin-bottom:.65rem;display:inline-block;letter-spacing:-.01em;}
 .cps-glb{color:#4285F4;}.cps-glr{color:#EA4335;}.cps-glo{color:#FBBC05;}.cps-glg{color:#34A853;}.cps-glr2{color:#EA4335;}.cps-gle{color:#4285F4;}
-.cps-gsbar{display:flex;align-items:center;gap:.5rem;background:#fff;border:1px solid #dfe1e5;border-radius:24px;padding:.42rem .9rem;margin-bottom:.6rem;box-shadow:0 1px 6px rgba(32,33,36,.12);}
+.cps-gsbar{display:flex;align-items:center;gap:.5rem;background:#fff;border:1px solid #dfe1e5;border-radius:24px;padding:.38rem .85rem;margin-bottom:.55rem;box-shadow:0 1px 6px rgba(32,33,36,.12);overflow:hidden;}
 .cps-gsi{color:#9aa0a6;flex-shrink:0;}
-.cps-gstext{font-family:Arial,sans-serif;font-size:.82rem;color:#202124;flex:1;min-height:1em;}
-.cps-gcursor{display:inline-block;width:1.5px;height:.9em;background:#4285F4;margin-left:1px;animation:cpsCursor .85s step-end infinite;vertical-align:text-bottom;}
+.cps-gstext{font-family:Arial,sans-serif;font-size:.78rem;color:#202124;flex:1;min-width:0;min-height:1em;overflow:hidden;}
+.cps-gcursor{display:inline-block;width:1.5px;height:.85em;background:#4285F4;margin-left:1px;animation:cpsCursor .85s step-end infinite;vertical-align:text-bottom;}
 @keyframes cpsCursor{0%,100%{opacity:1;}50%{opacity:0;}}
-.cps-grc{font-size:.65rem;color:#70757a;margin-bottom:.55rem;}
+.cps-grc{font-size:.6rem;color:#70757a;margin-bottom:.5rem;}
 /* Ad */
-.cps-gad{padding:.65rem 0;border-bottom:1px solid #ebebeb;margin-bottom:.3rem;}
-.cps-gspons{font-size:.65rem;color:#70757a;letter-spacing:.01em;margin-bottom:.22rem;display:flex;align-items:center;gap:.5rem;}
-.cps-gspons::after{content:"← your ad";font-size:.6rem;color:#1a0dab;font-weight:700;background:#e8f0fe;border-radius:4px;padding:1px 6px;letter-spacing:.02em;}
-.cps-gtitle{font-size:1rem;color:#1a0dab;line-height:1.4;margin-bottom:.2rem;min-height:2.6em;font-family:Arial,sans-serif;text-decoration:underline;cursor:default;font-weight:600;}
-.cps-gurl{font-size:.7rem;color:#1e8e3e;margin-bottom:.22rem;}
-.cps-gdesc{font-size:.76rem;color:#4d5156;line-height:1.58;min-height:2.7em;font-family:Arial,sans-serif;}
+.cps-gad{padding:.6rem 0;border-bottom:1px solid #ebebeb;margin-bottom:.25rem;}
+.cps-gspons{font-size:.62rem;color:#70757a;letter-spacing:.01em;margin-bottom:.2rem;display:flex;align-items:center;gap:.45rem;}
+.cps-gspons::after{content:"← your ad";font-size:.58rem;color:#1a0dab;font-weight:700;background:#e8f0fe;border-radius:4px;padding:1px 5px;letter-spacing:.02em;}
+.cps-gtitle{font-size:.88rem;color:#1a0dab;line-height:1.35;margin-bottom:.18rem;font-family:Arial,sans-serif;text-decoration:underline;cursor:default;font-weight:600;}
+.cps-gurl{font-size:.65rem;color:#1e8e3e;margin-bottom:.2rem;}
+.cps-gdesc{font-size:.7rem;color:#4d5156;line-height:1.55;font-family:Arial,sans-serif;}
 /* Organic */
-.cps-gorg{padding:.45rem 0;border-bottom:1px solid #ebebeb;}
+.cps-gorg{padding:.4rem 0;border-bottom:1px solid #ebebeb;}
 .cps-gorg:last-of-type{border-bottom:none;}
-.cps-gor-url{font-size:.62rem;color:#202124;margin-bottom:.16rem;}
-.cps-gor-title{font-size:.85rem;color:#1a0dab;margin-bottom:.1rem;font-family:Arial,sans-serif;}
-.cps-gor-desc{font-size:.73rem;color:#4d5156;line-height:1.5;font-family:Arial,sans-serif;}
+.cps-gor-url{font-size:.58rem;color:#202124;margin-bottom:.14rem;}
+.cps-gor-title{font-size:.78rem;color:#1a0dab;margin-bottom:.08rem;font-family:Arial,sans-serif;}
+.cps-gor-desc{font-size:.68rem;color:#4d5156;line-height:1.45;font-family:Arial,sans-serif;}
 /* Conversion toast */
 .cps-toast{position:absolute;bottom:.85rem;right:.85rem;display:flex;align-items:center;gap:.45rem;background:#e6f4ea;border:1px solid #34a853;border-radius:8px;padding:.42rem .8rem;font-size:.7rem;font-family:Arial,sans-serif;color:#1e6e34;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;pointer-events:none;z-index:5;}
 .cps-toast.show{opacity:1;transform:translateY(0);}
@@ -530,7 +530,7 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
   var cursor='<span class="cps-gcursor"></span>';
   var queries=[
     {q:'best running shoes online',slug:'best+running+shoes+online',adUrl:'https://zoomy-client.com › shoes › running',title:'Best Running Shoes — Free Shipping Today | Top Brands',desc:'Shop 200+ styles from top brands. Free next-day delivery on orders over $50. Rated 4.9★ by over 12,000 runners. Order by 3pm, ships today.',conv:'1 conversion · $89.00'},
-    {q:'affordable web design agency',slug:'affordable+web+design+agency',adUrl:'https://zoomy.services › websites',title:'Custom Websites from $597 — Built & Launched For You',desc:'Preview before you pay. Cart, checkout & chatbot included. No templates — every page built from scratch and delivered ready to publish.',conv:'1 lead captured'},
+    {q:'luxury skincare products online',slug:'luxury+skincare+products+online',adUrl:'https://glowlab.com › skincare › luxury',title:'Premium Skincare — Free Gift With Every Order',desc:'Dermatologist-formulated serums, moisturisers & SPF. Free gift on orders over $60. Loved by 50,000+ customers. Ships in 24hrs.',conv:'1 conversion · $74.00'},
     {q:'buy wireless earbuds online',slug:'buy+wireless+earbuds+online',adUrl:'https://zoomy-client.com › audio › earbuds',title:'Top-Rated Wireless Earbuds — Up to 40% Off Today',desc:'ANC · 32hr battery · waterproof. Compare 60+ models. Same-day shipping on orders placed before 3pm. Free returns within 30 days.',conv:'1 conversion · $129.00'}
   ];
   var cur=0;
