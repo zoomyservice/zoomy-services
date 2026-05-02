@@ -212,13 +212,13 @@ html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner,
 html[data-theme="light"] .cp-hero-grid h1{text-align:left!important;max-width:none!important;}
 html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
 /* ── Browser window mockup ── */
-.cps-browser{border-radius:14px;overflow:hidden;box-shadow:0 0 50px rgba(99,102,241,.14),0 28px 72px rgba(0,0,0,.7);}
+.cps-browser{border-radius:14px;overflow:hidden;box-shadow:0 0 50px rgba(99,102,241,.14),0 28px 72px rgba(0,0,0,.7);width:100%;max-width:100%;}
 /* Chrome bar */
-.cps-chrome{background:#28283f;padding:.55rem 1rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid rgba(255,255,255,.07);}
+.cps-chrome{background:#28283f;padding:.55rem 1rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid rgba(255,255,255,.07);overflow:hidden;}
 .cps-dots{display:flex;gap:6px;flex-shrink:0;}
 .cps-dot{width:11px;height:11px;border-radius:50%;}
 .cps-dot-r{background:#ff5f57;}.cps-dot-y{background:#febc2e;}.cps-dot-g{background:#28c840;}
-.cps-urlbar{flex:1;background:rgba(255,255,255,.08);border-radius:20px;padding:3px 12px;font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.45);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cps-urlbar{flex:1;min-width:0;background:rgba(255,255,255,.08);border-radius:20px;padding:3px 12px;font-family:var(--font-mono);font-size:.62rem;color:rgba(255,255,255,.45);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 /* Google page — white like the real thing */
 .cps-page{background:#fff;padding:1.1rem 1.25rem 1.1rem;position:relative;}
 .cps-glogo{font-family:Georgia,serif;font-size:1.75rem;font-weight:400;margin-bottom:.75rem;display:inline-block;letter-spacing:-.01em;}
@@ -231,8 +231,9 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
 .cps-grc{font-size:.65rem;color:#70757a;margin-bottom:.55rem;}
 /* Ad */
 .cps-gad{padding:.65rem 0;border-bottom:1px solid #ebebeb;margin-bottom:.3rem;}
-.cps-gspons{font-size:.65rem;color:#70757a;letter-spacing:.01em;margin-bottom:.22rem;}
-.cps-gtitle{font-size:.95rem;color:#1a0dab;line-height:1.4;margin-bottom:.2rem;min-height:2.6em;font-family:Arial,sans-serif;text-decoration:underline;cursor:default;}
+.cps-gspons{font-size:.65rem;color:#70757a;letter-spacing:.01em;margin-bottom:.22rem;display:flex;align-items:center;gap:.5rem;}
+.cps-gspons::after{content:"← your ad";font-size:.6rem;color:#1a0dab;font-weight:700;background:#e8f0fe;border-radius:4px;padding:1px 6px;letter-spacing:.02em;}
+.cps-gtitle{font-size:1rem;color:#1a0dab;line-height:1.4;margin-bottom:.2rem;min-height:2.6em;font-family:Arial,sans-serif;text-decoration:underline;cursor:default;font-weight:600;}
 .cps-gurl{font-size:.7rem;color:#1e8e3e;margin-bottom:.22rem;}
 .cps-gdesc{font-size:.76rem;color:#4d5156;line-height:1.58;min-height:2.7em;font-family:Arial,sans-serif;}
 /* Organic */
@@ -262,6 +263,7 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
 </div>
 </div>
 <div aria-hidden="true" class="cp-hero-visual">
+<div style="font-family:var(--font-mono);font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.65rem;text-align:center;">Votre annonce · Position n°1 · Recherche Google</div>
 <div class="cps-browser">
 <div class="cps-chrome">
 <div class="cps-dots"><div class="cps-dot cps-dot-r"></div><div class="cps-dot cps-dot-y"></div><div class="cps-dot cps-dot-g"></div></div>
@@ -531,7 +533,6 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
   var titleEl=document.getElementById('cpsTitle');
   var descEl=document.getElementById('cpsDesc');
   var urlEl=document.getElementById('cpsUrl');
-  var urlBar=document.getElementById('cpsUrlBar');
   var convText=document.getElementById('cpsConvText');
   var toast=document.getElementById('cpsToast');
   if(!textEl) return;
@@ -546,11 +547,9 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
     var q=queries[cur];
     var i=0;
     textEl.innerHTML=cursor;
-    if(urlBar) urlBar.textContent='google.com/search?q=';
     var typer=setInterval(function(){
       if(i<q.q.length){
         textEl.innerHTML=q.q.slice(0,i+1)+cursor;
-        if(urlBar) urlBar.textContent='google.com/search?q='+q.slug.slice(0,i+1);
         i++;
       } else {
         clearInterval(typer);
@@ -558,7 +557,6 @@ html[data-theme="light"] .cp-hero-grid .hero-sub{text-align:left!important;}
           titleEl.textContent=q.title;
           descEl.textContent=q.desc;
           urlEl.textContent=q.adUrl;
-          if(urlBar) urlBar.textContent='google.com/search?q='+q.slug;
           if(convText) convText.textContent=q.conv;
           setTimeout(function(){
             toast.classList.add('show');
