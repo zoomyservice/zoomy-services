@@ -249,7 +249,25 @@ nav{top:var(--bar-h)!important}
     else if(_fbc){_ud.fbc=_fbc[1];}
     if(_fbp){_ud.fbp=_fbp[1];}}catch(e){}
     fbq('init','972114368527990',_ud);
-    fbq('track','PageView');
+
+    // Generate unique event ID for deduplication between browser pixel & CAPI
+    var _pvId = Date.now().toString(36) + Math.random().toString(36).substr(2,9);
+    fbq('track','PageView', {}, { eventID: _pvId });
+
+    // Fire server-side CAPI relay (catches ad blockers + iOS restrictions)
+    var _capiPayload = {
+      event_name: 'PageView',
+      event_id: _pvId,
+      source_url: window.location.href,
+      fbc: (_fbc && _fbc[1]) || '',
+      fbp: (_fbp && _fbp[1]) || ''
+    };
+    fetch('https://zoomy-ai.zoozoomfast.workers.dev/capi', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Origin': 'https://zoomy.services' },
+      body: JSON.stringify(_capiPayload),
+      keepalive: true
+    }).catch(function(){});
   })();
   </script>
 <noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
