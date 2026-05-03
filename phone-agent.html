@@ -163,8 +163,25 @@
 <noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- ═══ END META PIXEL ═══ -->
 <style>
-/* Mobile: show call card above description text in #try */
+/* Mobile: reorder sections — every call answered first, then talk to agent, then hero demo */
 @media(max-width:900px){
+  body { display:flex; flex-direction:column; }
+  /* Utility/nav elements stay at top */
+  #free-bar    { order:-200; }
+  #scroll-progress { order:-199; }
+  nav          { order:-198; }
+  /* Content section order */
+  #how-it-works { order:1; }   /* Every call. Answered. — header on mobile */
+  #try          { order:2; }   /* Talk to the agent — live demo */
+  .hero         { order:3; }   /* Phone agent visual demo */
+  #outbound     { order:4; }
+  #roi-section  { order:5; }
+  #use-cases    { order:6; }
+  #integrations { order:7; }
+  #cross-sell   { order:8; }
+  #how-we-build { order:9; }
+  #cta-pa       { order:10; }
+  /* Show call card above description text inside #try */
   #try .section-inner > div { display:flex; flex-direction:column; }
   #try .reveal-right { order:-1; margin-bottom:2rem; }
 }
@@ -552,7 +569,7 @@
 </section>
 <!-- ═══════════ INBOUND ═══════════ -->
 <!-- ═══════════ OUTBOUND ═══════════ -->
-<section class="section">
+<section class="section" id="outbound">
 <div class="section-inner">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem;">
 <div>
@@ -611,7 +628,7 @@
 </div>
 </section>
 <!-- ═══════════ ROI CALCULATOR ═══════════ -->
-<section class="section" style="background:var(--bg-2);">
+<section class="section" id="roi-section" style="background:var(--bg-2);">
 <div class="section-inner">
 <div style="text-align:center;margin-bottom:2.5rem;">
 <div class="section-tag">ROI Calculator</div>
@@ -696,7 +713,7 @@
 </div>
 </section>
 <!-- ═══════════ USE CASES ═══════════ -->
-<section class="section">
+<section class="section" id="use-cases">
 <div class="section-inner">
 <div class="section-tag">Applications</div>
 <h2 class="section-title">Built for businesses<br/>that rely on the phone.</h2>
@@ -772,7 +789,7 @@ function setPreset(btn) {
 roiCalc();
 </script>
 <!-- ═══════════ INTEGRATIONS ═══════════ -->
-<section class="section" style="background:var(--bg-2);">
+<section class="section" id="integrations" style="background:var(--bg-2);">
 <div class="section-inner">
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
 <div class="reveal-left">
@@ -883,7 +900,7 @@ roiCalc();
 </div>
 </section>
 <!-- ═══════════ CHATBOT CROSS-SELL ═══════════ -->
-<section class="section" style="background:var(--bg-2);">
+<section class="section" id="cross-sell" style="background:var(--bg-2);">
 <div class="section-inner">
 <div style="background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.06));border:1px solid rgba(99,102,241,.25);border-radius:20px;padding:2.5rem 3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
 <div>
@@ -896,7 +913,7 @@ roiCalc();
 </div>
 </section>
 <!-- ═══════════ HOW WE BUILD IT ═══════════ -->
-<section class="section">
+<section class="section" id="how-we-build">
 <div class="section-inner">
 <div class="section-tag">Process</div>
 <h2 class="section-title">How we build your agent.</h2>
@@ -943,7 +960,7 @@ roiCalc();
 </div>
 </section>
 <!-- ═══════════ CTA ═══════════ -->
-<section class="section" style="position:relative;overflow:hidden;">
+<section class="section" id="cta-pa" style="position:relative;overflow:hidden;">
 <div class="aurora" style="opacity:.5;">
 </div>
 <div class="section-inner" style="text-align:center;z-index:2;position:relative;">
