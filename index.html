@@ -150,6 +150,38 @@ nav{top:var(--bar-h)!important}
       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wd5th9teha");
+
+    // Referrer-based source tagging — keeps bio link clean, no UTM needed
+    (function() {
+      var ref = document.referrer || '';
+      var src = sessionStorage.getItem('zoomy_src');
+      if (!src) {
+        if (ref.indexOf('instagram.com') > -1 || ref.indexOf('l.instagram.com') > -1) {
+          src = 'instagram_bio';
+        } else if (ref.indexOf('facebook.com') > -1 || ref.indexOf('l.facebook.com') > -1) {
+          src = 'facebook_organic';
+        } else if (ref.indexOf('t.co') > -1 || ref.indexOf('twitter.com') > -1 || ref.indexOf('x.com') > -1) {
+          src = 'twitter';
+        } else if (ref.indexOf('google') > -1) {
+          src = 'google';
+        }
+        // UTM override takes priority if present
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('utm_source')) src = params.get('utm_source') + '_' + (params.get('utm_medium') || 'unknown');
+        if (src) sessionStorage.setItem('zoomy_src', src);
+      }
+      if (src) {
+        window.addEventListener('load', function() {
+          if (window.clarity) {
+            clarity('set', 'traffic_source', src);
+            clarity('event', 'source_' + src);
+          }
+          if (window.gtag) {
+            gtag('event', 'traffic_source_identified', {event_category: 'attribution', event_label: src});
+          }
+        });
+      }
+    })();
   </script>
 <!-- Custom event tracking -->
 <script>
