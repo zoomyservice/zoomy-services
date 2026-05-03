@@ -4623,3 +4623,12 @@ html[data-theme="light"] .hero:not(:has(.hero-stage)) .section-inner{
     padding:calc(var(--bar-h,44px) + 72px) 1.5rem 3.5rem!important;
   }
 }
+
+/* ── Mobile performance: disable expensive GPU effects ── */
+@media(max-width:900px){
+  #particle-canvas{display:none!important}
+  .aurora-blob{filter:none!important;opacity:.15!important}
+  .aurora{display:none!important}
+  .cursor-dot,.cursor-ring{display:none!important}
+  .card-tilt{transform:none!important}
+}

@@ -14,7 +14,20 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap"/></noscript>
-<link href="css/style.css?v=20260503a" rel="stylesheet"/>
+<link href="css/style.css?v=20260503a" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="css/style.css?v=20260503a" rel="stylesheet"/></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden}
+body{background:#020208;color:#f1f5f9;font-family:system-ui,-apple-system,sans-serif;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:10000;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(2,2,8,.96);border-bottom:1px solid rgba(255,255,255,.1)}
+.section{padding:7rem 2rem;position:relative;overflow:hidden}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-title{font-weight:700;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:#fff;margin-bottom:1rem}
+#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:#0D0D0B;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid #111128}
+.bar-off #free-bar{display:none!important}
+html.bar-show nav{top:44px}
+</style>
 <style>
 .chatbot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .detail-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
