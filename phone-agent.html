@@ -163,24 +163,26 @@
 <noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
 <!-- ═══ END META PIXEL ═══ -->
 <style>
-/* Mobile: reorder sections — every call answered first, then talk to agent, then hero demo */
+/* Mobile: reorder sections — every call answered first, then talk to agent */
 @media(max-width:900px){
   body { display:flex; flex-direction:column; }
   /* Utility/nav elements stay at top */
-  #free-bar    { order:-200; }
-  #scroll-progress { order:-199; }
-  nav          { order:-198; }
+  #free-bar       { order:-200; }
+  #scroll-progress{ order:-199; }
+  nav             { order:-198; }
   /* Content section order */
   #how-it-works { order:1; }   /* Every call. Answered. — header on mobile */
   #try          { order:2; }   /* Talk to the agent — live demo */
-  .hero         { order:3; }   /* Phone agent visual demo */
-  #outbound     { order:4; }
-  #roi-section  { order:5; }
-  #use-cases    { order:6; }
-  #integrations { order:7; }
-  #cross-sell   { order:8; }
-  #how-we-build { order:9; }
-  #cta-pa       { order:10; }
+  #outbound     { order:3; }
+  #roi-section  { order:4; }
+  #use-cases    { order:5; }
+  #integrations { order:6; }
+  #cross-sell   { order:7; }
+  #how-we-build { order:8; }
+  #cta-pa       { order:9; }
+  footer        { order:100; }
+  /* Hide the hero section on mobile */
+  .hero         { display:none!important; }
   /* Show call card above description text inside #try */
   #try .section-inner > div { display:flex; flex-direction:column; }
   #try .reveal-right { order:-1; margin-bottom:2rem; }

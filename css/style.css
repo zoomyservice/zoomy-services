@@ -3188,6 +3188,19 @@ section.hero[style*="min-height:50vh"]{
     grid-template-columns:1fr!important;
     gap:1.5rem!important;
   }
+  /* Fix: parent column that uses align-items:flex-end pushes chatbot to the right on mobile */
+  .chatbot-detail-grid > div[style*="flex-end"]{
+    align-items:center!important;
+  }
+  /* Fix: send button stretching — ensure row items are vertically centred */
+  .chatbot-input{
+    align-items:center!important;
+  }
+  /* Centre the h1 on mobile */
+  .chatbot-detail-grid > div:first-child h1{
+    text-align:center!important;
+    max-width:100%!important;
+  }
 }
 
 /* — 8. Phone-agent 'Your phone.' overflow fix — */
