@@ -3188,18 +3188,32 @@ section.hero[style*="min-height:50vh"]{
     grid-template-columns:1fr!important;
     gap:1.5rem!important;
   }
-  /* Fix: parent column that uses align-items:flex-end pushes chatbot to the right on mobile */
-  .chatbot-detail-grid > div[style*="flex-end"]{
+  /* Fix: second column always centred on mobile regardless of inline align-items */
+  .chatbot-detail-grid > div:last-child{
     align-items:center!important;
+    justify-content:flex-start!important;
+  }
+  /* Belt-and-suspenders: centre the chatbot mock directly */
+  #demo,
+  .chatbot-mock{
+    margin-left:auto!important;
+    margin-right:auto!important;
   }
   /* Fix: send button stretching — ensure row items are vertically centred */
   .chatbot-input{
     align-items:center!important;
   }
-  /* Centre the h1 on mobile */
+  /* Centre left-column text and buttons on mobile */
   .chatbot-detail-grid > div:first-child h1{
     text-align:center!important;
     max-width:100%!important;
+  }
+  .chatbot-detail-grid > div:first-child p{
+    text-align:center!important;
+    max-width:100%!important;
+  }
+  .chatbot-detail-grid > div:first-child > div[style*="display:flex"]{
+    justify-content:center!important;
   }
 }
 
