@@ -121,7 +121,7 @@ nav.scrolled{background:rgba(2,2,8,.96);border-bottom-color:var(--border-b)}
 .msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.85rem;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word;text-align:left}
 .msg-bot{background:#111128;border:1px solid rgba(99,102,241,.18);color:#cbd5e1;align-self:flex-start;border-bottom-left-radius:4px}
 .msg-user{background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.chatbot-input{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:10px;background:var(--card)}
+.chatbot-input{padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:10px;align-items:center;background:var(--card)}
 .chatbot-input-field{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:9px 16px;font-size:.85rem;color:var(--text);outline:none;font-family:var(--font-body)}
 .chatbot-send{width:36px;height:36px;border-radius:50%;background:var(--grad-main);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff;cursor:pointer}
 .typing-dots{display:flex;align-items:center;gap:4px;padding:4px 0}
@@ -190,7 +190,7 @@ footer{position:relative;background:var(--bg-2);border-top:1px solid var(--borde
 @media(min-width:769px){.nav-mobile-footer{display:none!important}}
 .nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9997;transition:opacity .3s}
 .nav-overlay.open{display:block}
-@media(max-width:768px){.section{padding:4rem 1.5rem}nav{padding:0 1.5rem;transition:background var(--transition),border-color var(--transition),transform .3s cubic-bezier(.4,0,.2,1)}.nav-links,.btn-nav{display:none}.nav-toggle{display:flex}.lang-switcher{display:flex!important;gap:.2rem}.lang-btn{font-size:.7rem!important;padding:3px 6px!important}.lang-switcher-menu{display:none!important}.nav-links{display:flex;flex-direction:column;gap:0;position:fixed;top:68px;right:0;bottom:0;width:min(300px,85vw);background:rgba(8,8,18,.98);padding:1.5rem 1.75rem 2rem;transform:translateX(110%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:-8px 0 48px rgba(0,0,0,.6);z-index:9999;overflow-y:auto}.nav-links.open{transform:translateX(0)}.nav-links li{border-bottom:1px solid rgba(255,255,255,.07)}.nav-links li a{display:block;padding:.9rem 0;font-size:1.05rem;font-weight:500;letter-spacing:.02em;color:var(--text-muted);transition:color .2s,padding-left .2s}.nav-links li a:hover,.nav-links li a.active{color:var(--white);padding-left:.4rem}.nav-mobile-footer{margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:1rem;flex-shrink:0}.btn-nav-full{display:flex!important;justify-content:center;width:100%;text-align:center}.lang-switcher-menu{display:flex!important;justify-content:center;gap:.5rem}.footer-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{justify-content:center}.cursor-dot,.cursor-ring{display:none}nav.nav-hidden{transform:translateY(-100%)}nav.nav-hidden .nav-links.open{transform:translateX(110%)}}
+@media(max-width:768px){.section{padding:4rem 1.5rem}nav{padding:0 1.5rem;transition:background var(--transition),border-color var(--transition),transform .3s cubic-bezier(.4,0,.2,1)}.nav-links,.btn-nav{display:none}.nav-toggle{display:flex}.lang-switcher{display:flex!important;gap:.2rem}.lang-btn{font-size:.7rem!important;padding:3px 6px!important}.lang-switcher-menu{display:none!important}.nav-links{display:flex;flex-direction:column;gap:0;position:fixed;top:0;left:0;right:0;width:100%;background:var(--bg);padding:calc(100px + 1rem) 2rem 2rem;transform:translateY(-110%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:0 6px 32px rgba(0,0,0,.5);border-bottom:1px solid var(--border);z-index:9999;overflow-y:auto}.nav-links.open{transform:translateY(0)}.nav-links li{border-bottom:1px solid rgba(255,255,255,.07)}.nav-links li a{display:block;padding:.9rem 0;font-size:1.05rem;font-weight:500;letter-spacing:.02em;color:var(--text-muted);transition:color .2s,padding-left .2s}.nav-links li a:hover,.nav-links li a.active{color:var(--white);padding-left:.4rem}.nav-mobile-footer{margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:1rem;flex-shrink:0}.btn-nav-full{display:flex!important;justify-content:center;width:100%;text-align:center}.lang-switcher-menu{display:flex!important;justify-content:center;gap:.5rem}.footer-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column;align-items:stretch}.hero-actions .btn{justify-content:center}.cursor-dot,.cursor-ring{display:none}nav.nav-hidden{transform:translateY(-100%)}nav.nav-hidden .nav-links.open{transform:translateY(-110%)}}
 @media(max-width:520px){.section{padding:3rem 1rem}h1{font-size:clamp(2.2rem,9vw,3rem)}.section-title{font-size:clamp(1.7rem,6vw,2.4rem)}}
 /* ── Mobile inline-grid overrides — collapses any hardcoded grid to single column ── */
 @media(max-width:768px){
@@ -2146,11 +2146,13 @@ html[data-theme="light"] .hs-phone-card::before{
 @media(max-width:768px){
   /* When free bar is visible, drawer top = bar-h(44) + nav(56-68) */
   #navLinks{
-    top:calc(56px + var(--bar-h, 44px))!important;
-    height:calc(100vh - 56px - var(--bar-h, 44px))!important;
     z-index:10000!important;
+    /* Full-width dropdown: padding-top accounts for freebar(44) + nav(56) */
+    padding-top:calc(100px + 1rem)!important;
   }
-  .bar-off #navLinks{top:56px!important;height:calc(100vh - 56px)!important}
+  .bar-off #navLinks{
+    padding-top:calc(56px + 1rem)!important;
+  }
 
   /* Make sure nav itself sits above content */
   nav{z-index:10001!important;height:56px!important}
@@ -2224,7 +2226,7 @@ html[data-theme="light"] .hs-phone-card::before{
   html[data-theme="light"] .nav-links{
     background:var(--card)!important;
     color:var(--text)!important;
-    box-shadow:-8px 0 32px rgba(58,46,29,.20)!important;
+    box-shadow:0 6px 24px rgba(58,46,29,.20)!important;
   }
   html[data-theme="light"] .nav-links li{
     border-bottom:1px solid var(--border)!important;
