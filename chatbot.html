@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="css/style.css?v=20260430o" rel="stylesheet"/>
+<link href="css/style.css?v=20260503a" rel="stylesheet"/>
 <style>
 .chatbot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .detail-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
@@ -22,7 +22,30 @@
 .detail-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
 .detail-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff}
 .detail-desc{color:var(--text-2);font-size:.9rem;line-height:1.75}
-@media(max-width:900px){.chatbot-detail-grid{grid-template-columns:1fr}.detail-row{grid-template-columns:1fr;gap:1rem}}
+@media(max-width:900px){
+  .chatbot-detail-grid{grid-template-columns:1fr}
+  .detail-row{grid-template-columns:1fr;gap:1rem}
+  /* Centre everything in the hero left column */
+  .chatbot-detail-grid>div:first-child{
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+  }
+  .chatbot-detail-grid>div:first-child h1{
+    text-align:center!important;max-width:100%!important;
+  }
+  .chatbot-detail-grid>div:first-child p{
+    text-align:center!important;max-width:100%!important;
+  }
+  .chatbot-detail-grid>div:first-child>div[style*="flex"]{
+    justify-content:center!important;
+  }
+  /* Centre chatbot mock in right column */
+  .chatbot-detail-grid>div:last-child{
+    align-items:center!important;
+  }
+  #demo,.chatbot-mock{
+    margin-left:auto!important;margin-right:auto!important;
+  }
+}
 .hero .chatbot-mock{display:block!important}
 </style>
 <style>
@@ -213,6 +236,33 @@
 </div>
 </div>
 </section>
+<section class="section" style="padding:3.5rem 2rem;border-bottom:1px solid var(--border);">
+<div class="section-inner">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;" class="cb-stats-grid">
+<div>
+  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">80%</div>
+  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">of routine questions<br>handled automatically</div>
+</div>
+<div>
+  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">&lt;2s</div>
+  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">average response time,<br>any hour of the day</div>
+</div>
+<div>
+  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">30%</div>
+  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">lower support costs<br>on average</div>
+</div>
+<div>
+  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">3×</div>
+  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">more leads captured<br>vs. no chatbot</div>
+</div>
+</div>
+</div>
+</section>
+<style>
+@media(max-width:640px){
+  .cb-stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:1.5rem!important;}
+}
+</style>
 <section class="section">
 <div class="section-inner">
 <div class="section-tag">How it works</div>
