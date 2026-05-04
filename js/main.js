@@ -9,7 +9,8 @@ if(progressBar)window.addEventListener('scroll',()=>{const h=document.body.scrol
 const nav=document.querySelector('nav');
 if(nav){
   const s=()=>nav.classList.toggle('scrolled',window.scrollY>20);
-  window.addEventListener('scroll',s,{passive:true});s();
+  window.addEventListener('scroll',s,{passive:true});
+  // Removed immediate s() call — forced layout reflow (189ms). Nav starts un-scrolled (correct at top).
 
 }
 const toggle=document.getElementById('navToggle');
@@ -44,7 +45,7 @@ const dot=document.querySelector('.cursor-dot');
 const ring=document.querySelector('.cursor-ring');
 if(dot&&ring&&window.matchMedia('(hover:hover)').matches){let mx=0,my=0,rx=0,ry=0;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});document.addEventListener('mousedown',()=>{dot.classList.add('click');ring.classList.add('click')});document.addEventListener('mouseup',()=>{dot.classList.remove('click');ring.classList.remove('click')});const hoverEls=document.querySelectorAll('a,button,.card,.btn,.icon-box');hoverEls.forEach(el=>{el.addEventListener('mouseenter',()=>{dot.classList.add('hover');ring.classList.add('hover')});el.addEventListener('mouseleave',()=>{dot.classList.remove('hover');ring.classList.remove('hover')})});(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})()}
 const canvas=document.getElementById('particle-canvas');
-if(canvas && window.innerWidth > 900){
+if(canvas && !window.matchMedia('(max-width:900px)').matches){
   const ctx=canvas.getContext('2d');
   let W,H,particles=[],stars=[];
   const mouse={x:null,y:null};
