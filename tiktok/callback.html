@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Authorization — Zoomy</title>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #0a0a0a; color: #fff; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+  .box { background: #1a1a1a; border: 1px solid #333; border-radius: 16px; padding: 40px; max-width: 500px; width: 90%; text-align: center; }
+  .logo { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+  .logo span { color: #e94aff; }
+  h2 { margin: 16px 0 8px; font-size: 1.3rem; }
+  p { color: #888; font-size: 0.95rem; line-height: 1.5; margin: 0 0 20px; }
+  .code-box { background: #111; border: 1px solid #444; border-radius: 8px; padding: 14px 16px; font-family: monospace; font-size: 0.9rem; word-break: break-all; color: #e94aff; margin: 20px 0; text-align: left; }
+  .url-box { background: #111; border: 1px solid #444; border-radius: 8px; padding: 14px 16px; font-family: monospace; font-size: 0.8rem; word-break: break-all; color: #aaa; margin: 20px 0; text-align: left; }
+  .copy-btn { background: #e94aff; color: #fff; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; font-weight: 600; }
+  .copy-btn:hover { background: #d040f0; }
+  .success { color: #4ade80; font-weight: 600; }
+  .error { color: #f87171; }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="logo">Zoom<span>y</span></div>
+  <h2 id="title">TikTok Authorization</h2>
+  <div id="content"></div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const code   = params.get('code');
+const state  = params.get('state');
+const error  = params.get('error');
+
+const title   = document.getElementById('title');
+const content = document.getElementById('content');
+
+if (error) {
+  title.textContent = 'Authorization Failed';
+  content.innerHTML = `<p class="error">TikTok returned an error: <strong>${error}</strong></p>
+    <p>${params.get('error_description') || ''}</p>`;
+} else if (code) {
+  title.textContent = '✅ Authorization Successful';
+  const fullUrl = window.location.href;
+  content.innerHTML = `
+    <p class="success">TikTok authorized Zoomy successfully.</p>
+    <p>Copy the full URL below and paste it into the terminal where tiktok_auth.py is running:</p>
+    <div class="url-box" id="urlBox">${fullUrl}</div>
+    <button class="copy-btn" onclick="copyUrl()">Copy Full URL</button>
+    <p style="margin-top:16px; font-size:0.85rem; color:#666;">Or just copy the code:</p>
+    <div class="code-box">${code}</div>
+  `;
+} else {
+  title.textContent = 'Waiting for Authorization...';
+  content.innerHTML = `<p>No authorization code found. Make sure you arrived here via TikTok's OAuth flow.</p>`;
+}
+
+function copyUrl() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    document.querySelector('.copy-btn').textContent = '✅ Copied!';
+    setTimeout(() => { document.querySelector('.copy-btn').textContent = 'Copy Full URL'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
