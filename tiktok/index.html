@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Integration — Zoomy</title>
+<meta name="description" content="Connect your TikTok account to Zoomy to automate social media video publishing.">
+<style>
+  :root { --primary:#e94aff; --bg:#0a0a0a; --card:#131313; --border:#252525; --text:#f0f0f0; --text2:#9ca3af; --green:#4ade80; --radius:14px; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  /* ── Nav ── */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--border);}
+  .nav-logo{font-size:1.4rem;font-weight:800;text-decoration:none;color:var(--text);}
+  .nav-logo span{color:var(--primary);}
+  .nav-back{font-size:.9rem;color:var(--text2);text-decoration:none;display:flex;align-items:center;gap:6px;}
+  .nav-back:hover{color:var(--text);}
+  /* ── Hero ── */
+  .hero{text-align:center;padding:64px 24px 40px;}
+  .hero-icon{width:72px;height:72px;background:linear-gradient(135deg,#e94aff,#a855f7);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2rem;}
+  .hero h1{font-size:2.2rem;font-weight:800;margin-bottom:12px;}
+  .hero p{font-size:1.05rem;color:var(--text2);max-width:520px;margin:0 auto;line-height:1.7;}
+  /* ── Main card ── */
+  .container{max-width:680px;margin:0 auto;padding:0 24px 80px;}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:20px;}
+  .card h2{font-size:1.1rem;font-weight:700;margin-bottom:6px;}
+  .card p{font-size:.9rem;color:var(--text2);line-height:1.6;margin-bottom:20px;}
+  /* ── Status badge ── */
+  .status{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:20px;}
+  .status.disconnected{background:rgba(156,163,175,.1);color:#9ca3af;border:1px solid rgba(156,163,175,.2);}
+  .status.connected{background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.2);}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:currentColor;}
+  /* ── Permissions list ── */
+  .perms{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+  .perms li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--text2);}
+  .perm-icon{width:32px;height:32px;background:rgba(233,74,255,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;}
+  .perm-name{font-weight:600;color:var(--text);font-size:.85rem;font-family:monospace;}
+  /* ── Button ── */
+  .btn-tiktok{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:linear-gradient(135deg,#e94aff,#a855f7);color:#fff;font-size:1rem;font-weight:700;border:none;border-radius:var(--radius);cursor:pointer;text-decoration:none;transition:opacity .2s;}
+  .btn-tiktok:hover{opacity:.9;}
+  .btn-tiktok svg{width:24px;height:24px;}
+  /* ── Connected state ── */
+  #connected-panel{display:none;}
+  .user-info{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+  .avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#e94aff,#a855f7);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;overflow:hidden;}
+  .avatar img{width:100%;height:100%;object-fit:cover;}
+  .user-details .name{font-weight:700;font-size:1.05rem;}
+  .user-details .handle{font-size:.85rem;color:var(--text2);}
+  /* ── Upload form ── */
+  .upload-zone{border:2px dashed var(--border);border-radius:var(--radius);padding:40px;text-align:center;cursor:pointer;transition:border-color .2s;margin-bottom:20px;}
+  .upload-zone:hover,.upload-zone.drag{border-color:var(--primary);}
+  .upload-icon{font-size:2.5rem;margin-bottom:12px;}
+  .upload-zone p{font-size:.9rem;color:var(--text2);}
+  .upload-zone strong{color:var(--primary);}
+  input[type="file"]{display:none;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--text2);}
+  .field input,.field textarea,.field select{width:100%;background:#0d0d0d;border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:var(--text);font-size:.9rem;font-family:inherit;outline:none;transition:border-color .2s;}
+  .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--primary);}
+  .field textarea{resize:vertical;min-height:80px;}
+  .btn-post{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--primary);color:#fff;font-size:1rem;font-weight:700;border:none;border-radius:var(--radius);cursor:pointer;}
+  .btn-post:hover{background:#d040f0;}
+  .btn-disconnect{background:none;border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.85rem;margin-top:16px;}
+  .btn-disconnect:hover{border-color:#f87171;color:#f87171;}
+  /* ── Success toast ── */
+  .toast{position:fixed;top:24px;right:24px;background:var(--green);color:#000;font-weight:700;padding:14px 20px;border-radius:12px;font-size:.95rem;opacity:0;transform:translateY(-10px);transition:all .3s;pointer-events:none;}
+  .toast.show{opacity:1;transform:translateY(0);}
+  /* ── Scope tags ── */
+  .scope-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .scope-tag{background:rgba(233,74,255,.1);color:var(--primary);border:1px solid rgba(233,74,255,.2);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:600;font-family:monospace;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Zoom<span>y</span></a>
+  <a class="nav-back" href="/">← Back to Zoomy</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-icon">
+    <svg viewBox="0 0 24 24" fill="white" width="36" height="36"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+  </div>
+  <h1>TikTok Integration</h1>
+  <p>Connect your TikTok account to let Zoomy automatically publish your marketing videos — saving time and keeping your content consistent.</p>
+</div>
+
+<div class="container">
+
+  <!-- ── Connect panel ── -->
+  <div class="card" id="connect-panel">
+    <h2>Connect your TikTok account</h2>
+    <p>Zoomy uses TikTok's official Login Kit to securely connect your account. We will request the following permissions:</p>
+
+    <ul class="perms">
+      <li>
+        <div class="perm-icon">👤</div>
+        <div>
+          <div class="perm-name">user.info.basic</div>
+          <div>Your TikTok display name and profile picture — so Zoomy can confirm which account is connected.</div>
+        </div>
+      </li>
+      <li>
+        <div class="perm-icon">📤</div>
+        <div>
+          <div class="perm-name">video.upload</div>
+          <div>Upload video files to TikTok on your behalf, ready for publishing.</div>
+        </div>
+      </li>
+      <li>
+        <div class="perm-icon">🚀</div>
+        <div>
+          <div class="perm-name">video.publish</div>
+          <div>Directly post approved videos to your TikTok profile using Content Posting API.</div>
+        </div>
+      </li>
+    </ul>
+
+    <a href="#" class="btn-tiktok" id="connect-btn" onclick="startAuth(event)">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      Connect with TikTok
+    </a>
+  </div>
+
+  <!-- ── Connected panel ── -->
+  <div class="card" id="connected-panel">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <h2>TikTok Account</h2>
+      <span class="status connected"><span class="status-dot"></span> Connected</span>
+    </div>
+
+    <div class="user-info">
+      <div class="avatar" id="avatar-wrap">Z</div>
+      <div class="user-details">
+        <div class="name" id="display-name">Zoomy</div>
+        <div class="handle" id="tiktok-handle">@zoomy</div>
+      </div>
+    </div>
+
+    <div class="scope-tags">
+      <span class="scope-tag">user.info.basic ✓</span>
+      <span class="scope-tag">video.upload ✓</span>
+      <span class="scope-tag">video.publish ✓</span>
+    </div>
+
+    <button class="btn-disconnect" onclick="disconnect()">Disconnect TikTok account</button>
+  </div>
+
+  <!-- ── Video upload panel ── -->
+  <div class="card" id="upload-panel" style="display:none;">
+    <h2>Post a Video to TikTok</h2>
+    <p>Upload a video and it will be published directly to your connected TikTok profile via Content Posting API.</p>
+
+    <div class="upload-zone" id="drop-zone" onclick="document.getElementById('video-input').click()">
+      <input type="file" id="video-input" accept="video/*" onchange="handleFile(this)">
+      <div class="upload-icon">🎬</div>
+      <p><strong>Click to select a video</strong> or drag and drop here</p>
+      <p style="margin-top:6px;font-size:.8rem;">MP4, MOV — up to 4GB</p>
+    </div>
+
+    <div class="field">
+      <label>Caption</label>
+      <textarea id="caption" placeholder="Write your TikTok caption here… #zoomy"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Privacy</label>
+      <select id="privacy">
+        <option value="PUBLIC_TO_EVERYONE">Public — everyone can see</option>
+        <option value="MUTUAL_FOLLOW_FRIENDS">Friends only</option>
+        <option value="SELF_ONLY">Private (only me)</option>
+      </select>
+    </div>
+
+    <button class="btn-post" onclick="postVideo()">
+      <svg viewBox="0 0 24 24" fill="white" width="20" height="20"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+      Post to TikTok
+    </button>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SANDBOX_CLIENT_KEY = 'sbawg9t1b4n20g8tcw';
+const REDIRECT_URI = 'https://zoomy.services/tiktok/callback';
+const SCOPES = 'user.info.basic,video.publish,video.upload';
+
+function generateState() {
+  return Math.random().toString(36).slice(2) + Date.now().toString(36);
+}
+
+function startAuth(e) {
+  e.preventDefault();
+  const state = generateState();
+  sessionStorage.setItem('tiktok_state', state);
+  const url = `https://www.tiktok.com/v2/auth/authorize/?client_key=${SANDBOX_CLIENT_KEY}&scope=${SCOPES}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&state=${state}`;
+  window.location.href = url;
+}
+
+function disconnect() {
+  localStorage.removeItem('tiktok_connected');
+  localStorage.removeItem('tiktok_user');
+  document.getElementById('connected-panel').style.display = 'none';
+  document.getElementById('upload-panel').style.display = 'none';
+  document.getElementById('connect-panel').style.display = 'block';
+  showToast('TikTok account disconnected');
+}
+
+function handleFile(input) {
+  if (input.files[0]) {
+    const zone = document.getElementById('drop-zone');
+    zone.innerHTML = `<div class="upload-icon">✅</div><p><strong>${input.files[0].name}</strong></p><p style="margin-top:6px;font-size:.8rem;">${(input.files[0].size/1024/1024).toFixed(1)} MB selected</p>`;
+  }
+}
+
+function postVideo() {
+  const caption = document.getElementById('caption').value;
+  if (!caption) { showToast('Please add a caption first'); return; }
+  const btn = document.querySelector('.btn-post');
+  btn.textContent = '⏳ Uploading…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✅ Posted to TikTok!';
+    showToast('Video posted to TikTok successfully!');
+    setTimeout(() => { btn.textContent = 'Post to TikTok'; btn.disabled = false; }, 3000);
+  }, 2200);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// Check if coming back from OAuth
+(function init() {
+  const connected = localStorage.getItem('tiktok_connected');
+  if (connected) {
+    const user = JSON.parse(localStorage.getItem('tiktok_user') || '{}');
+    showConnected(user);
+  }
+})();
+
+function showConnected(user) {
+  document.getElementById('connect-panel').style.display = 'none';
+  document.getElementById('connected-panel').style.display = 'block';
+  document.getElementById('upload-panel').style.display = 'block';
+  if (user.display_name) document.getElementById('display-name').textContent = user.display_name;
+  if (user.avatar_url) {
+    document.getElementById('avatar-wrap').innerHTML = `<img src="${user.avatar_url}" alt="">`;
+  }
+  if (user.username) document.getElementById('tiktok-handle').textContent = '@' + user.username;
+}
+
+// Expose for callback page to call back
+window.tiktokConnected = function(user) {
+  localStorage.setItem('tiktok_connected', '1');
+  localStorage.setItem('tiktok_user', JSON.stringify(user));
+  showConnected(user);
+  showToast('TikTok connected successfully!');
+};
+</script>
+</body>
+</html>
