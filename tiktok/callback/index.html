@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecting TikTok — Zoomy</title>
+<meta name="robots" content="noindex">
+<style>
+  :root { --primary:#e94aff; --bg:#0a0a0a; --card:#131313; --border:#252525; --text:#f0f0f0; --text2:#9ca3af; --green:#4ade80; --red:#f87171; --radius:14px; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;}
+  nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--border);background:var(--bg);}
+  .nav-logo{font-size:1.4rem;font-weight:800;text-decoration:none;color:var(--text);}
+  .nav-logo span{color:var(--primary);}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px 36px;max-width:480px;width:100%;text-align:center;}
+  .icon{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2rem;}
+  .icon.loading{background:rgba(233,74,255,.15);animation:pulse 1.5s ease-in-out infinite;}
+  .icon.success{background:rgba(74,222,128,.15);}
+  .icon.error{background:rgba(248,113,113,.15);}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  h1{font-size:1.5rem;font-weight:800;margin-bottom:10px;}
+  p{font-size:.95rem;color:var(--text2);line-height:1.6;margin-bottom:24px;}
+  .scope-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;}
+  .badge{font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:999px;font-family:monospace;}
+  .badge.green{background:rgba(74,222,128,.1);color:var(--green);border:1px solid rgba(74,222,128,.2);}
+  .badge.purple{background:rgba(233,74,255,.1);color:var(--primary);border:1px solid rgba(233,74,255,.2);}
+  .user-row{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:24px;text-align:left;}
+  .avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#e94aff,#a855f7);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;flex-shrink:0;overflow:hidden;}
+  .avatar img{width:100%;height:100%;object-fit:cover;}
+  .uname{font-weight:700;font-size:.95rem;}
+  .uid{font-size:.8rem;color:var(--text2);font-family:monospace;margin-top:2px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:var(--radius);font-size:.95rem;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:opacity .2s;}
+  .btn-primary{background:linear-gradient(135deg,#e94aff,#a855f7);color:#fff;}
+  .btn-primary:hover{opacity:.9;}
+  .btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border);}
+  .btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,.2);}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .error-detail{font-size:.8rem;font-family:monospace;background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.15);border-radius:8px;padding:12px;margin-bottom:20px;color:#f87171;word-break:break-all;text-align:left;}
+  #state-loading{display:block;}
+  #state-success,#state-error{display:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Zoom<span>y</span></a>
+</nav>
+
+<!-- LOADING -->
+<div id="state-loading" class="card">
+  <div class="icon loading">🔄</div>
+  <h1>Connecting TikTok…</h1>
+  <p>Exchanging authorization code with TikTok. This takes just a moment.</p>
+</div>
+
+<!-- SUCCESS -->
+<div id="state-success" class="card">
+  <div class="icon success">✅</div>
+  <h1>TikTok Connected!</h1>
+  <p>Your TikTok account is now linked to Zoomy. You can publish videos directly from the dashboard.</p>
+  <div id="user-row" class="user-row" style="display:none">
+    <div class="avatar" id="avatar">Z</div>
+    <div>
+      <div class="uname" id="display-name">—</div>
+      <div class="uid" id="open-id">—</div>
+    </div>
+  </div>
+  <div class="scope-badges">
+    <span class="badge green">✓ user.info.basic</span>
+    <span class="badge green">✓ video.upload</span>
+    <span class="badge green">✓ video.publish</span>
+  </div>
+  <div class="btn-row">
+    <a href="/tiktok/" class="btn btn-primary">Go to TikTok Dashboard</a>
+    <a href="/" class="btn btn-ghost">Back to Home</a>
+  </div>
+</div>
+
+<!-- ERROR -->
+<div id="state-error" class="card">
+  <div class="icon error">❌</div>
+  <h1>Connection Failed</h1>
+  <p>Something went wrong connecting your TikTok account. The error is shown below.</p>
+  <div class="error-detail" id="error-detail">Unknown error</div>
+  <div class="btn-row">
+    <a href="/tiktok/" class="btn btn-primary">Try Again</a>
+    <a href="/" class="btn btn-ghost">Back to Home</a>
+  </div>
+</div>
+
+<script>
+(async function () {
+  const WORKER = 'https://zoomy-tiktok.zoozoomfast.workers.dev';
+
+  const params  = new URLSearchParams(window.location.search);
+  const code    = params.get('code');
+  const errCode = params.get('error');
+  const errDesc = params.get('error_description');
+
+  function show(state) {
+    document.getElementById('state-loading').style.display = state === 'loading' ? 'block' : 'none';
+    document.getElementById('state-success').style.display = state === 'success' ? 'block' : 'none';
+    document.getElementById('state-error').style.display   = state === 'error'   ? 'block' : 'none';
+  }
+
+  function showError(msg) {
+    document.getElementById('error-detail').textContent = msg;
+    show('error');
+  }
+
+  // ── User denied OAuth ────────────────────────────────────────────
+  if (errCode) {
+    showError(`TikTok returned: ${errCode} — ${errDesc || 'No description provided'}`);
+    return;
+  }
+
+  // ── No code in URL ───────────────────────────────────────────────
+  if (!code) {
+    // Check if we landed here already connected (e.g. back navigation)
+    const saved = JSON.parse(localStorage.getItem('tt_connection') || 'null');
+    if (saved?.access_token) {
+      fillSuccess(saved);
+      show('success');
+    } else {
+      showError('No authorization code found in the URL. Try connecting again from the TikTok page.');
+    }
+    return;
+  }
+
+  // ── Exchange code with Worker ────────────────────────────────────
+  try {
+    const res  = await fetch(WORKER + '/exchange', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ code }),
+    });
+    const data = await res.json();
+
+    if (!data.ok) {
+      showError(`Exchange failed: ${data.error}${data.detail ? ' — ' + data.detail : ''}`);
+      return;
+    }
+
+    // Store in localStorage so tiktok/index.html can read connected state
+    localStorage.setItem('tt_connection', JSON.stringify({
+      access_token:  data.access_token,
+      open_id:       data.open_id,
+      display_name:  data.display_name,
+      avatar_url:    data.avatar_url,
+      scope:         data.scope,
+      connected_at:  Date.now(),
+      expires_in:    data.expires_in,
+    }));
+
+    fillSuccess(data);
+    show('success');
+
+  } catch (err) {
+    showError('Network error reaching Zoomy API: ' + err.message);
+  }
+
+  function fillSuccess(data) {
+    if (data.display_name) {
+      document.getElementById('display-name').textContent = data.display_name;
+      document.getElementById('open-id').textContent      = data.open_id || '';
+      // Avatar
+      const av = document.getElementById('avatar');
+      if (data.avatar_url) {
+        av.innerHTML = `<img src="${data.avatar_url}" alt="${data.display_name}" onerror="this.parentElement.textContent='${(data.display_name||'Z')[0].toUpperCase()}'">`;
+      } else {
+        av.textContent = (data.display_name || 'Z')[0].toUpperCase();
+      }
+      document.getElementById('user-row').style.display = 'flex';
+    }
+  }
+})();
+</script>
+</body>
+</html>

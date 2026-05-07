@@ -200,6 +200,7 @@ function startAuth(e) {
 }
 
 function disconnect() {
+  localStorage.removeItem('tt_connection');
   localStorage.removeItem('tiktok_connected');
   localStorage.removeItem('tiktok_user');
   document.getElementById('connected-panel').style.display = 'none';
@@ -235,8 +236,14 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-// Check if coming back from OAuth
+// Check if coming back from OAuth (support both new tt_connection key and legacy keys)
 (function init() {
+  const conn = JSON.parse(localStorage.getItem('tt_connection') || 'null');
+  if (conn?.access_token) {
+    showConnected(conn);
+    return;
+  }
+  // Legacy fallback
   const connected = localStorage.getItem('tiktok_connected');
   if (connected) {
     const user = JSON.parse(localStorage.getItem('tiktok_user') || '{}');
