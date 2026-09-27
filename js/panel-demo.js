@@ -14,19 +14,20 @@
      in img/demo/. Names are [English, French, Spanish].
      ------------------------------------------------------------------ */
   var PRODUCTS = [
-    { id: 'watch', ready: true, name: ['Chronograph watch', 'Montre chronographe', 'Reloj cronógrafo'], desc: ['Steel case, leather strap, two small dials.', 'Boîtier acier, bracelet cuir, deux petits cadrans.', 'Caja de acero, correa de cuero, dos esferas pequeñas.'], photos: ['watch.jpg', 'watch-dial.jpg', 'watch-crown.jpg', 'watch-wide.jpg'], avail: 'on', home: true },
-    { id: 'perfume', ready: true, name: ['Eau de parfum', 'Eau de parfum', 'Eau de parfum'], desc: ['Amber scent in a heavy glass bottle.', 'Parfum ambré dans un flacon en verre épais.', 'Aroma ámbar en un frasco de vidrio grueso.'], photos: ['perfume.jpg'], avail: 'on', home: true },
-    { id: 'keyboard', ready: true, name: ['Mechanical keyboard', 'Clavier mécanique', 'Teclado mecánico'], desc: ['Compact layout, aluminium case.', 'Format compact, boîtier en aluminium.', 'Formato compacto, caja de aluminio.'], photos: ['keyboard.jpg'], avail: 'on', home: false },
-    { id: 'camera', ready: true, name: ['Film camera', 'Appareil photo argentique', 'Cámara de película'], desc: ['Manual focus, metal body.', 'Mise au point manuelle, boîtier métal.', 'Enfoque manual, cuerpo de metal.'], photos: ['camera.jpg'], avail: 'on', home: false },
-    { id: 'headphones', ready: true, name: ['Wireless headphones', 'Casque sans fil', 'Auriculares inalámbricos'], desc: ['Over-ear, soft leather cushions.', 'Circum-auriculaire, coussinets en cuir.', 'Sobre la oreja, almohadillas de cuero.'], photos: ['headphones.jpg'], avail: 'on', home: false },
-    { id: 'microphone', ready: true, name: ['Studio microphone', 'Micro de studio', 'Micrófono de estudio'], desc: ['Clear voice, metal mesh grille.', 'Voix claire, grille en métal.', 'Voz clara, rejilla de metal.'], photos: ['microphone.jpg'], avail: 'on', home: false },
-    { id: 'turntable', ready: true, name: ['Record player', 'Platine vinyle', 'Tocadiscos'], desc: ['Two speeds, wooden base.', 'Deux vitesses, socle en bois.', 'Dos velocidades, base de madera.'], photos: ['turntable.jpg'], avail: 'on', home: false },
-    { id: 'lamp', ready: true, name: ['Desk lamp', 'Lampe de bureau', 'Lámpara de escritorio'], desc: ['Adjustable arm, warm light.', 'Bras réglable, lumière chaude.', 'Brazo ajustable, luz cálida.'], photos: ['lamp.jpg'], avail: 'on', home: false }
+    { id: 'watch', ready: true, price: 249, name: ['Chronograph watch', 'Montre chronographe', 'Reloj cronógrafo'], desc: ['Steel case, leather strap, two small dials.', 'Boîtier acier, bracelet cuir, deux petits cadrans.', 'Caja de acero, correa de cuero, dos esferas pequeñas.'], photos: ['watch.jpg', 'watch-dial.jpg', 'watch-crown.jpg', 'watch-wide.jpg'], avail: 'on', home: true },
+    { id: 'perfume', ready: true, price: 89, name: ['Eau de parfum', 'Eau de parfum', 'Eau de parfum'], desc: ['Amber scent in a heavy glass bottle.', 'Parfum ambré dans un flacon en verre épais.', 'Aroma ámbar en un frasco de vidrio grueso.'], photos: ['perfume.jpg'], avail: 'on', home: true },
+    { id: 'keyboard', ready: true, price: 139, name: ['Mechanical keyboard', 'Clavier mécanique', 'Teclado mecánico'], desc: ['Compact layout, aluminium case.', 'Format compact, boîtier en aluminium.', 'Formato compacto, caja de aluminio.'], photos: ['keyboard.jpg'], avail: 'on', home: true },
+    { id: 'camera', ready: true, price: 219, name: ['Film camera', 'Appareil photo argentique', 'Cámara de película'], desc: ['Manual focus, metal body.', 'Mise au point manuelle, boîtier métal.', 'Enfoque manual, cuerpo de metal.'], photos: ['camera.jpg'], avail: 'on', home: true },
+    { id: 'headphones', ready: true, price: 179, name: ['Wireless headphones', 'Casque sans fil', 'Auriculares inalámbricos'], desc: ['Over-ear, soft leather cushions.', 'Circum-auriculaire, coussinets en cuir.', 'Sobre la oreja, almohadillas de cuero.'], photos: ['headphones.jpg'], avail: 'on', home: true },
+    { id: 'microphone', ready: true, price: 129, name: ['Studio microphone', 'Micro de studio', 'Micrófono de estudio'], desc: ['Clear voice, metal mesh grille.', 'Voix claire, grille en métal.', 'Voz clara, rejilla de metal.'], photos: ['microphone.jpg'], avail: 'out', home: false },
+    { id: 'turntable', ready: true, price: 299, name: ['Record player', 'Platine vinyle', 'Tocadiscos'], desc: ['Two speeds, wooden base.', 'Deux vitesses, socle en bois.', 'Dos velocidades, base de madera.'], photos: ['turntable.jpg'], avail: 'on', home: true },
+    { id: 'lamp', ready: true, price: 69, name: ['Desk lamp', 'Lampe de bureau', 'Lámpara de escritorio'], desc: ['Adjustable arm, warm light.', 'Bras réglable, lumière chaude.', 'Brazo ajustable, luz cálida.'], photos: ['lamp.jpg'], avail: 'on', home: false }
   ];
   var SERVICES = [
-    { id: 'wrap', name: ['Gift wrapping', 'Emballage cadeau', 'Envoltorio de regalo'], desc: ['Any order, any size.', 'Toute commande, toute taille.', 'Cualquier pedido, cualquier tamaño.'], avail: 'on' },
-    { id: 'engrave', name: ['Engraving', 'Gravure', 'Grabado'], desc: ['Up to 20 letters.', 'Jusqu’à 20 lettres.', 'Hasta 20 letras.'], avail: 'hidden' }
+    { id: 'wrap', price: 5, name: ['Gift wrapping', 'Emballage cadeau', 'Envoltorio de regalo'], desc: ['Any order, any size.', 'Toute commande, toute taille.', 'Cualquier pedido, cualquier tamaño.'], avail: 'on' },
+    { id: 'engrave', price: 15, name: ['Engraving', 'Gravure', 'Grabado'], desc: ['Up to 20 letters.', 'Jusqu’à 20 lettres.', 'Hasta 20 letras.'], avail: 'hidden' }
   ];
+  var FEATURED = ['watch', 'headphones', 'perfume', 'camera', 'turntable', 'keyboard'];
   /* ------------------------------------------------------------------ */
 
   var LI = { en: 0, fr: 1, es: 2 }[LANG] || 0;
@@ -37,13 +38,19 @@
     return s;
   }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) {
+    if (n == null || isNaN(n)) return '';
+    var whole = Math.round(n * 100) % 100 === 0;
+    var num = Number(n).toLocaleString(LANG === 'en' ? 'en-US' : LANG, { minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: 2 });
+    return LANG === 'fr' ? num + ' $' : '$' + num;
+  }
   function uid() { return 'x' + Math.random().toString(36).slice(2, 9); }
 
   /* ------------------------------------------------------------------ state */
   var items = PRODUCTS.filter(function (p) { return p.ready; }).map(function (p) {
-    return { id: p.id, kind: 'product', name: L3(p.name), desc: L3(p.desc), photos: p.photos.map(function (f) { return IMG + f; }), main: 0, avail: p.avail, home: p.home };
+    return { id: p.id, kind: 'product', price: p.price, name: L3(p.name), desc: L3(p.desc), photos: p.photos.map(function (f) { return IMG + f; }), main: 0, avail: p.avail, home: p.home };
   }).concat(SERVICES.map(function (s) {
-    return { id: s.id, kind: 'service', name: L3(s.name), desc: L3(s.desc), photos: [], main: 0, avail: s.avail, home: false };
+    return { id: s.id, kind: 'service', price: s.price, name: L3(s.name), desc: L3(s.desc), photos: [], main: 0, avail: s.avail, home: false };
   }));
   var photos = [];
   PRODUCTS.forEach(function (p) {
@@ -52,7 +59,7 @@
   });
   var st = {
     page: 'home', changes: 0, filter: 'all', q: '', phFilter: 'all', ordFilter: 'new',
-    home: { headline: t('headline_v'), button: t('button_v'), photo: photos.length > 3 ? photos[3].src : (photos[0] && photos[0].src), featured: items.filter(function (i) { return i.home; }).map(function (i) { return i.id; }) },
+    home: { headline: t('headline_v'), button: t('button_v'), photo: photos.length > 3 ? photos[3].src : (photos[0] && photos[0].src), featured: FEATURED.filter(function (id) { return items.some(function (i) { return i.id === id && i.home; }); }) },
     days: [0, 1, 2, 3, 4, 5, 6].map(function (i) { return { i: i, open: i !== 6, from: i === 5 ? 600 : 540, to: i === 5 ? 960 : (i === 4 ? 1080 : 1080) }; }),
     hol: [{ id: uid(), name: t('hol1'), date: t('hol1d'), until: null }, { id: uid(), name: t('hol2'), date: t('hol2d'), until: 840 }, { id: uid(), name: t('hol3'), date: t('hol3d'), until: null }],
     upcoming: [{ id: uid(), name: t('up1'), date: t('up1d') }, { id: uid(), name: t('up2'), date: t('up2d') }],
@@ -115,6 +122,9 @@
     search: '<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>',
     up: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4-4 4 4"/></svg>',
     down: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>',
+    left: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4L6 8l4 4"/></svg>',
+    right: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>',
+    plus: '<svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>',
     x: '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>',
     gift: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v7h14v-7M12 8.5v11M12 8.5c-1.5-3-5-3.5-5-1.2 0 1.2 2 1.2 5 1.2zm0 0c1.5-3 5-3.5 5-1.2 0 1.2-2 1.2-5 1.2z"/></svg>'
   };
@@ -137,23 +147,49 @@
   function head(title, sub) { return '<h5>' + esc(title) + '</h5><p class="sub">' + esc(sub) + '</p>'; }
   function chip(on, act, val, label) { return '<button type="button" class="chip' + (on ? ' on' : '') + '" data-act="' + act + '" data-v="' + val + '" aria-pressed="' + (on ? 'true' : 'false') + '">' + esc(label) + '</button>'; }
 
+  function badge(it) { return '<span class="pd-badge pd-badge--' + it.avail + '">' + esc(t('b_' + it.avail)) + '</span>'; }
+  function todayInfo() {
+    var ti = (new Date().getDay() + 6) % 7, dy = st.days[ti];
+    if (dy.open) return { open: true, label: t('st_today', { a: fmt(dy.from), b: fmt(dy.to) }) };
+    for (var k = 1; k <= 7; k++) {
+      var nx = st.days[(ti + k) % 7];
+      if (nx.open) { var dn = t('day' + nx.i); return { open: false, label: t('st_back', { day: LANG === 'en' ? dn : dn.toLowerCase(), t: fmt(nx.from) }) }; }
+    }
+    return { open: false, label: '' };
+  }
   function pageHome() {
     var h = st.home, out = head(t('p_home'), t('home_sub'));
-    out += '<div class="grp"><div class="grp__hd">' + esc(t('top')) + '</div>';
+    var nNew = st.orders.filter(function (o) { return !o.done; }).length;
+    var nLive = items.filter(function (i) { return i.avail === 'on'; }).length;
+    var nOut = items.filter(function (i) { return i.avail === 'out'; }).length;
+    var td = todayInfo();
+    function stat(cls, act, v, val, label) {
+      return '<button type="button" class="pd-stat pd-stat--' + cls + '" data-act="' + act + '"' + (v ? ' data-v="' + v + '"' : '') + '><strong>' + esc(val) + '</strong><span>' + esc(label) + '</span></button>';
+    }
+    out += '<div class="pd-stats">' +
+      stat('orders', 'gostat', 'orders', String(nNew), t('st_orders')) +
+      stat('live', 'gostat', 'products', String(nLive), t('st_live')) +
+      stat('out', 'gostat', 'out', String(nOut), t('st_out')) +
+      stat('hours', 'gostat', 'hours', t(td.open ? 'open' : 'closed'), td.label) + '</div>';
+    out += '<div class="grp"><div class="grp__hd">' + esc(t('top')) + '</div><div class="pd-top"><div class="pd-mini" aria-hidden="true">';
+    if (st.ann.show && st.ann.text) out += '<div class="pd-site__ann">' + esc(st.ann.text) + '</div>';
+    out += '<div class="pd-mini__hero">' + (h.photo ? '<img src="' + esc(h.photo) + '" alt="">' : '') + '<div><strong>' + esc(h.headline) + '</strong><span class="pd-site__btn">' + esc(h.button) + '</span></div></div></div><div class="pd-top__rows">';
     out += editRow('headline', t('headline'), h.headline);
-    out += '<div class="item"><span class="thumb pd-thumb">' + (h.photo ? '<img src="' + esc(h.photo) + '" alt="" loading="lazy">' : '') + '</span><span class="item__name">' + esc(t('bigphoto')) + '<small>' + esc(t('bigphoto_sub')) + '</small></span><button type="button" class="grp__btn" data-act="pickphoto">' + esc(t('change')) + '</button></div>';
+    out += '<div class="item"><span class="item__name">' + esc(t('bigphoto')) + '<small>' + esc(t('bigphoto_sub')) + '</small></span><button type="button" class="grp__btn" data-act="pickphoto">' + esc(t('change')) + '</button></div>';
     out += editRow('button', t('button'), h.button);
-    out += '</div>';
-    out += '<div class="grp"><div class="grp__hd">' + esc(t('featured')) + ' <small>· ' + h.featured.length + '</small><button type="button" class="grp__btn" data-act="pickitem">' + esc(t('add')) + '</button></div>';
-    if (!h.featured.length) out += '<div class="item"><span class="item__name pd-muted">' + esc(t('nofeat')) + '</span></div>';
+    out += '</div></div></div>';
+    out += '<div class="grp"><div class="grp__hd">' + esc(t('featured')) + ' <small>· ' + h.featured.length + '</small><button type="button" class="grp__btn" data-act="pickitem">' + esc(t('add')) + '</button></div><div class="pd-feat">';
     h.featured.forEach(function (id, n) {
       var it = item(id); if (!it) return;
-      out += '<div class="item">' + thumb(it) + '<span class="item__name">' + esc(it.name) + (it.avail !== 'on' ? '<small>' + esc(t('a_' + it.avail)) + '</small>' : '') + '</span>' +
-        '<span class="pd-icons"><button type="button" class="pd-ib" data-act="fup" data-i="' + n + '" aria-label="' + esc(t('up')) + '"' + (n === 0 ? ' disabled' : '') + '>' + ICO.up + '</button>' +
-        '<button type="button" class="pd-ib" data-act="fdown" data-i="' + n + '" aria-label="' + esc(t('down')) + '"' + (n === h.featured.length - 1 ? ' disabled' : '') + '>' + ICO.down + '</button>' +
-        '<button type="button" class="pd-ib" data-act="frm" data-i="' + n + '" aria-label="' + esc(t('remove')) + '">' + ICO.x + '</button></span></div>';
+      var src = mainPhoto(it);
+      out += '<div class="pd-fc' + (it.avail !== 'on' ? ' pd-fc--' + it.avail : '') + '"><button type="button" class="pd-fc__img" data-act="open" data-id="' + it.id + '" aria-label="' + esc(t('edit') + ': ' + it.name) + '">' + (src ? '<img src="' + esc(src) + '" alt="" loading="lazy">' : ICO.gift) + '</button>' +
+        '<button type="button" class="pd-fc__txt" data-act="open" data-id="' + it.id + '"><b>' + esc(it.name) + '</b><span class="pd-fc__row"><em class="pd-price">' + esc(money(it.price)) + '</em>' + badge(it) + '</span></button>' +
+        '<span class="pd-fc__ctl"><button type="button" class="pd-ib" data-act="fup" data-i="' + n + '" aria-label="' + esc(t('up') + ': ' + it.name) + '"' + (n === 0 ? ' disabled' : '') + '>' + ICO.left + '</button>' +
+        '<button type="button" class="pd-ib" data-act="fdown" data-i="' + n + '" aria-label="' + esc(t('down') + ': ' + it.name) + '"' + (n === h.featured.length - 1 ? ' disabled' : '') + '>' + ICO.right + '</button>' +
+        '<button type="button" class="pd-ib" data-act="frm" data-i="' + n + '" aria-label="' + esc(t('remove') + ': ' + it.name) + '">' + ICO.x + '</button></span></div>';
     });
-    return out + '</div>';
+    if (items.some(function (it) { return h.featured.indexOf(it.id) < 0; })) out += '<button type="button" class="pd-fc pd-fc--add" data-act="pickitem">' + ICO.plus + '<span>' + esc(t('add_feat')) + '</span></button>';
+    return out + '</div></div>';
   }
   function editRow(key, label, val) {
     if (st.editing === key) {
@@ -175,8 +211,8 @@
       out += '<div class="grp"><div class="grp__hd">' + esc(t(kind === 'product' ? 'g_products' : 'g_services')) + ' <small>· ' + total + '</small><button type="button" class="grp__btn" data-act="additem" data-kind="' + kind + '">' + esc(t('add_item')) + '</button></div>';
       if (!list.length) out += '<div class="item"><span class="item__name pd-muted">' + esc(t('noresults')) + '</span></div>';
       list.forEach(function (it) {
-        var small = it.home ? t('on_home') : (it.photos.length ? (it.photos.length === 1 ? t('photo1') : t('photos_n', { n: it.photos.length })) : it.desc);
-        out += '<div class="item">' + thumb(it) + '<button type="button" class="item__name pd-link" data-act="open" data-id="' + it.id + '">' + esc(it.name) + '<small>' + esc(small) + '</small></button>' + availSel(it) + '</div>';
+        var small = (it.price != null ? '<b class="pd-p">' + esc(money(it.price)) + '</b> · ' : '') + esc(it.home ? t('on_home') : (it.photos.length ? (it.photos.length === 1 ? t('photo1') : t('photos_n', { n: it.photos.length })) : it.desc));
+        out += '<div class="item">' + thumb(it) + '<button type="button" class="item__name pd-link" data-act="open" data-id="' + it.id + '">' + esc(it.name) + '<small>' + small + '</small></button>' + availSel(it) + '</div>';
       });
       out += '</div>';
     });
@@ -290,6 +326,7 @@
     var ph = it.photos.map(function (p, i) { return '<button type="button" class="pd-strip' + (i === st.overlay.main ? ' on' : '') + '" data-act="edmain" data-i="' + i + '" aria-label="' + esc(t('mainphoto') + ' ' + (i + 1)) + '"><img src="' + esc(p) + '" alt="" loading="lazy"></button>'; }).join('');
     return '<div class="pd-card" role="dialog" aria-modal="true" aria-labelledby="pd-edt"><div class="pd-cardhd"><h6 id="pd-edt">' + esc(t('ed_title')) + '</h6><button type="button" class="pd-ib" data-act="closeov" aria-label="' + esc(t('close')) + '">' + ICO.x + '</button></div>' +
       '<label class="pd-lab">' + esc(t('f_name')) + '<input class="pd-in" id="pd-ename" value="' + esc(it.name) + '" maxlength="40"></label>' +
+      '<label class="pd-lab">' + esc(t('price')) + '<span class="pd-money"><i>$</i><input class="pd-in" id="pd-eprice" inputmode="decimal" value="' + esc(it.price == null ? '' : String(it.price)) + '" maxlength="9"></span></label>' +
       '<label class="pd-lab">' + esc(t('f_desc')) + '<textarea class="pd-in pd-ta" id="pd-edesc" maxlength="120">' + esc(it.desc) + '</textarea></label>' +
       (it.photos.length ? '<div class="pd-lab">' + esc(t('f_photos')) + '<div class="pd-strips">' + ph + '</div></div>' : '') +
       '<label class="pd-lab">' + esc(t('f_avail')) + '<select class="pd-sel" id="pd-eavail">' + ['on', 'out', 'hidden'].map(function (v) { return '<option value="' + v + '"' + (it.avail === v ? ' selected' : '') + '>' + esc(t('a_' + v)) + '</option>'; }).join('') + '</select></label>' +
@@ -322,7 +359,7 @@
     out += '<div class="pd-site__hero">' + (h.photo ? '<img src="' + esc(h.photo) + '" alt="">' : '') + '<div><strong>' + esc(h.headline) + '</strong><span class="pd-site__btn">' + esc(h.button) + '</span></div></div>';
     if (feat.length) {
       out += '<div class="pd-site__grid">' + feat.map(function (it) {
-        return '<div class="pd-site__card">' + (mainPhoto(it) ? '<img src="' + esc(mainPhoto(it)) + '" alt="">' : '<span class="pd-site__svc">' + ICO.gift + '</span>') + '<b>' + esc(it.name) + '</b>' + (it.avail === 'out' ? '<em>' + esc(t('a_out')) + '</em>' : '<small>' + esc(it.desc) + '</small>') + '</div>';
+        return '<div class="pd-site__card">' + (mainPhoto(it) ? '<img src="' + esc(mainPhoto(it)) + '" alt="">' : '<span class="pd-site__svc">' + ICO.gift + '</span>') + '<b>' + esc(it.name) + '</b>' + (it.avail === 'out' ? '<em>' + esc(t('b_out')) + '</em>' : '<span class="pd-site__price">' + esc(money(it.price)) + '</span>') + '</div>';
       }).join('') + '</div>';
     }
     var today = st.days[(new Date().getDay() + 6) % 7];
@@ -330,7 +367,7 @@
     return out + '</div><p class="sub">' + esc(t('prev_note')) + '</p></div>';
   }
 
-  var mainEl, statusEl, sideEl, ovEl, toastEl, switchEl;
+  var mainEl, statusEl, sideEl, ovEl, toastEl, pubEl;
   function build() {
     root.innerHTML =
       '<div class="admin pd-admin">' +
@@ -339,19 +376,19 @@
       '<div class="admin__body"><nav class="admin__side" aria-label="' + esc(t('pages')) + '"></nav><div class="admin__main pd-main" tabindex="-1"></div>' +
       '<div class="pd-ov" hidden></div><div class="toast pd-toast" role="status" aria-live="polite"><span class="tick"></span><span class="pd-toast__t"></span></div></div></div>';
     mainEl = root.querySelector('.pd-main'); statusEl = root.querySelector('.admin__status'); sideEl = root.querySelector('.admin__side');
-    ovEl = root.querySelector('.pd-ov'); toastEl = root.querySelector('.pd-toast');
+    ovEl = root.querySelector('.pd-ov'); toastEl = root.querySelector('.pd-toast'); pubEl = root.querySelector('.admin__btns .pub');
   }
   function render(keepScroll) {
     var y = mainEl.scrollTop;
     var nNew = st.orders.filter(function (o) { return !o.done; }).length;
     sideEl.innerHTML = PAGES.map(function (p) {
-      return '<button type="button" class="sb' + (st.page === p ? ' on' : '') + '" data-act="go" data-p="' + p + '"' + (st.page === p ? ' aria-current="page"' : '') + '>' + ICO[p] + esc(t('p_' + p)) + (p === 'orders' && nNew ? '<b>' + nNew + '</b>' : '') + '</button>';
+      return '<button type="button" class="sb' + (st.page === p ? ' on' : '') + '" data-act="go" data-p="' + p + '"' + (st.page === p ? ' aria-current="page"' : '') + '>' + ICO[p] + '<span class="sb__l">' + esc(t('p_' + p)) + '</span><span class="sb__s" aria-hidden="true">' + esc(t('m_' + p)) + '</span>' + (p === 'orders' && nNew ? '<b>' + nNew + '</b>' : '') + '</button>';
     }).join('');
     statusEl.textContent = st.changes === 0 ? t('nochanges') : st.changes === 1 ? t('change1') : t('changesN', { n: st.changes });
     statusEl.classList.toggle('clean', st.changes === 0);
-    var sw = '<label class="pd-switch"><span class="pd-vh">' + esc(t('pages')) + '</span><select class="pd-sel" data-act="goSel">' + PAGES.map(function (p) { return '<option value="' + p + '"' + (st.page === p ? ' selected' : '') + '>' + esc(t('p_' + p)) + (p === 'orders' && nNew ? ' · ' + nNew : '') + '</option>'; }).join('') + '</select></label>';
+    pubEl.innerHTML = esc(t('publish')) + (st.changes ? '<b class="pd-n">' + st.changes + '</b>' : '');
     var body = { home: pageHome, products: pageProducts, photos: pagePhotos, hours: pageHours, orders: pageOrders, ann: pageAnn, history: pageHistory, staff: pageStaff }[st.page]();
-    mainEl.innerHTML = sw + body;
+    mainEl.innerHTML = body;
     if (keepScroll) mainEl.scrollTop = y;
     if (st.overlay) {
       ovEl.hidden = false;
@@ -370,6 +407,11 @@
   /* ------------------------------------------------------------------ actions */
   var A = {
     go: function (el) { go(el.getAttribute('data-p')); },
+    gostat: function (el) {
+      var v = el.getAttribute('data-v');
+      if (v === 'out' || v === 'products') { st.filter = v === 'out' ? 'out' : 'all'; st.q = ''; go('products'); }
+      else go(v);
+    },
     publish: function () {
       if (!st.changes) { toast(t('nothing')); return; }
       st.changes = 0; render(true); toast(t('published'));
@@ -414,20 +456,22 @@
     edhome: function () { st.overlay.home = !st.overlay.home; render(true); },
     saveitem: function () {
       var it = item(st.overlay.id);
-      var before = { name: it.name, desc: it.desc, avail: it.avail, main: it.main, feat: st.home.featured.slice(), home: it.home };
+      var before = { name: it.name, desc: it.desc, price: it.price, avail: it.avail, main: it.main, feat: st.home.featured.slice(), home: it.home };
       var nm = (d.getElementById('pd-ename').value || '').trim() || it.name;
+      var pr = parseFloat(String(d.getElementById('pd-eprice').value || '').replace(',', '.').replace(/[^0-9.]/g, ''));
+      it.price = isNaN(pr) ? it.price : Math.round(pr * 100) / 100;
       it.name = nm; it.desc = (d.getElementById('pd-edesc').value || '').trim(); it.avail = d.getElementById('pd-eavail').value; it.main = st.overlay.main;
       var inHome = st.home.featured.indexOf(it.id) >= 0;
       if (st.overlay.home && !inHome) st.home.featured.push(it.id);
       if (!st.overlay.home && inHome) st.home.featured = st.home.featured.filter(function (x) { return x !== it.id; });
       it.home = st.overlay.home;
       st.overlay = null;
-      change(t(before.isNew ? 'h_item_new' : 'h_item_saved', { item: it.name }), function () { it.name = before.name; it.desc = before.desc; it.avail = before.avail; it.main = before.main; st.home.featured = before.feat; it.home = before.home; });
+      change(t(before.isNew ? 'h_item_new' : 'h_item_saved', { item: it.name }), function () { it.name = before.name; it.desc = before.desc; it.price = before.price; it.avail = before.avail; it.main = before.main; st.home.featured = before.feat; it.home = before.home; });
       render(true); toast(t('saved'));
     },
     additem: function (el) {
       var kind = el.getAttribute('data-kind');
-      var it = { id: uid(), kind: kind, name: t('new_item'), desc: '', photos: [], main: 0, avail: 'hidden', home: false };
+      var it = { id: uid(), kind: kind, price: null, name: t('new_item'), desc: '', photos: [], main: 0, avail: 'hidden', home: false };
       items.splice(kind === 'product' ? items.filter(function (i) { return i.kind === 'product'; }).length : items.length, 0, it);
       st.filter = 'all'; st.q = '';
       change(t('h_item_new', { item: it.name }), function () { items = items.filter(function (x) { return x !== it; }); st.home.featured = st.home.featured.filter(function (x) { return x !== it.id; }); });
@@ -537,7 +581,6 @@
   });
   root.addEventListener('change', function (e) {
     var el = e.target, act = el.getAttribute('data-act');
-    if (act === 'goSel') { go(el.value); return; }
     if (act === 'avail') {
       var it = item(el.getAttribute('data-id')), old = it.avail; it.avail = el.value;
       change(t('h_avail', { item: it.name, state: t('a_' + it.avail) }), function () { it.avail = old; });
