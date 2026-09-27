@@ -6,7 +6,7 @@
   <section class="hero hero--split">
     <div>
       <span class="eyebrow">{{ T('Admin panels','Panneaux d’administration','Paneles de administración') }}</span>
-      <h1>{{ T('Your menu. Your prices. <span class="sq">Changed by you.','Votre menu. Vos prix. <span class="sq">Changés par vous.','Su menú. Sus precios. <span class="sq">Cambiados por usted.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <h1>{{ T('Your products. Your prices. <span class="sq">Changed by you.','Vos produits. Vos prix. <span class="sq">Changés par vous.','Sus productos. Sus precios. <span class="sq">Cambiados por usted.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
       <p class="lead">{{ T('Every Zoomy website comes with its own admin panel, built around your business. Update anything from your phone, check it, and publish. It’s live in seconds.','Chaque site Zoomy a son propre panneau, pensé pour votre entreprise. Modifiez n’importe quoi depuis votre téléphone, vérifiez, publiez. C’est en ligne en quelques secondes.','Cada sitio de Zoomy trae su propio panel, pensado para su negocio. Cambie lo que quiera desde el móvil, revíselo y publíquelo. En segundos está en línea.') }}</p>
       <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Get a site with a panel','Un site avec son panneau','Un sitio con su panel') }} →</a></div>
     </div>
@@ -17,12 +17,29 @@
 <section class="sec">
   <div class="wrap">
     <div class="head">
+      <h2>{{ T('Take a look around','Faites le tour','Eche un vistazo') }}</h2>
+      <p class="lead">{{ T('Tap through the pages of an example panel. Yours is built around your business, with only the pages you need.','Parcourez les pages d’un panneau d’exemple. Le vôtre est construit autour de votre entreprise, avec seulement les pages utiles.','Recorra las páginas de un panel de ejemplo. El suyo se construye según su negocio, solo con las páginas que necesita.') }}</p>
+    </div>
+    {% set pages = [('home',T('Home page','Page d’accueil','Portada')),('menu',T('Products','Produits','Productos')),('photos',T('Photos','Photos','Fotos')),('hours',T('Hours & holidays','Horaires et fêtes','Horarios y festivos')),('orders',T('Phone orders','Commandes tél.','Pedidos por tel.')),('announce',T('Announcement','Annonce','Aviso')),('history',T('History','Historique','Historial')),('staff',T('Staff logins','Accès équipe','Accesos del equipo'))] %}
+    <div class="tour" data-tabs>
+      <div class="tabs" role="tablist" aria-label="{{ T('Panel pages','Pages du panneau','Páginas del panel') }}">
+        {% for key, label in pages %}<button type="button" role="tab" id="tab-{{ key }}" aria-controls="pane-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">{{ label }}</button>{% endfor %}
+      </div>
+      {% for key, label in pages %}<div class="panel-wrap tour__pane" id="pane-{{ key }}" role="tabpanel" aria-labelledby="tab-{{ key }}"{% if not loop.first %} hidden{% endif %}>{{ ui.admin('', False, key, True) }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
       <h2>{{ T('What you can do on your own','Ce que vous pouvez faire seul','Lo que puede hacer por su cuenta') }}</h2>
-      <p class="lead">{{ T('Set up for your menu and your rules, so it only shows what you actually use.','Configuré pour votre menu et vos règles : il n’affiche que ce que vous utilisez.','Configurado para su menú y sus reglas: solo muestra lo que usted usa.') }}</p>
+      <p class="lead">{{ T('Set up around your business and your rules, so it only shows what you actually use.','Configuré selon votre entreprise et vos règles : il n’affiche que ce que vous utilisez.','Configurado según su negocio y sus reglas: solo muestra lo que usted usa.') }}</p>
     </div>
     <div class="cards">
       <div class="card card--butter reveal"><h3>{{ T('Prices and items','Prix et produits','Precios y productos') }}</h3><p>{{ T('Change a price right in the list, or raise a whole category by a percentage. Add items with photos, sizes and extras.','Changez un prix directement dans la liste, ou augmentez toute une catégorie en pourcentage. Ajoutez des produits avec photos, tailles et options.','Cambie un precio en la lista o suba toda una categoría por porcentaje. Añada productos con fotos, tamaños y extras.') }}</p></div>
-      <div class="card reveal"><h3>{{ T('Sold out today','Épuisé aujourd’hui','Agotado hoy') }}</h3><p>{{ T('Mark it once. It comes back on the menu by itself the next morning.','Indiquez-le une fois. Il revient au menu tout seul le lendemain matin.','Márquelo una vez. Vuelve solo al menú a la mañana siguiente.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Out of stock','En rupture','Agotado') }}</h3><p>{{ T('Mark it once. It comes back on the site by itself the next morning.','Indiquez-le une fois. Il revient sur le site tout seul le lendemain matin.','Márquelo una vez. Vuelve solo al sitio a la mañana siguiente.') }}</p></div>
       <div class="card card--sky reveal"><h3>{{ T('Hours and holidays','Horaires et fêtes','Horarios y festivos') }}</h3><p>{{ T('Weekly hours, closed days and holiday hours. The site and the phone agent both follow them.','Horaires de la semaine, fermetures et horaires de fêtes. Le site et l’agent téléphonique les suivent.','Horario semanal, días cerrados y horarios festivos. El sitio y el agente telefónico los siguen.') }}</p></div>
       <div class="card card--mint reveal"><h3>{{ T('Announcements','Annonces','Avisos') }}</h3><p>{{ T('A message at the top of your site, with a start and end date so it takes itself down.','Un message en haut du site, avec date de début et de fin pour qu’il disparaisse tout seul.','Un mensaje arriba del sitio, con fecha de inicio y fin para que se quite solo.') }}</p></div>
       <div class="card card--blush reveal"><h3>{{ T('Ordering rules','Règles de commande','Reglas de pedidos') }}</h3><p>{{ T('Order cut-off time, delivery days, pickup slots and how much notice each item needs.','Heure limite, jours de livraison, créneaux de retrait et délai pour chaque produit.','Hora límite, días de entrega, horarios de recogida y aviso que necesita cada producto.') }}</p></div>

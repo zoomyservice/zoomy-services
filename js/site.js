@@ -64,6 +64,11 @@
     }
   });
 
+  /* Admin tour: sidebar items open the matching tab */
+  d.querySelectorAll('[data-go]').forEach(function (el) {
+    el.addEventListener('click', function () { var t = d.getElementById(el.getAttribute('data-go')); if (t) t.click(); });
+  });
+
   /* CTA tracking */
   d.addEventListener('click', function (e) {
     var a = e.target.closest('a[href*="contact"]');

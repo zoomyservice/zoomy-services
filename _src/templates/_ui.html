@@ -29,43 +29,114 @@
 {# Product mock-ups drawn in HTML. Sample business only — no real clients. #}
 {% macro ico(n) %}{% if n == 'menu' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.5 4h11M2.5 8h11M2.5 12h7"/></svg>{% elif n == 'home' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2.5 7.2L8 2.8l5.5 4.4V13a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/></svg>{% elif n == 'photo' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="2"/><path d="M2.5 11l3.2-3 2.6 2.4 1.8-1.6 3.4 3"/></svg>{% elif n == 'clock' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="5.8"/><path d="M8 4.8V8l2.2 1.4"/></svg>{% elif n == 'phone' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3.2 2.5h2.3l1.1 2.8-1.4 1a7.5 7.5 0 0 0 4.5 4.5l1-1.4 2.8 1.1v2.3a.9.9 0 0 1-1 .9A11 11 0 0 1 2.3 3.5a.9.9 0 0 1 .9-1z"/></svg>{% elif n == 'mega' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2.5 6.5v3h2l5 3v-9l-5 3zM12 5.5a3.5 3.5 0 0 1 0 5"/></svg>{% elif n == 'hist' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2.8 8a5.2 5.2 0 1 0 1.5-3.7M2.5 2.8v2.4h2.4M8 5.2V8l1.8 1.2"/></svg>{% elif n == 'lock' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="7" width="10" height="6.5" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>{% elif n == 'search' %}<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>{% elif n == 'chat' %}<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4A1.5 1.5 0 0 1 4 14.5z"/></svg>{% elif n == 'call' %}<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M5 3.5h3.3l1.6 4-2 1.5a11 11 0 0 0 7.1 7.1l1.5-2 4 1.6v3.3a1.4 1.4 0 0 1-1.5 1.4A16.5 16.5 0 0 1 3.6 5a1.4 1.4 0 0 1 1.4-1.5z"/></svg>{% elif n == 'arrow' %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>{% elif n == 'web' %}<svg viewBox="0 0 26 26" fill="none" stroke="#1e2a44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="20" height="16" rx="2.5"/><path d="M3 9.5h20M6.5 7.2h.01M9 7.2h.01M7 14h6M7 17h9"/></svg>{% elif n == 'sliders' %}<svg viewBox="0 0 26 26" fill="none" stroke="#1e2a44" stroke-width="1.8" stroke-linecap="round"><path d="M5 7h16M5 13h16M5 19h16"/><circle cx="10" cy="7" r="2.2" fill="#fffdf8"/><circle cx="17" cy="13" r="2.2" fill="#fffdf8"/><circle cx="8" cy="19" r="2.2" fill="#fffdf8"/></svg>{% elif n == 'bubble' %}<svg viewBox="0 0 26 26" fill="none" stroke="#1e2a44" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4h11A2.5 2.5 0 0 1 21 6.5v8a2.5 2.5 0 0 1-2.5 2.5H12l-5 4.5V17A2 2 0 0 1 5 15z"/><path d="M9.5 10.5h.01M13 10.5h.01M16.5 10.5h.01" stroke-width="2.6"/></svg>{% elif n == 'tel' %}<svg viewBox="0 0 26 26" fill="none" stroke="#1e2a44" stroke-width="1.8" stroke-linejoin="round"><path d="M6 4h3.6l1.7 4.3-2.2 1.6a12 12 0 0 0 7 7l1.6-2.2 4.3 1.7V20a1.6 1.6 0 0 1-1.7 1.6A17.5 17.5 0 0 1 4.4 5.7 1.6 1.6 0 0 1 6 4z"/></svg>{% elif n == 'play' %}<svg viewBox="0 0 26 26" fill="none" stroke="#1e2a44" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="5" width="19" height="16" rx="3"/><path d="M11 9.5v7l6-3.5z" fill="#1e2a44"/></svg>{% endif %}{% endmacro %}
 
-{% macro admin(extra_class='', animate=True, view='menu') %}
-<div class="admin {{ extra_class }}" role="img" aria-label="{{ T('Example of a Zoomy admin panel: a bakery’s menu, with an item being marked sold out and the change published','Exemple de panneau d’administration Zoomy : le menu d’une boulangerie, un produit marqué épuisé puis publié','Ejemplo de panel de administración de Zoomy: el menú de una panadería, un producto marcado como agotado y publicado') }}">
+
+{% macro extra_view(view) %}
+<div class="admin__main">
+{% if view == 'home' %}
+  <h5>{{ T('Home page','Page d’accueil','Portada') }}</h5>
+  <p class="sub">{{ T('What visitors see first. Change the words, the photo and the items you feature.','Ce que les visiteurs voient en premier. Changez le texte, la photo et les produits mis en avant.','Lo primero que ven sus visitantes. Cambie el texto, la foto y los productos destacados.') }}</p>
+  <div class="grp">
+    <div class="grp__hd">{{ T('Top of the page','Haut de page','Parte de arriba') }}</div>
+    <div class="item"><span class="item__name">{{ T('Headline','Titre','Título') }}<small>{{ T('Book online in a minute','Réservez en ligne en une minute','Reserve en línea en un minuto') }}</small></span><span class="grp__btn">{{ T('Edit','Modifier','Editar') }}</span></div>
+    <div class="item"><span class="thumb t1"></span><span class="item__name">{{ T('Big photo','Grande photo','Foto grande') }}<small>{{ T('Your team at work','Votre équipe au travail','Su equipo trabajando') }}</small></span><span class="grp__btn">{{ T('Change','Changer','Cambiar') }}</span></div>
+    <div class="item"><span class="item__name">{{ T('Button','Bouton','Botón') }}<small>{{ T('Book now','Réserver','Reservar') }}</small></span><span class="grp__btn">{{ T('Edit','Modifier','Editar') }}</span></div>
+  </div>
+  <div class="grp">
+    <div class="grp__hd">{{ T('Featured items','Produits en avant','Productos destacados') }} <small>· 3</small><span>{{ T('+ Add','+ Ajouter','+ Añadir') }}</span></div>
+    <div class="item"><span class="grip"></span><span class="thumb t1"></span><span class="item__name">{{ T('Gift card','Carte cadeau','Tarjeta de regalo') }}</span><span class="pill-s">{{ T('First','En premier','Primero') }}</span></div>
+    <div class="item"><span class="grip"></span><span class="thumb t4"></span><span class="item__name">{{ T('Travel case','Étui de voyage','Estuche de viaje') }}</span></div>
+    <div class="item"><span class="grip"></span><span class="thumb t6"></span><span class="item__name">{{ T('Refill pack','Recharge','Paquete de recarga') }}</span></div>
+  </div>
+{% elif view == 'photos' %}
+  <h5>{{ T('Photos','Photos','Fotos') }}</h5>
+  <p class="sub">{{ T('Drop in photos from your phone. They are resized for the website for you.','Ajoutez des photos depuis votre téléphone. Elles sont redimensionnées pour le site automatiquement.','Suba fotos desde su móvil. Se ajustan al sitio automáticamente.') }}</p>
+  <div class="admin__tools"><span class="chip on">{{ T('All','Toutes','Todas') }} · 24</span><span class="chip">{{ T('Products','Produits','Productos') }}</span><span class="chip">{{ T('Team','Équipe','Equipo') }}</span><span class="chip">{{ T('Not used','Inutilisées','Sin usar') }}</span></div>
+  <div class="pgrid">
+    <span class="up">{{ T('+ Upload','+ Ajouter','+ Subir') }}</span>
+    {% for t in ['t1','t3','t2','t5','t4','t6','t3','t1','t6','t2','t4'] %}<span class="thumb {{ t }}"></span>{% endfor %}
+  </div>
+{% elif view == 'orders' %}
+  <h5>{{ T('Phone orders','Commandes par téléphone','Pedidos por teléfono') }}</h5>
+  <p class="sub">{{ T('Everything the phone agent took. Tap a number to call back, then mark it done.','Tout ce que l’agent téléphonique a noté. Touchez un numéro pour rappeler, puis marquez-le traité.','Todo lo que tomó el agente telefónico. Toque un número para llamar y márquelo como hecho.') }}</p>
+  <div class="admin__tools"><span class="chip on">{{ T('New','Nouveau','Nuevo') }} · 3</span><span class="chip">{{ T('Done','Traité','Hecho') }}</span><span class="chip">{{ T('All calls','Tous les appels','Todas las llamadas') }}</span></div>
+  <div class="grp">
+    <div class="item"><span class="item__name">{{ T('Pickup order, Sat 11 AM','Retrait, sam. 11 h','Recogida, sáb 11 a. m.') }}<small>Dana · {{ T('3 items · 9:48 PM','3 articles · 21 h 48','3 artículos · 9:48 p. m.') }}</small></span><span class="call">(555) 014-2290</span><span class="grp__btn">{{ T('Done','Traité','Hecho') }}</span></div>
+    <div class="item"><span class="item__name">{{ T('Booking for Friday, 3 PM','Réservation vendredi, 15 h','Reserva para el viernes, 3 p. m.') }}<small>Marco · {{ T('in Spanish · 6:02 PM','en espagnol · 18 h 02','en español · 6:02 p. m.') }}</small></span><span class="call">(555) 017-8841</span><span class="grp__btn">{{ T('Done','Traité','Hecho') }}</span></div>
+    <div class="item"><span class="item__name">{{ T('Call back about a large order','Rappeler pour une grosse commande','Llamar por un pedido grande') }}<small>Priya · {{ T('4:15 PM','16 h 15','4:15 p. m.') }}</small></span><span class="call">(555) 012-7730</span><span class="grp__btn">{{ T('Done','Traité','Hecho') }}</span></div>
+  </div>
+  <p class="sub">{{ T('Each one was also sent to the team by text and email when the call ended.','Chacune a aussi été envoyée à l’équipe par SMS et e-mail à la fin de l’appel.','Cada uno también se envió al equipo por mensaje y correo al terminar la llamada.') }}</p>
+{% elif view == 'announce' %}
+  <h5>{{ T('Announcement','Annonce','Aviso') }}</h5>
+  <p class="sub">{{ T('A message across the top of your website. It turns itself off on the end date.','Un message en haut de votre site. Il s’arrête tout seul à la date de fin.','Un mensaje en la parte de arriba del sitio. Se quita solo en la fecha de fin.') }}</p>
+  <div class="ann">{{ T('Closed Thursday for Thanksgiving. Back Friday at 7 AM.','Fermé jeudi pour Thanksgiving. De retour vendredi à 7 h.','Cerrado el jueves por Acción de Gracias. Volvemos el viernes a las 7 a. m.') }}</div>
+  <div class="grp">
+    <div class="item"><span class="item__name">{{ T('Message','Message','Mensaje') }}<small>{{ T('Closed Thursday for Thanksgiving…','Fermé jeudi pour Thanksgiving…','Cerrado el jueves por Acción de Gracias…') }}</small></span><span class="grp__btn">{{ T('Edit','Modifier','Editar') }}</span></div>
+    <div class="item"><span class="item__name">{{ T('Starts','Début','Empieza') }}</span><span class="time">{{ T('Fri, Nov 20','ven. 20 nov.','vie 20 nov') }}</span></div>
+    <div class="item"><span class="item__name">{{ T('Ends','Fin','Termina') }}</span><span class="time">{{ T('Fri, Nov 27','ven. 27 nov.','vie 27 nov') }}</span></div>
+    <div class="item"><span class="item__name">{{ T('Show on the website','Afficher sur le site','Mostrar en el sitio') }}</span><span class="tog"></span></div>
+    <div class="item"><span class="item__name">{{ T('Tell the phone agent too','Prévenir aussi l’agent téléphonique','Avisar también al agente telefónico') }}</span><span class="tog"></span></div>
+  </div>
+{% elif view == 'history' %}
+  <h5>{{ T('History','Historique','Historial') }}</h5>
+  <p class="sub">{{ T('Every change, who made it and when. Undo any of them in one tap.','Chaque modification, qui l’a faite et quand. Annulez-la d’un geste.','Cada cambio, quién lo hizo y cuándo. Deshágalo con un toque.') }}</p>
+  <div class="grp">
+    <div class="grp__hd">{{ T('Today','Aujourd’hui','Hoy') }}</div>
+    <div class="item"><span class="av" style="background:var(--butter)">Y</span><span class="item__name">{{ T('Starter kit marked out of stock','Kit de démarrage marqué en rupture','Kit de inicio marcado como agotado') }}<small>{{ T('You · 7:42 AM','Vous · 7 h 42','Usted · 7:42 a. m.') }}</small></span><span class="grp__btn">{{ T('Undo','Annuler','Deshacer') }}</span></div>
+    <div class="item"><span class="av" style="background:var(--mint)">M</span><span class="item__name">{{ T('New photo for Refill pack','Nouvelle photo pour la recharge','Foto nueva del paquete de recarga') }}<small>{{ T('Maria · 7:15 AM','Maria · 7 h 15','Maria · 7:15 a. m.') }}</small></span><span class="grp__btn">{{ T('Undo','Annuler','Deshacer') }}</span></div>
+  </div>
+  <div class="grp">
+    <div class="grp__hd">{{ T('Yesterday','Hier','Ayer') }}</div>
+    <div class="item"><span class="av" style="background:var(--butter)">Y</span><span class="item__name">{{ T('Christmas Eve: open until 2 PM','Veille de Noël : ouvert jusqu’à 14 h','Nochebuena: abierto hasta las 2 p. m.') }}<small>{{ T('You · 6:30 PM','Vous · 18 h 30','Usted · 6:30 p. m.') }}</small></span><span class="grp__btn">{{ T('Undo','Annuler','Deshacer') }}</span></div>
+    <div class="item"><span class="av" style="background:var(--sky)">S</span><span class="item__name">{{ T('Consultation added to the home page','Consultation ajoutée à l’accueil','Consulta añadida a la portada') }}<small>{{ T('Sam · 2:05 PM','Sam · 14 h 05','Sam · 2:05 p. m.') }}</small></span><span class="grp__btn">{{ T('Undo','Annuler','Deshacer') }}</span></div>
+  </div>
+{% elif view == 'staff' %}
+  <h5>{{ T('Staff logins','Accès équipe','Accesos del equipo') }}</h5>
+  <p class="sub">{{ T('Everyone gets their own login and only sees the pages they need.','Chacun a son propre accès et ne voit que les pages utiles.','Cada persona tiene su acceso y solo ve las páginas que necesita.') }}</p>
+  <div class="grp">
+    <div class="grp__hd">{{ T('People','Personnes','Personas') }} <small>· 3</small><span>{{ T('+ Add person','+ Ajouter','+ Añadir') }}</span></div>
+    <div class="item"><span class="av" style="background:var(--butter)">Y</span><span class="item__name">{{ T('You','Vous','Usted') }}<small>{{ T('Everything','Tout','Todo') }}</small></span><span class="pill-s">{{ T('Owner','Propriétaire','Dueño') }}</span></div>
+    <div class="item"><span class="av" style="background:var(--mint)">M</span><span class="item__name">Maria<small>{{ T('Products, photos, hours, phone orders','Produits, photos, horaires, commandes tél.','Productos, fotos, horarios, pedidos por tel.') }}</small></span><span class="pill-c">{{ T('Manager','Gérante','Encargada') }}</span></div>
+    <div class="item"><span class="av" style="background:var(--sky)">S</span><span class="item__name">Sam<small>{{ T('Phone orders and stock','Commandes tél. et stock','Pedidos por tel. y stock') }}</small></span><span class="grp__btn">{{ T('Staff','Équipe','Equipo') }}</span></div>
+  </div>
+  <div class="grp">
+    <div class="item"><span class="item__name">{{ T('Sign-in code by text','Code de connexion par SMS','Código de acceso por mensaje') }}<small>{{ T('No passwords to remember','Aucun mot de passe à retenir','Sin contraseñas que recordar') }}</small></span><span class="tog"></span></div>
+  </div>
+{% endif %}
+</div>
+{% endmacro %}
+
+{% macro admin(extra_class='', animate=True, view='menu', tour=False) %}
+<div class="admin {{ extra_class }}" role="img" aria-label="{{ T('Example of a Zoomy admin panel: a business’s products, with an item being marked out of stock and the change published','Exemple de panneau d’administration Zoomy : les produits d’une entreprise, un article marqué en rupture puis publié','Ejemplo de panel de administración de Zoomy: los productos de un negocio, un artículo marcado como agotado y publicado') }}">
   <div class="admin__top">
-    <span class="admin__brand"><i>Y</i>{{ T('Your Bakery','Votre Boulangerie','Su Panadería') }} <small>Admin</small></span>
+    <span class="admin__brand"><i>Y</i>{{ T('Your Business','Votre Entreprise','Su Negocio') }} <small>Admin</small></span>
     <span class="admin__status">{{ T('1 change to publish','1 modification à publier','1 cambio por publicar') }}</span>
     <span class="admin__btns"><span>{{ T('Preview','Aperçu','Vista previa') }}</span><span class="pub">{{ T('Publish','Publier','Publicar') }}</span></span>
   </div>
   <div class="admin__body">
     <div class="admin__side">
-      <span{% if view == 'menu' %} class="on"{% endif %}>{{ ico('menu') }}{{ T('Menu','Menu','Menú') }}</span>
-      <span>{{ ico('home') }}{{ T('Home page','Page d’accueil','Portada') }}</span>
-      <span>{{ ico('photo') }}{{ T('Photos','Photos','Fotos') }}</span>
-      <span{% if view == 'hours' %} class="on"{% endif %}>{{ ico('clock') }}{{ T('Hours & holidays','Horaires et fêtes','Horarios y festivos') }}</span>
-      <span>{{ ico('phone') }}{{ T('Phone orders','Commandes tél.','Pedidos por tel.') }}<b>3</b></span>
-      <span>{{ ico('mega') }}{{ T('Announcement','Annonce','Aviso') }}</span>
-      <span>{{ ico('hist') }}{{ T('History','Historique','Historial') }}</span>
-      <span>{{ ico('lock') }}{{ T('Staff logins','Accès équipe','Accesos del equipo') }}</span>
+      {% for key, icon, label in [('menu','menu',T('Products','Produits','Productos')),('home','home',T('Home page','Page d’accueil','Portada')),('photos','photo',T('Photos','Photos','Fotos')),('hours','clock',T('Hours & holidays','Horaires et fêtes','Horarios y festivos')),('orders','phone',T('Phone orders','Commandes tél.','Pedidos por tel.')),('announce','mega',T('Announcement','Annonce','Aviso')),('history','hist',T('History','Historique','Historial')),('staff','lock',T('Staff logins','Accès équipe','Accesos del equipo'))] %}
+      <span{% if view == key %} class="on"{% endif %}{% if tour %} data-go="tab-{{ key }}"{% endif %}>{{ ico(icon) }}{{ label }}{% if key == 'orders' %}<b>3</b>{% endif %}</span>
+      {% endfor %}
     </div>
-    {% if view == 'hours' %}{{ hours_view() }}{% else %}
+    {% if view == 'hours' %}{{ hours_view() }}{% elif view in ('home','photos','orders','announce','history','staff') %}{{ extra_view(view) }}{% else %}
     <div class="admin__main">
-      <h5>{{ T('Menu','Menu','Menú') }}</h5>
+      <h5>{{ T('Products','Produits','Productos') }}</h5>
       <p class="sub">{{ T('Pick an item to change its photos, sizes or description.','Choisissez un produit pour modifier ses photos, tailles ou description.','Elija un producto para cambiar sus fotos, tamaños o descripción.') }}</p>
       <div class="admin__tools">
         <span class="admin__search">{{ ico('search') }}{{ T('Find an item','Chercher un produit','Buscar un producto') }}</span>
-        <span class="chip on">{{ T('All','Tout','Todo') }}</span><span class="chip">{{ T('Sold out','Épuisés','Agotados') }}</span><span class="chip">{{ T('Hidden','Masqués','Ocultos') }}</span>
+        <span class="chip on">{{ T('All','Tout','Todo') }}</span><span class="chip">{{ T('Out of stock','En rupture','Agotados') }}</span><span class="chip">{{ T('Hidden','Masqués','Ocultos') }}</span>
       </div>
       <div class="grp">
-        <div class="grp__hd">{{ T('Pastries','Viennoiseries','Bollería') }} <small>· 4</small><span>{{ T('+ Add item','+ Ajouter','+ Añadir') }}</span></div>
-        <div class="item{% if animate %} edit{% endif %}"><span class="thumb t2"></span><span class="item__name">{{ T('Pain au chocolat','Pain au chocolat','Pain au chocolat') }}<small>{{ T('3 photos','3 photos','3 fotos') }}</small></span><span class="avail{% if not animate %} so{% endif %}">{% if animate %}<span class="a1">{{ T('Available','Disponible','Disponible') }}</span><span class="a2">{{ T('Sold out today','Épuisé aujourd’hui','Agotado hoy') }}</span>{% else %}{{ T('Sold out today','Épuisé aujourd’hui','Agotado hoy') }}{% endif %}</span></div>
-        <div class="item"><span class="thumb t1"></span><span class="item__name">{{ T('Butter croissant','Croissant au beurre','Croissant de mantequilla') }}<small>{{ T('On the home page','Sur la page d’accueil','En la portada') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
-        <div class="item"><span class="thumb t6"></span><span class="item__name">{{ T('Almond croissant','Croissant aux amandes','Croissant de almendra') }}<small>{{ T('2 sizes','2 tailles','2 tamaños') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
-        <div class="item"><span class="thumb t4"></span><span class="item__name">{{ T('Lemon tart','Tarte au citron','Tarta de limón') }}<small>{{ T('Order 1 day ahead','Commander la veille','Pedir 1 día antes') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
+        <div class="grp__hd">{{ T('Products','Produits','Productos') }} <small>· 4</small><span>{{ T('+ Add item','+ Ajouter','+ Añadir') }}</span></div>
+        <div class="item{% if animate %} edit{% endif %}"><span class="thumb t2"></span><span class="item__name">{{ T('Starter kit','Kit de démarrage','Kit de inicio') }}<small>{{ T('3 photos','3 photos','3 fotos') }}</small></span><span class="avail{% if not animate %} so{% endif %}">{% if animate %}<span class="a1">{{ T('Available','Disponible','Disponible') }}</span><span class="a2">{{ T('Out of stock','En rupture','Agotado') }}</span>{% else %}{{ T('Out of stock','En rupture','Agotado') }}{% endif %}</span></div>
+        <div class="item"><span class="thumb t1"></span><span class="item__name">{{ T('Gift card','Carte cadeau','Tarjeta de regalo') }}<small>{{ T('On the home page','Sur la page d’accueil','En la portada') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
+        <div class="item"><span class="thumb t6"></span><span class="item__name">{{ T('Refill pack','Recharge','Paquete de recarga') }}<small>{{ T('2 sizes','2 tailles','2 tamaños') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
+        <div class="item"><span class="thumb t4"></span><span class="item__name">{{ T('Travel case','Étui de voyage','Estuche de viaje') }}<small>{{ T('Ships in 2 days','Expédié sous 2 jours','Se envía en 2 días') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
       </div>
       <div class="grp">
-        <div class="grp__hd">{{ T('Cakes','Gâteaux','Pasteles') }} <small>· 6</small><span>{{ T('+ Add item','+ Ajouter','+ Añadir') }}</span></div>
-        <div class="item"><span class="thumb t3"></span><span class="item__name">{{ T('Strawberry cake','Fraisier','Pastel de fresa') }}<small>{{ T('3 sizes · writing on top','3 tailles · inscription','3 tamaños · con dedicatoria') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
-        <div class="item"><span class="thumb t5"></span><span class="item__name">{{ T('Pistachio cake','Gâteau pistache','Pastel de pistacho') }}<small>{{ T('Order 2 days ahead','Commander 2 jours avant','Pedir 2 días antes') }}</small></span><span class="avail">{{ T('Hidden','Masqué','Oculto') }}</span></div>
+        <div class="grp__hd">{{ T('Services','Services','Servicios') }} <small>· 2</small><span>{{ T('+ Add item','+ Ajouter','+ Añadir') }}</span></div>
+        <div class="item"><span class="thumb t3"></span><span class="item__name">{{ T('Consultation','Consultation','Consulta') }}<small>{{ T('30 or 60 minutes','30 ou 60 minutes','30 o 60 minutos') }}</small></span><span class="avail">{{ T('Available','Disponible','Disponible') }}</span></div>
+        <div class="item"><span class="thumb t5"></span><span class="item__name">{{ T('Monthly plan','Formule mensuelle','Plan mensual') }}<small>{{ T('Coming soon','Bientôt','Próximamente') }}</small></span><span class="avail">{{ T('Hidden','Masqué','Oculto') }}</span></div>
       </div>
     </div>
     {% endif %}
@@ -76,8 +147,8 @@
 
 {% macro orders() %}
 <div class="orders" role="img" aria-label="{{ T('Example of orders taken by a phone agent','Exemple de commandes prises par un agent téléphonique','Ejemplo de pedidos tomados por un agente telefónico') }}">
-  <div class="ord tl1"><div class="ord__top"><span class="ord__tag">{{ T('Cake order','Gâteau','Pastel') }}</span><small>{{ T('9:48 PM','21 h 48','9:48 p. m.') }}</small></div><b>{{ T('Strawberry cake, Sunday 11 AM','Fraisier, dimanche 11 h','Pastel de fresa, domingo 11 a. m.') }}</b><small>Dana · <span class="num">(555) 014-2290</span> · {{ T('“Happy 7th, Leo” on top','« Joyeux 7 ans, Léo » dessus','“Feliz 7, Leo” encima') }}</small></div>
-  <div class="ord tr1" style="margin-left:24px"><div class="ord__top"><span class="ord__tag b">{{ T('Catering','Traiteur','Catering') }}</span><small>{{ T('6:02 PM','18 h 02','6:02 p. m.') }}</small></div><b>{{ T('Pastries for 30, Friday morning','Viennoiseries pour 30, vendredi matin','Bollería para 30, viernes por la mañana') }}</b><small>Marco · <span class="num">(555) 017-8841</span> · {{ T('call was in Spanish','appel en espagnol','llamada en español') }}</small></div>
+  <div class="ord tl1"><div class="ord__top"><span class="ord__tag">{{ T('Order','Commande','Pedido') }}</span><small>{{ T('9:48 PM','21 h 48','9:48 p. m.') }}</small></div><b>{{ T('Pickup order, Saturday 11 AM','Commande à retirer, samedi 11 h','Pedido para recoger, sábado 11 a. m.') }}</b><small>Dana · <span class="num">(555) 014-2290</span> · {{ T('3 items, read back and confirmed','3 articles, relus et confirmés','3 artículos, repetidos y confirmados') }}</small></div>
+  <div class="ord tr1" style="margin-left:24px"><div class="ord__top"><span class="ord__tag b">{{ T('Booking','Réservation','Reserva') }}</span><small>{{ T('6:02 PM','18 h 02','6:02 p. m.') }}</small></div><b>{{ T('Booking for 4, Friday 7 PM','Réservation pour 4, vendredi 19 h','Reserva para 4, viernes 7 p. m.') }}</b><small>Marco · <span class="num">(555) 017-8841</span> · {{ T('call was in Spanish','appel en espagnol','llamada en español') }}</small></div>
   <div class="ord tl1" style="margin-left:8px"><div class="ord__top"><span class="ord__tag g">{{ T('Question','Question','Pregunta') }}</span><small>{{ T('5:40 PM','17 h 40','5:40 p. m.') }}</small></div><b>{{ T('Open on Thanksgiving?','Ouvert à Thanksgiving ?','¿Abren en Acción de Gracias?') }}</b><small>{{ T('Answered from your holiday hours. Nothing to do.','Réponse tirée de vos horaires de fêtes. Rien à faire.','Respondido con su horario festivo. Nada que hacer.') }}</small></div>
 </div>
 {% endmacro %}

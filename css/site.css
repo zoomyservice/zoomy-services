@@ -408,3 +408,21 @@ textarea.input{min-height:150px;resize:vertical}
 .hero>*,.split>*{min-width:0}
 @media (max-width:560px){.zc-launch span:last-child{display:none}.zc-launch{padding:0 7px;width:58px;justify-content:center}}
 @media (max-width:560px){.admin__btns span:first-child{display:none}.admin__brand small{display:none}}
+
+/* admin tour */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.tabs [role=tab]{font:inherit;font-weight:650;font-size:15px;padding:9px 16px;border-radius:999px;border:var(--b);background:#fff;color:var(--navy);cursor:pointer;transition:transform .15s,background .15s}
+.tabs [role=tab]:hover{transform:translateY(-1px)}
+.tabs [role=tab][aria-selected=true]{background:var(--butter);box-shadow:0 2px 0 var(--navy)}
+.tabs [role=tab]:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.tour__pane .admin{height:clamp(470px,44vw,560px)}
+.admin__side span[data-go]{cursor:pointer}
+.admin__side span[data-go]:hover{background:#f3eddf}
+.pgrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.pgrid .thumb{width:auto;height:auto;aspect-ratio:1/1;border-radius:9px}
+.pgrid .up{aspect-ratio:1/1;border:1.5px dashed #cfc6b3;border-radius:9px;display:grid;place-items:center;color:var(--navy-3);font-weight:650;font-size:12px;background:#fff}
+.ann{background:var(--navy);color:#fff;border-radius:8px;padding:10px 14px;font-size:12.5px;font-weight:600;margin-bottom:12px;text-align:center}
+.av{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:12px;border:1px solid var(--navy);flex:none;color:var(--navy)}
+.call{color:var(--coral-ink);font-weight:700;font-size:12px;white-space:nowrap}
+.grip{width:10px;height:15px;flex:none;background:radial-gradient(circle,#b9b09d 1.3px,transparent 1.7px) 0 0/5px 5px}
+@media (max-width:560px){.pgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.tabs [role=tab]{font-size:14px;padding:8px 13px}.call{display:none}}

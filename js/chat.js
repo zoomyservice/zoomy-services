@@ -12,7 +12,7 @@
       open: 'Questions? Ask me', title: 'Zoomy', status: 'Usually replies in seconds', today: 'Today',
       hello: 'Hi, I’m Zoomy’s assistant. Ask me about websites, admin panels, chat, phone agents or how a project works.',
       intro: 'Answers come from an AI assistant. A person replies to anything sent through the contact form.',
-      sugg: ['Can I change my own menu?', 'How does the phone agent work?', 'How long does a website take?'],
+      sugg: ['Can I update my own site?', 'How does the phone agent work?', 'Can you host my website?'],
       ph: 'Write a message', send: 'Send', close: 'Close chat',
       err: 'Sorry, I couldn’t reply just now. You can email contact@zoomy.services and a person will answer within a day.',
       privacy: 'Privacy', privacyUrl: '/privacy.html', ai: 'AI assistant, a person reads every form'
@@ -21,7 +21,7 @@
       open: 'Une question ?', title: 'Zoomy', status: 'Répond en quelques secondes', today: 'Aujourd’hui',
       hello: 'Bonjour, je suis l’assistant de Zoomy. Posez-moi vos questions sur les sites, les panneaux d’administration, le chat, les agents téléphoniques ou le déroulement d’un projet.',
       intro: 'Les réponses viennent d’un assistant IA. Une personne répond à tout message envoyé via le formulaire de contact.',
-      sugg: ['Puis-je modifier mon menu ?', 'Comment marche l’agent téléphonique ?', 'Combien de temps pour un site ?'],
+      sugg: ['Puis-je modifier mon site moi-même ?', 'Comment marche l’agent téléphonique ?', 'Pouvez-vous héberger mon site ?'],
       ph: 'Écrivez un message', send: 'Envoyer', close: 'Fermer le chat',
       err: 'Désolé, je n’ai pas pu répondre. Écrivez à contact@zoomy.services, une personne vous répondra sous 24 heures.',
       privacy: 'Confidentialité', privacyUrl: '/fr/privacy.html', ai: 'Assistant IA, une personne lit chaque formulaire'
@@ -30,7 +30,7 @@
       open: '¿Preguntas?', title: 'Zoomy', status: 'Responde en segundos', today: 'Hoy',
       hello: 'Hola, soy el asistente de Zoomy. Pregúnteme sobre sitios web, paneles de administración, chat, agentes telefónicos o cómo funciona un proyecto.',
       intro: 'Las respuestas vienen de un asistente de IA. Una persona responde a todo lo que se envía por el formulario de contacto.',
-      sugg: ['¿Puedo cambiar mi menú?', '¿Cómo funciona el agente telefónico?', '¿Cuánto tarda un sitio web?'],
+      sugg: ['¿Puedo cambiar mi sitio yo mismo?', '¿Cómo funciona el agente telefónico?', '¿Pueden alojar mi sitio?'],
       ph: 'Escriba un mensaje', send: 'Enviar', close: 'Cerrar chat',
       err: 'Lo siento, no pude responder. Escriba a contact@zoomy.services y una persona le contestará en un día.',
       privacy: 'Privacidad', privacyUrl: '/es/privacy.html', ai: 'Asistente con IA, una persona lee cada formulario'
@@ -40,22 +40,22 @@
   var LANG_NAME = { en: 'English', fr: 'French', es: 'Spanish' }[LANG];
   var BUSINESS = {
     name: 'Zoomy',
-    type: 'Small studio that builds websites, AI chatbots, AI phone agents and animated video ads for small businesses',
-    tagline: 'Websites, chatbots and phone agents for small businesses',
-    reply_rules: 'You are the assistant on zoomy.services. Reply in the language the visitor writes in; the page they are on is in ' + LANG_NAME + '. Keep replies short: two to four sentences, plain and friendly, no lists unless asked, no emojis, no exclamation marks. Only use the facts below. If you do not know something, say so and suggest the contact form.',
+    type: 'Studio that builds websites, admin panels, AI chatbots, AI phone agents, animated video ads, app designs and 3D models for businesses of any size and any kind',
+    tagline: 'Websites, chatbots and phone agents for any business',
+    reply_rules: 'You are the assistant on zoomy.services. Reply in the language the visitor writes in; the page they are on is in ' + LANG_NAME + '. Keep replies short: two to four sentences, plain and friendly, no lists unless asked, no emojis, no exclamation marks. Only use the facts below. If you do not know something, say so and suggest the contact form. Zoomy works with every type and size of business: never call Zoomy small, never say it is only for small, local or food businesses, never assume the visitor runs a restaurant or food business, and never say where Zoomy is located.',
     services: [
       'Websites: designed and hand-coded for each business, no templates, WordPress or page builders. Fast on phones, set up for Google, multilingual when needed. Online ordering, booking, product catalogues and card payments (Stripe) when the project needs them. Zoomy can host the site, or connect it to a domain the client already has.',
-      'Admin panels: every site can come with a private admin panel so the owner and staff can change the menu, prices, photos, opening hours, closed days and holiday hours, announcements and ordering rules themselves, from a phone or computer. Changes can be previewed before publishing, there is a history with undo, and staff can get their own logins with limited rights.',
-      'AI chatbots: an assistant on the business website trained on its own menu, services, hours and policies. It answers visitors in their language, sticks to the facts it was given, and can pass a visitor’s name and number to the team.',
-      'AI phone agents: an AI receptionist on the business phone number. It answers every call, speaks naturally in English, Spanish or other languages, knows the menu, today’s date and the opening hours including holidays, takes orders and requests, reads them back, and the moment the call ends it sends each order or message to the team by text message and email (and into the admin panel) so someone can call back to confirm. It never takes card details on the phone.',
+      'Admin panels: every site can come with a private admin panel so the owner and staff can change their products and services, prices, photos, opening hours, closed days and holiday hours, announcements and ordering rules themselves, from a phone or computer. Changes can be previewed before publishing, there is a history with undo, and staff can get their own logins with limited rights.',
+      'AI chatbots: an assistant on the business website trained on its own products, services, hours and policies. It answers visitors in their language, sticks to the facts it was given, and can pass a visitor’s name and number to the team.',
+      'AI phone agents: an AI receptionist on the business phone number. It answers every call, speaks naturally in English, Spanish or other languages, knows the business’s products and services, today’s date and the opening hours including holidays, takes orders and requests, reads them back, and the moment the call ends it sends each order or message to the team by text message and email (and into the admin panel) so someone can call back to confirm. It never takes card details on the phone.',
       'Animated video ads: motion-graphics ads made from a short brief, no filming needed. Delivered as MP4 in square 1:1, vertical 4:5 and full-screen 9:16 for Instagram, Facebook and TikTok. Two rounds of changes are included; a typical turnaround is about a week.'
     ],
     not_offered: 'Zoomy does not run or manage ad campaigns (no Google Ads or Meta Ads management) and does not make AI-generated images or videos. If asked, say so briefly and mention what Zoomy does offer.',
     pricing: 'Zoomy does not publish prices. Every project gets a fixed quote after a short brief, agreed in writing before work starts, with no hourly billing. Never state, estimate or hint at any price, rate, range or discount. Suggest sending a brief through the contact page.',
     process: '1) The client sends a brief through the contact form or by email. 2) Zoomy replies within 24 hours with questions or a fixed quote and a timeline. 3) For websites, Zoomy builds the whole site (every page, the content and the admin panel) and shows it to the client all at once. 4) The client asks for changes, then launch and a short walkthrough of the admin panel. The site belongs to the client. Never mention Google Analytics, never say things are set up on the client’s own accounts, and never say how many minutes, days or weeks a website takes to build.',
-    clients: 'Never name, describe or discuss specific clients or past projects. If asked for examples, say Zoomy has built websites, admin panels and phone agents for bakeries, cafés and other local businesses, and that examples can be shared by email.',
+    clients: 'Never name, describe or discuss specific clients or past projects. If asked for examples, say Zoomy builds for businesses of every size and kind, and that examples can be shared by email.',
     timeline: 'Every quote comes with a timeline. It depends on the size of the project; do not promise a number of days or weeks for websites, chat assistants or phone agents. Animated ads usually take five to seven days.',
-    contact: 'Email contact@zoomy.services or use the form at zoomy.services/contact.html. Replies within 24 hours. Based in New York and Connecticut, working with clients anywhere.',
+    contact: 'Email contact@zoomy.services or use the form at zoomy.services/contact.html. Replies within 24 hours. Works with clients anywhere.',
     languages: 'The website is in English, French and Spanish. Sites, chatbots and phone agents can be built in whatever languages the client’s customers speak.'
   };
 
