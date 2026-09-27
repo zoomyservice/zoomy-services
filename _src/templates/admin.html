@@ -14,22 +14,207 @@
   </section>
 </div>
 
-<section class="sec">
+<section class="sec" id="try">
   <div class="wrap">
     <div class="head">
       <h2>{{ T('Take a look around','Faites le tour','Eche un vistazo') }}</h2>
-      <p class="lead">{{ T('Tap through the pages of an example panel. Yours is built around your business, with only the pages you need.','Parcourez les pages d’un panneau d’exemple. Le vôtre est construit autour de votre entreprise, avec seulement les pages utiles.','Recorra las páginas de un panel de ejemplo. El suyo se construye según su negocio, solo con las páginas que necesita.') }}</p>
+      <p class="lead">{{ T('Click around. Everything works the way it does in a real panel, and nothing here is saved.','Cliquez partout. Tout marche comme dans un vrai panneau, et rien n’est enregistré ici.','Haga clic en todo. Funciona como un panel real y aquí no se guarda nada.') }}</p>
     </div>
-    {% set pages = [('home',T('Home page','Page d’accueil','Portada')),('menu',T('Products','Produits','Productos')),('photos',T('Photos','Photos','Fotos')),('hours',T('Hours & holidays','Horaires et fêtes','Horarios y festivos')),('orders',T('Phone orders','Commandes tél.','Pedidos por tel.')),('announce',T('Announcement','Annonce','Aviso')),('history',T('History','Historique','Historial')),('staff',T('Staff logins','Accès équipe','Accesos del equipo'))] %}
-    <div class="tour" data-tabs>
-      <div class="tabs" role="tablist" aria-label="{{ T('Panel pages','Pages du panneau','Páginas del panel') }}">
-        {% for key, label in pages %}<button type="button" role="tab" id="tab-{{ key }}" aria-controls="pane-{{ key }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">{{ label }}</button>{% endfor %}
-      </div>
-      {% for key, label in pages %}<div class="panel-wrap tour__pane" id="pane-{{ key }}" role="tabpanel" aria-labelledby="tab-{{ key }}"{% if not loop.first %} hidden{% endif %}>{{ ui.admin('', False, key, True) }}</div>
-      {% endfor %}
-    </div>
+    <div class="pdemo" id="pdemo" data-root="{{ root }}"><noscript><p class="lead">{{ T('Turn on JavaScript to try the panel.','Activez JavaScript pour essayer le panneau.','Active JavaScript para probar el panel.') }}</p></noscript></div>
   </div>
 </section>
+{% set D = {
+  'brand': T('Your Business','Votre Entreprise','Su Negocio'),
+  'pages': T('Panel pages','Pages du panneau','Páginas del panel'),
+  'preview': T('Preview','Aperçu','Vista previa'),
+  'publish': T('Publish','Publier','Publicar'),
+  'nochanges': T('No changes','Aucune modification','Sin cambios'),
+  'change1': T('1 change to publish','1 modification à publier','1 cambio por publicar'),
+  'changesN': T('{n} changes to publish','{n} modifications à publier','{n} cambios por publicar'),
+  'nothing': T('Nothing new to publish.','Rien de nouveau à publier.','Nada nuevo que publicar.'),
+  'published': T('Published. Your site is up to date.','Publié. Votre site est à jour.','Publicado. Su sitio está al día.'),
+  'saved': T('Saved. Publish when you’re ready.','Enregistré. Publiez quand vous voulez.','Guardado. Publique cuando quiera.'),
+  'p_home': T('Home page','Page d’accueil','Portada'),
+  'p_products': T('Products','Produits','Productos'),
+  'p_photos': T('Photos','Photos','Fotos'),
+  'p_hours': T('Hours & holidays','Horaires et fêtes','Horarios y festivos'),
+  'p_orders': T('Phone orders','Commandes tél.','Pedidos por tel.'),
+  'p_ann': T('Announcement','Annonce','Aviso'),
+  'p_history': T('History','Historique','Historial'),
+  'p_staff': T('Staff logins','Accès équipe','Accesos del equipo'),
+  'home_sub': T('What visitors see first. Change the words, the photo and the items you feature.','Ce que les visiteurs voient en premier. Changez le texte, la photo et les articles mis en avant.','Lo primero que ven sus visitantes. Cambie el texto, la foto y los artículos destacados.'),
+  'top': T('Top of the page','Haut de page','Parte de arriba'),
+  'headline': T('Headline','Titre','Título'),
+  'headline_v': T('Made to last','Fait pour durer','Hecho para durar'),
+  'bigphoto': T('Big photo','Grande photo','Foto grande'),
+  'bigphoto_sub': T('The first thing people see','La première chose qu’on voit','Lo primero que se ve'),
+  'button': T('Button','Bouton','Botón'),
+  'button_v': T('Shop now','Voir la boutique','Ver la tienda'),
+  'change': T('Change','Changer','Cambiar'),
+  'edit': T('Edit','Modifier','Editar'),
+  'save': T('Save','Enregistrer','Guardar'),
+  'cancel': T('Cancel','Annuler','Cancelar'),
+  'close': T('Close','Fermer','Cerrar'),
+  'add': T('+ Add','+ Ajouter','+ Añadir'),
+  'add_btn': T('Add','Ajouter','Añadir'),
+  'remove': T('Remove','Retirer','Quitar'),
+  'up': T('Move up','Monter','Subir'),
+  'down': T('Move down','Descendre','Bajar'),
+  'featured': T('Featured items','Articles en avant','Artículos destacados'),
+  'nofeat': T('Nothing featured yet. Add an item.','Rien en avant pour l’instant. Ajoutez un article.','Nada destacado aún. Añada un artículo.'),
+  'choose_photo': T('Choose a photo','Choisir une photo','Elegir una foto'),
+  'choose_item': T('Choose an item','Choisir un article','Elegir un artículo'),
+  'all_featured': T('Every item is already on the home page.','Tous les articles sont déjà sur l’accueil.','Todos los artículos ya están en la portada.'),
+  'prod_sub': T('Pick an item to change its photos, description or availability.','Choisissez un article pour changer ses photos, sa description ou sa disponibilité.','Elija un artículo para cambiar sus fotos, su descripción o su disponibilidad.'),
+  'find': T('Find an item','Chercher un article','Buscar un artículo'),
+  'f_all': T('All','Tout','Todo'),
+  'f_out': T('Out of stock','En rupture','Agotados'),
+  'f_hidden': T('Hidden','Masqués','Ocultos'),
+  'g_products': T('Products','Produits','Productos'),
+  'g_services': T('Services','Services','Servicios'),
+  'add_item': T('+ Add item','+ Ajouter','+ Añadir'),
+  'new_item': T('New item','Nouvel article','Artículo nuevo'),
+  'noresults': T('No items match.','Aucun article ne correspond.','Ningún artículo coincide.'),
+  'on_home': T('On the home page','Sur la page d’accueil','En la portada'),
+  'photo1': T('1 photo','1 photo','1 foto'),
+  'photos_n': T('{n} photos','{n} photos','{n} fotos'),
+  'a_on': T('Available','Disponible','Disponible'),
+  'a_out': T('Out of stock today','En rupture aujourd’hui','Agotado hoy'),
+  'a_hidden': T('Hidden','Masqué','Oculto'),
+  'ed_title': T('Edit item','Modifier l’article','Editar artículo'),
+  'f_name': T('Name','Nom','Nombre'),
+  'f_desc': T('Description','Description','Descripción'),
+  'f_photos': T('Photos','Photos','Fotos'),
+  'f_avail': T('Availability','Disponibilité','Disponibilidad'),
+  'f_home': T('Show on the home page','Afficher sur l’accueil','Mostrar en la portada'),
+  'mainphoto': T('Main photo','Photo principale','Foto principal'),
+  'ph_sub': T('Drop in photos from your phone. They are resized for the website for you.','Ajoutez des photos depuis votre téléphone. Elles sont redimensionnées pour le site automatiquement.','Suba fotos desde su móvil. Se ajustan al sitio automáticamente.'),
+  'ph_all': T('All','Toutes','Todas'),
+  'ph_products': T('Products','Produits','Productos'),
+  'ph_details': T('Details','Détails','Detalles'),
+  'ph_unused': T('Not used','Inutilisées','Sin usar'),
+  'ph_new': T('New','Nouveau','Nueva'),
+  'upload': T('+ Upload','+ Ajouter','+ Subir'),
+  'use_home': T('Use on home page','Mettre sur l’accueil','Usar en la portada'),
+  'delete': T('Delete','Supprimer','Eliminar'),
+  'deleted': T('Photo deleted.','Photo supprimée.','Foto eliminada.'),
+  'uploaded1': T('1 photo uploaded','1 photo ajoutée','1 foto subida'),
+  'uploaded_n': T('{n} photos uploaded','{n} photos ajoutées','{n} fotos subidas'),
+  'hours_sub': T('Your hours show on the website, and the phone agent uses them too.','Vos horaires s’affichent sur le site, et l’agent téléphonique les utilise aussi.','Su horario se muestra en el sitio y el agente telefónico también lo usa.'),
+  'weekly': T('Weekly hours','Horaires de la semaine','Horario semanal'),
+  'day0': T('Monday','Lundi','Lunes'),
+  'day1': T('Tuesday','Mardi','Martes'),
+  'day2': T('Wednesday','Mercredi','Miércoles'),
+  'day3': T('Thursday','Jeudi','Jueves'),
+  'day4': T('Friday','Vendredi','Viernes'),
+  'day5': T('Saturday','Samedi','Sábado'),
+  'day6': T('Sunday','Dimanche','Domingo'),
+  'opens': T('opens','ouverture','abre'),
+  'closes': T('closes','fermeture','cierra'),
+  'open': T('Open','Ouvert','Abierto'),
+  'closed': T('Closed','Fermé','Cerrado'),
+  'until': T('Until {t}','Jusqu’à {t}','Hasta las {t}'),
+  'holidays_hd': T('Closed days & holiday hours','Fermetures et horaires de fêtes','Cierres y horarios festivos'),
+  'hol_name': T('Name, like Inventory day','Nom, par ex. Inventaire','Nombre, por ej. Inventario'),
+  'hol_date': T('Date','Date','Fecha'),
+  'hol_hours': T('Hours that day','Horaires ce jour-là','Horario ese día'),
+  'nohol': T('No closed days coming up.','Aucune fermeture prévue.','Sin cierres próximos.'),
+  'coming': T('Coming up','À venir','Próximos'),
+  'add_closed': T('+ Closed','+ Fermé','+ Cerrado'),
+  'add_hours': T('+ Hours','+ Horaires','+ Horario'),
+  'hol1': T('Thanksgiving','Thanksgiving','Acción de Gracias'),
+  'hol1d': T('Thu, Nov 26','jeu. 26 nov.','jue 26 nov'),
+  'hol2': T('Christmas Eve','Veille de Noël','Nochebuena'),
+  'hol2d': T('Thu, Dec 24','jeu. 24 déc.','jue 24 dic'),
+  'hol3': T('Christmas Day','Noël','Navidad'),
+  'hol3d': T('Fri, Dec 25','ven. 25 déc.','vie 25 dic'),
+  'up1': T('New Year’s Day','Jour de l’an','Año Nuevo'),
+  'up1d': T('Fri, Jan 1','ven. 1er janv.','vie 1 ene'),
+  'up2': T('Valentine’s Day','Saint-Valentin','San Valentín'),
+  'up2d': T('Sun, Feb 14','dim. 14 févr.','dom 14 feb'),
+  'ord_sub': T('Everything the phone agent took. Tap a number to call back, then mark it done.','Tout ce que l’agent téléphonique a noté. Touchez un numéro pour rappeler, puis marquez-le traité.','Todo lo que tomó el agente telefónico. Toque un número para llamar y márquelo como hecho.'),
+  'o_new': T('New','Nouveau','Nuevo'),
+  'o_done': T('Done','Traité','Hecho'),
+  'o_all': T('All calls','Tous les appels','Todas las llamadas'),
+  'mark_done': T('Done','Traité','Hecho'),
+  'reopen': T('Reopen','Rouvrir','Reabrir'),
+  'marked': T('Marked done.','Marqué comme traité.','Marcado como hecho.'),
+  'no_orders': T('Nothing here.','Rien ici.','Nada por aquí.'),
+  'ord_note': T('Each one was also sent to the team by text and email when the call ended.','Chacune a aussi été envoyée à l’équipe par SMS et e-mail à la fin de l’appel.','Cada uno también se envió al equipo por mensaje y correo al terminar la llamada.'),
+  'calling': T('In your real panel, this calls {name} back.','Dans votre vrai panneau, ceci rappelle {name}.','En su panel real, esto llama a {name}.'),
+  'o1': T('Pickup order, Sat 11 AM','Commande à retirer, sam. 11 h','Pedido para recoger, sáb 11 a. m.'),
+  'o1m': T('3 items · 9:48 PM','3 articles · 21 h 48','3 artículos · 9:48 p. m.'),
+  'o2': T('Booking for Friday, 3 PM','Réservation vendredi, 15 h','Reserva para el viernes, 3 p. m.'),
+  'o2m': T('in Spanish · 6:02 PM','en espagnol · 18 h 02','en español · 6:02 p. m.'),
+  'o3': T('Call back about a large order','Rappeler pour une grosse commande','Llamar por un pedido grande'),
+  'o3m': T('4:15 PM','16 h 15','4:15 p. m.'),
+  'o4': T('Question about gift wrapping','Question sur l’emballage cadeau','Pregunta sobre el envoltorio de regalo'),
+  'o4m': T('answered by the agent · 11:20 AM','réponse de l’agent · 11 h 20','respondida por el agente · 11:20 a. m.'),
+  'ann_sub': T('A message across the top of your website. It turns itself off on the end date.','Un message en haut de votre site. Il s’arrête tout seul à la date de fin.','Un mensaje en la parte de arriba del sitio. Se quita solo en la fecha de fin.'),
+  'ann_v': T('Closed Thursday for Thanksgiving. Back Friday at 9 AM.','Fermé jeudi pour Thanksgiving. De retour vendredi à 9 h.','Cerrado el jueves por Acción de Gracias. Volvemos el viernes a las 9 a. m.'),
+  'message': T('Message','Message','Mensaje'),
+  'starts': T('Starts','Début','Empieza'),
+  'ends': T('Ends','Fin','Termina'),
+  'show_site': T('Show on the website','Afficher sur le site','Mostrar en el sitio'),
+  'tell_agent': T('Tell the phone agent too','Prévenir aussi l’agent téléphonique','Avisar también al agente telefónico'),
+  'hist_sub': T('Every change, who made it and when. Undo any of them.','Chaque modification, qui l’a faite et quand. Annulez-en une d’un geste.','Cada cambio, quién lo hizo y cuándo. Deshaga cualquiera.'),
+  'today': T('Today','Aujourd’hui','Hoy'),
+  'yesterday': T('Yesterday','Hier','Ayer'),
+  'undo': T('Undo','Annuler','Deshacer'),
+  'undone': T('Change undone.','Modification annulée.','Cambio deshecho.'),
+  'you': T('You','Vous','Usted'),
+  'justnow': T('just now','à l’instant','ahora mismo'),
+  'seed1': T('New photo for Chronograph watch','Nouvelle photo pour la montre chronographe','Foto nueva del reloj cronógrafo'),
+  'seed1w': T('7:15 AM','7 h 15','7:15 a. m.'),
+  'seed2': T('Christmas Eve: open until 2 PM','Veille de Noël : ouvert jusqu’à 14 h','Nochebuena: abierto hasta las 2 p. m.'),
+  'seed2w': T('6:30 PM','18 h 30','6:30 p. m.'),
+  'seed3': T('Eau de parfum added to the home page','Eau de parfum ajoutée à l’accueil','Eau de parfum añadida a la portada'),
+  'seed3w': T('2:05 PM','14 h 05','2:05 p. m.'),
+  'staff_sub': T('Everyone gets their own login and only sees the pages they need.','Chacun a son propre accès et ne voit que les pages utiles.','Cada persona tiene su acceso y solo ve las páginas que necesita.'),
+  'people': T('People','Personnes','Personas'),
+  'add_person': T('+ Add person','+ Ajouter','+ Añadir'),
+  'name': T('Name','Nom','Nombre'),
+  'role': T('Role','Rôle','Rol'),
+  'r_owner': T('Owner','Propriétaire','Dueño'),
+  'r_manager': T('Manager','Gérant','Encargado'),
+  'r_staff': T('Staff','Équipe','Equipo'),
+  'acc_owner': T('Everything','Tout','Todo'),
+  'acc_manager': T('Products, photos, hours, phone orders','Produits, photos, horaires, commandes tél.','Productos, fotos, horarios, pedidos por tel.'),
+  'acc_staff': T('Phone orders and stock','Commandes tél. et stock','Pedidos por tel. y stock'),
+  'invite': T('Added. They get a sign-in code by text.','Ajouté. La personne reçoit un code par SMS.','Añadido. Recibe un código de acceso por mensaje.'),
+  'signin': T('Sign-in code by text','Code de connexion par SMS','Código de acceso por mensaje'),
+  'signin_sub': T('No passwords to remember','Aucun mot de passe à retenir','Sin contraseñas que recordar'),
+  'on': T('on','activé','activado'),
+  'off': T('off','désactivé','desactivado'),
+  'prev_title': T('Preview of your website','Aperçu de votre site','Vista previa de su sitio'),
+  'prev_contact': T('Contact','Contact','Contacto'),
+  'prev_hours': T('Today:','Aujourd’hui :','Hoy:'),
+  'prev_open': T('open {a} to {b}','ouvert de {a} à {b}','abierto de {a} a {b}'),
+  'prev_closed': T('closed','fermé','cerrado'),
+  'prev_note': T('This is how visitors see it after you publish.','Voici ce que verront les visiteurs après publication.','Así lo verán sus visitantes después de publicar.'),
+  'h_headline': T('Headline changed','Titre modifié','Título cambiado'),
+  'h_button': T('Button text changed','Texte du bouton modifié','Texto del botón cambiado'),
+  'h_photo': T('Home page photo changed','Photo de l’accueil changée','Foto de la portada cambiada'),
+  'h_feat_add': T('{item} added to the home page','{item} ajouté à l’accueil','{item} añadido a la portada'),
+  'h_feat_rm': T('{item} removed from the home page','{item} retiré de l’accueil','{item} quitado de la portada'),
+  'h_feat_move': T('Home page items reordered','Ordre des articles de l’accueil changé','Orden de la portada cambiado'),
+  'h_item_saved': T('{item} updated','{item} mis à jour','{item} actualizado'),
+  'h_item_new': T('{item} added','{item} ajouté','{item} añadido'),
+  'h_photo_del': T('Photo deleted','Photo supprimée','Foto eliminada'),
+  'h_avail': T('{item}: {state}','{item} : {state}','{item}: {state}'),
+  'h_day': T('{day}: {state}','{day} : {state}','{day}: {state}'),
+  'h_hours': T('{day} hours changed','Horaires du {day} modifiés','Horario del {day} cambiado'),
+  'h_hol': T('{name} added to closed days','{name} ajouté aux fermetures','{name} añadido a los cierres'),
+  'h_hol_rm': T('{name} removed from closed days','{name} retiré des fermetures','{name} quitado de los cierres'),
+  'h_done': T('Order from {name} marked done','Commande de {name} traitée','Pedido de {name} marcado como hecho'),
+  'h_ann': T('Announcement changed','Annonce modifiée','Aviso cambiado'),
+  'h_toggle': T('{what}: {state}','{what} : {state}','{what}: {state}'),
+  'h_staff_add': T('{name} added to staff','{name} ajouté à l’équipe','{name} añadido al equipo'),
+  'h_staff_rm': T('{name} removed from staff','{name} retiré de l’équipe','{name} quitado del equipo'),
+  'h_role': T('{name} is now {role}','{name} est maintenant {role}','{name} ahora es {role}')
+} %}
+<script>window.ZOOMY_DEMO_T = {{ D|tojson }};</script>
+<script src="{{ root }}js/panel-demo.js?v={{ v }}" defer></script>
 
 <section class="sec">
   <div class="wrap">
@@ -48,16 +233,6 @@
   </div>
 </section>
 
-<section class="sec sec--flush">
-  <div class="wrap split">
-    <div class="reveal">
-      <span class="eyebrow">{{ T('Holidays, sorted','Les fêtes, réglées','Festivos, resueltos') }}</span>
-      <h2>{{ T('Closing early on Christmas Eve? One tap.','Fermeture tôt la veille de Noël ? Un geste.','¿Cierra temprano en Nochebuena? Un toque.') }}</h2>
-      <p class="lead mt-m">{{ T('Upcoming holidays are already listed. Add the ones you close for, or set special hours, and your website and phone agent update together.','Les prochaines fêtes sont déjà listées. Ajoutez celles où vous fermez, ou des horaires spéciaux : le site et l’agent téléphonique se mettent à jour ensemble.','Los próximos festivos ya aparecen. Añada los que cierra o ponga un horario especial, y el sitio y el agente telefónico se actualizan a la vez.') }}</p>
-    </div>
-    <div class="reveal panel-wrap">{{ ui.admin('', False, 'hours') }}</div>
-  </div>
-</section>
 
 <section class="sec">
   <div class="wrap">
