@@ -45,7 +45,7 @@ REDIRECTS = {
 
 # 3D showcase: a model is shown once both its picture and its 3D file exist
 MODEL_KEYS = ['watch', 'perfume', 'keyboard', 'camera', 'headphones', 'microphone', 'turntable', 'lamp', 'airliner', 'house']
-READY_MODELS = [k for k in MODEL_KEYS if os.path.exists(os.path.join(OUT, 'img', '3d', k + '.jpg')) and os.path.exists(os.path.join(OUT, 'models', k + '.glb'))]
+READY_MODELS = [k for k in MODEL_KEYS if os.path.exists(os.path.join(OUT, 'img', '3d', k + '.jpg')) and os.path.exists(os.path.join(OUT, 'img', '3d', 'full', k + '.jpg'))]
 HERO_VIDEO = os.path.exists(os.path.join(OUT, 'img', '3d', 'house-turn.mp4'))
 
 env = Environment(loader=FileSystemLoader(os.path.join(SRC, 'templates')), autoescape=False,
