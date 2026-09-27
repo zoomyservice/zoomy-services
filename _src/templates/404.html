@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% set title = 'Page not found · Zoomy' %}
+{% set description = 'This page doesn’t exist.' %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">404</span>
+      <h1>This page went <span class="sq">for a walk.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">The page you’re looking for isn’t here. It may have moved when we updated the site.</p>
+      <div class="actions"><a class="btn" href="/">Go to the home page →</a><a class="ln" href="/contact.html">Contact us</a></div>
+    </div>
+    <div class="board" aria-hidden="true" style="height:340px">
+      <div class="note tape n1 tl"><span class="k">Lost?</span><h5>Try the menu up top</h5><p>Or ask the assistant in the corner.</p></div>
+    </div>
+  </section>
+</div>
+{% endblock %}

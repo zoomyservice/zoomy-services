@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% set title = T('Questions · Zoomy','Questions · Zoomy','Preguntas · Zoomy') %}
+{% set description = T('Answers to common questions about Zoomy websites, admin panels, chat assistants, phone agents and animated ads.','Réponses aux questions fréquentes sur les sites, panneaux d’administration, assistants de chat, agents téléphoniques et pubs animées de Zoomy.','Respuestas a preguntas frecuentes sobre los sitios web, paneles, asistentes de chat, agentes telefónicos y anuncios animados de Zoomy.') %}
+{% macro q(qen,qfr,qes,aen,afr,aes) %}<details><summary>{{ T(qen,qfr,qes) }}</summary><div class="a"><p>{{ T(aen,afr,aes) }}</p></div></details>{% endmacro %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--page">
+    <div>
+      <span class="eyebrow">{{ T('Questions','Questions','Preguntas') }}</span>
+      <h1>{{ T('Ask away.','Demandez.','Pregunte.') }}</h1>
+      <p class="lead mt-m">{{ T('Can’t find it here? Ask the assistant in the corner, or email <a class="ln" href="mailto:contact@zoomy.services">contact@zoomy.services</a>.','Vous ne trouvez pas ? Demandez à l’assistant en bas de l’écran, ou écrivez à <a class="ln" href="mailto:contact@zoomy.services">contact@zoomy.services</a>.','¿No lo encuentra? Pregúntele al asistente de la esquina o escriba a <a class="ln" href="mailto:contact@zoomy.services">contact@zoomy.services</a>.') }}</p>
+    </div>
+  </section>
+</div>
+<section class="sec sec--flush">
+  <div class="wrap split split--top">
+    <div>
+      <div class="faq-sec">
+        <h3>{{ T('Working with us','Travailler avec nous','Trabajar con nosotros') }}</h3>
+        <div class="faq">
+          {{ q('How much does it cost?','Combien ça coûte ?','¿Cuánto cuesta?','Every project is different, so we quote each one. You get a fixed price in writing before any work starts, and it only changes if you ask for something new.','Chaque projet est différent, nous chiffrons donc chacun. Vous recevez un prix ferme par écrit avant tout travail, et il ne change que si vous demandez quelque chose de nouveau.','Cada proyecto es distinto, así que presupuestamos cada uno. Recibe un precio cerrado por escrito antes de empezar, y solo cambia si pide algo nuevo.') }}
+          {{ q('How long does it take?','Combien de temps ça prend ?','¿Cuánto tarda?','It depends on the size of the project. Your quote comes with a timeline, and we stick to it.','Cela dépend de la taille du projet. Votre devis inclut un calendrier, et nous le respectons.','Depende del tamaño del proyecto. Su presupuesto incluye un plazo, y lo cumplimos.') }}
+          {{ q('Can I see something before I commit?','Puis-je voir quelque chose avant de m’engager ?','¿Puedo ver algo antes de comprometerme?','Yes. For websites we design your homepage first, so you can see the direction before going ahead.','Oui. Pour les sites, nous dessinons d’abord la page d’accueil pour que vous voyiez la direction avant de continuer.','Sí. En los sitios web diseñamos primero la portada, para que vea el rumbo antes de seguir.') }}
+          {{ q('Do you work outside New York?','Travaillez-vous hors de New York ?','¿Trabajan fuera de Nueva York?','Yes. We’re based in New York and Connecticut and work with businesses anywhere, in English, French or Spanish.','Oui. Nous sommes entre New York et le Connecticut et travaillons avec des entreprises partout, en anglais, français ou espagnol.','Sí. Estamos entre Nueva York y Connecticut y trabajamos con negocios de cualquier lugar, en inglés, francés o español.') }}
+        </div>
+      </div>
+      <div class="faq-sec">
+        <h3>{{ T('Websites and admin panels','Sites et panneaux','Sitios y paneles') }}</h3>
+        <div class="faq">
+          {{ q('Do you use WordPress or templates?','Utilisez-vous WordPress ou des modèles ?','¿Usan WordPress o plantillas?','No. Every site is designed and written from scratch, so it’s fast and does exactly what your business needs.','Non. Chaque site est conçu et écrit de zéro : il est rapide et fait exactement ce dont votre entreprise a besoin.','No. Cada sitio se diseña y escribe desde cero, así que es rápido y hace justo lo que su negocio necesita.') }}
+          {{ q('Can I update the site myself?','Puis-je modifier le site moi-même ?','¿Puedo actualizar el sitio yo mismo?','Yes, with your admin panel. Menu, prices, photos, hours, holidays and announcements, from your phone or computer.','Oui, avec votre panneau. Menu, prix, photos, horaires, fêtes et annonces, depuis votre téléphone ou ordinateur.','Sí, con su panel. Menú, precios, fotos, horarios, festivos y avisos, desde el móvil o la computadora.') }}
+          {{ q('Who owns the site?','À qui appartient le site ?','¿De quién es el sitio?','You do. The code, the domain and the accounts are in your name.','À vous. Le code, le domaine et les comptes sont à votre nom.','Suyo. El código, el dominio y las cuentas están a su nombre.') }}
+          {{ q('Can you handle the domain and hosting?','Pouvez-vous gérer le domaine et l’hébergement ?','¿Se encargan del dominio y el hosting?','Yes. We can register a domain and set up hosting for you, or use the ones you already have.','Oui. Nous pouvons enregistrer un domaine et configurer l’hébergement, ou utiliser les vôtres.','Sí. Podemos registrar el dominio y configurar el hosting, o usar los que ya tiene.') }}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="faq-sec">
+        <h3>{{ T('Chat and phone agents','Chat et agents téléphoniques','Chat y agentes telefónicos') }}</h3>
+        <div class="faq">
+          {{ q('Will the chat make things up?','Le chat va-t-il inventer des choses ?','¿El chat se inventa cosas?','No. It only uses the information you give us about your business. If it doesn’t know, it says so and points to your contact details.','Non. Il n’utilise que les informations que vous nous donnez. S’il ne sait pas, il le dit et renvoie vers vos coordonnées.','No. Solo usa la información que usted nos da. Si no sabe, lo dice y remite a sus datos de contacto.') }}
+          {{ q('Does the phone agent sound like a robot?','L’agent téléphonique a-t-il une voix de robot ?','¿El agente telefónico suena como un robot?','No. It uses a calm, natural voice and talks like a person, in short friendly sentences.','Non. Il a une voix calme et naturelle et parle comme une personne, en phrases courtes et aimables.','No. Usa una voz tranquila y natural y habla como una persona, con frases cortas y amables.') }}
+          {{ q('Do I need a new phone number?','Faut-il un nouveau numéro ?','¿Necesito un número nuevo?','No. The agent can have its own number, or your current line can forward to it when you’re busy or closed.','Non. L’agent peut avoir son propre numéro, ou votre ligne actuelle peut lui renvoyer les appels quand vous êtes occupés ou fermés.','No. El agente puede tener su propio número, o su línea actual puede desviarle las llamadas cuando está ocupado o cerrado.') }}
+          {{ q('How do orders reach my team?','Comment les commandes arrivent-elles à mon équipe ?','¿Cómo llegan los pedidos a mi equipo?','By email or text, and in your admin panel, with the caller’s name, number and exactly what they asked for.','Par e-mail ou SMS, et dans votre panneau, avec le nom, le numéro et exactement ce que le client a demandé.','Por correo o mensaje de texto, y en su panel, con el nombre, el número y exactamente lo que pidió el cliente.') }}
+          {{ q('Does it take payments?','Prend-il les paiements ?','¿Cobra pagos?','No. It never asks for card details. Your team takes care of payment when they call back to confirm.','Non. Il ne demande jamais de carte. Votre équipe s’occupe du paiement en rappelant pour confirmer.','No. Nunca pide datos de tarjeta. Su equipo se encarga del pago al llamar para confirmar.') }}
+        </div>
+      </div>
+      <div class="faq-sec">
+        <h3>{{ T('Animated ads','Pubs animées','Anuncios animados') }}</h3>
+        <div class="faq">
+          {{ q('Do you use AI to make the videos?','Utilisez-vous l’IA pour les vidéos ?','¿Usan IA para hacer los videos?','No. Every ad is animated by hand from your brief.','Non. Chaque pub est animée à la main à partir de votre brief.','No. Cada anuncio se anima a mano a partir de su idea.') }}
+          {{ q('Do you run the ads for me?','Diffusez-vous les pubs pour moi ?','¿Ustedes publican los anuncios?','No, we make the videos and you post them on your own accounts.','Non, nous faisons les vidéos et vous les publiez sur vos comptes.','No, hacemos los videos y usted los publica en sus cuentas.') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

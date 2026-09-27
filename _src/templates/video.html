@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% set title = T('Animated ads · Zoomy','Pubs animées · Zoomy','Anuncios animados · Zoomy') %}
+{% set description = T('Short animated video ads made from your brief, delivered as MP4 in square, tall and full-screen formats for Instagram, Facebook and TikTok. No filming needed.','De courtes pubs animées réalisées à partir de votre brief, livrées en MP4 aux formats carré, vertical et plein écran pour Instagram, Facebook et TikTok. Sans tournage.','Anuncios animados cortos hechos a partir de su idea, en MP4 cuadrado, vertical y pantalla completa para Instagram, Facebook y TikTok. Sin rodaje.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">{{ T('Animated ads','Pubs animées','Anuncios animados') }}</span>
+      <h1>{{ T('Ads that move. No camera <span class="sq">needed.','Des pubs qui bougent. Sans <span class="sq">caméra.','Anuncios con movimiento. Sin <span class="sq">cámara.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('Short animated videos made from a quick brief: your product, your message, your colours. We hand you files that are ready to post.','De courtes vidéos animées réalisées à partir d’un brief rapide : votre produit, votre message, vos couleurs. Vous recevez des fichiers prêts à publier.','Videos animados cortos hechos a partir de una idea rápida: su producto, su mensaje, sus colores. Le entregamos archivos listos para publicar.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Send us a brief','Envoyer un brief','Envíenos su idea') }} →</a></div>
+    </div>
+    <div class="formats reveal" aria-hidden="true">
+      <div class="fmt fmt--a tl1"><b>1:1</b><small>{{ T('Feed','Fil','Feed') }}</small></div>
+      <div class="fmt fmt--b tr1"><b>4:5</b><small>{{ T('Tall feed','Fil vertical','Feed vertical') }}</small></div>
+      <div class="fmt fmt--c tl1"><b>9:16</b><small>Stories · Reels · TikTok</small></div>
+    </div>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What you get','Ce que vous recevez','Lo que recibe') }}</h2>
+      <p class="lead">{{ T('Animated by hand from your brief. We don’t use AI-generated images or video.','Animé à la main à partir de votre brief. Nous n’utilisons pas d’images ou de vidéos générées par IA.','Animado a mano a partir de su idea. No usamos imágenes ni videos generados con IA.') }}</p>
+    </div>
+    <div class="cards">
+      <div class="card card--butter reveal"><h3>{{ T('Three sizes','Trois formats','Tres formatos') }}</h3><p>{{ T('Square, tall and full-screen versions of the same ad, as MP4 files.','Versions carrée, verticale et plein écran de la même pub, en MP4.','Versión cuadrada, vertical y de pantalla completa del mismo anuncio, en MP4.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Your look','Votre style','Su estilo') }}</h3><p>{{ T('Your logo, colours and fonts, with words on screen so it works with the sound off.','Votre logo, vos couleurs et polices, avec du texte à l’écran pour fonctionner sans le son.','Su logo, colores y tipografías, con texto en pantalla para que funcione sin sonido.') }}</p></div>
+      <div class="card card--sky reveal"><h3>{{ T('Sound','Son','Sonido') }}</h3><p>{{ T('Music and sound where they help the ad.','Musique et son quand ils servent la pub.','Música y sonido cuando ayudan al anuncio.') }}</p></div>
+      <div class="card card--mint reveal"><h3>{{ T('Two rounds of changes','Deux séries de retouches','Dos rondas de cambios') }}</h3><p>{{ T('You watch a draft, tell us what to change, then watch it again.','Vous regardez une version, dites ce qu’il faut changer, puis la revoyez.','Ve un borrador, nos dice qué cambiar y lo vuelve a ver.') }}</p></div>
+      <div class="card card--blush reveal"><h3>{{ T('About a week','Environ une semaine','Una semana, más o menos') }}</h3><p>{{ T('Most ads are ready five to seven days after we get your brief.','La plupart des pubs sont prêtes cinq à sept jours après votre brief.','La mayoría está lista de cinco a siete días después de recibir su idea.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Ready to post','Prêtes à publier','Listos para publicar') }}</h3><p>{{ T('Sized for Instagram, Facebook and TikTok. You upload them to your own account.','Aux bons formats pour Instagram, Facebook et TikTok. Vous les publiez sur votre compte.','Con el tamaño para Instagram, Facebook y TikTok. Usted los sube a su cuenta.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="head head--one"><h2>{{ T('From brief to post','Du brief à la publication','De la idea a la publicación') }}</h2></div>
+    <div class="steps">
+      <div class="step reveal"><span class="step__n">1</span><h4>{{ T('Send a brief','Envoyez un brief','Envíe su idea') }}</h4><p>{{ T('What you’re selling, the one thing people should remember, and your logo. A short message is fine.','Ce que vous vendez, la chose à retenir, et votre logo. Un court message suffit.','Qué vende, lo que la gente debe recordar y su logo. Basta un mensaje corto.') }}</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>{{ T('We animate','Nous animons','Animamos') }}</h4><p>{{ T('Motion, text and sound, in all three sizes.','Mouvement, texte et son, dans les trois formats.','Movimiento, texto y sonido, en los tres formatos.') }}</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>{{ T('You post it','Vous publiez','Usted lo publica') }}</h4><p>{{ T('Two rounds of changes, then the final files.','Deux séries de retouches, puis les fichiers finaux.','Dos rondas de cambios y luego los archivos finales.') }}</p></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

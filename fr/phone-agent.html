@@ -1,1006 +1,161 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="no-js">
 <head>
-<meta charset="utf-8"/>
-<link href="../favicon.png" rel="icon" sizes="64x64" type="image/png"/>
-<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="../favicon.svg" rel="apple-touch-icon"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<link href="https://zoomy.services/phone-agent.html" rel="canonical"/>
-<title>Agents téléphoniques IA — Zoomy</title>
-<meta content="Custom AI phone agents that answer calls, book appointments, and handle customer enquiries 24/7 in any language." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="../css/style.css?v=20260427b" rel="stylesheet"/>
-<style>
-.agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.capability-list{display:flex;flex-direction:column;gap:0;margin-top:2.5rem}
-.cap-row{display:grid;grid-template-columns:260px 1fr;gap:3rem;padding:2rem 0;border-bottom:1px solid var(--border);align-items:start}
-.cap-row:first-child{border-top:1px solid var(--border)}
-.cap-row-label{font-family:var(--f-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
-.cap-row-title{font-family:var(--f-display);font-size:1.1rem;font-weight:700;color:#fff}
-.cap-row-desc{color:var(--text-2);font-size:.925rem;line-height:1.78}
-.use-case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.use-case{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;transition:border-color var(--ease),transform var(--ease)}
-.use-case:hover{border-color:rgba(99,102,241,.4);transform:translateY(-3px)}
-.use-case-icon{width:44px;height:44px;border-radius:10px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.18);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.use-case h4{font-family:var(--f-display);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.6rem}
-.use-case p{font-size:.875rem;color:var(--text-2);line-height:1.65}
-.voice-demo{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;max-width:460px;width:100%}
-.voice-header{background:linear-gradient(135deg,#312e81,#6366f1);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:14px}
-.voice-orb{width:44px;height:44px;border-radius:50%;background:var(--border);border:2px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;position:relative}
-.voice-orb::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid rgba(99,102,241,.4);animation:orbPulse 2s ease-in-out infinite}
-@keyframes orbPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.12)}}
-.voice-name{font-family:var(--f-display);font-weight:700;font-size:.95rem;color:#fff}
-.voice-status{font-size:.72rem;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:5px;margin-top:2px}
-.voice-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulseDot 2s infinite;flex-shrink:0}
-.call-transcript{padding:1.5rem;background:var(--bg-2);display:flex;flex-direction:column;gap:1rem;min-height:280px}
-.call-line{display:flex;gap:10px;align-items:flex-start}
-.call-speaker{font-family:var(--f-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;padding-top:2px;min-width:56px}
-.call-text{font-size:.875rem;color:var(--text-2);line-height:1.6;flex:1}
-.call-text.agent{color:var(--text)}
-.call-line.action .call-text{color:var(--accent);font-family:var(--f-mono);font-size:.75rem;font-style:italic}
-.voice-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:space-between}
-.voice-duration{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
-.voice-wave{display:flex;align-items:center;gap:3px}
-.wave-bar{width:3px;border-radius:2px;background:var(--accent);animation:waveBounce 1s ease-in-out infinite}
-.wave-bar:nth-child(1){height:8px;animation-delay:.0s}
-.wave-bar:nth-child(2){height:16px;animation-delay:.1s}
-.wave-bar:nth-child(3){height:22px;animation-delay:.2s}
-.wave-bar:nth-child(4){height:14px;animation-delay:.3s}
-.wave-bar:nth-child(5){height:20px;animation-delay:.4s}
-.wave-bar:nth-child(6){height:10px;animation-delay:.5s}
-.wave-bar:nth-child(7){height:18px;animation-delay:.6s}
-@keyframes waveBounce{0%,100%{transform:scaleY(.4);opacity:.5}50%{transform:scaleY(1);opacity:1}}
-.integration-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:3rem}
-.integration-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem;text-align:center}
-.integration-icon{width:44px;height:44px;border-radius:10px;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.18);display:flex;align-items:center;justify-content:center;margin-bottom:.6rem}
-.integration-name{font-size:.8rem;font-weight:600;color:#fff;font-family:var(--f-display)}
-.integration-desc{font-size:.72rem;color:var(--muted);margin-top:.2rem}
-@media(max-width:900px){
-.agent-grid{grid-template-columns:1fr}
-.cap-row{grid-template-columns:1fr;gap:.75rem}
-.use-case-grid{grid-template-columns:1fr}
-.integration-grid{grid-template-columns:repeat(2,1fr)}
-}
-</style>
-<style>
-#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:var(--bg-dark,#0D0D0B);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid var(--card)}
-.bar-off #free-bar{display:none!important}
-@media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
-</style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
-<!-- ═══ ANALYTICS & TRACKING ═══ -->
-<!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-L5RX761T33', {
-      send_page_view: true
-    });
-  </script>
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wd5th9teha");
-  </script>
-<!-- Custom event tracking -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track outbound CTA clicks (contact page links)
-      document.querySelectorAll('a.btn[href*="contact"], a.btn-nav[href*="contact"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          gtag('event', 'cta_click', {event_category: 'engagement', event_label: el.textContent.trim().substring(0,50)});
-          clarity('event', 'cta_click');
-          fbq('track', 'Contact');
-        });
-      });
-      // Track phone demo button
-      document.querySelectorAll('[id*="demo"], [class*="demo"], [id*="phone"], a[href*="tel:"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          gtag('event', 'phone_demo_click', {event_category: 'engagement'});
-          clarity('event', 'phone_demo_click');
-          fbq('track', 'Contact');
-        });
-      });
-      // Track free bar claim click
-      var freeBar = document.getElementById('free-bar');
-      if (freeBar) {
-        freeBar.querySelector('a') && freeBar.querySelector('a').addEventListener('click', function() {
-          gtag('event', 'free_bar_claim', {event_category: 'engagement'});
-          clarity('event', 'free_bar_claim');
-          fbq('track', 'Lead');
-        });
-      }
-      // Track scroll depth (25%, 50%, 75%, 90%)
-      var scrollMilestones = {25: false, 50: false, 75: false, 90: false};
-      window.addEventListener('scroll', function() {
-        var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        Object.keys(scrollMilestones).forEach(function(m) {
-          if (!scrollMilestones[m] && scrollPct >= parseInt(m)) {
-            scrollMilestones[m] = true;
-            gtag('event', 'scroll_depth', {event_category: 'engagement', event_label: m + '%', value: parseInt(m)});
-          }
-        });
-      }, {passive: true});
-      // Track contact form submit
-      document.querySelectorAll('form').forEach(function(form) {
-        form.addEventListener('submit', function() {
-          gtag('event', 'form_submit', {event_category: 'conversion', event_label: window.location.pathname});
-          clarity('event', 'form_submit');
-          fbq('track', 'Lead');
-        });
-      });
-    });
-  </script>
-<!-- ═══ END TRACKING ═══ -->
-<!-- ═══ META PIXEL ═══ -->
-<script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    (function(){
-    var _ud={};
-    var _fbc=document.cookie.match(/_fbc=([^;]+)/);
-    var _fbp=document.cookie.match(/_fbp=([^;]+)/);
-    try{var _p=new URLSearchParams(window.location.search);var _cl=_p.get('fbclid');
-    if(_cl&&!_fbc){var _fc='fb.1.'+Date.now()+'.'+_cl;document.cookie='_fbc='+_fc+';path=/;max-age=7776000;SameSite=Lax';_ud.fbc=_fc;}
-    else if(_fbc){_ud.fbc=_fbc[1];}
-    if(_fbp){_ud.fbp=_fbp[1];}}catch(e){}
-    fbq('init','972114368527990',_ud);
-    fbq('track','PageView');
-  })();
-    fbq('track', 'ViewContent', {content_name: document.title});
-  </script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
-<!-- ═══ END META PIXEL ═══ -->
-<style>
-/* Mobile: show call card above description text in #try */
-@media(max-width:900px){
-  #try .section-inner > div { display:flex; flex-direction:column; }
-  #try .reveal-right { order:-1; margin-bottom:2rem; }
-}
-</style>
-<script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
-<script>localStorage.setItem('zmy_lang','fr');</script></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents téléphoniques · Zoomy</title>
+<meta name="description" content="Un agent téléphonique IA qui répond à chaque appel, connaît votre menu et vos horaires, prend les commandes en anglais, espagnol et plus, et les envoie à votre équipe.">
+<link rel="canonical" href="https://zoomy.services/fr/phone-agent.html">
+<link rel="alternate" hreflang="en" href="https://zoomy.services/phone-agent.html">
+<link rel="alternate" hreflang="fr" href="https://zoomy.services/fr/phone-agent.html">
+<link rel="alternate" hreflang="es" href="https://zoomy.services/es/phone-agent.html">
+<link rel="alternate" hreflang="x-default" href="https://zoomy.services/phone-agent.html"><meta property="og:type" content="website">
+<meta property="og:site_name" content="Zoomy">
+<meta property="og:title" content="Agents téléphoniques · Zoomy">
+<meta property="og:description" content="Un agent téléphonique IA qui répond à chaque appel, connaît votre menu et vos horaires, prend les commandes en anglais, espagnol et plus, et les envoie à votre équipe.">
+<meta property="og:url" content="https://zoomy.services/fr/phone-agent.html">
+<meta property="og:image" content="https://zoomy.services/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css?v=202609262329">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');(function(){var u={};try{var c=document.cookie.match(/_fbc=([^;]+)/),p=document.cookie.match(/_fbp=([^;]+)/),q=new URLSearchParams(location.search).get('fbclid');if(q&&!c){var v='fb.1.'+Date.now()+'.'+q;document.cookie='_fbc='+v+';path=/;max-age=7776000;SameSite=Lax';u.fbc=v;}else if(c){u.fbc=c[1];}if(p){u.fbp=p[1];}}catch(e){}fbq('init','972114368527990',u);fbq('track','PageView');})();</script>
+</head>
 <body>
-<!-- ═══ FREE PAGE ANNOUNCEMENT BAR ═══ -->
-<div id="free-bar">
-<span class="bar-full" style="font-size:.78rem;color:rgba(255,255,255,.85);font-weight:400;letter-spacing:.01em;">Aperçu gratuit du site Web : nous construisons votre première page avant que vous payiez. Chaque site comprend des pages de panier, de paiement et d'utilitaires gratuites.</span>
-<span class="bar-short" style="display:none;font-size:.75rem;color:rgba(255,255,255,.85);font-weight:400;">Aperçu gratuit du site Web – sans engagement.</span>
-<a href="contact.html" onmouseout="this.style.background='rgba(255,255,255,.12)'" onmouseover="this.style.background='rgba(255,255,255,.22)'" style="flex-shrink:0;font-size:.75rem;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 14px;text-decoration:none;white-space:nowrap;transition:background .15s">Réclamez une page gratuite →</a>
-<button aria-label="Rejeter" onclick="(function(){document.documentElement.classList.add('bar-off');sessionStorage.setItem('fzb','1');})()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.5);font-size:1rem;cursor:pointer;padding:4px 8px;line-height:1">✕</button>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="./" aria-label="Zoomy, accueil"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+    <nav class="nav" aria-label="Principal">
+<a href="website-design.html">Sites web</a><a href="admin-panel.html">Administration</a><a href="chatbot.html">Chat</a><a href="phone-agent.html" aria-current="page">Agents téléphoniques</a><a href="about.html">À propos</a>    </nav>
+    <div class="lang" aria-label="Langue"><a href="../phone-agent.html" hreflang="en" lang="en">EN</a><a href="phone-agent.html" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="../es/phone-agent.html" hreflang="es" lang="es">ES</a></div>
+    <a class="btn btn--navy btn--sm hdr__cta" href="contact.html">Écrivez-nous</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span></span>Menu</button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+<a class="big" href="website-design.html">Sites web<span aria-hidden="true">→</span></a><a class="big" href="admin-panel.html">Administration<span aria-hidden="true">→</span></a><a class="big" href="chatbot.html">Chat<span aria-hidden="true">→</span></a><a class="big" href="phone-agent.html">Agents téléphoniques<span aria-hidden="true">→</span></a><a class="big" href="about.html">À propos<span aria-hidden="true">→</span></a>  <div class="lang"><a href="../phone-agent.html" hreflang="en">English</a><a href="phone-agent.html" hreflang="fr" aria-current="true">Français</a><a href="../es/phone-agent.html" hreflang="es">Español</a></div>
+  <a class="btn" href="contact.html">Démarrer un projet →</a>
 </div>
-<div id="scroll-progress"></div>
-<canvas id="particle-canvas"></canvas>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-<nav>
-<a class="nav-logo logo-turq" href="index.html">Zoomy<span class="nav-logo-sub">Studio de production numérique</span></a>
-<ul class="nav-links" id="navLinks">
-<li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
-<li><a data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
-<li><a class="active" data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a data-i18n="nav.creatives" href="animated-creatives.html">Créatifs</a></li>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campagnes</a></li>
-<li><a data-i18n="nav.about" href="about.html">À propos de</a></li>
-<li><a data-i18n="nav.pricing" href="pricing.html">Tarifs</a></li>
-<li><a data-i18n="nav.contact" href="contact.html">Contacter</a></li>
-</ul>
-<div style="display:flex;align-items:center;gap:16px;">
-<div class="lang-switcher">
-<a class="lang-btn" href="../phone-agent.html">EN</a>
-<span class="lang-btn lang-active" style="opacity:1;font-weight:700;cursor:default;">FR</span>
-<a class="lang-btn" href="../es/phone-agent.html">ES</a>
+<main id="main">
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">Agents téléphoniques</span>
+      <h1>Chaque appel décroché. Chaque commande <span class="sq">notée.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">Une voix IA sympathique sur votre ligne. Elle décroche quand votre équipe ne peut pas, parle comme une personne, prend la commande ou le message et vous l’envoie directement.</p>
+      <div class="actions"><a class="btn" href="contact.html">Avoir un agent téléphonique →</a></div>
+    </div>
+    <div class="board" aria-hidden="true">
+      <span class="sticker sticker--butter">Jamais<br>de<br>répondeur</span>
+      <div class="note tape n1 tl"><span class="k">Au téléphone · 19 h 12</span><div class="bub me">Je peux avoir un fraisier pour dimanche ?</div><div class="bub">Bien sûr. À quelle heure passez-vous le chercher ?</div></div>
+      <div class="note note--mint n2 tr"><span class="k">Envoyé à votre équipe</span><h5>Fraisier, dim. 11 h</h5><p>Dana, (555) 014-2290. Rappeler pour confirmer.</p></div>
+      <div class="note n3 tl1"><span class="k">Aussi par SMS</span><h5>Nouvelle commande par téléphone</h5><p>Votre équipe reçoit la même note par e-mail ou SMS.</p></div>
+    </div>
+  </section>
 </div>
-<button aria-label="Activer le mode sombre" class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg fill="none" height="16" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Démarrer un projet</span> ›</a>
-<button aria-label="Menus" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
-</div>
-</nav>
-<!-- ═══════════ LIVE TEST CALL ═══════════ -->
-<section class="section" id="try" style="position:relative;overflow:hidden;scroll-margin-top:80px;">
-<div class="aurora" style="opacity:.5;">
-</div>
-<div class="section-inner" style="position:relative;z-index:2;">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
-<div class="reveal-left">
-<div class="section-tag">Démo en direct</div>
-<h2 class="section-title" style="margin-bottom:1.25rem;">Parlez à l'agent.</h2>
-<p style="color:var(--text-2);font-size:1rem;line-height:1.82;margin-bottom:1.25rem;">Il s'agit d'un agent téléphonique IA en direct. Cliquez sur le bouton et parlez-lui directement dans votre navigateur – aucun téléphone requis. Posez-lui des questions, demandez une réservation ou voyez simplement comment il gère une conversation naturelle.</p>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">L'agent présent sur cette page est une version de démonstration formée sur Zoomy. Chaque agent que nous construisons est configuré autour de votre activité spécifique : vos services, votre voix, votre langue.</p>
-<div style="display:flex;flex-direction:column;gap:.75rem;">
-<div style="display:flex;align-items:flex-start;gap:12px;">
-<span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;">Parlez naturellement : il comprend la conversation, pas seulement les mots-clés</span>
-</div>
-<div style="display:flex;align-items:flex-start;gap:12px;">
-<span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;">Essayez de poser des questions sur les services, les tarifs ou de demander une réservation</span>
-</div>
-<div style="display:flex;align-items:flex-start;gap:12px;">
-<span style="color:var(--accent);font-weight:700;flex-shrink:0;margin-top:2px;">—</span>
-<span style="color:var(--text-2);font-size:.9rem;">Changer de langue en cours de conversation : l'agent répond dans la même langue</span>
-</div>
-</div>
-</div>
-<div class="reveal-right" style="display:flex;flex-direction:column;align-items:center;gap:2rem;">
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:3rem 2.5rem;text-align:center;width:100%;max-width:380px;">
-<div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#312e81,#6366f1);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 1.5rem;box-shadow:0 0 40px rgba(99,102,241,.4);position:relative;">
-            
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3"  y="16" width="3" height="4"  rx="1.5" fill="white" opacity="0.45"/><rect x="8"  y="12" width="3" height="12" rx="1.5" fill="white" opacity="0.65"/><rect x="13" y="7"  width="3" height="22" rx="1.5" fill="white" opacity="0.9"/><rect x="18" y="10" width="3" height="16" rx="1.5" fill="white"/><rect x="23" y="6"  width="3" height="24" rx="1.5" fill="white" opacity="0.85"/><rect x="28" y="13" width="3" height="10" rx="1.5" fill="white" opacity="0.6"/><rect x="33" y="17" width="3" height="4"  rx="1.5" fill="white" opacity="0.35"/></svg><div style="position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(99,102,241,.3);animation:orbPulse 2s ease-in-out infinite;"></div>
-</div>
-<h3 style="font-family:var(--f-display);color:#fff;font-size:1.2rem;margin-bottom:.75rem;">Agent téléphonique Zoomy</h3>
-<p style="color:var(--text-2);font-size:.875rem;line-height:1.6;margin-bottom:2rem;">Cliquez ci-dessous pour démarrer une conversation vocale en direct avec l'agent de démonstration. Votre micro vous sera demandé.</p>
-<p style="color:var(--accent);font-size:.75rem;line-height:1.5;margin-bottom:2rem;font-family:var(--f-mono);">// Une fois votre appel terminé, consultez votre transcription complète ci-dessous ↓</p>
-<div id="call-ui" style="display:flex;flex-direction:column;align-items:center;gap:.85rem;width:100%;">
-<button id="call-btn" onclick="toggleCall()" style="width:100%;padding:14px 28px;background:var(--grad-main);border:none;border-radius:var(--radius-full);color:#fff;font-family:var(--f-display);font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 30px rgba(99,102,241,.4);transition:filter .2s,transform .2s;">
-<svg fill="none" height="18" id="call-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
-<span id="call-label">Démarrer l'appel</span>
-</button>
-<!-- Mute row (shown during call) -->
-<div id="active-controls" style="display:none;width:100%;gap:.6rem;flex-direction:row;">
-<button id="mute-btn" onclick="toggleMute()" style="width:100%;padding:11px 12px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-family:var(--f-display);font-weight:600;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .2s,border-color .2s;">
-<svg fill="none" height="14" id="mute-icon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="23"></line><line x1="8" x2="16" y1="23" y2="23"></line></svg>
-<span id="mute-label">Muet</span>
-</button>
-</div>
-<div id="call-waves" style="display:none;align-items:center;gap:3px;height:24px;">
-<div style="width:3px;border-radius:2px;background:var(--accent);animation:waveBounce 1s ease-in-out infinite;animation-delay:0s;"></div>
-<div style="width:3px;border-radius:2px;background:var(--accent);animation:waveBounce 1s ease-in-out infinite;animation-delay:.12s;"></div>
-<div style="width:3px;border-radius:2px;background:var(--accent);animation:waveBounce 1s ease-in-out infinite;animation-delay:.24s;"></div>
-<div style="width:3px;border-radius:2px;background:var(--accent);animation:waveBounce 1s ease-in-out infinite;animation-delay:.36s;"></div>
-<div style="width:3px;border-radius:2px;background:var(--accent);animation:waveBounce 1s ease-in-out infinite;animation-delay:.48s;"></div>
-</div>
-<div id="call-status" style="font-family:var(--f-mono);font-size:.72rem;color:var(--muted);">Prêt</div>
-</div>
-<!-- Transcript (shown after call ends) -->
-<div id="transcript-wrap" style="display:none;width:100%;max-width:380px;margin-top:.5rem;">
-<button onclick="toggleTranscript()" style="width:100%;padding:10px 16px;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:var(--radius-md);color:var(--text-2);font-family:var(--f-display);font-weight:600;font-size:.82rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s;">
-<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-<span id="transcript-toggle-label">Afficher la transcription de l'appel</span>
-</button>
-<div id="transcript-body" style="display:none;margin-top:.6rem;background:var(--bg-2);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.1rem 1.25rem;max-height:280px;overflow-y:auto;text-align:left;"></div>
-</div>
-<script type="module">
-            import { Conversation } from 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@0.14.0/+esm';
-            let conv = null;
-            let callTimer = null;
-            let isMuted = false;
-            let transcriptLines = [];
-            const CALL_LIMIT = 120;
-            const btn = document.getElementById('call-btn');
-            const label = document.getElementById('call-label');
-            const icon = document.getElementById('call-icon');
-            const waves = document.getElementById('call-waves');
-            const status = document.getElementById('call-status');
-            const activeControls = document.getElementById('active-controls');
-            const muteBtn = document.getElementById('mute-btn');
-            const muteIcon = document.getElementById('mute-icon');
-            const muteLabel = document.getElementById('mute-label');
-            const transcriptWrap = document.getElementById('transcript-wrap');
-            const transcriptBody = document.getElementById('transcript-body');
-            const TOKEN_URL = 'https://zoomy-ai.zoozoomfast.workers.dev/elevenlabs-token';
-
-            window.toggleMute = function() {
-              isMuted = !isMuted;
-              if (conv && conv.setMicMuted) conv.setMicMuted(isMuted);
-              if (isMuted) {
-                muteBtn.style.background = 'rgba(239,68,68,.18)';
-                muteBtn.style.borderColor = 'rgba(239,68,68,.4)';
-                muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" opacity=".3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2" opacity=".3"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/><line x1="1" y1="1" x2="23" y2="23" stroke="#ef4444" stroke-width="2.5"/>';
-                muteLabel.textContent = 'Unmute';
-              } else {
-                muteBtn.style.background = 'var(--card)';
-                muteBtn.style.borderColor = 'var(--border)';
-                muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
-                muteLabel.textContent = 'Mute';
-              }
-            };
-
-            window.toggleTranscript = function() {
-              const isOpen = transcriptBody.style.display !== 'none';
-              transcriptBody.style.display = isOpen ? 'none' : 'block';
-              document.getElementById('transcript-toggle-label').textContent = isOpen ? 'View Call Transcript' : 'Hide Transcript';
-            };
-
-            // Play one telephone ring using Web Audio API
-            // Shared AudioContext — created once, kept alive so ElevenLabs inherits
-            // a warm audio pipeline (avoids glitchy/high-pitched first utterance)
-            let sharedAudioCtx = null;
-
-            function playRing() {
-              return new Promise(resolve => {
-                try {
-                  // Close any previous context — stacked contexts cause pitch drift across calls
-                  if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
-                  sharedAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                  const ctx = sharedAudioCtx;
-                  const t = ctx.currentTime;
-                  // UK/EU ring: two bursts of dual-tone (440Hz + 480Hz), 0.4s each
-                  [[t, t+0.4],[t+0.65, t+1.05]].forEach(([s, e]) => {
-                    [440, 480].forEach(freq => {
-                      const osc = ctx.createOscillator();
-                      const gain = ctx.createGain();
-                      osc.connect(gain); gain.connect(ctx.destination);
-                      osc.type = 'sine'; osc.frequency.value = freq;
-                      gain.gain.setValueAtTime(0.18, s);
-                      gain.gain.setValueAtTime(0.18, e - 0.04);
-                      gain.gain.linearRampToValueAtTime(0, e);
-                      osc.start(s); osc.stop(e);
-                    });
-                  });
-                  // DO NOT close ctx — keep it alive so ElevenLabs reuses the warm pipeline
-                  // Play a silent buffer at end to hold the context in running state
-                  setTimeout(() => {
-                    try {
-                      const silence = ctx.createBuffer(1, ctx.sampleRate * 0.1, ctx.sampleRate);
-                      const src = ctx.createBufferSource();
-                      src.buffer = silence;
-                      src.connect(ctx.destination);
-                      src.start();
-                    } catch(e) {}
-                    resolve();
-                  }, 1300);
-                } catch { resolve(); }
-              });
-            }
-
-            function startCallTimer() {
-              let elapsed = 0;
-              callTimer = setInterval(async () => {
-                elapsed++;
-                const remaining = CALL_LIMIT - elapsed;
-                if (remaining <= 30 && remaining > 0) {
-                  status.textContent = `Live — ${remaining}s left`;
-                } else if (remaining <= 0) {
-                  clearInterval(callTimer); callTimer = null;
-                  status.textContent = 'Time limit reached';
-                  status.style.color = '#f59e0b';
-                  if (conv) { await conv.endSession(); conv = null; }
-                }
-              }, 1000);
-            }
-
-            function resetUI(msg) {
-              if (callTimer) { clearInterval(callTimer); callTimer = null; }
-              conv = null;
-              // Close AudioContext so next call starts with a fresh pipeline (prevents pitch drift)
-              if (sharedAudioCtx) { try { sharedAudioCtx.close(); } catch(_) {} sharedAudioCtx = null; }
-              isMuted = false;
-              label.textContent = 'Start Call';
-              btn.style.opacity = '1';
-              btn.style.background = 'var(--grad-main)';
-              btn.style.boxShadow = '0 0 30px rgba(99,102,241,.4)';
-              icon.innerHTML = '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>';
-              waves.style.display = 'none';
-              activeControls.style.display = 'none';
-              // Reset mute button
-              muteLabel.textContent = 'Mute';
-              muteIcon.innerHTML = '<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>';
-              muteBtn.style.background = 'var(--card)';
-              muteBtn.style.borderColor = 'var(--border)';
-              status.textContent = msg || 'Call ended';
-              status.style.color = '';
-              // Show transcript if we captured anything
-              if (transcriptLines.length > 0) {
-                transcriptBody.innerHTML = transcriptLines.map(l =>
-                  `<div style="margin-bottom:.75rem;"><span style="font-family:var(--f-mono);font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;">${l.role}</span><p style="color:${l.role==='Agent'?'var(--text)':'var(--text-2)'};font-size:.83rem;line-height:1.6;margin:.15rem 0 0;">${l.text}</p></div>`
-                ).join('');
-                transcriptWrap.style.display = 'block';
-                transcriptBody.style.display = 'none'; // collapsed by default
-              }
-            }
-
-            // iOS Safari fix: patch permissions.query once at load time so the SDK
-            // doesn't crash when it checks microphone permission (unsupported on iOS)
-            (function patchPermissions() {
-              if (!navigator.permissions || !navigator.permissions.query) return;
-              const _orig = navigator.permissions.query.bind(navigator.permissions);
-              navigator.permissions.query = (desc) =>
-                _orig(desc).catch(() => ({ state: 'prompt', onchange: null }));
-            })();
-
-            window.toggleCall = async function() {
-              if (conv) {
-                await conv.endSession();
-                return; // onDisconnect fires resetUI
-              }
-              let micStream = null;
-              try {
-                label.textContent = 'Calling...';
-                btn.style.opacity = '0.7';
-                btn.disabled = true;
-                status.textContent = 'Requesting microphone...';
-
-                // Step 1: Get mic permission — keep stream ALIVE through setup
-                // iOS: stopping tracks then re-acquiring outside the gesture window fails silently
-                micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-
-                // Step 2: Fetch token while mic is held open (orange dot stays on)
-                status.textContent = 'Ringing...';
-                const tokenRes = await fetch(TOKEN_URL);
-                const { signedUrl } = await tokenRes.json();
-
-                // Step 3: Play ring — mic still live so iOS sees continuous activity
-                await playRing();
-
-                status.textContent = 'Connecting...';
-
-                transcriptLines = [];
-                // Detect page language from URL path or current page lang attribute
-                const pageLang = window.location.pathname.includes('/fr/') ? 'fr'
-                               : window.location.pathname.includes('/es/') ? 'es'
-                               : (document.documentElement.lang || localStorage.getItem('zmy_lang') || 'en');
-
-                const firstMessages = {
-                  'fr': "Bonjour ! Je suis l'assistante IA de Zoomy. Comment puis-je vous aider aujourd'hui ?",
-                  'es': "¡Hola! Soy la asistente IA de Zoomy. ¿En qué puedo ayudarle hoy?",
-                  'en': "Hi there, this is Zoomy. I can help answer any questions about our services in any language. What can I do for you?"
-                };
-                const systemPrompts = {
-                  'fr': `# Règles de prononciation\n- "Zoomy" se prononce "ZOU-mi Services" — jamais "Zoomy dot services".\n- L'email se dit "hello at ZOU-mi".\n\n# Langue (CRITIQUE)\nTu DOIS répondre UNIQUEMENT en français, sans exception. Ne passe jamais à l'anglais.\n\n# Personnalité\nTu es l'assistante IA de Zoomy, une agence digitale. Chaleureuse, directe et professionnelle.\n\n# Services\n1. Campagnes publicitaires (Meta, Google, TikTok) — à partir de 400$\n2. Sites web sur mesure (HTML/CSS/JS) — à partir de 199$/page\n3. Agents téléphoniques IA — à partir de 699$\n4. Chatbots IA — à partir de 599$\n\nPour un devis : contact@zoomy.services`,
-                  'es': `# Reglas de pronunciación\n- "Zoomy" — nunca "Zoomy dot services".\n- El email se dice "hello at Zoomy".\n\n# Idioma (CRÍTICO)\nDEBES responder ÚNICAMENTE en español, sin excepción. Nunca cambies al inglés.\n\n# Personalidad\nEres la asistente IA de Zoomy, una agencia digital. Cálida, directa y profesional.\n\n# Servicios\n1. Campañas publicitarias (Meta, Google, TikTok) — desde $400\n2. Sitios web personalizados (HTML/CSS/JS) — desde $199/página\n3. Agentes telefónicos IA — desde $699\n4. Chatbots IA — desde $599\n\nPara presupuestos: contact@zoomy.services`,
-                  'en': undefined
-                };
-                const agentOverride = { language: pageLang };
-                agentOverride.firstMessage = firstMessages[pageLang] || firstMessages['en'];
-                if (systemPrompts[pageLang]) agentOverride.prompt = { prompt: systemPrompts[pageLang] };
-
-                conv = await Conversation.startSession({
-                  signedUrl,
-                  overrides: { agent: agentOverride },
-                  onConnect: () => {
-                    // SDK has its own stream now — release our pre-flight stream
-                    if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
-                    btn.disabled = false;
-                    label.textContent = 'End Call';
-                    btn.style.opacity = '1';
-                    btn.style.background = 'linear-gradient(135deg,#ef4444,#dc2626)';
-                    btn.style.boxShadow = '0 0 30px rgba(239,68,68,.4)';
-                    icon.innerHTML = '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>';
-                    waves.style.display = 'flex';
-                    activeControls.style.display = 'flex';
-                    transcriptWrap.style.display = 'none';
-                    status.textContent = 'Live';
-                    status.style.color = '#4ade80';
-                    startCallTimer();
-                  },
-                  onMessage: (msg) => {
-                    // Capture transcript — handle multiple possible SDK event shapes
-                    const role = (msg.source === 'ai' || msg.source === 'agent' || msg.role === 'agent') ? 'Agent' : 'You';
-                    const text = msg.message || msg.text || '';
-                    if (text && text.trim()) transcriptLines.push({ role, text: text.trim() });
-                  },
-                  onDisconnect: (details) => {
-                    if (details && details.reason === 'error') {
-                      const code = details.closeCode ? ` (${details.closeCode})` : '';
-                      resetUI(null);
-                      status.textContent = 'Connection error' + code + '. Try again.';
-                      status.style.color = '#ef4444';
-                    } else {
-                      resetUI('Call ended');
-                    }
-                  },
-                  onError: (err) => {
-                    btn.disabled = false;
-                    resetUI(null);
-                    const msg = err.closeReason || err.message || 'Could not connect';
-                    const code = err.closeCode ? ` [${err.closeCode}]` : '';
-                    status.textContent = 'Error: ' + msg + code;
-                    status.style.color = '#ef4444';
-                  }
-                });
-              } catch(e) {
-                if (micStream) { micStream.getTracks().forEach(t => t.stop()); micStream = null; }
-                btn.disabled = false;
-                resetUI(null);
-                status.textContent = 'Could not connect. Check microphone permissions.';
-                status.style.color = '#ef4444';
-              }
-            }
-          </script>
-</div>
-<div style="display:flex;align-items:center;gap:10px;margin-top:-.5rem;">
-<div style="flex:1;height:1px;background:var(--border);"></div>
-<span style="font-family:var(--f-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;">ou appelez directement</span>
-<div style="flex:1;height:1px;background:var(--border);"></div>
-</div>
-<a href="tel:+19147420640" onmouseout="this.style.background='rgba(255,255,255,.04)';this.style.borderColor='var(--border)'" onmouseover="this.style.background='rgba(99,102,241,.1)';this.style.borderColor='rgba(99,102,241,.4)'" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;max-width:380px;padding:13px 20px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-family:var(--f-display);font-weight:600;font-size:.9rem;text-decoration:none;transition:background .2s,border-color .2s;">
-<svg fill="none" height="15" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="15"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"></path></svg>
-+1 (914) 742-0640
-</a>
-<p style="font-size:.78rem;color:var(--muted);text-align:center;max-width:320px;">Cet appel est enregistré pour examen qualité. En parlant avec l'agent, vous consentez à l'enregistrement de cette conversation.</p>
-</div>
-</div>
-</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>Ce qu’il prend en charge</h2>
+      <p class="lead">Configuré selon votre menu, vos horaires et la façon dont votre équipe aime recevoir les commandes.</p>
+    </div>
+    <div class="cards">
+      <div class="card card--mint reveal"><h3>Commandes</h3><p>Produits, tailles, inscription sur un gâteau, jour et heure de retrait. Il relit tout avant d’envoyer.</p></div>
+      <div class="card reveal"><h3>Questions</h3><p>Horaires, prix, ingrédients, livraison, traiteur. Il répond à partir de ce que vous lui avez donné, sans deviner.</p></div>
+      <div class="card card--butter reveal"><h3>La bonne date</h3><p>Il sait ce que « demain » veut dire, quels jours vous êtes fermés, et vos horaires de fêtes.</p></div>
+      <div class="card card--sky reveal"><h3>Anglais, espagnol et plus</h3><p>Il commence en anglais et change dès que le client parle une autre langue.</p></div>
+      <div class="card card--blush reveal"><h3>Messages</h3><p>Rappels, réclamations, demandes de traiteur. Nom, numéro et besoin, envoyés à la bonne personne.</p></div>
+      <div class="card reveal"><h3>Pas de numéro de carte</h3><p>Il ne prend jamais de paiement au téléphone. Votre équipe s’en occupe en confirmant.</p></div>
+    </div>
+  </div>
 </section>
-<section class="section" id="how-it-works" style="background:var(--bg-2);">
-<div class="section-inner">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem;">
-<div>
-<div class="section-tag">Appels entrants</div>
-<h2 class="section-title" style="margin-bottom:0;">Chaque appel.<br/>Répondu.</h2>
-</div>
-<p style="color:var(--text-2);font-size:1rem;line-height:1.82;">Un agent personnalisé qui répond à chaque appel entrant, parle naturellement dans n'importe quelle langue et traite vos demandes les plus courantes sans aucune intervention humaine. Disponible 24 heures sur 24, tous les jours.</p>
-</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3rem;">
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<div style="font-family:var(--f-display);font-size:2.6rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1.1;margin-bottom:.6rem;">7 sur 10</div>
-<div style="font-size:.875rem;color:var(--text-2);line-height:1.65;">les appelants qui atteignent la messagerie vocale ne rappelleront pas – ils passent à autre chose</div>
-</div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<div style="font-family:var(--f-display);font-size:2.6rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1.1;margin-bottom:.6rem;">24/7</div>
-<div style="font-size:.875rem;color:var(--text-2);line-height:1.65;">chaque appel est répondu à toute heure, n'importe quel jour, sans personnel requis</div>
-</div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<div style="font-family:var(--f-display);font-size:2.6rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1.1;margin-bottom:.6rem;">N'importe quelle langue</div>
-<div style="font-size:.875rem;color:var(--text-2);line-height:1.65;">l'agent détecte et correspond automatiquement à la langue de l'appelant</div>
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="band split">
+      <div class="reveal">
+        <span class="eyebrow">Après l’appel</span>
+        <h2>La commande vous attend.</h2>
+        <p class="lead mt-m">Chaque appel devient une note claire : qui a appelé, son numéro, ce qu’il veut et pour quand. Elle arrive par e-mail ou SMS, et dans votre panneau, où vous touchez le numéro pour rappeler.</p>
+      </div>
+      <div class="reveal"><div class="orders" role="img" aria-label="Exemple de commandes prises par un agent téléphonique">
+  <div class="ord tl1"><div class="ord__top"><span class="ord__tag">Gâteau</span><small>21 h 48</small></div><b>Fraisier, dimanche 11 h</b><small>Dana · <span class="num">(555) 014-2290</span> · « Joyeux 7 ans, Léo » dessus</small></div>
+  <div class="ord tr1" style="margin-left:24px"><div class="ord__top"><span class="ord__tag b">Traiteur</span><small>18 h 02</small></div><b>Viennoiseries pour 30, vendredi matin</b><small>Marco · <span class="num">(555) 017-8841</span> · appel en espagnol</small></div>
+  <div class="ord tl1" style="margin-left:8px"><div class="ord__top"><span class="ord__tag g">Question</span><small>17 h 40</small></div><b>Ouvert à Thanksgiving ?</b><small>Réponse tirée de vos horaires de fêtes. Rien à faire.</small></div>
 </div>
 </div>
-<div style="text-align:center;">
-<a class="btn btn-primary" href="contact.html">Obtenez un agent entrant ›</a>
-</div>
-</div>
+    </div>
+  </div>
 </section>
-<!-- ═══════════ INBOUND ═══════════ -->
-<!-- ═══════════ OUTBOUND ═══════════ -->
-<section class="section">
-<div class="section-inner">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem;">
-<div>
-<div class="section-tag">Appels sortants</div>
-<h2 class="section-title" style="margin-bottom:0;">Votre agent<br/>les appelle.</h2>
-</div>
-<p style="color:var(--text-2);font-size:1rem;line-height:1.82;">Vous avez déjà les chiffres. Configurez une campagne une seule fois : l'agent compose la liste, participe à chaque conversation et enregistre chaque résultat. Pas de temps de travail du personnel, pas de numérotation manuelle.</p>
-</div>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:3.5rem;">
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<div style="font-family:var(--f-display);font-size:2.6rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1.1;margin-bottom:.6rem;">42%</div>
-<div style="font-size:.875rem;color:var(--text-2);line-height:1.65;">moins de non-présentations avec appels de confirmation d'agent la veille</div>
-</div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<div style="font-family:var(--f-display);font-size:2.6rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1.1;margin-bottom:.6rem;">3×</div>
-<div style="font-size:.875rem;color:var(--text-2);line-height:1.65;">plus de rendez-vous récupérés plutôt que d'attendre des non-présentations pour se réserver à nouveau</div>
-</div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<div style="font-family:var(--f-display);font-size:2.6rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.04em;line-height:1.1;margin-bottom:.6rem;">25%</div>
-<div style="font-size:.875rem;color:var(--text-2);line-height:1.65;">augmentation moyenne des conversions issues des campagnes de réengagement proactives</div>
-</div>
-</div>
-<div class="capability-list">
-<div class="cap-row reveal">
-<div>
-<div class="cap-row-label">01 — Confirmations</div>
-<div class="cap-row-title">Rendez-vous<br/>appels de confirmation</div>
-</div>
-<div class="cap-row-desc">L'agent appelle chaque client la veille de son rendez-vous, confirme sa présence et gère sur place tout reprogrammation. Les non-présentations chutent. Votre calendrier reste plein.</div>
-</div>
-<div class="cap-row reveal">
-<div>
-<div class="cap-row-label">02 — Réengagement</div>
-<div class="cap-row-title">Reconquête et<br/>appels clients périmés</div>
-</div>
-<div class="cap-row-desc">Un client que vous n'avez pas vu depuis des mois reçoit un appel personnalisé. L'agent mentionne l'écart, fait l'offre et prend une réservation s'il est prêt. La plupart d’entre eux avaient juste besoin que quelqu’un les contacte.</div>
-</div>
-<div class="cap-row reveal">
-<div>
-<div class="cap-row-label">03 — Suivi</div>
-<div class="cap-row-title">Non-présentations et<br/>offres promotionnelles</div>
-</div>
-<div class="cap-row-desc">Les rendez-vous manqués reçoivent un appel dans l'heure – un message simple et non gênant avec un chemin de nouvelle réservation facile. Les offres promotionnelles sont diffusées sur votre liste complète le jour même où vous décidez de les diffuser.</div>
-</div>
-<div class="cap-row reveal">
-<div>
-<div class="cap-row-label">04 — Automatisation</div>
-<div class="cap-row-title">Liste de contacts dans,<br/>résultats</div>
-</div>
-<div class="cap-row-desc">Votre liste va dans une feuille de calcul. L'agent compose chaque numéro, injecte le nom et le contexte du client et enregistre ce qui s'est passé pour chaque appel : réservé, pas de réponse, refusé, rappel demandé. Rien à toucher.</div>
-</div>
-</div>
-<div style="margin-top:3rem;text-align:center;">
-<a class="btn btn-primary" href="contact.html">Ajouter des appels sortants ›</a>
-</div>
-</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--one"><h2>La mise en place</h2></div>
+    <div class="steps steps--4">
+      <div class="step reveal"><span class="step__n">1</span><h4>Nous apprenons votre boutique</h4><p>Menu, prix, horaires, règles, et comment vous voulez les commandes.</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>Nous choisissons une voix</h4><p>Calme et naturelle, dans les langues de vos clients.</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>Nous le testons</h4><p>Commandes, changements, fêtes, et clients qui changent de langue en route.</p></div>
+      <div class="step reveal"><span class="step__n">4</span><h4>Il commence à répondre</h4><p>Nous relisons les premiers appels avec vous et ajustons.</p></div>
+    </div>
+  </div>
 </section>
-<!-- ═══════════ ROI CALCULATOR ═══════════ -->
-<section class="section" style="background:var(--bg-2);">
-<div class="section-inner">
-<div style="text-align:center;margin-bottom:2.5rem;">
-<div class="section-tag">Calculateur de retour sur investissement</div>
-<h2 class="section-title">Combien vous coûtent réellement les appels manqués ?</h2>
-<p class="section-sub" style="text-align:center;margin:0 auto;">Utilisez vos propres numéros. Aucune estimation, aucune hypothèse.</p>
-</div>
-<!-- Industry presets -->
-<div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2.5rem;">
-<button class="roi-preset" data-calls="8" data-rate="25" data-value="85" onclick="setPreset(this)" style="padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-size:.75rem;cursor:pointer;transition:all .2s;">Restaurant/Café</button>
-<button class="roi-preset" data-calls="10" data-rate="40" data-value="180" onclick="setPreset(this)" style="padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-size:.75rem;cursor:pointer;transition:all .2s;">Entreprise de services</button>
-<button class="roi-preset" data-calls="12" data-rate="30" data-value="65" onclick="setPreset(this)" style="padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-size:.75rem;cursor:pointer;transition:all .2s;">Salle de sport / remise en forme</button>
-<button class="roi-preset" data-calls="6" data-rate="45" data-value="175" onclick="setPreset(this)" style="padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-size:.75rem;cursor:pointer;transition:all .2s;">Médical / Bien-être</button>
-<button class="roi-preset" data-calls="7" data-rate="20" data-value="95" onclick="setPreset(this)" style="padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-size:.75rem;cursor:pointer;transition:all .2s;">Vente au détail / commerce électronique</button>
-<button class="roi-preset" data-calls="9" data-rate="35" data-value="120" onclick="setPreset(this)" style="padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:var(--radius-full);color:var(--text-2);font-size:.75rem;cursor:pointer;transition:all .2s;">Beauté / Salon</button>
-</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-<!-- Inputs -->
-<div style="display:flex;flex-direction:column;gap:2rem;">
-<div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.75rem;">
-<label style="font-size:.85rem;color:var(--text-2);">Valeur moyenne des transactions</label>
-<span style="font-family:var(--f-display);font-size:1.4rem;font-weight:700;color:#fff;">$<span id="roi-val-display">150</span></span>
-</div>
-<input id="roi-val" max="1000" min="10" oninput="roiCalc()" step="5" style="width:100%;accent-color:var(--accent);" type="range" value="150"/>
-<div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:.3rem;"><span>$10</span><span>$1,000</span></div>
-</div>
-<div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.75rem;">
-<label style="font-size:.85rem;color:var(--text-2);">Taux de conversion des appels vers les clients</label>
-<span style="font-family:var(--f-display);font-size:1.4rem;font-weight:700;color:#fff;"><span id="roi-rate-display">30</span>%</span>
-</div>
-<input id="roi-rate" max="80" min="5" oninput="roiCalc()" step="5" style="width:100%;accent-color:var(--accent);" type="range" value="30"/>
-<div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:.3rem;"><span>5%</span><span>80%</span></div>
-<p style="font-size:.72rem;color:var(--muted);margin-top:.5rem;">Sur 10 appels auxquels vous répondez, combien se transforment en clients ?</p>
-</div>
-<div>
-<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.75rem;">
-<label style="font-size:.85rem;color:var(--text-2);">Appels manqués par semaine</label>
-<span style="font-family:var(--f-display);font-size:1.4rem;font-weight:700;color:#fff;"><span id="roi-calls-display">7</span> appelle</span>
-</div>
-<input id="roi-calls" max="50" min="1" oninput="roiCalc()" step="1" style="width:100%;accent-color:var(--accent);" type="range" value="7"/>
-<div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-top:.3rem;"><span>1</span><span>50</span></div>
-</div>
-</div>
-<!-- Results -->
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2rem;">
-<div style="font-family:var(--f-mono);font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:1.5rem;">Basé sur vos chiffres</div>
-<div style="display:flex;flex-direction:column;gap:1.1rem;margin-bottom:1.75rem;">
-<div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-<span style="font-size:.85rem;color:var(--text-2);">Perdu par semaine</span>
-<span style="font-family:var(--f-display);font-size:1.1rem;font-weight:700;color:var(--text);">$<span id="roi-week">315</span></span>
-</div>
-<div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-<span style="font-size:.85rem;color:var(--text-2);">Perdu par mois</span>
-<span style="font-family:var(--f-display);font-size:1.25rem;font-weight:700;color:var(--text);">$<span id="roi-month">1,365</span></span>
-</div>
-<div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:1.25rem;border-bottom:2px solid rgba(239,68,68,.3);">
-<span style="font-size:.95rem;font-weight:600;color:#fff;">Perdu par an</span>
-<span style="font-family:var(--f-display);font-size:1.8rem;font-weight:700;color:#ef4444;">$<span id="roi-year">16,380</span></span>
-</div>
-</div>
-<div style="background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:var(--radius-md);padding:1rem;margin-bottom:1.5rem;">
-<div style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem;">Coût annuel de l'agent téléphonique</div>
-<div style="font-family:var(--f-display);font-size:1.2rem;font-weight:700;color:var(--accent);">708 $/an</div>
-<div style="font-size:.72rem;color:var(--muted);margin-top:.25rem;">(59 $/mois × 12)</div>
-</div>
-<div style="text-align:center;">
-<div style="font-size:.78rem;color:var(--muted);margin-bottom:.4rem;">Reprise annuelle nette</div>
-<div id="roi-net" style="font-family:var(--f-display);font-size:2.2rem;font-weight:700;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">$15,672</div>
-<div id="roi-note" style="font-size:.72rem;color:var(--muted);margin-top:.3rem;">Basé sur la réponse à tous les appels manqués précédemment</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ═══════════ USE CASES ═══════════ -->
-<section class="section">
-<div class="section-inner">
-<div class="section-tag">Applications</div>
-<h2 class="section-title">Conçu pour les entreprises<br/>qui dépendent du téléphone.</h2>
-<div class="use-case-grid stagger-children">
-<div class="use-case reveal">
-<div class="use-case-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-<h4>Restaurants et lieux</h4>
-<p>Gère les demandes de réservation, confirme la disponibilité des tables, répond aux questions sur le menu et le régime alimentaire et gère les annulations. Fonctionne pendant et en dehors des heures de service.</p>
-</div>
-<div class="use-case reveal reveal-delay-1">
-<div class="use-case-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-<h4>Santé et bien-être</h4>
-<p>Planifie, reprogramme et annule les rendez-vous des clients. Répond aux questions standard sur les services, les prix et la disponibilité. S'intègre directement aux systèmes de réservation.</p>
-</div>
-<div class="use-case reveal reveal-delay-2">
-<div class="use-case-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-<h4>Sports et activités</h4>
-<p>Gère les réservations de sessions, fournit des informations sur les forfaits et les exigences, gère les demandes de renseignements des groupes et répond aux questions sur l'emplacement et les instructions d'arrivée.</p>
-</div>
-<div class="use-case reveal">
-<div class="use-case-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-<h4>Propriété et Immobilier</h4>
-<p>Répond aux demandes de renseignements sur les annonces, planifie les visites, collecte les informations sur les appelants et fournit les détails de la propriété, sans qu'un agent humain ait besoin d'être disponible à tout moment.</p>
-</div>
-<div class="use-case reveal reveal-delay-1">
-<div class="use-case-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
-<h4>Entreprises de services</h4>
-<p>Gère les demandes de service entrantes, planifie les visites ou consultations sur site, collecte les détails du travail et achemine les appels en fonction de la priorité ou du type de service.</p>
-</div>
-<div class="use-case reveal reveal-delay-2">
-<div class="use-case-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
-<h4>Services professionnels</h4>
-<p>Gère les appels de demande initiaux, planifie les consultations et fournit des informations sur les services et les processus, en gérant le premier point de contact de manière professionnelle et cohérente.</p>
-</div>
-</div>
-</div>
-</section>
-<script>
-function roiCalc() {
-  const val   = parseInt(document.getElementById('roi-val').value);
-  const rate  = parseInt(document.getElementById('roi-rate').value) / 100;
-  const calls = parseInt(document.getElementById('roi-calls').value);
-  document.getElementById('roi-val-display').textContent   = val.toLocaleString();
-  document.getElementById('roi-rate-display').textContent  = Math.round(rate * 100);
-  document.getElementById('roi-calls-display').textContent = calls;
-  const weeklyLost  = calls * rate * val;
-  const monthlyLost = weeklyLost * 4.33;
-  const yearlyLost  = weeklyLost * 52;
-  const agentCost   = 708;
-  const netRecovery = yearlyLost - agentCost;
-  const fmt = n => Math.round(n).toLocaleString();
-  document.getElementById('roi-week').textContent  = fmt(weeklyLost);
-  document.getElementById('roi-month').textContent = fmt(monthlyLost);
-  document.getElementById('roi-year').textContent  = fmt(yearlyLost);
-  document.getElementById('roi-net').textContent   = '$' + fmt(Math.max(0, netRecovery));
-  const roi = yearlyLost > 0 ? Math.round(netRecovery / agentCost) : 0;
-  document.getElementById('roi-note').textContent  = roi > 0
-    ? roi + 'x return on your investment'
-    : 'Agent cost exceeds projected recovery at these numbers';
-}
-function setPreset(btn) {
-  document.querySelectorAll('.roi-preset').forEach(b => b.style.background = 'rgba(255,255,255,.06)');
-  document.querySelectorAll('.roi-preset').forEach(b => b.style.borderColor = 'var(--border)');
-  document.querySelectorAll('.roi-preset').forEach(b => b.style.color = 'var(--text-2)');
-  btn.style.background   = 'rgba(99,102,241,.15)';
-  btn.style.borderColor  = 'rgba(99,102,241,.4)';
-  btn.style.color        = '#fff';
-  document.getElementById('roi-val').value   = btn.dataset.value;
-  document.getElementById('roi-rate').value  = btn.dataset.rate;
-  document.getElementById('roi-calls').value = btn.dataset.calls;
-  roiCalc();
-}
-roiCalc();
-</script>
-<!-- ═══════════ INTEGRATIONS ═══════════ -->
-<section class="section" style="background:var(--bg-2);">
-<div class="section-inner">
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-<div class="reveal-left">
-<div class="section-tag">Intégrations — Module complémentaire facultatif</div>
-<h2 class="section-title" style="margin-bottom:1.25rem;">Vous voulez que votre agent soit connecté<br/>à vos outils existants ?</h2>
-<p style="color:var(--text-2);line-height:1.8;margin-bottom:1.25rem;">Les intégrations ne sont pas incluses par défaut : il s'agit d'un module complémentaire distinct défini lors du briefing du projet. Si vous avez besoin que l'agent vérifie un calendrier en direct, écrive dans un CRM ou déclenche des actions dans votre backend, nous pouvons l'intégrer.</p>
-<p style="color:var(--text-2);line-height:1.8;margin-bottom:2rem;">Si vos outils existants prennent en charge l’API ou le webhook, nous pouvons nous y connecter. L'étendue et le coût sont convenus avant le début des travaux.</p>
-<a class="btn btn-primary" href="contact.html">Renseignez-vous sur les intégrations ›</a>
-</div>
-<div class="reveal-right">
-<div class="integration-grid">
-<div class="integration-item">
-<div class="integration-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-<div class="integration-name">Google Agenda</div>
-<div class="integration-desc">Disponibilité et réservation en direct</div>
-</div>
-<div class="integration-item">
-<div class="integration-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-<div class="integration-name">Systèmes CRM</div>
-<div class="integration-desc">Création de contacts et de leads</div>
-</div>
-<div class="integration-item">
-<div class="integration-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg></div>
-<div class="integration-name">Webhooks personnalisés</div>
-<div class="integration-desc">Tout outil connecté à l'API</div>
-</div>
-<div class="integration-item">
-<div class="integration-icon"><svg width="22" height="22" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg></div>
-<div class="integration-name">Logiciel de réservation</div>
-<div class="integration-desc">Lire et rédiger des rendez-vous</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ═══════════ HERO ═══════════ -->
-<section class="hero" style="min-height:70vh">
-<div class="section-inner">
-<div class="agent-grid">
-<div>
-<div class="section-tag" style="margin-bottom:1.5rem;">Agents téléphoniques IA</div>
-<h1 style="text-align:left;margin-bottom:1.5rem;">
-<span class="h1-accent">Votre téléphone.</span><br/>
-          Répondu.
-        </h1>
-<p style="color:var(--text-2);font-size:1.1rem;line-height:1.8;margin-bottom:2rem;max-width:520px;">Un agent IA personnalisé qui répond à chaque appel entrant, parle naturellement dans n'importe quelle langue et traite vos demandes les plus courantes, sans aucune implication humaine. Il peut également appeler vos clients sortants pour un réengagement, des confirmations et des promotions.</p>
-<p style="color:var(--text-2);font-size:.95rem;line-height:1.75;margin-bottom:2.5rem;max-width:520px;">Construit et configuré autour de votre métier spécifique : vos services, votre calendrier, votre ton, votre langue. Les appelants entendent une voix naturelle, pas une arborescence téléphonique.</p>
-<div style="display:flex;gap:1rem;flex-wrap:wrap;">
-<a class="btn btn-primary btn-lg" href="contact.html">Obtenez un agent téléphonique</a>
-<a class="btn btn-ghost btn-lg" href="#try"> Testez l'agent</a>
-</div>
-</div>
-<div style="display:flex;justify-content:flex-end;align-items:center;">
-<div class="voice-demo">
-<div class="voice-header">
-<div class="voice-orb"></div>
-<div>
-<div class="voice-name">Agent téléphonique IA</div>
-<div class="voice-status">Appel en direct en cours</div>
-</div>
-</div>
-<div class="call-transcript">
-<div class="call-line">
-<span class="call-speaker">Agent</span>
-<span class="call-text agent">Bonjour, merci d'avoir appelé. Comment puis-je vous aider aujourd'hui ?</span>
-</div>
-<div class="call-line">
-<span class="call-speaker">Appelant</span>
-<span class="call-text">Salut, j'aimerais prendre rendez-vous pour samedi si vous avez de la place ?</span>
-</div>
-<div class="call-line">
-<span class="call-speaker">Agent</span>
-<span class="call-text agent">Bien sûr. Laissez-moi vérifier la disponibilité pour ce samedi…</span>
-</div>
-<div class="call-line action">
-<span class="call-speaker">Système</span>
-<span class="call-text">→ Vérification de la disponibilité du calendrier…</span>
-</div>
-<div class="call-line">
-<span class="call-speaker">Agent</span>
-<span class="call-text agent">Nous sommes disponibles de 10h00 à 15h00. Quelle heure vous convient le mieux ?</span>
-</div>
-<div class="call-line">
-<span class="call-speaker">Appelant</span>
-<span class="call-text">11 heures serait parfait.</span>
-</div>
-<div class="call-line">
-<span class="call-speaker">Agent</span>
-<span class="call-text agent">11h00 le samedi — puis-je prendre votre nom et un numéro de contact pour confirmer la réservation ?</span>
-</div>
-<div class="call-line action">
-<span class="call-speaker">Système</span>
-<span class="call-text">→ Rendez-vous confirmé dans le calendrier</span>
-</div>
-</div>
-<div class="voice-footer">
-<div class="voice-duration">02:14</div>
-<div class="voice-wave">
-<div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-<div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-<div class="wave-bar"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ═══════════ CHATBOT CROSS-SELL ═══════════ -->
-<section class="section" style="background:var(--bg-2);">
-<div class="section-inner">
-<div style="background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.06));border:1px solid rgba(99,102,241,.25);border-radius:20px;padding:2.5rem 3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-<div>
-<div style="font-family:var(--f-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.75rem;">// Associez-le à</div>
-<h3 style="font-family:var(--f-display);font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.6rem;">Ajoutez également un chatbot de site Web.</h3>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;max-width:520px;">L'agent téléphonique couvre tous les appels, entrants et sortants. Le chatbot couvre les visiteurs de votre site Web. Les deux fonctionnent à partir de la même base de connaissances sur votre entreprise, afin que les clients obtiennent des réponses cohérentes, qu'ils appellent ou tapent.</p>
-</div>
-<a class="btn btn-ghost" href="chatbot.html" style="white-space:nowrap;flex-shrink:0;">Voir Chatbot ›</a>
-</div>
-</div>
-</section>
-<!-- ═══════════ HOW WE BUILD IT ═══════════ -->
-<section class="section">
-<div class="section-inner">
-<div class="section-tag">Processus</div>
-<h2 class="section-title">Comment nous construisons votre agent.</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start;">
-<div class="terminal reveal-left">
-<div class="terminal-header">
-<div class="terminal-dot" style="background:#10b981;"></div>
-<div class="terminal-dot" style="background:#f59e0b;"></div>
-<div class="terminal-dot" style="background:#ef4444;"></div>
-<div class="terminal-title">build-agent.sh</div>
-</div>
-<div class="terminal-body">
-<div><span class="term-prompt">$</span> <span class="term-cmd">./build-phone-agent --client</span></div>
-<div style="margin-top:1rem;"><span class="term-highlight">Étape 1 :</span> <span class="term-output">Briefing commercial et extraction de connaissances</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Services, tarifs, horaires, FAQ</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Lignes directrices en matière de ton et de personnalité</span></div>
-<div style="margin-top:.75rem;"><span class="term-highlight">Étape 2 :</span> <span class="term-output">Intégration du calendrier et des outils</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Connecter le système de disponibilité</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Configurer les webhooks de réservation</span></div>
-<div style="margin-top:.75rem;"><span class="term-highlight">Étape 3 :</span> <span class="term-output">Configuration voix et langue</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Sélection et réglage de la voix</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Règles de langue et de secours</span></div>
-<div style="margin-top:.75rem;"><span class="term-highlight">Étape 4 :</span> <span class="term-output">Tests et déploiement</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Test de scénarios sur tous les types d'appels</span></div>
-<div style="margin-left:1rem;"><span class="term-output">→ Vivez sur votre numéro de téléphone</span></div>
-<div style="margin-top:.5rem;"><span class="term-cursor"></span></div>
-</div>
-</div>
-<div class="reveal-right" style="display:flex;flex-direction:column;gap:1.5rem;">
-<div style="padding:1.5rem;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2);border-radius:14px;">
-<h4 style="color:var(--accent);margin-bottom:.5rem;font-weight:600;">Construit autour de votre entreprise</h4>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.7;">L'agent est formé sur les informations que vous fournissez. Plus vous nous fournissez de détails, plus votre entreprise sera présentée avec précision aux appelants.</p>
-</div>
-<div style="padding:1.5rem;background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:14px;">
-<h4 style="color:var(--accent);margin-bottom:.5rem;font-weight:600;">Testé avant la mise en ligne</h4>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Nous examinons une gamme de scénarios d'appel (demandes de réservation, cas extrêmes, appels en dehors des heures d'ouverture et changements de langue) avant que l'agent ne se connecte à votre numéro.</p>
-</div>
-<div style="padding:1.5rem;background:rgba(6,182,212,.08);border:1px solid rgba(6,182,212,.2);border-radius:14px;">
-<h4 style="color:var(--accent-dk);margin-bottom:.5rem;font-weight:600;">Itérable après le déploiement</h4>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.7;">Les transcriptions des appels sont disponibles pour examen. Si l'agent gère quelque chose de manière incorrecte, nous mettons à jour ses instructions. L’agent s’améliore au fil du temps à mesure que les cas extrêmes sont résolus.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ═══════════ CTA ═══════════ -->
-<section class="section" style="position:relative;overflow:hidden;">
-<div class="aurora" style="opacity:.5;">
-</div>
-<div class="section-inner" style="text-align:center;z-index:2;position:relative;">
-<div class="section-tag">Commencez</div>
-<h2 class="section-title">Chaque appel a répondu.<br/>À chaque fois.</h2>
-<p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">Parlez-nous de votre entreprise et de la façon dont vous gérez actuellement les appels entrants. Nous rechercherons une solution et reviendrons avec une proposition.</p>
-<a class="btn btn-primary btn-lg" href="contact.html">Demander un agent téléphonique</a>
-</div>
-</section>
-<footer>
-<div class="footer-inner">
-<div class="footer-grid">
-<div>
-<div class="footer-logo footer-logo">Zoomy</div>
-<p class="footer-tagline" data-i18n="footer.tagline">Gestion de campagnes, sites Web personnalisés, chatbots IA et agents téléphoniques.</p>
-</div>
-<div class="footer-col"><h4 data-i18n="footer.services">Prestations</h4><ul>
-<li><a href="campaign-portfolio.html">Fichiers de campagne</a></li>
-<li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
-<li><a class="active" data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a class="active" data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a href="chatbot.html">Chatbots IA</a></li>
-<li><a href="animated-creatives.html">Créations animées</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.company">Entreprise</h4><ul>
-<li><a href="about.html">À propos de nous</a></li>
-<li><a href="portfolio.html">Notre travail</a></li>
-<li><a href="faq.html">FAQ</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.contact">Contacter</h4><ul>
-<li><a href="contact.html">Démarrer un projet</a></li>
-<li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
-</ul>
-<div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Ouvert aux projets</span></div>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Zoomy — Tous droits réservés.</span>
-<span style="display:flex;gap:20px;"><a data-i18n="footer.privacy" href="privacy.html">Confidentialité</a><a data-i18n="footer.terms" href="terms.html">Conditions</a></span>
-</div>
-</div>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="cta reveal">
+      <span class="sticker">Une vraie<br>personne<br>répond</span>
+      <h2>Faisons le vôtre.</h2>
+      <div>
+        <p>Parlez-nous un peu de votre entreprise et de ce qu’il vous faut. Réponse sous 24 heures, avec nos questions ou un devis.</p>
+        <div class="actions"><a class="btn btn--navy" href="contact.html">Démarrer un projet →</a><a class="mail" href="mailto:contact@zoomy.services">contact@zoomy.services</a></div>
+      </div>
+    </div>
+    <div class="ftr__grid" style="margin-top:clamp(56px,8vw,96px)">
+      <div>
+        <a class="logo" href="./" aria-label="Zoomy"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+        <p class="ftr__about">Sites web, panneaux d’administration, chat et agents téléphoniques pour les commerces locaux. Faits à New York et dans le Connecticut.</p>
+      </div>
+      <div>
+        <h5>Nos services</h5>
+        <ul>
+          <li><a href="website-design.html">Sites web</a></li>
+          <li><a href="admin-panel.html">Panneaux d’administration</a></li>
+          <li><a href="chatbot.html">Assistants de chat</a></li>
+          <li><a href="phone-agent.html">Agents téléphoniques</a></li>
+          <li><a href="animated-creatives.html">Pubs animées</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Zoomy</h5>
+        <ul>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="faq.html">Questions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Écrivez-nous</h5>
+        <ul>
+          <li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+          <li><a href="contact.html">Formulaire de projet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__base">
+      <span>© 2026 Zoomy LLC</span>
+      <nav aria-label="Mentions légales">
+        <a href="privacy.html">Confidentialité</a>
+        <a href="terms.html">Conditions</a>
+<a href="../phone-agent.html" hreflang="en">English</a><a href="phone-agent.html" hreflang="fr">Français</a><a href="../es/phone-agent.html" hreflang="es">Español</a>      </nav>
+    </div>
+  </div>
 </footer>
-<script src="../js/main.js?v=20260416"></script>
-
-<script src="../js/chatbot.js?v=20260501e"></script>
-<script>
-// ── Theme toggle ──
-function toggleTheme(){
-  var html=document.documentElement;
-  var isDark=html.getAttribute('data-theme')==='dark';
-  html.setAttribute('data-theme',isDark?'light':'dark');
-  localStorage.setItem('zmy_theme',isDark?'light':'dark');
-  var btn=document.getElementById('themeToggle');
-  if(btn)btn.innerHTML=isDark
-    ?'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
-    :'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-}
-(function(){
-  var t=localStorage.getItem('zmy_theme')||'light';
-  document.documentElement.setAttribute('data-theme',t);
-  window.addEventListener('DOMContentLoaded',function(){
-    var btn=document.getElementById('themeToggle');
-    if(btn&&t==='dark')btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-  });
-})();
-</script>
-</body>
+<script src="../js/site.js?v=202609262329" defer></script>
+<script src="../js/chat.js?v=202609262329" defer></script></body>
 </html>

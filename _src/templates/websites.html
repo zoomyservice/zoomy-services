@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% set title = T('Websites · Zoomy','Sites web · Zoomy','Sitios web · Zoomy') %}
+{% set description = T('Websites made from scratch for local businesses: quick on phones, easy to find on Google, ready for orders, bookings and payments, with an admin panel you run yourself.','Des sites faits sur mesure pour les commerces locaux : rapides sur mobile, faciles à trouver sur Google, prêts pour les commandes, réservations et paiements, avec un panneau que vous gérez vous-même.','Sitios web hechos a medida para negocios locales: rápidos en el móvil, fáciles de encontrar en Google, listos para pedidos, reservas y pagos, con un panel que usted maneja.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">{{ T('Websites','Sites web','Sitios web') }}</span>
+      <h1>{{ T('A website that brings people <span class="sq">through the door.','Un site qui fait <span class="sq">venir les clients.','Un sitio que trae <span class="sq">clientes a la puerta.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('We design and build every site from scratch, around how you actually sell. Next-day orders, a big menu, birthday bookings, two languages: whatever your business needs.','Nous concevons et construisons chaque site de zéro, selon votre façon de vendre. Commandes pour le lendemain, grand menu, réservations d’anniversaire, deux langues : ce dont votre entreprise a besoin.','Diseñamos y construimos cada sitio desde cero, según cómo vende usted. Pedidos para mañana, un menú grande, reservas de cumpleaños, dos idiomas: lo que su negocio necesite.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Start a website','Démarrer un site','Empezar un sitio') }} →</a><a class="ln" href="{{ L('admin-panel.html') }}">{{ T('See the admin panel','Voir le panneau','Ver el panel') }}</a></div>
+    </div>
+    <div class="board" aria-hidden="true">
+      <span class="sticker sticker--butter">{{ T('No<br>templates.<br>Ever.','Jamais<br>de<br>modèle.','Nunca<br>plantillas.') }}</span>
+      <div class="note tape n1 tl"><span class="k">Google</span><h5>{{ T('Your Bakery · Open now','Votre Boulangerie · Ouvert','Su Panadería · Abierto') }}</h5><p>{{ T('Fresh bread and pastries every morning. Order online for pickup tomorrow.','Pain et viennoiseries frais chaque matin. Commandez en ligne pour demain.','Pan y bollería recién hechos cada mañana. Pida en línea para recoger mañana.') }}</p></div>
+      <div class="note note--sky n2 tr"><span class="k">{{ T('Online order','Commande en ligne','Pedido en línea') }}</span><h5>{{ T('2 croissants, 1 baguette','2 croissants, 1 baguette','2 croissants, 1 baguette') }}</h5><p>{{ T('Pickup tomorrow, 8:00 AM. Paid by card.','Retrait demain, 8 h. Payé par carte.','Recoger mañana, 8:00 a. m. Pagado con tarjeta.') }}</p></div>
+      <div class="note n3 tl1"><span class="k">{{ T('Language','Langue','Idioma') }}</span><h5>English · Español · Français</h5><p>{{ T('Each one written properly, not machine-translated.','Chacune bien rédigée, pas traduite par machine.','Cada uno bien escrito, no traducido por máquina.') }}</p></div>
+    </div>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What goes into your site','Ce qu’il y a dans votre site','Lo que lleva su sitio') }}</h2>
+      <p class="lead">{{ T('We only build what your business needs. Here’s what’s on the table.','Nous ne construisons que ce dont votre entreprise a besoin. Voici ce qui est possible.','Solo construimos lo que su negocio necesita. Esto es lo que se puede hacer.') }}</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><h3>{{ T('Made from scratch','Fait sur mesure','Hecho a medida') }}</h3><p>{{ T('No WordPress, no page builder, no theme. Nothing to update every month, nothing slowing it down.','Ni WordPress, ni constructeur de pages, ni thème. Rien à mettre à jour chaque mois, rien qui le ralentisse.','Sin WordPress, sin constructores ni temas. Nada que actualizar cada mes, nada que lo haga lento.') }}</p></div>
+      <div class="card card--butter reveal"><h3>{{ T('Phones first','Le mobile d’abord','Primero el móvil') }}</h3><p>{{ T('Most of your customers will find you on a phone, so that’s where we start.','La plupart de vos clients vous trouveront sur un téléphone, alors on commence par là.','La mayoría de sus clientes lo encontrará en el móvil, así que empezamos por ahí.') }}</p></div>
+      <div class="card card--sky reveal"><h3>{{ T('Easy to find','Facile à trouver','Fácil de encontrar') }}</h3><p>{{ T('Proper page titles, a sitemap and your business details set up so Google can read them.','De vrais titres de pages, un plan du site et vos informations configurées pour Google.','Buenos títulos, un mapa del sitio y los datos de su negocio listos para Google.') }}</p></div>
+      <div class="card card--mint reveal"><h3>{{ T('Orders and bookings','Commandes et réservations','Pedidos y reservas') }}</h3><p>{{ T('Pickup and delivery with your own rules and cut-off times, booking forms, and card payments through Stripe.','Retrait et livraison selon vos règles et heures limites, formulaires de réservation, paiement par carte avec Stripe.','Recogida y entrega con sus reglas y horas límite, formularios de reserva y pago con tarjeta mediante Stripe.') }}</p></div>
+      <div class="card card--blush reveal"><h3>{{ T('Your languages','Vos langues','Sus idiomas') }}</h3><p>{{ T('English, Spanish, French or more, with a simple switch at the top.','Anglais, espagnol, français ou plus, avec un simple sélecteur en haut.','Inglés, español, francés o más, con un selector sencillo arriba.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Domain and hosting','Domaine et hébergement','Dominio y hosting') }}</h3><p>{{ T('We set up the domain, hosting and Google Analytics, all on your own accounts.','Nous configurons domaine, hébergement et Google Analytics, sur vos propres comptes.','Configuramos dominio, hosting y Google Analytics, todo en sus propias cuentas.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="band split">
+      <div class="reveal">
+        <span class="eyebrow">{{ T('Included','Inclus','Incluido') }}</span>
+        <h2>{{ T('Every site comes with an admin panel.','Chaque site a son panneau d’administration.','Cada sitio trae su panel de administración.') }}</h2>
+        <p class="lead mt-m">{{ T('Change your menu, prices, photos and hours whenever you like, from your phone. Nothing to learn, no one to call.','Modifiez menu, prix, photos et horaires quand vous voulez, depuis votre téléphone. Rien à apprendre, personne à appeler.','Cambie su menú, precios, fotos y horarios cuando quiera, desde el móvil. Nada que aprender, nadie a quien llamar.') }}</p>
+        <p class="mt-m"><a class="ln" href="{{ L('admin-panel.html') }}">{{ T('Take a look at the panel','Découvrir le panneau','Ver el panel') }}</a></p>
+      </div>
+      <div class="reveal panel-wrap">{{ ui.admin('', False) }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--one"><h2>{{ T('How we build it','Comment nous le construisons','Cómo lo construimos') }}</h2></div>
+    <div class="steps steps--4">
+      <div class="step reveal"><span class="step__n">1</span><h4>{{ T('We listen','Nous écoutons','Escuchamos') }}</h4><p>{{ T('What you sell, who buys it, and what your current site gets wrong.','Ce que vous vendez, qui l’achète, et ce qui ne va pas avec votre site actuel.','Qué vende, quién compra y qué falla en su sitio actual.') }}</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>{{ T('Homepage first','La page d’accueil d’abord','Primero la portada') }}</h4><p>{{ T('You see the design of your homepage before you commit to anything.','Vous voyez le design de votre page d’accueil avant de vous engager.','Ve el diseño de su portada antes de comprometerse.') }}</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>{{ T('We build the rest','Nous faisons le reste','Hacemos el resto') }}</h4><p>{{ T('Every page, your content and photos, and the admin panel.','Toutes les pages, vos contenus et photos, et le panneau.','Todas las páginas, su contenido y fotos, y el panel.') }}</p></div>
+      <div class="step reveal"><span class="step__n">4</span><h4>{{ T('You go live','Mise en ligne','Lanzamiento') }}</h4><p>{{ T('We launch it, and show you around your panel.','Nous le mettons en ligne et vous montrons le panneau.','Lo publicamos y le enseñamos a usar el panel.') }}</p></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,608 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="no-js">
 <head>
-<script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
-<meta charset="utf-8"/>
-<link href="favicon.png" rel="icon" sizes="64x64" type="image/png"/>
-<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="favicon.svg" rel="apple-touch-icon"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<link href="https://zoomy.services/chatbot.html" rel="canonical"/>
-<title>AI Chatbots — Zoomy</title>
-<meta content="Custom AI chatbots trained on your business. Deployed on your website. Multilingual, lead capture, fully custom-built." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<!-- Preload critical fonts (latin subset) to start download before font CSS is parsed -->
-<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4C_k3HqU.woff2"/>
-<link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="css/style.css?v=20260503a" rel="stylesheet"/>
-<style>
-.chatbot-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.detail-rows{display:flex;flex-direction:column;gap:0;margin-top:3rem}
-.detail-row{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;padding:2.25rem 0;border-bottom:1px solid var(--border);align-items:start}
-.detail-row:first-child{border-top:1px solid var(--border)}
-.detail-label{font-family:var(--font-mono);font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:.5rem}
-.detail-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff}
-.detail-desc{color:var(--text-2);font-size:.9rem;line-height:1.75}
-@media(max-width:900px){
-  /* ROOT FIX: hero uses align-items:center which shrinks section-inner to
-     content width, causing overflow to the right on mobile. Force full width. */
-  .hero{align-items:stretch!important;}
-  .hero .section-inner{width:100%!important;max-width:100%!important;box-sizing:border-box!important;}
-  .chatbot-detail-grid{grid-template-columns:1fr!important;width:100%!important;}
-  .detail-row{grid-template-columns:1fr;gap:1rem}
-  /* Centre left column content */
-  .chatbot-detail-grid>div:first-child{
-    display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;width:100%!important;
-  }
-  .chatbot-detail-grid>div:first-child h1{text-align:center!important;max-width:100%!important;}
-  .chatbot-detail-grid>div:first-child p{text-align:center!important;max-width:100%!important;}
-  .chatbot-detail-grid>div:first-child>div[style*="flex"]{justify-content:center!important;}
-  /* Centre chatbot mock column */
-  .chatbot-detail-grid>div:last-child{
-    width:100%!important;align-items:center!important;
-  }
-  #demo,.chatbot-mock{
-    margin-left:auto!important;margin-right:auto!important;
-    width:100%!important;max-width:min(380px,calc(100vw - 4rem))!important;
-  }
-}
-.hero .chatbot-mock{display:block!important}
-</style>
-<style>
-#free-bar{position:fixed;top:0;left:0;right:0;z-index:10001;height:44px;background:var(--bg-dark,#0D0D0B);display:flex;align-items:center;justify-content:center;gap:14px;padding:0 3rem;border-bottom:1px solid rgba(255,255,255,.08)}
-.bar-off #free-bar{display:none!important}
-@media(max-width:600px){.bar-full{display:none!important}.bar-short{display:inline!important}}
-</style>
-<script>(function(){if(sessionStorage.getItem('fzb')||sessionStorage.getItem('fzb_shown')){document.documentElement.classList.add('bar-off');}else{sessionStorage.setItem('fzb_shown','1');document.documentElement.classList.add('bar-show');}})();</script>
-<!-- ═══ ANALYTICS & TRACKING ═══ -->
-<!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-L5RX761T33', {
-      send_page_view: true
-    });
-  </script>
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wd5th9teha");
-  </script>
-<!-- Tracking scripts moved to bottom of body to unblock FCP -->
-<style>html,body{background:#020208}html[data-theme="light"],html[data-theme="light"] body{background:var(--bg)}nav{background:rgba(2,2,8,.96)}html[data-theme="light"] nav{background:rgba(247,241,229,.96)}</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat assistants · Zoomy</title>
+<meta name="description" content="A chat assistant for your website that knows your menu, services and hours, answers in your customer’s language and passes real enquiries to you.">
+<link rel="canonical" href="https://zoomy.services/chatbot.html">
+<link rel="alternate" hreflang="en" href="https://zoomy.services/chatbot.html">
+<link rel="alternate" hreflang="fr" href="https://zoomy.services/fr/chatbot.html">
+<link rel="alternate" hreflang="es" href="https://zoomy.services/es/chatbot.html">
+<link rel="alternate" hreflang="x-default" href="https://zoomy.services/chatbot.html"><meta property="og:type" content="website">
+<meta property="og:site_name" content="Zoomy">
+<meta property="og:title" content="Chat assistants · Zoomy">
+<meta property="og:description" content="A chat assistant for your website that knows your menu, services and hours, answers in your customer’s language and passes real enquiries to you.">
+<meta property="og:url" content="https://zoomy.services/chatbot.html">
+<meta property="og:image" content="https://zoomy.services/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css?v=202609262329">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');(function(){var u={};try{var c=document.cookie.match(/_fbc=([^;]+)/),p=document.cookie.match(/_fbp=([^;]+)/),q=new URLSearchParams(location.search).get('fbclid');if(q&&!c){var v='fb.1.'+Date.now()+'.'+q;document.cookie='_fbc='+v+';path=/;max-age=7776000;SameSite=Lax';u.fbc=v;}else if(c){u.fbc=c[1];}if(p){u.fbp=p[1];}}catch(e){}fbq('init','972114368527990',u);fbq('track','PageView');})();</script>
 </head>
 <body>
-<!-- ═══ FREE PAGE ANNOUNCEMENT BAR ═══ -->
-<div id="free-bar">
-<span class="bar-full" style="font-size:.78rem;color:rgba(255,255,255,.85);font-weight:400;letter-spacing:.01em;">Free website preview — we build your first page before you pay. Every site includes cart, checkout &amp; utility pages free.</span>
-<span class="bar-short" style="display:none;font-size:.75rem;color:rgba(255,255,255,.85);font-weight:400;">Free website preview — no commitment.</span>
-<a href="contact.html" onmouseout="this.style.background='rgba(255,255,255,.12)'" onmouseover="this.style.background='rgba(255,255,255,.22)'" style="flex-shrink:0;font-size:.75rem;font-weight:700;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 14px;text-decoration:none;white-space:nowrap;transition:background .15s">Claim free page →</a>
-<button aria-label="Dismiss" onclick="(function(){document.documentElement.classList.add('bar-off');sessionStorage.setItem('fzb','1');})()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.5);font-size:1rem;cursor:pointer;padding:4px 8px;line-height:1">✕</button>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="./" aria-label="Zoomy, home"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+    <nav class="nav" aria-label="Main">
+<a href="website-design.html">Websites</a><a href="admin-panel.html">Admin panels</a><a href="chatbot.html" aria-current="page">Chat</a><a href="phone-agent.html">Phone agents</a><a href="about.html">About</a>    </nav>
+    <div class="lang" aria-label="Language"><a href="chatbot.html" hreflang="en" lang="en" aria-current="true">EN</a><a href="fr/chatbot.html" hreflang="fr" lang="fr">FR</a><a href="es/chatbot.html" hreflang="es" lang="es">ES</a></div>
+    <a class="btn btn--navy btn--sm hdr__cta" href="contact.html">Say hello</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span></span>Menu</button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+<a class="big" href="website-design.html">Websites<span aria-hidden="true">→</span></a><a class="big" href="admin-panel.html">Admin panels<span aria-hidden="true">→</span></a><a class="big" href="chatbot.html">Chat<span aria-hidden="true">→</span></a><a class="big" href="phone-agent.html">Phone agents<span aria-hidden="true">→</span></a><a class="big" href="about.html">About<span aria-hidden="true">→</span></a>  <div class="lang"><a href="chatbot.html" hreflang="en" aria-current="true">English</a><a href="fr/chatbot.html" hreflang="fr">Français</a><a href="es/chatbot.html" hreflang="es">Español</a></div>
+  <a class="btn" href="contact.html">Start a project →</a>
 </div>
-<div id="scroll-progress"></div>
-<canvas id="particle-canvas"></canvas>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-<nav>
-<a class="nav-logo logo-turq" href="index.html">Zoomy<span class="nav-logo-sub">Digital Production Studio</span></a>
-<ul class="nav-links" id="navLinks">
-<li><a data-i18n="nav.websites" href="website-design.html">Websites / Apps</a></li>
-<li><a class="active" data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
-<li><a data-i18n="nav.phone" href="phone-agent.html">Phone Agents</a></li>
-<li><a data-i18n="nav.creatives" href="animated-creatives.html">Creatives</a></li>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campaigns</a></li>
-<li><a data-i18n="nav.about" href="about.html">About</a></li>
-<li><a data-i18n="nav.pricing" href="pricing.html">Pricing</a></li>
-<li><a data-i18n="nav.contact" href="contact.html">Contact</a></li>
-</ul>
-<div style="display:flex;align-items:center;gap:16px;">
-<div class="lang-switcher">
-<button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-<a class="lang-btn" href="fr/chatbot.html">FR</a>
-<a class="lang-btn" href="es/chatbot.html">ES</a>
+<main id="main">
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">Chat assistants</span>
+      <h1>Answers for your customers, <span class="sq">even at 2 AM.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">A little assistant on your website that knows your menu, your hours and your rules. It answers the questions your staff hear all day, and when someone’s ready to order, it takes their details for you.</p>
+      <div class="actions"><button class="btn" type="button" data-open-chat>Try ours →</button><a class="ln" href="contact.html">Get one for your site</a></div>
+    </div>
+    <div class="board" aria-hidden="true">
+      <span class="sticker">Speaks<br>your<br>customer’s<br>language</span>
+      <div class="note tape n1 tl"><span class="k">Website chat</span><div class="bub me">Do you deliver on Saturdays?</div><div class="bub">We deliver Monday to Friday. Order before 3 PM and it’s ready the next day.</div></div>
+      <div class="note note--butter n2 tr"><span class="k">Lead for you</span><h5>Birthday cake for 20</h5><p>Sam, (555) 013-4471. Wants chocolate, next Saturday.</p></div>
+      <div class="note n3 tl1"><span class="k">Website chat</span><div class="bub me">¿Tienen pan sin gluten?</div><div class="bub">Sí, los martes y viernes. ¿Le guardo uno?</div></div>
+    </div>
+  </section>
 </div>
-<button aria-label="Toggle dark mode" class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg fill="none" height="16" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24" width="16"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Start a Project</span> ›</a>
-<button aria-label="Menu" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
-</div>
-</nav>
-<section class="hero" style="min-height:55vh;border-bottom:1px solid var(--border);">
-<div class="section-inner">
-<div class="chatbot-detail-grid">
-<div>
-<div class="section-tag" style="margin-bottom:1.5rem;">AI Chatbot</div>
-<h1 style="text-align:left;margin-bottom:1.5rem;max-width:600px;">
-<span class="glitch grad-text-animated">Trained</span><br/>
-          on your business.
-        </h1>
-<p style="color:var(--text-2);font-size:1.05rem;line-height:1.8;max-width:540px;margin-bottom:2rem;">A chatbot that knows your business the way you do. Not a general-purpose assistant — a custom-built tool trained on your specific services, prices, hours, and policies. Deployed directly on your website.</p>
-<div style="display:flex;gap:1rem;flex-wrap:wrap;">
-<a class="btn btn-primary" href="contact.html">Add to your project ›</a>
-<a class="btn btn-ghost" href="#demo">Try the demo ›</a>
-</div>
-</div>
-<div style="display:flex;flex-direction:column;align-items:center;">
-<div class="chatbot-mock" id="demo" style="width:100%;max-width:400px;">
-<div class="chatbot-header">
-<div class="chatbot-avatar"></div>
-<div>
-<div class="chatbot-name">Zoomy Assistant</div>
-<div class="chatbot-status">Live demo — try it</div>
-</div>
-</div>
-<div class="chatbot-messages" id="chatbot-messages">
-<div class="msg msg-bot">Hi! I'm a live AI chatbot — ask me anything, or click <strong>Try it for your business</strong> below to see how I'd work for yours.</div>
-</div>
-<div class="chatbot-input">
-<input class="chatbot-input-field" id="chatbot-input-field" placeholder="Ask anything..." type="text"/>
-<button class="chatbot-send" id="chatbot-send">
-<svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="16"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-</button>
-</div>
-</div>
-<div class="cb-tailor" id="cb-tailor-wrap" style="width:100%;max-width:400px;">
-<h4 class="cb-tailor-title">Try it for your type of business</h4>
-<p class="cb-tailor-desc">Pick a business type and watch the chatbot become its AI assistant — answering real questions about pricing, bookings, and services.</p>
-<div class="cb-type-grid" id="cb-type-grid">
-<button class="cb-type-btn" data-biz="restaurant"> Restaurant</button>
-<button class="cb-type-btn" data-biz="gym"> Gym</button>
-<button class="cb-type-btn" data-biz="salon"> Beauty Salon</button>
-<button class="cb-type-btn" data-biz="dental"> Dental Clinic</button>
-<button class="cb-type-btn" data-biz="legal"> Law Firm</button>
-<button class="cb-type-btn" data-biz="realestate"> Real Estate</button>
-<button class="cb-type-btn" data-biz="store"> Online Store</button>
-<button class="cb-type-btn" data-biz="auto"> Auto Shop</button>
-</div>
-<div class="cb-tailor-reset" id="cb-tailor-reset" style="display:none;">
-<span>Now showing: <strong id="cb-tailor-biz-name"></strong></span>
-<a class="cb-tailor-reset-link" data-action="cb-reset" href="#">← Back to Zoomy demo</a>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>Not a generic chatbot</h2>
+      <p class="lead">It’s set up for your business only and sticks to what you’ve told it, so it doesn’t make things up.</p>
+    </div>
+    <div class="cards">
+      <div class="card card--sky reveal"><h3>Knows your business</h3><p>Menu, services, hours, delivery, policies, and the questions you get every day.</p></div>
+      <div class="card reveal"><h3>Says when it doesn’t know</h3><p>No guessing. It points people to your phone number or contact form instead.</p></div>
+      <div class="card card--butter reveal"><h3>Any language</h3><p>Customers write in Spanish, French or anything else, and get an answer in the same language.</p></div>
+      <div class="card card--mint reveal"><h3>Passes you leads</h3><p>When someone wants to order, book or ask for a quote, it asks for their name and number.</p></div>
+      <div class="card card--blush reveal"><h3>Looks like your site</h3><p>Your colours, your tone of voice. It feels like part of your business.</p></div>
+      <div class="card reveal"><h3>Same answers as your site</h3><p>It uses the same information as your website, so the chat and the site give the same answers.</p></div>
+    </div>
+  </div>
 </section>
-<section class="section" style="padding:3.5rem 2rem;border-bottom:1px solid var(--border);">
-<div class="section-inner">
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;" class="cb-stats-grid">
-<div>
-  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">80%</div>
-  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">of routine questions<br>handled automatically</div>
-</div>
-<div>
-  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">&lt;2s</div>
-  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">average response time,<br>any hour of the day</div>
-</div>
-<div>
-  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">30%</div>
-  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">lower support costs<br>on average</div>
-</div>
-<div>
-  <div style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-.04em;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">3×</div>
-  <div style="color:var(--muted);font-size:.8rem;margin-top:.5rem;line-height:1.4;">more leads captured<br>vs. no chatbot</div>
-</div>
-</div>
-</div>
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="cta" style="background:var(--sky)">
+      <h2>Go on, ask ours something.</h2>
+      <div><p>The assistant on this site works the same way. Ask it what we do, how long things take, or anything else.</p><button class="btn btn--navy" type="button" data-open-chat>Open the chat →</button></div>
+    </div>
+  </div>
 </section>
-<style>
-@media(max-width:640px){
-  .cb-stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:1.5rem!important;}
-}
-</style>
-<section class="section">
-<div class="section-inner">
-<div class="section-tag">How it works</div>
-<h2 class="section-title">What makes it different.</h2>
-<div class="detail-rows">
-<div class="detail-row reveal">
-<div>
-<div class="detail-label">Knowledge</div>
-<div class="detail-name">Trained on your data</div>
-</div>
-<div class="detail-desc">We build a custom knowledge base from the information you provide — your services, pricing, availability, booking process, FAQs, and policies. The chatbot only answers based on what you've given us, which means it answers accurately and doesn't guess or fabricate information.</div>
-</div>
-<div class="detail-row reveal">
-<div>
-<div class="detail-label">Language</div>
-<div class="detail-name">Multilingual by default</div>
-</div>
-<div class="detail-desc">The chatbot responds in the language the visitor is using. The knowledge base is built in each language separately to ensure responses are natural and accurate, not machine-translated. Works in EN, FR, DE, NL, ES, and any other language you need.</div>
-</div>
-<div class="detail-row reveal">
-<div>
-<div class="detail-label">Matching</div>
-<div class="detail-name">Handles typos and informal language</div>
-</div>
-<div class="detail-desc">Visitors rarely type perfectly. The chatbot uses fuzzy matching to understand variations in spelling, informal phrasing, and abbreviated questions. A visitor typing "whats ur price" gets the same accurate response as one typing "What is your pricing?"</div>
-</div>
-<div class="detail-row reveal">
-<div>
-<div class="detail-label">Leads</div>
-<div class="detail-name">Collects contact details</div>
-</div>
-<div class="detail-desc">When a visitor's question suggests they're interested in booking or getting a quote, the chatbot can prompt them to leave their email or phone number. Those details are collected and stored for you to follow up.</div>
-</div>
-<div class="detail-row reveal">
-<div>
-<div class="detail-label">Hosting Setup</div>
-<div class="detail-name">Self-hosted on your infrastructure</div>
-</div>
-<div class="detail-desc">The chatbot runs on your own infrastructure — not a third-party platform like Intercom or Drift. No per-seat fees, no vendor lock-in. You own the setup outright once it's built.</div>
-</div>
-<div class="detail-row reveal">
-<div>
-<div class="detail-label">Option</div>
-<div class="detail-name">API-based alternative</div>
-</div>
-<div class="detail-desc">For use cases that need more open-ended or complex responses, an API-based version is available. This connects to an external AI service and handles a wider range of questions. Usage costs are billed at the provider's rate. We'll advise which option fits your use case during the brief.</div>
-</div>
-</div>
-</div>
-</section>
-<section class="section" style="background:var(--bg-2);">
-<div class="section-inner">
-<div class="section-tag">Availability</div>
-<h2 class="section-title">Standalone or as an add-on.</h2>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;">
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<h3 style="font-family:var(--font-display);color:#fff;font-size:1.15rem;margin-bottom:1rem;">Standalone build</h3>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:1.5rem;">We build and deploy the chatbot on its own, integrated into your existing website. You provide the business data; we build the knowledge base, set up the chatbot, and handle the deployment.</p>
-<a class="btn btn-primary" href="contact.html" style="font-size:.875rem;">Get a quote ›</a>
-</div>
-<div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;">
-<h3 style="font-family:var(--font-display);color:#fff;font-size:1.15rem;margin-bottom:1rem;">Add-on with a website</h3>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;margin-bottom:1.5rem;">If you're ordering a website or landing page, a chatbot can be included in the same project. Mention it in your brief and it will be scoped and priced as part of the same build.</p>
-<a class="btn btn-ghost" href="contact.html" style="font-size:.875rem;">Start a brief ›</a>
-</div>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="section-inner">
-<div style="background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(168,85,247,.06));border:1px solid rgba(99,102,241,.25);border-radius:20px;padding:2.5rem 3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;">
-<div>
-<div style="font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--primary);margin-bottom:.75rem;">// Pair it with</div>
-<h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.6rem;">Add a phone agent too.</h3>
-<p style="color:var(--text-2);font-size:.9rem;line-height:1.75;max-width:520px;">The chatbot handles your website visitors. The phone agent handles your callers — inbound and outbound. Together they cover every channel a customer might use to reach you, without adding headcount.</p>
-</div>
-<a class="btn btn-ghost" href="phone-agent.html" style="white-space:nowrap;flex-shrink:0;">See Phone Agent ›</a>
-</div>
-</div>
-</section>
-<section class="section" style="position:relative;overflow:hidden;">
-<div class="aurora" style="opacity:.4;"></div>
-<div class="section-inner" style="text-align:center;z-index:2;position:relative;">
-<div class="section-tag">Get Started</div>
-<h2 class="section-title">Tell us about your business.</h2>
-<p class="section-sub" style="text-align:center;margin:1.5rem auto 2.5rem;">The more detail you share, the better we can scope the chatbot and give you an accurate quote.</p>
-<a class="btn btn-primary btn-lg" href="contact.html">Start a Chatbot Brief</a>
-</div>
-</section>
-<footer>
-<div class="footer-inner">
-<div class="footer-grid">
-<div>
-<div class="footer-logo footer-logo">Zoomy</div>
-<p class="footer-tagline" data-i18n="footer.tagline">Campaign management, custom websites, AI chatbots, and phone agents.</p>
-</div>
-<div class="footer-col"><h4 data-i18n="footer.services">Services</h4><ul>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campaigns</a></li>
-<li><a data-i18n="nav.websites" href="website-design.html">Websites / Apps</a></li>
-<li><a data-i18n="nav.phone" href="phone-agent.html">Phone Agents</a></li>
-<li><a class="active" href="chatbot.html">AI Chatbots</a></li>
-<li><a href="animated-creatives.html">Animated Creatives</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.company">Company</h4><ul>
-<li><a href="about.html">About Us</a></li>
-<li><a href="portfolio.html">Our Work</a></li>
-<li><a href="faq.html">FAQ</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.contact">Contact</h4><ul>
-<li><a href="contact.html">Start a Project</a></li>
-<li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
-</ul>
-<div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Open for Projects</span></div>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Zoomy — All rights reserved.</span>
-<span style="display:flex;gap:20px;"><a data-i18n="footer.privacy" href="privacy.html">Privacy</a><a data-i18n="footer.terms" href="terms.html">Terms</a></span>
-</div>
-</div>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="cta reveal">
+      <span class="sticker">Real people<br>reply in<br>a day</span>
+      <h2>Let’s make yours.</h2>
+      <div>
+        <p>Tell us a little about your business and what you need. We’ll get back to you within a day, with questions or a quote.</p>
+        <div class="actions"><a class="btn btn--navy" href="contact.html">Start a project →</a><a class="mail" href="mailto:contact@zoomy.services">contact@zoomy.services</a></div>
+      </div>
+    </div>
+    <div class="ftr__grid" style="margin-top:clamp(56px,8vw,96px)">
+      <div>
+        <a class="logo" href="./" aria-label="Zoomy"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+        <p class="ftr__about">Websites, admin panels, chat and phone agents for local businesses. Made in New York and Connecticut.</p>
+      </div>
+      <div>
+        <h5>What we do</h5>
+        <ul>
+          <li><a href="website-design.html">Websites</a></li>
+          <li><a href="admin-panel.html">Admin panels</a></li>
+          <li><a href="chatbot.html">Chat assistants</a></li>
+          <li><a href="phone-agent.html">Phone agents</a></li>
+          <li><a href="animated-creatives.html">Animated ads</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Zoomy</h5>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">Questions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Say hello</h5>
+        <ul>
+          <li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+          <li><a href="contact.html">Project form</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__base">
+      <span>© 2026 Zoomy LLC</span>
+      <nav aria-label="Legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+<a href="chatbot.html" hreflang="en">English</a><a href="fr/chatbot.html" hreflang="fr">Français</a><a href="es/chatbot.html" hreflang="es">Español</a>      </nav>
+    </div>
+  </div>
 </footer>
-<!-- ═══ META PIXEL — deferred to bottom so it doesn't block FCP ═══ -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
-(function(){
-var _ud={};
-var _fbc=document.cookie.match(/_fbc=([^;]+)/);
-var _fbp=document.cookie.match(/_fbp=([^;]+)/);
-try{var _p=new URLSearchParams(window.location.search);var _cl=_p.get('fbclid');
-if(_cl&&!_fbc){var _fc='fb.1.'+Date.now()+'.'+_cl;document.cookie='_fbc='+_fc+';path=/;max-age=7776000;SameSite=Lax';_ud.fbc=_fc;}
-else if(_fbc){_ud.fbc=_fbc[1];}
-if(_fbp){_ud.fbp=_fbp[1];}}catch(e){}
-fbq('init','972114368527990',_ud);
-fbq('track','PageView');
-})();
-fbq('track','ViewContent',{content_name:document.title});
-</script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&ev=PageView&noscript=1" style="display:none" width="1"/></noscript>
-<!-- Custom event tracking — deferred to bottom so it doesn't block FCP -->
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('a.btn[href*="contact"],a.btn-nav[href*="contact"]').forEach(function(el){
-    el.addEventListener('click',function(){
-      if(typeof gtag==='function')gtag('event','cta_click',{event_category:'engagement',event_label:el.textContent.trim().substring(0,50)});
-      if(typeof clarity==='function')clarity('event','cta_click');
-      if(typeof fbq==='function')fbq('track','Contact');
-    });
-  });
-  document.querySelectorAll('[id*="demo"],[class*="demo"],[id*="phone"],a[href*="tel:"]').forEach(function(el){
-    el.addEventListener('click',function(){
-      if(typeof gtag==='function')gtag('event','phone_demo_click',{event_category:'engagement'});
-      if(typeof clarity==='function')clarity('event','phone_demo_click');
-      if(typeof fbq==='function')fbq('track','Contact');
-    });
-  });
-  var freeBar=document.getElementById('free-bar');
-  if(freeBar&&freeBar.querySelector('a')){
-    freeBar.querySelector('a').addEventListener('click',function(){
-      if(typeof gtag==='function')gtag('event','free_bar_claim',{event_category:'engagement'});
-      if(typeof clarity==='function')clarity('event','free_bar_claim');
-      if(typeof fbq==='function')fbq('track','Lead');
-    });
-  }
-  var scrollMilestones={25:false,50:false,75:false,90:false};
-  window.addEventListener('scroll',function(){
-    var scrollPct=Math.round((window.scrollY/(document.body.scrollHeight-window.innerHeight))*100);
-    Object.keys(scrollMilestones).forEach(function(m){
-      if(!scrollMilestones[m]&&scrollPct>=parseInt(m)){
-        scrollMilestones[m]=true;
-        if(typeof gtag==='function')gtag('event','scroll_depth',{event_category:'engagement',event_label:m+'%',value:parseInt(m)});
-      }
-    });
-  },{passive:true});
-  document.querySelectorAll('form').forEach(function(form){
-    form.addEventListener('submit',function(){
-      if(typeof gtag==='function')gtag('event','form_submit',{event_category:'conversion',event_label:window.location.pathname});
-      if(typeof clarity==='function')clarity('event','form_submit');
-      if(typeof fbq==='function')fbq('track','Lead');
-    });
-  });
-});
-</script>
-<script src="js/main.js?v=20260503"></script>
-<script src="js/i18n.js?v=20260416b"></script>
-<script src="js/chatbot.js?v=20260501e"></script>
-<script>
-// ── Business type preset event delegation ──────────────────────────────────
-(function() {
-  document.getElementById('cb-type-grid').addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-biz]');
-    if (btn && typeof window.cbTailorPreset === 'function') window.cbTailorPreset(btn.dataset.biz);
-  });
-  var resetLink = document.querySelector('[data-action="cb-reset"]');
-  if (resetLink) resetLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    if (typeof window.cbTailorReset === 'function') window.cbTailorReset();
-  });
-})();
-</script>
-<script>
-// ── Zoomy demo widget wiring ───────────────────────────────────────────────────────────────────────────
-(function() {
-  function initDemo() {
-    // Floating popup chatbot coexists with the embedded demo on this page
-
-    var STORE = 'zmy_demo_v1';
-    var messagesEl = document.getElementById('chatbot-messages');
-    var inputEl    = document.getElementById('chatbot-input-field');
-    var sendBtn    = document.getElementById('chatbot-send');
-    if (!messagesEl || !inputEl || !sendBtn) return;
-
-    // History starts empty — single greeting shown in HTML
-    var history = [];
-
-    // Restore saved session if available
-    try {
-      var saved = JSON.parse(sessionStorage.getItem(STORE));
-      if (saved && saved.msgs && saved.msgs.length) {
-        messagesEl.innerHTML = '';
-        saved.msgs.forEach(function(m) {
-          var d = document.createElement('div');
-          d.className = 'msg msg-' + m.role;
-          d.innerHTML = m.html;
-          messagesEl.appendChild(d);
-        });
-        if (saved.history && saved.history.length) history = saved.history;
-        messagesEl.scrollTop = messagesEl.scrollHeight;
-      }
-    } catch(e) {}
-
-    function saveChat() {
-      try {
-        var msgs = [];
-        messagesEl.querySelectorAll('.msg').forEach(function(el) {
-          msgs.push({ role: el.classList.contains('msg-user') ? 'user' : 'bot', html: el.innerHTML });
-        });
-        sessionStorage.setItem(STORE, JSON.stringify({ msgs: msgs, history: history }));
-      } catch(e) {}
-    }
-
-    function appendMsg(text, role) {
-      var div = document.createElement('div');
-      div.className = 'msg msg-' + role;
-      var html = text
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/_(.+?)_/g, '<em>$1</em>')
-        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
-        .replace(/\n/g, '<br>');
-      div.innerHTML = html;
-      messagesEl.appendChild(div);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-      saveChat();
-    }
-
-    var AI_WORKER     = 'https://zoomy-ai.zoozoomfast.workers.dev/chat';
-    var DEMO_WORKER   = 'https://zoomy-ai.zoozoomfast.workers.dev/demo-chat';
-    var SCRAPE_WORKER = 'https://zoomy-ai.zoozoomfast.workers.dev/scrape';
-    var tailoredBiz   = null;
-
-    // Snapshot original state for reset
-    var ORIG_MSGS   = messagesEl.innerHTML;
-    var ORIG_STATUS = document.querySelector('.chatbot-status') ? document.querySelector('.chatbot-status').textContent : 'Live demo — try it';
-    var ORIG_HISTORY = history.slice();
-
-    var ANALYZE_STEPS = [
-      'Scanning your website…',
-      'Reading your services…',
-      'Extracting pricing info…',
-      'Personalizing your chatbot…',
-      'Almost ready…',
-    ];
-
-    async function sendMessage() {
-      var text = inputEl.value.trim();
-      if (!text) return;
-      if (messagesEl.querySelector('.msg-user') === null) {
-        messagesEl.innerHTML = '';
-      }
-      appendMsg(text, 'user');
-      inputEl.value = '';
-      history.push({ role: 'user', text: text });
-
-      var typing = document.createElement('div');
-      typing.className = 'msg msg-bot';
-      typing.id = 'zmy-typing';
-      typing.textContent = '…';
-      messagesEl.appendChild(typing);
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-
-      var delay = 600 + Math.random() * 500;
-      await new Promise(function(r) { setTimeout(r, delay); });
-
-      try {
-        var endpoint = tailoredBiz ? DEMO_WORKER : AI_WORKER;
-        var body = tailoredBiz
-          ? JSON.stringify({ message: text, history: history.slice(-8), business: tailoredBiz })
-          : JSON.stringify({ message: text, history: history.slice(-8) });
-        var res = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: body
-        });
-        if (res.ok) {
-          var data = await res.json();
-          typing.remove();
-          appendMsg(data.reply, 'bot');
-          history.push({ role: 'bot', text: data.reply });
-          return;
-        }
-      } catch(e) {}
-      typing.remove();
-      appendMsg("Something went wrong. Email <strong>contact@zoomy.services</strong> and we'll reply within 24 hours.", 'bot');
-      saveChat();
-    }
-
-
-
-    
-    var CB_PRESETS = {
-      restaurant:{name:'The Golden Fork',type:'Restaurant & Bar',tagline:'Modern European cuisine with seasonal ingredients, craft cocktails, and weekend brunch',services:['Dine-in lunch & dinner','Weekend brunch (Sat–Sun 10am–3pm)','Private dining & event buyouts','Takeout orders','Corporate catering'],hours:'Mon–Thu 11:30am–10pm, Fri–Sat 11:30am–11pm, Sun 10am–3pm (brunch only)',pricing:'Starters $10–18, Mains $24–48, Weekend brunch $16–28, Cocktails $13–18',dietary:'We accommodate vegetarian, vegan, and gluten-free guests with dedicated menu options. We are not a kosher-certified or halal-certified kitchen, but our team can walk through ingredients for guests with specific needs. Allergens including nuts are flagged on the menu.',reservations:'Book online, call during hours, or walk in — we hold tables for walk-ins nightly.',location:'Downtown city center, 5 min from the central metro station'},
-      gym:{name:'Peak Performance Fitness',type:'Gym & Fitness Studio',tagline:'Results-driven training for all levels — from first-timers to competitive athletes',services:['Full gym floor access','1-on-1 personal training','Group fitness classes (HIIT, yoga, spin)','Nutrition coaching','Sauna & cold plunge recovery'],hours:'Mon–Fri 5:30am–11pm, Sat–Sun 7am–9pm',pricing:'Basic $49/mo (gym only), Unlimited $79/mo (gym + all classes), PT from $129/mo. Day pass $15.',trial:'Free 3-day trial pass — no credit card required. Sign up at the front desk or online.',cancellation:'Month-to-month; cancel with 15 days notice. No long-term contracts unless on annual plan.',facilities:'3 floors: cardio, free weights, group class studio. Locker rooms with showers and secure storage.',location:'Multiple city locations — main branch in the financial district'},
-      salon:{name:'Luxe Beauty Studio',type:'Beauty Salon & Spa',tagline:'Where great hair, flawless skin, and total relaxation come together',services:['Haircuts & blow-dry styling','Balayage, highlights & color','Lash lifts & extensions','Facials & skin treatments','Manicure, pedicure & nail art'],hours:'Tue–Sat 9am–7pm, Sun 10am–5pm. Closed Mondays.',pricing:'Haircuts from $55, Balayage from $180, Lash extensions from $120, Facials from $85, Manicure from $35.',booking:'All appointments online or by phone. Book 1–2 weeks ahead for color. Same-day slots available for cuts.',cancellation:'Please cancel or reschedule 24h in advance to avoid a 50% late-cancellation fee.',products:'We use and retail Kerastase and Olaplex. Cruelty-free and vegan options available on request.',location:'Uptown, free parking in the building lot'},
-      dental:{name:'Bright Smile Dental',type:'Dental Clinic',tagline:'Comfortable, modern dentistry for the whole family — gentle care from the first visit',services:['Routine cleanings & checkups','Teeth whitening','Invisalign clear aligners','Dental implants','Emergency same-day care','Pediatric dentistry'],hours:'Mon–Thu 8am–6pm, Fri 8am–3pm, Sat 9am–2pm (select dates)',pricing:'Cleaning from $120, Whitening $350, Invisalign consultation free, Implants from $2,200, Emergency visit from $100 (waived if proceeding with treatment).',insurance:'We accept most major dental insurance plans and bill directly. 0% financing through CareCredit available.',anxiety:'We specialize in anxious patients. Nitrous oxide available, team trained to work at your pace.',location:'Inside the Westside Medical Plaza, validated parking available'},
-      legal:{name:'Harrington & Associates',type:'Law Firm',tagline:'Straightforward legal guidance for individuals, families, and growing businesses',services:['Personal injury claims','Business contracts & formation','Real estate transactions','Family law & divorce','Estate planning & wills'],hours:'Mon–Fri 9am–6pm. Evening consultations available by appointment.',pricing:'Free 30-minute initial consultation for most cases. Personal injury on contingency (no win, no fee). Business law from $250/hr. Flat-fee packages for wills and real estate closings.',process:'After your free consult we outline options and fees in writing before any engagement. No surprise billing.',location:'Financial district, 12th floor — elevator accessible, parking validated'},
-      realestate:{name:'Crestview Realty',type:'Real Estate Agency',tagline:'Helping you buy, sell, or rent with confidence — local experts, honest advice',services:['Residential buying & selling','Rental property management','Commercial real estate','Free home valuations','Investor portfolio consulting'],hours:'Mon–Sat 9am–7pm, Sun by appointment',pricing:'Seller commission 5% (split with buyer agent). Rental management 8%/mo of collected rent. Home valuation always free.',process:'Buyers: free strategy call, pre-approval guidance, property tours. Sellers: listed within 5 days, professional photos included.',contract:'Listing agreements 90 days. Buyer representation agreements are flexible.',location:'Full metro area with local offices in three neighborhoods'},
-      store:{name:'Nomad Supply Co.',type:'Online Outdoor & Lifestyle Store',tagline:'Gear tested in the field, not just in marketing photos — built for people who actually go outside',services:['Outdoor apparel & footwear','Camping & hiking gear','Monthly subscription box','Gift cards'],hours:'Customer support Mon–Fri 9am–6pm EST. Orders ship 24/7.',pricing:'Apparel $35–$180, Gear $20–$400, Subscription box $49/mo. Free standard shipping on orders over $75.',returns:'60-day returns on unworn/unused items. If it breaks under normal field use, contact us — we stand behind our gear.',shipping:'Standard (3–5 days) free over $75, Express (1–2 days) $12. International shipping to 30+ countries.',loyalty:'Earn 1 point per $1 spent. 100 points = $5 off. Points never expire.',location:'Ships from Portland, OR — online only, no retail locations'},
-      auto:{name:'ProTech Auto Repair',type:'Auto Repair Shop',tagline:'Honest repairs, fair prices, done right the first time — no upselling',services:['Oil changes & fluid services','Brake inspection & replacement','Transmission service & repair','Full diagnostics','Tire rotation & balancing','AC & heating repair'],hours:'Mon–Fri 7:30am–6pm, Sat 8am–3pm',pricing:'Oil change from $49, Brake pads from $120/axle, Diagnostics $75 (waived with repair), Tire rotation $25.',warranty:'All repairs include 12-month / 12,000-mile warranty on parts and labor.',process:'We show you what we find before doing any work — photos included. No repair starts without your approval.',location:'East side, 2 min off the highway. Free shuttle within 3 miles.'},
-    };
-
-    window.cbTailorPreset = async function(type) {
-      var preset = CB_PRESETS[type];
-      if (!preset) return;
-
-      document.querySelectorAll('.cb-type-btn').forEach(function(b) {
-        b.classList.remove('active');
-        b.disabled = true;
-      });
-      var clicked = document.querySelector('.cb-type-btn[onclick*="\'' + type + '\'"]');
-      if (clicked) clicked.classList.add('active');
-
-      tailoredBiz = preset;
-      history = [];
-
-      messagesEl.innerHTML =
-        '<div class="cb-analyzing">' +
-        '<div class="cb-spinner"></div>' +
-        '<p class="cb-analyze-status">Setting up ' + preset.name + '\u2026</p>' +
-        '</div>';
-
-      try {
-        var introRes = await fetch(DEMO_WORKER, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: '__INTRO__', history: [], business: preset })
-        });
-        var introText = 'Hi! I\'m the AI assistant for ' + preset.name + '. How can I help you today?';
-        if (introRes.ok) {
-          var d = await introRes.json();
-          if (d.reply) introText = d.reply;
-        }
-        messagesEl.innerHTML = '';
-        appendMsg(introText, 'bot');
-        history.push({ role: 'bot', text: introText });
-
-        var statusBar = document.querySelector('.chatbot-status');
-        if (statusBar) statusBar.textContent = preset.type + ' demo';
-
-        var resetEl = document.getElementById('cb-tailor-reset');
-        if (resetEl) {
-          var nameEl = document.getElementById('cb-tailor-biz-name');
-          if (nameEl) nameEl.textContent = preset.name;
-          resetEl.style.display = 'flex';
-        }
-        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.disabled = false; });
-      } catch(e) {
-        messagesEl.innerHTML = '';
-        appendMsg('Something went wrong — try again.', 'bot');
-        document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
-      }
-    };
-
-    window.cbTailorReset = function() {
-      tailoredBiz = null;
-      history = ORIG_HISTORY.slice();
-      messagesEl.innerHTML = ORIG_MSGS;
-      document.querySelectorAll('.cb-type-btn').forEach(function(b) { b.classList.remove('active'); b.disabled = false; });
-      var resetEl = document.getElementById('cb-tailor-reset');
-      if (resetEl) resetEl.style.display = 'none';
-      var statusBar = document.querySelector('.chatbot-status');
-      if (statusBar) statusBar.textContent = ORIG_STATUS;
-      try { sessionStorage.removeItem(STORE); } catch(e) {}
-    };
-
-sendBtn.addEventListener('click', sendMessage);
-    inputEl.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-    });
-
-    var status = document.querySelector('.chatbot-status');
-    if (status) status.textContent = 'Live — powered by Zoomy AI';
-  }
-  initDemo();
-})();
-</script>
-<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')=='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
-</body>
+<script src="js/site.js?v=202609262329" defer></script>
+<script src="js/chat.js?v=202609262329" defer></script></body>
 </html>

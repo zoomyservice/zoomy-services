@@ -1,484 +1,134 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="no-js">
 <head>
-<meta charset="utf-8"/>
-<link href="../favicon.png" rel="icon" sizes="64x64" type="image/png"/>
-<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="../favicon.svg" rel="apple-touch-icon"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<link href="https://zoomy.services/contact.html" rel="canonical"/>
-<title>Contact — Zoomy</title>
-<meta content="Start your project. We typically typically typical response within 24 hours with a tailored proposal." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=fallback" rel="stylesheet"/>
-<style>html,body{background:#020208}html[data-theme="light"],html[data-theme="light"] body{background:var(--bg)}nav{background:rgba(2,2,8,.96)}html[data-theme="light"] nav{background:rgba(247,241,229,.96)}</style>
-<link href="../css/style.css?v=20260430o" rel="stylesheet"/>
-<style>
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;margin-top:3rem}
-.contact-info-item{display:flex;align-items:flex-start;gap:16px;padding:1.25rem;background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:1rem}
-.contact-icon{width:44px;height:44px;border-radius:10px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
-
-/* ZMY_LIGHT_MODE_OVERRIDES */
-html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="chatbot-send"]):not([class*="msg-user"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]){color:var(--text)!important}
-html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:rgb"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]){color:var(--text-2)!important}
-html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
-
-<style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .wi-tab-active{color:var(--text)!important}</style>
-<!-- ═══ ANALYTICS & TRACKING ═══ -->
-<!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-L5RX761T33', {
-      send_page_view: true
-    });
-  </script>
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wd5th9teha");
-  </script>
-<!-- Custom event tracking -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track outbound CTA clicks (contact page links)
-      document.querySelectorAll('a.btn[href*="contact"], a.btn-nav[href*="contact"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          gtag('event', 'cta_click', {event_category: 'engagement', event_label: el.textContent.trim().substring(0,50)});
-          clarity('event', 'cta_click');
-          fbq('track', 'Contact');
-        });
-      });
-      // Track phone demo button
-      document.querySelectorAll('[id*="demo"], [class*="demo"], [id*="phone"], a[href*="tel:"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          gtag('event', 'phone_demo_click', {event_category: 'engagement'});
-          clarity('event', 'phone_demo_click');
-          fbq('track', 'Contact');
-        });
-      });
-      // Track free bar claim click
-      var freeBar = document.getElementById('free-bar');
-      if (freeBar) {
-        freeBar.querySelector('a') && freeBar.querySelector('a').addEventListener('click', function() {
-          gtag('event', 'free_bar_claim', {event_category: 'engagement'});
-          clarity('event', 'free_bar_claim');
-          fbq('track', 'Lead');
-        });
-      }
-      // Track scroll depth (25%, 50%, 75%, 90%)
-      var scrollMilestones = {25: false, 50: false, 75: false, 90: false};
-      window.addEventListener('scroll', function() {
-        var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        Object.keys(scrollMilestones).forEach(function(m) {
-          if (!scrollMilestones[m] && scrollPct >= parseInt(m)) {
-            scrollMilestones[m] = true;
-            gtag('event', 'scroll_depth', {event_category: 'engagement', event_label: m + '%', value: parseInt(m)});
-          }
-        });
-      }, {passive: true});
-      // Track contact form submit
-      document.querySelectorAll('form').forEach(function(form) {
-        form.addEventListener('submit', function() {
-          gtag('event', 'form_submit', {event_category: 'conversion', event_label: window.location.pathname});
-          clarity('event', 'form_submit');
-          fbq('track', 'Lead');
-        });
-      });
-    });
-  </script>
-<!-- ═══ END TRACKING ═══ -->
-<!-- ═══ META PIXEL ═══ -->
-<script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    (function(){
-    var _ud={};
-    var _fbc=document.cookie.match(/_fbc=([^;]+)/);
-    var _fbp=document.cookie.match(/_fbp=([^;]+)/);
-    try{var _p=new URLSearchParams(window.location.search);var _cl=_p.get('fbclid');
-    if(_cl&&!_fbc){var _fc='fb.1.'+Date.now()+'.'+_cl;document.cookie='_fbc='+_fc+';path=/;max-age=7776000;SameSite=Lax';_ud.fbc=_fc;}
-    else if(_fbc){_ud.fbc=_fbc[1];}
-    if(_fbp){_ud.fbp=_fbp[1];}}catch(e){}
-    fbq('init','972114368527990',_ud);
-    fbq('track','PageView');
-  })();
-    fbq('track', 'ViewContent', {content_name: document.title});
-  </script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
-<!-- ═══ END META PIXEL ═══ -->
-<script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
-<script>localStorage.setItem('zmy_lang','fr');</script></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Démarrer un projet · Zoomy</title>
+<meta name="description" content="Parlez à Zoomy de votre entreprise et de vos besoins. Une vraie personne répond sous 24 heures avec des questions ou un devis ferme.">
+<link rel="canonical" href="https://zoomy.services/fr/contact.html">
+<link rel="alternate" hreflang="en" href="https://zoomy.services/contact.html">
+<link rel="alternate" hreflang="fr" href="https://zoomy.services/fr/contact.html">
+<link rel="alternate" hreflang="es" href="https://zoomy.services/es/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://zoomy.services/contact.html"><meta property="og:type" content="website">
+<meta property="og:site_name" content="Zoomy">
+<meta property="og:title" content="Démarrer un projet · Zoomy">
+<meta property="og:description" content="Parlez à Zoomy de votre entreprise et de vos besoins. Une vraie personne répond sous 24 heures avec des questions ou un devis ferme.">
+<meta property="og:url" content="https://zoomy.services/fr/contact.html">
+<meta property="og:image" content="https://zoomy.services/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css?v=202609262329">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');(function(){var u={};try{var c=document.cookie.match(/_fbc=([^;]+)/),p=document.cookie.match(/_fbp=([^;]+)/),q=new URLSearchParams(location.search).get('fbclid');if(q&&!c){var v='fb.1.'+Date.now()+'.'+q;document.cookie='_fbc='+v+';path=/;max-age=7776000;SameSite=Lax';u.fbc=v;}else if(c){u.fbc=c[1];}if(p){u.fbp=p[1];}}catch(e){}fbq('init','972114368527990',u);fbq('track','PageView');})();</script>
+</head>
 <body>
-<div id="scroll-progress"></div>
-<canvas id="particle-canvas"></canvas>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-<nav>
-<a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Studio de production numérique</span></a>
-<ul class="nav-links" id="navLinks">
-<li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
-<li><a data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
-<li><a data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a data-i18n="nav.creatives" href="animated-creatives.html">Créatifs</a></li>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campagnes</a></li>
-<li><a data-i18n="nav.about" href="about.html">À propos de</a></li>
-<li><a data-i18n="nav.pricing" href="pricing.html">Tarifs</a></li>
-<li><a class="active" data-i18n="nav.contact" href="contact.html">Contacter</a></li>
-</ul>
-<div style="display:flex;align-items:center;gap:16px;">
-<div class="lang-switcher">
-<a class="lang-btn" href="../contact.html">EN</a>
-<span class="lang-btn lang-active" style="opacity:1;font-weight:700;cursor:default;">FR</span>
-<a class="lang-btn" href="../es/contact.html">ES</a>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="./" aria-label="Zoomy, accueil"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+    <nav class="nav" aria-label="Principal">
+<a href="website-design.html">Sites web</a><a href="admin-panel.html">Administration</a><a href="chatbot.html">Chat</a><a href="phone-agent.html">Agents téléphoniques</a><a href="about.html">À propos</a>    </nav>
+    <div class="lang" aria-label="Langue"><a href="../contact.html" hreflang="en" lang="en">EN</a><a href="contact.html" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="../es/contact.html" hreflang="es" lang="es">ES</a></div>
+    <a class="btn btn--navy btn--sm hdr__cta" href="contact.html">Écrivez-nous</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span></span>Menu</button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+<a class="big" href="website-design.html">Sites web<span aria-hidden="true">→</span></a><a class="big" href="admin-panel.html">Administration<span aria-hidden="true">→</span></a><a class="big" href="chatbot.html">Chat<span aria-hidden="true">→</span></a><a class="big" href="phone-agent.html">Agents téléphoniques<span aria-hidden="true">→</span></a><a class="big" href="about.html">À propos<span aria-hidden="true">→</span></a>  <div class="lang"><a href="../contact.html" hreflang="en">English</a><a href="contact.html" hreflang="fr" aria-current="true">Français</a><a href="../es/contact.html" hreflang="es">Español</a></div>
+  <a class="btn" href="contact.html">Démarrer un projet →</a>
 </div>
-<button aria-label="Basculer le thème clair/sombre" class="theme-toggle" id="themeToggle" onclick="toggleTheme()" type="button"><svg aria-hidden="true" class="icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg aria-hidden="true" class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Démarrer un projet</span> ›</a>
-<button aria-label="Menus" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+<main id="main">
+<div class="wrap">
+  <section class="hero hero--split" style="align-items:start">
+    <div>
+      <span class="eyebrow">Écrivez-nous</span>
+      <h1>Parlez-nous de <span class="sq">votre entreprise.<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">Quelques lignes suffisent. Une vraie personne lit chaque message et répond sous 24 heures.</p>
+      <div class="note tl1 mt-l" style="max-width:440px">
+        <span class="k">La suite</span>
+        <ul class="ticks" style="margin-top:14px">
+          <li><b>Nous lisons</b> et répondons sous 24 heures, souvent avant.</li>
+          <li><b>Vous recevez un devis ferme</b> avec un calendrier, ou d’abord quelques questions.</li>
+          <li><b>Pour les sites,</b> nous dessinons la page d’accueil avant votre engagement.</li>
+        </ul>
+        <p class="mt-s muted" style="font-size:15.5px">Vous préférez l’e-mail ? <a class="ln" href="mailto:contact@zoomy.services">contact@zoomy.services</a></p>
+      </div>
+    </div>
+    <form class="form" id="contact-form" data-thanks="thank-you.html" data-sending="Envoi…">
+      <div class="row2">
+        <div class="field"><label for="f-first">Prénom</label><input class="input" id="f-first" name="first_name" autocomplete="given-name" required></div>
+        <div class="field"><label for="f-last">Nom <span class="opt">(facultatif)</span></label><input class="input" id="f-last" name="last_name" autocomplete="family-name"></div>
+      </div>
+      <div class="field"><label for="f-email">E-mail</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-co">Nom de l’entreprise ou site <span class="opt">(facultatif)</span></label><input class="input" id="f-co" name="company" autocomplete="organization"></div>
+      <fieldset class="field" style="border:0;padding:0;margin:0 0 20px">
+        <legend class="label" style="padding:0">Qu’est-ce qui vous intéresse ?</legend>
+        <div class="chips">
+          <label><input type="checkbox" name="service" value="Website"><span>Site web</span></label>
+          <label><input type="checkbox" name="service" value="Admin panel"><span>Panneau d’administration</span></label>
+          <label><input type="checkbox" name="service" value="Chat assistant"><span>Assistant de chat</span></label>
+          <label><input type="checkbox" name="service" value="Phone agent"><span>Agent téléphonique</span></label>
+          <label><input type="checkbox" name="service" value="Animated ad"><span>Pub animée</span></label>
+          <label><input type="checkbox" name="service" value="Not sure yet"><span>Je ne sais pas encore</span></label>
+        </div>
+      </fieldset>
+      <div class="field"><label for="f-msg">Dites-nous en un peu plus</label><textarea class="input" id="f-msg" name="message" required placeholder="Que fait votre entreprise, et pour quoi voulez-vous de l’aide ?"></textarea></div>
+      <button class="btn" type="submit"><span class="lbl">Envoyer</span> →</button>
+      <p class="form__err" role="alert">Désolé, l’envoi n’a pas marché. Réessayez, ou écrivez à contact@zoomy.services.</p>
+      <p class="form__note">Vos coordonnées servent uniquement à vous répondre. <a href="privacy.html">Confidentialité</a></p>
+    </form>
+  </section>
 </div>
-</nav>
-<section class="section" style="padding-top:140px;position:relative;">
-<div class="aurora" style="position:absolute;inset:0;pointer-events:none;z-index:0;"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-3"></div></div>
-<div class="section-inner" style="position:relative;z-index:1;">
-<div class="contact-grid-v2">
-<div class="cg-info reveal-left">
-<div class="section-tag" data-i18n="contact.hero.tag" style="margin-bottom:1.25rem;">Contacter</div>
-<h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;margin-bottom:1rem;letter-spacing:-.03em;line-height:1.15;">Construisons<br/><span class="grad-text-animated">quelque chose de génial.</span></h1>
-<p data-i18n="contact.hero.sub" style="color:var(--text-2);margin-bottom:2rem;line-height:1.7;font-size:1.05rem;">Parlez-nous de votre projet. Nous répondons généralement dans les 24 heures avec une proposition et un calendrier sur mesure.</p>
-<div class="contact-info-item">
-<div class="contact-icon"></div>
-<div>
-<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Envoyez-nous un courriel</div>
-<div style="color:var(--text-2);font-size:.9rem;">contact@zoomy.services</div>
-<div style="color:var(--muted);font-size:.8rem;margin-top:3px;">Nous répondons généralement dans les 24 heures</div>
-</div>
-</div>
-<div class="contact-info-item">
-<div class="contact-icon"></div>
-<div>
-<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Temps de réponse</div>
-<div style="color:var(--text-2);font-size:.9rem;">Généralement dans les 24 heures</div>
-<div style="color:var(--muted);font-size:.8rem;margin-top:3px;">7 jours sur 7, fuseau horaire ET</div>
-</div>
-</div>
-<div class="contact-info-item">
-<div class="contact-icon"></div>
-<div>
-<div style="font-weight:600;color:#fff;margin-bottom:.25rem;font-size:.95rem;">Localisation</div>
-<div style="color:var(--text-2);font-size:.9rem;">New York et Connecticut — à distance d'abord</div>
-<div style="color:var(--muted);font-size:.8rem;margin-top:3px;">Travailler avec des clients du monde entier</div>
-</div>
-</div>
-</div>
-<div class="cg-tips reveal-left">
-<div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;overflow:hidden;">
-<div style="padding:1rem 1.5rem .75rem;border-bottom:1px solid rgba(99,102,241,.12);">
-<div style="font-size:.7rem;color:rgba(255,255,255,.4);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;">Que faut-il inclure</div>
-<div id="wi-tabs" style="display:flex;gap:.4rem;flex-wrap:wrap;">
-<button class="wi-tab wi-tab-active" id="wi-tab-campaign" onclick="wiTab('campaign')">Campagne</button>
-<button class="wi-tab" id="wi-tab-website" onclick="wiTab('website')">Site Web</button>
-<button class="wi-tab" id="wi-tab-phone" onclick="wiTab('phone')">Agent téléphonique</button>
-<button class="wi-tab" id="wi-tab-chatbot" onclick="wiTab('chatbot')">Chatbot</button>
-<button class="wi-tab" id="wi-tab-animated" onclick="wiTab('animated')">Créations animées</button>
-</div>
-</div>
-<div style="padding:1.25rem 1.5rem;">
-<!-- Campaign -->
-<ul class="wi-panel" id="wi-campaign" style="list-style:none;display:flex;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-<li class="wi-item"><span class="wi-arrow">›</span> Quelle(s) plateforme(s) — Meta (Facebook/Instagram) ou une autre plateforme que vous avez en tête</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Votre budget publicitaire mensuel</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Ce dont vous faites la promotion et votre public cible</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Que vous ayez des créations existantes ou que vous ayez besoin d'éditer des médias</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Tous les comptes courants ou pixels déjà configurés</li>
-</ul>
-<!-- Website -->
-<ul class="wi-panel" id="wi-website" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-<li class="wi-item"><span class="wi-arrow">›</span> Type de site — informationnel, réservation, e-commerce, page de destination</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Nombre approximatif de pages et de langues nécessaires</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Fonctionnalités clés : système de réservation, paiements, panneau d'administration, etc.</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Avez-vous un domaine et un hébergement, ou avez-vous besoin de nous pour le configurer</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Votre délai et votre fourchette budgétaire</li>
-</ul>
-<!-- Phone Agent -->
-<ul class="wi-panel" id="wi-phone" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-<li class="wi-item"><span class="wi-arrow">›</span> Type d'activité et volume d'appels entrants</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Que vous ayez besoin d'une réservation de calendrier en direct pendant les appels</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Langues utilisées par les appelants</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Tout système de réservation ou CRM existant à intégrer à</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Avez-vous un numéro de téléphone existant à associer ou avez-vous besoin d'un nouveau</li>
-</ul>
-<!-- Chatbot -->
-<ul class="wi-panel" id="wi-chatbot" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-<li class="wi-item"><span class="wi-arrow">›</span> Ce à quoi le chatbot doit répondre : services, tarifs, réservations</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Langues requises (nous prenons en charge plus de 100 langues pour les chatbots, 133 pour les sites Web)</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Chatbot autonome ou module complémentaire à un site Web nouveau/existant</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Qu'il s'agisse de capturer des leads ou de se connecter à un CRM</li>
-</ul>
-<ul class="wi-panel" id="wi-animated" style="list-style:none;display:none;flex-direction:column;gap:.55rem;margin:0;padding:0;">
-<li class="wi-item"><span class="wi-arrow">›</span> Ce dont vous faites la publicité : produit, service ou offre</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Public cible et ton recherché</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Plateforme — Méta-flux, story ou les deux</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Que vous ayez besoin de musique, de voix off ou de visuels uniquement</li>
-<li class="wi-item"><span class="wi-arrow">›</span> Toutes les couleurs de marque, logos ou séquences existantes à incorporer</li>
-</ul>
-</div>
-</div>
-<style>
-          .wi-tab{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:4px 11px;font-size:.75rem;font-family:var(--font-mono);color:rgba(255,255,255,.5);cursor:pointer;transition:all .18s;}
-          .wi-tab:hover{background:rgba(99,102,241,.15);color:#fff;border-color:rgba(99,102,241,.4);}
-          .wi-tab-active{background:rgba(99,102,241,.2)!important;color:#fff!important;border-color:rgba(99,102,241,.5)!important;}
-          .wi-item{font-size:.875rem;color:var(--text-2);display:flex;gap:8px;}
-          .wi-arrow{color:var(--primary);flex-shrink:0;}
-        </style>
-<script>
-          function wiTab(id){
-            ['campaign','website','chatbot','phone','animated'].forEach(function(t){
-              document.getElementById('wi-'+t).style.display='none';
-              document.getElementById('wi-tab-'+t).classList.remove('wi-tab-active');
-            });
-            document.getElementById('wi-'+id).style.display='flex';
-            document.getElementById('wi-tab-'+id).classList.add('wi-tab-active');
-          }
-          // Service dropdown
-          function toggleSvcDd(){
-            var panel=document.getElementById('svc-dd-panel');
-            var arrow=document.getElementById('svc-dd-arrow');
-            var open=panel.style.display==='block';
-            panel.style.display=open?'none':'block';
-            arrow.style.transform=open?'':'rotate(180deg)';
-          }
-          function updateSvcLabel(){
-            var checked=Array.from(document.querySelectorAll('input[name="service"]:checked')).map(function(el){return el.value;});
-            var lbl=document.getElementById('svc-dd-label');
-            var tags=document.getElementById('svc-tags');
-            if(checked.length===0){lbl.textContent='Select services (choose all that apply)';lbl.style.opacity='.55';tags.innerHTML='';}
-            else{lbl.textContent=checked.length+' service'+(checked.length>1?'s':'')+' selected';lbl.style.opacity='1';
-              tags.innerHTML=checked.map(function(v){return'<span style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);color:#a5b4fc;font-size:.75rem;padding:2px 10px;border-radius:20px;">'+v+'</span>';}).join('');}
-          }
-          document.addEventListener('DOMContentLoaded',function(){
-            document.querySelectorAll('input[name="service"]').forEach(function(cb){cb.addEventListener('change',updateSvcLabel);});
-            document.addEventListener('mousedown',function(e){
-              var dd=document.getElementById('svc-dd');
-              if(dd&&!dd.contains(e.target)){document.getElementById('svc-dd-panel').style.display='none';document.getElementById('svc-dd-arrow').style.transform='';}
-            });
-          });
-        </script>
-</div>
-<div class="cg-form contact-form reveal-right">
-<div style="margin-bottom:2rem;">
-<h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Démarrer un projet</h3>
-<p style="color:var(--muted);font-size:.875rem;">Remplissez le formulaire et nous vous contacterons généralement dans les 24 heures.</p>
-</div>
-<form id="contact-form">
-<div class="form-row">
-<div class="form-field">
-<label data-i18n="contact.form.firstname">Prénom</label>
-<input name="first_name" placeholder="Prénom" required="" type="text"/>
-</div>
-<div class="form-field">
-<label data-i18n="contact.form.lastname">Nom de famille</label>
-<input name="last_name" placeholder="Nom de famille" type="text"/>
-</div>
-</div>
-<div class="form-field">
-<label data-i18n="contact.form.email">Adresse e-mail</label>
-<input name="email" placeholder="your@email.com" required="" type="email"/>
-</div>
-<div class="form-field">
-<label data-i18n="contact.form.company">Entreprise / Site Web</label>
-<input name="company" placeholder="company.com (facultatif)" type="text"/>
-</div>
-<div class="form-field">
-<label data-i18n="contact.form.need">Qu'est-ce que tu cherches?</label>
-<div id="svc-dd" style="position:relative;margin-top:.5rem;">
-<button id="svc-dd-btn" onclick="toggleSvcDd()" style="width:100%;display:flex;align-items:center;justify-content:space-between;background:var(--bg-3,#0d0d1e);border:1px solid var(--border);border-radius:var(--radius,10px);padding:11px 14px;color:var(--text-2);font-size:.875rem;font-family:var(--font-body);cursor:pointer;text-align:left;transition:border-color .18s;" type="button">
-<span id="svc-dd-label" style="opacity:.55;">Sélectionnez les services (choisissez toutes les réponses applicables)</span>
-<svg fill="none" height="12" id="svc-dd-arrow" style="flex-shrink:0;margin-left:8px;transition:transform .18s;" viewbox="0 0 12 12" width="12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path></svg>
-</button>
-<div id="svc-dd-panel" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg-3,#0d0d1e);border:1px solid var(--border);border-radius:var(--radius,10px);padding:.5rem;z-index:50;box-shadow:0 8px 32px rgba(0,0,0,.4);">
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="Campaign Management"/> Gestion de campagne
-    </label>
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="Custom Website"/> Site Web personnalisé
-    </label>
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="Landing Page"/> Page de destination
-    </label>
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="AI Chatbot"/> Chatbot IA
-    </label>
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="Phone AI Agent"/> Agent IA téléphonique
-    </label>
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="Animated Creatives"/> Créations animées
-    </label>
-<label onmouseout="this.style.background=''" onmouseover="this.style.background='rgba(99,102,241,.1)'" style="display:flex;align-items:center;gap:10px;padding:.55rem .6rem;border-radius:6px;font-size:.875rem;color:var(--text-2);cursor:pointer;transition:background .12s;">
-<input name="service" style="width:15px;height:15px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;" type="checkbox" value="Domain &amp; Hosting Setup"/> Configuration du domaine et de l'hébergement
-    </label>
-</div>
-</div>
-<div id="svc-tags" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;"></div>
-</div>
-<div class="form-field">
-<label data-i18n="contact.form.message">Parlez-nous de votre projet</label>
-<textarea data-i18n-ph="contact.form.placeholder" name="message" placeholder="Décrivez ce dont vous avez besoin, votre public et tous les détails ou délais pertinents." required=""></textarea>
-</div>
-<button class="btn btn-primary" id="contact-submit" style="width:100%;justify-content:center;" type="submit"><span data-i18n="contact.form.send" id="contact-btn-text">Envoyer un message</span> ›</button>
-<!-- What happens next -->
-<div style="margin-top:1.5rem;padding:1.25rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:12px;">
-<div style="font-size:.7rem;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:1rem;">Que se passe-t-il ensuite</div>
-<div style="display:flex;flex-direction:column;gap:.875rem;">
-<div style="display:flex;align-items:flex-start;gap:12px;">
-<div style="width:22px;height:22px;border-radius:50%;background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#a5b4fc;flex-shrink:0;margin-top:1px;">1</div>
-<div><div style="font-size:.875rem;color:#fff;font-weight:600;margin-bottom:2px;">Nous examinons votre message</div><div style="font-size:.8rem;color:var(--muted);line-height:1.5;">Généralement en quelques heures, nous lisons personnellement chaque soumission.</div></div>
-</div>
-<div style="display:flex;align-items:flex-start;gap:12px;">
-<div style="width:22px;height:22px;border-radius:50%;background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#a5b4fc;flex-shrink:0;margin-top:1px;">2</div>
-<div><div style="font-size:.875rem;color:#fff;font-weight:600;margin-bottom:2px;">Vous recevez une réponse typique d'une proposition personnalisée dans les 24 heures</div><div style="font-size:.8rem;color:var(--muted);line-height:1.5;">Prix ​​fixe, portée complète, calendrier clair. Pas d’estimations vagues.</div></div>
-</div>
-<div id="next-step-free-page" style="display:none;align-items:flex-start;gap:12px;">
-<div style="width:22px;height:22px;border-radius:50%;background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#a5b4fc;flex-shrink:0;margin-top:1px;">3</div>
-<div><div style="font-size:.875rem;color:#fff;font-weight:600;margin-bottom:2px;">Nous construisons d'abord votre page d'accueil gratuite</div><div style="font-size:.8rem;color:var(--muted);line-height:1.5;">Vrai design, vrai code. Vous l’approuvez avant que quoi que ce soit ne soit payé.</div></div>
-</div>
-</div>
-</div>
-<p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:1rem;">Votre email est utilisé uniquement pour répondre à votre demande.</p>
-<div id="contact-success" style="display:none;padding:1.75rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:12px;margin-top:1rem;">
-<div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
-<div style="width:36px;height:36px;border-radius:50%;background:rgba(34,197,94,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">✓</div>
-<div style="color:#4ade80;font-weight:700;font-size:1rem;">Message reçu — vous recevrez de notre part généralement dans les 24 heures.</div>
-</div>
-<div style="display:flex;flex-direction:column;gap:.6rem;">
-<div style="font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:#4ade80;">›</span> Vérifiez votre boîte de réception – notre réponse vient de contact@zoomy.services</div>
-<div style="font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:#4ade80;">›</span> Nous inclurons un prix fixe et un calendrier dans notre première réponse</div>
-<div id="success-free-page" style="display:none;font-size:.82rem;color:var(--muted);align-items:center;gap:8px;"><span style="color:#4ade80;">›</span> La création gratuite de votre page d'accueil démarre dès que vous confirmez</div>
-</div>
-</div>
-</form>
-<script>
-(function(){
-  var form=document.getElementById('contact-form');
-  if(!form)return;
-
-  // Show free homepage step only when a website service is selected
-  var WEB_SERVICES = ['Custom Website','Landing Page'];
-  function updateFreePageVisibility(){
-    var checked = Array.from(form.querySelectorAll('input[name="service"]:checked')).map(function(el){return el.value;});
-    var hasWeb = checked.some(function(v){return WEB_SERVICES.includes(v);});
-    var stepEl = document.getElementById('next-step-free-page');
-    if(stepEl) stepEl.style.display = hasWeb ? 'flex' : 'none';
-  }
-  form.querySelectorAll('input[name="service"]').forEach(function(cb){
-    cb.addEventListener('change', updateFreePageVisibility);
-  });
-  // Also update dropdown label from form-level listeners
-  form.querySelectorAll('input[name="service"]').forEach(function(cb){
-    cb.addEventListener('change', function(){ if(typeof updateSvcLabel==='function') updateSvcLabel(); });
-  });
-
-  function getCookie(name){var m=document.cookie.match('(^|;)\\s*'+name+'\\s*=\\s*([^;]+)');return m?m.pop():null;}
-  function fireCAPI(formData){
-    var services=Array.from(form.querySelectorAll('input[name="service"]:checked')).map(function(el){return el.value;});
-    var payload={
-      first_name:formData.get('first_name')||'',
-      last_name:formData.get('last_name')||'',
-      email:formData.get('email')||'',
-      company:formData.get('company')||'',
-      services:services,
-      event_source_url:window.location.href,
-      client_user_agent:navigator.userAgent,
-      fbp:getCookie('_fbp'),
-      fbc:getCookie('_fbc')
-    };
-    fetch('https://zoomy-capi.zoozoomfast.workers.dev',{method:'POST',body:JSON.stringify(payload),headers:{'Content-Type':'application/json'}}).catch(function(){});
-  }
-
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var btn=document.getElementById('contact-submit');
-    var btnText=document.getElementById('contact-btn-text');
-    btn.disabled=true;
-    btnText.textContent='Sending...';
-    var data=new FormData(form);
-    fireCAPI(data);
-    data.append('_site','zoomy.services');
-    fetch('https://zoomy-forms.zoozoomfast.workers.dev',{method:'POST',body:data})
-    .then(function(r){return r.json()})
-    .then(function(r){
-      if(r.ok){
-        var hadWeb = Array.from(form.querySelectorAll('input[name="service"]:checked')).some(function(el){return WEB_SERVICES.includes(el.value);});
-        form.reset();
-        window.location.href = 'thank-you.html';
-        document.getElementById('contact-success').style.display='block';
-        var sfp = document.getElementById('success-free-page');
-        if(sfp) sfp.style.display = hadWeb ? 'flex' : 'none';
-        btn.style.display='none';
-      } else {
-        btnText.textContent='Send Message';
-        btn.disabled=false;
-        alert('Something went wrong. Please try again.');
-      }
-    })
-    .catch(function(){
-      btnText.textContent='Send Message';
-      btn.disabled=false;
-      alert('Something went wrong. Please try again.');
-    });
-  });
-})();
-</script>
-</div>
-</div>
-</div>
-</section>
-<footer>
-<div class="footer-inner">
-<div class="footer-grid">
-<div>
-<div class="footer-logo grad-text">Zoomy</div>
-<p class="footer-tagline" data-i18n="footer.tagline">Gestion de campagnes, sites Web personnalisés, chatbots IA et agents téléphoniques.</p>
-</div>
-<div class="footer-col"><h4 data-i18n="footer.services">Prestations</h4><ul>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campagnes</a></li>
-<li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
-<li><a data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a href="chatbot.html">Chatbots IA</a></li>
-<li><a href="animated-creatives.html">Créations animées</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.company">Entreprise</h4><ul>
-<li><a href="about.html">À propos de nous</a></li>
-<li><a href="portfolio.html">Notre travail</a></li>
-<li><a href="faq.html">FAQ</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.contact">Contacter</h4><ul>
-<li><a class="active" href="contact.html">Démarrer un projet</a></li>
-<li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
-</ul>
-<div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Ouvert aux projets</span></div>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Zoomy — Tous droits réservés.</span>
-<span style="display:flex;gap:20px;"><a data-i18n="footer.privacy" href="privacy.html">Confidentialité</a><a data-i18n="footer.terms" href="terms.html">Conditions</a></span>
-</div>
-</div>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr__grid" style="margin-top:0">
+      <div>
+        <a class="logo" href="./" aria-label="Zoomy"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+        <p class="ftr__about">Sites web, panneaux d’administration, chat et agents téléphoniques pour les commerces locaux. Faits à New York et dans le Connecticut.</p>
+      </div>
+      <div>
+        <h5>Nos services</h5>
+        <ul>
+          <li><a href="website-design.html">Sites web</a></li>
+          <li><a href="admin-panel.html">Panneaux d’administration</a></li>
+          <li><a href="chatbot.html">Assistants de chat</a></li>
+          <li><a href="phone-agent.html">Agents téléphoniques</a></li>
+          <li><a href="animated-creatives.html">Pubs animées</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Zoomy</h5>
+        <ul>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="faq.html">Questions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Écrivez-nous</h5>
+        <ul>
+          <li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+          <li><a href="contact.html">Formulaire de projet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__base">
+      <span>© 2026 Zoomy LLC</span>
+      <nav aria-label="Mentions légales">
+        <a href="privacy.html">Confidentialité</a>
+        <a href="terms.html">Conditions</a>
+<a href="../contact.html" hreflang="en">English</a><a href="contact.html" hreflang="fr">Français</a><a href="../es/contact.html" hreflang="es">Español</a>      </nav>
+    </div>
+  </div>
 </footer>
-<script src="../js/main.js?v=20260416"></script>
-
-<script src="../js/chatbot.js?v=20260501e"></script>
-<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
-</body>
+<script src="../js/site.js?v=202609262329" defer></script>
+<script src="../js/chat.js?v=202609262329" defer></script></body>
 </html>

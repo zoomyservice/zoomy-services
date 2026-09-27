@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% set title = T('Zoomy · Websites, chat and phone agents for local businesses','Zoomy · Sites web, chat et agents téléphoniques pour commerces locaux','Zoomy · Sitios web, chat y agentes telefónicos para negocios locales') %}
+{% set description = T('Zoomy builds websites for local businesses, with a simple panel to change them yourself and a friendly assistant that answers your chat and your phone.','Zoomy crée des sites pour les commerces locaux, avec un panneau simple pour les modifier vous-même et un assistant qui répond au chat et au téléphone.','Zoomy crea sitios web para negocios locales, con un panel sencillo para cambiarlos usted mismo y un asistente que contesta el chat y el teléfono.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero">
+    <div>
+      <h1>{{ T('Your shop, open online. Even when <span class="sq">you’re closed.','Votre boutique, ouverte en ligne. Même quand <span class="sq">vous êtes fermés.','Su tienda, abierta en línea. Incluso cuando <span class="sq">usted cierra.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('We build websites for local businesses, give you a simple panel to change them yourself, and set up a friendly assistant that answers your chat and your phone.','Nous créons des sites pour les commerces locaux, vous donnons un panneau simple pour les modifier vous-même, et installons un assistant sympathique qui répond au chat et au téléphone.','Creamos sitios web para negocios locales, le damos un panel sencillo para cambiarlos usted mismo y ponemos un asistente amable que contesta el chat y el teléfono.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Start a project','Démarrer un projet','Empezar un proyecto') }} →</a><a class="ln" href="#make">{{ T('See what we build','Voir ce que nous faisons','Ver lo que hacemos') }}</a></div>
+    </div>
+    <div class="board" aria-hidden="true">
+      <span class="sticker">{{ T('Real people<br>reply in<br>a day','Une vraie<br>personne<br>répond','Responde<br>una persona<br>real') }}</span>
+      <div class="note tape n1 tl"><span class="k">{{ T('New phone order · 9:48 PM','Commande par téléphone · 21 h 48','Pedido telefónico · 9:48 p. m.') }}</span><h5>{{ T('Strawberry cake, Sunday 11 AM','Fraisier, dimanche 11 h','Pastel de fresa, domingo 11 a. m.') }}</h5><p>{{ T('“Happy 7th, Leo” on top. Call back to confirm.','« Joyeux 7 ans, Léo » dessus. Rappeler pour confirmer.','“Feliz 7, Leo” encima. Llamar para confirmar.') }}</p></div>
+      <div class="note note--butter n2 tr"><span class="k">{{ T('Admin panel','Administration','Panel') }}</span><h5>{{ T('Pain au chocolat','Pain au chocolat','Pain au chocolat') }}</h5><p>{{ T('Sold out today. Back on the menu tomorrow morning.','Épuisé aujourd’hui. De retour demain matin.','Agotado hoy. Vuelve mañana por la mañana.') }}</p></div>
+      <div class="note n3 tl1"><span class="k">{{ T('Website chat','Chat du site','Chat del sitio') }}</span><div class="bub me">{{ T('Are you open Sunday?','Vous êtes ouverts dimanche ?','¿Abren el domingo?') }}</div><div class="bub">{{ T('Yes, 9 to 3. Want to order ahead?','Oui, de 9 h à 15 h. Vous voulez commander ?','Sí, de 9 a 3. ¿Quiere encargar algo?') }}</div></div>
+    </div>
+  </section>
+  <nav class="pills" aria-label="{{ T('Services','Services','Servicios') }}">
+    <a href="{{ L('website-design.html') }}">{{ T('Websites','Sites web','Sitios web') }}</a>
+    <a class="b" href="{{ L('admin-panel.html') }}">{{ T('Admin panels','Panneaux d’administration','Paneles de administración') }}</a>
+    <a href="{{ L('chatbot.html') }}">{{ T('Chat assistants','Assistants de chat','Asistentes de chat') }}</a>
+    <a class="s" href="{{ L('phone-agent.html') }}">{{ T('Phone agents','Agents téléphoniques','Agentes telefónicos') }}</a>
+    <a href="{{ L('animated-creatives.html') }}">{{ T('Animated ads','Pubs animées','Anuncios animados') }}</a>
+  </nav>
+</div>
+
+<section class="sec" id="make">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What we make','Ce que nous faisons','Lo que hacemos') }}</h2>
+      <p class="lead">{{ T('Most people start with a website and add the rest later. It all shares the same info, so your site, chat and phone always give the same answer.','La plupart commencent par un site et ajoutent le reste ensuite. Tout partage les mêmes infos : le site, le chat et le téléphone donnent toujours la même réponse.','La mayoría empieza con un sitio web y suma lo demás después. Todo comparte la misma información, así que el sitio, el chat y el teléfono siempre dan la misma respuesta.') }}</p>
+    </div>
+    <div class="cards">
+      <a class="card card--butter card--wide reveal" href="{{ L('website-design.html') }}"><span class="ic">{{ ui.ico('web') }}</span><h3>{{ T('Websites','Sites web','Sitios web') }}</h3><p>{{ T('Made from scratch for your business, not squeezed into a template. Quick on phones, easy to find on Google, and ready to take orders, bookings or payments.','Faits sur mesure pour votre entreprise, pas coincés dans un modèle. Rapides sur mobile, faciles à trouver sur Google, prêts pour les commandes, réservations ou paiements.','Hechos a medida para su negocio, no metidos en una plantilla. Rápidos en el móvil, fáciles de encontrar en Google y listos para pedidos, reservas o pagos.') }}</p><span class="more">{{ T('About websites','Les sites web','Sobre los sitios') }} →</span></a>
+      <a class="card reveal" href="{{ L('admin-panel.html') }}"><span class="ic">{{ ui.ico('sliders') }}</span><h3>{{ T('Admin panels','Administration','Paneles') }}</h3><p>{{ T('Change prices, photos, hours and specials yourself, from your phone.','Changez prix, photos, horaires et suggestions vous-même, depuis votre téléphone.','Cambie precios, fotos, horarios y especiales usted mismo, desde el móvil.') }}</p><span class="more">{{ T('See the panel','Voir le panneau','Ver el panel') }} →</span></a>
+      <a class="card card--sky reveal" href="{{ L('chatbot.html') }}"><span class="ic">{{ ui.ico('bubble') }}</span><h3>{{ T('Chat assistants','Assistants de chat','Asistentes de chat') }}</h3><p>{{ T('Answers questions on your site at 2 AM, in whatever language your customer writes in.','Répond sur votre site à 2 h du matin, dans la langue du client.','Responde en su sitio a las 2 de la mañana, en el idioma en que escriba el cliente.') }}</p><span class="more">{{ T('How it works','Comment ça marche','Cómo funciona') }} →</span></a>
+      <a class="card card--mint reveal" href="{{ L('phone-agent.html') }}"><span class="ic">{{ ui.ico('tel') }}</span><h3>{{ T('Phone agents','Agents téléphoniques','Agentes telefónicos') }}</h3><p>{{ T('Picks up when you can’t, takes the order and passes it to your team.','Décroche quand vous ne pouvez pas, prend la commande et la transmet à votre équipe.','Contesta cuando usted no puede, toma el pedido y se lo pasa a su equipo.') }}</p><span class="more">{{ T('How it works','Comment ça marche','Cómo funciona') }} →</span></a>
+      <a class="card card--blush reveal" href="{{ L('animated-creatives.html') }}"><span class="ic">{{ ui.ico('play') }}</span><h3>{{ T('Animated ads','Pubs animées','Anuncios animados') }}</h3><p>{{ T('Short animated videos for Instagram, Facebook and TikTok. No camera needed.','Courtes vidéos animées pour Instagram, Facebook et TikTok. Pas besoin de caméra.','Videos animados cortos para Instagram, Facebook y TikTok. Sin cámara.') }}</p><span class="more">{{ T('About the ads','Les pubs','Sobre los anuncios') }} →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">{{ T('Admin panels','Panneaux d’administration','Paneles de administración') }}</span>
+      <h2>{{ T('Change it yourself. <span class="hl">It’s live</span> right away.','Modifiez-le vous-même. <span class="hl">C’est en ligne</span> tout de suite.','Cámbielo usted mismo. <span class="hl">Queda publicado</span> al instante.') }}</h2>
+      <p class="lead mt-m">{{ T('Every site comes with its own admin panel, set up around your menu and the way your shop runs. No emailing a developer to fix a price.','Chaque site a son propre panneau, organisé autour de votre menu et de votre façon de travailler. Plus besoin d’écrire à un développeur pour corriger un prix.','Cada sitio trae su propio panel, organizado según su menú y cómo funciona su negocio. Nada de escribirle a un programador para corregir un precio.') }}</p>
+      <ul class="ticks">
+        <li><b>{{ T('Sold out?','Épuisé ?','¿Se acabó?') }}</b> {{ T('Mark it for today and it comes back on its own tomorrow.','Indiquez-le pour aujourd’hui, il revient tout seul demain.','Márquelo por hoy y vuelve solo mañana.') }}</li>
+        <li><b>{{ T('Holiday coming up?','Un jour férié ?','¿Viene un feriado?') }}</b> {{ T('Set the hours once. The website and the phone agent both know.','Réglez les horaires une fois. Le site et l’agent téléphonique sont au courant.','Ponga el horario una vez. El sitio y el agente telefónico lo saben.') }}</li>
+        <li><b>{{ T('Changed your mind?','Vous changez d’avis ?','¿Cambió de idea?') }}</b> {{ T('Preview first, and undo anything from the history.','Prévisualisez d’abord, et annulez depuis l’historique.','Véalo antes y deshaga cualquier cosa desde el historial.') }}</li>
+      </ul>
+      <p class="mt-m"><a class="ln" href="{{ L('admin-panel.html') }}">{{ T('Take a look at the panel','Découvrir le panneau','Ver el panel') }}</a></p>
+    </div>
+    <div class="reveal panel-wrap">{{ ui.admin() }}</div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="band split">
+      <div class="reveal">
+        <span class="eyebrow">{{ T('Phone agents','Agents téléphoniques','Agentes telefónicos') }}</span>
+        <h2>{{ T('It picks up when you can’t.','Il décroche quand vous ne pouvez pas.','Contesta cuando usted no puede.') }}</h2>
+        <p class="lead mt-m">{{ T('Busy counter, late evening, day off. Your phone agent knows the menu and your hours, takes the order, reads it back, and sends it to your team to confirm.','Comptoir plein, soirée, jour de congé. Votre agent connaît le menu et vos horaires, prend la commande, la relit, et l’envoie à votre équipe pour confirmation.','Mostrador lleno, tarde por la noche, día libre. Su agente conoce el menú y sus horarios, toma el pedido, lo repite y lo envía a su equipo para confirmar.') }}</p>
+        <ul class="ticks">
+          <li><b>{{ T('English, Spanish and more.','Anglais, espagnol et plus.','Inglés, español y más.') }}</b> {{ T('It switches when the caller does.','Il change de langue avec le client.','Cambia de idioma con el cliente.') }}</li>
+          <li><b>{{ T('Knows what day it is.','Sait quel jour on est.','Sabe qué día es.') }}</b> {{ T('“Tomorrow” always lands on the right date.','« Demain » tombe toujours à la bonne date.','“Mañana” siempre cae en la fecha correcta.') }}</li>
+          <li><b>{{ T('Never asks for card numbers.','Ne demande jamais de carte.','Nunca pide la tarjeta.') }}</b> {{ T('Payment stays with you.','Le paiement reste chez vous.','El cobro queda en sus manos.') }}</li>
+        </ul>
+        <p class="mt-m"><a class="ln" href="{{ L('phone-agent.html') }}">{{ T('How the phone agent works','Comment marche l’agent téléphonique','Cómo funciona el agente telefónico') }}</a></p>
+      </div>
+      <div class="reveal">{{ ui.orders() }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('How it works','Comment ça se passe','Cómo trabajamos') }}</h2>
+      <p class="lead">{{ T('You deal with one person from the first message to the day your site goes live.','Vous parlez à une seule personne, du premier message au jour de la mise en ligne.','Trata con una sola persona desde el primer mensaje hasta el día del lanzamiento.') }}</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="step__n">1</span><h4>{{ T('Say hello','Écrivez-nous','Escríbanos') }}</h4><p>{{ T('Fill in the form or send an email. A few lines about your business is plenty.','Remplissez le formulaire ou envoyez un e-mail. Quelques lignes sur votre entreprise suffisent.','Llene el formulario o mande un correo. Con unas líneas sobre su negocio basta.') }}</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>{{ T('Get a quote','Recevez un devis','Reciba un presupuesto') }}</h4><p>{{ T('Within a day you’ll have our questions or a fixed price. It won’t change halfway through.','Sous 24 heures : nos questions ou un prix ferme. Il ne changera pas en cours de route.','En un día tendrá nuestras preguntas o un precio cerrado. No cambia a mitad de camino.') }}</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>{{ T('See it first','Voyez d’abord','Véalo primero') }}</h4><p>{{ T('We design your homepage before you commit. Like it? We build the rest and go live.','Nous dessinons votre page d’accueil avant que vous vous engagiez. Elle vous plaît ? Nous faisons le reste et mettons en ligne.','Diseñamos su portada antes de que decida. ¿Le gusta? Hacemos el resto y lo publicamos.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap split split--top">
+    <div>
+      <h2>{{ T('Good questions','Bonnes questions','Buenas preguntas') }}</h2>
+      <p class="lead mt-m">{{ T('Something else on your mind? Ask the assistant in the corner, or <a class="ln" href="mailto:contact@zoomy.services">email us</a>.','Autre chose ? Demandez à l’assistant en bas de l’écran, ou <a class="ln" href="mailto:contact@zoomy.services">écrivez-nous</a>.','¿Otra duda? Pregúntele al asistente de la esquina o <a class="ln" href="mailto:contact@zoomy.services">escríbanos</a>.') }}</p>
+    </div>
+    <div class="faq">
+      <details><summary>{{ T('How much does it cost?','Combien ça coûte ?','¿Cuánto cuesta?') }}</summary><div class="a"><p>{{ T('Every business needs something a little different, so we quote each project. You get a fixed price in writing before any work starts.','Chaque entreprise a des besoins un peu différents, alors nous chiffrons chaque projet. Vous recevez un prix ferme par écrit avant tout travail.','Cada negocio necesita algo un poco distinto, así que presupuestamos cada proyecto. Recibe un precio cerrado por escrito antes de empezar.') }}</p></div></details>
+      <details><summary>{{ T('Can I really update it myself?','Je peux vraiment le modifier moi-même ?','¿De verdad puedo cambiarlo yo?') }}</summary><div class="a"><p>{{ T('Yes. Menu, prices, photos, hours and announcements, from your phone or computer. If you can send a text, you can use the panel.','Oui. Menu, prix, photos, horaires et annonces, depuis votre téléphone ou votre ordinateur. Si vous savez envoyer un SMS, vous saurez utiliser le panneau.','Sí. Menú, precios, fotos, horarios y avisos, desde el móvil o la computadora. Si sabe mandar un mensaje, sabe usar el panel.') }}</p></div></details>
+      <details><summary>{{ T('Who owns the website?','À qui appartient le site ?','¿De quién es el sitio?') }}</summary><div class="a"><p>{{ T('You do. The code, the domain and the accounts are all in your name.','À vous. Le code, le domaine et les comptes sont à votre nom.','Suyo. El código, el dominio y las cuentas están a su nombre.') }}</p></div></details>
+      <details><summary>{{ T('Do I need a new phone number?','Faut-il un nouveau numéro ?','¿Necesito un número nuevo?') }}</summary><div class="a"><p>{{ T('No. The phone agent can have its own number, or your current line can forward to it when you’re busy or closed.','Non. L’agent peut avoir son propre numéro, ou votre ligne actuelle peut lui renvoyer les appels quand vous êtes occupés ou fermés.','No. El agente puede tener su propio número, o su línea actual puede desviarle las llamadas cuando está ocupado o cerrado.') }}</p></div></details>
+    </div>
+  </div>
+</section>
+{% endblock %}

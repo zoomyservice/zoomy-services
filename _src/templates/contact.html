@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set title = T('Start a project · Zoomy','Démarrer un projet · Zoomy','Empezar un proyecto · Zoomy') %}
+{% set description = T('Tell Zoomy about your business and what you need. A real person replies within a day with questions or a fixed quote.','Parlez à Zoomy de votre entreprise et de vos besoins. Une vraie personne répond sous 24 heures avec des questions ou un devis ferme.','Cuéntele a Zoomy sobre su negocio y lo que necesita. Una persona real responde en un día con preguntas o un presupuesto cerrado.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split" style="align-items:start">
+    <div>
+      <span class="eyebrow">{{ T('Say hello','Écrivez-nous','Escríbanos') }}</span>
+      <h1>{{ T('Tell us about <span class="sq">your business.','Parlez-nous de <span class="sq">votre entreprise.','Cuéntenos sobre <span class="sq">su negocio.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('A few lines is plenty. A real person reads every message and replies within a day.','Quelques lignes suffisent. Une vraie personne lit chaque message et répond sous 24 heures.','Con unas líneas basta. Una persona real lee cada mensaje y responde en un día.') }}</p>
+      <div class="note tl1 mt-l" style="max-width:440px">
+        <span class="k">{{ T('What happens next','La suite','Qué pasa después') }}</span>
+        <ul class="ticks" style="margin-top:14px">
+          <li><b>{{ T('We read it','Nous lisons','Lo leemos') }}</b> {{ T('and reply within a day, usually sooner.','et répondons sous 24 heures, souvent avant.','y respondemos en un día, a menudo antes.') }}</li>
+          <li><b>{{ T('You get a fixed quote','Vous recevez un devis ferme','Recibe un presupuesto cerrado') }}</b> {{ T('with a timeline, or a couple of questions first.','avec un calendrier, ou d’abord quelques questions.','con plazos, o primero un par de preguntas.') }}</li>
+          <li><b>{{ T('For websites,','Pour les sites,','En los sitios web,') }}</b> {{ T('we design your homepage before you commit.','nous dessinons la page d’accueil avant votre engagement.','diseñamos la portada antes de que decida.') }}</li>
+        </ul>
+        <p class="mt-s muted" style="font-size:15.5px">{{ T('Rather email?','Vous préférez l’e-mail ?','¿Prefiere el correo?') }} <a class="ln" href="mailto:contact@zoomy.services">contact@zoomy.services</a></p>
+      </div>
+    </div>
+    <form class="form" id="contact-form" data-thanks="thank-you.html" data-sending="{{ T('Sending…','Envoi…','Enviando…') }}">
+      <div class="row2">
+        <div class="field"><label for="f-first">{{ T('First name','Prénom','Nombre') }}</label><input class="input" id="f-first" name="first_name" autocomplete="given-name" required></div>
+        <div class="field"><label for="f-last">{{ T('Last name','Nom','Apellido') }} <span class="opt">{{ T('(optional)','(facultatif)','(opcional)') }}</span></label><input class="input" id="f-last" name="last_name" autocomplete="family-name"></div>
+      </div>
+      <div class="field"><label for="f-email">{{ T('Email','E-mail','Correo electrónico') }}</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-co">{{ T('Business name or website','Nom de l’entreprise ou site','Nombre del negocio o sitio web') }} <span class="opt">{{ T('(optional)','(facultatif)','(opcional)') }}</span></label><input class="input" id="f-co" name="company" autocomplete="organization"></div>
+      <fieldset class="field" style="border:0;padding:0;margin:0 0 20px">
+        <legend class="label" style="padding:0">{{ T('What are you interested in?','Qu’est-ce qui vous intéresse ?','¿Qué le interesa?') }}</legend>
+        <div class="chips">
+          <label><input type="checkbox" name="service" value="Website"><span>{{ T('Website','Site web','Sitio web') }}</span></label>
+          <label><input type="checkbox" name="service" value="Admin panel"><span>{{ T('Admin panel','Panneau d’administration','Panel de administración') }}</span></label>
+          <label><input type="checkbox" name="service" value="Chat assistant"><span>{{ T('Chat assistant','Assistant de chat','Asistente de chat') }}</span></label>
+          <label><input type="checkbox" name="service" value="Phone agent"><span>{{ T('Phone agent','Agent téléphonique','Agente telefónico') }}</span></label>
+          <label><input type="checkbox" name="service" value="Animated ad"><span>{{ T('Animated ad','Pub animée','Anuncio animado') }}</span></label>
+          <label><input type="checkbox" name="service" value="Not sure yet"><span>{{ T('Not sure yet','Je ne sais pas encore','Aún no lo sé') }}</span></label>
+        </div>
+      </fieldset>
+      <div class="field"><label for="f-msg">{{ T('Tell us a bit about it','Dites-nous en un peu plus','Cuéntenos un poco') }}</label><textarea class="input" id="f-msg" name="message" required placeholder="{{ T('What does your business do, and what would you like help with?','Que fait votre entreprise, et pour quoi voulez-vous de l’aide ?','¿A qué se dedica su negocio y en qué quiere ayuda?') }}"></textarea></div>
+      <button class="btn" type="submit"><span class="lbl">{{ T('Send message','Envoyer','Enviar mensaje') }}</span> →</button>
+      <p class="form__err" role="alert">{{ T('Sorry, that didn’t send. Please try again, or email contact@zoomy.services.','Désolé, l’envoi n’a pas marché. Réessayez, ou écrivez à contact@zoomy.services.','Lo siento, no se envió. Inténtelo de nuevo o escriba a contact@zoomy.services.') }}</p>
+      <p class="form__note">{{ T('We only use your details to reply to you.','Vos coordonnées servent uniquement à vous répondre.','Solo usamos sus datos para responderle.') }} <a href="{{ L('privacy.html') }}">{{ T('Privacy','Confidentialité','Privacidad') }}</a></p>
+    </form>
+  </section>
+</div>
+{% endblock %}

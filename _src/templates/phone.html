@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% set title = T('Phone agents · Zoomy','Agents téléphoniques · Zoomy','Agentes telefónicos · Zoomy') %}
+{% set description = T('An AI phone agent that answers every call for your business, knows your menu and hours, takes orders in English, Spanish and more, and sends them to your team.','Un agent téléphonique IA qui répond à chaque appel, connaît votre menu et vos horaires, prend les commandes en anglais, espagnol et plus, et les envoie à votre équipe.','Un agente telefónico con IA que contesta cada llamada, conoce su menú y horarios, toma pedidos en inglés, español y más, y los envía a su equipo.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">{{ T('Phone agents','Agents téléphoniques','Agentes telefónicos') }}</span>
+      <h1>{{ T('Every call answered. Every order <span class="sq">written down.','Chaque appel décroché. Chaque commande <span class="sq">notée.','Cada llamada atendida. Cada pedido <span class="sq">anotado.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('A friendly AI voice on your business line. It picks up when your team can’t, talks like a person, takes the order or the message, and sends it straight to you.','Une voix IA sympathique sur votre ligne. Elle décroche quand votre équipe ne peut pas, parle comme une personne, prend la commande ou le message et vous l’envoie directement.','Una voz con IA amable en la línea de su negocio. Contesta cuando su equipo no puede, habla como una persona, toma el pedido o el mensaje y se lo envía directamente.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Get a phone agent','Avoir un agent téléphonique','Tener un agente telefónico') }} →</a></div>
+    </div>
+    <div class="board" aria-hidden="true">
+      <span class="sticker sticker--butter">{{ T('Never<br>goes to<br>voicemail','Jamais<br>de<br>répondeur','Nunca<br>salta el<br>buzón') }}</span>
+      <div class="note tape n1 tl"><span class="k">{{ T('On the phone · 7:12 PM','Au téléphone · 19 h 12','Al teléfono · 7:12 p. m.') }}</span><div class="bub me">{{ T('Can I get a strawberry cake for Sunday?','Je peux avoir un fraisier pour dimanche ?','¿Me puede preparar un pastel de fresa para el domingo?') }}</div><div class="bub">{{ T('Of course. What time would you like to pick it up?','Bien sûr. À quelle heure passez-vous le chercher ?','Claro. ¿A qué hora pasa a recogerlo?') }}</div></div>
+      <div class="note note--mint n2 tr"><span class="k">{{ T('Sent to your team','Envoyé à votre équipe','Enviado a su equipo') }}</span><h5>{{ T('Strawberry cake, Sun 11 AM','Fraisier, dim. 11 h','Pastel de fresa, dom. 11 a. m.') }}</h5><p>{{ T('Dana, (555) 014-2290. Call back to confirm.','Dana, (555) 014-2290. Rappeler pour confirmer.','Dana, (555) 014-2290. Llamar para confirmar.') }}</p></div>
+      <div class="note n3 tl1"><span class="k">{{ T('Also by text','Aussi par SMS','También por SMS') }}</span><h5>{{ T('New order from the phone','Nouvelle commande par téléphone','Pedido nuevo por teléfono') }}</h5><p>{{ T('Your staff get the same note by email or text.','Votre équipe reçoit la même note par e-mail ou SMS.','Su equipo recibe la misma nota por correo o mensaje.') }}</p></div>
+    </div>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What it takes care of','Ce qu’il prend en charge','De qué se encarga') }}</h2>
+      <p class="lead">{{ T('Set up around your menu, your hours and the way your team likes orders written down.','Configuré selon votre menu, vos horaires et la façon dont votre équipe aime recevoir les commandes.','Configurado según su menú, sus horarios y cómo su equipo quiere recibir los pedidos.') }}</p>
+    </div>
+    <div class="cards">
+      <div class="card card--mint reveal"><h3>{{ T('Orders','Commandes','Pedidos') }}</h3><p>{{ T('Items, sizes, writing on a cake, pickup day and time. It reads everything back before it sends it.','Produits, tailles, inscription sur un gâteau, jour et heure de retrait. Il relit tout avant d’envoyer.','Productos, tamaños, texto en un pastel, día y hora de recogida. Lo repite todo antes de enviarlo.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Questions','Questions','Preguntas') }}</h3><p>{{ T('Hours, prices, ingredients, delivery, catering. It answers from what you gave it, never guesses.','Horaires, prix, ingrédients, livraison, traiteur. Il répond à partir de ce que vous lui avez donné, sans deviner.','Horarios, precios, ingredientes, entregas, catering. Responde con lo que usted le dio, sin adivinar.') }}</p></div>
+      <div class="card card--butter reveal"><h3>{{ T('The right date','La bonne date','La fecha correcta') }}</h3><p>{{ T('It knows what “tomorrow” means, which days you’re closed, and your holiday hours.','Il sait ce que « demain » veut dire, quels jours vous êtes fermés, et vos horaires de fêtes.','Sabe qué significa “mañana”, qué días cierra y sus horarios festivos.') }}</p></div>
+      <div class="card card--sky reveal"><h3>{{ T('English, Spanish and more','Anglais, espagnol et plus','Inglés, español y más') }}</h3><p>{{ T('It starts in English and switches the moment a caller speaks another language.','Il commence en anglais et change dès que le client parle une autre langue.','Empieza en inglés y cambia en cuanto quien llama habla otro idioma.') }}</p></div>
+      <div class="card card--blush reveal"><h3>{{ T('Messages','Messages','Mensajes') }}</h3><p>{{ T('Callbacks, complaints, catering requests. Name, number and what they need, sent to the right person.','Rappels, réclamations, demandes de traiteur. Nom, numéro et besoin, envoyés à la bonne personne.','Devoluciones de llamada, quejas, catering. Nombre, número y lo que necesitan, a la persona indicada.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('No card numbers','Pas de numéro de carte','Sin números de tarjeta') }}</h3><p>{{ T('It never takes payment on the phone. Your team handles that when they confirm.','Il ne prend jamais de paiement au téléphone. Votre équipe s’en occupe en confirmant.','Nunca cobra por teléfono. Su equipo se encarga al confirmar.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="band split">
+      <div class="reveal">
+        <span class="eyebrow">{{ T('After the call','Après l’appel','Después de la llamada') }}</span>
+        <h2>{{ T('The order is waiting for you.','La commande vous attend.','El pedido le está esperando.') }}</h2>
+        <p class="lead mt-m">{{ T('Each call turns into a clear note: who called, their number, what they want and when. It arrives by email or text, and in your admin panel, where you tap the number to call back.','Chaque appel devient une note claire : qui a appelé, son numéro, ce qu’il veut et pour quand. Elle arrive par e-mail ou SMS, et dans votre panneau, où vous touchez le numéro pour rappeler.','Cada llamada se convierte en una nota clara: quién llamó, su número, qué quiere y para cuándo. Llega por correo o mensaje, y a su panel, donde toca el número para devolver la llamada.') }}</p>
+      </div>
+      <div class="reveal">{{ ui.orders() }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--one"><h2>{{ T('Getting set up','La mise en place','Cómo se pone en marcha') }}</h2></div>
+    <div class="steps steps--4">
+      <div class="step reveal"><span class="step__n">1</span><h4>{{ T('We learn your shop','Nous apprenons votre boutique','Conocemos su negocio') }}</h4><p>{{ T('Menu, prices, hours, rules, and how you want orders written.','Menu, prix, horaires, règles, et comment vous voulez les commandes.','Menú, precios, horarios, reglas y cómo quiere los pedidos.') }}</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>{{ T('We pick a voice','Nous choisissons une voix','Elegimos una voz') }}</h4><p>{{ T('Calm and natural, in the languages your callers speak.','Calme et naturelle, dans les langues de vos clients.','Tranquila y natural, en los idiomas de sus clientes.') }}</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>{{ T('We test it','Nous le testons','Lo probamos') }}</h4><p>{{ T('Orders, changes, holidays, and callers who switch language halfway.','Commandes, changements, fêtes, et clients qui changent de langue en route.','Pedidos, cambios, festivos y clientes que cambian de idioma a mitad.') }}</p></div>
+      <div class="step reveal"><span class="step__n">4</span><h4>{{ T('It starts answering','Il commence à répondre','Empieza a contestar') }}</h4><p>{{ T('We go through the first calls with you and fine-tune it.','Nous relisons les premiers appels avec vous et ajustons.','Revisamos con usted las primeras llamadas y lo ajustamos.') }}</p></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

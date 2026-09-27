@@ -1,310 +1,153 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="no-js">
 <head>
-<meta charset="utf-8"/>
-<link href="../favicon.png" rel="icon" sizes="64x64" type="image/png"/>
-<link href="../favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="../favicon.svg" rel="apple-touch-icon"/>
-<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-<link href="https://zoomy.services/faq.html" rel="canonical"/>
-<title>FAQ — Zoomy</title>
-<meta content="Frequently asked questions about campaign management, websites, chatbots, phone agents, and working with Zoomy." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<style>html,body{background:#020208}html[data-theme="light"],html[data-theme="light"] body{background:var(--bg)}nav{background:rgba(2,2,8,.96)}html[data-theme="light"] nav{background:rgba(247,241,229,.96)}</style>
-<link href="../css/style.css?v=20260430o" rel="stylesheet"/>
-<style>
-.faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
-.faq-item{border-bottom:1px solid var(--border-b);padding:1.5rem 0}
-.faq-item:first-child{padding-top:0}
-.faq-q{font-family:var(--font-display);font-weight:600;font-size:1rem;color:#fff;margin-bottom:.75rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.faq-a{color:var(--text-2);font-size:.9rem;line-height:1.75}
-.faq-icon{color:var(--primary);font-size:1.2rem;flex-shrink:0;transition:transform .3s}
-.faq-section{margin-bottom:3rem}
-.faq-section-title{font-family:var(--font-mono);font-size:.7rem;color:var(--primary);text-transform:uppercase;letter-spacing:.15em;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
-@media(max-width:900px){.faq-grid{grid-template-columns:1fr}}
-
-/* ZMY_LIGHT_MODE_OVERRIDES */
-html[data-theme="light"] .faq-q{color:var(--text)}
-html[data-theme="light"] [style*="color:#fff"]:not([class*="btn-"]):not([class*="badge"]):not([class*="step-badge"]):not([class*="chatbot-send"]):not([class*="msg-user"]):not([style*="background:linear-gradient"]):not([style*="background: linear-gradient"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]):not([style*="background:#0d0d1c"]){color:var(--text)!important}
-html[data-theme="light"] [style*="color:rgba(255,255,255"]:not([class*="btn-"]):not([class*="badge"]):not([style*="background:linear-gradient"]):not([style*="background:rgb"]):not([style*="background:#6366f1"]):not([style*="background:#a855f7"]){color:var(--text-2)!important}
-html[data-theme="light"] [style*="background:#0d0d1c"],html[data-theme="light"] [style*="background:#111128"],html[data-theme="light"] [style*="background:rgba(99,102,241,.06)"]{background:var(--card)!important}
-
-<style>/*ZMY_AUTOGEN_LIGHT_OVERRIDES*/html[data-theme="light"] .faq-q{color:var(--text)!important}</style>
-<!-- ═══ ANALYTICS & TRACKING ═══ -->
-<!-- Google Analytics 4 -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-L5RX761T33', {
-      send_page_view: true
-    });
-  </script>
-<!-- Microsoft Clarity -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wd5th9teha");
-  </script>
-<!-- Custom event tracking -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Track outbound CTA clicks (contact page links)
-      document.querySelectorAll('a.btn[href*="contact"], a.btn-nav[href*="contact"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          gtag('event', 'cta_click', {event_category: 'engagement', event_label: el.textContent.trim().substring(0,50)});
-          clarity('event', 'cta_click');
-          fbq('track', 'Contact');
-        });
-      });
-      // Track phone demo button
-      document.querySelectorAll('[id*="demo"], [class*="demo"], [id*="phone"], a[href*="tel:"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          gtag('event', 'phone_demo_click', {event_category: 'engagement'});
-          clarity('event', 'phone_demo_click');
-          fbq('track', 'Contact');
-        });
-      });
-      // Track free bar claim click
-      var freeBar = document.getElementById('free-bar');
-      if (freeBar) {
-        freeBar.querySelector('a') && freeBar.querySelector('a').addEventListener('click', function() {
-          gtag('event', 'free_bar_claim', {event_category: 'engagement'});
-          clarity('event', 'free_bar_claim');
-          fbq('track', 'Lead');
-        });
-      }
-      // Track scroll depth (25%, 50%, 75%, 90%)
-      var scrollMilestones = {25: false, 50: false, 75: false, 90: false};
-      window.addEventListener('scroll', function() {
-        var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-        Object.keys(scrollMilestones).forEach(function(m) {
-          if (!scrollMilestones[m] && scrollPct >= parseInt(m)) {
-            scrollMilestones[m] = true;
-            gtag('event', 'scroll_depth', {event_category: 'engagement', event_label: m + '%', value: parseInt(m)});
-          }
-        });
-      }, {passive: true});
-      // Track contact form submit
-      document.querySelectorAll('form').forEach(function(form) {
-        form.addEventListener('submit', function() {
-          gtag('event', 'form_submit', {event_category: 'conversion', event_label: window.location.pathname});
-          clarity('event', 'form_submit');
-          fbq('track', 'Lead');
-        });
-      });
-    });
-  </script>
-<!-- ═══ END TRACKING ═══ -->
-<!-- ═══ META PIXEL ═══ -->
-<script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    (function(){
-    var _ud={};
-    var _fbc=document.cookie.match(/_fbc=([^;]+)/);
-    var _fbp=document.cookie.match(/_fbp=([^;]+)/);
-    try{var _p=new URLSearchParams(window.location.search);var _cl=_p.get('fbclid');
-    if(_cl&&!_fbc){var _fc='fb.1.'+Date.now()+'.'+_cl;document.cookie='_fbc='+_fc+';path=/;max-age=7776000;SameSite=Lax';_ud.fbc=_fc;}
-    else if(_fbc){_ud.fbc=_fbc[1];}
-    if(_fbp){_ud.fbp=_fbp[1];}}catch(e){}
-    fbq('init','972114368527990',_ud);
-    fbq('track','PageView');
-  })();
-  </script>
-<noscript><img height="1" src="https://www.facebook.com/tr?id=972114368527990&amp;ev=PageView&amp;noscript=1" style="display:none" width="1"/></noscript>
-<!-- ═══ END META PIXEL ═══ -->
-<script>(function(){var t=null;try{t=localStorage.getItem('zmy_theme');}catch(e){}if(t==='dark'){document.documentElement.removeAttribute('data-theme');}else{document.documentElement.setAttribute('data-theme','light');}})();</script>
-<script>localStorage.setItem('zmy_lang','fr');</script></head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions · Zoomy</title>
+<meta name="description" content="Réponses aux questions fréquentes sur les sites, panneaux d’administration, assistants de chat, agents téléphoniques et pubs animées de Zoomy.">
+<link rel="canonical" href="https://zoomy.services/fr/faq.html">
+<link rel="alternate" hreflang="en" href="https://zoomy.services/faq.html">
+<link rel="alternate" hreflang="fr" href="https://zoomy.services/fr/faq.html">
+<link rel="alternate" hreflang="es" href="https://zoomy.services/es/faq.html">
+<link rel="alternate" hreflang="x-default" href="https://zoomy.services/faq.html"><meta property="og:type" content="website">
+<meta property="og:site_name" content="Zoomy">
+<meta property="og:title" content="Questions · Zoomy">
+<meta property="og:description" content="Réponses aux questions fréquentes sur les sites, panneaux d’administration, assistants de chat, agents téléphoniques et pubs animées de Zoomy.">
+<meta property="og:url" content="https://zoomy.services/fr/faq.html">
+<meta property="og:image" content="https://zoomy.services/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preload" href="../fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css?v=202609262329">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');(function(){var u={};try{var c=document.cookie.match(/_fbc=([^;]+)/),p=document.cookie.match(/_fbp=([^;]+)/),q=new URLSearchParams(location.search).get('fbclid');if(q&&!c){var v='fb.1.'+Date.now()+'.'+q;document.cookie='_fbc='+v+';path=/;max-age=7776000;SameSite=Lax';u.fbc=v;}else if(c){u.fbc=c[1];}if(p){u.fbp=p[1];}}catch(e){}fbq('init','972114368527990',u);fbq('track','PageView');})();</script>
+</head>
 <body>
-<div id="scroll-progress"></div>
-<canvas id="particle-canvas"></canvas>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-<nav>
-<a class="nav-logo" href="index.html">Zoomy<span class="nav-logo-sub">Studio de production numérique</span></a>
-<ul class="nav-links" id="navLinks">
-<li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
-<li><a data-i18n="nav.chatbots" href="chatbot.html">Chatbots</a></li>
-<li><a data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a data-i18n="nav.creatives" href="animated-creatives.html">Créatifs</a></li>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campagnes</a></li>
-<li><a data-i18n="nav.about" href="about.html">À propos de</a></li>
-<li><a data-i18n="nav.pricing" href="pricing.html">Tarifs</a></li>
-<li><a data-i18n="nav.contact" href="contact.html">Contacter</a></li>
-</ul>
-<div style="display:flex;align-items:center;gap:16px;">
-<div class="lang-switcher">
-<a class="lang-btn" href="../faq.html">EN</a>
-<span class="lang-btn lang-active" style="opacity:1;font-weight:700;cursor:default;">FR</span>
-<a class="lang-btn" href="../es/faq.html">ES</a>
+<a class="skip" href="#main">Aller au contenu</a>
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="./" aria-label="Zoomy, accueil"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+    <nav class="nav" aria-label="Principal">
+<a href="website-design.html">Sites web</a><a href="admin-panel.html">Administration</a><a href="chatbot.html">Chat</a><a href="phone-agent.html">Agents téléphoniques</a><a href="about.html">À propos</a>    </nav>
+    <div class="lang" aria-label="Langue"><a href="../faq.html" hreflang="en" lang="en">EN</a><a href="faq.html" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="../es/faq.html" hreflang="es" lang="es">ES</a></div>
+    <a class="btn btn--navy btn--sm hdr__cta" href="contact.html">Écrivez-nous</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span></span>Menu</button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+<a class="big" href="website-design.html">Sites web<span aria-hidden="true">→</span></a><a class="big" href="admin-panel.html">Administration<span aria-hidden="true">→</span></a><a class="big" href="chatbot.html">Chat<span aria-hidden="true">→</span></a><a class="big" href="phone-agent.html">Agents téléphoniques<span aria-hidden="true">→</span></a><a class="big" href="about.html">À propos<span aria-hidden="true">→</span></a>  <div class="lang"><a href="../faq.html" hreflang="en">English</a><a href="faq.html" hreflang="fr" aria-current="true">Français</a><a href="../es/faq.html" hreflang="es">Español</a></div>
+  <a class="btn" href="contact.html">Démarrer un projet →</a>
 </div>
-<button aria-label="Basculer le thème clair/sombre" class="theme-toggle" id="themeToggle" onclick="toggleTheme()" type="button"><svg aria-hidden="true" class="icon-sun" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg><svg aria-hidden="true" class="icon-moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button><a class="btn-nav" href="contact.html"><span data-i18n="nav.cta">Démarrer un projet</span> ›</a>
-<button aria-label="Menus" class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+<main id="main">
+<div class="wrap">
+  <section class="hero hero--page">
+    <div>
+      <span class="eyebrow">Questions</span>
+      <h1>Demandez.</h1>
+      <p class="lead mt-m">Vous ne trouvez pas ? Demandez à l’assistant en bas de l’écran, ou écrivez à <a class="ln" href="mailto:contact@zoomy.services">contact@zoomy.services</a>.</p>
+    </div>
+  </section>
 </div>
-</nav>
-<section class="hero" style="min-height:50vh;padding:140px 2rem 5rem;">
-<div class="aurora"><div class="aurora-blob aurora-blob-1"></div><div class="aurora-blob aurora-blob-2"></div></div>
-<div class="grid-overlay"></div>
-<div class="section-inner" style="z-index:2;">
-<div class="section-tag" data-i18n="faq.hero.tag" style="justify-content:center;margin-bottom:1.5rem;">FAQ</div>
-<h1 style="margin-bottom:1.5rem;">Foire aux questions<br/><span class="grad-text-animated">questions.</span></h1>
-<p class="hero-sub" data-i18n="faq.hero.sub" style="margin:0 auto;">Tout ce que vous devez savoir pour travailler avec nous. Vous ne trouvez pas votre réponse ? Envoyez un e-mail à contact@zoomy.services.</p>
-</div>
+<section class="sec sec--flush">
+  <div class="wrap split split--top">
+    <div>
+      <div class="faq-sec">
+        <h3>Travailler avec nous</h3>
+        <div class="faq">
+          <details><summary>Combien ça coûte ?</summary><div class="a"><p>Chaque projet est différent, nous chiffrons donc chacun. Vous recevez un prix ferme par écrit avant tout travail, et il ne change que si vous demandez quelque chose de nouveau.</p></div></details>
+          <details><summary>Combien de temps ça prend ?</summary><div class="a"><p>Cela dépend de la taille du projet. Votre devis inclut un calendrier, et nous le respectons.</p></div></details>
+          <details><summary>Puis-je voir quelque chose avant de m’engager ?</summary><div class="a"><p>Oui. Pour les sites, nous dessinons d’abord la page d’accueil pour que vous voyiez la direction avant de continuer.</p></div></details>
+          <details><summary>Travaillez-vous hors de New York ?</summary><div class="a"><p>Oui. Nous sommes entre New York et le Connecticut et travaillons avec des entreprises partout, en anglais, français ou espagnol.</p></div></details>
+        </div>
+      </div>
+      <div class="faq-sec">
+        <h3>Sites et panneaux</h3>
+        <div class="faq">
+          <details><summary>Utilisez-vous WordPress ou des modèles ?</summary><div class="a"><p>Non. Chaque site est conçu et écrit de zéro : il est rapide et fait exactement ce dont votre entreprise a besoin.</p></div></details>
+          <details><summary>Puis-je modifier le site moi-même ?</summary><div class="a"><p>Oui, avec votre panneau. Menu, prix, photos, horaires, fêtes et annonces, depuis votre téléphone ou ordinateur.</p></div></details>
+          <details><summary>À qui appartient le site ?</summary><div class="a"><p>À vous. Le code, le domaine et les comptes sont à votre nom.</p></div></details>
+          <details><summary>Pouvez-vous gérer le domaine et l’hébergement ?</summary><div class="a"><p>Oui. Nous pouvons enregistrer un domaine et configurer l’hébergement, ou utiliser les vôtres.</p></div></details>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="faq-sec">
+        <h3>Chat et agents téléphoniques</h3>
+        <div class="faq">
+          <details><summary>Le chat va-t-il inventer des choses ?</summary><div class="a"><p>Non. Il n’utilise que les informations que vous nous donnez. S’il ne sait pas, il le dit et renvoie vers vos coordonnées.</p></div></details>
+          <details><summary>L’agent téléphonique a-t-il une voix de robot ?</summary><div class="a"><p>Non. Il a une voix calme et naturelle et parle comme une personne, en phrases courtes et aimables.</p></div></details>
+          <details><summary>Faut-il un nouveau numéro ?</summary><div class="a"><p>Non. L’agent peut avoir son propre numéro, ou votre ligne actuelle peut lui renvoyer les appels quand vous êtes occupés ou fermés.</p></div></details>
+          <details><summary>Comment les commandes arrivent-elles à mon équipe ?</summary><div class="a"><p>Par e-mail ou SMS, et dans votre panneau, avec le nom, le numéro et exactement ce que le client a demandé.</p></div></details>
+          <details><summary>Prend-il les paiements ?</summary><div class="a"><p>Non. Il ne demande jamais de carte. Votre équipe s’occupe du paiement en rappelant pour confirmer.</p></div></details>
+        </div>
+      </div>
+      <div class="faq-sec">
+        <h3>Pubs animées</h3>
+        <div class="faq">
+          <details><summary>Utilisez-vous l’IA pour les vidéos ?</summary><div class="a"><p>Non. Chaque pub est animée à la main à partir de votre brief.</p></div></details>
+          <details><summary>Diffusez-vous les pubs pour moi ?</summary><div class="a"><p>Non, nous faisons les vidéos et vous les publiez sur vos comptes.</p></div></details>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<section class="section">
-<div class="section-inner">
-<div class="faq-grid">
-<div>
-<div class="section-tag" style="margin-bottom:1.5rem;">Aller à</div>
-<ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;">
-<li><a href="#general" style="color:var(--text-2);font-size:.9rem;transition:color var(--transition);">Questions générales</a></li>
-<li><a href="#campaigns" style="color:var(--text-2);font-size:.9rem;">Fichiers de campagne</a></li>
-<li><a href="#websites" style="color:var(--text-2);font-size:.9rem;">Sites Web</a></li>
-<li><a href="#chatbots" style="color:var(--text-2);font-size:.9rem;">Chatbots IA</a></li>
-<li><a href="#phone" style="color:var(--text-2);font-size:.9rem;">Agents téléphoniques</a></li>
-<li><a href="#process" style="color:var(--text-2);font-size:.9rem;">Processus et tarification</a></li>
-</ul>
-<div style="margin-top:2rem;padding:1.5rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.15);border-radius:14px;">
-<div style="font-weight:600;color:#fff;margin-bottom:.5rem;font-size:.95rem;">Vous avez encore des questions ?</div>
-<p style="color:var(--text-2);font-size:.875rem;margin-bottom:1rem;">Nous répondons généralement dans les 24 heures.</p>
-<a class="btn btn-primary" href="contact.html" style="font-size:.85rem;padding:10px 20px;">Entrez en contact</a>
-</div>
-</div>
-<div>
-<div class="faq-section" id="general">
-<div class="faq-section-title">Général</div>
-<div class="faq-item reveal">
-<div class="faq-q">Que fait Zoomy exactement ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Nous sommes un studio de production numérique. Nous nous spécialisons dans les méta-annonces (campagnes Facebook et Instagram), construisons des sites Web multilingues personnalisés avec des systèmes de réservation et des panneaux d'administration, développons des chatbots IA formés pour votre entreprise et créons des agents téléphoniques IA qui gèrent les appels entrants. Nous mettons également en place l'hébergement et enregistrons des domaines sur demande.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Quel est le calendrier typique d’un projet ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Cela dépend de la portée. Une simple page de destination prend moins de temps qu’une plateforme de réservation multilingue. Nous convenons d'un calendrier dans le cadre du brief avant le début des travaux, et nous nous y tenons. Nous vous donnerons une estimation réaliste lorsque nous définirons votre projet.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Travaillez-vous avec des clients en dehors des États-Unis ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Oui. Nous travaillons d'abord à distance et travaillons avec des clients du monde entier. Notre équipe principale travaille d'abord à distance (fuseau horaire CET), mais nous traitons sans problème des clients aux États-Unis, au Moyen-Orient et en Asie.</div>
-</div>
-</div>
-<div class="faq-section" id="campaigns">
-<div class="faq-section-title">Campagnes</div>
-<div class="faq-item reveal">
-<div class="faq-q">Créez-vous et gérez-vous les campagnes ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Oui. Nous gérons l'intégralité du processus : stratégie, configuration de l'audience, contenu publicitaire, configuration du suivi et gestion continue. Cela signifie surveiller les performances, optimiser les dépenses, ajuster le ciblage au fur et à mesure que les données arrivent et vous envoyer des rapports réguliers. Les campagnes sont diffusées dans votre compte publicitaire.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Quelles plateformes couvrez-vous ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Méta-annonces – Facebook et Instagram. C'est notre plateforme principale et là où nous possédons l'expertise la plus approfondie. Si vous avez besoin de campagnes sur Google, TikTok, LinkedIn ou une autre plateforme, contactez-nous et nous vous ferons savoir si c'est quelque chose que nous pouvons réaliser.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Que comprend la gestion continue des campagnes ? <span class="faq-icon">+</span></div>
-<div class="faq-a">La configuration couvre la stratégie, la configuration de l'audience, le texte publicitaire, les briefs créatifs, les paramètres UTM et la mise en œuvre des pixels. La gestion continue comprend le suivi des performances, l'optimisation du budget, les ajustements d'audience, les tests créatifs lorsque les publicités sont fatiguées et un rapport de performances régulier couvrant les résultats et les prochaines étapes.</div>
-</div>
-</div>
-<div class="faq-section" id="websites">
-<div class="faq-section-title">Sites Web</div>
-<div class="faq-item reveal">
-<div class="faq-q">Utilisez-vous WordPress ou des constructeurs de pages ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Jamais. Chaque site que nous construisons est codé sur mesure à partir de zéro : HTML, CSS, JavaScript. Pas de WordPress, pas de Webflow, pas de modèles. Cela nous donne un contrôle total sur les performances, les animations et l'expérience mobile.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Pouvez-vous créer des sites multilingues ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Oui, c'est l'une de nos spécialités. Nous avons construit en anglais, français, espagnol et plus encore. Notre générateur de site statique produit des pages séparées par langue avec des balises hreflang appropriées, des sélecteurs de langue et une logique de secours pour les traductions partielles.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Gérez-vous l’hébergement et l’enregistrement de domaine ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Oui, sur demande. Si vous avez besoin d'un domaine enregistré et d'un hébergement configuré, nous gérons les deux dans le cadre du projet. Si vous disposez déjà d'un domaine et d'un fournisseur d'hébergement, nous déployons plutôt vers ceux-ci. Quoi qu’il en soit, c’est bien – mentionnez-le simplement dans votre mémoire.</div>
-</div>
-</div>
-<div class="faq-section" id="chatbots">
-<div class="faq-section-title">Chatbots IA</div>
-<div class="faq-item reveal">
-<div class="faq-q">Techniquement, comment fonctionne le chatbot ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Le chatbot est entièrement personnalisé et fonctionne sur votre propre infrastructure, et non sur une plateforme tierce comme Intercom ou Drift. Les conversations sont enregistrées sur votre propre stockage sécurisé et ne sont jamais partagées avec des tiers.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Quelles langues le chatbot peut-il parler ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Autant que nécessaire. Nous construisons la base de connaissances dans chaque langue séparément. Anglais, français, espagnol et plus encore, quelle que soit la langue parlée par vos clients. Le chatbot détecte la langue et répond en conséquence.</div>
-</div>
-</div>
-<div class="faq-section" id="phone">
-<div class="faq-section-title">Agent téléphonique IA</div>
-<div class="faq-item reveal">
-<div class="faq-q">Que fait réellement l’agent téléphonique IA ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Il répond à vos appels entrants, parle naturellement dans n'importe quelle langue et traite les demandes courantes sans intervention humaine. Pendant un appel, il peut consulter votre calendrier, prendre ou annuler des rendez-vous en temps réel, collecter les détails de l'appelant et répondre aux questions sur votre entreprise. Il fonctionne 24 heures sur 24 et chaque appel génère une transcription complète pour un examen qualité.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">De quoi l’agent a-t-il besoin pour démarrer ? <span class="faq-icon">+</span></div>
-<div class="faq-a">L'agent est formé sur les informations que vous fournissez. Si vous avez un site Web existant, nous pouvons travailler à partir de là. Dans le cas contraire, vous fournissez les détails de l'entreprise (services, tarifs, horaires, politiques, règles de réservation) et nous construisons la base de connaissances à partir de cela. Plus les informations sont complètes, meilleures sont les performances de l’agent.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Peut-il prendre rendez-vous directement ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Oui, lorsqu'une intégration de calendrier est incluse. L'agent vérifie la disponibilité en temps réel pendant l'appel et inscrit la réservation directement dans votre calendrier. Il peut également gérer les annulations et les reprogrammations. L'intégration est délimitée et construite dans le cadre du projet.</div>
-</div>
-</div>
-<div class="faq-section" id="process">
-<div class="faq-section-title">Processus et tarification</div>
-<div class="faq-item reveal">
-<div class="faq-q">Comment obtenir un prix ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Chaque projet est personnalisé. Envoyez-nous un e-mail à contact@zoomy.services avec la description de votre projet et nous vous répondons généralement dans les 24 heures avec un devis sur mesure. Le prix dépend de la portée, de la complexité et du calendrier. Nous travaillons toujours avec des budgets fixes – pas de facturation horaire.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Comment se déroule le processus de briefing ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Nous commençons par un bref formulaire détaillé ou un appel. Nous vous posons des questions sur vos objectifs, votre public cible, votre calendrier et votre budget. À partir de là, nous définissons la portée, convenons des livrables et confirmons le prix. La production démarre une fois la caution versée.</div>
-</div>
-<div class="faq-item reveal">
-<div class="faq-q">Proposez-vous des révisions ? <span class="faq-icon">+</span></div>
-<div class="faq-a">Oui. Tous les projets comprennent au moins un cycle de révision. Nous intégrons des fenêtres de révision dans la chronologie afin qu'elles ne retardent pas votre lancement. Nous sommes disponibles après le lancement pour tout problème découlant du travail livré.</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<footer>
-<div class="footer-inner">
-<div class="footer-grid">
-<div>
-<div class="footer-logo grad-text">Zoomy</div>
-<p class="footer-tagline" data-i18n="footer.tagline">Gestion de campagnes, sites Web personnalisés, chatbots IA et agents téléphoniques.</p>
-</div>
-<div class="footer-col"><h4 data-i18n="footer.services">Prestations</h4><ul>
-<li><a data-i18n="nav.campaigns" href="campaign-portfolio.html">Campagnes</a></li>
-<li><a data-i18n="nav.websites" href="website-design.html">Sites Web / Applications</a></li>
-<li><a data-i18n="nav.phone" href="phone-agent.html">Agents téléphoniques</a></li>
-<li><a href="chatbot.html">Chatbots IA</a></li>
-<li><a href="animated-creatives.html">Créations animées</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.company">Entreprise</h4><ul>
-<li><a class="active" href="about.html">À propos de nous</a></li>
-<li><a href="portfolio.html">Notre travail</a></li>
-<li><a href="faq.html">FAQ</a></li>
-</ul></div>
-<div class="footer-col"><h4 data-i18n="footer.contact">Contacter</h4><ul>
-<li><a href="contact.html">Démarrer un projet</a></li>
-<li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
-</ul>
-<div style="margin-top:20px;"><span class="badge badge-green badge-dot" data-i18n="footer.open">Ouvert aux projets</span></div>
-</div>
-</div>
-<div class="footer-bottom">
-<span>© 2026 Zoomy — Tous droits réservés.</span>
-<span style="display:flex;gap:20px;"><a data-i18n="footer.privacy" href="privacy.html">Confidentialité</a><a data-i18n="footer.terms" href="terms.html">Conditions</a></span>
-</div>
-</div>
+</main>
+<footer class="ftr">
+  <div class="wrap">
+    <div class="cta reveal">
+      <span class="sticker">Une vraie<br>personne<br>répond</span>
+      <h2>Faisons le vôtre.</h2>
+      <div>
+        <p>Parlez-nous un peu de votre entreprise et de ce qu’il vous faut. Réponse sous 24 heures, avec nos questions ou un devis.</p>
+        <div class="actions"><a class="btn btn--navy" href="contact.html">Démarrer un projet →</a><a class="mail" href="mailto:contact@zoomy.services">contact@zoomy.services</a></div>
+      </div>
+    </div>
+    <div class="ftr__grid" style="margin-top:clamp(56px,8vw,96px)">
+      <div>
+        <a class="logo" href="./" aria-label="Zoomy"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+        <p class="ftr__about">Sites web, panneaux d’administration, chat et agents téléphoniques pour les commerces locaux. Faits à New York et dans le Connecticut.</p>
+      </div>
+      <div>
+        <h5>Nos services</h5>
+        <ul>
+          <li><a href="website-design.html">Sites web</a></li>
+          <li><a href="admin-panel.html">Panneaux d’administration</a></li>
+          <li><a href="chatbot.html">Assistants de chat</a></li>
+          <li><a href="phone-agent.html">Agents téléphoniques</a></li>
+          <li><a href="animated-creatives.html">Pubs animées</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Zoomy</h5>
+        <ul>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="faq.html">Questions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Écrivez-nous</h5>
+        <ul>
+          <li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+          <li><a href="contact.html">Formulaire de projet</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__base">
+      <span>© 2026 Zoomy LLC</span>
+      <nav aria-label="Mentions légales">
+        <a href="privacy.html">Confidentialité</a>
+        <a href="terms.html">Conditions</a>
+<a href="../faq.html" hreflang="en">English</a><a href="faq.html" hreflang="fr">Français</a><a href="../es/faq.html" hreflang="es">Español</a>      </nav>
+    </div>
+  </div>
 </footer>
-<script src="../js/main.js?v=20260416"></script>
-
-<script src="../js/chatbot.js?v=20260501e"></script>
-<script>/*ZMY_THEME_TOGGLE*/function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')==='light'?'light':'dark';var n=c==='light'?'dark':'light';if(n==='light')document.documentElement.setAttribute('data-theme','light');else document.documentElement.removeAttribute('data-theme');try{localStorage.setItem('zmy_theme',n);}catch(e){}}</script>
-</body>
+<script src="../js/site.js?v=202609262329" defer></script>
+<script src="../js/chat.js?v=202609262329" defer></script></body>
 </html>

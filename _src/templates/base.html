@@ -1,0 +1,110 @@
+{% import "_ui.html" as ui with context %}<!doctype html>
+<html lang="{{ lang }}" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+<link rel="canonical" href="{{ canonical }}">
+{% if not single_lang %}{% for l in langs %}<link rel="alternate" hreflang="{{ l }}" href="{{ abs_url(page_file, l) }}">
+{% endfor %}<link rel="alternate" hreflang="x-default" href="{{ abs_url(page_file, 'en') }}">{% endif %}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zoomy">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="https://zoomy.services/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="icon" href="{{ root }}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{{ root }}favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="{{ root }}apple-touch-icon.png">
+<link rel="preload" href="{{ root }}fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ root }}css/site.css?v={{ v }}">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');(function(){var u={};try{var c=document.cookie.match(/_fbc=([^;]+)/),p=document.cookie.match(/_fbp=([^;]+)/),q=new URLSearchParams(location.search).get('fbclid');if(q&&!c){var v='fb.1.'+Date.now()+'.'+q;document.cookie='_fbc='+v+';path=/;max-age=7776000;SameSite=Lax';u.fbc=v;}else if(c){u.fbc=c[1];}if(p){u.fbp=p[1];}}catch(e){}fbq('init','972114368527990',u);fbq('track','PageView');})();</script>
+</head>
+<body>
+<a class="skip" href="#main">{{ T('Skip to content','Aller au contenu','Ir al contenido') }}</a>
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="{{ L('index.html') }}" aria-label="Zoomy, {{ T('home','accueil','inicio') }}"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+    <nav class="nav" aria-label="{{ T('Main','Principal','Principal') }}">
+      {% for f, label in nav %}<a href="{{ L(f) }}"{% if f == page_file %} aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}
+    </nav>
+    <div class="lang" aria-label="{{ T('Language','Langue','Idioma') }}">{% for l in langs %}<a href="{{ lang_url(l) }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="true"{% endif %}>{{ l|upper }}</a>{% endfor %}</div>
+    <a class="btn btn--navy btn--sm hdr__cta" href="{{ L('contact.html') }}">{{ T('Say hello','Écrivez-nous','Escríbanos') }}</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav"><span></span>{{ T('Menu','Menu','Menú') }}</button>
+  </div>
+</header>
+<div class="mnav" id="mnav">
+  {% for f, label in nav %}<a class="big" href="{{ L(f) }}">{{ label }}<span aria-hidden="true">→</span></a>{% endfor %}
+  <div class="lang">{% for l in langs %}<a href="{{ lang_url(l) }}" hreflang="{{ l }}"{% if l == lang %} aria-current="true"{% endif %}>{{ {'en':'English','fr':'Français','es':'Español'}[l] }}</a>{% endfor %}</div>
+  <a class="btn" href="{{ L('contact.html') }}">{{ T('Start a project','Démarrer un projet','Empezar un proyecto') }} →</a>
+</div>
+
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    {% if not hide_cta %}
+    <div class="cta reveal">
+      <span class="sticker">{{ T('Real people<br>reply in<br>a day','Une vraie<br>personne<br>répond','Responde<br>una persona<br>real') }}</span>
+      <h2>{{ T('Let’s make yours.','Faisons le vôtre.','Hagamos el suyo.') }}</h2>
+      <div>
+        <p>{{ T('Tell us a little about your business and what you need. We’ll get back to you within a day, with questions or a quote.','Parlez-nous un peu de votre entreprise et de ce qu’il vous faut. Réponse sous 24 heures, avec nos questions ou un devis.','Cuéntenos un poco sobre su negocio y lo que necesita. Le respondemos en un día, con preguntas o un presupuesto.') }}</p>
+        <div class="actions"><a class="btn btn--navy" href="{{ L('contact.html') }}">{{ T('Start a project','Démarrer un projet','Empezar un proyecto') }} →</a><a class="mail" href="mailto:contact@zoomy.services">contact@zoomy.services</a></div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="ftr__grid" style="margin-top:{{ '0' if hide_cta else 'clamp(56px,8vw,96px)' }}">
+      <div>
+        <a class="logo" href="{{ L('index.html') }}" aria-label="Zoomy"><span>z</span><span class="oo" aria-hidden="true"><i></i><i></i></span><span>my</span></a>
+        <p class="ftr__about">{{ T('Websites, admin panels, chat and phone agents for local businesses. Made in New York and Connecticut.','Sites web, panneaux d’administration, chat et agents téléphoniques pour les commerces locaux. Faits à New York et dans le Connecticut.','Sitios web, paneles de administración, chat y agentes telefónicos para negocios locales. Hechos en Nueva York y Connecticut.') }}</p>
+      </div>
+      <div>
+        <h5>{{ T('What we do','Nos services','Servicios') }}</h5>
+        <ul>
+          <li><a href="{{ L('website-design.html') }}">{{ T('Websites','Sites web','Sitios web') }}</a></li>
+          <li><a href="{{ L('admin-panel.html') }}">{{ T('Admin panels','Panneaux d’administration','Paneles de administración') }}</a></li>
+          <li><a href="{{ L('chatbot.html') }}">{{ T('Chat assistants','Assistants de chat','Asistentes de chat') }}</a></li>
+          <li><a href="{{ L('phone-agent.html') }}">{{ T('Phone agents','Agents téléphoniques','Agentes telefónicos') }}</a></li>
+          <li><a href="{{ L('animated-creatives.html') }}">{{ T('Animated ads','Pubs animées','Anuncios animados') }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Zoomy</h5>
+        <ul>
+          <li><a href="{{ L('about.html') }}">{{ T('About','À propos','Nosotros') }}</a></li>
+          <li><a href="{{ L('faq.html') }}">{{ T('Questions','Questions','Preguntas') }}</a></li>
+          <li><a href="{{ L('contact.html') }}">{{ T('Contact','Contact','Contacto') }}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>{{ T('Say hello','Écrivez-nous','Escríbanos') }}</h5>
+        <ul>
+          <li><a href="mailto:contact@zoomy.services">contact@zoomy.services</a></li>
+          <li><a href="{{ L('contact.html') }}">{{ T('Project form','Formulaire de projet','Formulario de proyecto') }}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr__base">
+      <span>© 2026 Zoomy LLC</span>
+      <nav aria-label="{{ T('Legal','Mentions légales','Legal') }}">
+        <a href="{{ L('privacy.html') }}">{{ T('Privacy','Confidentialité','Privacidad') }}</a>
+        <a href="{{ L('terms.html') }}">{{ T('Terms','Conditions','Términos') }}</a>
+        {% for l in langs %}<a href="{{ lang_url(l) }}" hreflang="{{ l }}">{{ {'en':'English','fr':'Français','es':'Español'}[l] }}</a>{% endfor %}
+      </nav>
+    </div>
+  </div>
+</footer>
+<script src="{{ root }}js/site.js?v={{ v }}" defer></script>
+{% if not no_chat %}<script src="{{ root }}js/chat.js?v={{ v }}" defer></script>{% endif %}
+</body>
+</html>

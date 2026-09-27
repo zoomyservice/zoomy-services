@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% set title = T('Thanks · Zoomy','Merci · Zoomy','Gracias · Zoomy') %}
+{% set description = T('Your message has been sent to Zoomy.','Votre message a été envoyé à Zoomy.','Su mensaje fue enviado a Zoomy.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">{{ T('Message sent','Message envoyé','Mensaje enviado') }}</span>
+      <h1>{{ T('Thanks. We’ll be <span class="sq">in touch soon.','Merci. On vous répond <span class="sq">très vite.','Gracias. Le escribimos <span class="sq">muy pronto.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('A real person will read your message and reply within a day. Keep an eye out for an email from contact@zoomy.services.','Une vraie personne lira votre message et répondra sous 24 heures. Surveillez l’e-mail de contact@zoomy.services.','Una persona real leerá su mensaje y responderá en un día. Esté atento a un correo de contact@zoomy.services.') }}</p>
+      <div class="actions"><a class="btn btn--paper" href="{{ L('index.html') }}">{{ T('Back to the home page','Retour à l’accueil','Volver al inicio') }}</a></div>
+    </div>
+    <div class="board" aria-hidden="true" style="height:360px">
+      <span class="sticker">{{ T('Talk<br>soon','À très<br>vite','Hasta<br>pronto') }}</span>
+      <div class="note tape n1 tl note--butter"><span class="k">{{ T('Your message','Votre message','Su mensaje') }}</span><h5>{{ T('Received','Bien reçu','Recibido') }}</h5><p>{{ T('We’ll reply with questions or a fixed quote.','Nous répondrons avec nos questions ou un devis ferme.','Responderemos con preguntas o un presupuesto cerrado.') }}</p></div>
+    </div>
+  </section>
+  <p class="muted" style="font-size:15px">Zoomy LLC · 328 Hamilton Ave Apt 3, Greenwich, CT 06830</p>
+</div>
+{% endblock %}

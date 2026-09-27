@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% set title = T('Admin panels · Zoomy','Panneaux d’administration · Zoomy','Paneles de administración · Zoomy') %}
+{% set description = T('A simple admin panel that comes with your Zoomy website. Change prices, photos, hours, holidays and announcements yourself, preview, and publish in one tap.','Un panneau simple livré avec votre site Zoomy. Modifiez prix, photos, horaires, fêtes et annonces vous-même, prévisualisez, publiez d’un geste.','Un panel sencillo que viene con su sitio de Zoomy. Cambie precios, fotos, horarios, festivos y avisos usted mismo, véalo antes y publique con un toque.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">{{ T('Admin panels','Panneaux d’administration','Paneles de administración') }}</span>
+      <h1>{{ T('Your menu. Your prices. <span class="sq">Changed by you.','Votre menu. Vos prix. <span class="sq">Changés par vous.','Su menú. Sus precios. <span class="sq">Cambiados por usted.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('Every Zoomy website comes with its own admin panel, built around your business. Update anything from your phone, check it, and publish. It’s live in seconds.','Chaque site Zoomy a son propre panneau, pensé pour votre entreprise. Modifiez n’importe quoi depuis votre téléphone, vérifiez, publiez. C’est en ligne en quelques secondes.','Cada sitio de Zoomy trae su propio panel, pensado para su negocio. Cambie lo que quiera desde el móvil, revíselo y publíquelo. En segundos está en línea.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Get a site with a panel','Un site avec son panneau','Un sitio con su panel') }} →</a></div>
+    </div>
+    <div class="panel-wrap reveal">{{ ui.admin() }}</div>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What you can do on your own','Ce que vous pouvez faire seul','Lo que puede hacer por su cuenta') }}</h2>
+      <p class="lead">{{ T('Set up for your menu and your rules, so it only shows what you actually use.','Configuré pour votre menu et vos règles : il n’affiche que ce que vous utilisez.','Configurado para su menú y sus reglas: solo muestra lo que usted usa.') }}</p>
+    </div>
+    <div class="cards">
+      <div class="card card--butter reveal"><h3>{{ T('Prices and items','Prix et produits','Precios y productos') }}</h3><p>{{ T('Change a price right in the list, or raise a whole category by a percentage. Add items with photos, sizes and extras.','Changez un prix directement dans la liste, ou augmentez toute une catégorie en pourcentage. Ajoutez des produits avec photos, tailles et options.','Cambie un precio en la lista o suba toda una categoría por porcentaje. Añada productos con fotos, tamaños y extras.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Sold out today','Épuisé aujourd’hui','Agotado hoy') }}</h3><p>{{ T('Mark it once. It comes back on the menu by itself the next morning.','Indiquez-le une fois. Il revient au menu tout seul le lendemain matin.','Márquelo una vez. Vuelve solo al menú a la mañana siguiente.') }}</p></div>
+      <div class="card card--sky reveal"><h3>{{ T('Hours and holidays','Horaires et fêtes','Horarios y festivos') }}</h3><p>{{ T('Weekly hours, closed days and holiday hours. The site and the phone agent both follow them.','Horaires de la semaine, fermetures et horaires de fêtes. Le site et l’agent téléphonique les suivent.','Horario semanal, días cerrados y horarios festivos. El sitio y el agente telefónico los siguen.') }}</p></div>
+      <div class="card card--mint reveal"><h3>{{ T('Announcements','Annonces','Avisos') }}</h3><p>{{ T('A message at the top of your site, with a start and end date so it takes itself down.','Un message en haut du site, avec date de début et de fin pour qu’il disparaisse tout seul.','Un mensaje arriba del sitio, con fecha de inicio y fin para que se quite solo.') }}</p></div>
+      <div class="card card--blush reveal"><h3>{{ T('Ordering rules','Règles de commande','Reglas de pedidos') }}</h3><p>{{ T('Order cut-off time, delivery days, pickup slots and how much notice each item needs.','Heure limite, jours de livraison, créneaux de retrait et délai pour chaque produit.','Hora límite, días de entrega, horarios de recogida y aviso que necesita cada producto.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Preview and undo','Aperçu et annulation','Vista previa y deshacer') }}</h3><p>{{ T('See changes on your real site before publishing. Every change is in the history if you need to go back.','Voyez les changements sur votre vrai site avant de publier. Tout est dans l’historique si besoin de revenir.','Vea los cambios en su sitio real antes de publicar. Todo queda en el historial por si quiere volver atrás.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">{{ T('Holidays, sorted','Les fêtes, réglées','Festivos, resueltos') }}</span>
+      <h2>{{ T('Closing early on Christmas Eve? One tap.','Fermeture tôt la veille de Noël ? Un geste.','¿Cierra temprano en Nochebuena? Un toque.') }}</h2>
+      <p class="lead mt-m">{{ T('Upcoming holidays are already listed. Add the ones you close for, or set special hours, and your website and phone agent update together.','Les prochaines fêtes sont déjà listées. Ajoutez celles où vous fermez, ou des horaires spéciaux : le site et l’agent téléphonique se mettent à jour ensemble.','Los próximos festivos ya aparecen. Añada los que cierra o ponga un horario especial, y el sitio y el agente telefónico se actualizan a la vez.') }}</p>
+    </div>
+    <div class="reveal panel-wrap">{{ ui.admin('', False, 'hours') }}</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="band split">
+      <div class="reveal">
+        <span class="eyebrow">{{ T('Phone orders','Commandes par téléphone','Pedidos por teléfono') }}</span>
+        <h2>{{ T('Calls land in your panel too.','Les appels arrivent aussi dans le panneau.','Las llamadas también llegan al panel.') }}</h2>
+        <p class="lead mt-m">{{ T('If you have a phone agent, every order and message shows up here with a tap-to-call number. Call back, tick it off, done.','Avec un agent téléphonique, chaque commande et message apparaît ici avec le numéro à rappeler en un geste. Vous rappelez, vous cochez, c’est fait.','Si tiene agente telefónico, cada pedido y mensaje aparece aquí con el número listo para llamar. Devuelve la llamada, lo marca y listo.') }}</p>
+        <ul class="ticks">
+          <li><b>{{ T('Staff logins.','Accès pour l’équipe.','Accesos del equipo.') }}</b> {{ T('Everyone gets their own, with only what they need.','Chacun a le sien, limité à l’essentiel.','Cada uno tiene el suyo, solo con lo necesario.') }}</li>
+          <li><b>{{ T('Works on any phone.','Marche sur tout téléphone.','Funciona en cualquier móvil.') }}</b> {{ T('Nothing to install.','Rien à installer.','Nada que instalar.') }}</li>
+        </ul>
+      </div>
+      <div class="reveal">{{ ui.orders() }}</div>
+    </div>
+  </div>
+</section>
+{% endblock %}
