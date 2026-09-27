@@ -18,6 +18,8 @@ PAGES = [
     ('index.html', 'index.html', {}),
     ('website-design.html', 'websites.html', {}),
     ('admin-panel.html', 'admin.html', {}),
+    ('app-design.html', 'apps.html', {}),
+    ('3d-modelling.html', '3d.html', {}),
     ('chatbot.html', 'chatbot.html', {}),
     ('phone-agent.html', 'phone.html', {}),
     ('animated-creatives.html', 'video.html', {}),
@@ -40,6 +42,11 @@ REDIRECTS = {
     'portfolio.html': './',
     'services.html': './',
 }
+
+# 3D showcase: a model is shown once both its picture and its 3D file exist
+MODEL_KEYS = ['watch', 'perfume', 'keyboard', 'camera', 'headphones', 'microphone', 'turntable', 'lamp', 'airliner', 'house']
+READY_MODELS = [k for k in MODEL_KEYS if os.path.exists(os.path.join(OUT, 'img', '3d', k + '.jpg')) and os.path.exists(os.path.join(OUT, 'models', k + '.glb'))]
+HERO_VIDEO = os.path.exists(os.path.join(OUT, 'img', '3d', 'house-turn.mp4'))
 
 env = Environment(loader=FileSystemLoader(os.path.join(SRC, 'templates')), autoescape=False,
                   trim_blocks=True, lstrip_blocks=True)
@@ -71,6 +78,8 @@ def render(file, tpl, opts, lang, langs):
 
     nav = [
         ('website-design.html', T('Websites', 'Sites web', 'Sitios web')),
+        ('app-design.html', T('Apps', 'Applis', 'Apps')),
+        ('3d-modelling.html', T('3D', '3D', '3D')),
         ('admin-panel.html', T('Admin panels', 'Administration', 'Paneles')),
         ('chatbot.html', T('Chat', 'Chat', 'Chat')),
         ('phone-agent.html', T('Phone agents', 'Agents téléphoniques', 'Agentes telefónicos')),
@@ -80,7 +89,8 @@ def render(file, tpl, opts, lang, langs):
                page_file=file, page_parents=opts.get('parents'), nav=nav,
                lang_url=lambda l: L(file, l), canonical=abs_url(file, lang),
                hide_cta=opts.get('hide_cta'), noindex=opts.get('noindex'),
-               single_lang=len(langs) == 1, no_chat=opts.get('no_chat'))
+               single_lang=len(langs) == 1, no_chat=opts.get('no_chat'),
+               ready_models=READY_MODELS, hero_video=HERO_VIDEO)
     html = env.get_template(tpl).render(**ctx)
     html = re.sub(r'\n\s*\n+', '\n', html)
     # house style: no exclamation marks in copy (the chatbot and phone agents follow the same rule)

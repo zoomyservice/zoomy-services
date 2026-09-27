@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% set title = T('3D modelling · Zoomy','Modélisation 3D · Zoomy','Modelado 3D · Zoomy') %}
+{% set description = T('Realistic 3D models of your products, rooms and buildings: photo-quality images, short videos and models your customers can turn around on your website.','Des modèles 3D réalistes de vos produits, pièces et bâtiments : images dignes d’une photo, courtes vidéos et modèles que vos clients peuvent faire tourner sur votre site.','Modelos 3D realistas de sus productos, espacios y edificios: imágenes como fotos, videos cortos y modelos que sus clientes pueden girar en su sitio web.') %}
+{% set models = [
+  ('watch', T('Chronograph watch','Montre chronographe','Reloj cronógrafo'), T('Steel, leather and glass','Acier, cuir et verre','Acero, cuero y vidrio'), False),
+  ('perfume', T('Perfume bottle','Flacon de parfum','Frasco de perfume'), T('Thick glass and liquid','Verre épais et liquide','Vidrio grueso y líquido'), False),
+  ('keyboard', T('Mechanical keyboard','Clavier mécanique','Teclado mecánico'), T('84 keys, printed legends','84 touches, légendes imprimées','84 teclas, letras impresas'), False),
+  ('camera', T('Film camera','Appareil photo argentique','Cámara de película'), T('Chrome, leather and a real lens','Chrome, cuir et un vrai objectif','Cromo, cuero y un objetivo real'), False),
+  ('headphones', T('Headphones','Casque audio','Auriculares'), T('Soft leather and metal','Cuir souple et métal','Cuero suave y metal'), False),
+  ('microphone', T('Studio microphone','Micro de studio','Micrófono de estudio'), T('Mesh grille and shock mount','Grille et suspension','Rejilla y suspensión'), False),
+  ('turntable', T('Record player','Platine vinyle','Tocadiscos'), T('Wood, vinyl and a moving arm','Bois, vinyle et bras mobile','Madera, vinilo y brazo móvil'), False),
+  ('lamp', T('Desk lamp','Lampe de bureau','Lámpara de escritorio'), T('Springs, joints and warm light','Ressorts, articulations et lumière chaude','Resortes, articulaciones y luz cálida'), False),
+  ('airliner', T('Passenger jet','Avion de ligne','Avión de pasajeros'), T('A full aircraft, inside and out','Un avion complet, dedans et dehors','Un avión completo, por dentro y por fuera'), True),
+  ('house', T('Modern house','Maison moderne','Casa moderna'), T('Pool, furniture and every room','Piscine, meubles et chaque pièce','Piscina, muebles y cada habitación'), True),
+] %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split hero--3d">
+    <div>
+      <span class="eyebrow">{{ T('3D modelling','Modélisation 3D','Modelado 3D') }}</span>
+      <h1>{{ T('Show it before <span class="sq">it’s made.','Montrez-le avant <span class="sq">qu’il existe.','Muéstrelo antes <span class="sq">de fabricarlo.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('We model your products, rooms and buildings in 3D, then turn them into realistic images, short videos and models your customers can spin around on your website.','Nous modélisons vos produits, pièces et bâtiments en 3D, puis en tirons des images réalistes, de courtes vidéos et des modèles que vos clients peuvent faire tourner sur votre site.','Modelamos sus productos, espacios y edificios en 3D y los convertimos en imágenes realistas, videos cortos y modelos que sus clientes pueden girar en su sitio web.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Start a 3D project','Démarrer un projet 3D','Empezar un proyecto 3D') }} →</a><a class="ln" href="#models">{{ T('See our models','Voir nos modèles','Ver nuestros modelos') }}</a></div>
+    </div>
+    <figure class="hero3d reveal">
+      {% if hero_video %}
+      <video autoplay muted loop playsinline preload="auto" poster="{{ root }}img/3d/house-hero.jpg" aria-label="{{ T('A modern house turning slowly','Une maison moderne qui tourne lentement','Una casa moderna girando despacio') }}"><source src="{{ root }}img/3d/house-turn.mp4" type="video/mp4"></video>
+      {% else %}
+      <img src="{{ root }}img/3d/hero.jpg" alt="{{ T('A 3D model of a chronograph watch','Un modèle 3D de montre chronographe','Un modelo 3D de un reloj cronógrafo') }}" width="1600" height="900">
+      {% endif %}
+      <figcaption class="sticker sticker--butter">{{ T('Made in<br>3D, not<br>a photo','Fait en<br>3D, pas<br>une photo','Hecho<br>en 3D,<br>no es foto') }}</figcaption>
+    </figure>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What 3D can do for your business','Ce que la 3D peut faire pour vous','Lo que el 3D puede hacer por su negocio') }}</h2>
+      <p class="lead">{{ T('You don’t need to be a big brand. If you sell something people want to look at closely, 3D helps.','Pas besoin d’être une grande marque. Si vous vendez quelque chose qu’on veut regarder de près, la 3D aide.','No hace falta ser una gran marca. Si vende algo que la gente quiere ver de cerca, el 3D ayuda.') }}</p>
+    </div>
+    <div class="cards">
+      <div class="card card--butter reveal"><h3>{{ T('Photos without a photoshoot','Des photos sans séance photo','Fotos sin sesión de fotos') }}</h3><p>{{ T('Every product, every colour, any background. No samples to ship, no studio to book.','Chaque produit, chaque couleur, n’importe quel fond. Pas d’échantillons à envoyer, pas de studio à réserver.','Cada producto, cada color, cualquier fondo. Sin enviar muestras ni reservar estudio.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Let customers turn it around','Laissez vos clients le faire tourner','Deje que sus clientes lo giren') }}</h3><p>{{ T('A 3D model on your product page lets people spin it and zoom in before they buy. Fewer questions, fewer returns.','Un modèle 3D sur la page produit permet de le faire tourner et de zoomer avant d’acheter. Moins de questions, moins de retours.','Un modelo 3D en la página del producto permite girarlo y acercarlo antes de comprar. Menos preguntas, menos devoluciones.') }}</p></div>
+      <div class="card card--sky reveal"><h3>{{ T('Sell it before it exists','Vendez-le avant qu’il existe','Véndalo antes de que exista') }}</h3><p>{{ T('Show a new product, a renovation or a building to customers, partners or investors before anything is made.','Montrez un nouveau produit, une rénovation ou un bâtiment à vos clients, partenaires ou investisseurs avant qu’il soit fabriqué.','Muestre un producto nuevo, una reforma o un edificio a clientes, socios o inversores antes de fabricar nada.') }}</p></div>
+      <div class="card card--mint reveal"><h3>{{ T('Posts and ads that stand out','Des posts et pubs qui se remarquent','Publicaciones y anuncios que destacan') }}</h3><p>{{ T('Clean product shots and short turning videos for Instagram, TikTok and your website.','Des visuels nets et de courtes vidéos qui tournent pour Instagram, TikTok et votre site.','Imágenes limpias y videos cortos girando para Instagram, TikTok y su sitio.') }}</p></div>
+      <div class="card card--blush reveal"><h3>{{ T('Explain how it works','Expliquez comment ça marche','Explique cómo funciona') }}</h3><p>{{ T('Take it apart on screen to show what’s inside, for sales pitches, manuals and training.','Démontez-le à l’écran pour montrer l’intérieur, pour vos présentations, notices et formations.','Desármelo en pantalla para mostrar lo de dentro, para presentaciones, manuales y formación.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Made once, used for years','Fait une fois, utilisé des années','Hecho una vez, usado por años') }}</h3><p>{{ T('Once it’s modelled, new angles, colours and scenes don’t mean starting over.','Une fois modélisé, de nouveaux angles, couleurs et décors ne demandent pas de tout recommencer.','Una vez modelado, nuevos ángulos, colores y escenas no obligan a empezar de cero.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush" id="models">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('Some things we’ve modelled','Quelques modèles faits par nous','Algunas cosas que hemos modelado') }}</h2>
+      <p class="lead">{{ T('Every one of these is 3D, not a photo. Tap any of them to turn it around and zoom in.','Aucune de ces images n’est une photo, tout est en 3D. Touchez-en une pour la faire tourner et zoomer.','Ninguna es una foto, todo es 3D. Toque cualquiera para girarla y acercarla.') }}</p>
+    </div>
+    <div class="models">
+      {% for key, name, sub, wide in models if key in ready_models %}
+      <button type="button" class="model reveal{% if wide %} model--wide{% endif %}" data-model="{{ root }}models/{{ key }}.glb" data-title="{{ name }}" data-poster="{{ root }}img/3d/{{ key }}.jpg">
+        <span class="model__img"><img src="{{ root }}img/3d/{{ key }}.jpg" alt="{{ name }}" loading="lazy" width="1200" height="{{ 600 if wide else 900 }}"></span>
+        <span class="model__txt"><b>{{ name }}</b><small>{{ sub }}</small></span>
+        <span class="model__go">{{ T('Turn it around','Faire tourner','Girarlo') }} <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.5v3h-3"/></svg></span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head head--one"><h2>{{ T('How it works','Comment ça marche','Cómo funciona') }}</h2></div>
+    <div class="steps">
+      <div class="step reveal"><span class="step__n">1</span><h4>{{ T('Send what you have','Envoyez ce que vous avez','Envíe lo que tenga') }}</h4><p>{{ T('Photos, drawings, measurements or a rough sketch. The real thing works too.','Photos, plans, mesures ou un simple croquis. L’objet lui-même aussi.','Fotos, planos, medidas o un boceto. El objeto real también sirve.') }}</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>{{ T('We model it','Nous le modélisons','Lo modelamos') }}</h4><p>{{ T('Shape, materials and light, until it looks real. You check it and tell us what to change.','Forme, matières et lumière, jusqu’à ce que ce soit réaliste. Vous vérifiez et dites quoi changer.','Forma, materiales y luz, hasta que parezca real. Usted lo revisa y nos dice qué cambiar.') }}</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>{{ T('You get the files','Vous recevez les fichiers','Recibe los archivos') }}</h4><p>{{ T('Images, a short video and a 3D model ready for your website.','Des images, une courte vidéo et un modèle 3D prêt pour votre site.','Imágenes, un video corto y un modelo 3D listo para su sitio.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="mv" id="mv" data-root="{{ root }}" hidden role="dialog" aria-modal="true" aria-labelledby="mv-title">
+  <div class="mv__box">
+    <div class="mv__top"><h3 id="mv-title"></h3><span class="mv__hint">{{ T('Drag to turn · scroll or pinch to zoom','Glissez pour tourner · molette ou pincement pour zoomer','Arrastre para girar · rueda o pellizco para acercar') }}</span><button type="button" class="mv__x" aria-label="{{ T('Close','Fermer','Cerrar') }}">×</button></div>
+    <div class="mv__stage"><span class="mv__load">{{ T('Loading the 3D model…','Chargement du modèle 3D…','Cargando el modelo 3D…') }}</span></div>
+  </div>
+</div>
+<script src="{{ root }}js/models.js?v={{ v }}" defer></script>
+{% endblock %}

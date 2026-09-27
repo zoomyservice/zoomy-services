@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% set title = T('App design · Zoomy','Design d’applis · Zoomy','Diseño de apps · Zoomy') %}
+{% set description = T('Mobile app design for your business: every screen designed, a clickable prototype you can try on your phone, and files ready for developers.','Design d’applis mobiles pour votre entreprise : chaque écran dessiné, un prototype cliquable à essayer sur votre téléphone, et des fichiers prêts pour les développeurs.','Diseño de apps móviles para su negocio: cada pantalla diseñada, un prototipo que puede probar en su móvil y archivos listos para los programadores.') %}
+{% block main %}
+<div class="wrap">
+  <section class="hero hero--split">
+    <div>
+      <span class="eyebrow">{{ T('App design','Design d’applis','Diseño de apps') }}</span>
+      <h1>{{ T('An app people <span class="sq">like using.','Une appli qu’on <span class="sq">aime utiliser.','Una app que da <span class="sq">gusto usar.') }}<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14 C 60 4, 110 18, 170 9 S 260 5, 297 12"/></svg></span></h1>
+      <p class="lead">{{ T('We design mobile apps from the first sketch to the last screen, and give you a clickable prototype you can try on your own phone.','Nous dessinons des applis mobiles du premier croquis au dernier écran, avec un prototype cliquable à essayer sur votre téléphone.','Diseñamos apps móviles desde el primer boceto hasta la última pantalla, con un prototipo que puede probar en su propio móvil.') }}</p>
+      <div class="actions"><a class="btn" href="{{ L('contact.html') }}">{{ T('Talk about your app','Parler de votre appli','Hablar de su app') }} →</a></div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone phone--a tl1">
+        <div class="phone__bar"><span>9:41</span><i></i></div>
+        <div class="phone__scr">
+          <p class="ph-hi">{{ T('Good morning, Sam','Bonjour, Sam','Buenos días, Sam') }}</p>
+          <div class="ph-card ph-card--butter"><small>{{ T('Your next visit','Votre prochain rendez-vous','Su próxima cita') }}</small><b>{{ T('Thursday, 10:30 AM','Jeudi, 10 h 30','Jueves, 10:30 a. m.') }}</b><span class="ph-btn">{{ T('Change','Modifier','Cambiar') }}</span></div>
+          <div class="ph-row"><span class="ph-ic ph-ic--mint"></span><div><b>{{ T('Book again','Réserver','Reservar') }}</b><small>{{ T('Pick a day and time','Choisissez un créneau','Elija día y hora') }}</small></div></div>
+          <div class="ph-row"><span class="ph-ic ph-ic--sky"></span><div><b>{{ T('Your orders','Vos commandes','Sus pedidos') }}</b><small>{{ T('1 on its way','1 en route','1 en camino') }}</small></div></div>
+          <div class="ph-row"><span class="ph-ic ph-ic--blush"></span><div><b>{{ T('Rewards','Fidélité','Recompensas') }}</b><small>{{ T('2 visits to your next gift','Encore 2 visites avant un cadeau','2 visitas para su regalo') }}</small></div></div>
+          <div class="ph-tabs"><i class="on"></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="phone phone--b tr1">
+        <div class="phone__bar"><span>9:41</span><i></i></div>
+        <div class="phone__scr">
+          <p class="ph-title">{{ T('Pick a time','Choisir un créneau','Elija una hora') }}</p>
+          <div class="ph-days"><span>{{ T('Mon','Lun','Lun') }}<b>12</b></span><span class="on">{{ T('Tue','Mar','Mar') }}<b>13</b></span><span>{{ T('Wed','Mer','Mié') }}<b>14</b></span><span>{{ T('Thu','Jeu','Jue') }}<b>15</b></span></div>
+          <div class="ph-slots"><span>9:00</span><span>9:30</span><span class="off">10:00</span><span class="on">10:30</span><span>11:00</span><span class="off">11:30</span><span>1:00</span><span>1:30</span><span>2:00</span></div>
+          <span class="ph-cta">{{ T('Confirm 10:30','Confirmer 10 h 30','Confirmar 10:30') }}</span>
+        </div>
+      </div>
+      <span class="sticker sticker--butter">{{ T('Try it on<br>your phone<br>first','Essayez-la<br>d’abord sur<br>votre téléphone','Pruébela<br>primero en<br>su móvil') }}</span>
+    </div>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>{{ T('What you get','Ce que vous recevez','Lo que recibe') }}</h2>
+      <p class="lead">{{ T('Whether it’s for bookings, orders, members or your own team, we design it around the people who will use it.','Réservations, commandes, membres ou votre propre équipe : nous la dessinons pour les personnes qui vont l’utiliser.','Para reservas, pedidos, miembros o su propio equipo, la diseñamos pensando en quien la va a usar.') }}</p>
+    </div>
+    <div class="cards">
+      <div class="card card--butter reveal"><h3>{{ T('Every screen','Chaque écran','Cada pantalla') }}</h3><p>{{ T('Sign-up, home, lists, checkout, settings, the empty states and the error messages too.','Inscription, accueil, listes, paiement, réglages, et aussi les écrans vides et les messages d’erreur.','Registro, inicio, listas, pago, ajustes, y también las pantallas vacías y los mensajes de error.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('A prototype you can tap','Un prototype à toucher','Un prototipo que puede tocar') }}</h3><p>{{ T('Open it on your phone and tap through it like a real app, before anyone writes code.','Ouvrez-le sur votre téléphone et parcourez-le comme une vraie appli, avant la moindre ligne de code.','Ábralo en su móvil y úselo como una app real, antes de escribir una sola línea de código.') }}</p></div>
+      <div class="card card--sky reveal"><h3>{{ T('Your brand','Votre image','Su marca') }}</h3><p>{{ T('Your colours, fonts and tone of voice, so the app feels like your business.','Vos couleurs, polices et votre ton, pour que l’appli ressemble à votre entreprise.','Sus colores, tipografías y su forma de hablar, para que la app se sienta de su negocio.') }}</p></div>
+      <div class="card card--mint reveal"><h3>{{ T('iPhone and Android','iPhone et Android','iPhone y Android') }}</h3><p>{{ T('Designed to feel at home on both, and on small and large screens.','Pensée pour être naturelle sur les deux, sur petits et grands écrans.','Pensada para sentirse natural en ambos, en pantallas pequeñas y grandes.') }}</p></div>
+      <div class="card card--blush reveal"><h3>{{ T('Ready for developers','Prête pour les développeurs','Lista para programadores') }}</h3><p>{{ T('Every screen, size and colour written down, so whoever builds it gets it right.','Chaque écran, taille et couleur documentés, pour que ceux qui la développent ne se trompent pas.','Cada pantalla, tamaño y color documentados, para que quien la construya no se equivoque.') }}</p></div>
+      <div class="card reveal"><h3>{{ T('Works with your website','Relie à votre site','Conectada a su sitio') }}</h3><p>{{ T('The app can use the same products, hours and admin panel as your website.','L’appli peut utiliser les mêmes produits, horaires et panneau que votre site.','La app puede usar los mismos productos, horarios y panel que su sitio web.') }}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--flush">
+  <div class="wrap">
+    <div class="head head--one"><h2>{{ T('How it works','Comment ça marche','Cómo funciona') }}</h2></div>
+    <div class="steps">
+      <div class="step reveal"><span class="step__n">1</span><h4>{{ T('We map it out','Nous traçons le plan','Hacemos el mapa') }}</h4><p>{{ T('What the app needs to do, who uses it, and every screen it needs.','Ce que l’appli doit faire, qui l’utilise, et chaque écran nécessaire.','Qué debe hacer la app, quién la usa y cada pantalla que necesita.') }}</p></div>
+      <div class="step reveal"><span class="step__n">2</span><h4>{{ T('We design it','Nous la dessinons','La diseñamos') }}</h4><p>{{ T('Every screen, in your style, put together into a prototype.','Chaque écran, à votre image, réuni dans un prototype.','Cada pantalla, con su estilo, reunida en un prototipo.') }}</p></div>
+      <div class="step reveal"><span class="step__n">3</span><h4>{{ T('You try it','Vous l’essayez','Usted la prueba') }}</h4><p>{{ T('Tap through it on your phone, tell us what to change, and get the final files.','Parcourez-la sur votre téléphone, dites-nous quoi changer, et recevez les fichiers finaux.','Úsela en su móvil, díganos qué cambiar y reciba los archivos finales.') }}</p></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
