@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/dmsans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../css/site.css?v=202609270640">
+<link rel="stylesheet" href="../css/site.css?v=202609270720">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5RX761T33"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-L5RX761T33');</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wd5th9teha");</script>
@@ -54,7 +54,7 @@
       <div class="actions"><a class="btn" href="contact.html">Démarrer un projet 3D →</a><a class="ln" href="#models">Voir nos modèles</a></div>
     </div>
     <figure class="hero3d reveal">
-      <img src="../img/3d/hero.jpg" alt="Un modèle 3D de montre chronographe" width="1600" height="900">
+      <video autoplay muted loop playsinline preload="auto" poster="../img/3d/house-hero.jpg" aria-label="Une maison moderne qui tourne lentement"><source src="../img/3d/house-turn.mp4" type="video/mp4"><source src="../img/3d/house-turn.webm" type="video/webm"></video>
       <figcaption class="sticker sticker--butter">Fait en<br>3D, pas<br>une photo</figcaption>
     </figure>
   </section>
@@ -122,9 +122,14 @@
         <span class="model__txt"><b>Lampe de bureau</b><small>Ressorts, articulations et lumière chaude</small></span>
         <span class="model__go">Faire tourner <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.5v3h-3"/></svg></span>
       </button>
-      <button type="button" class="model reveal model--wide" data-model="../models/airliner.glb" data-title="Avion de ligne" data-poster="../img/3d/airliner.jpg" data-orbit="128deg 80deg auto">
+      <button type="button" class="model reveal model--wide" data-model="../models/airliner.glb" data-title="Avion de ligne" data-poster="../img/3d/airliner.jpg" data-orbit="128deg 80deg auto" data-fov="21deg">
         <span class="model__img"><img src="../img/3d/airliner.jpg" alt="Avion de ligne" loading="lazy" width="1200" height="600"></span>
         <span class="model__txt"><b>Avion de ligne</b><small>Un avion de ligne complet, livrée sur mesure</small></span>
+        <span class="model__go">Faire tourner <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.5v3h-3"/></svg></span>
+      </button>
+      <button type="button" class="model reveal model--wide" data-model="../models/house.glb" data-title="Maison moderne" data-poster="../img/3d/house.jpg" data-orbit="323deg 64deg auto" data-fov="24deg">
+        <span class="model__img"><img src="../img/3d/house.jpg" alt="Maison moderne" loading="lazy" width="1200" height="600"></span>
+        <span class="model__txt"><b>Maison moderne</b><small>Piscine, meubles et chaque pièce</small></span>
         <span class="model__go">Faire tourner <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.5v3h-3"/></svg></span>
       </button>
     </div>
@@ -146,7 +151,7 @@
     <div class="mv__stage"><span class="mv__load">Chargement du modèle 3D…</span></div>
   </div>
 </div>
-<script src="../js/models.js?v=202609270640" defer></script>
+<script src="../js/models.js?v=202609270720" defer></script>
 </main>
 <footer class="ftr">
   <div class="wrap">
@@ -200,6 +205,6 @@
     </div>
   </div>
 </footer>
-<script src="../js/site.js?v=202609270640" defer></script>
-<script src="../js/chat.js?v=202609270640" defer></script></body>
+<script src="../js/site.js?v=202609270720" defer></script>
+<script src="../js/chat.js?v=202609270720" defer></script></body>
 </html>

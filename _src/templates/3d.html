@@ -14,6 +14,7 @@
   ('house', T('Modern house','Maison moderne','Casa moderna'), T('Pool, furniture and every room','Piscine, meubles et chaque pièce','Piscina, muebles y cada habitación'), True),
 ] %}
 {% set orbits = {'airliner': '128deg 80deg auto', 'house': '323deg 64deg auto'} %}
+{% set fovs = {'airliner': '21deg', 'house': '24deg'} %}
 {% block main %}
 <div class="wrap">
   <section class="hero hero--split hero--3d">
@@ -25,7 +26,7 @@
     </div>
     <figure class="hero3d reveal">
       {% if hero_video %}
-      <video autoplay muted loop playsinline preload="auto" poster="{{ root }}img/3d/house-hero.jpg" aria-label="{{ T('A modern house turning slowly','Une maison moderne qui tourne lentement','Una casa moderna girando despacio') }}"><source src="{{ root }}img/3d/house-turn.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline preload="auto" poster="{{ root }}img/3d/house-hero.jpg" aria-label="{{ T('A modern house turning slowly','Une maison moderne qui tourne lentement','Una casa moderna girando despacio') }}"><source src="{{ root }}img/3d/house-turn.mp4" type="video/mp4"><source src="{{ root }}img/3d/house-turn.webm" type="video/webm"></video>
       {% else %}
       <img src="{{ root }}img/3d/hero.jpg" alt="{{ T('A 3D model of a chronograph watch','Un modèle 3D de montre chronographe','Un modelo 3D de un reloj cronógrafo') }}" width="1600" height="900">
       {% endif %}
@@ -59,7 +60,7 @@
     </div>
     <div class="models">
       {% for key, name, sub, wide in models if key in ready_models %}
-      <button type="button" class="model reveal{% if wide %} model--wide{% endif %}" data-model="{{ root }}models/{{ key }}.glb" data-title="{{ name }}" data-poster="{{ root }}img/3d/{{ key }}.jpg"{% if orbits.get(key) %} data-orbit="{{ orbits.get(key) }}"{% endif %}>
+      <button type="button" class="model reveal{% if wide %} model--wide{% endif %}" data-model="{{ root }}models/{{ key }}.glb" data-title="{{ name }}" data-poster="{{ root }}img/3d/{{ key }}.jpg"{% if orbits.get(key) %} data-orbit="{{ orbits.get(key) }}"{% endif %}{% if fovs.get(key) %} data-fov="{{ fovs.get(key) }}"{% endif %}>
         <span class="model__img"><img src="{{ root }}img/3d/{{ key }}.jpg" alt="{{ name }}" loading="lazy" width="1200" height="{{ 600 if wide else 900 }}"></span>
         <span class="model__txt"><b>{{ name }}</b><small>{{ sub }}</small></span>
         <span class="model__go">{{ T('Turn it around','Faire tourner','Girarlo') }} <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.5v3h-3"/></svg></span>

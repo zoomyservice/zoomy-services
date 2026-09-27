@@ -36,6 +36,7 @@
       el.setAttribute('alt', btn.getAttribute('data-title'));
       el.setAttribute('camera-controls', '');
       el.setAttribute('camera-orbit', btn.getAttribute('data-orbit') || '200deg 62deg auto');
+      if (btn.getAttribute('data-fov')) el.setAttribute('field-of-view', btn.getAttribute('data-fov'));
       el.setAttribute('auto-rotate', '');
       el.setAttribute('auto-rotate-delay', '1200');
       el.setAttribute('rotation-per-second', '16deg');
