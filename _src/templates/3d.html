@@ -10,9 +10,10 @@
   ('microphone', T('Studio microphone','Micro de studio','Micrófono de estudio'), T('Mesh grille and shock mount','Grille et suspension','Rejilla y suspensión'), False),
   ('turntable', T('Record player','Platine vinyle','Tocadiscos'), T('Wood, vinyl and a moving arm','Bois, vinyle et bras mobile','Madera, vinilo y brazo móvil'), False),
   ('lamp', T('Desk lamp','Lampe de bureau','Lámpara de escritorio'), T('Springs, joints and warm light','Ressorts, articulations et lumière chaude','Resortes, articulaciones y luz cálida'), False),
-  ('airliner', T('Passenger jet','Avion de ligne','Avión de pasajeros'), T('A full aircraft, inside and out','Un avion complet, dedans et dehors','Un avión completo, por dentro y por fuera'), True),
+  ('airliner', T('Passenger jet','Avion de ligne','Avión de pasajeros'), T('A full airliner in a custom livery','Un avion de ligne complet, livrée sur mesure','Un avión completo con librea propia'), True),
   ('house', T('Modern house','Maison moderne','Casa moderna'), T('Pool, furniture and every room','Piscine, meubles et chaque pièce','Piscina, muebles y cada habitación'), True),
 ] %}
+{% set orbits = {'airliner': '128deg 80deg auto', 'house': '323deg 64deg auto'} %}
 {% block main %}
 <div class="wrap">
   <section class="hero hero--split hero--3d">
@@ -58,7 +59,7 @@
     </div>
     <div class="models">
       {% for key, name, sub, wide in models if key in ready_models %}
-      <button type="button" class="model reveal{% if wide %} model--wide{% endif %}" data-model="{{ root }}models/{{ key }}.glb" data-title="{{ name }}" data-poster="{{ root }}img/3d/{{ key }}.jpg">
+      <button type="button" class="model reveal{% if wide %} model--wide{% endif %}" data-model="{{ root }}models/{{ key }}.glb" data-title="{{ name }}" data-poster="{{ root }}img/3d/{{ key }}.jpg"{% if orbits.get(key) %} data-orbit="{{ orbits.get(key) }}"{% endif %}>
         <span class="model__img"><img src="{{ root }}img/3d/{{ key }}.jpg" alt="{{ name }}" loading="lazy" width="1200" height="{{ 600 if wide else 900 }}"></span>
         <span class="model__txt"><b>{{ name }}</b><small>{{ sub }}</small></span>
         <span class="model__go">{{ T('Turn it around','Faire tourner','Girarlo') }} <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M13 8a5 5 0 1 1-1.6-3.7M13 2.5v3h-3"/></svg></span>
